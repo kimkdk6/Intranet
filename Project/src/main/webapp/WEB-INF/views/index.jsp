@@ -36,13 +36,12 @@
                       <td valign="top" style="padding:0px 12px 0 12px;">
 					    <table width="100%" border="0" cellspacing="0" cellpadding="0">
                         <tr>
-                          <td width="55%" height="16" align="left" valign="top" ><b>메일</b> : <a href="/mail/dgwmail.php?_boxkey=.unseenflag"><font color="#4e5fe8"><b><span class="m_sp0">2</span></b></font>통</a></td>
-                          <td width="45%" align="left" valign="top" ><b>쪽지</b> : <a href="javascript:popupNote()"><font color="#4e5fe8"><b>0</b></font>통</a></td>
+                          <td width="55%" height="16" align="left" valign="top"><b>&nbsp&nbsp메&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp일</b> : <a href="/mail/dgwmail.php?_boxkey=.unseenflag"><font color="#4e5fe8"><b><span class="m_sp0">2</span></b></font>통</a></td>
+                          <td width="45%" align="left" valign="top" ><b>쪽&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp지</b> : <a href="javascript:popupNote()"><font color="#4e5fe8"><b>0</b></font>통</a></td>
                         </tr>
                         <tr>
-                          <td height="16" align="left" valign="top" ><b>결재문서</b> : <a href="/approval/proc_wait_list.php"><font color="#4e5fe8"><b><span class="m_sp0">0</span></b></font>건</a></td>
-                          <td height="16" align="left" valign="top" ><b>상신문서</b> : <a href="/approval/my_report_list.php"><font color="#4e5fe8"><b><span class="m_sp0">3</span></b></font>건</a></td>
-                         
+                          <td height="16" align="left" valign="top" ><b>&nbsp&nbsp결재문서</b> : <a href="/approval/proc_wait_list.php"><font color="#4e5fe8"><b><span class="m_sp0">0</span></b></font>건</a></td>
+                          <td height="16" align="left" valign="top" ><b>상신문서</b> : <a href="/approval/my_report_list.php"><font color="#4e5fe8"><b><span class="m_sp0">3</span></b></font>건</a></td>   
                         </tr>
                         <tr>
                          
