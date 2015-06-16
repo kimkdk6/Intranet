@@ -37,4 +37,7 @@
 			value="org.springframework.web.servlet.view.tiles2.TilesView">
 		</beans:property>
 	</beans:bean>
+	
+	<!-- ck에디터 때문에 추가함-->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 </beans:beans>
