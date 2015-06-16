@@ -55,8 +55,8 @@
               </a>
             </li>
             <li class="treeview">
-              <a href="#">
-                <i class="fa fa-share"></i> <span>전자결재</span>
+              <a href="${pageContext.request.contextPath}/sign/SignMain.htm">
+                <i class="fa fa-share"></i> <span>전자결재 메인</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
