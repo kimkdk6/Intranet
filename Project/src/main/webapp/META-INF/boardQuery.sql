@@ -155,3 +155,24 @@ delete from Reply where REPLYNUM=?
 
 update Reply set REPLYCONTENT=? where REPLYNUM=?;
 --댓글 수정하기
+
+
+
+
+a
+
+--페이징처리
+ SELECT BOARDCODE,BOARDNUM,BOARDNOTICE,USERID,BOARDTITLE,BOARDCONTENT,BOARDDATE,BOARDCOUNT,BOARDFILESRC,BOARDREF,BOARDDEPTH,BOARDSTEP FROM (
+ 	SELECT ROWNUM RN , BOARDCODE,BOARDNUM,BOARDNOTICE,USERID,BOARDTITLE,BOARDCONTENT,BOARDDATE,BOARDCOUNT,BOARDFILESRC,BOARDREF,BOARDDEPTH,BOARDSTEP 
+ 		FROM (SELECT * FROM Board ORDER  BY refer DESC , step ASC)  
+ 	) WHERE RN BETWEEN ? AND ?;
+ 	
+ 	
+-- cpage : 1 , pagesize : 5 	 start : 1 , end : 5
+-- cpage : 2 , pagesize : 5 	 start : 6 , end : 10
+-- cpage : 11 , pagesize : 5 	 start : 51 , end : 55
+
+ 	
+ 	
+ 	
+ 	
