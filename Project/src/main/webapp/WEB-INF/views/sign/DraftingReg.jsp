@@ -16,30 +16,7 @@
 				</table> <!--타이틀TB END-->
 			</td>
 		</tr>
-		<tr>
-			<td height="30" bgcolor="#ececec"
-				style="border-bottom: 1px #c9c9c9 solid; border-top: 1px #c9c9c9 solid; padding: 0 0 0 12px;">
-				<table width="100%" border="0" cellspacing="0" cellpadding="0">
-					<tbody>
-						<tr>
-							<td align="right" style="padding: 0 12px 0 0;">
-								<table border="0" cellspacing="0" cellpadding="0">
-									<tbody>
-										<tr>
-											<td><a href="javascript:doc_edit_submit('I')"><img
-													src="/img/approval/bt_report.gif"></a></td>
-											<td width="5"></td>
-											<td><a href="javascript:doc_edit_submit('S')"><img
-													src="/img/approval/bt_tmp_save.gif"></a></td>
-										</tr>
-									</tbody>
-								</table>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
+		
 		<tr>
 			<td align="center" valign="top" style="padding: 19px 15px 19px 15px;">
 
@@ -398,28 +375,7 @@
 				<table width="100%" border="0" cellspacing="0" cellpadding="0"
 					class="tbl_appdoc" id="writeForm">
 					<tbody>
-						<tr>
-							<td class="dochead" align="center" valign="top">
-								<table width="100%" border="0" frame="void" cellspacing="0"
-									cellpadding="0">
-									<tbody>
-										<tr>
-											<td width="120"></td>
-											<td class="dochead" align="center" valign="top">기안서</td>
-											<td width="120"><select name="select4" class="sel2"
-												style="background-color: #c9eaff;"
-												onchange="applyAppLine(this.options[this.selectedIndex].value); this.blur()">
-													<option>-- 결재선 선택 --</option>
-													<option value="186">테스트결재선</option>
-													<option value="133">ddaddsad</option>
-													<option value="153">임시</option>
-													<option value="184">ddd</option>
-											</select></td>
-										</tr>
-									</tbody>
-								</table>
-							</td>
-						</tr>
+						
 						<tr>
 							<td align="center" valign="top">
 
