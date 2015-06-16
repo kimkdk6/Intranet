@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tbody>
 		<tr>
@@ -20,9 +21,9 @@
 		<tr>
 			<td align="center" valign="top" style="padding: 19px 15px 19px 15px;">
 
-				<script type="text/javascript" src="resources/plugins/ckeditor/ckeditor.js"></script>
-				<script type="text/javascript" src="/js/upload.js"></script> <script
-					language="javascript">
+				<script type="text/javascript" src="../resources/plugins/ckeditor/ckeditor.js"></script>
+				<script type="text/javascript" src="/js/upload.js"></script>
+				<script language="javascript">
 					var oEditors = [];
 					var __maxsize = 31457280;
 					var __remains = 9686275080;
@@ -593,15 +594,14 @@
 													<tbody>
 														<tr>
 															<td width="100%" style="padding: 0; border-top: 0;">
-																<script type="text/javascript" language="javascript"
-																	src="/hdEdit/highgardenEditor.js"></script> <script
-																	type="text/javascript">
+																
+																<script type="text/javascript">
 																		$(
 																				document)
 																				.ready(
 																						function() {
 																						});
-																	</script>
+																</script>
 																<table cellspacing="0" cellpadding="0" width="100%"
 																	class="noborder">
 																	<tbody>
@@ -614,7 +614,7 @@
 
 																					</table>
 																				</div>
-																				<textarea rows="1000" cols="6000" name="CONTENT" id="CONTENT"></textarea>
+																				<textarea rows="1000" cols="3000" name="CONTENT" id="CONTENT"></textarea>
 																					<script type="text/javascript">
 																						CKEDITOR.replace('CONTENT');
 																					</script>
@@ -2201,11 +2201,9 @@
 								<table border="0" cellspacing="0" cellpadding="0">
 									<tbody>
 										<tr>
-											<td><a href="javascript:doc_edit_submit('I')"><img
-													src="/img/approval/bt_report.gif"></a></td>
-											<td width="5"></td>
-											<td><a href="javascript:doc_edit_submit('S')"><img
-													src="/img/approval/bt_tmp_save.gif"></a></td>
+											<td>
+												<input type="button" value="작성완료" onclick="check()">
+											</td>
 										</tr>
 									</tbody>
 								</table>

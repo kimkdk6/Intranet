@@ -7,58 +7,46 @@
 <title>Insert title here</title>
 </head>
 <body>
+<section class="content-header">
+          <h1>
+            Simple Tables
+            <small>preview of simple tables</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#">Tables</a></li>
+            <li class="active">Simple</li>
+          </ol>
+        </section>
+
         <!-- Main content -->
         <section class="content">
           <div class="row">
             <div class="col-md-6">
               <div class="box">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Bordered Table</h3>
+                  <h3 class="box-title">***님 환영합니다.</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                  <table class="table table-bordered">
-                 
-                    <tr>
-                      <td>2.</td>
-                      <td>Clean database</td>
-                      <td>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-yellow">70%</span></td>
-                    </tr>
-                    <tr>
-                      <td>3.</td>
-                      <td>Cron job running</td>
-                      <td>
-                        <div class="progress progress-xs progress-striped active">
-                          <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-light-blue">30%</span></td>
-                    </tr>
-                    <tr>
-                      <td>4.</td>
-                      <td>Fix and squish bugs</td>
-                      <td>
-                        <div class="progress progress-xs progress-striped active">
-                          <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-green">90%</span></td>
-                    </tr>
-                  </table>
+                   <div class="info-box">
+                <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+                <div class="info-box-content">
+                  <span style="font-size: 120%">&nbsp&nbsp메일 &nbsp<b><a href="">2</a></b>개 &nbsp &nbsp &nbsp &nbsp &nbsp</span>
+                   <span style="font-size: 120%">쪽지 &nbsp<b><a href="">2</a></b>개 &nbsp &nbsp &nbsp &nbsp &nbsp</span> 
+                   <span style="font-size: 120%">상신문서 &nbsp<b><a href="">2</a></b>개 &nbsp &nbsp &nbsp &nbsp &nbsp</span> 
+                   <span style="font-size: 120%">결재문서 &nbsp<b><a href="">2</a></b>개</span><br><br>
+					<a href=""><img src="<%=request.getContextPath() %>/resources/img/bt_checkin.gif"></a>
+					<table style="border: 10px;">
+						<tr>
+						<td>
+						asd
+						</td>
+						</tr>
+					</table>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
                 </div><!-- /.box-body -->
-                <div class="box-footer clearfix">
-                  <ul class="pagination pagination-sm no-margin pull-right">
-                    <li><a href="#">&laquo;</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">&raquo;</a></li>
-                  </ul>
-                </div>
+
               </div><!-- /.box -->
 
               <div class="box">
