@@ -23,7 +23,7 @@ public class Ckeditcontroller {
      */
 	
 	// 업로드 경로 정해줘야함
-    @RequestMapping(value = "/community/imageUpload", method = RequestMethod.POST)
+    @RequestMapping(value = "경로정해줘야함", method = RequestMethod.POST)
     public void communityImageUpload(HttpServletRequest request, HttpServletResponse response, @RequestParam MultipartFile upload) {
  
         OutputStream out = null;
