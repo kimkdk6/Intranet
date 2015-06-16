@@ -9,7 +9,7 @@
 					<tbody>
 						<tr>
 							<td width="360" align="left" class="title_txt"
-								style="padding: 5px 0 0 14px;">결재문서 작성</td>
+								style="padding: 5px 0 0 14px;">결재문서 작성!!</td>
 							<td width="" align="right" style="padding: 0 12px 0 0;">&nbsp;</td>
 						</tr>
 					</tbody>
