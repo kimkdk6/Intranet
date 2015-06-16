@@ -20,7 +20,7 @@
 		<tr>
 			<td align="center" valign="top" style="padding: 19px 15px 19px 15px;">
 
-				<script type="text/javascript" src="./ckeditor/ckeditor.js"></script>
+				<script type="text/javascript" src="resources/plugins/ckeditor/ckeditor.js"></script>
 				<script type="text/javascript" src="/js/upload.js"></script> <script
 					language="javascript">
 					var oEditors = [];
