@@ -43,6 +43,7 @@
 		<tr>
 			<td align="center" valign="top" style="padding: 19px 15px 19px 15px;">
 
+				<script type="text/javascript" src="./ckeditor/ckeditor.js"></script>
 				<script type="text/javascript" src="/js/upload.js"></script> <script
 					language="javascript">
 					var oEditors = [];
@@ -290,6 +291,36 @@
 
 						return -1;
 					}
+					
+					
+					$(function(){
+				         
+				        CKEDITOR.replace( 'ckeditor', {//해당 이름으로 된 textarea에 에디터를 적용
+				            width:'100%',
+				            height:'400px',
+				            filebrowserImageUploadUrl: '/community/imageUpload' //여기 경로로 파일을 전달하여 업로드 시킨다.
+				        });
+				         
+				         
+				        CKEDITOR.on('dialogDefinition', function( ev ){
+				            var dialogName = ev.data.name;
+				            var dialogDefinition = ev.data.definition;
+				          
+				            switch (dialogName) {
+				                case 'image': //Image Properties dialog
+				                    //dialogDefinition.removeContents('info');
+				                    dialogDefinition.removeContents('Link');
+				                    dialogDefinition.removeContents('advanced');
+				                    break;
+				            }
+				        });
+				         
+				    });
+					
+					
+					
+					
+					
 
 					function applyAppLine(appmgno) {
 						for (var i = 0; i < 9; i++)
@@ -406,9 +437,8 @@
 													cellspacing="0">
 													<tbody>
 														<tr height="20" align="center" bgcolor="#f6f6f6">
-															<td width="7%" rowspan="4"><b>결<br>
-																<br>
-																<br>재
+															<td width="7%" rowspan="4"><b>결<br> <br>
+																	<br>재
 															</b></td>
 															<td width="19%"
 																style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;">기안자</td>
@@ -433,8 +463,8 @@
 															<td style="border-bottom: 1px #eaeaea solid;">데모사용자</td>
 															<td style="border-bottom: 1px #eaeaea solid;">
 																<div id="divCan0" style="display: none">
-																	<span id="procName0"></span><br>
-																	<a href="javascript:procCancel('0')"><img
+																	<span id="procName0"></span><br> <a
+																		href="javascript:procCancel('0')"><img
 																		src="/img/approval/bt_cancel.gif"></a>
 																</div>
 																<div id="divSel0" style="display: block">
@@ -444,8 +474,8 @@
 															</td>
 															<td style="border-bottom: 1px #eaeaea solid;">
 																<div id="divCan1" style="display: none">
-																	<span id="procName1"></span><br>
-																	<a href="javascript:procCancel('1')"><img
+																	<span id="procName1"></span><br> <a
+																		href="javascript:procCancel('1')"><img
 																		src="/img/approval/bt_cancel.gif"></a>
 																</div>
 																<div id="divSel1" style="display: block">
@@ -455,8 +485,8 @@
 															</td>
 															<td style="border-bottom: 1px #eaeaea solid;">
 																<div id="divCan2" style="display: none">
-																	<span id="procName2"></span><br>
-																	<a href="javascript:procCancel('2')"><img
+																	<span id="procName2"></span><br> <a
+																		href="javascript:procCancel('2')"><img
 																		src="/img/approval/bt_cancel.gif"></a>
 																</div>
 																<div id="divSel2" style="display: block">
@@ -466,8 +496,8 @@
 															</td>
 															<td style="border-bottom: 1px #eaeaea solid;">
 																<div id="divCan3" style="display: none">
-																	<span id="procName3"></span><br>
-																	<a href="javascript:procCancel('3')"><img
+																	<span id="procName3"></span><br> <a
+																		href="javascript:procCancel('3')"><img
 																		src="/img/approval/bt_cancel.gif"></a>
 																</div>
 																<div id="divSel3" style="display: block">
@@ -501,8 +531,8 @@
 														<tr height="70" align="center">
 															<td>
 																<div id="divCan4" style="display: none">
-																	<span id="procName4"></span><br>
-																	<a href="javascript:procCancel('4')"><img
+																	<span id="procName4"></span><br> <a
+																		href="javascript:procCancel('4')"><img
 																		src="/img/approval/bt_cancel.gif"></a>
 																</div>
 																<div id="divSel4" style="display: block">
@@ -512,8 +542,8 @@
 															</td>
 															<td>
 																<div id="divCan5" style="display: none">
-																	<span id="procName5"></span><br>
-																	<a href="javascript:procCancel('5')"><img
+																	<span id="procName5"></span><br> <a
+																		href="javascript:procCancel('5')"><img
 																		src="/img/approval/bt_cancel.gif"></a>
 																</div>
 																<div id="divSel5" style="display: block">
@@ -523,8 +553,8 @@
 															</td>
 															<td>
 																<div id="divCan6" style="display: none">
-																	<span id="procName6"></span><br>
-																	<a href="javascript:procCancel('6')"><img
+																	<span id="procName6"></span><br> <a
+																		href="javascript:procCancel('6')"><img
 																		src="/img/approval/bt_cancel.gif"></a>
 																</div>
 																<div id="divSel6" style="display: block">
@@ -534,8 +564,8 @@
 															</td>
 															<td>
 																<div id="divCan7" style="display: none">
-																	<span id="procName7"></span><br>
-																	<a href="javascript:procCancel('7')"><img
+																	<span id="procName7"></span><br> <a
+																		href="javascript:procCancel('7')"><img
 																		src="/img/approval/bt_cancel.gif"></a>
 																</div>
 																<div id="divSel7" style="display: block">
@@ -545,8 +575,8 @@
 															</td>
 															<td>
 																<div id="divCan8" style="display: none">
-																	<span id="procName8"></span><br>
-																	<a href="javascript:procCancel('8')"><img
+																	<span id="procName8"></span><br> <a
+																		href="javascript:procCancel('8')"><img
 																		src="/img/approval/bt_cancel.gif"></a>
 																</div>
 																<div id="divSel8" style="display: block">
@@ -587,66 +617,15 @@
 												onclick="popUpCalendarYmd(this)" value="2015-06-16">
 											</td>
 										</tr>
-										<tr>
-											<td height="30" align="center" bgcolor="#f6f6f6" class="m_sp"><b>수신부서</b></td>
-											<td style="padding: 0 0 0 12px;" colspan="2"><input
-												id="_depttext" name="depttext" type="text"
-												class="input_type2" style="width: 555px;" readonly="">
-												<a href="javascript:"><img id="bt_deptsel"
-													src="/img/approval/bt_recieve1.gif" align="absmiddle"></a></td>
-										</tr>
-										<tr>
-											<td height="30" align="center" bgcolor="#f6f6f6" class="m_sp"><b>승인
-													전 참조</b></td>
-											<td colspan="2" style="padding: 0 0 0 12px;"><input
-												id="_alstext" name="alstext" type="text" class="input_type2"
-												style="width: 555px;" readonly=""> <a
-												href="javascript:"><img id="bt_alssel"
-													src="/img/approval/bt_refer1.gif" align="absmiddle"></a></td>
-										</tr>
-										<tr>
-											<td height="30" align="center" bgcolor="#f6f6f6" class="m_sp"><b>승인
-													후 참조</b></td>
-											<td colspan="2" style="padding: 0 0 0 12px;"><input
-												id="_reftext" name="reftext" type="text" class="input_type2"
-												style="width: 555px;" readonly=""> <a
-												href="javascript:"><img id="bt_refsel"
-													src="/img/approval/bt_refer1.gif" align="absmiddle"></a></td>
-										</tr>
+
+
 										<tr>
 											<td align="center" bgcolor="#f6f6f6" class="m_sp"><b>파일첨부</b></td>
-											<td colspan="2" style="padding: 3px 11px 0px 11px;"><input
-												type="file" name="uploadify" id="uploadify" width="60"
-												style="display: none;" height="20">
-											<object type="application/x-shockwave-flash"
-													data="/js/uploadify.swf" width="60" height="20"
-													id="uploadifyUploader" style="visibility: visible;">
-													<param name="quality" value="high">
-													<param name="wmode" value="opaque">
-													<param name="allowScriptAccess" value="sameDomain">
-													<param name="flashvars"
-														value="uploadifyID=uploadify&amp;pagepath=/approval/&amp;script=/util/uploadify.php&amp;folder=/home/hangroup/www/uploads/20150616_75950ad67154a41cc08e3f70a47eccce&amp;width=60&amp;height=20&amp;wmode=opaque&amp;method=POST&amp;queueSizeLimit=999&amp;simUploadLimit=1&amp;multi=true&amp;auto=true&amp;fileDataName=Filedata&amp;queueID=fileQueue">
-												</object>
-												<table width="100%" class="noborder" cellspacing="0"
-													cellpadding="0">
-													<tbody>
-														<tr>
-															<td id="fileQueue"></td>
-														</tr>
-													</tbody>
-												</table>
-												<table width="100%" class="noborder" cellspacing="0"
-													cellpadding="0" id="attachWrap">
-													<tbody>
-														<tr>
-															<td id="attachList"></td>
-														</tr>
-													</tbody>
-												</table></td>
+											<td><input id="File_sign" name="File_sign" type="file"></td>
+										</tr>
 										</tr>
 										<tr>
-											<td height="30" align="center" bgcolor="#f6f6f6" class="m_sp"><b>제
-													목</b></td>
+											<td height="30" align="center" bgcolor="#f6f6f6" class="m_sp"><b>제목</b></td>
 											<td colspan="2" style="padding: 0 0 0 12px;"><input
 												id="t_subject" name="subject" type="text"
 												class="input_type2" style="width: 630px;" value=""></td>
@@ -676,281 +655,13 @@
 																					<table width="100%" border="0" cellspacing="0"
 																						cellpadding="0" align="left"
 																						style="text-align: left;">
-																						<tbody>
-																							<tr>
-																								<td width="3" height="3"
-																									style="background: url(/hdEdit/highgardenEditor/write_left_top_bg.gif) no-repeat left top; padding: 0;"></td>
-																								<td width="" height="3"
-																									style="background: url(/hdEdit/highgardenEditor/write_top_bg.gif) repeat-x left top; padding: 0;"></td>
-																								<td width="3" height="3"
-																									style="background: url(/hdEdit/highgardenEditor/write_right_top_bg.gif) no-repeat left top; padding: 0;"></td>
-																							</tr>
-																							<tr>
-																								<td width="3"
-																									style="background: url(/hdEdit/highgardenEditor/write_left_bg.gif) no-repeat left top; padding: 0;"></td>
-																								<td width=""
-																									style="background: url(/hdEdit/highgardenEditor/write_middle_bg.gif) repeat-x left top; padding: 0; padding-left: 5px; padding-right: 5px;"><div
-																										id="new_content_toolbar_iconArea"
-																										style="padding: 0;">
-																										<div id="new_content_toolbar_iconListArea"
-																											style="float: left; padding-top: 1px;">
-																											<select style="width: 60px;" name="fontsize"
-																												align="absolute middle"
-																												onchange="editorExec('fontsize', false, this.value,'new_content_iframe')"><option
-																													value="1">1</option>
-																												<option value="2">2</option>
-																												<option value="3">3</option>
-																												<option value="4">4</option>
-																												<option value="5">5</option>
-																												<option value="6">6</option></select><span
-																												style="width: 3px">&nbsp;</span><select
-																												style="width: 60px;" name="fontname"
-																												align="absolute middle"
-																												onchange="editorExec('fontname', false, this.value,'new_content_iframe')"><option
-																													value="굴림">굴림</option>
-																												<option value="돋움">돋움</option>
-																												<option value="바탕">바탕</option>
-																												<option value="Arial">Arial</option>
-																												<option value="Tahoma">Tahoma</option>
-																												<option value="Verdana">Verdana</option></select><span
-																												style="width: 3px">&nbsp;</span><img
-																												src="/hdEdit/highgardenEditor/bold.gif"
-																												alt="bold" align="top"
-																												style="cursor: pointer;"
-																												onclick="editorExec('bold', false, null,'new_content_iframe')"
-																												onmouseover="this.src ='/hdEdit/highgardenEditor/bold_on.gif'"
-																												onmouseout="this.src ='/hdEdit/highgardenEditor/bold.gif'"
-																												title="bold"><img
-																												src="/hdEdit/highgardenEditor/underline.gif"
-																												alt="underline" align="top"
-																												style="cursor: pointer;"
-																												onclick="editorExec('underline', false, null,'new_content_iframe')"
-																												onmouseover="this.src ='/hdEdit/highgardenEditor/underline_on.gif'"
-																												onmouseout="this.src ='/hdEdit/highgardenEditor/underline.gif'"
-																												title="underline"><img
-																												src="/hdEdit/highgardenEditor/italic.gif"
-																												alt="italic" align="top"
-																												style="cursor: pointer;"
-																												onclick="editorExec('italic', false, null,'new_content_iframe')"
-																												onmouseover="this.src ='/hdEdit/highgardenEditor/italic_on.gif'"
-																												onmouseout="this.src ='/hdEdit/highgardenEditor/italic.gif'"
-																												title="italic"><img
-																												src="/hdEdit/highgardenEditor/StrikeThrough.gif"
-																												alt="StrikeThrough" align="top"
-																												style="cursor: pointer;"
-																												onclick="editorExec('StrikeThrough', false, null,'new_content_iframe')"
-																												onmouseover="this.src ='/hdEdit/highgardenEditor/StrikeThrough_on.gif'"
-																												onmouseout="this.src ='/hdEdit/highgardenEditor/StrikeThrough.gif'"
-																												title="StrikeThrough"><img
-																												src="/hdEdit/highgardenEditor/ForeColor.gif"
-																												alt="ForeColor" align="top"
-																												style="cursor: pointer;"
-																												onclick="editorSubDiv(event ,'ForeColor','new_content_iframe')"
-																												onmouseover="this.src ='/hdEdit/highgardenEditor/ForeColor_on.gif'"
-																												onmouseout="this.src ='/hdEdit/highgardenEditor/ForeColor.gif'"
-																												title="ForeColor"><img
-																												src="/hdEdit/highgardenEditor/BackColor.gif"
-																												alt="BackColor" align="top"
-																												style="cursor: pointer;"
-																												onclick="editorSubDiv(event ,'BackColor','new_content_iframe')"
-																												onmouseover="this.src ='/hdEdit/highgardenEditor/BackColor_on.gif'"
-																												onmouseout="this.src ='/hdEdit/highgardenEditor/BackColor.gif'"
-																												title="BackColor"><span
-																												style="width: 3px">&nbsp;</span><img
-																												src="/hdEdit/highgardenEditor/justifyleft.gif"
-																												alt="justifyleft" align="top"
-																												style="cursor: pointer;"
-																												onclick="editorExec('justifyleft', false, null,'new_content_iframe')"
-																												onmouseover="this.src ='/hdEdit/highgardenEditor/justifyleft_on.gif'"
-																												onmouseout="this.src ='/hdEdit/highgardenEditor/justifyleft.gif'"
-																												title="justifyleft"><img
-																												src="/hdEdit/highgardenEditor/justifycenter.gif"
-																												alt="justifycenter" align="top"
-																												style="cursor: pointer;"
-																												onclick="editorExec('justifycenter', false, null,'new_content_iframe')"
-																												onmouseover="this.src ='/hdEdit/highgardenEditor/justifycenter_on.gif'"
-																												onmouseout="this.src ='/hdEdit/highgardenEditor/justifycenter.gif'"
-																												title="justifycenter"><img
-																												src="/hdEdit/highgardenEditor/justifyright.gif"
-																												alt="justifyright" align="top"
-																												style="cursor: pointer;"
-																												onclick="editorExec('justifyright', false, null,'new_content_iframe')"
-																												onmouseover="this.src ='/hdEdit/highgardenEditor/justifyright_on.gif'"
-																												onmouseout="this.src ='/hdEdit/highgardenEditor/justifyright.gif'"
-																												title="justifyright"><img
-																												src="/hdEdit/highgardenEditor/justifyfull.gif"
-																												alt="justifyfull" align="top"
-																												style="cursor: pointer;"
-																												onclick="editorExec('justifyfull', false, null,'new_content_iframe')"
-																												onmouseover="this.src ='/hdEdit/highgardenEditor/justifyfull_on.gif'"
-																												onmouseout="this.src ='/hdEdit/highgardenEditor/justifyfull.gif'"
-																												title="justifyfull"><span
-																												style="width: 3px">&nbsp;</span><img
-																												src="/hdEdit/highgardenEditor/insertorderedlist.gif"
-																												alt="insertorderedlist" align="top"
-																												style="cursor: pointer;"
-																												onclick="editorExec('insertorderedlist', false, null,'new_content_iframe')"
-																												onmouseover="this.src ='/hdEdit/highgardenEditor/insertorderedlist_on.gif'"
-																												onmouseout="this.src ='/hdEdit/highgardenEditor/insertorderedlist.gif'"
-																												title="insertorderedlist"><img
-																												src="/hdEdit/highgardenEditor/insertunorderedlist.gif"
-																												alt="insertunorderedlist" align="top"
-																												style="cursor: pointer;"
-																												onclick="editorExec('insertunorderedlist', false, null,'new_content_iframe')"
-																												onmouseover="this.src ='/hdEdit/highgardenEditor/insertunorderedlist_on.gif'"
-																												onmouseout="this.src ='/hdEdit/highgardenEditor/insertunorderedlist.gif'"
-																												title="insertunorderedlist"><span
-																												style="width: 3px">&nbsp;</span><img
-																												src="/hdEdit/highgardenEditor/outdent.gif"
-																												alt="outdent" align="top"
-																												style="cursor: pointer;"
-																												onclick="editorExec('outdent', false, null,'new_content_iframe')"
-																												onmouseover="this.src ='/hdEdit/highgardenEditor/outdent_on.gif'"
-																												onmouseout="this.src ='/hdEdit/highgardenEditor/outdent.gif'"
-																												title="outdent"><img
-																												src="/hdEdit/highgardenEditor/indent.gif"
-																												alt="indent" align="top"
-																												style="cursor: pointer;"
-																												onclick="editorExec('indent', false, null,'new_content_iframe')"
-																												onmouseover="this.src ='/hdEdit/highgardenEditor/indent_on.gif'"
-																												onmouseout="this.src ='/hdEdit/highgardenEditor/indent.gif'"
-																												title="indent"><span
-																												style="width: 3px">&nbsp;</span><img
-																												src="/hdEdit/highgardenEditor/inserthorizontalrule.gif"
-																												alt="inserthorizontalrule" align="top"
-																												style="cursor: pointer;"
-																												onclick="editorExec('inserthorizontalrule', false, null,'new_content_iframe')"
-																												onmouseover="this.src ='/hdEdit/highgardenEditor/inserthorizontalrule_on.gif'"
-																												onmouseout="this.src ='/hdEdit/highgardenEditor/inserthorizontalrule.gif'"
-																												title="inserthorizontalrule"><img
-																												src="/hdEdit/highgardenEditor/table.gif"
-																												alt="table" align="top"
-																												style="cursor: pointer;"
-																												onclick="editorSubDiv(event ,'table','new_content_iframe')"
-																												onmouseover="this.src ='/hdEdit/highgardenEditor/table_on.gif'"
-																												onmouseout="this.src ='/hdEdit/highgardenEditor/table.gif'"
-																												title="table"><img
-																												src="/hdEdit/highgardenEditor/div.gif"
-																												alt="div" align="top"
-																												style="cursor: pointer;"
-																												onclick="editorSubDiv(event ,'div','new_content_iframe')"
-																												onmouseover="this.src ='/hdEdit/highgardenEditor/div_on.gif'"
-																												onmouseout="this.src ='/hdEdit/highgardenEditor/div.gif'"
-																												title="div"><img
-																												src="/hdEdit/highgardenEditor/createlink.gif"
-																												alt="createlink" align="top"
-																												style="cursor: pointer;"
-																												onclick="editorSubDiv(event ,'createlink','new_content_iframe')"
-																												onmouseover="this.src ='/hdEdit/highgardenEditor/createlink_on.gif'"
-																												onmouseout="this.src ='/hdEdit/highgardenEditor/createlink.gif'"
-																												title="createlink"><img
-																												src="/hdEdit/highgardenEditor/unlink.gif"
-																												alt="unlink" align="top"
-																												style="cursor: pointer;"
-																												onclick="editorExec('unlink', false, null,'new_content_iframe')"
-																												onmouseover="this.src ='/hdEdit/highgardenEditor/unlink_on.gif'"
-																												onmouseout="this.src ='/hdEdit/highgardenEditor/unlink.gif'"
-																												title="unlink"><span
-																												style="width: 3px">&nbsp;</span><img
-																												src="/hdEdit/highgardenEditor/undo.gif"
-																												alt="undo" align="top"
-																												style="cursor: pointer;"
-																												onclick="editorExec('undo', false, null,'new_content_iframe')"
-																												onmouseover="this.src ='/hdEdit/highgardenEditor/undo_on.gif'"
-																												onmouseout="this.src ='/hdEdit/highgardenEditor/undo.gif'"
-																												title="undo"><img
-																												src="/hdEdit/highgardenEditor/redo.gif"
-																												alt="redo" align="top"
-																												style="cursor: pointer;"
-																												onclick="editorExec('redo', false, null,'new_content_iframe')"
-																												onmouseover="this.src ='/hdEdit/highgardenEditor/redo_on.gif'"
-																												onmouseout="this.src ='/hdEdit/highgardenEditor/redo.gif'"
-																												title="redo"><span style="width: 3px">&nbsp;</span><img
-																												src="/hdEdit/highgardenEditor/removeformat.gif"
-																												alt="removeformat" align="top"
-																												style="cursor: pointer;"
-																												onclick="editorExec('removeformat', false, null,'new_content_iframe')"
-																												onmouseover="this.src ='/hdEdit/highgardenEditor/removeformat_on.gif'"
-																												onmouseout="this.src ='/hdEdit/highgardenEditor/removeformat.gif'"
-																												title="removeformat"><span
-																												style="width: 3px">&nbsp;</span><img
-																												src="/hdEdit/highgardenEditor/emoticon.gif"
-																												alt="emoticon" align="top"
-																												style="cursor: pointer;"
-																												onclick="editorSubDiv(event ,'emoticon','new_content_iframe')"
-																												onmouseover="this.src ='/hdEdit/highgardenEditor/emoticon_on.gif'"
-																												onmouseout="this.src ='/hdEdit/highgardenEditor/emoticon.gif'"
-																												title="emoticon"><img
-																												src="/hdEdit/highgardenEditor/letter.gif"
-																												alt="letter" align="top"
-																												style="cursor: pointer;"
-																												onclick="editorSubDiv(event ,'letter','new_content_iframe')"
-																												onmouseover="this.src ='/hdEdit/highgardenEditor/letter_on.gif'"
-																												onmouseout="this.src ='/hdEdit/highgardenEditor/letter.gif'"
-																												title="letter"><span
-																												style="width: 3px">&nbsp;</span><img
-																												src="/hdEdit/highgardenEditor/attachimage.gif"
-																												alt="attachimage" align="top"
-																												style="cursor: pointer;"
-																												onclick="editorSubDiv(event ,'attachimage','new_content_iframe')"
-																												onmouseover="this.src ='/hdEdit/highgardenEditor/attachimage_on.gif'"
-																												onmouseout="this.src ='/hdEdit/highgardenEditor/attachimage.gif'"
-																												title="attachimage"><span
-																												style="width: 3px">&nbsp;</span><img
-																												src="/hdEdit/highgardenEditor/layout.gif"
-																												alt="layout" align="top"
-																												style="cursor: pointer;"
-																												onclick="editorSubDiv(event ,'layout','new_content_iframe')"
-																												onmouseover="this.src ='/hdEdit/highgardenEditor/layout_on.gif'"
-																												onmouseout="this.src ='/hdEdit/highgardenEditor/layout.gif'"
-																												title="layout">
-																										</div>
-																										<div style="float: right; padding: 0;">
-																											<img
-																												src="/hdEdit/highgardenEditor/html_off.gif"
-																												alt="HTML" align="top" value="0"
-																												style="cursor: pointer;"
-																												onclick="editorModeSwap(this)"
-																												onmouseover="this.src ='/hdEdit/highgardenEditor/html_on.gif'"
-																												onmouseout="this.src ='/hdEdit/highgardenEditor/html_off.gif'"
-																												title="HTML">
-																											<div style="padding-bottom: 2px;"></div>
-																										</div>
-																									</div></td>
-																								<td width="3"
-																									style="background: url(/hdEdit/highgardenEditor/write_right_bg.gif) no-repeat left top; padding: 0;"></td>
-																							</tr>
-																							<tr>
-																								<td width="3" height="3"
-																									style="background: url(/hdEdit/highgardenEditor/write_left_bottom_bg.gif) no-repeat left top; padding: 0;"></td>
-																								<td width="" height="3"
-																									style="background: url(/hdEdit/highgardenEditor/write_bottom_bg.gif) repeat-x left top; padding: 0;"></td>
-																								<td width="3" height="3"
-																									style="background: url(/hdEdit/highgardenEditor/write_right_bottom_bg.gif) no-repeat left top; padding: 0;"></td>
-																							</tr>
-																						</tbody>
+
 																					</table>
 																				</div>
-																				<iframe id="new_content_iframe"
-																					name="new_content_iframe" scrolling="auto"
-																					frameborder="no" wrap="virtual"
-																					style="width: 100%; height: 488px; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(208, 208, 208); border-right-width: 1px; border-right-style: solid; border-right-color: rgb(208, 208, 208); border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(208, 208, 208);"></iframe>
-																				<div id="new_content_bottom" style="width: 100%;">
-																					<table width="100%" cellpadding="0" cellspacing="0"
-																						border="0" style="background: #fbfbfb;">
-																						<tbody>
-																							<tr>
-																								<td width="100%" height="10px" align="left"
-																									style="background: url(/hdEdit/highgardenEditor/control_size.gif) no-repeat center; border-left: 1px solid #c5c5c5; border-right: 1px solid #c5c5c5; border-bottom: 1px solid #b5b5b5; cursor: n-resize; font-size: 5px;"
-																									onmousedown="editorResize(event, 'new_content_iframe')">&nbsp;</td>
-																							</tr>
-																						</tbody>
-																					</table>
-																				</div>
-																				<textarea id="content" name="content"
-																					title="higheditor_full"
-																					style="width: 100%; height: 500px; display: none;"></textarea>
-																			</td>
+																				<textarea rows="1000" cols="6000" name="CONTENT" id="CONTENT"></textarea>
+																					<script type="text/javascript">
+																						CKEDITOR.replace('CONTENT');
+																					</script>
 																		</tr>
 																	</tbody>
 																</table>
@@ -1332,8 +1043,7 @@
 							</tr>
 						</tbody>
 					</table>
-				</div>
-				<script language="javascript">
+				</div> <script language="javascript">
 					var menuJSON = [ {
 						"title" : "전무",
 						"key" : "dept20",
