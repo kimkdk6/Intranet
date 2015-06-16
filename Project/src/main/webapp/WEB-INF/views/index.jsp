@@ -31,18 +31,28 @@
                    <div class="info-box">
                 <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
                 <div class="info-box-content">
-                  <span style="font-size: 120%">&nbsp&nbsp메일 &nbsp<b><a href="">2</a></b>개 &nbsp &nbsp &nbsp &nbsp &nbsp</span>
-                   <span style="font-size: 120%">쪽지 &nbsp<b><a href="">2</a></b>개 &nbsp &nbsp &nbsp &nbsp &nbsp</span> 
-                   <span style="font-size: 120%">상신문서 &nbsp<b><a href="">2</a></b>개 &nbsp &nbsp &nbsp &nbsp &nbsp</span> 
-                   <span style="font-size: 120%">결재문서 &nbsp<b><a href="">2</a></b>개</span><br><br>
-					<a href=""><img src="<%=request.getContextPath() %>/resources/img/bt_checkin.gif"></a>
-					<table style="border: 10px;">
-						<tr>
-						<td>
-						asd
-						</td>
-						</tr>
-					</table>
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td valign="top" style="padding:0px 12px 0 12px;">
+					    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td width="55%" height="16" align="left" valign="top" ><b>메일</b> : <a href="/mail/dgwmail.php?_boxkey=.unseenflag"><font color="#4e5fe8"><b><span class="m_sp0">2</span></b></font>통</a></td>
+                          <td width="45%" align="left" valign="top" ><b>쪽지</b> : <a href="javascript:popupNote()"><font color="#4e5fe8"><b>0</b></font>통</a></td>
+                        </tr>
+                        <tr>
+                          <td height="16" align="left" valign="top" ><b>결재문서</b> : <a href="/approval/proc_wait_list.php"><font color="#4e5fe8"><b><span class="m_sp0">0</span></b></font>건</a></td>
+                          <td height="16" align="left" valign="top" ><b>상신문서</b> : <a href="/approval/my_report_list.php"><font color="#4e5fe8"><b><span class="m_sp0">3</span></b></font>건</a></td>
+                         
+                        </tr>
+                        <tr>
+                         
+                        </tr>
+
+                      </table>
+					  </td>
+                    </tr>
+                  </table>
+
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
                 </div><!-- /.box-body -->
