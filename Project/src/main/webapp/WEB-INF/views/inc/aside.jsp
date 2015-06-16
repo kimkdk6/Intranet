@@ -56,15 +56,18 @@
             </li>
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-pie-chart"></i>
-                <span>전자결재</span>
+                <i class="fa fa-share"></i> <span>전자결재</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <li><a href="${pageContext.request.contextPath}/sign/SignMain.htm"><i class="fa fa-circle-o"></i>전자결재 메인</a></li>
-                <li><a href="<%=request.getContextPath() %>/WEB-INF/views/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-                <li><a href="<%=request.getContextPath() %>/WEB-INF/views/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-                <li><a href="<%=request.getContextPath() %>/WEB-INF/views/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+                <li>
+                  <a href="#"><i class="fa fa-circle-o"></i> 결재문서 작성 <i class="fa fa-angle-left pull-right"></i></a>
+                  <ul class="treeview-menu">
+                    <li><a href="${pageContext.request.contextPath}/sign/DraftingReg.htm"><i class="fa fa-circle-o"></i>기안서</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                  </ul>
+                </li>
               </ul>
             </li>
            <li>

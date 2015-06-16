@@ -30,7 +30,8 @@ public class Signcontroller {
 		List<Sign> unsignlist = signdao.getUnSigns("m3");
 		List<Sign> sendsignlist = signdao.getSendSigns("m4");
 		System.out.println(unsignlist.toString());
-		model.addAttribute("unsignlist",unsignlist);
+		model.addAttribute("unsignlist", unsignlist);
+		model.addAttribute("sendsignlist", sendsignlist);
 		return "sign.SignMain";
 	}
 	

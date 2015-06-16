@@ -135,19 +135,19 @@
 									<tbody>
 										<tr height="20">
 											<td width="100" class="title bb1 br1 p0007"><font
-												color="#666666""="">문서번호</font></td>
+												color="#666666">문서번호</font></td>
 											<td width="80" class="title bb1 br1 p3007"><font
-												color="#666666""="">문서종류</font></td>
+												color="#666666">문서종류</font></td>
 											<td width="70" class="title bb1 br1 p3007"><font
-												color="#666666""="">기안일</font></td>
+												color="#666666">기안일</font></td>
 											<td width="70" class="title bb1 br1 p3007"><font
-												color="#666666""="">결재완료수</font></td>
+												color="#666666">결재완료수</font></td>
 											<td width="90" class="title bb1 br1 p3007"><font
-												color="#666666""="">상태</font></td>
+												color="#666666">상태</font></td>
 											<td width="120" class="title bb1 br1 p3007"><font
-												color="#666666""="">현재 결재자</font></td>
+												color="#666666">현재 결재자</font></td>
 											<td width="" class="title bb1 p3007"><font
-												color="#666666""="">제목</font></td>
+												color="#666666">제목</font></td>
 										</tr>
 										<tr height="60">
 											<td class="p2007 bb1" colspan="7" align="center"><b>조회된
