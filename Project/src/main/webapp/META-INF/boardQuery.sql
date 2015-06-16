@@ -115,7 +115,7 @@ select * from board order by ref desc , step asc;
 --보드리스트 기본적인 로직...
 
 insert into Board(BOARDCODE,BOARDNUM,BOARDNOTICE,USERID,BOARDTITLE,BOARDCONTENT,BOARDDATE,BOARDCOUNT,BOARDFILESRC,BOARDREF,BOARDDEPTH,BOARDSTEP)
-values(?,board_boardnum.nextval,?,?,?,?,?,?,?,?,?,?);
+values(?,board_boardnum.nextval,?,?,?,?,?,?,?,?,?,?); 
 --새글쓰기
 
 update Board set BOARDNOTICE=?, USERID=?, BOARDTITLE=?, BOARDCONTENT=?, BOARDFILESRC=? where BOARDNUM=?;
@@ -130,4 +130,28 @@ delete from BOARD where BOARDNUM=?;
 
 
 --답글쓰기에 필요한 쿼리문--
-select * from board
+
+select * from board where BOARDNUM=?;
+--원본글의 REFER,DEPTH,STEP 값이 필요하다.
+--원본글의 게시판 코드도 필요할까??.
+
+
+
+Reply	댓글
+REPLYNUM(PK)	댓글번호(PK)	NUMBER	NOT NULL
+BOARDNUM(FK)	게시글번호(FK)	NUMBER	NOT NULL
+USERID(FK)	아이디(FK)	VARCHAR2(50)	NOT NULL
+REPLYCONTENT	글내용	VARCHAR2(1000)	NOT NULL
+REPLYDATE	작성일	DATE	NOT NULL
+
+select * from Reply where BOARDNUM=? order by REPLYDATE asc;
+--해당게시글의 댓글들 보기
+
+insert into Reply(REPLYNUM,BOARDNUM,USERID,REPLYCONTENT,REPLYDATE) values(reply_replyno.nextval,?,?,?,?)
+--댓글 쓰기
+
+delete from Reply where REPLYNUM=?
+--댓글 삭제하기
+
+update Reply set REPLYCONTENT=? where REPLYNUM=?;
+--댓글 수정하기
