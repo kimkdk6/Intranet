@@ -454,8 +454,8 @@
 														</tr>
 														<tr height="70" align="center">
 															<td style="border-bottom: 1px #eaeaea solid;">데모사용자</td>
-															
 															<td style="border-bottom: 1px #eaeaea solid;">
+																
 																<div id="dialog" title="결재자 지정하기">
       																<div id="accordion">
   																		<h3>임원</h3>
@@ -525,209 +525,37 @@
 															
 															
 															<td style="border-bottom: 1px #eaeaea solid;">
-																<div id="dialog" title="결재자 지정하기">
-      																<div id="accordion">
-  																		<h3>임원</h3>
-  																		<div>
-  																			대표이사 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			전무 <input type="button" value="지정" onclick="check()">
-  																		</div>
-  																		
-  																		<h3>부장</h3>
-  																		<div>
-  																			개발부장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			총무부장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			영업부장 <input type="button" value="지정" onclick="check()">
-  																		</div>
-  																		
-  																		<h3>차장</h3>
-  																		<div>
-  																			개발차장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			총무차장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			영업차장 <input type="button" value="지정" onclick="check()">
-  																		</div>
-  																		
-  																		<h3>과장</h3>
-  																		<div>
-  																			개발솔루션 과장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			개발외주 과장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			총무경리 과장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			총무경영 과장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			총무인사 과장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			영업기술경영 과장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			영업A/S 과장 <input type="button" value="지정" onclick="check()">
-  																		</div>
-  																		
-  																		<h3>대리</h3>
-  																		<div>
-  																			개발솔루션 대리 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			개발외주 대리 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			총무경리 대리 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			총무경영 대리 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			총무인사 대리 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			영업기술경영 대리 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			영업A/S 대리 <input type="button" value="지정" onclick="check()">
-  																		</div>
-																	</div>
-																	<input type="button" value="완료" onclick="check()">
-   																</div>
-
-   																<button id="opener">지정</button>
+																<div id="divCan1" style="display: none">
+																	<span id="procName1"></span><br> <a
+																		href="javascript:procCancel('1')"><img
+																		src="/img/approval/bt_cancel.gif"></a>
+																</div>
+																<div id="divSel1" style="display: block">
+																	<a href="javascript:"><img class="bt_procsel"
+																		value="1" src="/img/approval/bt_sel.gif"></a>
+																</div>
 															</td>
-															
-															
 															<td style="border-bottom: 1px #eaeaea solid;">
-																<div id="dialog" title="결재자 지정하기">
-      																<div id="accordion">
-  																		<h3>임원</h3>
-  																		<div>
-  																			대표이사 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			전무 <input type="button" value="지정" onclick="check()">
-  																		</div>
-  																		
-  																		<h3>부장</h3>
-  																		<div>
-  																			개발부장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			총무부장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			영업부장 <input type="button" value="지정" onclick="check()">
-  																		</div>
-  																		
-  																		<h3>차장</h3>
-  																		<div>
-  																			개발차장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			총무차장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			영업차장 <input type="button" value="지정" onclick="check()">
-  																		</div>
-  																		
-  																		<h3>과장</h3>
-  																		<div>
-  																			개발솔루션 과장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			개발외주 과장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			총무경리 과장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			총무경영 과장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			총무인사 과장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			영업기술경영 과장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			영업A/S 과장 <input type="button" value="지정" onclick="check()">
-  																		</div>
-  																		
-  																		<h3>대리</h3>
-  																		<div>
-  																			개발솔루션 대리 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			개발외주 대리 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			총무경리 대리 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			총무경영 대리 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			총무인사 대리 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			영업기술경영 대리 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			영업A/S 대리 <input type="button" value="지정" onclick="check()">
-  																		</div>
-																	</div>
-																	<input type="button" value="완료" onclick="check()">
-   																</div>
-
-   																<button id="opener">지정</button>
+																<div id="divCan2" style="display: none">
+																	<span id="procName2"></span><br> <a
+																		href="javascript:procCancel('2')"><img
+																		src="/img/approval/bt_cancel.gif"></a>
+																</div>
+																<div id="divSel2" style="display: block">
+																	<a href="javascript:"><img class="bt_procsel"
+																		value="2" src="/img/approval/bt_sel.gif"></a>
+																</div>
 															</td>
-															
-															
 															<td style="border-bottom: 1px #eaeaea solid;">
-																<div id="dialog" title="결재자 지정하기">
-      																<div id="accordion">
-  																		<h3>임원</h3>
-  																		<div>
-  																			대표이사 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			전무 <input type="button" value="지정" onclick="check()">
-  																		</div>
-  																		
-  																		<h3>부장</h3>
-  																		<div>
-  																			개발부장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			총무부장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			영업부장 <input type="button" value="지정" onclick="check()">
-  																		</div>
-  																		
-  																		<h3>차장</h3>
-  																		<div>
-  																			개발차장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			총무차장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			영업차장 <input type="button" value="지정" onclick="check()">
-  																		</div>
-  																		
-  																		<h3>과장</h3>
-  																		<div>
-  																			개발솔루션 과장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			개발외주 과장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			총무경리 과장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			총무경영 과장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			총무인사 과장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			영업기술경영 과장 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			영업A/S 과장 <input type="button" value="지정" onclick="check()">
-  																		</div>
-  																		
-  																		<h3>대리</h3>
-  																		<div>
-  																			개발솔루션 대리 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			개발외주 대리 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			총무경리 대리 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			총무경영 대리 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			총무인사 대리 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			영업기술경영 대리 <input type="button" value="지정" onclick="check()">
-																			<hr>
-																			영업A/S 대리 <input type="button" value="지정" onclick="check()">
-  																		</div>
-																	</div>
-																	<input type="button" value="완료" onclick="check()">
-   																</div>
-
-   																<button id="opener">지정</button>
+																<div id="divCan3" style="display: none">
+																	<span id="procName3"></span><br> <a
+																		href="javascript:procCancel('3')"><img
+																		src="/img/approval/bt_cancel.gif"></a>
+																</div>
+																<div id="divSel3" style="display: block">
+																	<a href="javascript:"><img class="bt_procsel"
+																		value="3" src="/img/approval/bt_sel.gif"></a>
+																</div>
 															</td>
 														</tr>
 														
