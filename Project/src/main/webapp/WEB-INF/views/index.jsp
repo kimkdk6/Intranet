@@ -1,21 +1,53 @@
+<%@page import="java.util.GregorianCalendar"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+GregorianCalendar now = new GregorianCalendar();
+String date = String.format("%TF",now);
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+setInterval("dpTime()",1000);
+function go_time(){
+   var now = new Date();
+    hours = now.getHours();
+    minutes = now.getMinutes();
+    seconds = now.getSeconds();
+
+    if (hours > 12){
+        hours -= 12;
+    ampm = "오후 ";
+    }else{
+        ampm = "오전 ";
+    }
+    if (hours < 10){
+        hours = "0" + hours;
+    }
+    if (minutes < 10){
+        minutes = "0" + minutes;
+    }
+    if (seconds < 10){
+        seconds = "0" + seconds;
+    }
+document.getElementById("clock").innerHTML = ampm + hours + ":" + minutes + ":" + seconds;
+setTimeout("go_time()", 1000);
+}
+
+</script>
 </head>
-<body>
+<body  onload="go_time()">
 <section class="content-header">
           <h1>
             Simple Tables
             <small>preview of simple tables</small>
           </h1>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Tables</a></li>
-            <li class="active">Simple</li>
+            <li><i class="fa fa-dashboard"></i> <%=date %></li>
           </ol>
         </section>
 
@@ -25,29 +57,48 @@
             <div class="col-md-6">
               <div class="box">
                 <div class="box-header with-border">
-                  <h3 class="box-title">***님 환영합니다.</h3>
+                  <h3 class="box-title" style="float: left">***님 환영합니다.</h3>
+                  <h3 class="box-title" id="clock" style="float:right"></h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                    <div class="info-box">
                 <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
-                <div class="info-box-content">
-                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <div class="info-box-content" style="padding-top: 0px;">
+                  <table >
                     <tr>
-                      <td valign="top" style="padding:0px 12px 0 12px;">
-					    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <td >
+					    <table style="float:left; margin-right: 50px;">
                         <tr>
-                          <td width="55%" height="16" align="left" valign="top"><b>&nbsp&nbsp메&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp일</b> : <a href="/mail/dgwmail.php?_boxkey=.unseenflag"><font color="#4e5fe8"><b><span class="m_sp0">2</span></b></font>통</a></td>
-                          <td width="45%" align="left" valign="top" ><b>쪽&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp지</b> : <a href="javascript:popupNote()"><font color="#4e5fe8"><b>0</b></font>통</a></td>
+                          <td ><b>&nbsp&nbsp메&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp일</b> : <a href=""><font color="#4e5fe8"><b><span>2</span></b></font>통</a></td>
+                        
                         </tr>
                         <tr>
-                          <td height="16" align="left" valign="top" ><b>&nbsp&nbsp결재문서</b> : <a href="/approval/proc_wait_list.php"><font color="#4e5fe8"><b><span class="m_sp0">0</span></b></font>건</a></td>
-                          <td height="16" align="left" valign="top" ><b>상신문서</b> : <a href="/approval/my_report_list.php"><font color="#4e5fe8"><b><span class="m_sp0">3</span></b></font>건</a></td>   
+                          <td ><b>&nbsp&nbsp결재문서</b> : <a href=""><font color="#4e5fe8"><b><span>0</span></b></font>건</a></td>
+                          
                         </tr>
                         <tr>
-                         
+                          <td><b>&nbsp&nbsp쪽&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp지</b> : <a href=""><font color="#4e5fe8"><b>0</b></font>통</a></td>
                         </tr>
-
+						
+						<tr>
+						<td ><b>&nbsp&nbsp상신문서</b> : <a href=""><font color="#4e5fe8"><b><span >3</span></b></font>건</a></td>   
+						</tr>
                       </table>
+                      <table >
+                      <tr style="margin-bottom: 10px">
+                       <td style="padding-right: 20px;"><img  src="<%=request.getContextPath() %>/resources/img/bt_checkin.gif"> </td>
+                     	<td style="border:2px solid #e3e3e3; width:100px; padding:0px 0px 0px 20px;">asdasd</td>
+                      </tr>
+                      <tr>
+                      <td height="8" colspan="2"></td>
+                      </tr>
+                      <tr>
+                      <td style="padding-right: 20px;"><img  src="<%=request.getContextPath() %>/resources/img/bt_checkout.gif"> </td>
+                     	<td style="border:2px solid #e3e3e3; width:100px; padding:0px 0px 0px 20px;">asdasd</td>
+                      </tr>
+                      
+                      </table>
+                      
 					  </td>
                     </tr>
                   </table>
