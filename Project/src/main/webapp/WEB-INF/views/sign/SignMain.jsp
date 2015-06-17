@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -35,6 +36,8 @@
 				<th style="width: 75px">제목</th>
 	
 			</tr>
+			
+			
 			<c:forEach items="${unsignlist}" var="n">
 			<c:set var="signtype" value="${n.signtype}"/>
 					<tr>
@@ -89,7 +92,7 @@
 						<td width="100" class="title bb1 br1 p3007"><font
 							color="#666666">${n.dept}</font></td>
 						<td width="100" class="title bb1 br1 p3007"><font
-							color="#666666">${n.userid}</font></td>
+							color="#666666">${n.team} ${n.ename} ${n.posname}</font></td>
 						<td width="100" class="title bb1 br1 p3007"><font
 							color="#666666">${n.draftdate}</font></td>
 						<td width="70" class="title bb1 br1 p3007"><font

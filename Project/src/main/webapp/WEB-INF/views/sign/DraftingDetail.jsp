@@ -369,7 +369,7 @@
                               </tr>
                               <tr>
                                  <td height="30" align="center" bgcolor="#f6f6f6" class="m_sp"><b>기안자</b></td>
-                                 <td style="padding: 0 0 0 12px;">${sign.userid}</td>
+                                 <td style="padding: 0 0 0 12px;"> ${sign.team} ${sign.ename} ${sign.posname}</td>
                               </tr>
                               <tr>
                                  <td height="30" align="center" bgcolor="#f6f6f6" class="m_sp"
