@@ -473,6 +473,49 @@
 																			<hr>
 																			영업부장 <input type="button" value="지정" onclick="check()">
   																		</div>
+  																		
+  																		<h3>차장</h3>
+  																		<div>
+  																			개발차장 <input type="button" value="지정" onclick="check()">
+																			<hr>
+																			총무차장 <input type="button" value="지정" onclick="check()">
+																			<hr>
+																			영업차장 <input type="button" value="지정" onclick="check()">
+  																		</div>
+  																		
+  																		<h3>과장</h3>
+  																		<div>
+  																			개발솔루션 과장 <input type="button" value="지정" onclick="check()">
+																			<hr>
+																			개발외주 과장 <input type="button" value="지정" onclick="check()">
+																			<hr>
+																			총무경리 과장 <input type="button" value="지정" onclick="check()">
+																			<hr>
+																			총무경영 과장 <input type="button" value="지정" onclick="check()">
+																			<hr>
+																			총무인사 과장 <input type="button" value="지정" onclick="check()">
+																			<hr>
+																			영업기술경영 과장 <input type="button" value="지정" onclick="check()">
+																			<hr>
+																			영업A/S 과장 <input type="button" value="지정" onclick="check()">
+  																		</div>
+  																		
+  																		<h3>대리</h3>
+  																		<div>
+  																			개발솔루션 대리 <input type="button" value="지정" onclick="check()">
+																			<hr>
+																			개발외주 대리 <input type="button" value="지정" onclick="check()">
+																			<hr>
+																			총무경리 대리 <input type="button" value="지정" onclick="check()">
+																			<hr>
+																			총무경영 대리 <input type="button" value="지정" onclick="check()">
+																			<hr>
+																			총무인사 대리 <input type="button" value="지정" onclick="check()">
+																			<hr>
+																			영업기술경영 대리 <input type="button" value="지정" onclick="check()">
+																			<hr>
+																			영업A/S 대리 <input type="button" value="지정" onclick="check()">
+  																		</div>
 																	</div>
 																	<input type="button" value="완료" onclick="check()">
    																</div>
