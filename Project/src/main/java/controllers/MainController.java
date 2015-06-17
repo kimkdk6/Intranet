@@ -24,7 +24,7 @@ public class MainController {
 		IndexDAO recentlyNotice = sqlSession.getMapper(IndexDAO.class);
 		List<Board> RecentlyNotice= recentlyNotice.recentlyNotice();
 		model.addAttribute("RecentlyNotice", RecentlyNotice);
-		return "main.index";
+		return "main.main";
 
 	}
 }
