@@ -46,7 +46,7 @@
                 <span class="label label-primary pull-right">4</span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="<%=request.getContextPath() %>/WEB-INF/views/layout/top-nav.html"><i class="fa fa-circle-o"></i> 자유게시판</a></li>
+                <li><a href="${pageContext.request.contextPath}/board/BoardMain.htm"><i class="fa fa-circle-o"></i> 자유게시판</a></li>
               </ul>
             </li>
             <li>
