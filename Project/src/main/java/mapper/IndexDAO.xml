@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-    <mapper namespace="dao.*xml">
+    <mapper namespace="dao.IndexDAO">
 
     <select id="recentlyNotice" resultType="dto_vo.Board.Board" >
     select * from (select a.boardcode, a.boardnum, a.boardnotice, a.userid, a.boardtitle, a.boardcontent, a.boarddate, a.boardcount, a.boardfilesrc, a.boardref, a.boarddepth, a.boardstep,

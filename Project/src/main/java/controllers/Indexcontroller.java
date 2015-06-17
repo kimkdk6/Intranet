@@ -3,34 +3,26 @@ package controllers;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.springframework.ui.Model;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import dao.Test;
-import dto_vo.Emp.Emp;
+import dao.IndexDAO;
+import dto_vo.Board.Board;
 
 @Controller
 public class Indexcontroller {
-
-/*	@RequestMapping("index.htm")
-	public String index()
-	{
-		return "home.index";
-
-	}*/
 	@Autowired
 	private SqlSession sqlSession;
-	private String uid="m1";
 	
 	@RequestMapping("index.htm")
 	public String index(Model model) throws ClassNotFoundException, SQLException
 	{
-		Test getEmp = sqlSession.getMapper(Test.class);
-		List<Emp> empList= getEmp.getEmp(uid);
-		model.addAttribute("empList", empList);
+		IndexDAO recentlyNotice = sqlSession.getMapper(IndexDAO.class);
+		List<Board> RecentlyNotice= recentlyNotice.recentlyNotice();
+		model.addAttribute("RecentlyNotice", RecentlyNotice);
 		return "home.index";
 
 	}

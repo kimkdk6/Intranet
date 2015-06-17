@@ -1,6 +1,7 @@
 <%@page import="java.util.GregorianCalendar"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 GregorianCalendar now = new GregorianCalendar();
 String date = String.format("%TF",now);
@@ -12,7 +13,7 @@ String date = String.format("%TF",now);
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-setInterval("dpTime()",1000);
+setInterval("go_time()",1000);
 function go_time(){
    var now = new Date();
     hours = now.getHours();
@@ -43,11 +44,13 @@ setTimeout("go_time()", 1000);
 <body  onload="go_time()">
 <section class="content-header">
           <h1>
-            Simple Tables
-            <small>preview of simple tables</small>
+            Se7en
+            <small><%=date %></small>
           </h1>
           <ol class="breadcrumb">
-            <li><i class="fa fa-dashboard"></i> <%=date %></li>
+            <li style="font-size: 15px"><i class="fa fa-laptop"></i> &nbsp  &nbsp <%= request.getRemoteAddr()%>
+
+            </li>
           </ol>
         </section>
 
@@ -63,13 +66,13 @@ setTimeout("go_time()", 1000);
                 <div class="box-body">
                    <div class="info-box">
                 <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
-                <div class="info-box-content" style="padding-top: 0px;">
+                <div class="info-box-content" style="padding-top: 0px; padding-top: 0px; padding-right: 0px;">
                   <table >
                     <tr>
                       <td >
 					    <table style="float:left; margin-right: 50px;">
                         <tr>
-                          <td ><b>&nbsp&nbsp메&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp일</b> : <a href=""><font color="#4e5fe8"><b><span>2</span></b></font>통</a></td>
+                          <td ><b>&nbsp&nbsp메&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp일</b> : <a href=""><font color="#4e5fe8"><b><span>2</span></b></font>건</a></td>
                         
                         </tr>
                         <tr>
@@ -77,7 +80,7 @@ setTimeout("go_time()", 1000);
                           
                         </tr>
                         <tr>
-                          <td><b>&nbsp&nbsp쪽&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp지</b> : <a href=""><font color="#4e5fe8"><b>0</b></font>통</a></td>
+                          <td><b>&nbsp&nbsp쪽&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp지</b> : <a href=""><font color="#4e5fe8"><b>0</b></font>건</a></td>
                         </tr>
 						
 						<tr>
@@ -85,18 +88,29 @@ setTimeout("go_time()", 1000);
 						</tr>
                       </table>
                       <table >
-                      <tr style="margin-bottom: 10px">
+                      <tr>
                        <td style="padding-right: 20px;"><img  src="<%=request.getContextPath() %>/resources/img/bt_checkin.gif"> </td>
                      	<td style="border:2px solid #e3e3e3; width:100px; padding:0px 0px 0px 20px;">asdasd</td>
                       </tr>
                       <tr>
                       <td height="8" colspan="2"></td>
                       </tr>
-                      <tr>
+                      <tr >
                       <td style="padding-right: 20px;"><img  src="<%=request.getContextPath() %>/resources/img/bt_checkout.gif"> </td>
                      	<td style="border:2px solid #e3e3e3; width:100px; padding:0px 0px 0px 20px;">asdasd</td>
                       </tr>
-                      
+                       <tr>
+                      <td height="8" colspan="2"></td>
+                      </tr>
+                      <tr>
+                      	<td>
+                      		<b>&nbsp&nbsp&nbsp&nbsp&nbsp지각사유 :</b>
+                      		
+                      	</td>
+                      <!-- 	<td style="border:2px solid #e3e3e3; width:50px; padding:0px 0px 0px 20px;">asdasd</td> -->
+                      	<td><input type="text" name="Lateness"	class="" style="border:2px solid #e3e3e3; width:100px; padding:0px 0px 0px 20px;">
+                      	<td style="padding-left: 5px;"><button class="btn btn-block btn-default btn-sm" style="padding-top: 2px; padding-bottom: 2px;">저장</button></td>
+                      </tr>
                       </table>
                       
 					  </td>
@@ -111,56 +125,37 @@ setTimeout("go_time()", 1000);
 
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Condensed Full Width Table</h3>
+                  <h3 class="box-title">최근 커뮤니티 게시물</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body no-padding">
-                  <table class="table table-condensed">
+  				<table class="table">
                     <tr>
-                      <th style="width: 10px">#</th>
-                      <th>Task</th>
-                      <th>Progress</th>
-                      <th style="width: 40px">Label</th>
-                    </tr>
-                    <tr>
-                      <td>1.</td>
+                      <td style="padding-bottom: 19px">1.</td>
                       <td>Update software</td>
                       <td>
                         <div class="progress progress-xs">
                           <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
                         </div>
                       </td>
-                      <td><span class="badge bg-red">55%</span></td>
                     </tr>
                     <tr>
-                      <td>2.</td>
+                      <td  style="padding-bottom: 19px">2.</td>
                       <td>Clean database</td>
                       <td>
                         <div class="progress progress-xs">
                           <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
                         </div>
                       </td>
-                      <td><span class="badge bg-yellow">70%</span></td>
                     </tr>
                     <tr>
-                      <td>3.</td>
+                      <td  style="padding-bottom: 19px">3.</td>
                       <td>Cron job running</td>
                       <td>
                         <div class="progress progress-xs progress-striped active">
                           <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
                         </div>
                       </td>
-                      <td><span class="badge bg-light-blue">30%</span></td>
-                    </tr>
-                    <tr>
-                      <td>4.</td>
-                      <td>Fix and squish bugs</td>
-                      <td>
-                        <div class="progress progress-xs progress-striped active">
-                          <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-green">90%</span></td>
-                    </tr>
+                    </tr>  
                   </table>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
@@ -168,7 +163,7 @@ setTimeout("go_time()", 1000);
             <div class="col-md-6">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Simple Full Width Table</h3>
+                  <h3 class="box-title">공지사항</h3>
                   <div class="box-tools">
                     <ul class="pagination pagination-sm no-margin pull-right">
                       <li><a href="#">&laquo;</a></li>
@@ -179,54 +174,30 @@ setTimeout("go_time()", 1000);
                     </ul>
                   </div>
                 </div><!-- /.box-header -->
+               
+				<tr>
+					<td class="seq">${n.seq}</td>
+					<td class="title"><a href="noticeDetail.htm?seq=${n.seq}">${n.title}</a></td>
+					<td class="writer">${n.writer}</td>
+					<td class="regdate">${n.regdate}</td>
+					<td class="hit">${n.hit}</td>
+				</tr>
+			
                 <div class="box-body no-padding">
                   <table class="table">
+                   <c:forEach items="${recentlyNotice}" var="r">
                     <tr>
-                      <th style="width: 10px">#</th>
-                      <th>Task</th>
-                      <th>Progress</th>
-                      <th style="width: 40px">Label</th>
-                    </tr>
-                    <tr>
-                      <td>1.</td>
-                      <td>Update software</td>
+                      <td style="padding-bottom: 19px">{r.boardtitle}</td>
+                      
                       <td>
                         <div class="progress progress-xs">
                           <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
                         </div>
                       </td>
-                      <td><span class="badge bg-red">55%</span></td>
                     </tr>
-                    <tr>
-                      <td>2.</td>
-                      <td>Clean database</td>
-                      <td>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-yellow">70%</span></td>
-                    </tr>
-                    <tr>
-                      <td>3.</td>
-                      <td>Cron job running</td>
-                      <td>
-                        <div class="progress progress-xs progress-striped active">
-                          <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-light-blue">30%</span></td>
-                    </tr>
-                    <tr>
-                      <td>4.</td>
-                      <td>Fix and squish bugs</td>
-                      <td>
-                        <div class="progress progress-xs progress-striped active">
-                          <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-green">90%</span></td>
-                    </tr>
+                    </c:forEach>
+                    
+                    
                   </table>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
