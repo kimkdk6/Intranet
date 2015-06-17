@@ -47,18 +47,26 @@
 										</tr>
 									<!-- 게시판 내용 -->
 									
-									
-									<c:forEach items="${boards.(bs.index)}" var="b" varStatus="bs">
+
+									<c:forEach items="${boards[bls.index]}" var="b" varStatus="bs">
 										<tr bgcolor="#f9f9f9">
 											<td height="23" align="center" style="padding: 2px 0 0 0px; border-bottom: 1px #eaeaea solid;">
-												<img src="../resources/img/icon_notice.gif" border="0" align="absmiddle">
+												<c:choose>
+													<c:when test="${b.boardnotice == 1}">
+														<img src="../resources/img/icon_notice.gif" border="0" align="absmiddle">
+													</c:when>
+													 <c:otherwise>
+<%-- 													 	${b.boardnum} --%>
+														${bs.index+1}
+													 </c:otherwise>
+												</c:choose>	
 											</td>
 											<td style="padding: 2px 0 0 7px; border-bottom: 1px #eaeaea solid;">
-												<a href="view.php?bbs_id=0009&amp;seq=8&amp;rtn_url=/bbs/list.php?bbs_id=0009">운동회 </a>
+												<a href="view.php?bbs_id=0009&amp;seq=8&amp;rtn_url=/bbs/list.php?bbs_id=0009">${b.boardtitle}</a>
 											</td>
-											<td align="left" style="padding: 2px 7px 0 7px; border-bottom: 1px #eaeaea solid;">관리자</td>
-											<td align="center" class="date" style="border-bottom: 1px #eaeaea solid;">2015-06-05 11:15</td>
-											<td align="right" class="date" style="padding: 0px 7px 0 0; border-bottom: 1px #eaeaea solid;">15</td>
+											<td align="left" style="padding: 2px 7px 0 7px; border-bottom: 1px #eaeaea solid;">${b.userid}</td>
+											<td align="center" class="date" style="border-bottom: 1px #eaeaea solid;">${b.boarddate}</td>
+											<td align="right" class="date" style="padding: 0px 7px 0 0; border-bottom: 1px #eaeaea solid;">${b.boardcount}</td>
 										</tr>
 									</c:forEach>
 									</tbody>
