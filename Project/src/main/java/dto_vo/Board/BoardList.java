@@ -1,13 +1,13 @@
 package dto_vo.Board;
 
-public class Boardlist {
+public class BoardList {
 
 	private int boardcode;
 	private String boardname;
 	
-	public Boardlist() { }
+	public BoardList() { }
 
-	public Boardlist(int boardcode, String boardname) {
+	public BoardList(int boardcode, String boardname) {
 		this.boardcode = boardcode;
 		this.boardname = boardname;
 	}
