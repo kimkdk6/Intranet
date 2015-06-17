@@ -20,10 +20,48 @@
 		
 		<tr>
 			<td align="center" valign="top" style="padding: 19px 15px 19px 15px;">
+			
+				<!-- 결재자 메뉴 띄우는 기능 -->
+				<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+				<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+				<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+				<link rel="stylesheet" href="/resources/demos/style.css">
 
+				<!-- ck 에디터 -->
 				<script type="text/javascript" src="../resources/plugins/ckeditor/ckeditor.js"></script>
+				<!-- ck 에디터 끝 -->
+				
 				<script type="text/javascript" src="/js/upload.js"></script>
 				<script language="javascript">
+					
+					/* 결재자 메뉴 띄우는 기능 */
+					$(function() {
+						$("#dialog").dialog({
+							autoOpen : false,
+							show : {
+								effect : "blind",
+								duration : 1000
+							},
+							hide : {
+								effect : "explode",
+								duration : 1000
+							}
+						});
+
+						$("#opener").click(function() {
+							$("#dialog").dialog("open");
+						});
+					});
+					/* 결재자 메뉴 띄우는 기능 끝*/
+					
+					/* 결재자 트리 띄우는 기능 */
+					$(function() {
+						$("#accordion").accordion({
+							heightStyle : "content"
+						});
+					});
+					/* 결재자 트리 띄우는 기능 끝*/
+
 					var oEditors = [];
 					var __maxsize = 31457280;
 					var __remains = 9686275080;
@@ -221,10 +259,6 @@
 							return;
 						}
 
-						//if(oEditors.length > 0)
-						//{
-						//    oEditors.getById["content"].exec("UPDATE_IR_FIELD", []);
-						//}
 						$('#attFiles').val(attaches.join("|"));
 						$('#tmpFiles').val(tmpnames.join("|"));
 
@@ -269,36 +303,33 @@
 
 						return -1;
 					}
-					
-					
-					$(function(){
-				         
-				        CKEDITOR.replace( 'ckeditor', {//해당 이름으로 된 textarea에 에디터를 적용
-				            width:'100%',
-				            height:'400px',
-				            filebrowserImageUploadUrl: '/community/imageUpload' //여기 경로로 파일을 전달하여 업로드 시킨다.
-				        });
-				         
-				         
-				        CKEDITOR.on('dialogDefinition', function( ev ){
-				            var dialogName = ev.data.name;
-				            var dialogDefinition = ev.data.definition;
-				          
-				            switch (dialogName) {
-				                case 'image': //Image Properties dialog
-				                    //dialogDefinition.removeContents('info');
-				                    dialogDefinition.removeContents('Link');
-				                    dialogDefinition.removeContents('advanced');
-				                    break;
-				            }
-				        });
-				         
-				    });
-					
-					
-					
-					
-					
+
+					/* ck 에디터 기능 */
+					$(function() {
+						CKEDITOR
+								.replace(
+										'ckeditor',
+										{//해당 이름으로 된 textarea에 에디터를 적용
+											width : '100%',
+											height : '400px',
+											filebrowserImageUploadUrl : '/community/imageUpload' //여기 경로로 파일을 전달하여 업로드 시킨다.
+										});
+
+						CKEDITOR.on('dialogDefinition', function(ev) {
+							var dialogName = ev.data.name;
+							var dialogDefinition = ev.data.definition;
+
+							switch (dialogName) {
+							case 'image': //Image Properties dialog
+								//dialogDefinition.removeContents('info');
+								dialogDefinition.removeContents('Link');
+								dialogDefinition.removeContents('advanced');
+								break;
+							}
+						});
+
+					});
+					/* ck 에디터 기능 끝*/
 
 					function applyAppLine(appmgno) {
 						for (var i = 0; i < 9; i++)
@@ -361,25 +392,30 @@
 							}
 						}
 					}
-				</script> <input type="hidden" name="passconf"> <input type="hidden"
-				name="dockind" value="D"> <!-- mod : 휴가계 최초 수정시 수정 휴가계 작성 위해 수정이 아닌 신규 작성임 -->
-				<input type="hidden" name="docmgno" value=""> <input
-				type="hidden" name="docnumb" value=""> <input type="hidden"
-				name="ingstatus"> <input type="hidden" name="folder"
-				value="20150616_75950ad67154a41cc08e3f70a47eccce"> <input
-				type="hidden" name="attFiles" id="attFiles"> <input
-				type="hidden" name="tmpFiles" id="tmpFiles"> <input
-				type="hidden" name="delFiles"> <input type="hidden"
-				id="_deptkeys" name="deptkeys" value=""> <input
-				type="hidden" id="_refkeys" name="refkeys" value=""> <input
-				type="hidden" id="_alskeys" name="alskeys" value="">
-				<table width="100%" border="0" cellspacing="0" cellpadding="0"
-					class="tbl_appdoc" id="writeForm">
+				</script>
+				
+					<style>
+  						.ui-menu { width: 200px; }
+  						.ui-widget-header { padding: 0.2em; }
+  					</style>
+					
+					<input type="hidden" name="passconf">
+					<input type="hidden" name="dockind" value="D"> <!-- mod : 휴가계 최초 수정시 수정 휴가계 작성 위해 수정이 아닌 신규 작성임 -->
+					<input type="hidden" name="docmgno" value="">
+					<input type="hidden" name="docnumb" value="">
+					<input type="hidden" name="ingstatus">
+					<input type="hidden" name="folder" value="20150616_75950ad67154a41cc08e3f70a47eccce">
+					<input type="hidden" name="attFiles" id="attFiles">
+					<input type="hidden" name="tmpFiles" id="tmpFiles">
+					<input type="hidden" name="delFiles">
+					<input type="hidden" id="_deptkeys" name="deptkeys" value=""> 
+					<input type="hidden" id="_refkeys" name="refkeys" value=""> 
+					<input type="hidden" id="_alskeys" name="alskeys" value="">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tbl_appdoc" id="writeForm">
+					
 					<tbody>
-						
 						<tr>
 							<td align="center" valign="top">
-
 								<table width="100%" class="tbl_c9c9c9" cellspacing="0"
 									cellpadding="0" style="table-layout: fixed;">
 									<tbody>
@@ -419,15 +455,29 @@
 														<tr height="70" align="center">
 															<td style="border-bottom: 1px #eaeaea solid;">데모사용자</td>
 															<td style="border-bottom: 1px #eaeaea solid;">
-																<div id="divCan0" style="display: none">
-																	<span id="procName0"></span><br> <a
-																		href="javascript:procCancel('0')"><img
-																		src="/img/approval/bt_cancel.gif"></a>
-																</div>
-																<div id="divSel0" style="display: block">
-																	<a href="javascript:"><img class="bt_procsel"
-																		value="0" src="/img/approval/bt_sel.gif"></a>
-																</div>
+																
+																<div id="dialog" title="결재자 지정하기">
+      																<div id="accordion">
+  																		<h3>임원</h3>
+  																		<div>
+  																			대표이사 <input type="button" value="지정" onclick="check()">
+																			<hr>
+																			전무 <input type="button" value="지정" onclick="check()">
+  																		</div>
+  																		
+  																		<h3>부장</h3>
+  																		<div>
+  																			개발부장 <input type="button" value="지정" onclick="check()">
+																			<hr>
+																			총무부장 <input type="button" value="지정" onclick="check()">
+																			<hr>
+																			영업부장 <input type="button" value="지정" onclick="check()">
+  																		</div>
+																	</div>
+																	<input type="button" value="완료" onclick="check()">
+   																</div>
+
+   																<button id="opener">지정</button>
 															</td>
 															<td style="border-bottom: 1px #eaeaea solid;">
 																<div id="divCan1" style="display: none">
@@ -685,9 +735,7 @@
 										<tbody>
 											<tr>
 												<td style="letter-spacing: -1px;"><b>결재자 지정하기</b></td>
-												<td width="22" align="left"><a href="javascript:"><img
-														src="/img/webmail/bt_closelayer.gif"
-														onclick="jQuery('#sel_proc').hide()"></a></td>
+												
 											</tr>
 										</tbody>
 									</table>
