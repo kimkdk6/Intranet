@@ -13,17 +13,18 @@ import dao.IndexDAO;
 import dto_vo.Board.Board;
 
 @Controller
-public class Indexcontroller {
+@RequestMapping("/main/")
+public class MainController {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	@RequestMapping("index.htm")
+	@RequestMapping(value = "main.htm")
 	public String index(Model model) throws ClassNotFoundException, SQLException
 	{
 		IndexDAO recentlyNotice = sqlSession.getMapper(IndexDAO.class);
 		List<Board> RecentlyNotice= recentlyNotice.recentlyNotice();
 		model.addAttribute("RecentlyNotice", RecentlyNotice);
-		return "home.index";
+		return "main.index";
 
 	}
 }

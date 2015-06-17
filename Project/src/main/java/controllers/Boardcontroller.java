@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import dao.BoardDAO;
 import dao.BoardListDAO;
-import dao.Test;
 import dto_vo.Board.Board;
 import dto_vo.Board.BoardList;
 import dto_vo.Emp.Emp;
