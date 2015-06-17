@@ -12,7 +12,15 @@ String date = String.format("%TF",now);
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>	
 <script type="text/javascript">
+$(function(){
+	$('#checkinAjax').click(function(){
+		alert('asd');
+		
+	});
+});
+
 setInterval("go_time()",1000);
 function go_time(){
    var now = new Date();
@@ -39,52 +47,9 @@ document.getElementById("clock").innerHTML = ampm + hours + ":" + minutes + ":" 
 setTimeout("go_time()", 1000);
 }
 
-$(function(){
-	//button click 시 처리
-	$("#login").click(function() {
-		//ajax 비동기함수
-		//url : Ex10_login_ok.jsp
-		//data : 
-		var action = $('#form1').attr("action"); //action > Ex10_login_ok.jsp
-		var form_data = {
-							user_id : $('#user_id').val(),
-							user_pwd: $('#user_pw').val(),
-							is_Ajax : 1
-						};
-		 $.ajax({
-	                type: "POST", //전송 타입
-	                url: action, //Ex10_login_ok.jsp
-	                data: form_data,//{user_id:kglim , user_pwd:1004}
-	                dataType: "html", //서버가 보내는 데이터 타입 : dataType 명시 (xml, json, script, or html )
-		 			success: function(response) { //response (서버에서 보낸 데이터 )
-	                            //alert(">"+response+"<"); 
-	                			//alert(">"+response.trim()+"<");
-	                			var result = response.trim();
-	                			if(result == 'success') {	
-		                                $("#message").html("<p style='color:green;font-weight:bold'>로그인 성공!</p>");
-		                                $("#form1").slideUp('slow');
-		                        }
-		                        else {
-		                                $("#message").html("<p style='color:red'>아이디 또는 비밀번호가 잘못되었습니다.</p>"); 
-		                       }
-	                		
-	                		//참조 포스팅 :http://blog.naver.com/chsmanager/140208464748	
-	                		//if(response.length ==9){
-	                		//자바스크립트에 앞뒤공백제고 /^\s+|\s+$/g
-	                 		//if(response.replace(/^\s+|\s+$/g,"") == 'success') {
-	                 		//if(response == 'success') {	
-	                        //        $("#message").html("<p style='color:green;font-weight:bold'>로그인 성공!</p>");
-	                        //        $("#form1").slideUp('slow');
-	                        //}
-	                        //else {
-	                        //        $("#message").html("<p style='color:red'>아이디 또는 비밀번호가 잘못되었습니다.</p>"); 
-	                        //}
-	                },
-	                error :function(data){alert("error발생");}
-       			 });
-       	return false;
-	});
-});
+
+
+
 
 </script>
 
@@ -137,14 +102,14 @@ $(function(){
                       </table>
                       <table >
                       <tr>
-                       <td style="padding-right: 20px;"><img  src="<%=request.getContextPath() %>/resources/img/bt_checkin.gif" onclick=""> </td>
+                       <td style="padding-right: 20px;"><div  id="checkinAjax"><img id="checkinAjax" src="<%=request.getContextPath() %>/resources/img/bt_checkin.gif" style="cursor: pointer;"></div> </td>
                      	<td style="border:2px solid #e3e3e3; width:100px; padding:0px 0px 0px 20px;"><h3 id="checkin" ></h3></td>
                       </tr>
                       <tr>
                       <td height="8" colspan="2"></td>
                       </tr>
                       <tr >
-                      <td style="padding-right: 20px;"><img  src="<%=request.getContextPath() %>/resources/img/bt_checkout.gif"> </td>
+                      <td style="padding-right: 20px;"><input type="button" id="checkinAjax" ><img  src="<%=request.getContextPath() %>/resources/img/bt_checkout.gif"> </td>
                      	<td style="border:2px solid #e3e3e3; width:100px; padding:0px 0px 0px 20px;"><h3 id="chechout"></h3></td>
                       </tr>
                        <tr>
