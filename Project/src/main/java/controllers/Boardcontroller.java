@@ -30,8 +30,11 @@ public class Boardcontroller {
 	public String BoardMain(Model model) throws ClassNotFoundException,SQLException {
 
 		System.out.println("게시판 메인 페이지 열람");
+		
 		BoardListDAO boardlistdao = sqlsession.getMapper(BoardListDAO.class);
+		
 		List<BoardList> boardList= boardlistdao.getAllBoardList();
+		
 		model.addAttribute("boardList", boardList);
 		
 
