@@ -19,12 +19,14 @@ public class Sign {
 	private String signer3; // 결재자3
 	private String signer4; // 결재자4
 	private String signer5; // 결재자5
+	private String ename;	// 기안자 이름
+	private String posname;	// 기안자 직급 이름
 	
 	public Sign() {}
 	
 	public Sign(int docnum, String userid, int signtype, String signstate, String dept, String team,
 				Date draftdate, String signfilesrc, String signtitle, String signnote, String signer1,
-				String signer2, String signer3, String signer4, String signer5) {
+				String signer2, String signer3, String signer4, String signer5, String ename, String posname) {
 		this.docnum = docnum;
 		this.userid = userid;
 		this.signtype = signtype;
@@ -40,6 +42,24 @@ public class Sign {
 		this.signer3 = signer3;
 		this.signer4 = signer4;
 		this.signer5 = signer5;
+		this.ename = ename;
+		this.posname = posname;
+	}
+
+	public String getEname() {
+		return ename;
+	}
+
+	public void setEname(String ename) {
+		this.ename = ename;
+	}
+
+	public String getPosname() {
+		return posname;
+	}
+
+	public void setPosname(String posname) {
+		this.posname = posname;
 	}
 
 	public int getDocnum() {
