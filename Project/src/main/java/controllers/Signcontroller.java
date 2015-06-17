@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import dao.SignDAO;
+import dto_vo.Sign.Draftingdoc;
 import dto_vo.Sign.Sign;
 
 @Controller
@@ -28,9 +29,10 @@ public class Signcontroller {
 
 		System.out.println("전자결재 메인 페이지 열람");
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
-		List<Sign> unsignlist = signdao.getUnSigns("m3");
+		List<Sign> unsignlist = signdao.getUnSigns("m6");
 		List<Sign> sendsignlist = signdao.getSendSigns("m4");
 		System.out.println(unsignlist.toString());
+		
 		model.addAttribute("unsignlist", unsignlist);
 		model.addAttribute("sendsignlist", sendsignlist);
 		return "sign.SignMain";
@@ -43,10 +45,29 @@ public class Signcontroller {
 		return "sign.DraftingReg";
 	}
 
+	// 기안서 상세 페이지 보기
+	@RequestMapping(value = "DraftingDetail.htm", method = RequestMethod.GET)
+	public String DraftingDetail(String docnum, Model model) throws ClassNotFoundException, SQLException {
+		System.out.println("기안서 상세페이지 보기");
+		 
+		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
+		Sign sign = signdao.getSign(docnum);
+		Draftingdoc draftingdoc = signdao.getDraftingdoc(docnum);
+		 
+		model.addAttribute("sign", sign);
+		model.addAttribute("draftingdoc", draftingdoc);
+		return "sign.DraftingDetail";
+	}
+
 	// 출장 결과 페이지 상세 보기
 	@RequestMapping(value = "BizTripRepDetail.htm", method = RequestMethod.GET)
-	public String BizTripRepDetail() {
+	public String BizTripRepDetail(String docnum, Model model) throws ClassNotFoundException, SQLException {
 		System.out.println("출장 결과 페이지 상세보기");
+		
+		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
+		Sign sign = signdao.getSign(docnum);
+		 
+		
 		return "sign.BizTripRepDetail";
 	}
 }

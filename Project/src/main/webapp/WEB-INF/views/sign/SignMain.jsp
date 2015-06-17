@@ -42,7 +42,9 @@
 							color="#666666">
 							<c:choose>
 								<c:when test="${signtype == 1}">
-									기안서
+									<a href="${pageContext.request.contextPath}/sign/DraftingDetail.htm?docnum=${n.docnum}">	
+										${n.docnum}
+									</a>
 								</c:when>
 								<c:when test="${signtype == 2}">
 									휴가계

@@ -20,4 +20,20 @@
 		from sign
 		where userid = #{userid}
 	</select> 
+	
+	<!-- 결재 문서 상세보기 문서 하나 가져오기 -->
+	<select id="getSign" resultType="dto_vo.Sign.Sign">
+		select * 
+		from sign
+		where docnum = #{docnum}
+	</select> 
+	
+	<!-- 결재 > 기안서 상세보기 가져오기 -->
+	<select id="getDraftingdoc" resultType="dto_vo.Sign.Draftingdoc">
+		select * 
+		from DRAFTINGDOC
+		where docnum = #{docnum}
+	</select>
+	
+	
 </mapper>
