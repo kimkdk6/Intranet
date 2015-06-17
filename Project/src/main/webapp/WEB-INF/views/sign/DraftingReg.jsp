@@ -480,7 +480,22 @@
       																<div id="accordion">
       																	<c:forEach items="${dept}" var="d">
       																		<h3>${d.deptname}</h3>
+      																		<div>
+      																			<c:forEach items="${emp}" var="e">
+      																				<c:if test="${d.deptcode == e.deptcode}">
+	      																				<i class="fa fa-fw fa-user-plus"></i> ${e.ename} <input type="button" value="지정" onclick="check()"><hr>
+																					</c:if>
+																				</c:forEach>	
+																			</div>
       																	</c:forEach>
+      																	
+  																		<!-- <h3>임원</h3>
+  																		<div>
+  																			대표이사 <input type="button" value="지정" onclick="check()">
+																			<hr>
+																			전무 <input type="button" value="지정" onclick="check()">
+  																		</div> -->
+  																		
   																		
 																	</div>
 																	<input type="button" value="완료" onclick="check()">

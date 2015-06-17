@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import dao.SignDAO;
 import dto_vo.Emp.Dept;
+import dto_vo.Emp.Emp;
 import dto_vo.Sign.Draftingdoc;
 import dto_vo.Sign.Sign;
 import dto_vo.Sign.Signline;
@@ -49,8 +50,10 @@ public class Signcontroller {
 		List<Dept> dept = signdao.getDepts();
 		// 팀
 		// 사원
+		List<Emp> emp = signdao.getEmps();
 		
 		model.addAttribute("dept", dept);
+		model.addAttribute("emp", emp);
 		
 		return "sign.DraftingReg";
 	}

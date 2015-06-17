@@ -47,4 +47,10 @@
 		select *
 		from dept
 	</select>
+	
+	<!-- 사원 목록 가져오기  -->
+	<select id="getEmps" resultType="dto_vo.Emp.Emp">
+		select *
+		from emp
+	</select>
 </mapper>
