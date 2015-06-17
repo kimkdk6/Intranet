@@ -36,12 +36,12 @@
             <li class="header">MAIN NAVIGATION</li>
 			<li>
               <a href="pages/widgets.html">
-                <i class="fa fa-th"></i> <span>웹메일</span> <small class="label pull-right bg-green">new</small>
+                <i class="fa fa-envelope"></i> <span>웹메일</span> <small class="label pull-right bg-green">new</small>
               </a>
             </li>
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-files-o"></i>
+                <i class="fa fa-fw fa-comments"></i>
                 <span>커뮤니티</span>
                 <span class="label label-primary pull-right">4</span>
               </a>
@@ -51,12 +51,12 @@
             </li>
             <li>
               <a href="pages/widgets.html">
-                <i class="fa fa-th"></i> <span>일정관리</span> <small class="label pull-right bg-green">new</small>
+                <i class="fa fa-calendar"></i> <span>일정관리</span> <small class="label pull-right bg-green">new</small>
               </a>
             </li>
             <li class="treeview">
               <a href="${pageContext.request.contextPath}/sign/SignMain.htm">
-                <i class="fa fa-share"></i> <span>전자결재 메인</span>
+                <i class="fa fa-fw fa-file-text"></i> <span>전자결재 메인</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
@@ -72,17 +72,17 @@
             </li>
            <li>
               <a href="pages/widgets.html">
-                <i class="fa fa-th"></i> <span>조직도</span> <small class="label pull-right bg-green">new</small>
+                <i class="fa fa-fw fa-group"></i> <span>조직도</span> <small class="label pull-right bg-green">new</small>
               </a>
             </li>
             <li>
               <a href="pages/widgets.html">
-                <i class="fa fa-th"></i> <span>근태관리</span> <small class="label pull-right bg-green">new</small>
+                <i class="fa fa-fw fa-sign-in"></i> <span>근태관리</span> <small class="label pull-right bg-green">new</small>
               </a>
             </li>
             <li>
               <a href="pages/widgets.html">
-                <i class="fa fa-th"></i> <span>관리자</span> <small class="label pull-right bg-green">new</small>
+                <i class="fa fa-fw fa-cogs"></i> <span>관리자</span> <small class="label pull-right bg-green">new</small>
               </a>
             </li>
         </section>
