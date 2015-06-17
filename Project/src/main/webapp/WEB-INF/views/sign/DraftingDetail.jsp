@@ -2,23 +2,30 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
+<section class="content-header">
+	<h1>
+		전자결재 문서 보기 <small>전자결재 문서 보기 페이지</small>
+	</h1>
+	<ol class="breadcrumb">
+		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li class="active">전자결재</li>
+	</ol>
+</section>
 
+<section class="content-header">
+<!-- /.box-header -->
+<div class="box">
+	<div class="box-header with-border">
+	    <h3 class="box-title">
+	    	<a class="title_txt" href="#">
+	    			받은 결재 문서함 &gt; 미결재 문서 &gt;
+                        문서조회</a>     	
+		</h3>
+	</div>
+	<div class="box-body">
+	<table>
    <tbody>
-      <tr>
-         <td height="40">
-            <!--타이틀TB START-->
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-               <tbody>
-                  <tr>
-                     <td width="360" align="left" class="title_txt"
-                        style="padding: 5px 0 0 14px;">받은 결재 문서함 &gt; 미결재 문서 &gt;
-                        문서조회</td>
-                     <td width="" align="right" style="padding: 0 12px 0 0;">&nbsp;</td>
-                  </tr>
-               </tbody>
-            </table> <!--타이틀TB END-->
-         </td>
-      </tr>
+      
       <tr>
          <td height="30" bgcolor="#ececec"
             style="border-bottom: 1px #c9c9c9 solid; border-top: 1px #c9c9c9 solid; padding: 0 0 0 12px;">
@@ -72,7 +79,7 @@
                            <tbody>
                               <tr>
                                  <td width="120"></td>
-                                 <td class="dochead" align="center" valign="top">기안서</td>
+                                 <td class="dochead" align="center" valign="top" style="font-size: 30px">기안서</td>
                                  <td width="120" align="right" valign="bottom"><a
                                     href="javascript:" rel="proc_s" onclick="mod_proc();"><img
                                        src="/img/webmail/bt_modify3.gif"></a><a
@@ -98,7 +105,7 @@
                                  <td width="95" height="30" align="center" bgcolor="#f6f6f6"
                                     class="m_sp"><b>문서번호</b></td>
                                  <td width="" style="padding: 0 0 0 12px;">${sign.docnum}</td>
-                                 <td width="365" rowspan="6" align="center" valign="top"
+                                 <td width="365" rowspan="3" align="center" valign="top"
                                     style="padding: 0; border-bottom: 1px #afafaf solid;">
 
                                     <table width="100%" cellpadding="0" cellspacing="0"
@@ -246,19 +253,8 @@
                                                 </table>
                                              </td>
                                           </tr>
-                                          <tr height="20" align="center" bgcolor="#f6f6f6">
-                                             <td
-                                                style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;"></td>
-                                             <td
-                                                style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;"></td>
-                                             <td
-                                                style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;"></td>
-                                             <td
-                                                style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;"></td>
-                                             <td
-                                                style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;"></td>
-                                          </tr>
-                                          <tr height="70" align="center">
+                                        
+                                          <tr align="center">
                                              <td></td>
                                              <td></td>
                                              <td></td>
@@ -460,96 +456,9 @@
                                     style="padding: 7px 0 7px 0"><b>기안일</b></td>
                                  <td style="padding: 7px 0 7px 12px;">${sign.draftdate }</td>
                               </tr>
-                              <tr>
-                                 <td height="30" align="center" bgcolor="#f6f6f6" class="m_sp"><b>수신부서</b></td>
-                                 <td colspan="2" style="padding: 3px 0 3px 12px;">
-                                    <table class="noborder" cellspacing="0" cellpadding="0">
-                                       <tbody>
-                                          <tr height="18">
-                                             <td><a href="javascript:" rel="dept_s"
-                                                onclick="mod_ref   ('dept');"><img
-                                                   src="/img/webmail/bt_modify3.gif"></a><a
-                                                href="javascript:" rel="dept_f" style="display: none;"
-                                                onclick="cancel_ref('dept');"><img
-                                                   src="/img/webmail/bt_cancel.gif"></a></td>
-                                             <td style="padding: 5px 0 0 5px;" rel="dept_s"></td>
-                                             <td rel="dept_f"
-                                                style="display: none; padding-left: 5px;"><input
-                                                type="hidden" id="_deptkeys" name="deptkeys" value="">
-                                                <input id="_depttext" name="depttext" type="text"
-                                                class="input_type2" style="width: 450px;" readonly="">
-                                                <a href="javascript:"><img id="bt_deptsel"
-                                                   src="/img/approval/bt_recieve1.gif" align="absmiddle"></a>
-                                             </td>
-                                             <td rel="dept_f"
-                                                style="display: none; padding-left: 5px;"><a
-                                                href="javascript:" onclick="save_ref  ('dept');"><img
-                                                   src="/img/webmail/bt_save.gif"></a></td>
-                                          </tr>
-                                       </tbody>
-                                    </table>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td height="30" align="center" bgcolor="#f6f6f6" class="m_sp"><b>승인
-                                       전 참조</b></td>
-                                 <td colspan="2" style="padding: 3px 0 3px 12px;">
-                                    <table class="noborder" cellspacing="0" cellpadding="0">
-                                       <tbody>
-                                          <tr height="18">
-                                             <td><a href="javascript:" rel="als_s"
-                                                onclick="mod_ref   ('als');"><img
-                                                   src="/img/webmail/bt_modify3.gif"></a><a
-                                                href="javascript:" rel="als_f" style="display: none;"
-                                                onclick="cancel_ref('als');"><img
-                                                   src="/img/webmail/bt_cancel.gif"></a></td>
-                                             <td style="padding: 5px 0 0 5px;" rel="als_s"></td>
-                                             <td rel="als_f" style="display: none; padding-left: 5px;">
-                                                <input type="hidden" id="_alskeys" name="alskeys"
-                                                value=""> <input id="_alstext" name="alstext"
-                                                type="text" class="input_type2" style="width: 450px;"
-                                                readonly=""> <a href="javascript:"><img
-                                                   id="bt_alssel" src="/img/approval/bt_refer1.gif"
-                                                   align="absmiddle"></a>
-                                             </td>
-                                             <td rel="als_f" style="display: none; padding-left: 5px;"><a
-                                                href="javascript:" onclick="save_ref  ('als');"><img
-                                                   src="/img/webmail/bt_save.gif"></a></td>
-                                          </tr>
-                                       </tbody>
-                                    </table>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td height="30" align="center" bgcolor="#f6f6f6" class="m_sp"><b>승인
-                                       후 참조</b></td>
-                                 <td colspan="2" style="padding: 3px 0 3px 12px;">
-                                    <table class="noborder" cellspacing="0" cellpadding="0">
-                                       <tbody>
-                                          <tr height="18">
-                                             <td><a href="javascript:" rel="ref_s"
-                                                onclick="mod_ref   ('ref');"><img
-                                                   src="/img/webmail/bt_modify3.gif"></a><a
-                                                href="javascript:" rel="ref_f" style="display: none;"
-                                                onclick="cancel_ref('ref');"><img
-                                                   src="/img/webmail/bt_cancel.gif"></a></td>
-                                             <td style="padding: 5px 0 0 5px;" rel="ref_s"></td>
-                                             <td rel="ref_f" style="display: none; padding-left: 5px;">
-                                                <input type="hidden" id="_refkeys" name="refkeys"
-                                                value=""> <input id="_reftext" name="reftext"
-                                                type="text" class="input_type2" style="width: 450px;"
-                                                readonly=""> <a href="javascript:"><img
-                                                   id="bt_refsel" src="/img/approval/bt_refer1.gif"
-                                                   align="absmiddle"></a>
-                                             </td>
-                                             <td rel="ref_f" style="display: none; padding-left: 5px;"><a
-                                                href="javascript:" onclick="save_ref  ('ref');"><img
-                                                   src="/img/webmail/bt_save.gif"></a></td>
-                                          </tr>
-                                       </tbody>
-                                    </table>
-                                 </td>
-                              </tr>
+                             
+                              
+                             
                               <tr>
                                  <td height="30" align="center" bgcolor="#f6f6f6" class="m_sp"><b>제목</b></td>
                                  <td colspan="2" style="padding: 7px 0 7px 12px;">${sign.signtitle }</td>
@@ -583,3 +492,8 @@
          <td height="30"></td>
       </tr>
    </tbody>
+	</table>
+	</div>
+	
+</div>
+</section>

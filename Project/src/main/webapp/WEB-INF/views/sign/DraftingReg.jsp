@@ -1,6 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
+<section class="content-header">
+	<h1>
+		전자결재 작성 <small>전자결재 작성 페이지</small>
+	</h1>
+	<ol class="breadcrumb">
+		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li class="active">전자결재</li>
+	</ol>
+</section>
+<section class="content-header">
+<!-- /.box-header -->
+<div class="box">
+	<div class="box-header with-border">
+	    <h3 class="box-title">
+	    	<a class="title_txt" href="DraftingReg.htm">
+	    			결재문서 작성	&gt; 기안서</a>     	
+		</h3>
+	</div>
+	<div class="box-body">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tbody>
 		<tr>
@@ -9,8 +28,8 @@
 				<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					<tbody>
 						<tr>
-							<td width="360" align="left" class="title_txt"
-								style="padding: 5px 0 0 14px;">결재문서 작성!!</td>
+							<td width="360" align="center" class="title_txt"
+								style="padding: 5px 0 0 14px; font-size: 30px">기안서</td>
 							<td width="" align="right" style="padding: 0 12px 0 0;">&nbsp;</td>
 						</tr>
 					</tbody>
@@ -43,7 +62,7 @@
 								duration : 1000
 							},
 							hide : {
-								effect : "explode",
+								/* effect : "explode", */
 								duration : 1000
 							}
 						});
@@ -2239,3 +2258,6 @@
 		</tr>
 	</tbody>
 </table>
+	</div>
+</div>
+</section>
