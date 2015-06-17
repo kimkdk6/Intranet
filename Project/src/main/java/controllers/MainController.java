@@ -21,12 +21,14 @@ public class MainController {
 	@RequestMapping(value = "main.htm")
 	public String index(Model model) throws ClassNotFoundException, SQLException
 	{
-		MainDAO recentlyNotice = sqlSession.getMapper(MainDAO.class);
-		List<Board> RecentlyNotice= recentlyNotice.recentlyNotice();
+		MainDAO recently = sqlSession.getMapper(MainDAO.class);
+		
+		List<Board> RecentlyNotice= recently.recentlyNotice();
 		model.addAttribute("RecentlyNotice", RecentlyNotice);
-		for(Board s : RecentlyNotice){
-			System.out.println(s);
-		}
+		
+		List<Board> RecentlyBoard= recently.recentlyBoard();
+		model.addAttribute("RecentlyBoard", RecentlyBoard);
+
 		return "main.main";
 
 	}

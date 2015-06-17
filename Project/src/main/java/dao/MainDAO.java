@@ -7,4 +7,5 @@ import dto_vo.Board.Board;
 
 public interface MainDAO {
 	List<Board> recentlyNotice() throws ClassNotFoundException, SQLException;
+	List<Board> recentlyBoard() throws ClassNotFoundException, SQLException;
 }

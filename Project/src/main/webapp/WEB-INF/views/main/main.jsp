@@ -129,33 +129,16 @@ setTimeout("go_time()", 1000);
                 </div><!-- /.box-header -->
                 <div class="box-body no-padding">
   				<table class="table">
+                      <c:forEach items="${RecentlyBoard}" var="r">
+                   
                     <tr>
-                      <td style="padding-bottom: 19px">1.</td>
-                      <td>Update software</td>
-                      <td>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                        </div>
+                    <td><span class="fa fa-circle-o"></span></td>
+                      <td style="padding-bottom: 19px"><a href="">${r.boardtitle}</a></td>
+                      <td >
+                           ${r.boarddate }
                       </td>
                     </tr>
-                    <tr>
-                      <td  style="padding-bottom: 19px">2.</td>
-                      <td>Clean database</td>
-                      <td>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td  style="padding-bottom: 19px">3.</td>
-                      <td>Cron job running</td>
-                      <td>
-                        <div class="progress progress-xs progress-striped active">
-                          <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
-                        </div>
-                      </td>
-                    </tr>  
+                    </c:forEach>  
                   </table>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
