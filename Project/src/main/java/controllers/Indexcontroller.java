@@ -1,4 +1,4 @@
-package controllers;
+/*package controllers;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -27,3 +27,4 @@ public class Indexcontroller {
 
 	}
 }
+*/

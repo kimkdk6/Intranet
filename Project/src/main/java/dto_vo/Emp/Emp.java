@@ -4,7 +4,7 @@ public class Emp {
 	
 	private String userid;
 	private int empno;
-	private String userpwd;
+	private String emppwd;
 	private String ename;
 	private String emptel;
 	private int deptcode;
@@ -13,20 +13,21 @@ public class Emp {
 	private int empapprove;
 	
 	public Emp() {}
+
 	
-	public Emp(String userid, int empno, String userpwd, String ename,
-			String emptel, int deptcode, int teamcode, int poscode, int empapprove) 
-	{
+	
+	public Emp(String userid, int empno, String emppwd, String ename,
+			String emptel, int deptcode, int teamcode, int poscode,
+			int empapprove) {
 		this.userid = userid;
 		this.empno = empno;
-		this.userpwd = userpwd;
+		this.emppwd = emppwd;
 		this.ename = ename;
 		this.emptel = emptel;
 		this.deptcode = deptcode;
 		this.teamcode = teamcode;
 		this.poscode = poscode;
 		this.empapprove = empapprove;
-		
 	}
 
 	public String getUserid() {
@@ -45,12 +46,12 @@ public class Emp {
 		this.empno = empno;
 	}
 
-	public String getUserpwd() {
-		return userpwd;
+	public String getEmppwd() {
+		return emppwd;
 	}
 
-	public void setUserpwd(String userpwd) {
-		this.userpwd = userpwd;
+	public void setEmppwd(String emppwd) {
+		this.emppwd = emppwd;
 	}
 
 	public String getEname() {
@@ -100,19 +101,14 @@ public class Emp {
 	public void setEmpapprove(int empapprove) {
 		this.empapprove = empapprove;
 	}
-	
+
 	@Override
-	public String toString(){
-		return " userid : " +   this.userid + "\n" + 
-			   " empno : " +   this.empno + "\n" + 
-			   " userpwd :"      +   this.userpwd + "\n" + 
-			   " ename : " + this.ename+ "\n" + 
-			   " emptel : " + this.emptel + "\n" + 
-			   " deptcode : " + this.deptcode + "\n" + 
-			   " teamcode : " + this.teamcode + "\n" + 
-			   " poscode : " + this.poscode + "\n" + 
-			   " empapprove : " + this.empapprove + "\n";
+	public String toString() {
+		return "Emp [userid=" + userid + ", empno=" + empno + ", emppwd="
+				+ emppwd + ", ename=" + ename + ", emptel=" + emptel
+				+ ", deptcode=" + deptcode + ", teamcode=" + teamcode
+				+ ", poscode=" + poscode + ", empapprove=" + empapprove + "]";
 	}
 	
-
+	
 }
