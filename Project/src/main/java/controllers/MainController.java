@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import dao.IndexDAO;
+import dao.MainDAO;
 import dto_vo.Board.Board;
 
 @Controller
@@ -21,9 +21,12 @@ public class MainController {
 	@RequestMapping(value = "main.htm")
 	public String index(Model model) throws ClassNotFoundException, SQLException
 	{
-		IndexDAO recentlyNotice = sqlSession.getMapper(IndexDAO.class);
+		MainDAO recentlyNotice = sqlSession.getMapper(MainDAO.class);
 		List<Board> RecentlyNotice= recentlyNotice.recentlyNotice();
 		model.addAttribute("RecentlyNotice", RecentlyNotice);
+		for(Board s : RecentlyNotice){
+			System.out.println(s);
+		}
 		return "main.main";
 
 	}

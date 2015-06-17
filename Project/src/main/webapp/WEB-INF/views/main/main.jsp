@@ -187,8 +187,7 @@ setTimeout("go_time()", 1000);
                   <table class="table">
                    <c:forEach items="${recentlyNotice}" var="r">
                     <tr>
-                      <td style="padding-bottom: 19px">{r.boardtitle}</td>
-                      
+                      <td style="padding-bottom: 19px">${r.boardtitle}</td>
                       <td>
                         <div class="progress progress-xs">
                           <div class="progress-bar progress-bar-danger" style="width: 55%"></div>

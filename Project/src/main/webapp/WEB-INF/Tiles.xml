@@ -89,7 +89,7 @@
    
        <!-- 최종본 패턴을 사용 -->
        <!--  return home.index  -->
-         <definition name="home.*" template="/WEB-INF/views/inc/layout.jsp"> 
+         <definition name="index.*" template="/WEB-INF/views/inc/layout.jsp"> 
            	<put-attribute name="header"  value="/WEB-INF/views/inc/header.jsp" /> 
          	 <put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
          	 <put-attribute name="aside" value="/WEB-INF/views/inc/aside.jsp" />
