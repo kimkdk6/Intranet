@@ -148,13 +148,10 @@ setTimeout("go_time()", 1000);
                   <h3 class="box-title">공지사항</h3>
 
                 </div><!-- /.box-header -->
-               
-				
-			
+
                 <div class="box-body no-padding">
                   <table class="table">
                    <c:forEach items="${RecentlyNotice}" var="r">
-                   
                     <tr>
                     <td><span class="fa fa-check-square-o"></span></td>
                       <td style="padding-bottom: 19px"><a href="">${r.boardtitle}</a></td>
