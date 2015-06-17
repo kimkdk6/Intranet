@@ -387,13 +387,13 @@
 											<td width="95" height="30" align="center" bgcolor="#f6f6f6"
 												class="m_sp"><b>문서번호</b></td>
 											<td width="" style="padding: 0 0 0 12px;"></td>
-											<td width="365" rowspan="6" align="center" valign="top"
-												style="padding: 0; border-bottom: 1px #afafaf solid;">
+											<td width="365" rowspan="3" align="center" valign="top"
+												style="padding: 1;">
 
 												<table width="100%" class="tbl_c9c9c9" cellpadding="0"
 													cellspacing="0">
 													<tbody>
-														<tr height="20" align="center" bgcolor="#f6f6f6">
+														<tr height="10" align="center" bgcolor="#f6f6f6">
 															<td width="7%" rowspan="4"><b>결<br> <br>
 																	<br>재
 															</b></td>
@@ -463,85 +463,8 @@
 																</div>
 															</td>
 														</tr>
-														<tr height="20" align="center" bgcolor="#f6f6f6">
-															<input type="hidden" name="docproc[]" id="proc4" value="">
-															<td
-																style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;"
-																id="dept4"></td>
-															<input type="hidden" name="docproc[]" id="proc5" value="">
-															<td
-																style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;"
-																id="dept5"></td>
-															<input type="hidden" name="docproc[]" id="proc6" value="">
-															<td
-																style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;"
-																id="dept6"></td>
-															<input type="hidden" name="docproc[]" id="proc7" value="">
-															<td
-																style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;"
-																id="dept7"></td>
-															<input type="hidden" name="docproc[]" id="proc8" value="">
-															<td
-																style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;"
-																id="dept8"></td>
-														</tr>
-														<tr height="70" align="center">
-															<td>
-																<div id="divCan4" style="display: none">
-																	<span id="procName4"></span><br> <a
-																		href="javascript:procCancel('4')"><img
-																		src="/img/approval/bt_cancel.gif"></a>
-																</div>
-																<div id="divSel4" style="display: block">
-																	<a href="javascript:"><img class="bt_procsel"
-																		value="4" src="/img/approval/bt_sel.gif"></a>
-																</div>
-															</td>
-															<td>
-																<div id="divCan5" style="display: none">
-																	<span id="procName5"></span><br> <a
-																		href="javascript:procCancel('5')"><img
-																		src="/img/approval/bt_cancel.gif"></a>
-																</div>
-																<div id="divSel5" style="display: block">
-																	<a href="javascript:"><img class="bt_procsel"
-																		value="5" src="/img/approval/bt_sel.gif"></a>
-																</div>
-															</td>
-															<td>
-																<div id="divCan6" style="display: none">
-																	<span id="procName6"></span><br> <a
-																		href="javascript:procCancel('6')"><img
-																		src="/img/approval/bt_cancel.gif"></a>
-																</div>
-																<div id="divSel6" style="display: block">
-																	<a href="javascript:"><img class="bt_procsel"
-																		value="6" src="/img/approval/bt_sel.gif"></a>
-																</div>
-															</td>
-															<td>
-																<div id="divCan7" style="display: none">
-																	<span id="procName7"></span><br> <a
-																		href="javascript:procCancel('7')"><img
-																		src="/img/approval/bt_cancel.gif"></a>
-																</div>
-																<div id="divSel7" style="display: block">
-																	<a href="javascript:"><img class="bt_procsel"
-																		value="7" src="/img/approval/bt_sel.gif"></a>
-																</div>
-															</td>
-															<td>
-																<div id="divCan8" style="display: none">
-																	<span id="procName8"></span><br> <a
-																		href="javascript:procCancel('8')"><img
-																		src="/img/approval/bt_cancel.gif"></a>
-																</div>
-																<div id="divSel8" style="display: block">
-																	<a href="javascript:"><img class="bt_procsel"
-																		value="8" src="/img/approval/bt_sel.gif"></a>
-																</div>
-															</td>
-														</tr>
+														
+														
 													</tbody>
 												</table>
 
@@ -567,7 +490,8 @@
 										<tr>
 											<td height="30" align="center" bgcolor="#f6f6f6" class="m_sp"
 												valign="top" style="padding-top: 7px;"><b>기안일</b></td>
-											<td style="padding: 5 0 0 12px;" valign="top"><input
+											<td colspan="2" style="padding: 0 0 0 12px;" valign="top">
+												<input
 												type="text" name="reportdt" readonly="" class="input_type2"
 												style="width: 85px" maxlength="10"
 												onblur="constraintValue('DATEFORMAT',this)"
@@ -578,9 +502,10 @@
 
 										<tr>
 											<td align="center" bgcolor="#f6f6f6" class="m_sp"><b>파일첨부</b></td>
-											<td><input id="File_sign" name="File_sign" type="file"></td>
+											<td colspan="2" style="padding: 0 0 0 12px;">
+											<input id="File_sign" name="File_sign" type="file"></td>
 										</tr>
-										</tr>
+							
 										<tr>
 											<td height="30" align="center" bgcolor="#f6f6f6" class="m_sp">
 												<b>제목</b>
