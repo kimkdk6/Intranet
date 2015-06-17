@@ -175,23 +175,17 @@ setTimeout("go_time()", 1000);
                   </div>
                 </div><!-- /.box-header -->
                
-				<tr>
-					<td class="seq">${n.seq}</td>
-					<td class="title"><a href="noticeDetail.htm?seq=${n.seq}">${n.title}</a></td>
-					<td class="writer">${n.writer}</td>
-					<td class="regdate">${n.regdate}</td>
-					<td class="hit">${n.hit}</td>
-				</tr>
+				
 			
                 <div class="box-body no-padding">
                   <table class="table">
-                   <c:forEach items="${recentlyNotice}" var="r">
+                   <c:forEach items="${RecentlyNotice}" var="r">
+                   
                     <tr>
-                      <td style="padding-bottom: 19px">${r.boardtitle}</td>
-                      <td>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                        </div>
+                    <td><span class="fa fa-check-square-o"></span></td>
+                      <td style="padding-bottom: 19px"><a href="">${r.boardtitle}</a></td>
+                      <td >
+                           ${r.boarddate }
                       </td>
                     </tr>
                     </c:forEach>
