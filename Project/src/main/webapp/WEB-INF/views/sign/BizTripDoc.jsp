@@ -10,7 +10,7 @@
 					<tbody>
 						<tr>
 							<td width="360" align="left" class="title_txt"
-								style="padding: 5px 0 0 14px;">결재문서 작성!!</td>
+								style="padding: 5px 0 0 14px;">출장 신청서 작성!!</td>
 							<td width="" align="right" style="padding: 0 12px 0 0;">&nbsp;</td>
 						</tr>
 					</tbody>
@@ -21,7 +21,6 @@
 		<tr>
 			<td align="center" valign="top" style="padding: 19px 15px 19px 15px;">
 
-				<script type="text/javascript" src="../resources/plugins/ckeditor/ckeditor.js"></script>
 				<script type="text/javascript" src="/js/upload.js"></script>
 				<script language="javascript">
 					var oEditors = [];
@@ -270,36 +269,6 @@
 						return -1;
 					}
 					
-					
-					$(function(){
-				         
-				        CKEDITOR.replace( 'ckeditor', {//해당 이름으로 된 textarea에 에디터를 적용
-				            width:'100%',
-				            height:'400px',
-				            filebrowserImageUploadUrl: '/community/imageUpload' //여기 경로로 파일을 전달하여 업로드 시킨다.
-				        });
-				         
-				         
-				        CKEDITOR.on('dialogDefinition', function( ev ){
-				            var dialogName = ev.data.name;
-				            var dialogDefinition = ev.data.definition;
-				          
-				            switch (dialogName) {
-				                case 'image': //Image Properties dialog
-				                    //dialogDefinition.removeContents('info');
-				                    dialogDefinition.removeContents('Link');
-				                    dialogDefinition.removeContents('advanced');
-				                    break;
-				            }
-				        });
-				         
-				    });
-					
-					
-					
-					
-					
-
 					function applyAppLine(appmgno) {
 						for (var i = 0; i < 9; i++)
 							procCancel(i);
@@ -549,7 +518,7 @@
 										</tr>
 										<tr>
 											<td height="30" align="center" bgcolor="#f6f6f6" class="m_sp"><b>문서종류</b></td>
-											<td style="padding: 0 0 0 12px;">기안서</td>
+											<td style="padding: 0 0 0 12px;">출장 신청서</td>
 										</tr>
 										<tr>
 											<td height="30" align="center" bgcolor="#f6f6f6" class="m_sp"><b>문서상태</b></td>
@@ -583,7 +552,7 @@
 										</tr>
 										<tr>
 											<td height="30" align="center" bgcolor="#f6f6f6" class="m_sp">
-												<b>제목</b>
+												<b>제 목</b>
 											</td>
 											<td colspan="2" style="padding: 0 0 0 12px;">
 												<input id="t_subject" name="subject" type="text"
@@ -595,38 +564,72 @@
 												style="padding: 0; border: 0;">
 												<table width="100%" cellpadding="0" cellspacing="0">
 													<tbody>
-														<tr>
-															<td width="100%" style="padding: 0; border-top: 0;">
-																
-																<script type="text/javascript">
-																		$(
-																				document)
-																				.ready(
-																						function() {
-																						});
-																</script>
-																<table cellspacing="0" cellpadding="0" width="100%"
-																	class="noborder">
-																	<tbody>
-																		<tr>
-																			<td width="100%" style="padding: 2px">
-																				<div id="new_content_toolbar" style="width: 100%;">
-																					<table width="100%" border="0" cellspacing="0"
-																						cellpadding="0" align="left"
-																						style="text-align: left;">
+                                             <tr>
+                                                <td width="100%" style="padding: 0; border-top: 0;">
 
-																					</table>
-																				</div>
-																				<textarea rows="1000" cols="3000" name="CONTENT" id="CONTENT"></textarea>
-																					<script type="text/javascript">
-																						CKEDITOR.replace('CONTENT');
-																					</script>
-																		</tr>
-																	</tbody>
-																</table>
-															</td>
-														</tr>
-													</tbody>
+                                                   <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                      <tbody>
+                                                         <tr>
+                                                            <td width="100%"
+                                                               style="padding: 10px 17px 10px 17px; border: 0;">
+                                                               <table id="detail_table" width="100%"
+                                                                  cellspacing="0" cellpadding="0"
+                                                                  class="tbl_appreport">
+                                                                  <tbody>
+                                                                     <tr>
+                                                                        <td width="120" class="title">기간</td>
+                                                                        <td width="" class="item" align="left">
+                                                                        	<input type="text" name="bufrom" readonly=""
+                                                                             class="input_approval" style="width: 75px"
+                                                                           	 maxlength="10" onclick="popUpCalendarYmd(this)"
+                                                                             value=""> ~ 
+                                                                            <input type="text" name="buto" readonly="" class="input_approval"
+                                                                             style="width: 75px" maxlength="10"
+                                                                             onclick="popUpCalendarYmd(this)" value="">
+                                                                             &nbsp;
+                                                                             	<span id="vadate" style="font-weight: bold; color: #000">
+                                                                        		</span>
+                                                                        </td>
+                                                                     </tr>
+                                                                     <tr>
+                                                                        <td class="title">출장지</td>
+                                                                        <td class="item" align="left"><textarea
+                                                                              name="whereto"
+                                                                              style="width: 100%; height: 56px; padding: 8px 8px 5px 8px;"></textarea>
+                                                                        </td>
+                                                                     </tr>
+                                                                     <tr>
+                                                                        <td class="title">출장목적</td>
+                                                                        <td class="item" align="left"><textarea
+                                                                              name="reason"
+                                                                              style="width: 100%; height: 126px; padding: 8px 8px 5px 8px;"></textarea>
+                                                                        </td>
+                                                                     </tr>
+                                                                     <tr>
+                                                                        <td class="title">연락처</td>
+                                                                        <td class="item" align="left"><textarea
+                                                                              name="contact"
+                                                                              style="width: 100%; height: 56px; padding: 8px 8px 5px 8px;"></textarea>
+                                                                        </td>
+                                                                     </tr>
+                                                                     <tr>
+                                                                        <td class="title">기타사항</td>
+                                                                        <td class="item" align="left"><textarea
+                                                                              name="etc"
+                                                                              style="width: 100%; height: 126px; padding: 8px 8px 5px 8px;"></textarea></td>
+                                                                     </tr>
+                                                                  </tbody>
+                                                               </table>
+                                                               <div
+                                                                  style="height: 60px; text-align: center; padding-top: 20px;">
+                                                                  상기와 같이 출장 신청서를 제출하오니 재가바랍니다.</div>
+                                                            </td>
+                                                         </tr>
+                                                      </tbody>
+                                                   </table>
+                                                </td>
+                                             </tr>
+                                          </tbody>
 												</table>
 											</td>
 										</tr>
