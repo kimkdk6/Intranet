@@ -42,4 +42,9 @@
 		where docnum = #{docnum}
 	</select>
 	
+	<!-- 부서 목록 가져오기  -->
+	<select id="getDepts" resultType="dto_vo.Emp.Dept">
+		select *
+		from dept
+	</select>
 </mapper>

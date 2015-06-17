@@ -3,6 +3,7 @@ package dao;
 import java.sql.SQLException;
 import java.util.List;
 
+import dto_vo.Emp.Dept;
 import dto_vo.Sign.Draftingdoc;
 import dto_vo.Sign.Sign;
 import dto_vo.Sign.Signline;
@@ -21,4 +22,9 @@ public interface SignDAO {
 	public Draftingdoc getDraftingdoc(String docnum) throws ClassNotFoundException, SQLException;
 	// 결재 라인 가져오기
 	public Signline getSignline(String docnum) throws ClassNotFoundException, SQLException;
+
+	// 부서 가져오기
+	public List<Dept> getDepts() throws ClassNotFoundException, SQLException;
+	// 사원 가져오기
+	
 }

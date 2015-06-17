@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import dao.SignDAO;
+import dto_vo.Emp.Dept;
 import dto_vo.Sign.Draftingdoc;
 import dto_vo.Sign.Sign;
 import dto_vo.Sign.Signline;
@@ -41,8 +42,16 @@ public class Signcontroller {
 
 	// 기안서 작성 페이지 보기
 	@RequestMapping(value = "DraftingReg.htm", method = RequestMethod.GET)
-	public String DraftingReg() {
+	public String DraftingReg(Model model) throws ClassNotFoundException, SQLException {
 		System.out.println("기안서 작성 페이지 열람");
+		// 부서
+		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
+		List<Dept> dept = signdao.getDepts();
+		// 팀
+		// 사원
+		
+		model.addAttribute("dept", dept);
+		
 		return "sign.DraftingReg";
 	}
 
