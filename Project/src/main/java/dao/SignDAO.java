@@ -5,6 +5,7 @@ import java.util.List;
 
 import dto_vo.Sign.Draftingdoc;
 import dto_vo.Sign.Sign;
+import dto_vo.Sign.Signline;
 
 
 public interface SignDAO {
@@ -18,4 +19,6 @@ public interface SignDAO {
 	public Sign getSign(String docnum) throws ClassNotFoundException, SQLException;
 	// 결재 > 기안서 상세보기 가져오기
 	public Draftingdoc getDraftingdoc(String docnum) throws ClassNotFoundException, SQLException;
+	// 결재 라인 가져오기
+	public Signline getSignline(String docnum) throws ClassNotFoundException, SQLException;
 }

@@ -35,5 +35,11 @@
 		where docnum = #{docnum}
 	</select>
 	
+	<!-- 결재 라인 가져오기  -->
+	<select id="getSignline" resultType="dto_vo.Sign.Signline">
+		select * 
+		from signline
+		where docnum = #{docnum}
+	</select>
 	
 </mapper>

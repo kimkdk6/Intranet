@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import dao.SignDAO;
 import dto_vo.Sign.Draftingdoc;
 import dto_vo.Sign.Sign;
+import dto_vo.Sign.Signline;
 
 @Controller
 @RequestMapping("/sign/")
@@ -51,11 +52,16 @@ public class Signcontroller {
 		System.out.println("기안서 상세페이지 보기");
 		 
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
+		// 결재 문서(기본 내용)
 		Sign sign = signdao.getSign(docnum);
+		// 기안서
 		Draftingdoc draftingdoc = signdao.getDraftingdoc(docnum);
-		 
+		// 결재라인 
+		Signline signline = signdao.getSignline(docnum);
+		
 		model.addAttribute("sign", sign);
 		model.addAttribute("draftingdoc", draftingdoc);
+		model.addAttribute("signline", signline);
 		return "sign.DraftingDetail";
 	}
 

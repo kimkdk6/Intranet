@@ -113,14 +113,13 @@
                                              <td width="19%"
                                                 style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;">기안자</td>
                                              <td width="19%"
-                                                style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;">과장
-                                                test</td>
+                                                style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;">${sign.signer2}</td>
                                              <td width="19%"
-                                                style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;"></td>
+                                                style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;">${sign.signer3}</td>
                                              <td width="19%"
-                                                style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;"></td>
+                                                style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;">${sign.signer4}</td>
                                              <td width="19%"
-                                                style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;"></td>
+                                                style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;">${sign.signer5}</td>
                                           </tr>
                                           <tr height="70" align="center">
                                              <td style="border-bottom: 1px #eaeaea solid;">
@@ -128,13 +127,20 @@
                                                    cellpadding="0">
                                                    <tbody>
                                                       <tr>
-                                                         <td height="42" align="center" valign="middle"
-                                                            background="/img/approval/stamp_bg.gif"
-                                                            style="background-repeat: no-repeat; color: #d30000; font-size: 11px; letter-spacing: -1px; padding: 3px 0 0 0;">
-                                                            a1</td>
+	                                                      <c:choose>
+	                                                      	<c:when test="${signline.signok1 == 1}">
+	                                                      		<td height="42" align="center" valign="middle"
+	                                                            background="../resources/img/stamp_bg.gif"
+	                                                            style="background-repeat: no-repeat; color: #d30000; font-size: 11px; letter-spacing: -1px; padding: 3px 0 0 0;">
+	                                                            ${sign.signer1}</td>
+	                                                      	</c:when>
+	                                                      	<c:otherwise>
+	                                                      		<td>${sign.signer1}</td>
+	                                                      	</c:otherwise>
+	                                                      </c:choose>
                                                       </tr>
                                                       <tr>
-                                                         <td height="20" align="center">a1</td>
+                                                         <td height="20" align="center">${sign.signer1}</td>
                                                       </tr>
                                                    </tbody>
                                                 </table>
@@ -144,19 +150,101 @@
                                                    cellpadding="0">
                                                    <tbody>
                                                       <tr>
-                                                         <td height="42" align="center" valign="middle"
-                                                            style="background-repeat: no-repeat; color: #d30000; font-size: 11px; letter-spacing: -1px; padding: 3px 0 0 0;">
-                                                         </td>
+                                                         <c:choose>
+	                                                      	<c:when test="${signline.signok2 == 1}">
+	                                                      		<td height="42" align="center" valign="middle"
+	                                                            background="../resources/img/stamp_bg.gif"
+	                                                            style="background-repeat: no-repeat; color: #d30000; font-size: 11px; letter-spacing: -1px; padding: 3px 0 0 0;">
+	                                                            ${sign.signer2}</td>
+	                                                      	</c:when>
+	                                                      	<c:otherwise>
+	                                                      		<td height="42" align="center" valign="middle"
+	                                                            style="font-size: 11px; letter-spacing: -1px; padding: 3px 0 0 0;">
+	                                                            </td>
+	                                                      	</c:otherwise>
+	                                                      </c:choose>
                                                       </tr>
                                                       <tr>
-                                                         <td height="20" align="center">a2</td>
+                                                        <td height="20" align="center">${sign.signer2}</td>
                                                       </tr>
                                                    </tbody>
                                                 </table>
                                              </td>
-                                             <td style="border-bottom: 1px #eaeaea solid;"></td>
-                                             <td style="border-bottom: 1px #eaeaea solid;"></td>
-                                             <td style="border-bottom: 1px #eaeaea solid;"></td>
+                                             <td style="border-bottom: 1px #eaeaea solid;">
+	                                             <table width="55" class="noborder" cellspacing="0"
+	                                                   cellpadding="0">
+	                                                   <tbody>
+	                                                      <tr>
+	                                                         <c:choose>
+		                                                      	<c:when test="${signline.signok3 == 1}">
+		                                                      		<td height="42" align="center" valign="middle"
+		                                                            background="../resources/img/stamp_bg.gif"
+		                                                            style="background-repeat: no-repeat; color: #d30000; font-size: 11px; letter-spacing: -1px; padding: 3px 0 0 0;">
+		                                                            ${sign.signer3}</td>
+		                                                      	</c:when>
+		                                                      	<c:otherwise>
+		                                                      		<td height="42" align="center" valign="middle"
+		                                                            style="font-size: 11px; letter-spacing: -1px; padding: 3px 0 0 0;">
+		                                                            </td>
+		                                                      	</c:otherwise>
+	                                                      	</c:choose>
+	                                                      </tr>
+	                                                      <tr>
+	                                                         <td height="20" align="center">${sign.signer3}</td>
+	                                                      </tr>
+	                                                   </tbody>
+	                                                </table>
+                                             </td>
+                                             <td style="border-bottom: 1px #eaeaea solid;">
+                                             	<table width="55" class="noborder" cellspacing="0"
+                                                   cellpadding="0">
+                                                   <tbody>
+                                                      <tr>
+                                                         <c:choose>
+	                                                      	<c:when test="${signline.signok4 == 1}">
+	                                                      		<td height="42" align="center" valign="middle"
+	                                                            background="../resources/img/stamp_bg.gif"
+	                                                            style="background-repeat: no-repeat; color: #d30000; font-size: 11px; letter-spacing: -1px; padding: 3px 0 0 0;">
+	                                                            ${sign.signer4}</td>
+	                                                      	</c:when>
+	                                                      	<c:otherwise>
+	                                                      		<td height="42" align="center" valign="middle"
+	                                                            style="font-size: 11px; letter-spacing: -1px; padding: 3px 0 0 0;">
+	                                                            </td>
+	                                                      	</c:otherwise>
+	                                                      </c:choose>
+                                                      </tr>
+                                                      <tr>
+                                                         <td height="20" align="center">${sign.signer4}</td>
+                                                      </tr>
+                                                   </tbody>
+                                                </table>
+                                             </td>
+                                             <td style="border-bottom: 1px #eaeaea solid;">
+                                             	<table width="55" class="noborder" cellspacing="0"
+                                                   cellpadding="0">
+                                                   <tbody>
+                                                      <tr>
+                                                         <c:choose>
+	                                                      	<c:when test="${signline.signok5 == 1}">
+	                                                      		<td height="42" align="center" valign="middle"
+	                                                            background="../resources/img/stamp_bg.gif"
+	                                                            style="background-repeat: no-repeat; color: #d30000; font-size: 11px; letter-spacing: -1px; padding: 3px 0 0 0;">
+	                                                            ${sign.signer5}</td>
+	                                                      	</c:when>
+	                                                      	<c:otherwise>
+	                                                      		<td height="42" align="center" valign="middle"
+	                                                            style="font-size: 11px; letter-spacing: -1px; padding: 3px 0 0 0;">
+	                                                            </td>
+	                                                      	</c:otherwise>
+	                                                      </c:choose>
+                                                      </tr>
+                                                      <tr>
+                                                         <td height="20" align="center">${sign.signer5}</td>
+                                                      </tr>
+                                                   </tbody>
+                                                </table>
+                                             </td>
                                           </tr>
                                           <tr height="20" align="center" bgcolor="#f6f6f6">
                                              <td
@@ -194,24 +282,20 @@
                                                    <br>재
                                                 </b></td>
                                                 <td width="19%"
-                                                   style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;">기안자</td>
-                                                <input type="hidden" name="docproc[]" id="proc0"
-                                                   value="3238">
+                                                   style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;">안자</td>
+                                                 
                                                 <td width="19%"
                                                    style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;"
-                                                   id="dept0">과장 test</td>
-                                                <input type="hidden" name="docproc[]" id="proc1"
-                                                   value="">
+                                                   id="dept0"></td>
+                                                
                                                 <td width="19%"
                                                    style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;"
                                                    id="dept1"></td>
-                                                <input type="hidden" name="docproc[]" id="proc2"
-                                                   value="">
+                                                
                                                 <td width="19%"
                                                    style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;"
                                                    id="dept2"></td>
-                                                <input type="hidden" name="docproc[]" id="proc3"
-                                                   value="">
+                                                 
                                                 <td width="19%"
                                                    style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;"
                                                    id="dept3"></td>
