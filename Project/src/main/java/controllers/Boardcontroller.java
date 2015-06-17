@@ -35,22 +35,19 @@ public class Boardcontroller {
 		List<BoardList> boardList= boardlistdao.getAllBoardList();
 		model.addAttribute("boardList", boardList);
 		
-//		for(BoardList bl : boardList){
-//			System.out.println(bl.toString());
-//		}
+
+		BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
 		
-//		BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
-//		//boarddao.getBoardRecent5(boardcode)
-//		
-//		List<List<Board>> boards = new ArrayList<List<Board>>() ;
-//		
-//		for(BoardList bl : boardList){
-//			System.out.println(bl.toString());
-//			boards.add(boarddao.getBoardRecent5(bl.getBoardcode()));
-//			
-//		}
 		
-//		model.addAttribute("boards", boards);
+		List<List<Board>> boards = new ArrayList<List<Board>>() ;
+		
+		for(BoardList bl : boardList){
+			System.out.println(bl.toString());
+			boards.add(boarddao.getBoardRecent5(bl.getBoardcode()));
+			
+		}
+		
+		model.addAttribute("boards", boards);
 		return "board.BoardMain";
 	}
 }

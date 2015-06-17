@@ -48,7 +48,7 @@
 									<!-- 게시판 내용 -->
 									
 									
-<%-- 									<c:forEach items="${boards}.${bs.index}" var="b" varStatus="bs"> --%>
+									<c:forEach items="${boards.(bs.index)}" var="b" varStatus="bs">
 										<tr bgcolor="#f9f9f9">
 											<td height="23" align="center" style="padding: 2px 0 0 0px; border-bottom: 1px #eaeaea solid;">
 												<img src="../resources/img/icon_notice.gif" border="0" align="absmiddle">
@@ -60,7 +60,7 @@
 											<td align="center" class="date" style="border-bottom: 1px #eaeaea solid;">2015-06-05 11:15</td>
 											<td align="right" class="date" style="padding: 0px 7px 0 0; border-bottom: 1px #eaeaea solid;">15</td>
 										</tr>
-<%-- 									</c:forEach> --%>
+									</c:forEach>
 									</tbody>
 								</table>
 

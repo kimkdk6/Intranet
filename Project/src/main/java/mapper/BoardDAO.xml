@@ -6,13 +6,13 @@
 <mapper namespace="dao.BoardDAO">
 
 	<!-- 해당게시판 글5개 뽑아오기 -->
-	<select id="getBoardRecent5" resultType="dto_vo.Board.Board">
+	<select id="getBoardRecent5" parameterType="Integer" resultType="dto_vo.Board.Board">
 		SELECT
 		BOARDCODE,BOARDNUM,BOARDNOTICE,USERID,BOARDTITLE,BOARDCONTENT,BOARDDATE,BOARDCOUNT,BOARDFILESRC,BOARDREF,BOARDDEPTH,BOARDSTEP
 		FROM (SELECT ROWNUM RN ,
 		BOARDCODE,BOARDNUM,BOARDNOTICE,USERID,BOARDTITLE,BOARDCONTENT,BOARDDATE,BOARDCOUNT,BOARDFILESRC,BOARDREF,BOARDDEPTH,BOARDSTEP
-		FROM (SELECT * FROM Board where boardcode = #{boardcode} ORDER BY
-		BOARDREF DESC , BOARDSTEP ASC) ) WHERE RN BETWEEN 1 AND 5;
+		FROM (SELECT * FROM Board where boardcode = #{boardcode}  ORDER BY
+		BOARDREF DESC , BOARDSTEP ASC) ) WHERE RN BETWEEN 1 AND 5
 	</select>
 
 </mapper>
