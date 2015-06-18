@@ -44,8 +44,8 @@
 				<!-- 결재자 메뉴 띄우는 기능 -->
 				<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 				<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-				<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-				<link rel="stylesheet" href="/resources/demos/style.css"> -->
+				<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
+				
 
 				<!-- ck 에디터 -->
 				<!-- <script type="text/javascript" src="../resources/plugins/ckeditor/ckeditor.js"></script> -->
@@ -2096,186 +2096,7 @@
 																					</table> <!--기능TB END-->
 																				</td>
 																			</tr>
-																			<tr>
-																				<td align="left" valign="top"
-																					style="padding: 10px 10px 5px 10px;"
-																					id="_appref_menu"><div
-																						class="ui-dynatree-container">
-																						<span id="undefinedroot"
-																							class="ui-dynatree-folder ui-dynatree-expanded ui-dynatree-has-children ui-dynatree-lastsib ui-dynatree-exp-el ui-dynatree-ico-ef"
-																							style="display: none;"><span
-																							class="ui-dynatree-expander"></span><span
-																							class="ui-dynatree-checkbox"></span><span
-																							class="ui-dynatree-icon"></span><a href="#"
-																							class="ui-dynatree-title">null</a></span>
-																						<div>
-																							<span id="undefineddept20"
-																								class="ui-dynatree-folder ui-dynatree-has-children ui-dynatree-exp-c ui-dynatree-ico-cf"><span
-																								class="ui-dynatree-expander"></span><span
-																								class="ui-dynatree-checkbox"></span><span
-																								class="ui-dynatree-icon"></span><a href="#"
-																								class="ui-dynatree-title">전무</a></span>
-																							<div style="display: none;">
-																								<span id="undefinedusr2390"
-																									class="ui-dynatree-folder member ui-dynatree-exp-c ui-dynatree-ico-cf"><span
-																									class="ui-dynatree-vline"></span><span
-																									class="ui-dynatree-connector"></span><span
-																									class="ui-dynatree-checkbox"></span><span
-																									class="ui-dynatree-icon"></span><a href="#"
-																									class="ui-dynatree-title">데모2 대표이사 test</a></span>
-																							</div>
-																							<div style="display: none;">
-																								<span id="undefinedusr2485"
-																									class="ui-dynatree-folder ui-dynatree-lastsib member ui-dynatree-exp-cl ui-dynatree-ico-cf"><span
-																									class="ui-dynatree-vline"></span><span
-																									class="ui-dynatree-connector"></span><span
-																									class="ui-dynatree-checkbox"></span><span
-																									class="ui-dynatree-icon"></span><a href="#"
-																									class="ui-dynatree-title">1234 대표이사 test</a></span>
-																							</div>
-																						</div>
-																						<div>
-																							<span id="undefineddept21"
-																								class="ui-dynatree-folder ui-dynatree-has-children ui-dynatree-exp-c ui-dynatree-ico-cf"><span
-																								class="ui-dynatree-expander"></span><span
-																								class="ui-dynatree-checkbox"></span><span
-																								class="ui-dynatree-icon"></span><a href="#"
-																								class="ui-dynatree-title">연구부문</a></span>
-																							<div style="display: none;">
-																								<span id="undefinedusr31"
-																									class="ui-dynatree-folder member ui-dynatree-exp-c ui-dynatree-ico-cf"><span
-																									class="ui-dynatree-vline"></span><span
-																									class="ui-dynatree-connector"></span><span
-																									class="ui-dynatree-checkbox"></span><span
-																									class="ui-dynatree-icon"></span><a href="#"
-																									class="ui-dynatree-title">관리자 부장 test</a></span>
-																							</div>
-																							<div style="display: none;">
-																								<span id="undefinedusr2565"
-																									class="ui-dynatree-folder ui-dynatree-lastsib member ui-dynatree-exp-cl ui-dynatree-ico-cf"><span
-																									class="ui-dynatree-vline"></span><span
-																									class="ui-dynatree-connector"></span><span
-																									class="ui-dynatree-checkbox"></span><span
-																									class="ui-dynatree-icon"></span><a href="#"
-																									class="ui-dynatree-title">dd테스트 부장 test</a></span>
-																							</div>
-																						</div>
-																						<div>
-																							<span id="undefineddept22"
-																								class="ui-dynatree-folder ui-dynatree-has-children ui-dynatree-exp-c ui-dynatree-ico-cf"><span
-																								class="ui-dynatree-expander"></span><span
-																								class="ui-dynatree-checkbox"></span><span
-																								class="ui-dynatree-icon"></span><a href="#"
-																								class="ui-dynatree-title">대표이사</a></span>
-																							<div style="display: none;">
-																								<span id="undefinedusr2400"
-																									class="ui-dynatree-folder member ui-dynatree-exp-c ui-dynatree-ico-cf"><span
-																									class="ui-dynatree-vline"></span><span
-																									class="ui-dynatree-connector"></span><span
-																									class="ui-dynatree-checkbox"></span><span
-																									class="ui-dynatree-icon"></span><a href="#"
-																									class="ui-dynatree-title">데모1 부장 test</a></span>
-																							</div>
-																							<div style="display: none;">
-																								<span id="undefinedusr2838"
-																									class="ui-dynatree-folder ui-dynatree-lastsib member ui-dynatree-exp-cl ui-dynatree-ico-cf"><span
-																									class="ui-dynatree-vline"></span><span
-																									class="ui-dynatree-connector"></span><span
-																									class="ui-dynatree-checkbox"></span><span
-																									class="ui-dynatree-icon"></span><a href="#"
-																									class="ui-dynatree-title">테스터1 부장 test</a></span>
-																							</div>
-																						</div>
-																						<div>
-																							<span id="undefineddept629"
-																								class="ui-dynatree-folder ui-dynatree-has-children ui-dynatree-exp-c ui-dynatree-ico-cf"><span
-																								class="ui-dynatree-expander"></span><span
-																								class="ui-dynatree-checkbox"></span><span
-																								class="ui-dynatree-icon"></span><a href="#"
-																								class="ui-dynatree-title">개발팀</a></span>
-																							<div style="display: none;">
-																								<span id="undefinedusr3233"
-																									class="ui-dynatree-folder member ui-dynatree-exp-c ui-dynatree-ico-cf"><span
-																									class="ui-dynatree-vline"></span><span
-																									class="ui-dynatree-connector"></span><span
-																									class="ui-dynatree-checkbox"></span><span
-																									class="ui-dynatree-icon"></span><a href="#"
-																									class="ui-dynatree-title">장그래 대표이사 test</a></span>
-																							</div>
-																							<div style="display: none;">
-																								<span id="undefinedusr3237"
-																									class="ui-dynatree-folder member ui-dynatree-exp-c ui-dynatree-ico-cf"><span
-																									class="ui-dynatree-vline"></span><span
-																									class="ui-dynatree-connector"></span><span
-																									class="ui-dynatree-checkbox"></span><span
-																									class="ui-dynatree-icon"></span><a href="#"
-																									class="ui-dynatree-title">a1 부장 test</a></span>
-																							</div>
-																							<div style="display: none;">
-																								<span id="undefinedusr2661"
-																									class="ui-dynatree-folder member ui-dynatree-exp-c ui-dynatree-ico-cf"><span
-																									class="ui-dynatree-vline"></span><span
-																									class="ui-dynatree-connector"></span><span
-																									class="ui-dynatree-checkbox"></span><span
-																									class="ui-dynatree-icon"></span><a href="#"
-																									class="ui-dynatree-title">demo 부장 test</a></span>
-																							</div>
-																							<div style="display: none;">
-																								<span id="undefinedusr3232"
-																									class="ui-dynatree-folder member ui-dynatree-exp-c ui-dynatree-ico-cf"><span
-																									class="ui-dynatree-vline"></span><span
-																									class="ui-dynatree-connector"></span><span
-																									class="ui-dynatree-checkbox"></span><span
-																									class="ui-dynatree-icon"></span><a href="#"
-																									class="ui-dynatree-title">임경균 과장 test</a></span>
-																							</div>
-																							<div style="display: none;">
-																								<span id="undefinedusr3238"
-																									class="ui-dynatree-folder member ui-dynatree-exp-c ui-dynatree-ico-cf"><span
-																									class="ui-dynatree-vline"></span><span
-																									class="ui-dynatree-connector"></span><span
-																									class="ui-dynatree-checkbox"></span><span
-																									class="ui-dynatree-icon"></span><a href="#"
-																									class="ui-dynatree-title">a2 과장 test</a></span>
-																							</div>
-																							<div style="display: none;">
-																								<span id="undefinedusr3239"
-																									class="ui-dynatree-folder ui-dynatree-lastsib member ui-dynatree-exp-cl ui-dynatree-ico-cf"><span
-																									class="ui-dynatree-vline"></span><span
-																									class="ui-dynatree-connector"></span><span
-																									class="ui-dynatree-checkbox"></span><span
-																									class="ui-dynatree-icon"></span><a href="#"
-																									class="ui-dynatree-title">a3 대리 test</a></span>
-																							</div>
-																						</div>
-																						<div>
-																							<span id="undefineddept441"
-																								class="ui-dynatree-folder ui-dynatree-has-children ui-dynatree-lastsib ui-dynatree-exp-cl ui-dynatree-ico-cf"><span
-																								class="ui-dynatree-expander"></span><span
-																								class="ui-dynatree-checkbox"></span><span
-																								class="ui-dynatree-icon"></span><a href="#"
-																								class="ui-dynatree-title">지원부문</a></span>
-																							<div style="display: none;">
-																								<span id="undefinedusr2068"
-																									class="ui-dynatree-folder member ui-dynatree-exp-c ui-dynatree-ico-cf"><span
-																									class="ui-dynatree-empty"></span><span
-																									class="ui-dynatree-connector"></span><span
-																									class="ui-dynatree-checkbox"></span><span
-																									class="ui-dynatree-icon"></span><a href="#"
-																									class="ui-dynatree-title">정시현 대표이사 test</a></span>
-																							</div>
-																							<div style="display: none;">
-																								<span id="undefinedusr1532"
-																									class="ui-dynatree-folder ui-dynatree-lastsib member ui-dynatree-exp-cl ui-dynatree-ico-cf"><span
-																									class="ui-dynatree-empty"></span><span
-																									class="ui-dynatree-connector"></span><span
-																									class="ui-dynatree-checkbox"></span><span
-																									class="ui-dynatree-icon"></span><a href="#"
-																									class="ui-dynatree-title">데모사용자 대표이사 test</a></span>
-																							</div>
-																						</div>
-																					</div></td>
-																			</tr>
+																			
 																		</tbody>
 																	</table>
 																</td>
@@ -2293,12 +2114,7 @@
 											<tr>
 												<td height="5"></td>
 											</tr>
-											<tr>
-												<td colspan="2" align="center"><input name="input"
-													type="button" value="닫기"
-													style="padding: 3px 0 0 0; font-size: 11px;"
-													onclick="jQuery('#sel_ref').hide()"></td>
-											</tr>
+											
 										</tbody>
 									</table>
 								</td>
