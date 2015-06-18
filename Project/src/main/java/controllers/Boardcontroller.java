@@ -13,9 +13,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import dao.BoardDAO;
 import dao.BoardListDAO;
+import dao.ReplyDAO;
 import dto_vo.Board.Board;
 import dto_vo.Board.BoardList;
+import dto_vo.Board.Reply;
 import dto_vo.Emp.Emp;
+import dto_vo.Emp.Empinfo;
 
 //import dao.BoardListDAO;
 
@@ -58,16 +61,24 @@ public class Boardcontroller {
 	public String BoardDetail(@RequestParam(value="boardnum") int boardnum, Model model)throws ClassNotFoundException,SQLException{
 		
 		BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
-		
 		BoardListDAO boardlistdao = sqlsession.getMapper(BoardListDAO.class);
+		ReplyDAO replydao = sqlsession.getMapper(ReplyDAO.class);
 		
 		BoardList boardlist = boardlistdao.getBoardList(boardnum);
 		Board board = boarddao.getBoard(boardnum);
-		
-		
+		List<Reply> replylist = replydao.getReply(boardnum);
+		List<Emp> emplist = replydao.getReplyEmp(boardnum);
+		List<Empinfo> empinfolist = replydao.getReplyEmpinfo(boardnum);
+		Emp boardemp = boarddao.getBoardEmp(boardnum);
+		Empinfo boardempinfo = boarddao.getBoardEmpinfo(boardnum);
 		
 		model.addAttribute("board", board);
 		model.addAttribute("boardlist", boardlist);
+		model.addAttribute("replylist", replylist);
+		model.addAttribute("emplist", emplist);
+		model.addAttribute("empinfolist", empinfolist);
+		model.addAttribute("boardemp", boardemp);
+		model.addAttribute("boardempinfo", boardempinfo);
 		return "board.BoardDetail";
 		
 	}

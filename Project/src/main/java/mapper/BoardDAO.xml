@@ -11,12 +11,27 @@
 		BOARDCODE,BOARDNUM,BOARDNOTICE,USERID,BOARDTITLE,BOARDCONTENT,BOARDDATE,BOARDCOUNT,BOARDFILESRC,BOARDREF,BOARDDEPTH,BOARDSTEP
 		FROM (SELECT ROWNUM RN ,
 		BOARDCODE,BOARDNUM,BOARDNOTICE,USERID,BOARDTITLE,BOARDCONTENT,BOARDDATE,BOARDCOUNT,BOARDFILESRC,BOARDREF,BOARDDEPTH,BOARDSTEP
-		FROM (SELECT * FROM Board where boardcode = #{boardcode}  ORDER BY
+		FROM (SELECT * FROM Board where boardcode = #{boardcode} ORDER BY
 		BOARDREF DESC , BOARDSTEP ASC) ) WHERE RN BETWEEN 1 AND 5
 	</select>
 
 	<select id="getBoard" parameterType="Integer" resultType="dto_vo.Board.Board">
-		SELECT * FROM BOARD WHERE BOARDNUM = #{boardnum}
+		SELECT
+		* FROM BOARD WHERE BOARDNUM = #{boardnum}
+	</select>
+
+	<select id="getBoardEmp" parameterType="Integer" resultType="dto_vo.Emp.Emp">
+
+		select * from emp where userid =(select userid from board where
+		boardnum=#{boardnum})
+
+	</select>
+
+	<select id="getBoardEmpinfo" parameterType="Integer" resultType="dto_vo.Emp.Empinfo">
+
+		select * from empinfo where userid =(select userid from board where
+		boardnum=#{boardnum})
+
 	</select>
 
 </mapper>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.ReplyDAO">
+
+
+	<select id="getReply" parameterType="Integer" resultType="dto_vo.Board.Reply">
+		SELECT
+		* FROM Reply WHERE BOARDNUM = #{boardnum} order by REPLYDATE asc
+	</select>
+
+	<select id="getReplyEmp" parameterType="Integer" resultType="dto_vo.Emp.Emp">
+		select emp.userid , EMPNO,
+		EMPPWD,ENAME,EMPTEL,DEPTCODE,TEAMCODE,POSCODE,EMPAPPROVE from reply
+		,emp where reply.userid = emp.userid and reply.boardnum = #{boardnum}
+		order by
+		reply.REPLYDATE asc
+	</select>
+
+	<select id="getReplyEmpinfo" parameterType="Integer" resultType="dto_vo.Emp.Empinfo">
+		select
+		reply.USERID,USERPHOTO,USEREMAIL,BIRTH,USERADDR,USERTEL,USERMOBILE,HIREDATE,FIREDATE
+		from reply ,empinfo where reply.userid = empinfo.userid and
+		reply.boardnum = #{boardnum} order by reply.REPLYDATE asc
+	</select>
+</mapper>

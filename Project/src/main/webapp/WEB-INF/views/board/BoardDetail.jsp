@@ -2,7 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%		//model.addAttribute("board", board);
-			//model.addAttribute("boardlist", boardlist); %>
+			//model.addAttribute("boardlist", boardlist); 
+			//model.addAttribute("replylist", replylist);
+			//model.addAttribute("emplist", emplist);
+			//model.addAttribute("empinfolist", empinfolist);
+	%>
 			
 			
 <td width="" align="left" valign="top">
@@ -92,7 +96,7 @@ function openMailWriteWindow()
             <input type="hidden" name="bbs_id" value="0009">
               <tbody><tr>
                 <td width="520" align="left" class="title_txt" style="padding:5px 0 0 14px;">
-                                    ${boardlist.boardname}
+                                   <b> ${boardlist.boardname}</b>
                                   </td>
                 <td width="" align="right" style="padding:0 12px 0 0;">
                   <!--검색TB START-->
@@ -165,7 +169,7 @@ function openMailWriteWindow()
                   <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tbody><tr>
                                             <td width="55" align="center">
-                        <img width="50" src="/member/usrImageViewer.php?w=105&amp;usriden=admin" style="border:1px solid #CCCCCC;">
+                        <img width="50" src="${boardempinfo.userphoto}" style="border:1px solid #CCCCCC;">
                       </td>
                                             <td width="" style="padding-left:10px;" valign="middle">
                         <div style="height:25px;">
@@ -182,7 +186,7 @@ function openMailWriteWindow()
                         
                          &nbsp;                        <b><font color="#000000">${board.boardtitle}</font></b>
                         </div>
-                                                작성자 : ${board.userid} <br>
+                                                작성자 : ${board.userid}(${boardemp.ename})<br>
                                                 작성일시 : <span class="counter" style="color:#666666;letter-spacing:-1px;">${board.boarddate}</span> <br>
                         조회수 : ${board.boardcount} <br>
                       </td>
@@ -207,33 +211,38 @@ function openMailWriteWindow()
           <tbody><tr>
             <td align="left" valign="top" bgcolor="#f8f8f8" style="padding:13px 20px 12px 20px;">
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
-              <tbody><tr>
+              <tbody>
+              <c:forEach items="${replylist}" var="rp" varStatus="rps">
+              <!-- 댓글시작 -->
+              <tr>
                 <td>
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                    <tbody><tr>
-                  <form name="reply0" method="post" action="rwrite_exe.php"></form>
-                  <input type="hidden" name="work" value="modify">
-                  <input type="hidden" name="bbs_id" value="0009">
-                  <input type="hidden" name="seq" value="8">
-                  <input type="hidden" name="pos" value="1">
-                  <input type="hidden" name="rtn_url" value="/bbs/view.php?bbs_id=0009&amp;seq=8&amp;rtn_url=%2Fbbs%2Flist.php%3Fbbs_id%3D0009">
-                    <td width="55" valign="top" style="padding:5px 5px 5px 5px;" align="center">
-                      <img width="50" src="/member/usrImageViewer.php?w=105&amp;usriden=demo-1" style="border:1px solid #CCCCCC;">
-                    </td>
-                    <td width="" align="left" valign="top" class="m_sp" style="padding:5px 0px 5px 5px;">
-                      <div style="padding:5px 0 5px 0;height:16px;color:#000000;background-color:#f8f8f8;">데모사용자 (demo-1)</div>
-                      <span id="acont0">신납니다</span>
-                      <span id="atext0" style="display:none;"><textarea name="content" style="width:80%;height:100%;overflow:auto;border-top:#cacaca 1px solid;border-bottom:#cacaca 2px solid;border-left:#cacaca 1px solid;border-right:#cacaca 1px solid;">신납니다</textarea></span>
-                    </td>
-                    <td width="110" align="center" valign="top" class="counter" style="padding:3px 0px 3px 0px;letter-spacing:-1px;">
-                      <font color="#999999">2015-06-11 10:22</font>
-                                          </td>
-                  
-                  </tr>
-                  <tr height="2" style="background:url(/img/community/pattern_line.gif);background-repeat:repeat-x;background-position:bottom;"><td colspan="3"></td></tr>
-                                  </tbody></table>
+                	<tbody>
+                		<tr>
+                 			<td width="55" valign="top" style="padding:5px 5px 5px 5px;" align="center">
+<%--                       			<img width="50" src="${empinfo[rps.index].userphoto}" style="border:1px solid #CCCCCC;"> --%>
+                      			<img width="50" src="../resources/img/josuck.jpg" style="border:1px solid #CCCCCC;">
+                    		</td>
+                    		<td width="" align="left" valign="top" class="m_sp" style="padding:5px 0px 5px 5px;">
+                      			<div style="padding:0px 0 0px 0;height:16px;color:#000000;background-color:#f8f8f8;">${rp.userid}(${emplist[rps.index].ename})</div>
+                      			<span id="acont0">${rp.replycontent}</span>
+                      			<span id="atext0" style="display:none;">
+                      				<textarea name="content" style="width:80%;height:100%;overflow:auto;border-top:#cacaca 1px solid;border-bottom:#cacaca 2px solid;border-left:#cacaca 1px solid;border-right:#cacaca 1px solid;">${rp.replycontent}</textarea>
+                      			</span>
+                    		</td>
+                    		<td width="110" align="center" valign="top" class="counter" style="padding:3px 0px 3px 0px;letter-spacing:-1px;">
+                      			<font color="#999999">${rp.replydate}</font>
+                        	</td>
+	                  	</tr>
+                  		<tr height="2" style="background:url(/img/community/pattern_line.gif);background-repeat:repeat-x;background-position:bottom;">
+                  			<td colspan="3"></td>
+                  		</tr>
+                	</tbody>
+                </table>
                 </td>
               </tr>
+              </c:forEach>
+              <!-- 댓글종료 -->
                             <tr>
               <form name="attach" method="post" action="rwrite_exe.php" onsubmit="return (this.content.value.length>0)? true:false"></form>
               <input type="hidden" name="bbs_id" value="0009">
@@ -271,20 +280,20 @@ function openMailWriteWindow()
             <tr>
         <td>
         <!--이전글 다음글TB START-->
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tbody><tr height="30">
-            <td width="110" align="center" bgcolor="#f6f6f6" style="border-bottom:#eaeaea 1px solid;border-top:#eaeaea 1px solid;border-right:#eaeaea 1px solid;padding:3px 0px 0px 0px;">이전글</td>
-            <td width="" align="left" style="border-bottom:#eaeaea 1px solid;border-top:#eaeaea 1px solid;padding:3px 0px 0px 15px;">
-                            첫번째 글입니다.
-                          </td>
-          </tr>
-          <tr height="30">
-            <td width="110" align="center" bgcolor="#f6f6f6" style="border-bottom:#eaeaea 1px solid;border-right:#eaeaea 1px solid;padding:3px 0px 0px 0px;">다음글</td>
-            <td width="" align="left" style="border-bottom:#eaeaea 1px solid;padding:3px 0px 0px 15px;">
-                            <a href="view.php?bbs_id=0009&amp;seq=7&amp;rtn_url=/bbs/list.php?bbs_id=0009">6월 회사 공지 입니다</a>
-                          </td>
-          </tr>
-        </tbody></table>
+<!--         <table width="100%" border="0" cellspacing="0" cellpadding="0"> -->
+<!--           <tbody><tr height="30"> -->
+<!--             <td width="110" align="center" bgcolor="#f6f6f6" style="border-bottom:#eaeaea 1px solid;border-top:#eaeaea 1px solid;border-right:#eaeaea 1px solid;padding:3px 0px 0px 0px;">이전글</td> -->
+<!--             <td width="" align="left" style="border-bottom:#eaeaea 1px solid;border-top:#eaeaea 1px solid;padding:3px 0px 0px 15px;"> -->
+<!--                             첫번째 글입니다. -->
+<!--                           </td> -->
+<!--           </tr> -->
+<!--           <tr height="30"> -->
+<!--             <td width="110" align="center" bgcolor="#f6f6f6" style="border-bottom:#eaeaea 1px solid;border-right:#eaeaea 1px solid;padding:3px 0px 0px 0px;">다음글</td> -->
+<!--             <td width="" align="left" style="border-bottom:#eaeaea 1px solid;padding:3px 0px 0px 15px;"> -->
+<!--                             <a href="view.php?bbs_id=0009&amp;seq=7&amp;rtn_url=/bbs/list.php?bbs_id=0009">6월 회사 공지 입니다</a> -->
+<!--                           </td> -->
+<!--           </tr> -->
+<!--         </tbody></table> -->
         <!--이전글 다음글TB END-->
         </td>
       </tr>
