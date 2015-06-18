@@ -31,7 +31,7 @@
 						<tr>
 							<td width="360" align="center" class="title_txt"
 								style="padding: 5px 0 0 14px; font-size: 30px">기안서</td>
-							<td width="" align="right" style="padding: 0 12px 0 0;">&nbsp;</td>
+							<!-- <td width="" align="right" style="padding: 0 12px 0 0;">&nbsp;</td> -->
 						</tr>
 					</tbody>
 				</table> <!--타이틀TB END-->
@@ -184,8 +184,9 @@
 									cellpadding="0" style="table-layout: fixed;">
 									<tbody>
 										<tr>
-											<td width="95" height="30" align="center" bgcolor="#f6f6f6"
-												class="m_sp"><b>문서번호</b></td>
+											<td width="95" height="30" align="center" bgcolor="#f6f6f6" class="m_sp">
+												<b>문서번호</b>
+											</td>
 											<td width="" style="padding: 0 0 0 12px;"></td>
 											<td width="365" rowspan="3" align="center" valign="top"
 												style="padding: 1;">

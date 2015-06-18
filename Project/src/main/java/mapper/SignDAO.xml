@@ -63,5 +63,5 @@
 		select *
 		from position
 	</select>
-	
+
 </mapper>
