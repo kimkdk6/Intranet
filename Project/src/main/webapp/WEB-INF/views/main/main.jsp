@@ -7,55 +7,8 @@ GregorianCalendar now = new GregorianCalendar();
 String date = String.format("%TF",now);
 %>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>	
-<script type="text/javascript">
-$(function(){
-	$('#checkinAjax').click(function(){
-		alert('asd');
-		
-	});
-});
 
-setInterval("go_time()",1000);
-function go_time(){
-   var now = new Date();
-    hours = now.getHours();
-    minutes = now.getMinutes();
-    seconds = now.getSeconds();
-
-    if (hours > 12){
-        hours -= 12;
-    ampm = "오후 ";
-    }else{
-        ampm = "오전 ";
-    }
-    if (hours < 10){
-        hours = "0" + hours;
-    }
-    if (minutes < 10){
-        minutes = "0" + minutes;
-    }
-    if (seconds < 10){
-        seconds = "0" + seconds;
-    }
-document.getElementById("clock").innerHTML = ampm + hours + ":" + minutes + ":" + seconds;
-setTimeout("go_time()", 1000);
-}
-
-
-
-
-
-</script>
-
-</head>
-<body  onload="go_time()">
-<section class="content-header">
+<section class="content-header" onload="go_time()">
           <h1>
             Se7en
             <small><%=date %></small>
@@ -293,5 +246,4 @@ setTimeout("go_time()", 1000);
             </div>
           </div>
         </section><!-- /.content -->
-</body>
-</html>
+
