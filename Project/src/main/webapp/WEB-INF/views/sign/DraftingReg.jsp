@@ -57,6 +57,7 @@
 					$(function() {
 						$("#dialog").dialog({
 							autoOpen : false,
+							width : 500,
 							show : {
 								effect : "blind",
 								duration : 1000
@@ -68,6 +69,7 @@
 						});
 						$("#dialog1").dialog({
 							autoOpen : false,
+							width : 500,
 							show : {
 								effect : "blind",
 								duration : 1000
@@ -79,6 +81,7 @@
 						});
 						$("#dialog2").dialog({
 							autoOpen : false,
+							width : 500,
 							show : {
 								effect : "blind",
 								duration : 1000
@@ -90,6 +93,7 @@
 						});
 						$("#dialog3").dialog({
 							autoOpen : false,
+							width : 500,
 							show : {
 								effect : "blind",
 								duration : 1000
@@ -169,6 +173,7 @@
 
 					
 				</script>
+				
 				
 					<tbody>
 						<tr>
