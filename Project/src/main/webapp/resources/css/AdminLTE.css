@@ -3056,7 +3056,7 @@ table.text-center th {
 }
 .login-box-body,
 .register-box-body {
-  background: #fff;
+  /* background: #fff; */
   padding: 20px;
   color: #444;
   border-top: 0;

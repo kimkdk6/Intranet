@@ -4,7 +4,7 @@
 
    <script>
 	    $(function() {
-	        $.backstretch("<%=request.getContextPath()%>/resources/img/bg.jpg");
+	        $.backstretch("<%=request.getContextPath()%>/resources/img/bg.jpg", {speed: 500});
 	    });
     </script>
     
