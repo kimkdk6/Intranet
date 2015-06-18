@@ -92,7 +92,7 @@ function openMailWriteWindow()
             <input type="hidden" name="bbs_id" value="0009">
               <tbody><tr>
                 <td width="520" align="left" class="title_txt" style="padding:5px 0 0 14px;">
-                                    ${boardlist.boardname}                                                   <img src="../resources/img/title_divide.gif" align="absmiddle"><span class="stxt" style="color:#727272;font-weight:normal;">게시판 담당자 : 연구부문 관리자 부장 test님</span>
+                                    ${boardlist.boardname}
                                   </td>
                 <td width="" align="right" style="padding:0 12px 0 0;">
                   <!--검색TB START-->
@@ -169,11 +169,22 @@ function openMailWriteWindow()
                       </td>
                                             <td width="" style="padding-left:10px;" valign="middle">
                         <div style="height:25px;">
-                        <img src="../resources/img/icon_notice.gif" border="0" align="absmiddle"> &nbsp;                        <b><font color="#000000">체육대회 공지</font></b>
+                        
+                        <c:choose>
+                        
+                        	<c:when test="${board.boardnotice==1}">
+                        		<img src="../resources/img/icon_notice.gif" border="0" align="absmiddle">
+                        	</c:when>
+                        	<c:otherwise>
+                        		${board.boardnum}번글
+                        	</c:otherwise>
+                        </c:choose>
+                        
+                         &nbsp;                        <b><font color="#000000">${board.boardtitle}</font></b>
                         </div>
-                                                작성자 : ${board.board} <br>
-                                                작성일시 : <span class="counter" style="color:#666666;letter-spacing:-1px;">2015-06-05 11:15:04</span> <br>
-                        조회수 : 19 <br>
+                                                작성자 : ${board.userid} <br>
+                                                작성일시 : <span class="counter" style="color:#666666;letter-spacing:-1px;">${board.boarddate}</span> <br>
+                        조회수 : ${board.boardcount} <br>
                       </td>
                     </tr>
                   </tbody></table>
@@ -186,7 +197,7 @@ function openMailWriteWindow()
         </td>
       </tr>
             <tr>
-        <td valign="top" style="padding:13px 20px 20px 25px;" id="bbs_content">체육대회 공지</td>
+        <td valign="top" style="padding:13px 20px 20px 25px;" id="bbs_content">${board.boardcontent}</td>
       </tr>
 
             <tr>
@@ -246,17 +257,17 @@ function openMailWriteWindow()
         <!--댓글TB END-->
         </td>
       </tr>
-                  <tr>
-        <td>
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tbody><tr height="30">
-            <td width="110" align="center" bgcolor="#f6f6f6" style="border-top:#eaeaea 1px solid;border-right:#eaeaea 1px solid;padding:3px 0px 0px 0px;">조회자 목록</td>
-            <td width="" align="left" style="border-top:#eaeaea 1px solid;padding:10px 0px 10px 15px;">
-              2014-06-08 19:29:57 교무실 관리자 교원<br>2015-06-05 11:15:51 연구부문 관리자 부장 test<br>2015-06-08 17:17:30 연구부문 관리자 부장 test<br>2015-06-10 14:41:54 연구부문 관리자 부장 test<br>2015-06-10 14:42:14 연구부문 관리자 부장 test<br>2015-06-10 16:00:56 연구부문 관리자 부장 test<br>2015-06-10 16:05:05 연구부문 관리자 부장 test<br>2015-06-10 16:05:37 지원부문 데모사용자 대표이사 test<br>2015-06-10 16:05:38 연구부문 관리자 부장 test<br>2015-06-11 10:20:56 지원부문 데모사용자 대표이사 test<br>2015-06-11 10:21:20 지원부문 데모사용자 대표이사 test<br>2015-06-11 10:22:41 지원부문 데모사용자 대표이사 test<br>2015-06-11 14:32:12 연구부문 관리자 부장 test<br>2015-06-11 17:27:12 연구부문 관리자 부장 test<br>2015-06-12 13:24:29 연구부문 관리자 부장 test<br>2015-06-15 15:23:02 연구부문 관리자 부장 test<br>2015-06-17 10:53:10 연구부문 관리자 부장 test<br>2015-06-17 18:39:01 개발팀 a2 과장 test<br>2015-06-18 10:01:22 연구부문 관리자 부장 test            </td>
-          </tr>
-        </tbody></table>
-        </td>
-      </tr>
+<!--                   <tr> -->
+<!--         <td> -->
+<!--         <table width="100%" border="0" cellspacing="0" cellpadding="0"> -->
+<!--           <tbody><tr height="30"> -->
+<!--             <td width="110" align="center" bgcolor="#f6f6f6" style="border-top:#eaeaea 1px solid;border-right:#eaeaea 1px solid;padding:3px 0px 0px 0px;">조회자 목록</td> -->
+<!--             <td width="" align="left" style="border-top:#eaeaea 1px solid;padding:10px 0px 10px 15px;"> -->
+<!--               2014-06-08 19:29:57 교무실 관리자 교원<br>2015-06-05 11:15:51 연구부문 관리자 부장 test<br>2015-06-08 17:17:30 연구부문 관리자 부장 test<br>2015-06-10 14:41:54 연구부문 관리자 부장 test<br>2015-06-10 14:42:14 연구부문 관리자 부장 test<br>2015-06-10 16:00:56 연구부문 관리자 부장 test<br>2015-06-10 16:05:05 연구부문 관리자 부장 test<br>2015-06-10 16:05:37 지원부문 데모사용자 대표이사 test<br>2015-06-10 16:05:38 연구부문 관리자 부장 test<br>2015-06-11 10:20:56 지원부문 데모사용자 대표이사 test<br>2015-06-11 10:21:20 지원부문 데모사용자 대표이사 test<br>2015-06-11 10:22:41 지원부문 데모사용자 대표이사 test<br>2015-06-11 14:32:12 연구부문 관리자 부장 test<br>2015-06-11 17:27:12 연구부문 관리자 부장 test<br>2015-06-12 13:24:29 연구부문 관리자 부장 test<br>2015-06-15 15:23:02 연구부문 관리자 부장 test<br>2015-06-17 10:53:10 연구부문 관리자 부장 test<br>2015-06-17 18:39:01 개발팀 a2 과장 test<br>2015-06-18 10:01:22 연구부문 관리자 부장 test            </td> -->
+<!--           </tr> -->
+<!--         </tbody></table> -->
+<!--         </td> -->
+<!--       </tr> -->
             <tr>
         <td>
         <!--이전글 다음글TB START-->
