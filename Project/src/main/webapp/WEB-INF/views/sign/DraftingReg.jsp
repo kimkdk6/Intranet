@@ -62,6 +62,7 @@
 								effect : "blind",
 								duration : 1000
 							},
+							
 							hide : {
 								/* effect : "explode", */
 								duration : 1000
@@ -143,7 +144,6 @@
 					});
 					/* 결재자 트리 띄우는 기능 끝*/
 
-					
 					/* ck 에디터 기능 */
 					$(function() {
 						CKEDITOR
@@ -170,8 +170,6 @@
 
 					});
 					/* ck 에디터 기능 끝*/
-
-					
 				</script>
 				
 				
@@ -232,7 +230,7 @@
       																								<c:if test="${p.poscode == e.poscode}">
       																									<i class="fa fa-fw fa-user-plus"></i> 
 	      																								${t.teamname} ${e.ename} ${p.posname }
-	      																								<input type="button" value="지정" onclick="check()"><hr>
+	      																								<input type="submit" value="지정" onclick="check()"><hr>
       																								</c:if>
       																							</c:forEach>
       																						</c:if>
