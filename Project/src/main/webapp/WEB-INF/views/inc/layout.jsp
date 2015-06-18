@@ -41,7 +41,7 @@
     <![endif]-->
     
  <!-- jQuery 2.1.4 -->
-<	 <script src="<%=request.getContextPath() %>/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+	 <script src="<%=request.getContextPath() %>/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 
  <!-- jQuery UI 1.11.4 -->
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
