@@ -4,7 +4,10 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.EmpDAO">
 	<select id="isMember" resultType="dto_vo.Emp.Emp">
-		SELECT EMPPWD FROM EMP WHERE USERID=#{userid}
+		SELECT * FROM EMP WHERE USERID=#{userid}
+	</select>
+	<select id="isMemberInfo" resultType="dto_vo.Emp.Empinfo">
+		SELECT * FROM EMPINFO WHERE USERID=#{userid}
 	</select>
 	<insert id="joinMember">
 		INSERT INTO EMP VALUES(#{userid}, emp_empno.nextval, #{emppwd}, #{ename}, '010-1234-5678', 100, 1001, 10, 0)

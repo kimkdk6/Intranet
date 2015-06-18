@@ -1,7 +1,13 @@
+<%@page import="dto_vo.Emp.Empinfo"%>
+<%@page import="dto_vo.Emp.Emp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%  String command = request.getServletPath(); %>
+<%  
+	String command = request.getServletPath();
+	Emp emp = (Emp)session.getAttribute("emp");
+	Empinfo empinfo = (Empinfo)session.getAttribute("empinfo");
+%>
       <header class="main-header">
         <!-- Logo -->
         <a href="<%=request.getContextPath() %>/main/main.htm" class="logo">
@@ -210,14 +216,14 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="<%=request.getContextPath() %>/resources/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
-                  <span class="hidden-xs">Alexander Pierce</span>
+                  <span class="hidden-xs"><%= emp.getEname() %></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
                     <img src="<%=request.getContextPath() %>/resources/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
                     <p>
-                      Alexander Pierce - Web Developer
+                      <%= emp.getEname() %> - <%= empinfo.getUseremail() %>
                       <small>Member since Nov. 2012</small>
                     </p>
                   </li>
