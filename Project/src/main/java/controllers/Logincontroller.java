@@ -33,31 +33,33 @@ public class Logincontroller {
 	@RequestMapping(value="index.htm", method=RequestMethod.POST)
 	public String login(Emp emp, Model model) throws ClassNotFoundException, SQLException 
 	{
-		/*
+		
 		System.out.println("id : " + emp.getUserid());
 		System.out.println("pwd : " + emp.getEmppwd());
-		*/
+		
 		String inputPwd = emp.getEmppwd();
 		
+			
 		EmpDAO empDao = sqlSession.getMapper(EmpDAO.class);
 		emp = empDao.isMember(emp);
-		
+			
+		/*System.out.println(emp.getUserid());
 		System.out.println(emp.getEmppwd());
-		System.out.println(emp.getEname());
-		
-		if( inputPwd.equals(emp.getEmppwd()))
-		{
+		System.out.println(emp.getEname());*/
+			
+		if ( emp != null && inputPwd.equals( emp.getEmppwd() ) ) {
 			MainDAO recently = sqlSession.getMapper(MainDAO.class);
 			
 			List<Board> RecentlyNotice= recently.recentlyNotice();
 			model.addAttribute("RecentlyNotice", RecentlyNotice);
-			
+				
 			List<Board> RecentlyBoard= recently.recentlyBoard();
 			model.addAttribute("RecentlyBoard", RecentlyBoard);
-
+			
 			return "main.main";
-		} else {
-			return "login.login";
+		} else { 
+			
+			return "login.loginFail";
 		}
-	} 
+	}	
 }
