@@ -42,8 +42,10 @@
     
          <%-- <script src="<%=request.getContextPath() %>/resources/plugins/jQuery/jquery-2.1.4.js"></script>	  --%>
  <!-- jQuery 2.1.4 -->
-	 <script src="<%=request.getContextPath() %>/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <!-- jQuery UI 1.11.2 -->
+<%-- 	 <script src="<%=request.getContextPath() %>/resources/plugins/jQuery/jQuery-.1.4.min.js"></script>
+ --%>    
+ <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+ <!-- jQuery UI 1.11.2 -->
     <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
@@ -81,45 +83,7 @@
     <!-- AdminLTE for demo purposes -->
     <script src="<%=request.getContextPath() %>/resources/js/demo.js" type="text/javascript"></script>
     
-    <script type="text/javascript">
-$(function(){
-	$('#checkinAjax').click(function(){
-		alert('asd');
-		
-	});
-});
-
-setInterval("go_time()",1000);
-function go_time(){
-   var now = new Date();
-    hours = now.getHours();
-    minutes = now.getMinutes();
-    seconds = now.getSeconds();
-
-    if (hours > 12){
-        hours -= 12;
-    ampm = "오후 ";
-    }else{
-        ampm = "오전 ";
-    }
-    if (hours < 10){
-        hours = "0" + hours;
-    }
-    if (minutes < 10){
-        minutes = "0" + minutes;
-    }
-    if (seconds < 10){
-        seconds = "0" + seconds;
-    }
-document.getElementById("clock").innerHTML = ampm + hours + ":" + minutes + ":" + seconds;
-setTimeout("go_time()", 1000);
-}
-
-
-
-
-
-</script>
+   
   </head>
   <body class="skin-blue sidebar-mini">
     <div class="wrapper">

@@ -6,8 +6,44 @@
 GregorianCalendar now = new GregorianCalendar();
 String date = String.format("%TF",now);
 %>
+  <script src="<%=request.getContextPath() %>/resources/plugins/jQuery/jQuery-.1.4.min.js"></script>
 
+ <script type="text/javascript">
+$(function(){
+	console.log('asd');
+	$('#checkinAjax').click(function(){
+		alert('asd');
+		
+	});
+});
 
+setInterval("go_time()",1000);
+function go_time(){
+   var now = new Date();
+    hours = now.getHours();
+    minutes = now.getMinutes();
+    seconds = now.getSeconds();
+
+    if (hours > 12){
+        hours -= 12;
+    ampm = "오후 ";
+    }else{
+        ampm = "오전 ";
+    }
+    if (hours < 10){
+        hours = "0" + hours;
+    }
+    if (minutes < 10){
+        minutes = "0" + minutes;
+    }
+    if (seconds < 10){
+        seconds = "0" + seconds;
+    }
+document.getElementById("clock").innerHTML = ampm + hours + ":" + minutes + ":" + seconds;
+setTimeout("go_time()", 1000);
+}
+
+</script>
 <section class="content-header" onload="go_time()">
           <h1>
             Se7en
@@ -62,7 +98,7 @@ String date = String.format("%TF",now);
                       <td height="8" colspan="2"></td>
                       </tr>
                       <tr >
-                      <td style="padding-right: 20px;"><input type="button" id="checkinAjax" ><img  src="<%=request.getContextPath() %>/resources/img/bt_checkout.gif"> </td>
+                      <td style="padding-right: 20px;"><input type="button" id="checkoutAjax" ><img  src="<%=request.getContextPath() %>/resources/img/bt_checkout.gif"> </td>
                      	<td style="border:2px solid #e3e3e3; width:100px; padding:0px 0px 0px 20px;"><h3 id="chechout"></h3></td>
                       </tr>
                        <tr>
