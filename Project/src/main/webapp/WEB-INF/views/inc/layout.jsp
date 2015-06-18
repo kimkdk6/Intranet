@@ -44,7 +44,7 @@
  <!-- jQuery 2.1.4 -->
 <%-- 	 <script src="<%=request.getContextPath() %>/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
  --%>    
- <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+
  
  <!-- ck editor -->
  <script type="text/javascript" src="<%=request.getContextPath() %>/resources/plugins/ckeditor/ckeditor.js"></script>
@@ -88,7 +88,7 @@
     <!-- AdminLTE for demo purposes -->
     <script src="<%=request.getContextPath() %>/resources/js/demo.js" type="text/javascript"></script>
     
-   
+   <script src="<%=request.getContextPath() %>/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
   </head>
   <body class="skin-blue sidebar-mini">
     <div class="wrapper">
