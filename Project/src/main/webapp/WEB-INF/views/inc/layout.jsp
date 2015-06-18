@@ -79,8 +79,8 @@
     <script src='<%=request.getContextPath() %>/resources/plugins/fastclick/fastclick.min.js'></script>
     <!-- AdminLTE App -->
     <script src="<%=request.getContextPath() %>/resources/js/app.min.js" type="text/javascript"></script>    
-      <!-- Morris.js charts -->   
-<script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+      <!-- Morris.js charts , jQuery.js 와 충돌문제로 아래 삽입-->   
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     
    
     
