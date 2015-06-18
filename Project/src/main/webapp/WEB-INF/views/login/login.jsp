@@ -10,10 +10,12 @@
     
 	<div class="login-box">
 		<div class="login-logo">
-			Se<b>7</b>en International</a>
+			Se<b>7</b>en International</a><br/>
+			
 		</div>
 		<!-- /.login-logo -->
 		<div class="login-box-body">
+			
 			<form action="" method="post">
 				<div class="form-group has-feedback">
 					<input type="text" name="userid" class="form-control" placeholder="Id" /> <span
