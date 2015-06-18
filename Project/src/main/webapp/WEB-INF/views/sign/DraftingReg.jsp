@@ -42,16 +42,15 @@
 			<td align="center" valign="top" style="padding: 19px 15px 19px 15px;">
 			
 				<!-- 결재자 메뉴 띄우는 기능 -->
-				<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+				<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 				<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 				<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-				<link rel="stylesheet" href="/resources/demos/style.css">
+				<link rel="stylesheet" href="/resources/demos/style.css"> -->
 
 				<!-- ck 에디터 -->
-				<script type="text/javascript" src="../resources/plugins/ckeditor/ckeditor.js"></script>
+				<!-- <script type="text/javascript" src="../resources/plugins/ckeditor/ckeditor.js"></script> -->
 				<!-- ck 에디터 끝 -->
 				
-				<script type="text/javascript" src="/js/upload.js"></script>
 				<script language="javascript">
 					
 					/* 결재자 메뉴 띄우는 기능 */
