@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import dao.BoardDAO;
 import dao.BoardListDAO;
@@ -51,6 +52,24 @@ public class Boardcontroller {
 		
 		model.addAttribute("boards", boards);
 		return "board.BoardMain";
+	}
+	
+	@RequestMapping(value = "BoardDetail.htm")
+	public String BoardDetail(@RequestParam(value="boardnum") int boardnum, Model model)throws ClassNotFoundException,SQLException{
+		
+		BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
+		
+		BoardListDAO boardlistdao = sqlsession.getMapper(BoardListDAO.class);
+		
+		BoardList boardlist = boardlistdao.getBoardList(boardnum);
+		Board board = boarddao.getBoard(boardnum);
+		
+		
+		
+		model.addAttribute("board", board);
+		model.addAttribute("boardlist", boardlist);
+		return "board.BoardDetail";
+		
 	}
 }
 

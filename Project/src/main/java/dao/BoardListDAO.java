@@ -10,4 +10,6 @@ import dto_vo.Sign.Sign;
 public interface BoardListDAO {
 	
 	public List<BoardList> getAllBoardList() throws ClassNotFoundException, SQLException;
+	
+	public BoardList getBoardList(int boardcode) throws ClassNotFoundException, SQLException;
 }

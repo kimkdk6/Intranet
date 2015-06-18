@@ -8,5 +8,10 @@
 	<select id="getAllBoardList" resultType="dto_vo.Board.BoardList">
 		select * from BOARDLIST
 	</select>
-	
+
+
+	<select id="getBoardList" parameterType="Integer" resultType="dto_vo.Board.BoardList">
+		select * from boardlist where boardcode = (select boardcode from board
+		where boardnum=#{boardnum})
+	</select>
 </mapper>

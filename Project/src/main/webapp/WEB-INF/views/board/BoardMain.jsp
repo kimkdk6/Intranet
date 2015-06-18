@@ -21,7 +21,7 @@
 									<tbody>
 										<tr>
 											<td width="90%" style="font-weight: bold; letter-spacing: -1px; padding: 0 0 0 3px;"><img src="../resources/img/icon_4.gif" align="absmiddle"> <a class="title_txt" href="/bbs/list.php?bbs_id=0009">${bl.boardname}</a></td>
-											<td width="10%" align="right" style="padding: 0 6px 0 0;"><a  	href="/bbs/list.php?bbs_id=0009"><img src="../resources/img/bt_more.gif"></a></td>
+											<td width="10%" align="right" style="padding: 0 6px 0 0;"><a  	href="${pageContext.request.contextPath}/board/BoardList.htm?boardcode=${bl.boardcode}"><img src="../resources/img/bt_more.gif"></a></td>
 										</tr>
 									</tbody>
 								</table>
@@ -62,7 +62,7 @@
 												</c:choose>	
 											</td>
 											<td style="padding: 2px 0 0 7px; border-bottom: 1px #eaeaea solid;">
-												<a href="view.php?bbs_id=0009&amp;seq=8&amp;rtn_url=/bbs/list.php?bbs_id=0009">${b.boardtitle}</a>
+												<a href="${pageContext.request.contextPath}/board/BoardDetail.htm?boardnum=${b.boardnum}">${b.boardtitle}</a>
 											</td>
 											<td align="left" style="padding: 2px 7px 0 7px; border-bottom: 1px #eaeaea solid;">${b.userid}</td>
 											<td align="center" class="date" style="border-bottom: 1px #eaeaea solid;">${b.boarddate}</td>

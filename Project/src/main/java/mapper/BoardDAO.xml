@@ -15,4 +15,8 @@
 		BOARDREF DESC , BOARDSTEP ASC) ) WHERE RN BETWEEN 1 AND 5
 	</select>
 
+	<select id="getBoard" parameterType="Integer" resultType="dto_vo.Board.Board">
+		SELECT * FROM BOARD WHERE BOARDNUM = #{boardnum}
+	</select>
+
 </mapper>
