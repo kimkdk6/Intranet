@@ -170,13 +170,6 @@
 					
 				</script>
 				
-					<style>
-  						.ui-menu { width: 200px; }
-  						.ui-widget-header { padding: 0.2em; }
-  					</style>
-					
-					
-					
 					<tbody>
 						<tr>
 							<td align="center" valign="top">
@@ -252,7 +245,7 @@
 																			전무 <input type="button" value="지정" onclick="check()">
   																		</div> -->
 																	</div>
-																	<input type="button" value="완료" onclick="check()">
+																	<!-- <input type="button" value="완료" onclick="check()"> -->
    																</div>
 
    																<button id="opener">지정</button>
