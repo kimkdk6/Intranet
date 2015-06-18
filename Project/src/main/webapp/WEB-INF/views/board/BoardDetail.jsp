@@ -92,8 +92,6 @@ function openMailWriteWindow()
             <td height="40">
             <!--타이틀TB START-->
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
-            <form name="searchBBS" method="post" action="/bbs/list.php"></form>
-            <input type="hidden" name="bbs_id" value="0009">
               <tbody><tr>
                 <td width="520" align="left" class="title_txt" style="padding:5px 0 0 14px;">
                                    <b> ${boardlist.boardname}</b>
@@ -169,7 +167,8 @@ function openMailWriteWindow()
                   <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tbody><tr>
                                             <td width="55" align="center">
-                        <img width="50" src="${boardempinfo.userphoto}" style="border:1px solid #CCCCCC;">
+<%--                         <img width="50" src="${boardempinfo.userphoto}" style="border:1px solid #CCCCCC;"> --%>
+                        <img width="50" src="../resources/img/josuck.jpg" style="border:1px solid #CCCCCC;">
                       </td>
                                             <td width="" style="padding-left:10px;" valign="middle">
                         <div style="height:25px;">
