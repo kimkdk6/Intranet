@@ -54,6 +54,11 @@
 <link
 	href="<%=request.getContextPath()%>/resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css"
 	rel="stylesheet" type="text/css" />
+	
+	<!-- backstretch -->
+	 <script src="<%=request.getContextPath() %>/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+	 <script src="<%=request.getContextPath()%>/resources/js/jquery.backstretch.min.js"></script>
+
 </head>
 <body class="skin-blue sidebar-mini">
 	<!-- Content Header (Page header) -->
