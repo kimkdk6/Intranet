@@ -9,11 +9,19 @@ String date = String.format("%TF",now);
 
  <script type="text/javascript">
 $(function(){
-	console.log('asd');
+
 	$('#checkinAjax').click(function(){
-		alert('asd');
-		
-	});
+			$.ajax({
+				url:"<%=request.getContextPath() %>/attendance/checkin.htm",  //요청 URL
+				type:"get",           //전송 타입
+				dataType:"html",
+				success : function(data){
+					console.log(data);
+					document.getElementById("checkin").innerHTML = data;
+				},
+				error :function(data){alert("error발생");}
+			});
+		});
 });
 
 setInterval("go_time()",1000);
