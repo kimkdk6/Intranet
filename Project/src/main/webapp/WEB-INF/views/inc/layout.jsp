@@ -31,7 +31,7 @@
     <!-- bootstrap wysihtml5 - text editor -->
     <link href="<%=request.getContextPath() %>/resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
 
-	
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -40,18 +40,12 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     
-         <%-- <script src="<%=request.getContextPath() %>/resources/plugins/jQuery/jquery-2.1.4.js"></script>	  --%>
  <!-- jQuery 2.1.4 -->
-<%-- 	 <script src="<%=request.getContextPath() %>/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
- --%>    
+<	 <script src="<%=request.getContextPath() %>/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 
- 
- <!-- ck editor -->
- <script type="text/javascript" src="<%=request.getContextPath() %>/resources/plugins/ckeditor/ckeditor.js"></script>
- 
  <!-- jQuery UI 1.11.4 -->
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
       $.widget.bridge('uibutton', $.ui.button);
@@ -59,13 +53,14 @@
     <!-- Bootstrap 3.3.2 JS -->
     <script src="<%=request.getContextPath() %>/resources/js/bootstrap.min.js" type="text/javascript"></script>    
     <!-- Morris.js charts -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="<%=request.getContextPath() %>/resources/plugins/morris/morris.min.js" type="text/javascript"></script>
     <!-- Sparkline -->
     <script src="<%=request.getContextPath() %>/resources/plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
     <!-- jvectormap -->
     <script src="<%=request.getContextPath() %>/resources/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
     <script src="<%=request.getContextPath() %>/resources/plugins/jvectormap/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
+    <!-- ChartJS 1.0.1 -->
+    <script src="<%=request.getContextPath() %>/resources/plugins/chartjs/Chart.min.js" type="text/javascript"></script>
     <!-- jQuery Knob Chart -->
     <script src="<%=request.getContextPath() %>/resources/plugins/knob/jquery.knob.js" type="text/javascript"></script>
     <!-- daterangepicker -->
@@ -81,14 +76,13 @@
     <script src='<%=request.getContextPath() %>/resources/plugins/fastclick/fastclick.min.js'></script>
     <!-- AdminLTE App -->
     <script src="<%=request.getContextPath() %>/resources/js/app.min.js" type="text/javascript"></script>    
+      <!-- Morris.js charts -->   
+<script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="<%=request.getContextPath() %>/resources/js/pages/dashboard.js" type="text/javascript"></script>    
+   
     
     <!-- AdminLTE for demo purposes -->
     <script src="<%=request.getContextPath() %>/resources/js/demo.js" type="text/javascript"></script>
-    
-   <script src="<%=request.getContextPath() %>/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
   </head>
   <body class="skin-blue sidebar-mini">
     <div class="wrapper">

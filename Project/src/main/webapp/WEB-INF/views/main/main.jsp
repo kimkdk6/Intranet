@@ -6,7 +6,6 @@
 GregorianCalendar now = new GregorianCalendar();
 String date = String.format("%TF",now);
 %>
-<script src="<%=request.getContextPath() %>/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 
  <script type="text/javascript">
 $(function(){
