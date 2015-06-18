@@ -37,7 +37,7 @@ public class Signcontroller {
 		List<Sign> unsignlist = signdao.getUnSigns("m6");
 		List<Sign> sendsignlist = signdao.getSendSigns("m4");
 		System.out.println(unsignlist.toString());
-		
+
 		model.addAttribute("unsignlist", unsignlist);
 		model.addAttribute("sendsignlist", sendsignlist);
 		return "sign.SignMain";
@@ -45,7 +45,8 @@ public class Signcontroller {
 
 	// 기안서 작성 페이지 보기
 	@RequestMapping(value = "DraftingReg.htm", method = RequestMethod.GET)
-	public String DraftingReg(Model model) throws ClassNotFoundException, SQLException {
+	public String DraftingReg(Model model) throws ClassNotFoundException,
+			SQLException {
 		System.out.println("기안서 작성 페이지 열람");
 		// 부서
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
@@ -56,43 +57,53 @@ public class Signcontroller {
 		List<Emp> emp = signdao.getEmps();
 		// 직급
 		List<Position> pos = signdao.getPositions();
-		
+
 		model.addAttribute("dept", dept);
 		model.addAttribute("emp", emp);
 		model.addAttribute("team", team);
 		model.addAttribute("pos", pos);
-		
+
 		return "sign.DraftingReg";
 	}
 
 	// 기안서 상세 페이지 보기
 	@RequestMapping(value = "DraftingDetail.htm", method = RequestMethod.GET)
-	public String DraftingDetail(String docnum, Model model) throws ClassNotFoundException, SQLException {
+	public String DraftingDetail(String docnum, Model model)
+			throws ClassNotFoundException, SQLException {
 		System.out.println("기안서 상세페이지 보기");
-		 
+
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
 		// 결재 문서(기본 내용)
 		Sign sign = signdao.getSign(docnum);
 		// 기안서
 		Draftingdoc draftingdoc = signdao.getDraftingdoc(docnum);
-		// 결재라인 
+		// 결재라인
 		Signline signline = signdao.getSignline(docnum);
-		
+
 		model.addAttribute("sign", sign);
 		model.addAttribute("draftingdoc", draftingdoc);
 		model.addAttribute("signline", signline);
 		return "sign.DraftingDetail";
 	}
 
+	// 기안서 상세 페이지 보기
+	@RequestMapping(value = "PrintPage.htm", method = RequestMethod.GET)
+	public String PrintPage(String docnum, Model model)
+			throws ClassNotFoundException, SQLException {
+		System.out.println("프린트 페이지 보기");
+
+		return "sign.PrintPage";
+	}
+
 	// 출장 결과 페이지 상세 보기
 	@RequestMapping(value = "BizTripRepDetail.htm", method = RequestMethod.GET)
-	public String BizTripRepDetail(String docnum, Model model) throws ClassNotFoundException, SQLException {
+	public String BizTripRepDetail(String docnum, Model model)
+			throws ClassNotFoundException, SQLException {
 		System.out.println("출장 결과 페이지 상세보기");
-		
+
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
 		Sign sign = signdao.getSign(docnum);
-		 
-		
+
 		return "sign.BizTripRepDetail";
 	}
 }

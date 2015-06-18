@@ -2,6 +2,16 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
+
+<script language="javascript">
+	function _docprint(docmgno)
+	{
+	    window.open('PrintPage.htm?docnum='+docmgno, "PrintPage", 
+	    		'toolbar=0,location=0,directories=0, status=0,menubar=0,scrollbars=yes,resizable=1,width=800,height=600');
+	}
+
+</script>
+
 <section class="content-header">
 	<h1>
 		전자결재 문서 보기 <small>전자결재 문서 보기 페이지</small>
@@ -39,8 +49,9 @@
                               <tr>
                                  <td><a href=""><img src="/img/approval/bt_list.gif"></a></td>
                                  <td width="5"></td>
-                                 <td><a href="javascript:_docprint('9759')"><img
-                                       src="/img/approval/bt_print.gif"></a></td>
+                                 <td><a href="javascript:_docprint('9759')">
+                                 <button type="button" class="btn btn-info pull-right">print</button>
+                                 </a></td>
                               </tr>
                            </tbody>
                         </table>
