@@ -42,7 +42,7 @@
     
          <%-- <script src="<%=request.getContextPath() %>/resources/plugins/jQuery/jquery-2.1.4.js"></script>	  --%>
  <!-- jQuery 2.1.4 -->
-<%-- 	 <script src="<%=request.getContextPath() %>/resources/plugins/jQuery/jQuery-.1.4.min.js"></script>
+<%-- 	 <script src="<%=request.getContextPath() %>/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
  --%>    
  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
  <!-- jQuery UI 1.11.2 -->

@@ -6,7 +6,7 @@
 GregorianCalendar now = new GregorianCalendar();
 String date = String.format("%TF",now);
 %>
-  <script src="<%=request.getContextPath() %>/resources/plugins/jQuery/jQuery-.1.4.min.js"></script>
+<script src="<%=request.getContextPath() %>/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 
  <script type="text/javascript">
 $(function(){
@@ -98,7 +98,7 @@ setTimeout("go_time()", 1000);
                       <td height="8" colspan="2"></td>
                       </tr>
                       <tr >
-                      <td style="padding-right: 20px;"><input type="button" id="checkoutAjax" ><img  src="<%=request.getContextPath() %>/resources/img/bt_checkout.gif"> </td>
+                      <td style="padding-right: 20px;"><img  src="<%=request.getContextPath() %>/resources/img/bt_checkout.gif"> </td>
                      	<td style="border:2px solid #e3e3e3; width:100px; padding:0px 0px 0px 20px;"><h3 id="chechout"></h3></td>
                       </tr>
                        <tr>
@@ -109,8 +109,8 @@ setTimeout("go_time()", 1000);
                       		<b>&nbsp&nbsp&nbsp&nbsp&nbsp지각사유 :</b>
                       		
                       	</td>
-                      <!-- 	<td style="border:2px solid #e3e3e3; width:50px; padding:0px 0px 0px 20px;">asdasd</td> -->
-                      	<td><input type="text" name="Lateness"	class="" style="border:2px solid #e3e3e3; width:100px; padding:0px 0px 0px 20px;">
+                       	<td style="border:2px solid #e3e3e3; width:50px; padding:0px 0px 0px 20px;">asdasd</td> 
+                      	
                       	<td style="padding-left: 5px;"><button class="btn btn-block btn-default btn-sm" style="padding-top: 2px; padding-bottom: 2px;">저장</button></td>
                       </tr>
                       </table>
