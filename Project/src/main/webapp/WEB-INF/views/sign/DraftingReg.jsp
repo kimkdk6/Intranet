@@ -483,7 +483,18 @@
       																		<div>
       																			<c:forEach items="${emp}" var="e">
       																				<c:if test="${d.deptcode == e.deptcode}">
-	      																				<i class="fa fa-fw fa-user-plus"></i> ${e.ename} <input type="button" value="지정" onclick="check()"><hr>
+      																					<c:forEach items="${team}" var="t">
+      																						<c:if test="${t.teamcode == e.teamcode }">
+      																							<c:forEach items="${pos}" var="p">
+      																								<c:if test="${p.poscode == e.poscode}">
+      																									<i class="fa fa-fw fa-user-plus"></i> 
+	      																								${t.teamname} ${e.ename} ${p.posname }
+	      																								<input type="button" value="지정" onclick="check()"><hr>
+      																								</c:if>
+      																							</c:forEach>
+      																						</c:if>
+      																					</c:forEach>
+	      																				
 																					</c:if>
 																				</c:forEach>	
 																			</div>

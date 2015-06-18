@@ -53,4 +53,15 @@
 		select *
 		from emp
 	</select>
+	<!-- 팀 목록 가져오기  -->
+	<select id="getTeams" resultType="dto_vo.Emp.Team">
+		select *
+		from team
+	</select>
+	<!-- 직급 목록 가져오기  -->
+	<select id="getPositions" resultType="dto_vo.Emp.Position">
+		select *
+		from position
+	</select>
+	
 </mapper>

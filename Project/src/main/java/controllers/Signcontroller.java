@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import dao.SignDAO;
 import dto_vo.Emp.Dept;
 import dto_vo.Emp.Emp;
+import dto_vo.Emp.Position;
+import dto_vo.Emp.Team;
 import dto_vo.Sign.Draftingdoc;
 import dto_vo.Sign.Sign;
 import dto_vo.Sign.Signline;
@@ -49,11 +51,16 @@ public class Signcontroller {
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
 		List<Dept> dept = signdao.getDepts();
 		// 팀
+		List<Team> team = signdao.getTeams();
 		// 사원
 		List<Emp> emp = signdao.getEmps();
+		// 직급
+		List<Position> pos = signdao.getPositions();
 		
 		model.addAttribute("dept", dept);
 		model.addAttribute("emp", emp);
+		model.addAttribute("team", team);
+		model.addAttribute("pos", pos);
 		
 		return "sign.DraftingReg";
 	}

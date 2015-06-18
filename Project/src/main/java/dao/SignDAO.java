@@ -5,6 +5,8 @@ import java.util.List;
 
 import dto_vo.Emp.Dept;
 import dto_vo.Emp.Emp;
+import dto_vo.Emp.Position;
+import dto_vo.Emp.Team;
 import dto_vo.Sign.Draftingdoc;
 import dto_vo.Sign.Sign;
 import dto_vo.Sign.Signline;
@@ -28,5 +30,9 @@ public interface SignDAO {
 	public List<Dept> getDepts() throws ClassNotFoundException, SQLException;
 	// 사원 가져오기
 	public List<Emp> getEmps() throws ClassNotFoundException, SQLException;
+	// 팀 가져오기
+	public List<Team> getTeams() throws ClassNotFoundException, SQLException;
+	// 직급 가져오기
+	public List<Position> getPositions() throws ClassNotFoundException, SQLException;
 	
 }
