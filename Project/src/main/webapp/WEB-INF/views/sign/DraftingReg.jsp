@@ -67,16 +67,74 @@
 								duration : 1000
 							}
 						});
+						$("#dialog1").dialog({
+							autoOpen : false,
+							show : {
+								effect : "blind",
+								duration : 1000
+							},
+							hide : {
+								/* effect : "explode", */
+								duration : 1000
+							}
+						});
+						$("#dialog2").dialog({
+							autoOpen : false,
+							show : {
+								effect : "blind",
+								duration : 1000
+							},
+							hide : {
+								/* effect : "explode", */
+								duration : 1000
+							}
+						});
+						$("#dialog3").dialog({
+							autoOpen : false,
+							show : {
+								effect : "blind",
+								duration : 1000
+							},
+							hide : {
+								/* effect : "explode", */
+								duration : 1000
+							}
+						});
 
 						$("#opener").click(function() {
 							$("#dialog").dialog("open");
 						});
+						$("#opener1").click(function() {
+							$("#dialog1").dialog("open");
+						});
+						$("#opener2").click(function() {
+							$("#dialog1").dialog("open");
+						});
+						$("#opener3").click(function() {
+							$("#dialog1").dialog("open");
+						});
+						
 					});
 					/* 결재자 메뉴 띄우는 기능 끝*/
 					
 					/* 결재자 트리 띄우는 기능 */
 					$(function() {
 						$("#accordion").accordion({
+							heightStyle : "content"
+						});
+					});
+					$(function() {
+						$("#accordion1").accordion({
+							heightStyle : "content"
+						});
+					});
+					$(function() {
+						$("#accordion2").accordion({
+							heightStyle : "content"
+						});
+					});
+					$(function() {
+						$("#accordion3").accordion({
 							heightStyle : "content"
 						});
 					});
@@ -474,8 +532,8 @@
 														</tr>
 														<tr height="70" align="center">
 															<td style="border-bottom: 1px #eaeaea solid;">데모사용자</td>
+															
 															<td style="border-bottom: 1px #eaeaea solid;">
-																
 																<div id="dialog" title="결재자 지정하기">
       																<div id="accordion">
       																	<c:forEach items="${dept}" var="d">
@@ -506,8 +564,6 @@
 																			<hr>
 																			전무 <input type="button" value="지정" onclick="check()">
   																		</div> -->
-  																		
-  																		
 																	</div>
 																	<input type="button" value="완료" onclick="check()">
    																</div>
@@ -515,39 +571,88 @@
    																<button id="opener">지정</button>
 															</td>
 															
+															<td style="border-bottom: 1px #eaeaea solid;">
+																<div id="dialog1" title="결재자 지정하기">
+																	<div id="accordion1">
+      																	<c:forEach items="${dept}" var="d">
+      																		<h3>${d.deptname}</h3>
+      																		<div>
+      																			<c:forEach items="${emp}" var="e">
+      																				<c:if test="${d.deptcode == e.deptcode}">
+      																					<c:forEach items="${team}" var="t">
+      																						<c:if test="${t.teamcode == e.teamcode }">
+      																							<c:forEach items="${pos}" var="p">
+      																								<c:if test="${p.poscode == e.poscode}">
+      																									<i class="fa fa-fw fa-user-plus"></i> 
+	      																								${t.teamname} ${e.ename} ${p.posname }
+	      																								<input type="button" value="지정" onclick="check()"><hr>
+      																								</c:if>
+      																							</c:forEach>
+      																						</c:if>
+      																					</c:forEach>
+																					</c:if>
+																				</c:forEach>	
+																			</div>
+      																	</c:forEach>
+																	</div>
+																</div>
+																<button id="opener1">지정</button>
+															</td>
+															
 															
 															<td style="border-bottom: 1px #eaeaea solid;">
-																<div id="divCan1" style="display: none">
-																	<span id="procName1"></span><br> <a
-																		href="javascript:procCancel('1')"><img
-																		src="/img/approval/bt_cancel.gif"></a>
+																<div id="dialog2" title="결재자 지정하기">
+																	<div id="accordion2">
+      																	<c:forEach items="${dept}" var="d">
+      																		<h3>${d.deptname}</h3>
+      																		<div>
+      																			<c:forEach items="${emp}" var="e">
+      																				<c:if test="${d.deptcode == e.deptcode}">
+      																					<c:forEach items="${team}" var="t">
+      																						<c:if test="${t.teamcode == e.teamcode }">
+      																							<c:forEach items="${pos}" var="p">
+      																								<c:if test="${p.poscode == e.poscode}">
+      																									<i class="fa fa-fw fa-user-plus"></i> 
+	      																								${t.teamname} ${e.ename} ${p.posname }
+	      																								<input type="button" value="지정" onclick="check()"><hr>
+      																								</c:if>
+      																							</c:forEach>
+      																						</c:if>
+      																					</c:forEach>
+																					</c:if>
+																				</c:forEach>	
+																			</div>
+      																	</c:forEach>
+																	</div>
 																</div>
-																<div id="divSel1" style="display: block">
-																	<a href="javascript:"><img class="bt_procsel"
-																		value="1" src="/img/approval/bt_sel.gif"></a>
-																</div>
+																<button id="opener2">지정</button>
 															</td>
 															<td style="border-bottom: 1px #eaeaea solid;">
-																<div id="divCan2" style="display: none">
-																	<span id="procName2"></span><br> <a
-																		href="javascript:procCancel('2')"><img
-																		src="/img/approval/bt_cancel.gif"></a>
+																<div id="dialog3" title="결재자 지정하기">
+																	<div id="accordion3">
+      																	<c:forEach items="${dept}" var="d">
+      																		<h3>${d.deptname}</h3>
+      																		<div>
+      																			<c:forEach items="${emp}" var="e">
+      																				<c:if test="${d.deptcode == e.deptcode}">
+      																					<c:forEach items="${team}" var="t">
+      																						<c:if test="${t.teamcode == e.teamcode }">
+      																							<c:forEach items="${pos}" var="p">
+      																								<c:if test="${p.poscode == e.poscode}">
+      																									<i class="fa fa-fw fa-user-plus"></i> 
+	      																								${t.teamname} ${e.ename} ${p.posname }
+	      																								<input type="button" value="지정" onclick="check()"><hr>
+      																								</c:if>
+      																							</c:forEach>
+      																						</c:if>
+      																					</c:forEach>
+																					</c:if>
+																				</c:forEach>	
+																			</div>
+      																	</c:forEach>
+																	</div>
 																</div>
-																<div id="divSel2" style="display: block">
-																	<a href="javascript:"><img class="bt_procsel"
-																		value="2" src="/img/approval/bt_sel.gif"></a>
-																</div>
-															</td>
-															<td style="border-bottom: 1px #eaeaea solid;">
-																<div id="divCan3" style="display: none">
-																	<span id="procName3"></span><br> <a
-																		href="javascript:procCancel('3')"><img
-																		src="/img/approval/bt_cancel.gif"></a>
-																</div>
-																<div id="divSel3" style="display: block">
-																	<a href="javascript:"><img class="bt_procsel"
-																		value="3" src="/img/approval/bt_sel.gif"></a>
-																</div>
+																<button id="opener3">지정</button>
 															</td>
 														</tr>
 														
