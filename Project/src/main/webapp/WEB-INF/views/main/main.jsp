@@ -12,6 +12,14 @@ String date = String.format("%TF",now);
  <script type="text/javascript">
 $(function(){
 	$('#checkinAjax').click(function(){
+		$.ajax({
+			url:"<%=request.getContextPath() %>/attendance/checkincheck.htm",  //요청 URL
+			type:"get",           //전송 타입
+			dataType:"html",
+			success : function(data){
+				alert("이미 출근처리가 됬습니다.");
+			},
+			error :function(data){
 			$.ajax({
 				url:"<%=request.getContextPath() %>/attendance/checkin.htm",  //요청 URL
 				type:"get",           //전송 타입
@@ -20,16 +28,29 @@ $(function(){
 				},
 				error :function(data){alert("이미 출근처리가 됬습니다.");}
 			});
+			}
+		});
+			
 		});
 	
 	$('#checkoutAjax').click(function(){
 		$.ajax({
-			url:"<%=request.getContextPath() %>/attendance/checkout.htm",  //요청 URL
+			url:"<%=request.getContextPath() %>/attendance/checkoutcheck.htm",  //요청 URL
 			type:"get",           //전송 타입
 			dataType:"html",
 			success : function(data){
+				alert("이미 퇴근처리가 됬습니다.");
 			},
-			error :function(data){alert("이미 퇴근처리가 됬습니다.");}
+			error :function(data){
+			$.ajax({
+				url:"<%=request.getContextPath() %>/attendance/checkout.htm",  //요청 URL
+				type:"get",           //전송 타입
+				dataType:"html",
+				success : function(data){
+				},
+				error :function(data){alert("이미 퇴근처리가 됬습니다.");}
+			});
+			}
 		});
 	});
 });
@@ -124,7 +145,8 @@ setTimeout("go_time()", 1000);
                       <td height="8" colspan="2"></td>
                       </tr>
                       <tr >
-                      <td style="padding-right: 20px;"><img id="checkoutAjax" src="<%=request.getContextPath() %>/resources/img/bt_checkout.gif"> </td>
+                      <td style="padding-right: 20px;">
+                      <img id="checkoutAjax" src="<%=request.getContextPath() %>/resources/img/bt_checkout.gif" style="cursor: pointer;"> </td>
                      	<td style="border:2px solid #e3e3e3; width:100px; padding:0px 0px 0px 25px;">
                      	<c:set var="outcheck" value="${Checkout}" />
 							<c:if test="${!empty outcheck}">
@@ -164,7 +186,7 @@ setTimeout("go_time()", 1000);
                       <c:forEach items="${RecentlyBoard}" var="r">
                     <tr>
                     <td><span class="fa fa-circle-o"></span></td>
-                      <td style="padding-bottom: 19px"><a href="">${r.boardtitle}</a></td>
+                      <td style="padding-bottom: 19px"><a href="${pageContext.request.contextPath}/board/BoardDetail.htm?boardnum=${r.boardnum}">${r.boardtitle}</a></td>
                       <td >
                            ${r.boarddate }
                       </td>
@@ -186,7 +208,7 @@ setTimeout("go_time()", 1000);
                    <c:forEach items="${RecentlyNotice}" var="r">
                     <tr>
                     <td><span class="fa fa-check-square-o"></span></td>
-                      <td style="padding-bottom: 19px"><a href="">${r.boardtitle}</a></td>
+                      <td style="padding-bottom: 19px"><a href="${pageContext.request.contextPath}/board/BoardDetail.htm?boardnum=${r.boardnum}">${r.boardtitle}</a></td>
                       <td >
                            ${r.boarddate }
                       </td>
