@@ -95,7 +95,7 @@ public class Boardcontroller {
 		BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
 		BoardListDAO boardlistdao = sqlsession.getMapper(BoardListDAO.class);
 
-		BoardList boardlist = boardlistdao.getBoardList(boardcode);
+		BoardList boardlist = boardlistdao.getBoardListforCode(boardcode);
 		List<Board> boardlistlist = boarddao.getBoardList(boardcode, startboard, endboard);
 		
 		
@@ -105,8 +105,6 @@ public class Boardcontroller {
 		return "board.BoardList";
 		
 	}
-	
-	
 	
 	@RequestMapping(value = "BoardReply.htm")
 	public String BoardReply(Reply reply, Model model)throws ClassNotFoundException,SQLException{

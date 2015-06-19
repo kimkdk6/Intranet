@@ -17,4 +17,10 @@
 		select * from boardlist where boardcode = (select boardcode from board
 		where boardnum=#{boardnum})
 	</select>
+	
+	<select id="getBoardListforCode" parameterType="Integer" resultType="dto_vo.Board.BoardList">
+		select * from boardlist where boardcode =#{boardcode}
+	</select>
+	
+	
 </mapper>

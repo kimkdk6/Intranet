@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="se" uri="http://www.springframework.org/security/tags" %>
 <%
 	//model.addAttribute("board", board);
 	//model.addAttribute("boardlist", boardlist); 
@@ -128,7 +129,7 @@ p {
 									<table border="0" cellspacing="0" cellpadding="0">
 										<tbody>
 											<tr>
-												<td><a href="/bbs/list.php?bbs_id=0009"><img
+												<td><a href="${pageContext.request.contextPath}/board/BoardList.htm?boardcode=${board.boardcode}"><img
 														src="../resources/img/bt_list.gif"></a></td>
 												<td width="5"></td>
 												<td><a href="javascript:gotoModify()"><img
@@ -315,7 +316,10 @@ p {
 																						color="#000000">댓글쓰기</font></b></td>
 																				<td align="left" valign="top" width="" height="45">
 																				<form action="${pageContext.request.contextPath}/board/BoardReply.htm" method="post">
-																					<input type="hidden" name="userid" value="${sessionScope.emp.userid}">
+																				
+																				<se:authentication property="name" var="LoingUser" />
+                 													
+																					<input type="hidden" name="userid" value="${LoingUser}">
 																					<input type="hidden" name="boardnum" value="${board.boardnum}">
 																					<textarea  name="replycontent"
 																						style="width: 100%; height: 100%; overflow: auto; border-top: #cacaca 1px solid; border-bottom: #cacaca 2px solid; border-left: #cacaca 1px solid; border-right: #cacaca 1px solid;">
@@ -383,7 +387,7 @@ p {
 									<table border="0" cellspacing="0" cellpadding="0">
 										<tbody>
 											<tr>
-												<td><a href="/bbs/list.php?bbs_id=0009"><img
+												<td><a href="${pageContext.request.contextPath}/board/BoardList.htm?boardcode=${board.boardcode}"><img
 														src="../resources/img/bt_list.gif"></a></td>
 												<td width="5"></td>
 
