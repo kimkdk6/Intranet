@@ -37,17 +37,26 @@ public class Logincontroller {
 	
 
 	@RequestMapping(value="main.htm")
-	public String Main(Model model) throws ClassNotFoundException, SQLException {
+	public String Main(Principal principal, Model model, HttpSession session) throws ClassNotFoundException, SQLException {
 		
 		System.out.println("메인 페이지 ");
 		
-		/*MainDAO recently = sqlSession.getMapper(MainDAO.class);
+		MainDAO recently = sqlSession.getMapper(MainDAO.class);
+		AttendanceDAO attcheck = sqlSession.getMapper(AttendanceDAO.class);
 		
 		List<Board> RecentlyNotice= recently.recentlyNotice();
 		model.addAttribute("RecentlyNotice", RecentlyNotice);
 			
 		List<Board> RecentlyBoard= recently.recentlyBoard();
-		model.addAttribute("RecentlyBoard", RecentlyBoard);*/
+		model.addAttribute("RecentlyBoard", RecentlyBoard);
+		
+		String Checkin= attcheck.checkincheck(principal.getName());
+		model.addAttribute("Checkin", Checkin);
+		
+		String Checkout= attcheck.checkoutcheck(principal.getName());
+		model.addAttribute("Checkout", Checkout);
+		// 로그인 성공
+		session.setAttribute("emp", principal.getName());
 	 
 		
 		return "main.main";
@@ -58,24 +67,6 @@ public class Logincontroller {
 		
 			System.out.println("로그인 페이지 ");
 		 	
-			MainDAO recently = sqlSession.getMapper(MainDAO.class);
-			AttendanceDAO attcheck = sqlSession.getMapper(AttendanceDAO.class);
-			
-			List<Board> RecentlyNotice= recently.recentlyNotice();
-			model.addAttribute("RecentlyNotice", RecentlyNotice);
-				
-			List<Board> RecentlyBoard= recently.recentlyBoard();
-			model.addAttribute("RecentlyBoard", RecentlyBoard);
-			
-			String Checkin= attcheck.checkincheck(principal.getName());
-			model.addAttribute("Checkin", Checkin);
-			
-			String Checkout= attcheck.checkoutcheck(principal.getName());
-			model.addAttribute("Checkout", Checkout);
-			// 로그인 성공
-			session.setAttribute("emp", principal.getName());
-			
-			//principal.getName();
 		return "redirect:main.htm";
 	}
 	
