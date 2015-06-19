@@ -102,7 +102,7 @@ setTimeout("go_time()", 1000);
                      	<c:set var="incheck" value="${Checkin}" />
 							<c:if test="${!empty incheck}">
 							<!-- <span id="checkin"></span> -->
-							<h3 id="checkin" >${incheck}</h3>
+							<span id="checkin" >${incheck}</span>
 							</c:if>
                      	</td>
                       </tr>
