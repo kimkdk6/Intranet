@@ -36,7 +36,7 @@ public class Logincontroller {
 	}
 	
 
-	@RequestMapping(value="main.htm")
+	@RequestMapping(value="login.htm")
 	public String Main(Principal principal, Model model, HttpSession session) throws ClassNotFoundException, SQLException {
 		
 		System.out.println("메인 페이지 ");
@@ -62,14 +62,14 @@ public class Logincontroller {
 		return "main.main";
 	}
 	
-	@RequestMapping("login.htm")
+	/*@RequestMapping("login.htm")
 	public String login(Principal principal, Model model, HttpSession session) throws ClassNotFoundException, SQLException{
 		
 			System.out.println("로그인 페이지 ");
 		 	
 		return "redirect:main.htm";
 	}
-	
+	*/
 /*	
 	@RequestMapping(value="login.htm", method=RequestMethod.POST)
 	public String login(Emp emp, Empinfo empinfo, Model model, HttpServletRequest request) throws ClassNotFoundException, SQLException 
