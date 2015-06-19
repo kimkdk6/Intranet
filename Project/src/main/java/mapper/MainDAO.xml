@@ -6,7 +6,7 @@
 
     <select id="recentlyNotice" resultType="dto_vo.Board.Board" >
    select * from (select a.boardcode, a.boardnum, a.boardnotice, a.userid, a.boardtitle, a.boardcontent, a.boarddate, a.boardcount, a.boardfilesrc, a.boardref, a.boarddepth, a.boardstep,
-	rownum as  rnum from ( select * from board where boardcode=1 order by boardnum desc) a) where rnum  <![CDATA[   <= 3  ]]>
+	rownum as  rnum from ( select * from board where boardcode=1 order by boardnum desc) a) where rnum &lt;= 3
     </select>
     <select id="recentlyBoard" resultType="dto_vo.Board.Board" >
     select * from (select a.boardcode, a.boardnum, a.boardnotice, a.userid, a.boardtitle, a.boardcontent, a.boarddate, a.boardcount, a.boardfilesrc, a.boardref, a.boarddepth, a.boardstep,

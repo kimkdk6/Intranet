@@ -1,5 +1,6 @@
 package controllers;
 
+import java.security.Principal;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -25,14 +26,53 @@ public class Logincontroller {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	@RequestMapping("index.htm")
-	public String login()
+	@RequestMapping(value = "index.htm")
+	public String loginFrom()
 	{
+		
 		return "login.login";
 
 	}
 	
-	@RequestMapping(value="index.htm", method=RequestMethod.POST)
+	@RequestMapping(value="main.htm")
+	public String Main(Model model) throws ClassNotFoundException, SQLException {
+		
+		System.out.println("메인 페이지 ");
+		
+		MainDAO recently = sqlSession.getMapper(MainDAO.class);
+		
+		List<Board> RecentlyNotice= recently.recentlyNotice();
+		model.addAttribute("RecentlyNotice", RecentlyNotice);
+			
+		List<Board> RecentlyBoard= recently.recentlyBoard();
+		model.addAttribute("RecentlyBoard", RecentlyBoard);
+	 
+		
+		return "main.main";
+	}
+	
+	@RequestMapping("login.htm")
+	public String login(Principal principal, Model model, HttpSession session) throws ClassNotFoundException, SQLException{
+		
+			System.out.println("로그인 페이지 ");
+		 	
+			MainDAO recently = sqlSession.getMapper(MainDAO.class);
+			
+			List<Board> RecentlyNotice= recently.recentlyNotice();
+			model.addAttribute("RecentlyNotice", RecentlyNotice);
+				
+			List<Board> RecentlyBoard= recently.recentlyBoard();
+			model.addAttribute("RecentlyBoard", RecentlyBoard);
+			
+			// 로그인 성공
+			session.setAttribute("emp", principal.getName());
+			
+			//principal.getName();
+		return "redirect:main.htm";
+	}
+	
+/*	
+	@RequestMapping(value="login.htm", method=RequestMethod.POST)
 	public String login(Emp emp, Empinfo empinfo, Model model, HttpServletRequest request) throws ClassNotFoundException, SQLException 
 	{
 		
@@ -46,9 +86,9 @@ public class Logincontroller {
 		emp = empDao.isMember(emp);
 		empinfo = empDao.isMemberInfo(empinfo);
 		
-		/*System.out.println(emp.getUserid());
+		System.out.println(emp.getUserid());
 		System.out.println(emp.getEmppwd());
-		System.out.println(emp.getEname());*/
+		System.out.println(emp.getEname());
 			
 		if ( emp != null && inputPwd.equals( emp.getEmppwd() ) ) {
 			MainDAO recently = sqlSession.getMapper(MainDAO.class);
@@ -59,11 +99,11 @@ public class Logincontroller {
 			List<Board> RecentlyBoard= recently.recentlyBoard();
 			model.addAttribute("RecentlyBoard", RecentlyBoard);
 			
-			/*System.out.println("emp.getUserid() : " + emp.getUserid());
+			System.out.println("emp.getUserid() : " + emp.getUserid());
 			System.out.println("emp.getEmppwd() : " + emp.getEmppwd());
 			System.out.println("empinfo.getUseremail() : " + empinfo.getUseremail());
 			System.out.println("empinfo.getUseraddr() : " + empinfo.getUseraddr());
-			*/
+			
 			// 로그인 성공
 			session.setAttribute("emp", emp);
 			session.setAttribute("empinfo", empinfo);
@@ -73,5 +113,5 @@ public class Logincontroller {
 			
 			return "login.loginFail";
 		}
-	}	
+	}	*/
 }
