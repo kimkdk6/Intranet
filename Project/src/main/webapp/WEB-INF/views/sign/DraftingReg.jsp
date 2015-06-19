@@ -52,10 +52,11 @@
             <!-- ck 에디터 끝 -->
             
             <script language="javascript">
-               var dialog;
+               
                /* 결재자 메뉴 띄우는 기능 */
                $(function() {
-                  dialog = $("#dialog").dialog({
+            	   var dialog;
+            	   dialog = $("#dialog").dialog({
                         autoOpen : false,
                         width : 500,
                         show : {
@@ -75,6 +76,8 @@
 							}
 						}
                      });
+            	   
+            	   
                   
                   function addUser() {
                      var valid = true;
@@ -87,8 +90,6 @@
                      return valid;
                   }
                   
-                  
-                  
                   $("#dialog1").dialog({
                      autoOpen : false,
                      width : 500,
@@ -99,8 +100,27 @@
                      hide : {
                         /* effect : "explode", */
                         duration : 1000
-                     }
+                     },
+                     buttons : {
+							"추가" : addUser1,
+							Cancel : function() {
+								dialog.dialog("close");
+							}
+						}
                   });
+                  
+                  function addUser1() {
+                      var valid = true;
+
+                      if (valid) {
+                     	 $("#users1").append(
+ 									"<td>" + $('input[name="name1"]:checked').val() + "</td>");
+                         dialog.dialog("close");
+                      }
+                      return valid;
+                   }
+                  
+                  
                   $("#dialog2").dialog({
                      autoOpen : false,
                      width : 500,
@@ -111,7 +131,13 @@
                      hide : {
                         /* effect : "explode", */
                         duration : 1000
-                     }
+                     },
+                     buttons : {
+							"추가" : addUser,
+							Cancel : function() {
+								dialog.dialog("close");
+							}
+						}
                   });
                   $("#dialog3").dialog({
                      autoOpen : false,
@@ -123,7 +149,13 @@
                      hide : {
                         /* effect : "explode", */
                         duration : 1000
-                     }
+                     },
+                     buttons : {
+							"추가" : addUser,
+							Cancel : function() {
+								dialog.dialog("close");
+							}
+						}
                   });
 
                   $("#opener").click(function() {
@@ -133,10 +165,10 @@
                      $("#dialog1").dialog("open");
                   });
                   $("#opener2").click(function() {
-                     $("#dialog1").dialog("open");
+                     $("#dialog2").dialog("open");
                   });
                   $("#opener3").click(function() {
-                     $("#dialog1").dialog("open");
+                     $("#dialog3").dialog("open");
                   });
                   
                });
@@ -266,7 +298,7 @@
                                                    <button id="opener">지정1</button>
                                              </td>
                                              
-                                             <td style="border-bottom: 1px #eaeaea solid;">
+                                             <td id="users1" style="border-bottom: 1px #eaeaea solid;">
                                                 <div id="dialog1" title="결재자 지정하기">
                                                    <div id="accordion1">
                                                          <c:forEach items="${dept}" var="d">
@@ -280,7 +312,7 @@
                                                                               <c:if test="${p.poscode == e.poscode}">
                                                                                  <i class="fa fa-fw fa-user-plus"></i> 
                                                                                  ${t.teamname} ${e.ename} ${p.posname }
-                                                                                 <input type="button" value="지정" onclick="check()"><hr>
+                                                                                <input type="radio" name="name1" id="name1" value="${t.teamname} ${e.ename} ${p.posname}" ><hr>
                                                                               </c:if>
                                                                            </c:forEach>
                                                                         </c:if>
@@ -320,7 +352,7 @@
                                                          </c:forEach>
                                                    </div>
                                                 </div>
-                                                <button id="opener2">지정</button>
+                                                <button id="opener2">지정2</button>
                                              </td>
                                              <td style="border-bottom: 1px #eaeaea solid;">
                                                 <div id="dialog3" title="결재자 지정하기">
