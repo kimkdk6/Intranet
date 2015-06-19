@@ -86,11 +86,17 @@
 
                      if (valid) {
                     	 $("#users").html(
-									"<td>" + $('input[name="name"]:checked').val() + "</td>");
+									"<td>" + $('input[name="name"]:checked').val() + 
+											 "<br><input type='button' id='cancel' value='취소'/> " +
+									"</td>");
                         dialog.dialog("close");
                      }
                      return valid;
                   }
+                  
+                  $("#cancel1").click(function(){
+                	 $("#users").html("<button id='opener'>지정1</button>"); 
+                  });
                   
                   // ============== 두번째 =====================
                   dialog1 = $("#dialog1").dialog({
@@ -323,6 +329,7 @@
                                                    </div>
 
                                                    <button id="opener">지정1</button>
+                                                   <button id="cancel1" >취소</button>
                                              </td>
                                              
                                              <td id="users1" style="border-bottom: 1px #eaeaea solid;">
