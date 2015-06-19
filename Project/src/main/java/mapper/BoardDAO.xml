@@ -52,4 +52,8 @@
 		select count(*) from board where boardcode = #{boardcode}
 		
 	</select>
+	
+	<delete id="deleteBoard" parameterType="Integer">
+		delete from board where boardnum=#{boardnum}
+	</delete>
 </mapper>

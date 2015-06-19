@@ -99,7 +99,7 @@ public class Boardcontroller {
 		List<Board> boardlistlist = boarddao.getBoardList(boardcode, startboard, endboard);
 		int allcount = boarddao.getAllBoardCount(boardcode);
 		
-		System.out.println(allcount);
+		System.out.println(boardcode+"코드 게시판 총 게시글 수"+allcount);
 		
 		model.addAttribute("boardlist", boardlist);//게시판 이름 코드
 		model.addAttribute("boardlistlist", boardlistlist);//게시글 리스트
@@ -142,5 +142,20 @@ public class Boardcontroller {
 		return "board.BoardDetail";
 		
 	}
+	
+	@RequestMapping(value = "BoardWrite.htm")
+	   public String BoardWrite(@RequestParam(value="boardcode")int boardcode, Model model)throws ClassNotFoundException,SQLException {
+	   
+			System.out.println("게시판 글쓰기 boardcode: " +boardcode);
+			
+			
+			//BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
+			BoardListDAO boardlistdao = sqlsession.getMapper(BoardListDAO.class);
+		
+			BoardList boardlist =  boardlistdao.getBoardListforCode(boardcode);
+			model.addAttribute("boardlist", boardlist);
+	      return "board.BoardWrite";
+	   }
+	
 }
 

@@ -64,8 +64,7 @@
                                  <td align="left">
                                     <table border="0" cellspacing="0" cellpadding="0">
                                        <tr>
-                                          <td><a
-                                             href="write.php?bbs_id=0656&rtn_url=%2Fbbs%2Flist.php%3Fbbs_id%3D0656%26_lcnt%3D10"><img
+                                          <td><a href="${pageContext.request.contextPath}/board/BoardWrite.htm?boardcode=${boardlist.boardcode}"><img
                                                 src="../resources/img/bt_write.gif"></a></td>
                                        </tr>
                                     </table>
