@@ -29,7 +29,7 @@
                                  <input type='hidden' name='bbs_id' value='0656'>
                                  <tr>
                                     <td width="520" align="left" class="title_txt" style="padding: 5px 0 0 14px;">${boardlist.boardname}
-                                       <span class="stxt" style="color: #727272; font-weight: normal;">총 게시물 등록</span>
+                                       <span class="stxt" style="color: #727272; font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;총 ${allcount}개 게시물 등록</span>
                                     </td>
                                     <td width="" align="right" style="padding: 0 12px 0 0;">
                                        <!--검색TB START-->

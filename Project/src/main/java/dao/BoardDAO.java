@@ -21,4 +21,6 @@ public interface BoardDAO {
 	
 	public List<Board> getBoardList(int boardcode,int startboard,int endboard) throws ClassNotFoundException, SQLException;
 	
+	public int getAllBoardCount(int boardcode) throws ClassNotFoundException, SQLException;
+	
 }

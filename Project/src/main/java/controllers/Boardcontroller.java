@@ -97,10 +97,14 @@ public class Boardcontroller {
 
 		BoardList boardlist = boardlistdao.getBoardListforCode(boardcode);
 		List<Board> boardlistlist = boarddao.getBoardList(boardcode, startboard, endboard);
+		int allcount = boarddao.getAllBoardCount(boardcode);
 		
+		System.out.println(allcount);
 		
 		model.addAttribute("boardlist", boardlist);//게시판 이름 코드
 		model.addAttribute("boardlistlist", boardlistlist);//게시글 리스트
+		model.addAttribute("allcount", allcount);//게시글 리스트
+		
 		
 		return "board.BoardList";
 		
