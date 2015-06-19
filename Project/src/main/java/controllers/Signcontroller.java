@@ -1,5 +1,6 @@
 package controllers;
 
+import java.security.Principal;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
@@ -29,13 +30,13 @@ public class Signcontroller {
 
 	// 전자 결재 메인 페이지 보기
 	@RequestMapping(value = "SignMain.htm")
-	public String SignMain(Model model) throws ClassNotFoundException,
+	public String SignMain(Model model, Principal principal) throws ClassNotFoundException,
 			SQLException {
 
 		System.out.println("전자결재 메인 페이지 열람");
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
-		List<Sign> unsignlist = signdao.getUnSigns("m6");
-		List<Sign> sendsignlist = signdao.getSendSigns("m4");
+		List<Sign> unsignlist = signdao.getUnSigns(principal.getName());
+		List<Sign> sendsignlist = signdao.getSendSigns(principal.getName());
 		System.out.println(unsignlist.toString());
 
 		model.addAttribute("unsignlist", unsignlist);
