@@ -187,8 +187,24 @@ p {
 																			<tr>
 																				<td width="55" align="center">
 																					<%--                         <img width="50" src="${boardempinfo.userphoto}" style="border:1px solid #CCCCCC;"> --%>
-																					<img width="50" src="../resources/img/josuck.jpg"
+																					
+																					
+																					
+																					
+																					
+																					<c:choose>
+															<c:when test="${boardlist.boardcode==3}">
+														<img width="50" src="../resources/img/anony.png"
 																					style="border: 1px solid #CCCCCC;">
+													</c:when>
+															<c:otherwise>
+														<img width="50" src="../resources/img/josuck.jpg"
+																					style="border: 1px solid #CCCCCC;">
+													</c:otherwise>
+														</c:choose>
+																					
+																					
+																					
 																				</td>
 																				<td width="" style="padding-left: 10px;"
 																					valign="middle">
@@ -206,7 +222,19 @@ p {
 																						</c:choose>
 
 																						&nbsp; <b><font color="#000000">${board.boardtitle}</font></b>
-																					</div> 작성자 : ${board.userid}(${boardemp.ename})<br>
+																					</div> 작성자 : 
+																					
+																					<c:choose>
+															<c:when test="${boardlist.boardcode==3}">
+														Anonymous
+													</c:when>
+															<c:otherwise>
+														${board.userid}(${boardemp.ename})
+													</c:otherwise>
+														</c:choose>
+																					
+																					
+																					<br>
 																					작성일시 : <span class="counter"
 																					style="color: #666666; letter-spacing: -1px;">${board.boarddate}</span>
 																					<br> 조회수 : ${board.boardcount} <br>
