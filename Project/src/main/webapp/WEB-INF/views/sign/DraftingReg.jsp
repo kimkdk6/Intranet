@@ -77,8 +77,6 @@
 						}
                      });
             	   
-            	   
-                  
                   function addUser() {
                      var valid = true;
 
