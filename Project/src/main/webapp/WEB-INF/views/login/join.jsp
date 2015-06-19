@@ -49,7 +49,7 @@
 					</div>
 				</div>
 			</form>
-			<a href="index.htm" class="text-center">I already have a membership</a>
+			<a href="${pageContext.request.contextPath}/index.htm" class="text-center">I already have a membership</a>
 		</div>
 		<!-- /.form-box -->
 	</div>
