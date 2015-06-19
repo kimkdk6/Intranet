@@ -9,7 +9,6 @@ String date = String.format("%TF",now);
 
  <script type="text/javascript">
 $(function(){
-
 	$('#checkinAjax').click(function(){
 			$.ajax({
 				url:"<%=request.getContextPath() %>/attendance/checkin.htm",  //요청 URL
@@ -99,14 +98,20 @@ setTimeout("go_time()", 1000);
                       <table >
                       <tr>
                        <td style="padding-right: 20px;"><div  id="checkinAjax"><img id="checkinAjax" src="<%=request.getContextPath() %>/resources/img/bt_checkin.gif" style="cursor: pointer;"></div> </td>
-                     	<td style="border:2px solid #e3e3e3; width:100px; padding:0px 0px 0px 20px;"><h3 id="checkin" ></h3></td>
+                     	<td style="border:2px solid #e3e3e3; width:100px; padding:0px 0px 0px 20px;">
+                     	<c:set var="incheck" value="${Checkin}" />
+							<c:if test="${!empty incheck}">
+							<!-- <span id="checkin"></span> -->
+							<h3 id="checkin" >${incheck}</h3>
+							</c:if>
+                     	</td>
                       </tr>
                       <tr>
                       <td height="8" colspan="2"></td>
                       </tr>
                       <tr >
                       <td style="padding-right: 20px;"><img  src="<%=request.getContextPath() %>/resources/img/bt_checkout.gif"> </td>
-                     	<td style="border:2px solid #e3e3e3; width:100px; padding:0px 0px 0px 20px;"><h3 id="chechout"></h3></td>
+                     	<td style="border:2px solid #e3e3e3; width:100px; padding:0px 0px 0px 20px;"><h4 id="chechout"></h3></td>
                       </tr>
                        <tr>
                       <td height="8" colspan="2"></td>

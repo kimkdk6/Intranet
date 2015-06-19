@@ -28,7 +28,7 @@ public class Attendancecontroller {
 		userid="m5";
 		AttendanceDAO checkin = sqlSession.getMapper(AttendanceDAO.class);
 		
-		//checkin.checkin(userid);
+		checkin.checkin(userid);
 		String Checkin= checkin.checkincheck(userid);
 		System.out.println(Checkin);
 		return Checkin;

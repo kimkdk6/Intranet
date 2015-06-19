@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import dao.AttendanceDAO;
 import dao.EmpDAO;
 import dao.MainDAO;
 import dto_vo.Board.Board;
@@ -33,9 +34,9 @@ public class Logincontroller {
 	}
 	
 	@RequestMapping(value="index.htm", method=RequestMethod.POST)
-	public String login(Emp emp, Empinfo empinfo, Model model, HttpServletRequest request) throws ClassNotFoundException, SQLException 
+	public String login(String userid, Emp emp, Empinfo empinfo, Model model, HttpServletRequest request) throws ClassNotFoundException, SQLException 
 	{
-		
+		userid="m5";
 		System.out.println("id : " + emp.getUserid());
 		System.out.println("pwd : " + emp.getEmppwd());
 		
@@ -52,6 +53,7 @@ public class Logincontroller {
 			
 		if ( emp != null && inputPwd.equals( emp.getEmppwd() ) ) {
 			MainDAO recently = sqlSession.getMapper(MainDAO.class);
+			AttendanceDAO checkin = sqlSession.getMapper(AttendanceDAO.class);
 			
 			List<Board> RecentlyNotice= recently.recentlyNotice();
 			model.addAttribute("RecentlyNotice", RecentlyNotice);
@@ -59,6 +61,9 @@ public class Logincontroller {
 			List<Board> RecentlyBoard= recently.recentlyBoard();
 			model.addAttribute("RecentlyBoard", RecentlyBoard);
 			
+			String Checkin= checkin.checkincheck(userid);
+			model.addAttribute("Checkin", Checkin);
+			System.out.println(Checkin);
 			/*System.out.println("emp.getUserid() : " + emp.getUserid());
 			System.out.println("emp.getEmppwd() : " + emp.getEmppwd());
 			System.out.println("empinfo.getUseremail() : " + empinfo.getUseremail());
