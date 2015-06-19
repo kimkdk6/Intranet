@@ -54,8 +54,12 @@
             <script language="javascript">
                
                /* 결재자 메뉴 띄우는 기능 */
+               // ============= 첫번째 ======================
                $(function() {
             	   var dialog;
+            	   var dialog1;
+            	   var dialog2;
+            	   var dialog3;
             	   dialog = $("#dialog").dialog({
                         autoOpen : false,
                         width : 500,
@@ -81,14 +85,15 @@
                      var valid = true;
 
                      if (valid) {
-                    	 $("#users").append(
+                    	 $("#users").html(
 									"<td>" + $('input[name="name"]:checked').val() + "</td>");
                         dialog.dialog("close");
                      }
                      return valid;
                   }
                   
-                  $("#dialog1").dialog({
+                  // ============== 두번째 =====================
+                  dialog1 = $("#dialog1").dialog({
                      autoOpen : false,
                      width : 500,
                      show : {
@@ -102,7 +107,7 @@
                      buttons : {
 							"추가" : addUser1,
 							Cancel : function() {
-								dialog.dialog("close");
+								dialog1.dialog("close");
 							}
 						}
                   });
@@ -111,15 +116,15 @@
                       var valid = true;
 
                       if (valid) {
-                     	 $("#users1").append(
+                     	 $("#users1").html(
  									"<td>" + $('input[name="name1"]:checked').val() + "</td>");
-                         dialog.dialog("close");
+                         dialog1.dialog("close");
                       }
                       return valid;
-                   }
+                  }
                   
-                  
-                  $("#dialog2").dialog({
+                  // ================ 세번째 ========================
+                  dialog2 = $("#dialog2").dialog({
                      autoOpen : false,
                      width : 500,
                      show : {
@@ -131,13 +136,26 @@
                         duration : 1000
                      },
                      buttons : {
-							"추가" : addUser,
-							Cancel : function() {
-								dialog.dialog("close");
-							}
+                    	"추가" : addUser2,
+						Cancel : function() {
+							dialog2.dialog("close");
 						}
+					}
                   });
-                  $("#dialog3").dialog({
+                  
+                  function addUser2() {
+                      var valid = true;
+
+                      if (valid) {
+                     	 $("#users2").html(
+ 									"<td>" + $('input[name="name2"]:checked').val() + "</td>");
+                         dialog2.dialog("close");
+                      }
+                      return valid;
+                  }
+                  
+                  // ================ 세번째 ===================
+                  dialog3 = $("#dialog3").dialog({
                      autoOpen : false,
                      width : 500,
                      show : {
@@ -149,12 +167,23 @@
                         duration : 1000
                      },
                      buttons : {
-							"추가" : addUser,
-							Cancel : function() {
-								dialog.dialog("close");
-							}
+                    	"추가" : addUser3,
+						Cancel : function() {
+							dialog3.dialog("close");
 						}
+					}
                   });
+                  
+                  function addUser3() {
+                      var valid = true;
+
+                      if (valid) {
+                     	 $("#users3").html(
+ 									"<td>" + $('input[name="name3"]:checked').val() + "</td>");
+                         dialog3.dialog("close");
+                      }
+                      return valid;
+                  }
 
                   $("#opener").click(function() {
                      $("#dialog").dialog("open");
@@ -321,11 +350,11 @@
                                                          </c:forEach>
                                                    </div>
                                                 </div>
-                                                <button id="opener1">지정</button>
+                                                <button id="opener1">지정2</button>
                                              </td>
                                              
                                              
-                                             <td style="border-bottom: 1px #eaeaea solid;">
+                                             <td id="users2" style="border-bottom: 1px #eaeaea solid;">
                                                 <div id="dialog2" title="결재자 지정하기">
                                                    <div id="accordion2">
                                                          <c:forEach items="${dept}" var="d">
@@ -339,7 +368,7 @@
                                                                               <c:if test="${p.poscode == e.poscode}">
                                                                                  <i class="fa fa-fw fa-user-plus"></i> 
                                                                                  ${t.teamname} ${e.ename} ${p.posname }
-                                                                                 <input type="button" value="지정" onclick="check()"><hr>
+                                                                                 <input type="radio" name="name2" id="name2" value="${t.teamname} ${e.ename} ${p.posname}" ><hr>
                                                                               </c:if>
                                                                            </c:forEach>
                                                                         </c:if>
@@ -350,9 +379,10 @@
                                                          </c:forEach>
                                                    </div>
                                                 </div>
-                                                <button id="opener2">지정2</button>
+                                                <button id="opener2">지정3</button>
                                              </td>
-                                             <td style="border-bottom: 1px #eaeaea solid;">
+                                             
+                                             <td id="users3" style="border-bottom: 1px #eaeaea solid;">
                                                 <div id="dialog3" title="결재자 지정하기">
                                                    <div id="accordion3">
                                                          <c:forEach items="${dept}" var="d">
@@ -366,7 +396,7 @@
                                                                               <c:if test="${p.poscode == e.poscode}">
                                                                                  <i class="fa fa-fw fa-user-plus"></i> 
                                                                                  ${t.teamname} ${e.ename} ${p.posname }
-                                                                                 <input type="button" value="지정" onclick="check()"><hr>
+                                                                                 <input type="radio" name="name3" id="name3" value="${t.teamname} ${e.ename} ${p.posname}" ><hr>
                                                                               </c:if>
                                                                            </c:forEach>
                                                                         </c:if>
@@ -377,7 +407,7 @@
                                                          </c:forEach>
                                                    </div>
                                                 </div>
-                                                <button id="opener3">지정</button>
+                                                <button id="opener3">지정3</button>
                                              </td>
                                           </tr>
                                           
@@ -511,7 +541,7 @@
                                                                   function() {
                                                                   });
                                                 </script>
-                                                <table cellspacing="0" cellpadding="0" width="70%" class="noborder">
+                                                <table cellspacing="0" cellpadding="0" width="100%" class="noborder">
                                                    <tbody>
                                                       <tr>
                                                          <td width="100%" style="padding: 2px">
