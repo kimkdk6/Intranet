@@ -1,12 +1,149 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
 
-</body>
-</html>
+<%
+	//model.addAttribute("boardlist", boardlist);//게시판 이름 코드
+	//model.addAttribute("boardlistlist", boardlistlist);//게시글 리스트
+%>
+
+   <!--전체외곽TB START-->
+   <table width="100%" height="100%" border="0" cellspacing="0"
+      cellpadding="0" id="__top__">
+      <tr>
+         <td align="center" valign="top" bgcolor="#ffffff"
+            style="border-left: 1px #b1b1b1 solid; border-right: 1px #b1b1b1 solid; border-bottom: 1px #b1b1b1 solid;">
+            <!--컨텐츠구분TB START-->
+            <table width="100%" height="100%" border="0" cellspacing="0"
+               cellpadding="0" style="table-layout: fixed;">
+               <tr>
+                  <td width="" align="left" valign="top">
+                     <!--본문TB START--> 
+                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                           <td height="40">
+                              <!--타이틀TB START-->
+                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                 <form name='searchBBS' method='post' action='/bbs/list.php'>
+                                    <input type='hidden' name='bbs_id' value='0656'>
+                                    <tr>
+                                       <td width="520" align="left" class="title_txt" style="padding: 5px 0 0 14px;">
+                                          자유 게시판 
+                                          <span class="stxt" style="color: #727272; font-weight: normal;">총 게시물 등록</span>
+                                       </td>
+                                       <td width="" align="right" style="padding: 0 12px 0 0;">
+                                          <!--검색TB START-->
+                                          <table border="0" cellspacing="0" cellpadding="0">
+                                             <tr>
+                                                <td><select name="searchkey" class="sel2">
+                                                      <option value="sc">제목+내용</option>
+                                                      <option value="subject">제목</option>
+                                                      <option value="content">내용</option>
+                                                      <option value="rname">작성자</option>
+                                                </select></td>
+                                                <td width="3"></td>
+                                                <td><input type="text" name="searchval"
+                                                   class="input_search" style="width: 152;" value=""></td>
+                                                <td width="3"></td>
+                                                <td><input type="image"
+                                                   src="../resources/img/bt_search.gif"></td>
+                                             </tr>
+                                          </table> <!--검색TB END-->
+                                       </td>
+                                    </tr>
+                                 </form>
+                              </table> <!--타이틀TB END-->
+                           </td>
+                        </tr>
+                        <tr>
+                           <td height="30" bgcolor="#ececec"
+                              style="border-bottom: 1px #c9c9c9 solid; border-top: 1px #c9c9c9 solid; padding: 0 0 0 12px;">
+                              <!--기능TB START-->
+                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                 <tr>
+                                    <td align="left">
+                                       <table border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                             <td><a
+                                                href="write.php?bbs_id=0656&rtn_url=%2Fbbs%2Flist.php%3Fbbs_id%3D0656%26_lcnt%3D10"><img
+                                                   src="../resources/img/bt_write.gif"></a></td>
+                                          </tr>
+                                       </table>
+                                    </td>
+                                    <td align="right" style="padding: 0 12px 0 0;"><select
+                                       name="select4" class="sel2"
+                                       onChange="chgLcnt(this.options[this.selectedIndex].value)">
+                                          <option value="10" selected>10개씩 보기</option>
+                                          <option value="15">15개씩 보기</option>
+                                          <option value="20">20개씩 보기</option>
+                                          <option value="30">30개씩 보기</option>
+                                          <option value="40">40개씩 보기</option>
+                                          <option value="50">50개씩 보기</option>
+                                          <option value="80">80개씩 보기</option>
+                                          <option value="100">100개씩 보기</option>
+                                    </select></td>
+                                 </tr>
+                              </table> <!--기능TB END-->
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <!--리스트TB START-->
+                              <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                                 class="tbl_board9">
+                                 <tr>
+                                    <td width="55" height="20" align="center"
+                                       style="border-bottom: 1px #eaeaea solid; border-right: 1px #eaeaea solid; padding: 3px 0 0 0px;"
+                                       class="title">번호</td>
+                                   
+                                    <td width="" align="left"
+                                       style="border-bottom: 1px #eaeaea solid; border-right: 1px #eaeaea solid; padding: 3px 0 0 7px;"
+                                       class="title">제목</td>
+                                    <td width="100" align="left"
+                                       style="border-bottom: 1px #eaeaea solid; border-right: 1px #eaeaea solid; padding: 3px 0 0 7px;"
+                                       class="title">작성자</td>
+                                    <td width="90" align="left"
+                                       style="border-bottom: 1px #eaeaea solid; border-right: 1px #eaeaea solid; padding: 3px 0 0 7px;"
+                                       class="title"><font color="#666666">날짜</font><img
+                                       src="../resources/img/list_up.gif" align="absmiddle"></td>
+                                    <td width="80" align="left"
+                                       style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 7px;"
+                                       class="title">조회수</td>
+                                 </tr>
+
+                                 <tr bgcolor='#f9f9f9'>
+                                    <td height="23" align="center"
+                                       style="padding: 2px 0 0 0px; border-bottom: 1px #eaeaea solid;">
+                                       4</td>
+                                
+                                    <td
+                                       style="padding: 2px 0 0 7px; border-bottom: 1px #eaeaea solid;">
+                                       <a
+                                       href="view.php?bbs_id=0656&seq=5&rtn_url=%2Fbbs%2Flist.php%3Fbbs_id%3D0656%26_lcnt%3D10">zzgvgv
+                                    </a>
+                                    </td>
+                                    <td align="left"
+                                       style="padding: 2px 7px 0 7px; border-bottom: 1px #eaeaea solid;">데모사용자</td>
+                                    <td align="center" class="date"
+                                       style="border-bottom: 1px #eaeaea solid;">2015-06-05
+                                       11:13</td>
+                                    <td align="right" class="date"
+                                       style="padding: 0px 7px 0 0; border-bottom: 1px #eaeaea solid;">5</td>
+                                 </tr>
+                              </table> <!--리스트TB END-->
+                           </td>
+                        </tr>
+                        <tr>
+                           <td height="30" bgcolor="#ececec"
+                              style="border-bottom: 1px #c9c9c9 solid; border-top: 1px #c9c9c9 solid; padding: 0 0 0 12px;">
+                              페이징처리
+                           </td>
+                        </tr>
+                     </table> <!--본문TB END--> <!--본문TB END-->
+                  </td>
+               </tr>
+            </table> <!--컨텐츠구분TB END-->
+         </td>
+      </tr>
+   </table>

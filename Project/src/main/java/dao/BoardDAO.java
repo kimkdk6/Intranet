@@ -19,4 +19,6 @@ public interface BoardDAO {
 	
 	public Empinfo getBoardEmpinfo(int boardnum) throws ClassNotFoundException, SQLException;
 	
+	public List<Board> getBoardList(int boardcode,int startboard,int endboard) throws ClassNotFoundException, SQLException;
+	
 }
