@@ -4,15 +4,21 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     <mapper namespace="dao.AttendanceDAO">
 
-    <select id="checkin" resultType="Date" >
+    <insert id="checkin" >
   insert into attendance(userid,attdate,attstarttime) values('m5', to_char (sysdate, 'YYYY-MM-DD'), sysdate )
-    </select>
+    </insert>
+    
+    <update id="checkout">
+	update attendance set attendtime = sysdate where userid = 'm5' and to_char (attstarttime, 'YYYY-MM-DD') = to_char (sysdate, 'YYYY-MM-DD')
+    </update>
     
       <select id="checkincheck" resultType="String" >
  	select to_char (attstarttime, 'HH24:MI:SS') from attendance where userid = 'm5' and to_char (attdate, 'YYYY-MM-DD') = to_char (sysdate, 'YYYY-MM-DD')
     </select>
-    <select id="chechout" resultType="Date" >
-    select * from (select a.boardcode, a.boardnum, a.boardnotice, a.userid, a.boardtitle, a.boardcontent, a.boarddate, a.boardcount, a.boardfilesrc, a.boardref, a.boarddepth, a.boardstep,
-	rownum as  rnum from ( select * from board where boardcode!=1 order by boardnum desc) a) where rnum <![CDATA[   <= 3  ]]>
-  </select>
+    
+    <select id="checkoutcheck" resultType="String" >
+ 	select to_char (attendtime, 'HH24:MI:SS') from attendance where userid = 'm5' and to_char (attdate, 'YYYY-MM-DD') = to_char (sysdate, 'YYYY-MM-DD')
+    </select>
+    
+   
   </mapper>

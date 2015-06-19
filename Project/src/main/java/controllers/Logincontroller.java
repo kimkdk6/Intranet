@@ -53,7 +53,7 @@ public class Logincontroller {
 			
 		if ( emp != null && inputPwd.equals( emp.getEmppwd() ) ) {
 			MainDAO recently = sqlSession.getMapper(MainDAO.class);
-			AttendanceDAO checkin = sqlSession.getMapper(AttendanceDAO.class);
+			AttendanceDAO attcheck = sqlSession.getMapper(AttendanceDAO.class);
 			
 			List<Board> RecentlyNotice= recently.recentlyNotice();
 			model.addAttribute("RecentlyNotice", RecentlyNotice);
@@ -61,9 +61,14 @@ public class Logincontroller {
 			List<Board> RecentlyBoard= recently.recentlyBoard();
 			model.addAttribute("RecentlyBoard", RecentlyBoard);
 			
-			String Checkin= checkin.checkincheck(userid);
+			String Checkin= attcheck.checkincheck(userid);
+
 			model.addAttribute("Checkin", Checkin);
-			System.out.println(Checkin);
+			
+			String Checkout= attcheck.checkoutcheck(userid);
+
+			model.addAttribute("Checkout", Checkout);
+			
 			/*System.out.println("emp.getUserid() : " + emp.getUserid());
 			System.out.println("emp.getEmppwd() : " + emp.getEmppwd());
 			System.out.println("empinfo.getUseremail() : " + empinfo.getUseremail());
