@@ -62,11 +62,9 @@ public class Logincontroller {
 			model.addAttribute("RecentlyBoard", RecentlyBoard);
 			
 			String Checkin= attcheck.checkincheck(userid);
-
 			model.addAttribute("Checkin", Checkin);
 			
 			String Checkout= attcheck.checkoutcheck(userid);
-
 			model.addAttribute("Checkout", Checkout);
 			
 			/*System.out.println("emp.getUserid() : " + emp.getUserid());

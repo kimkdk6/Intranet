@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="se" uri="http://www.springframework.org/security/tags" %>
+<se:authentication property="name" var="LoingUser" />
 <%
 GregorianCalendar now = new GregorianCalendar();
 String date = String.format("%TF",now);
@@ -106,7 +108,8 @@ setTimeout("go_time()", 1000);
                       </table>
                       <table >
                       <tr>
-                       <td style="padding-right: 20px;"><img id="checkinAjax" src="<%=request.getContextPath() %>/resources/img/bt_checkin.gif" style="cursor: pointer;"></td>
+                       <td style="padding-right: 20px;">
+                       <img id="checkinAjax" src="<%=request.getContextPath() %>/resources/img/bt_checkin.gif" style="cursor: pointer;"></td>
                      	<td style="border:2px solid #e3e3e3; width:100px; padding:0px 0px 0px 25px;">
                      	<c:set var="incheck" value="${Checkin}" />
 							<c:if test="${!empty incheck}">
