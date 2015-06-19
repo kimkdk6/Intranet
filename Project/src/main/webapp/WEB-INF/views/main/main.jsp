@@ -18,7 +18,7 @@ $(function(){
 					console.log(data);
 					document.getElementById("checkin").innerHTML = data;
 				},
-				error :function(data){alert("error발생");}
+				error :function(data){alert("이미 출근처리가 됬습니다.");}
 			});
 		});
 });
