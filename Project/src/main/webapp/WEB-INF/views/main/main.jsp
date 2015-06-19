@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <%@ taglib prefix="se" uri="http://www.springframework.org/security/tags" %>
-<se:authentication property="name" var="LoingUser" />
+
 <%
 GregorianCalendar now = new GregorianCalendar();
 String date = String.format("%TF",now);
@@ -61,6 +61,7 @@ setTimeout("go_time()", 1000);
 }
 
 </script>
+
 <section class="content-header" onload="go_time()">
           <h1>
             Se7en
@@ -79,7 +80,8 @@ setTimeout("go_time()", 1000);
             <div class="col-md-6">
               <div class="box">
                 <div class="box-header with-border">
-                  <h3 class="box-title" style="float: left">***님 환영합니다.</h3>
+                <se:authentication property="name" var="LoingUser" />
+                  <h3 class="box-title" style="float: left">${LoingUser }님 환영합니다.</h3>
                   <h3 class="box-title" id="clock" style="float:right"></h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
