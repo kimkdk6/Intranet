@@ -25,4 +25,9 @@
 		from reply ,empinfo where reply.userid = empinfo.userid and
 		reply.boardnum = #{boardnum} order by reply.REPLYDATE asc
 	</select>
+	
+	
+	<insert id="insertReply" parameterType="dto_vo.Board.Reply">
+		insert into reply(REPLYNUM,BOARDNUM,USERID,REPLYCONTENT,REPLYDATE) values(reply_replyno.nextval,#{boardnum},#{userid},#{replycontent},sysdate)
+	</insert>
 </mapper>

@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import dao.AttendanceDAO;
 import dao.EmpDAO;
 import dao.MainDAO;
 import dto_vo.Board.Board;
@@ -34,18 +35,19 @@ public class Logincontroller {
 
 	}
 	
+
 	@RequestMapping(value="main.htm")
 	public String Main(Model model) throws ClassNotFoundException, SQLException {
 		
 		System.out.println("메인 페이지 ");
 		
-		MainDAO recently = sqlSession.getMapper(MainDAO.class);
+		/*MainDAO recently = sqlSession.getMapper(MainDAO.class);
 		
 		List<Board> RecentlyNotice= recently.recentlyNotice();
 		model.addAttribute("RecentlyNotice", RecentlyNotice);
 			
 		List<Board> RecentlyBoard= recently.recentlyBoard();
-		model.addAttribute("RecentlyBoard", RecentlyBoard);
+		model.addAttribute("RecentlyBoard", RecentlyBoard);*/
 	 
 		
 		return "main.main";
@@ -57,6 +59,7 @@ public class Logincontroller {
 			System.out.println("로그인 페이지 ");
 		 	
 			MainDAO recently = sqlSession.getMapper(MainDAO.class);
+			AttendanceDAO attcheck = sqlSession.getMapper(AttendanceDAO.class);
 			
 			List<Board> RecentlyNotice= recently.recentlyNotice();
 			model.addAttribute("RecentlyNotice", RecentlyNotice);
@@ -64,6 +67,11 @@ public class Logincontroller {
 			List<Board> RecentlyBoard= recently.recentlyBoard();
 			model.addAttribute("RecentlyBoard", RecentlyBoard);
 			
+			String Checkin= attcheck.checkincheck(principal.getName());
+			model.addAttribute("Checkin", Checkin);
+			
+			String Checkout= attcheck.checkoutcheck(principal.getName());
+			model.addAttribute("Checkout", Checkout);
 			// 로그인 성공
 			session.setAttribute("emp", principal.getName());
 			
@@ -74,8 +82,12 @@ public class Logincontroller {
 /*	
 	@RequestMapping(value="login.htm", method=RequestMethod.POST)
 	public String login(Emp emp, Empinfo empinfo, Model model, HttpServletRequest request) throws ClassNotFoundException, SQLException 
+=======
+	@RequestMapping(value="index.htm", method=RequestMethod.POST)
+	public String login(String userid, Emp emp, Empinfo empinfo, Model model, HttpServletRequest request) throws ClassNotFoundException, SQLException 
+>>>>>>> branch 'master' of https://github.com/kimkdk6/Intranet.git
 	{
-		
+		userid="m5";
 		System.out.println("id : " + emp.getUserid());
 		System.out.println("pwd : " + emp.getEmppwd());
 		
@@ -92,6 +104,7 @@ public class Logincontroller {
 			
 		if ( emp != null && inputPwd.equals( emp.getEmppwd() ) ) {
 			MainDAO recently = sqlSession.getMapper(MainDAO.class);
+			AttendanceDAO attcheck = sqlSession.getMapper(AttendanceDAO.class);
 			
 			List<Board> RecentlyNotice= recently.recentlyNotice();
 			model.addAttribute("RecentlyNotice", RecentlyNotice);
@@ -99,7 +112,13 @@ public class Logincontroller {
 			List<Board> RecentlyBoard= recently.recentlyBoard();
 			model.addAttribute("RecentlyBoard", RecentlyBoard);
 			
+<<<<<<< HEAD
 			System.out.println("emp.getUserid() : " + emp.getUserid());
+=======
+			
+			
+			/*System.out.println("emp.getUserid() : " + emp.getUserid());
+>>>>>>> branch 'master' of https://github.com/kimkdk6/Intranet.git
 			System.out.println("emp.getEmppwd() : " + emp.getEmppwd());
 			System.out.println("empinfo.getUseremail() : " + empinfo.getUseremail());
 			System.out.println("empinfo.getUseraddr() : " + empinfo.getUseraddr());

@@ -172,7 +172,27 @@ a
 -- cpage : 2 , pagesize : 5 	 start : 6 , end : 10
 -- cpage : 11 , pagesize : 5 	 start : 51 , end : 55
 
+
  	
+
+
+cpage 하나 부여했을때....
+
+ex) cpage=3
+
+-- cpage: 3 , pagesize : 10  start : 31 end : 40
+
+
+int start = cpage * pagesize - (pagesize - 1);
+int end = cpage * pagesize;
+
+SELECT BOARDCODE,BOARDNUM,BOARDNOTICE,USERID,BOARDTITLE,BOARDCONTENT,BOARDDATE,BOARDCOUNT,BOARDFILESRC,BOARDREF,BOARDDEPTH,BOARDSTEP
+	FROM (select ROWNUM , BOARDCODE,BOARDNUM,BOARDNOTICE,USERID,BOARDTITLE,BOARDCONTENT,BOARDDATE,BOARDCOUNT,BOARDFILESRC,BOARDREF,BOARDDEPTH,BOARDSTEP
+		FROM (SELECT * FROM BOARD WHERE BOARDCODE = #{boardcode} ORDER BY BOARDREF DESC,BOARDSTEP ASC) WHERE ROWNUM BETWEEN #{startboard} AND #{endboard})
+
  	
- 	
- 	
+BOARDLIST.JSP
+
+BOARDCODE 필수
+CPAGE	  DEFAULT 1
+PAGESIZE  DEFAULT 10, -> 선택가능.

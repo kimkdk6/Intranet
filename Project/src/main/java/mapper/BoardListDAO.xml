@@ -5,11 +5,14 @@
 
 <mapper namespace="dao.BoardListDAO">
 
+
+	<!-- 모든 게시판 종류들 을 뽑아온다 -->
 	<select id="getAllBoardList" resultType="dto_vo.Board.BoardList">
 		select * from BOARDLIST
 	</select>
 
-
+	
+	<!--  -->
 	<select id="getBoardList" parameterType="Integer" resultType="dto_vo.Board.BoardList">
 		select * from boardlist where boardcode = (select boardcode from board
 		where boardnum=#{boardnum})

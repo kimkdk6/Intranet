@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="se" uri="http://www.springframework.org/security/tags" %>
+<se:authentication property="name" var="LoingUser" />
 <%
 GregorianCalendar now = new GregorianCalendar();
 String date = String.format("%TF",now);
@@ -9,19 +11,27 @@ String date = String.format("%TF",now);
 
  <script type="text/javascript">
 $(function(){
-
 	$('#checkinAjax').click(function(){
 			$.ajax({
 				url:"<%=request.getContextPath() %>/attendance/checkin.htm",  //요청 URL
 				type:"get",           //전송 타입
 				dataType:"html",
 				success : function(data){
-					console.log(data);
-					document.getElementById("checkin").innerHTML = data;
 				},
-				error :function(data){alert("error발생");}
+				error :function(data){alert("이미 출근처리가 됬습니다.");}
 			});
 		});
+	
+	$('#checkoutAjax').click(function(){
+		$.ajax({
+			url:"<%=request.getContextPath() %>/attendance/checkout.htm",  //요청 URL
+			type:"get",           //전송 타입
+			dataType:"html",
+			success : function(data){
+			},
+			error :function(data){alert("이미 퇴근처리가 됬습니다.");}
+		});
+	});
 });
 
 setInterval("go_time()",1000);
@@ -98,15 +108,26 @@ setTimeout("go_time()", 1000);
                       </table>
                       <table >
                       <tr>
-                       <td style="padding-right: 20px;"><div  id="checkinAjax"><img id="checkinAjax" src="<%=request.getContextPath() %>/resources/img/bt_checkin.gif" style="cursor: pointer;"></div> </td>
-                     	<td style="border:2px solid #e3e3e3; width:100px; padding:0px 0px 0px 20px;"><h3 id="checkin" ></h3></td>
+                       <td style="padding-right: 20px;">
+                       <img id="checkinAjax" src="<%=request.getContextPath() %>/resources/img/bt_checkin.gif" style="cursor: pointer;"></td>
+                     	<td style="border:2px solid #e3e3e3; width:100px; padding:0px 0px 0px 25px;">
+                     	<c:set var="incheck" value="${Checkin}" />
+							<c:if test="${!empty incheck}">
+							<!-- <span id="checkin"></span> -->
+							<span id="checkin" >${incheck}</span>
+							</c:if>
+                     	</td>
                       </tr>
                       <tr>
                       <td height="8" colspan="2"></td>
                       </tr>
                       <tr >
-                      <td style="padding-right: 20px;"><img  src="<%=request.getContextPath() %>/resources/img/bt_checkout.gif"> </td>
-                     	<td style="border:2px solid #e3e3e3; width:100px; padding:0px 0px 0px 20px;"><h3 id="chechout"></h3></td>
+                      <td style="padding-right: 20px;"><img id="checkoutAjax" src="<%=request.getContextPath() %>/resources/img/bt_checkout.gif"> </td>
+                     	<td style="border:2px solid #e3e3e3; width:100px; padding:0px 0px 0px 25px;">
+                     	<c:set var="outcheck" value="${Checkout}" />
+							<c:if test="${!empty outcheck}">
+							<span id="checkout">${outcheck}</span>
+							</c:if>
                       </tr>
                        <tr>
                       <td height="8" colspan="2"></td>

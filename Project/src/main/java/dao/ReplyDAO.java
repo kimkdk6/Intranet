@@ -17,4 +17,7 @@ public interface ReplyDAO {
 	public List<Emp> getReplyEmp(int boardnum) throws ClassNotFoundException, SQLException;
 	
 	public List<Empinfo> getReplyEmpinfo(int boardnum) throws ClassNotFoundException, SQLException;
+	
+	public void insertReply(Reply reply) throws ClassNotFoundException, SQLException;
+	
 }

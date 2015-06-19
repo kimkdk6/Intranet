@@ -82,5 +82,63 @@ public class Boardcontroller {
 		return "board.BoardDetail";
 		
 	}
+	
+	@RequestMapping(value = "BoardList.htm")
+	public String BoardList(@RequestParam(value="boardcode") int boardcode,
+							@RequestParam(value="cpage", defaultValue="1") int cpage,
+							@RequestParam(value="pagesize", defaultValue="10")int pagesize,
+							Model model)throws ClassNotFoundException,SQLException{
+		
+		int startboard = cpage * pagesize - (pagesize - 1);
+		int endboard = cpage * pagesize;
+		
+		BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
+		BoardListDAO boardlistdao = sqlsession.getMapper(BoardListDAO.class);
+
+		BoardList boardlist = boardlistdao.getBoardList(boardcode);
+		List<Board> boardlistlist = boarddao.getBoardList(boardcode, startboard, endboard);
+		
+		
+		model.addAttribute("boardlist", boardlist);//게시판 이름 코드
+		model.addAttribute("boardlistlist", boardlistlist);//게시글 리스트
+		
+		return "board.BoardList";
+		
+	}
+	
+	
+	
+	@RequestMapping(value = "BoardReply.htm")
+	public String BoardReply(Reply reply, Model model)throws ClassNotFoundException,SQLException{
+	
+		System.out.println(reply);
+		
+		ReplyDAO replydao = sqlsession.getMapper(ReplyDAO.class);
+		replydao.insertReply(reply);
+		
+		int boardnum  = reply.getBoardnum();
+		BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
+		BoardListDAO boardlistdao = sqlsession.getMapper(BoardListDAO.class);
+	
+		
+		BoardList boardlist = boardlistdao.getBoardList(boardnum);
+		Board board = boarddao.getBoard(boardnum);
+		List<Reply> replylist = replydao.getReply(boardnum);
+		List<Emp> emplist = replydao.getReplyEmp(boardnum);
+		List<Empinfo> empinfolist = replydao.getReplyEmpinfo(boardnum);
+		Emp boardemp = boarddao.getBoardEmp(boardnum);
+		Empinfo boardempinfo = boarddao.getBoardEmpinfo(boardnum);
+		
+		model.addAttribute("board", board);
+		model.addAttribute("boardlist", boardlist);
+		model.addAttribute("replylist", replylist);
+		model.addAttribute("emplist", emplist);
+		model.addAttribute("empinfolist", empinfolist);
+		model.addAttribute("boardemp", boardemp);
+		model.addAttribute("boardempinfo", boardempinfo);
+		
+		return "board.BoardDetail";
+		
+	}
 }
 

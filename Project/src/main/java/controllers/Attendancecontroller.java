@@ -28,9 +28,20 @@ public class Attendancecontroller {
 		userid="m5";
 		AttendanceDAO checkin = sqlSession.getMapper(AttendanceDAO.class);
 		
-		//checkin.checkin(userid);
+		checkin.checkin(userid);
 		String Checkin= checkin.checkincheck(userid);
 		System.out.println(Checkin);
 		return Checkin;
+	}
+	@RequestMapping(value = "checkout.htm")
+	public @ResponseBody int checkout(String userid,HttpServletRequest request, HttpServletResponse response) throws Exception
+	{
+		userid="m5";
+		AttendanceDAO checkout = sqlSession.getMapper(AttendanceDAO.class);
+		
+		checkout.checkout(userid);
+		int Checkout= checkout.checkout(userid);
+		System.out.println(Checkout);
+		return Checkout;
 	}
 }
