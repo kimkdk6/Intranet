@@ -105,5 +105,40 @@ public class Boardcontroller {
 		return "board.BoardList";
 		
 	}
+	
+	
+	
+	@RequestMapping(value = "BoardReply.htm")
+	public String BoardReply(Reply reply, Model model)throws ClassNotFoundException,SQLException{
+	
+		System.out.println(reply);
+		
+		ReplyDAO replydao = sqlsession.getMapper(ReplyDAO.class);
+		replydao.insertReply(reply);
+		
+		int boardnum  = reply.getBoardnum();
+		BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
+		BoardListDAO boardlistdao = sqlsession.getMapper(BoardListDAO.class);
+	
+		
+		BoardList boardlist = boardlistdao.getBoardList(boardnum);
+		Board board = boarddao.getBoard(boardnum);
+		List<Reply> replylist = replydao.getReply(boardnum);
+		List<Emp> emplist = replydao.getReplyEmp(boardnum);
+		List<Empinfo> empinfolist = replydao.getReplyEmpinfo(boardnum);
+		Emp boardemp = boarddao.getBoardEmp(boardnum);
+		Empinfo boardempinfo = boarddao.getBoardEmpinfo(boardnum);
+		
+		model.addAttribute("board", board);
+		model.addAttribute("boardlist", boardlist);
+		model.addAttribute("replylist", replylist);
+		model.addAttribute("emplist", emplist);
+		model.addAttribute("empinfolist", empinfolist);
+		model.addAttribute("boardemp", boardemp);
+		model.addAttribute("boardempinfo", boardempinfo);
+		
+		return "board.BoardDetail";
+		
+	}
 }
 
