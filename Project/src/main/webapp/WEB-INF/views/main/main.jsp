@@ -102,7 +102,7 @@ setTimeout("go_time()", 1000);
               <div class="box">
                 <div class="box-header with-border">
                 <se:authentication property="name" var="LoingUser" />
-                  <h3 class="box-title" style="float: left">${LoingUser }님 환영합니다.</h3>
+                  <h3 class="box-title" style="float: left">${Checkname }님 환영합니다.</h3>
                   <h3 class="box-title" id="clock" style="float:right"></h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">

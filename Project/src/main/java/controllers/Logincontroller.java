@@ -41,13 +41,13 @@ public class Logincontroller {
 		
 		System.out.println("메인 페이지 ");
 		
-		MainDAO recently = sqlSession.getMapper(MainDAO.class);
+		MainDAO maindao = sqlSession.getMapper(MainDAO.class);
 		AttendanceDAO attcheck = sqlSession.getMapper(AttendanceDAO.class);
 		
-		List<Board> RecentlyNotice= recently.recentlyNotice();
+		List<Board> RecentlyNotice= maindao.recentlyNotice();
 		model.addAttribute("RecentlyNotice", RecentlyNotice);
 			
-		List<Board> RecentlyBoard= recently.recentlyBoard();
+		List<Board> RecentlyBoard= maindao.recentlyBoard();
 		model.addAttribute("RecentlyBoard", RecentlyBoard);
 		
 		String Checkin= attcheck.checkincheck(principal.getName());
@@ -55,6 +55,9 @@ public class Logincontroller {
 		
 		String Checkout= attcheck.checkoutcheck(principal.getName());
 		model.addAttribute("Checkout", Checkout);
+		
+		String Checkname = maindao.checkname(principal.getName());
+		model.addAttribute("Checkname", Checkname);
 		// 로그인 성공
 		session.setAttribute("emp", principal.getName());
 	 
