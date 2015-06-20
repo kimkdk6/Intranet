@@ -61,6 +61,8 @@
                   <a href="#"><i class="fa fa-circle-o"></i> 결재문서 작성 <i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
                     <li><a href="${pageContext.request.contextPath}/sign/DraftingReg.htm"><i class="fa fa-circle-o"></i>기안서</a></li>
+                    <li><a href="${pageContext.request.contextPath}/sign/OrderDocReg.htm"><i class="fa fa-circle-o"></i>발주서</a></li>
+                    <li><a href="${pageContext.request.contextPath}/sign/HolidayDocReg.htm"><i class="fa fa-circle-o"></i>휴가계</a></li>
                     <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
                   </ul>
                 </li>
