@@ -60,6 +60,7 @@
             	   var dialog1;
             	   var dialog2;
             	   var dialog3;
+            	   
             	   dialog = $("#dialog").dialog({
                         autoOpen : false,
                         width : 500,
@@ -91,12 +92,15 @@
 									"</td>");
                         dialog.dialog("close");
                      }
+                     
+                     $("#cancel").click(function(){
+                    	 $("#users").html("<button id='opener'>지정1</button>");
+                    	 // $("#users").html("<button onclick='function().dialog(#dialog)'>지정1</button>");
+                      });
+                     
                      return valid;
+                     
                   }
-                  
-                  $("#cancel1").click(function(){
-                	 $("#users").html("<button id='opener'>지정1</button>"); 
-                  });
                   
                   // ============== 두번째 =====================
                   dialog1 = $("#dialog1").dialog({
@@ -122,7 +126,7 @@
                       var valid = true;
 
                       if (valid) {
-                     	 $("#users1").html(
+                     	 $("#users1").replaceWith(
  									"<td>" + $('input[name="name1"]:checked').val() + "</td>");
                          dialog1.dialog("close");
                       }
@@ -203,7 +207,6 @@
                   $("#opener3").click(function() {
                      $("#dialog3").dialog("open");
                   });
-                  
                });
                /* 결재자 메뉴 띄우는 기능 끝*/
                
@@ -327,9 +330,9 @@
                                                    </div>
                                                    <!-- <input type="button" value="완료" onclick="check()"> -->
                                                    </div>
-
+                                                   
                                                    <button id="opener">지정1</button>
-                                                   <button id="cancel1" >취소</button>
+                                                   <!-- <button id="cancel1" >취소</button> -->
                                              </td>
                                              
                                              <td id="users1" style="border-bottom: 1px #eaeaea solid;">
@@ -571,7 +574,7 @@
                                                             
                                                             
                                                             
-                                                            <textarea rows="10" cols="3000" name="CONTENT" id="CONTENT"></textarea>
+                                                            <textarea rows="1000" cols="3000" name="CONTENT" id="CONTENT"></textarea>
                                                                <script type="text/javascript">
                                                                   CKEDITOR.replace('CONTENT');
                                                                </script>
