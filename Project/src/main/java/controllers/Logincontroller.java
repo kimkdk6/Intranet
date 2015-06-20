@@ -52,20 +52,22 @@ public class Logincontroller {
 		model.addAttribute("RecentlyBoard", RecentlyBoard);
 		
 		String Checkin= attcheck.checkincheck(principal.getName());
-		model.addAttribute("Checkin", Checkin);
-
+		model.addAttribute("Checkin", Checkin); 
 		
 		String Checkout= attcheck.checkoutcheck(principal.getName());
 		model.addAttribute("Checkout", Checkout);
-		
 		
 		String Checkname = maindao.checkname(principal.getName());
 		model.addAttribute("Checkname", Checkname);
 		// 로그인 성공
 		session.setAttribute("emp", principal.getName());
-	 
 		
+		EmpDAO empDao = sqlSession.getMapper(EmpDAO.class);
+		emp = empDao.getEmp(principal.getName());
+		empinfo = empDao.getEmpInfo(principal.getName());
 		
+		session.setAttribute("emp1", emp);
+		session.setAttribute("empinfo", empinfo);
 		
 		return "main.main";
 	}
