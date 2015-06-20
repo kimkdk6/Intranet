@@ -12,22 +12,32 @@ String date = String.format("%TF",now);
  <script type="text/javascript">
 $(function(){
 	$('#checkinAjax').click(function(){
+		var time = "";
 		$.ajax({
 			url:"<%=request.getContextPath() %>/attendance/checkincheck.htm",  //요청 URL
 			type:"get",           //전송 타입
 			dataType:"html",
 			success : function(data){
-				alert("이미 출근처리가 됬습니다.");
+				if(data != ""){
+					alert("이미 출근처리가 됬습니다.");
+				}else {
+					$.ajax({
+						url:"<%=request.getContextPath() %>/attendance/checkin.htm",  //요청 URL
+						type:"get",           //전송 타입
+						dataType:"html",
+						success : function(data2){
+							alert(data2);
+							document.getElementById("checkin").innerHTML = data2;
+							alert("출근처리가 정상적으로 처리됬습니다.");
+
+						},
+						error :function(data2){alert("이미 출근처리가 됬습니다.");}
+					});
+				}
+				
 			},
 			error :function(data){
-			$.ajax({
-				url:"<%=request.getContextPath() %>/attendance/checkin.htm",  //요청 URL
-				type:"get",           //전송 타입
-				dataType:"html",
-				success : function(data){
-				},
-				error :function(data){alert("이미 출근처리가 됬습니다.");}
-			});
+				alert('Error..');
 			}
 		});
 			
@@ -39,17 +49,25 @@ $(function(){
 			type:"get",           //전송 타입
 			dataType:"html",
 			success : function(data){
-				alert("이미 퇴근처리가 됬습니다.");
+				if(data != ""){
+					alert("이미 퇴근처리가 됬습니다.");
+				}else {
+					$.ajax({
+						url:"<%=request.getContextPath() %>/attendance/checkout.htm",  //요청 URL
+						type:"get",           //전송 타입
+						dataType:"html",
+						success : function(data){
+							var result = data;
+							alert("퇴근처리가 정상적으로 처리됬습니다."),
+							document.getElementById("checkout").innerHTML = result;
+						},
+						error :function(data){alert("이미 퇴근처리가 됬습니다.");}
+					});
+				}
+				
 			},
 			error :function(data){
-			$.ajax({
-				url:"<%=request.getContextPath() %>/attendance/checkout.htm",  //요청 URL
-				type:"get",           //전송 타입
-				dataType:"html",
-				success : function(data){
-				},
-				error :function(data){alert("이미 퇴근처리가 됬습니다.");}
-			});
+				alert('Error..');
 			}
 		});
 	});
@@ -82,7 +100,8 @@ setTimeout("go_time()", 1000);
 }
 
 </script>
-
+<c:set var="incheck" value="${Checkin}" />
+<c:set var="outcheck" value="${Checkout}" />
 <section class="content-header" onload="go_time()">
           <h1>
             Se7en
@@ -134,11 +153,8 @@ setTimeout("go_time()", 1000);
                        <td style="padding-right: 20px;">
                        <img id="checkinAjax" src="<%=request.getContextPath() %>/resources/img/bt_checkin.gif" style="cursor: pointer;"></td>
                      	<td style="border:2px solid #e3e3e3; width:100px; padding:0px 0px 0px 25px;">
-                     	<c:set var="incheck" value="${Checkin}" />
-							<c:if test="${!empty incheck}">
-							<!-- <span id="checkin"></span> -->
-							<span id="checkin" >${incheck}</span>
-							</c:if>
+
+							<span id="checkin"><c:if test="${!empty incheck}">${incheck}</c:if></span>
                      	</td>
                       </tr>
                       <tr>
@@ -148,10 +164,8 @@ setTimeout("go_time()", 1000);
                       <td style="padding-right: 20px;">
                       <img id="checkoutAjax" src="<%=request.getContextPath() %>/resources/img/bt_checkout.gif" style="cursor: pointer;"> </td>
                      	<td style="border:2px solid #e3e3e3; width:100px; padding:0px 0px 0px 25px;">
-                     	<c:set var="outcheck" value="${Checkout}" />
-							<c:if test="${!empty outcheck}">
-							<span id="checkout">${outcheck}</span>
-							</c:if>
+						<span id="checkout"><c:if test="${!empty outcheck}">${outcheck}</c:if></span>
+							
                       </tr>
                        <tr>
                       <td height="8" colspan="2"></td>

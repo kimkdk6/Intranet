@@ -1,5 +1,7 @@
 package controllers;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,45 +21,42 @@ public class Attendancecontroller {
 	private SqlSession sqlSession;
 	
 	@RequestMapping(value = "checkin.htm")
-	public @ResponseBody String checkin(String userid,HttpServletRequest request, HttpServletResponse response) throws Exception
+	public @ResponseBody String checkin(Principal principal,HttpServletRequest request, HttpServletResponse response) throws Exception
 	{
-		userid="m5";
+	
 		AttendanceDAO checkin = sqlSession.getMapper(AttendanceDAO.class);
-		
-		checkin.checkin(userid);
+
+		checkin.checkin(principal.getName());
 
 		return null;
 	}
 	
 	@RequestMapping(value = "checkincheck.htm")
-	public @ResponseBody String checkincheck(String userid,HttpServletRequest request, HttpServletResponse response) throws Exception
+	public @ResponseBody String checkincheck(Principal principal,HttpServletRequest request, HttpServletResponse response) throws Exception
 	{
-		userid="m5";
 		AttendanceDAO checkin = sqlSession.getMapper(AttendanceDAO.class);
-		
-		String Checkin= checkin.checkincheck(userid);
-		System.out.println(Checkin);
+		String Checkin= checkin.checkincheck(principal.getName());
 		return Checkin;
 	}
 	
 	@RequestMapping(value = "checkout.htm")
-	public @ResponseBody String checkout(String userid,HttpServletRequest request, HttpServletResponse response) throws Exception
+	public @ResponseBody String checkout(Principal principal,HttpServletRequest request, HttpServletResponse response) throws Exception
 	{
-		userid="m5";
+		
 		AttendanceDAO checkout = sqlSession.getMapper(AttendanceDAO.class);
 		
-		checkout.checkout(userid);
+		checkout.checkout(principal.getName());
 		return null;
 	}
 	
 	@RequestMapping(value = "checkoutcheck.htm")
-	public @ResponseBody String checkoutcheck(String userid,HttpServletRequest request, HttpServletResponse response) throws Exception
+	public @ResponseBody String checkoutcheck(Principal principal,HttpServletRequest request, HttpServletResponse response) throws Exception
 	{
-		userid="m5";
+		
 		AttendanceDAO checkout = sqlSession.getMapper(AttendanceDAO.class);
 		
 
-		String Checkout= checkout.checkoutcheck(userid);
+		String Checkout= checkout.checkoutcheck(principal.getName());
 
 		return Checkout;
 	}

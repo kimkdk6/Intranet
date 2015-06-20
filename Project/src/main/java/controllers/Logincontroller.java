@@ -52,9 +52,11 @@ public class Logincontroller {
 		
 		String Checkin= attcheck.checkincheck(principal.getName());
 		model.addAttribute("Checkin", Checkin);
+
 		
 		String Checkout= attcheck.checkoutcheck(principal.getName());
 		model.addAttribute("Checkout", Checkout);
+		
 		
 		String Checkname = maindao.checkname(principal.getName());
 		model.addAttribute("Checkname", Checkname);
