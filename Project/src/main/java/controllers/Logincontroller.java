@@ -54,13 +54,20 @@ public class Logincontroller {
 		model.addAttribute("RecentlyBoard", RecentlyBoard);
 		
 		String Checkin= attcheck.checkincheck(principal.getName());
+		System.out.println(Checkin);
 		model.addAttribute("Checkin", Checkin); 
 		
 		String Checkout= attcheck.checkoutcheck(principal.getName());
 		model.addAttribute("Checkout", Checkout);
 		
+		String Latecheck = attcheck.latecheck(principal.getName());
+		System.out.println(Latecheck);
+		model.addAttribute("Latecheck", Latecheck);
+		
 		String Checkname = maindao.checkname(principal.getName());
 		model.addAttribute("Checkname", Checkname);
+		
+		
 		
 		// 로그인 성공
 		session.setAttribute("emp", principal.getName());

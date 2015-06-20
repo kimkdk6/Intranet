@@ -27,8 +27,9 @@ public class Attendancecontroller {
 		AttendanceDAO checkin = sqlSession.getMapper(AttendanceDAO.class);
 
 		checkin.checkin(principal.getName());
+		String Checkincheck= checkin.checkincheck(principal.getName());
 
-		return null;
+		return Checkincheck;
 	}
 	
 	@RequestMapping(value = "checkincheck.htm")
@@ -46,7 +47,8 @@ public class Attendancecontroller {
 		AttendanceDAO checkout = sqlSession.getMapper(AttendanceDAO.class);
 		
 		checkout.checkout(principal.getName());
-		return null;
+		String Checkoutcheck= checkout.checkoutcheck(principal.getName());
+		return Checkoutcheck;
 	}
 	
 	@RequestMapping(value = "checkoutcheck.htm")
@@ -59,5 +61,16 @@ public class Attendancecontroller {
 		String Checkout= checkout.checkoutcheck(principal.getName());
 
 		return Checkout;
+	}
+	@RequestMapping(value = "latecheck.htm")
+	public @ResponseBody String latecheck(Principal principal,HttpServletRequest request, HttpServletResponse response) throws Exception
+	{
+		
+		AttendanceDAO latecheck = sqlSession.getMapper(AttendanceDAO.class);
+		
+
+		String Latecheck= latecheck.latecheck(principal.getName());
+
+		return Latecheck;
 	}
 }
