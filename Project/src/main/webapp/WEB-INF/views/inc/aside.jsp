@@ -2,10 +2,11 @@
 <%@page import="dto_vo.Emp.Emp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%-- <% 
 	Emp emp = (Emp)session.getAttribute("emp1"); 
 	Empinfo empinfo = (Empinfo)session.getAttribute("empinfo");
-%>
+%> --%>
 
       <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
@@ -16,7 +17,7 @@
               <img src="<%=request.getContextPath() %>/resources/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
-              <p><%= emp.getEname() %></p>
+              <p> ${ emp1.getEname() }</p>
 
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>

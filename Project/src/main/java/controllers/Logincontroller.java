@@ -59,6 +59,7 @@ public class Logincontroller {
 		
 		String Checkname = maindao.checkname(principal.getName());
 		model.addAttribute("Checkname", Checkname);
+		
 		// 로그인 성공
 		session.setAttribute("emp", principal.getName());
 		
@@ -66,8 +67,10 @@ public class Logincontroller {
 		emp = empDao.getEmp(principal.getName());
 		empinfo = empDao.getEmpInfo(principal.getName());
 		
-		session.setAttribute("emp1", emp);
+		session.setAttribute("myemp", emp);
 		session.setAttribute("empinfo", empinfo);
+		
+		
 		
 		return "main.main";
 	}
