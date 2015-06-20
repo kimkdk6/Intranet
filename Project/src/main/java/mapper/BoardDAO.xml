@@ -62,7 +62,7 @@
 	<insert id="insertNewBoard" parameterType="dto_vo.Board.Board">
 		insert into
 		Board(BOARDCODE,BOARDNUM,BOARDNOTICE,USERID,BOARDTITLE,BOARDCONTENT,BOARDDATE,BOARDCOUNT,BOARDFILESRC,BOARDREF,BOARDDEPTH,BOARDSTEP)
-		values(#{boardcode},board_boardnum.nextval,#{boardnotice},#{userid},#{boardtitle},#{boardcontent},sysdate,0,'aaa',(select
+		values(#{boardcode},board_boardnum.nextval,#{boardnotice},#{userid},#{boardtitle},#{boardcontent},sysdate,0,#{boardfilesrc,jdbcType=VARCHAR},(select
 		NVL(MAX(boardNUM),0)+1 from board),0,0)
 	</insert>
 

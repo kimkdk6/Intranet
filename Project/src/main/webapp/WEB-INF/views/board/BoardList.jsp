@@ -6,6 +6,16 @@
 <%
    //model.addAttribute("boardlist", boardlist);//게시판 이름 코드
    //model.addAttribute("boardlistlist", boardlistlist);//게시글 리스트
+   
+   
+   /*
+   	해당게시판의 총 글수
+   	현재 페이지
+   	현재 페이지사이즈
+   	
+   
+   */
+   
 %>
 
 <!--전체외곽TB START-->

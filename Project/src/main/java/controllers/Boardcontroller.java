@@ -161,10 +161,12 @@ public class Boardcontroller {
 	
 	
 	@RequestMapping(value = "BoardWriteOk.htm")
-	   public String BoardWriteOk(Board board, Model model,HttpServletRequest request)throws ClassNotFoundException,SQLException {
+	   public String BoardWriteOk(Board board, Model model)throws ClassNotFoundException,SQLException {
 	   
 			System.out.println("게시판 글쓰기 boardcode: " +board.getBoardcode());
 			System.out.println(board);
+			
+			
 			
 			BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
 			BoardListDAO boardlistdao = sqlsession.getMapper(BoardListDAO.class);
@@ -172,12 +174,16 @@ public class Boardcontroller {
 			
 			boarddao.insertNewBoard(board);
 			
-			request.setAttribute("boardcode", board.getBoardcode());
+			//request.setAttribute("boardcode", board.getBoardcode());
 			
 			
 			model.addAttribute("boardlist", boardlist);
 			model.addAttribute("boardcode", board.getBoardcode());
-	      return "board.BoardList";
+			
+		//	board/BoardList.jsp?boardcode=1
+			
+//	      return "redirect:BoardList.htm?boardcode="+board.getBoardcode();
+	      return "redirect:BoardList.htm";//신기하네...
 	   }
 	
 }

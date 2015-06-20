@@ -80,7 +80,7 @@
                               <tr height="30">
                                  <td align="left" bgcolor="#f6f6f6" class="m_sp" style="padding: 3px 0px 0px 12px; border-right: #eaeaea 1px solid; border-bottom: #eaeaea 1px solid;"><b>파일첨부</b></td>
                                  <td align="left" style="padding: 0px 11px 0px 11px; border-bottom: #eaeaea 1px solid;">
-                                    <div id="u_w" style="display: none;">
+                                    <div id="u_w">
                                        <input type="file" name="boardfilesrc" value="/file.exe" />
                                     </div>
                                  </td>
