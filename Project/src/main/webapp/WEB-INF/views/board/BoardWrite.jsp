@@ -2,7 +2,13 @@
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-            <script type="text/javascript" src="../resources/plugins/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="../resources/plugins/ckeditor/ckeditor.js"></script>
+
+<script type="text/javascript">
+	function onwrite(){
+		document.writeboard.submit();
+	}	
+</script>
 
 <table width="100%" height="100%" border="0" cellspacing="0"
    cellpadding="0" id="__top__">
@@ -18,15 +24,14 @@
                      <td height="40">
                         <!--타이틀TB START-->
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                           <form name='searchBBS' method='post' action='/bbs/list.php'>
                               <input type='hidden' name='bbs_id' value='0009'>
                               <tr>
                                  <td width="520" align="left" class="title_txt" style="padding: 5px 0 0 14px;">
-                                   	${boardlist.boardname } 
+                                   	${boardlist.boardname} 
 <!--                                     <img src="../resources/img/title_divide.gif" align="absmiddle"> -->
                                  </td>
                               </tr>
-                           </form>
+                           
                         </table> 
                         <!--타이틀TB END-->
                      </td>
@@ -61,19 +66,22 @@
                   </tr>
                   <tr>
                      <td valign="top">
-                        <form name="writeBBS" method="post" action="write_exe.php">
+                        <form name="writeboard" method="post" action="${pageContext.request.contextPath}/board/BoardWriteOk.htm">
+                        	<input type="hidden" name="userid" value="${sessionScope.myemp.userid}">
+                        	<input type="hidden" name="boardcode" value="${boardlist.boardcode}">
+                        	<input type="hidden" name="boardnotice" value="0">  
                            <!--리스트TB START-->
                            <table width="100%" border="0" cellspacing="0" cellpadding="0" style="table-layout: fixed;">
                               <tr height="30">
                                  <td width="100" height="30" align="left" bgcolor="#f6f6f6" class="m_sp" style="padding: 3px 0px 0px 12px; border-bottom: #eaeaea 1px solid; border-right: #eaeaea 1px solid;"><b>제목</b></td>
                                  <td width=""style="border-bottom: #eaeaea 1px solid; padding: 0px 11px 0px 11px;">
-                                 <input type="text" id="t_subject" name="subject" class="input_type1" style="width: 100%" value=""></td>
+                                 <input type="text" id="t_subject" name="boardtitle" class="input_type1" style="width: 100%" value=""></td>
                               </tr>
                               <tr height="30">
                                  <td align="left" bgcolor="#f6f6f6" class="m_sp" style="padding: 3px 0px 0px 12px; border-right: #eaeaea 1px solid; border-bottom: #eaeaea 1px solid;"><b>파일첨부</b></td>
                                  <td align="left" style="padding: 0px 11px 0px 11px; border-bottom: #eaeaea 1px solid;">
                                     <div id="u_w" style="display: none;">
-                                       <input type="file" name="uploadify" id="uploadify" />
+                                       <input type="file" name="boardfilesrc" value="/file.exe" />
                                     </div>
                                  </td>
                               </tr>

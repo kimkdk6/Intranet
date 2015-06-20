@@ -50,10 +50,21 @@
 		resultType="Integer">
 
 		select count(*) from board where boardcode = #{boardcode}
-		
+
 	</select>
-	
+
 	<delete id="deleteBoard" parameterType="Integer">
-		delete from board where boardnum=#{boardnum}
+		delete from board where
+		boardnum=#{boardnum}
 	</delete>
+
+
+	<insert id="insertNewBoard" parameterType="dto_vo.Board.Board">
+		insert into
+		Board(BOARDCODE,BOARDNUM,BOARDNOTICE,USERID,BOARDTITLE,BOARDCONTENT,BOARDDATE,BOARDCOUNT,BOARDFILESRC,BOARDREF,BOARDDEPTH,BOARDSTEP)
+		values(#{boardcode},board_boardnum.nextval,#{boardnotice},#{userid},#{boardtitle},#{boardcontent},sysdate,0,'aaa',(select
+		NVL(MAX(boardNUM),0)+1 from board),0,0)
+	</insert>
+
+
 </mapper>

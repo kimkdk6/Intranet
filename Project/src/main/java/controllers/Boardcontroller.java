@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -155,6 +157,27 @@ public class Boardcontroller {
 			BoardList boardlist =  boardlistdao.getBoardListforCode(boardcode);
 			model.addAttribute("boardlist", boardlist);
 	      return "board.BoardWrite";
+	   }
+	
+	
+	@RequestMapping(value = "BoardWriteOk.htm")
+	   public String BoardWriteOk(Board board, Model model,HttpServletRequest request)throws ClassNotFoundException,SQLException {
+	   
+			System.out.println("게시판 글쓰기 boardcode: " +board.getBoardcode());
+			System.out.println(board);
+			
+			BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
+			BoardListDAO boardlistdao = sqlsession.getMapper(BoardListDAO.class);
+			BoardList boardlist =  boardlistdao.getBoardListforCode(board.getBoardcode());
+			
+			boarddao.insertNewBoard(board);
+			
+			request.setAttribute("boardcode", board.getBoardcode());
+			
+			
+			model.addAttribute("boardlist", boardlist);
+			model.addAttribute("boardcode", board.getBoardcode());
+	      return "board.BoardList";
 	   }
 	
 }

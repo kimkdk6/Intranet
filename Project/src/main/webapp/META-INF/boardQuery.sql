@@ -124,7 +124,7 @@ select * from board order by ref desc , step asc;
 --보드리스트 기본적인 로직...
 
 insert into Board(BOARDCODE,BOARDNUM,BOARDNOTICE,USERID,BOARDTITLE,BOARDCONTENT,BOARDDATE,BOARDCOUNT,BOARDFILESRC,BOARDREF,BOARDDEPTH,BOARDSTEP)
-values(?,board_boardnum.nextval,?,?,?,?,?,?,?,?,?,?); 
+values(?,board_boardnum.nextval,?,?,?,?,?,?,?,NVL(MAX(NUM),0)+1,0,0); 
 --새글쓰기
 
 update Board set BOARDNOTICE=?, USERID=?, BOARDTITLE=?, BOARDCONTENT=?, BOARDFILESRC=? where BOARDNUM=?;
@@ -136,6 +136,7 @@ update BOARD SET BOARDCOUNT=BOARDCOUNT+1 where BOARDNUM=?;
 delete from BOARD where BOARDNUM=?;
 --글 삭제하기.
 
+select NVL(MAX(NUM),0)+1 from board;
 
 
 --답글쓰기에 필요한 쿼리문--
