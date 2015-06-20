@@ -275,14 +275,33 @@ p {
 																				<tr>
 																					<td width="55" valign="top"
 																						style="padding: 5px 5px 5px 5px;" align="center">
-																						<%--                       			<img width="50" src="${empinfo[rps.index].userphoto}" style="border:1px solid #CCCCCC;"> --%>
-																						<img width="50" src="../resources/img/josuck.jpg"
+																					
+																						
+																						<c:choose>
+																								<c:when test="${boardlist.boardcode==3}">
+																									<img width="50" src="../resources/img/anony.png"
 																						style="border: 1px solid #CCCCCC;">
+																								</c:when>
+																								<c:otherwise>
+																									<img width="50" src="../resources/img/josuck.jpg"
+																						style="border: 1px solid #CCCCCC;">
+																								</c:otherwise>
+																							</c:choose>
+																						
 																					</td>
 																					<td width="" align="left" valign="top" class="m_sp"
 																						style="padding: 5px 0px 5px 5px;">
 																						<div
-																							style="padding: 0px 0 0px 0; height: 16px; color: #000000; background-color: #f8f8f8;">${rp.userid}(${emplist[rps.index].ename})</div>
+																							style="padding: 0px 0 0px 0; height: 16px; color: #000000; background-color: #f8f8f8;">
+																							
+																							<c:choose>
+																								<c:when test="${boardlist.boardcode==3}">
+																									Anonymous
+																								</c:when>
+																								<c:otherwise>
+																									${rp.userid}(${emplist[rps.index].ename})
+																								</c:otherwise>
+																							</c:choose> </div>
 																						<span id="acont0">${rp.replycontent}</span> <span
 																						id="atext0" style="display: none;"> <textarea
 																								name="content"
@@ -293,6 +312,16 @@ p {
 																						class="counter"
 																						style="padding: 3px 0px 3px 0px; letter-spacing: -1px;">
 																						<font color="#999999">${rp.replydate}</font>
+																						
+																						<se:authentication property="name" var="LoingUser" />
+																						<c:if test="${rp.userid}==${LoingUser}">
+																						<br>
+																						<span id="pbt1">
+                     																	 <a href="javascript:alert('아직안됌')"><img src="../resources/img/bt_modify.gif"></a>
+                      																	<a href="${pageContext.request.contextPath}/board/ReplyDelete.htm?replynum=${rp.replynum}"><img src="../resources/img/bt_delete3.gif" onclick="if(!confirm('댓글을 삭제하시겠습니까?')) return false;"></a>
+                   																			   </span>
+																						</c:if>
+																						
 																					</td>
 																				</tr>
 																				<tr height="2"
@@ -317,7 +346,7 @@ p {
 																				<td align="left" valign="top" width="" height="45">
 																				<form action="${pageContext.request.contextPath}/board/BoardReply.htm" method="post">
 																				
-																				<se:authentication property="name" var="LoingUser" />
+<%-- 																				<se:authentication property="name" var="LoingUser" /> --%>
                  													
 																					<input type="hidden" name="userid" value="${LoingUser}">
 																					<input type="hidden" name="boardnum" value="${board.boardnum}">

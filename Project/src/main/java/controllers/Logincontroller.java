@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +38,7 @@ public class Logincontroller {
 	
 
 	@RequestMapping(value="login.htm")
-	public String Main(Principal principal, Model model, HttpSession session) throws ClassNotFoundException, SQLException {
+	public String Main(Principal principal, Model model, HttpSession session, Emp emp, Empinfo empinfo, HttpServletRequest request ) throws ClassNotFoundException, SQLException {
 		
 		System.out.println("메인 페이지 ");
 		
@@ -61,6 +62,8 @@ public class Logincontroller {
 		// 로그인 성공
 		session.setAttribute("emp", principal.getName());
 	 
+		
+		
 		
 		return "main.main";
 	}
