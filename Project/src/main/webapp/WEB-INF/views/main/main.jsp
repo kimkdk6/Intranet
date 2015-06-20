@@ -12,7 +12,6 @@ String date = String.format("%TF",now);
  <script type="text/javascript">
 $(function(){
 	$('#checkinAjax').click(function(){
-		var time = "";
 		$.ajax({
 			url:"<%=request.getContextPath() %>/attendance/checkincheck.htm",  //요청 URL
 			type:"get",           //전송 타입
@@ -25,13 +24,11 @@ $(function(){
 						url:"<%=request.getContextPath() %>/attendance/checkin.htm",  //요청 URL
 						type:"get",           //전송 타입
 						dataType:"html",
-						success : function(data2){
-							alert(data2);
-							document.getElementById("checkin").innerHTML = data2;
+						success : function(data){
+							document.getElementById("checkin").innerHTML = data;
 							alert("출근처리가 정상적으로 처리됬습니다.");
-
 						},
-						error :function(data2){alert("이미 출근처리가 됬습니다.");}
+						error :function(data){alert("이미 출근처리가 됬습니다.");}
 					});
 				}
 				
@@ -57,9 +54,8 @@ $(function(){
 						type:"get",           //전송 타입
 						dataType:"html",
 						success : function(data){
-							var result = data;
 							alert("퇴근처리가 정상적으로 처리됬습니다."),
-							document.getElementById("checkout").innerHTML = result;
+							document.getElementById("checkout").innerHTML = data;
 						},
 						error :function(data){alert("이미 퇴근처리가 됬습니다.");}
 					});
@@ -71,6 +67,8 @@ $(function(){
 			}
 		});
 	});
+	
+	
 });
 
 setInterval("go_time()",1000);
@@ -102,6 +100,7 @@ setTimeout("go_time()", 1000);
 </script>
 <c:set var="incheck" value="${Checkin}" />
 <c:set var="outcheck" value="${Checkout}" />
+<c:set var="latecheck" value="${Latecheck}" />
 <section class="content-header" onload="go_time()">
           <h1>
             Se7en
@@ -171,13 +170,15 @@ setTimeout("go_time()", 1000);
                       <td height="8" colspan="2"></td>
                       </tr>
                       <tr>
+                      <c:if test="${latecheck == null }">
                       	<td>
                       		<b>&nbsp&nbsp&nbsp&nbsp&nbsp지각사유 :</b>
                       		
                       	</td>
-                       	<td style="border:2px solid #e3e3e3; width:50px; padding:0px 0px 0px 20px;">asdasd</td> 
+                       	<td style="border:2px solid #e3e3e3; width:50px; padding:0px 0px 0px 20px;"></td> 
                       	
                       	<td style="padding-left: 5px;"><button class="btn btn-block btn-default btn-sm" style="padding-top: 2px; padding-bottom: 2px;">저장</button></td>
+                      </c:if>
                       </tr>
                       </table>
                       
@@ -188,9 +189,7 @@ setTimeout("go_time()", 1000);
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
                 </div><!-- /.box-body -->
-
               </div><!-- /.box -->
-
               <div class="box">
                 <div class="box-header">
                   <h3 class="box-title">최근 커뮤니티 게시물</h3>
