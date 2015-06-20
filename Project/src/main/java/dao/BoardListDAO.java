@@ -14,4 +14,7 @@ public interface BoardListDAO {
 	public BoardList getBoardList(int boardnum) throws ClassNotFoundException, SQLException;
 	
 	public BoardList getBoardListforCode( int boardcode ) throws ClassNotFoundException, SQLException;
+	
+	
 }
+

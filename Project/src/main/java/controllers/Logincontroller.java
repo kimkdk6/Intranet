@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import dao.AttendanceDAO;
+import dao.BoardListDAO;
 import dao.EmpDAO;
 import dao.MainDAO;
 import dto_vo.Board.Board;
+import dto_vo.Board.BoardList;
 import dto_vo.Emp.Emp;
 import dto_vo.Emp.Empinfo;
 
@@ -63,6 +65,7 @@ public class Logincontroller {
 		// 로그인 성공
 		session.setAttribute("emp", principal.getName());
 		
+		// emp, empinfo 정보 세션 가져오기
 		EmpDAO empDao = sqlSession.getMapper(EmpDAO.class);
 		emp = empDao.getEmp(principal.getName());
 		empinfo = empDao.getEmpInfo(principal.getName());
@@ -70,6 +73,11 @@ public class Logincontroller {
 		session.setAttribute("myemp", emp);
 		session.setAttribute("empinfo", empinfo);
 		
+		// aside boardlist 세션 가져오기
+		BoardListDAO boardlistDao = sqlSession.getMapper(BoardListDAO.class);
+		List<BoardList> boardlist = boardlistDao.getAllBoardList();
+		
+		session.setAttribute("boardNameList", boardlist);
 		
 		
 		return "main.main";
