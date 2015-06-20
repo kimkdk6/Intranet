@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="se" uri="http://www.springframework.org/security/tags" %>
 <%
 	//model.addAttribute("board", board);
 	//model.addAttribute("boardlist", boardlist); 
@@ -313,8 +312,8 @@ p {
 																						style="padding: 3px 0px 3px 0px; letter-spacing: -1px;">
 																						<font color="#999999">${rp.replydate}</font>
 																						
-																						<se:authentication property="name" var="LoingUser" />
-																						<c:if test="${rp.userid}==${LoingUser}">
+																						
+																						<c:if test="${rp.userid}==${sessionScope.myemp.userid}">
 																						<br>
 																						<span id="pbt1">
                      																	 <a href="javascript:alert('아직안됌')"><img src="../resources/img/bt_modify.gif"></a>
@@ -348,7 +347,7 @@ p {
 																				
 <%-- 																				<se:authentication property="name" var="LoingUser" /> --%>
                  													
-																					<input type="hidden" name="userid" value="${LoingUser}">
+																					<input type="hidden" name="userid" value="${sessionScope.myemp.userid}">
 																					<input type="hidden" name="boardnum" value="${board.boardnum}">
 																					<textarea  name="replycontent"
 																						style="width: 100%; height: 100%; overflow: auto; border-top: #cacaca 1px solid; border-bottom: #cacaca 2px solid; border-left: #cacaca 1px solid; border-right: #cacaca 1px solid;">

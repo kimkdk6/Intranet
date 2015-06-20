@@ -2,6 +2,7 @@
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+            <script type="text/javascript" src="../resources/plugins/ckeditor/ckeditor.js"></script>
 
 <table width="100%" height="100%" border="0" cellspacing="0"
    cellpadding="0" id="__top__">
@@ -97,7 +98,12 @@
                                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                        <tr>
                                           <td align="left" valign="top" style="padding: 5px;">
-                                             <textarea id="content" name="content" title="higheditor_full" style="width: 100%; height: 610px;"></textarea>
+<!--                                              <textarea id="content" name="content" title="higheditor_full" style="width: 100%; height: 610px;"></textarea> -->
+                                             
+                                                <textarea rows="10" cols="3000" name="boardcontent" id="CONTENT"></textarea>
+                                                               <script type="text/javascript">
+                                                                  CKEDITOR.replace('CONTENT');
+                                                               </script>
                                           </td>
                                        </tr>
                                     </table>
