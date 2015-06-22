@@ -514,6 +514,76 @@
 																							bgcolor="F1F7F7"
 																							style="border: solid 1px #C0BFC1;">금액</td>
 																					</tr>
+																					<tr height="27" align="center">
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																					</tr>
+																					<tr height="27" align="center">
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																					</tr>
+																					<tr height="27" align="center">
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																					</tr>
+																					<tr height="27" align="center">
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																					</tr>
+																					<tr height="27" align="center">
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																						<td class="item" rel="fee"
+																							style="border: solid 1px #C0BFC1;"></td>
+																					</tr>
 																				</tbody>
 																			</table>
 																			<table width="100%" class="noborder" cellspacing="0"
