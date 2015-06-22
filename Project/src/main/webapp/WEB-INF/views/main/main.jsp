@@ -8,7 +8,9 @@
 GregorianCalendar now = new GregorianCalendar();
 String date = String.format("%TF",now);
 %>
-
+<c:set var="incheck" value="${Checkin}" />
+<c:set var="outcheck" value="${Checkout}" />
+<c:set var="latecheck" value="${Latecheck}" />
  <script type="text/javascript">
 $(function(){
 	$('#checkinAjax').click(function(){
@@ -21,12 +23,18 @@ $(function(){
 					alert("이미 출근처리가 됬습니다.");
 				}else {
 					$.ajax({
+					
 						url:"<%=request.getContextPath() %>/attendance/checkin.htm",  //요청 URL
 						type:"get",           //전송 타입
 						dataType:"html",
 						success : function(data){
 							document.getElementById("checkin").innerHTML = data;
 							alert("출근처리가 정상적으로 처리됬습니다.");
+							 if('${latecheck}' != "''"){
+								/*  var input = prompt('지각사유');
+								alert(input); */
+								 document.getElementById("lateid").style.display="block";
+							 } 
 						},
 						error :function(data){alert("이미 출근처리가 됬습니다.");}
 					});
@@ -98,9 +106,7 @@ setTimeout("go_time()", 1000);
 }
 
 </script>
-<c:set var="incheck" value="${Checkin}" />
-<c:set var="outcheck" value="${Checkout}" />
-<c:set var="latecheck" value="${Latecheck}" />
+
 <section class="content-header" onload="go_time()">
           <h1>
             Se7en
@@ -169,19 +175,19 @@ setTimeout("go_time()", 1000);
                        <tr>
                       <td height="8" colspan="2"></td>
                       </tr>
-                      <tr>
-                      <c:if test="${!empty incheck}">
-                      <c:if test="${latecheck == null }">
-                      	<td>
-                      		<b>&nbsp&nbsp&nbsp&nbsp&nbsp지각사유 :</b>
-                      		
+                   
+                       <c:if test="${!empty latecheck}">  
+                		  <tr id="lateid" style="display: none">
+                      	<td >
+                      		<b >&nbsp&nbsp&nbsp&nbsp&nbsp지각사유 :</b>
                       	</td>
-                       	<td style="border:2px solid #e3e3e3; width:50px; padding:0px 0px 0px 20px;"></td> 
-                      	
+                       	<td><input type="text" style="border:2px solid #e3e3e3; width:100px;">
+                      	</td>
                       	<td style="padding-left: 5px;"><button class="btn btn-block btn-default btn-sm" style="padding-top: 2px; padding-bottom: 2px;">저장</button></td>
-                      </c:if>
-                      </c:if>
+                   
                       </tr>
+                        </c:if> 
+                     
                       </table>
                       
 					  </td>
