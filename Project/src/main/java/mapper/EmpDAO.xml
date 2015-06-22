@@ -18,4 +18,23 @@
 	<select id="getEmpInfo" resultType="dto_vo.Emp.Empinfo">
 		SELECT * FROM EMPINFO WHERE USERID=#{userid}
 	</select>
+	
+	<select id="getEmpDept" resultType="String">
+		select d.DEPTNAME
+	    from emp e join dept d 
+	    on e.DEPTCODE = d.DEPTCODE
+	    where userid = #{userid}
+	</select>
+	<select id="getEmpTeam" resultType="String">
+		select t.TEAMNAME
+	    from emp e join team t 
+	    on e.TEAMCODE = t.TEAMCODE
+	    where userid = #{userid}
+	</select>
+	<select id="getEmpPos" resultType="String">
+		select p.POSNAME
+	    from emp e join position p 
+	    on e.POSCODE = p.POSCODE
+	    where userid = #{userid}
+	</select>
 </mapper>

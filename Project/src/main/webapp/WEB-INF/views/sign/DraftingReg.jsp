@@ -518,7 +518,7 @@
                               <tr>
                                  <td height="30" align="center" bgcolor="#f6f6f6" class="m_sp"><b>기안자</b></td>
                                  <c:set var="emp" value="${sessionScope.myemp}"/>
-                                 <td style="padding: 0 0 0 12px;">${emp.ename} ${emp}</td>
+                                 <td style="padding: 0 0 0 12px;"> ${emp.ename} </td>
                               </tr>
                               <tr>
                                  <td height="30" align="center" bgcolor="#f6f6f6" class="m_sp"
@@ -544,7 +544,7 @@
                                     <b>제목</b>
                                  </td>
                                  <td colspan="2" style="padding: 0 0 0 12px;">
-                                    <input id="t_subject" name="subject" type="text"
+                                    <input id="subject" name="subject" type="text"
                                     class="input_type2" style="width: 630px;" value="">
                                  </td>
                               </tr>

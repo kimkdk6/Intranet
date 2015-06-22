@@ -76,9 +76,16 @@ public class Logincontroller {
 		EmpDAO empDao = sqlSession.getMapper(EmpDAO.class);
 		emp = empDao.getEmp(principal.getName());
 		empinfo = empDao.getEmpInfo(principal.getName());
+		String dept = empDao.getEmpDept(principal.getName());
+		String team = empDao.getEmpTeam(principal.getName());
+		String pos = empDao.getEmpPos(principal.getName());
+		
 		
 		session.setAttribute("myemp", emp);
 		session.setAttribute("empinfo", empinfo);
+		session.setAttribute("dept", dept);
+		session.setAttribute("team", team);
+		session.setAttribute("pos", pos);
 		
 		// aside boardlist 세션 가져오기
 		BoardListDAO boardlistDao = sqlSession.getMapper(BoardListDAO.class);

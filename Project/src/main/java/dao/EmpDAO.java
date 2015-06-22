@@ -20,4 +20,13 @@ public interface EmpDAO {
 	
 	// empinfo 가져오기
 	public Empinfo getEmpInfo( String userid ) throws ClassNotFoundException, SQLException;
+	
+	// emp 부서
+	public String getEmpDept(String userid)  throws ClassNotFoundException, SQLException;
+	
+	// emp 팀
+	public String getEmpTeam(String userid)  throws ClassNotFoundException, SQLException;
+	
+	// emp 직급
+	public String getEmpPos(String userid)  throws ClassNotFoundException, SQLException;
 }
