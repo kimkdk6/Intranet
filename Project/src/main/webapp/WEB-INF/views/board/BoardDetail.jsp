@@ -13,6 +13,10 @@
 <td width="" align="left" valign="top">
 	<!--본문TB START--> <script type="text/javascript"
 		src="/js/jquery/picbox.js"></script> <script type="text/javascript">
+			var userid = "<c:out value='${sessionScope.myemp.userid}'/>";
+			var boarduserid = "<c:out value='${board.userid}'/>";
+			var boardnum = "<c:out value='${board.boardnum}'/>";
+
 			$(document).ready(function() {
 				$("#bbs_content").find("a").attr("target", "_blank");
 				$("a[rel^='lightbox']").simpletooltip();
@@ -33,19 +37,29 @@
 					});
 				});
 			});
-			function gotoModify(boardnum) {
-// 				var f = document.writeBBS;
-// 				f.action = 'write.php';
-// 				f.del.value = '';
-// 				f.submit();
+			function gotoModify() {
+				// 				var f = document.writeBBS;
+				// 				f.action = 'write.php';
+				// 				f.del.value = '';
+				// 				f.submit();
 
-				window.location.href = "BoardReWrite.htm?boardnum="+boardnum;
+				if (userid == boarduserid) {
+					window.location.href = "BoardReWrite.htm?boardnum="
+							+ boardnum;
+				} else {
+					alert('글 작성자가 아닙니다.');
+				}
+
 			}
 			function gotoDelete() {
-				var f = document.writeBBS;
-				f.action = 'write_exe.php';
-				f.del.value = '1';
-				f.submit();
+
+				if (userid == boarduserid) {
+					window.location.href = "BoardDelete.htm?boardnum="
+							+ boardnum;
+				} else {
+					alert('글 작성자가 아닙니다.');
+				}
+
 			}
 			function deleteReply(fs) {
 				f = eval("document.reply" + fs);
@@ -74,6 +88,28 @@
 						'_mail_write_',
 						'width=1000,height=800,scrollbars=yes,resizable=yes')
 			}
+
+			function gotoNoticeFalse() {
+
+				if (userid == boarduserid) {
+					window.location.href = "BoardNotice.htm?boardnum="
+							+ boardnum + "&notice=0";
+				} else {
+					alert('글 작성자가 아닙니다.');
+				}
+
+			}
+
+			function gotoNoticeTrue() {
+
+				if (userid == boarduserid) {
+					window.location.href = "BoardNotice.htm?boardnum="
+							+ boardnum + "&notice=1";
+				} else {
+					alert('글 작성자가 아닙니다.');
+				}
+
+			}
 		</script>
 	<style>
 p {
@@ -95,22 +131,22 @@ p {
 								<td width="" align="right" style="padding: 0 12px 0 0;">
 									<!--검색TB START-->
 									<table border="0" cellspacing="0" cellpadding="0">
-										<tbody>
-											<tr>
-												<td><select name="searchkey" class="sel2">
-														<option value="sc">제목+내용</option>
-														<option value="subject">제목</option>
-														<option value="content">내용</option>
-														<option value="rname">작성자</option>
-												</select></td>
-												<td width="3"></td>
-												<td><input type="text" name="searchval"
-													class="input_search" style="width: 152;" value=""></td>
-												<td width="3"></td>
-												<td><input type="image"
-													src="../resources/img/bt_search.gif"></td>
-											</tr>
-										</tbody>
+										<!-- 										<tbody> -->
+										<!-- 											<tr> -->
+										<!-- 												<td><select name="searchkey" class="sel2"> -->
+										<!-- 														<option value="sc">제목+내용</option> -->
+										<!-- 														<option value="subject">제목</option> -->
+										<!-- 														<option value="content">내용</option> -->
+										<!-- 														<option value="rname">작성자</option> -->
+										<!-- 												</select></td> -->
+										<!-- 												<td width="3"></td> -->
+										<!-- 												<td><input type="text" name="searchval" -->
+										<!-- 													class="input_search" style="width: 152;" value=""></td> -->
+										<!-- 												<td width="3"></td> -->
+										<!-- 												<td><input type="image" -->
+										<!-- 													src="../resources/img/bt_search.gif"></td> -->
+										<!-- 											</tr> -->
+										<!-- 										</tbody> -->
 									</table> <!--검색TB END-->
 								</td>
 							</tr>
@@ -130,10 +166,11 @@ p {
 									<table border="0" cellspacing="0" cellpadding="0">
 										<tbody>
 											<tr>
-												<td><a href="${pageContext.request.contextPath}/board/BoardList.htm?boardcode=${board.boardcode}"><img
+												<td><a
+													href="${pageContext.request.contextPath}/board/BoardList.htm?boardcode=${board.boardcode}"><img
 														src="../resources/img/bt_list.gif"></a></td>
 												<td width="5"></td>
-												<td><a href="javascript:gotoModify(${board.boardnum})"><img
+												<td><a href="javascript:gotoModify()"><img
 														src="../resources/img/bt_modify.gif"
 														onclick="if(!confirm('글을 수정하시겠습니까?')) return false;"></a></td>
 												<td width="5"></td>
@@ -142,7 +179,7 @@ p {
 														onclick="if(!confirm('글을 삭제하시겠습니까?')) return false;"></a></td>
 												<td width="5"></td>
 												<td><a
-													href="write.php?bbs_id=0009&amp;rtn_url=%2Fbbs%2Flist.php%3Fbbs_id%3D0009"><img
+													href="${pageContext.request.contextPath}/board/BoardWrite.htm?boardcode=${board.boardcode}"><img
 														src="../resources/img/bt_write2.gif"></a></td>
 												<td width="5"></td>
 												<td><a href="javascript:openMailWriteWindow()"><img
@@ -155,10 +192,22 @@ p {
 										border="0" cellspacing="0" cellpadding="0">
 										<tbody>
 											<tr>
-												<td><a
-													href="/bbs/make_notice_article.php?bbs_id=0009&amp;seq=8&amp;rtn_url=%2Fbbs%2Flist.php%3Fbbs_id%3D0009&amp;notice=0"><img
-														src="../resources/img/bt_notice_remove.gif"
-														onclick="if(!confirm('공지처리를 해제합니다.')) return false;"></a></td>
+												<td><c:choose>
+														<c:when test="${board.boardnotice==1}">
+															<a href="javascript:gotoNoticeFalse()"> <img
+																src="../resources/img/bt_notice_remove.gif"
+																onclick="if(!confirm('공지처리를 해제합니다.')) return false;">
+															</a>
+														</c:when>
+
+														<c:otherwise>
+															<a href="javascript:gotoNoticeTrue()"> <img
+																src="../resources/img/bt_notice_set.gif"
+																onclick="if(!confirm('공지로 설정합니다.')) return false;">
+															</a>
+														</c:otherwise>
+
+													</c:choose></td>
 											</tr>
 										</tbody>
 									</table></td>
@@ -211,7 +260,7 @@ p {
 																				</td>
 																				<td width="" style="padding-left: 10px;"
 																					valign="middle">
-																					<div style="height: 25px;">
+																					<div style="height: 40px;">
 
 																						<c:choose>
 
@@ -220,11 +269,10 @@ p {
 																									border="0" align="absmiddle">
 																							</c:when>
 																							<c:otherwise>
-                        																		${board.boardnum}번글
+                        																		No.${board.boardnum} &nbsp;&nbsp;
                         																	</c:otherwise>
 																						</c:choose>
-
-																						&nbsp; <b><font color="#000000">${board.boardtitle}</font></b>
+																						<br>제목 : <b><font color="#000000">${board.boardtitle}</font></b>
 																					</div> 작성자 : <c:choose>
 																						<c:when test="${boardlist.boardcode==3}">
 														Anonymous
@@ -245,6 +293,33 @@ p {
 													</table>
 												</td>
 											</tr>
+											<c:if test="${board.boardfilesrc!=null}">
+											<tr>
+												<td height="25" valign="top" bgcolor="#f8f8f8"
+													style="padding: 7px 10px 3px 10px;">
+													<table width="100%" border="0" cellspacing="0"
+														cellpadding="0">
+														<tbody>
+														<!-- 파일다운 -->
+														
+														
+															<tr>
+																<td width="80" class="m_sp"><img
+																	src="../resources/img/icon_pds.gif" align="absmiddle"><b>첨부파일</b></td>
+																<td width="" align="left" valign="top"><a
+																	href="${board.boardfilesrc}">${board.boardfilesrc}</a>&nbsp;<span
+																	class="counter">
+<!-- 																	<font color="#666666">(7.3M)</font> -->
+																	</span>
+																</td>
+															</tr>
+															
+														
+														</tbody>
+													</table>
+												</td>
+											</tr>
+											</c:if>	
 										</tbody>
 									</table>
 								</td>
@@ -277,25 +352,26 @@ p {
 																				<tr>
 																					<td width="55" valign="top"
 																						style="padding: 5px 5px 5px 5px;" align="center">
-																					
-																						
+
+
 																						<c:choose>
-																								<c:when test="${boardlist.boardcode==3}">
-																									<img width="50" src="../resources/img/anony.png"
-																						style="border: 1px solid #CCCCCC;">
-																								</c:when>
-																								<c:otherwise>
-																									<img width="50" src="../resources/img/josuck.jpg"
-																						style="border: 1px solid #CCCCCC;">
-																								</c:otherwise>
-																							</c:choose>
-																						
+																							<c:when test="${boardlist.boardcode==3}">
+																								<img width="50" src="../resources/img/anony.png"
+																									style="border: 1px solid #CCCCCC;">
+																							</c:when>
+																							<c:otherwise>
+																								<img width="50"
+																									src="../resources/img/josuck.jpg"
+																									style="border: 1px solid #CCCCCC;">
+																							</c:otherwise>
+																						</c:choose>
+
 																					</td>
 																					<td width="" align="left" valign="top" class="m_sp"
 																						style="padding: 5px 0px 5px 5px;">
 																						<div
 																							style="padding: 0px 0 0px 0; height: 16px; color: #000000; background-color: #f8f8f8;">
-																							
+
 																							<c:choose>
 																								<c:when test="${boardlist.boardcode==3}">
 																									Anonymous
@@ -303,8 +379,8 @@ p {
 																								<c:otherwise>
 																									${rp.userid}(${emplist[rps.index].ename})
 																								</c:otherwise>
-																							</c:choose> </div>
-																						<span id="acont0">${rp.replycontent}</span> <span
+																							</c:choose>
+																						</div> <span id="acont0">${rp.replycontent}</span> <span
 																						id="atext0" style="display: none;"> <textarea
 																								name="content"
 																								style="width: 80%; height: 100%; overflow: auto; border-top: #cacaca 1px solid; border-bottom: #cacaca 2px solid; border-left: #cacaca 1px solid; border-right: #cacaca 1px solid;">${rp.replycontent}</textarea>
@@ -313,17 +389,18 @@ p {
 																					<td width="110" align="center" valign="top"
 																						class="counter"
 																						style="padding: 3px 0px 3px 0px; letter-spacing: -1px;">
-																						<font color="#999999">${rp.replydate}</font>
-																						
-																						
-																						<c:if test="${rp.userid}==${sessionScope.myemp.userid}">
-																						<br>
-																						<span id="pbt1">
-                     																	 <a href="javascript:alert('아직안됌')"><img src="../resources/img/bt_modify.gif"></a>
-                      																	<a href="${pageContext.request.contextPath}/board/ReplyDelete.htm?replynum=${rp.replynum}"><img src="../resources/img/bt_delete3.gif" onclick="if(!confirm('댓글을 삭제하시겠습니까?')) return false;"></a>
-                   																			   </span>
+																						<font color="#999999">${rp.replydate}</font> <c:if
+																							test="${rp.userid}==${sessionScope.myemp.userid}">
+																							<br>
+																							<span id="pbt1"> <a
+																								href="javascript:alert('아직안됌')"><img
+																									src="../resources/img/bt_modify.gif"></a> <a
+																								href="${pageContext.request.contextPath}/board/ReplyDelete.htm?replynum=${rp.replynum}"><img
+																									src="../resources/img/bt_delete3.gif"
+																									onclick="if(!confirm('댓글을 삭제하시겠습니까?')) return false;"></a>
+																							</span>
 																						</c:if>
-																						
+
 																					</td>
 																				</tr>
 																				<tr height="2"
@@ -346,22 +423,29 @@ p {
 																					style="letter-spacing: -1px; padding: 4px 0px 0px 0px;"><b><font
 																						color="#000000">댓글쓰기</font></b></td>
 																				<td align="left" valign="top" width="" height="45">
-																				<form action="${pageContext.request.contextPath}/board/BoardReply.htm" method="post">
-																				
-<%-- 																				<se:authentication property="name" var="LoingUser" /> --%>
-                 													
-																					<input type="hidden" name="userid" value="${sessionScope.myemp.userid}">
-																					<input type="hidden" name="boardnum" value="${board.boardnum}">
-																					<textarea  name="replycontent"
-																						style="width: 100%; height: 100%; overflow: auto; border-top: #cacaca 1px solid; border-bottom: #cacaca 2px solid; border-left: #cacaca 1px solid; border-right: #cacaca 1px solid;">
+																					<form
+																						action="${pageContext.request.contextPath}/board/BoardReply.htm"
+																						method="post">
+
+																						<%-- 																				<se:authentication property="name" var="LoingUser" /> --%>
+
+																						<input type="hidden" name="userid"
+																							value="${sessionScope.myemp.userid}"> <input
+																							type="hidden" name="boardnum"
+																							value="${board.boardnum}">
+																						<textarea name="replycontent"
+																							style="width: 100%; height: 100%; overflow: auto; border-top: #cacaca 1px solid; border-bottom: #cacaca 2px solid; border-left: #cacaca 1px solid; border-right: #cacaca 1px solid;">
 																					
 																					</textarea>
-																					<td width="64" align="right" valign="top"><input type="image" src="../resources/img/bt_re_write.gif" onclick="submit()"></td>
-																					
-																				</form>
-																					
+																						<td width="64" align="right" valign="top"><input
+																							type="image"
+																							src="../resources/img/bt_re_write.gif"
+																							onclick="submit()"></td>
+
+																					</form>
+
 																				</td>
-																				
+
 																			</tr>
 																		</tbody>
 																	</table>
@@ -418,19 +502,21 @@ p {
 									<table border="0" cellspacing="0" cellpadding="0">
 										<tbody>
 											<tr>
-												<td><a href="${pageContext.request.contextPath}/board/BoardList.htm?boardcode=${board.boardcode}"><img
+												<td><a
+													href="${pageContext.request.contextPath}/board/BoardList.htm?boardcode=${board.boardcode}"><img
 														src="../resources/img/bt_list.gif"></a></td>
 												<td width="5"></td>
 
 												<td><a href="javascript:gotoModify()"><img
-														src="../resources/img/bt_modify.gif"></a></td>
+														src="../resources/img/bt_modify.gif"
+														onclick="if(!confirm('글을 수정하시겠습니까?')) return false;"></a></td>
 												<td width="5"></td>
 												<td><a href="javascript:gotoDelete()"><img
 														src="../resources/img/bt_delete.gif"
 														onclick="if(!confirm('글을 삭제하시겠습니까?')) return false;"></a></td>
 												<td width="5"></td>
 												<td><a
-													href="write.php?bbs_id=0009&amp;rtn_url=%2Fbbs%2Flist.php%3Fbbs_id%3D0009"><img
+													href="${pageContext.request.contextPath}/board/BoardWrite.htm?boardcode=${board.boardcode}"><img
 														src="../resources/img/bt_write2.gif"></a></td>
 												<td width="5"></td>
 												<td><a href="javascript:openMailWriteWindow()"><img

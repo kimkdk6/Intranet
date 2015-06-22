@@ -74,4 +74,5 @@
 	<update id="updateBoard" parameterType="dto_vo.Board.Board">
 		update board set boardtitle=#{boardtitle}, boardcontent=#{boardcontent},boardfilesrc=#{boardfilesrc,jdbcType=VARCHAR} where boardnum=#{boardnum}
 	</update>
+	
 </mapper>
