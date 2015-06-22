@@ -170,6 +170,7 @@ setTimeout("go_time()", 1000);
                       <td height="8" colspan="2"></td>
                       </tr>
                       <tr>
+                      <c:if test="${!empty incheck}">
                       <c:if test="${latecheck == null }">
                       	<td>
                       		<b>&nbsp&nbsp&nbsp&nbsp&nbsp지각사유 :</b>
@@ -178,6 +179,7 @@ setTimeout("go_time()", 1000);
                        	<td style="border:2px solid #e3e3e3; width:50px; padding:0px 0px 0px 20px;"></td> 
                       	
                       	<td style="padding-left: 5px;"><button class="btn btn-block btn-default btn-sm" style="padding-top: 2px; padding-bottom: 2px;">저장</button></td>
+                      </c:if>
                       </c:if>
                       </tr>
                       </table>

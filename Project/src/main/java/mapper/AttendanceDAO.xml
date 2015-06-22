@@ -21,7 +21,7 @@
     </select>
     
       <select id="latecheck" parameterType="String" resultType="String" >
-		select to_char (compstart, 'HH24:MI:SS') from company where to_char (compstart,'HH24') <![CDATA[   >  ]]> (select to_char (attstarttime,'HH24') from attendance where userid = #{userid} and to_char (attdate, 'YYYY-MM-DD') = to_char (sysdate, 'YYYY-MM-DD') )
+		select to_char (compstart, 'HH24:MI:SS') from company where to_char (compstart,'HH24') <![CDATA[   <  ]]> (select to_char (attstarttime,'HH24') from attendance where userid = #{userid} and to_char (attdate, 'YYYY-MM-DD') = to_char (sysdate, 'YYYY-MM-DD') )
     </select>
     
    
