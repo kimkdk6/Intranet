@@ -513,12 +513,12 @@
                               </tr>
                               <tr>
                                  <td height="30" align="center" bgcolor="#f6f6f6" class="m_sp"><b>부서</b></td>
-                                 <td style="padding: 0 0 0 12px;">지원부문</td>
+                                 <td style="padding: 0 0 0 12px;">${sessionScope.dept}</td>
                               </tr>
                               <tr>
                                  <td height="30" align="center" bgcolor="#f6f6f6" class="m_sp"><b>기안자</b></td>
                                  <c:set var="emp" value="${sessionScope.myemp}"/>
-                                 <td style="padding: 0 0 0 12px;"> ${emp.ename} </td>
+                                 <td style="padding: 0 0 0 12px;"> ${emp.ename} ${sessionScope.pos} </td>
                               </tr>
                               <tr>
                                  <td height="30" align="center" bgcolor="#f6f6f6" class="m_sp"

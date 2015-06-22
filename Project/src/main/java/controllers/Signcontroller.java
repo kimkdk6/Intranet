@@ -66,6 +66,19 @@ public class Signcontroller {
 
 		return "sign.DraftingReg";
 	}
+	
+	// 기안서 작성 
+		@RequestMapping(value = "DraftingReg.htm", method = RequestMethod.POST)
+		public String DraftingReg(Sign sign, Draftingdoc draftingdoc, Signline signline, Principal principal) 
+				throws ClassNotFoundException, SQLException {
+			System.out.println("기안서 작성");
+			SignDAO signdao = sqlsession.getMapper(SignDAO.class);
+			
+			sign.setUserid(principal.getName());
+			
+
+			return "redirect:SignMain.htm";
+		}
 
 	// 기안서 상세 페이지 보기
 	@RequestMapping(value = "DraftingDetail.htm", method = RequestMethod.GET)
