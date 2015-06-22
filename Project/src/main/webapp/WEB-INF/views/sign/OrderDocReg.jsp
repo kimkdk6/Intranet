@@ -32,48 +32,6 @@
 		<div class="box-body">
 			<table>
 				<tbody>
-
-					<tr>
-						<td height="30" bgcolor="#ececec"
-							style="border-bottom: 1px #c9c9c9 solid; border-top: 1px #c9c9c9 solid; padding: 0 0 0 12px;">
-							<!--기능TB START-->
-							<table width="100%" border="0" cellspacing="0" cellpadding="0">
-								<tbody>
-									<tr>
-										<td align="left">
-											<table border="0" cellspacing="0" cellpadding="0">
-												<tbody>
-													<tr>
-														<td><a href=""><img
-																src="/img/approval/bt_list.gif"></a></td>
-														<td width="5"></td>
-														<td><a href="javascript:_docprint('9778')"><img
-																src="/img/approval/bt_print.gif"></a></td>
-													</tr>
-												</tbody>
-											</table>
-										</td>
-										<td align="right" style="padding: 0 12px 0 0;">
-											<table border="0" cellspacing="0" cellpadding="0">
-												<tbody>
-													<tr>
-														<td><a href="javascript:myApp('F')"><img
-																src="/img/approval/bt_approval.gif"></a></td>
-														<td width="5"></td>
-														<td><a href="javascript:myApp('S')"><img
-																src="/img/approval/bt_standby.gif"></a></td>
-														<td width="5"></td>
-														<td><a href="javascript:myApp('R')"><img
-																src="/img/approval/bt_return.gif"></a></td>
-													</tr>
-												</tbody>
-											</table>
-										</td>
-									</tr>
-								</tbody>
-							</table> <!--기능TB END-->
-						</td>
-					</tr>
 					<tr>
 						<td align="center" valign="top"
 							style="padding: 19px 15px 19px 15px;">
@@ -91,15 +49,6 @@
 														<td width="120"></td>
 														<td class="dochead" align="center" valign="top"
 															style="font-size: 30px">발주서</td>
-														<td width="120" align="right" valign="bottom"><a
-															href="javascript:" rel="proc_s" onclick="mod_proc();"><img
-																src="/img/webmail/bt_modify3.gif"></a><a
-															href="javascript:" rel="proc_f" style="display: none;"
-															onclick="cancel_proc();"><img
-																src="/img/webmail/bt_cancel.gif"></a>&nbsp;<a
-															href="javascript:" rel="proc_f" style="display: none;"
-															onclick="save_proc();"><img
-																src="/img/webmail/bt_save.gif"></a></td>
 													</tr>
 												</tbody>
 											</table>
