@@ -6,7 +6,7 @@
 <%
    //model.addAttribute("boardlist", boardlist);//게시판 이름 코드
    //model.addAttribute("boardlistlist", boardlistlist);//게시글 리스트
-   
+   //model.addAttribute("paging", pagingUtil);//게시글 리스트
    
    /*
    	해당게시판의 총 글수
@@ -147,8 +147,41 @@
                         </td>
                      </tr>
                      <tr>
-                        <td height="30" bgcolor="#ececec" style="border-bottom: 1px #c9c9c9 solid; border-top: 1px #c9c9c9 solid; padding: 0 0 0 12px;">
-                           페이징처리
+                        <td align="center" height="30" bgcolor="#ececec" style="border-bottom: 1px #c9c9c9 solid; border-top: 1px #c9c9c9 solid; padding: 0 0 0 12px;">
+                    
+   						   <c:choose>
+   						   		<c:when test="${paging.start==1}">
+   						   		
+   						   		</c:when>
+   						   		<c:otherwise>
+   						   			<a href="${pageContext.request.contextPath}/board/BoardList.htm?boardcode=${boardlist.boardcode}&cpage=${paging.start-1}&pagesize=${pagesize}">이전</a>
+   						   		</c:otherwise>
+   						   
+   						   </c:choose>	                 		
+                           <c:forEach begin="${paging.start}" end="${paging.end}" var="page">
+                           		
+                           		<c:choose>
+                           			<c:when test="${paging.currentPage==page}">
+                           				<font color="#ff6600"><b>[${page}]</b></font>
+                           			</c:when>
+                           			<c:otherwise>
+                           				<b><a href="${pageContext.request.contextPath}/board/BoardList.htm?boardcode=${boardlist.boardcode}&cpage=${page}&pagesize=${pagesize}">[${page}]</a></b>
+                           			</c:otherwise>
+                           		</c:choose>
+                           		
+                           		
+                           </c:forEach>
+                           
+                              <c:choose>
+   						   		<c:when test="${paging.end < paging.finalPage}">
+   						   			<a href="${pageContext.request.contextPath}/board/BoardList.htm?boardcode=${boardlist.boardcode}&cpage=${paging.end+1}&pagesize=${pagesize}">다음</a>
+   						   		</c:when>
+   						   		<c:otherwise>
+   						   			
+   						   		</c:otherwise>
+   						   
+   						   </c:choose>	
+                           
                         </td>
                      </tr>
                   </table> <!--본문TB END--> <!--본문TB END-->

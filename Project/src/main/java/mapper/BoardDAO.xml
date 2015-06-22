@@ -37,11 +37,11 @@
 	<select id="getBoardList" parameterType="Integer" resultType="dto_vo.Board.Board">
 		SELECT
 		BOARDCODE,BOARDNUM,BOARDNOTICE,USERID,BOARDTITLE,BOARDCONTENT,BOARDDATE,BOARDCOUNT,BOARDFILESRC,BOARDREF,BOARDDEPTH,BOARDSTEP
-		FROM (select ROWNUM ,
+		FROM (select ROWNUM as num,
 		BOARDCODE,BOARDNUM,BOARDNOTICE,USERID,BOARDTITLE,BOARDCONTENT,BOARDDATE,BOARDCOUNT,BOARDFILESRC,BOARDREF,BOARDDEPTH,BOARDSTEP
 		FROM (SELECT * FROM BOARD WHERE BOARDCODE = #{param1} ORDER BY
-		BOARDREF DESC,BOARDSTEP ASC) WHERE ROWNUM BETWEEN #{param2} AND
-		#{param3})
+		BOARDREF DESC,BOARDSTEP ASC)) WHERE num BETWEEN #{param2} AND
+		#{param3}
 
 	</select>
 
@@ -65,6 +65,10 @@
 		values(#{boardcode},board_boardnum.nextval,#{boardnotice},#{userid},#{boardtitle},#{boardcontent},sysdate,0,#{boardfilesrc,jdbcType=VARCHAR},(select
 		NVL(MAX(boardNUM),0)+1 from board),0,0)
 	</insert>
+	
+	<update id="updateCount" parameterType="Integer">
+		update board set boardcount = boardcount+1 where boardnum= #{boardnum}
+	</update>
 
 
 </mapper>

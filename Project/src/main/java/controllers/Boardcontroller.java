@@ -18,6 +18,7 @@ import dao.BoardListDAO;
 import dao.ReplyDAO;
 import dto_vo.Board.Board;
 import dto_vo.Board.BoardList;
+import dto_vo.Board.PagingUtil;
 import dto_vo.Board.Reply;
 import dto_vo.Emp.Emp;
 import dto_vo.Emp.Empinfo;
@@ -65,6 +66,7 @@ public class Boardcontroller {
 		BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
 		BoardListDAO boardlistdao = sqlsession.getMapper(BoardListDAO.class);
 		ReplyDAO replydao = sqlsession.getMapper(ReplyDAO.class);
+		boarddao.updateCount(boardnum);
 		
 		BoardList boardlist = boardlistdao.getBoardList(boardnum);
 		Board board = boarddao.getBoard(boardnum);
@@ -94,6 +96,9 @@ public class Boardcontroller {
 		int startboard = cpage * pagesize - (pagesize - 1);
 		int endboard = cpage * pagesize;
 		
+		System.out.println("startboard: " +startboard);
+		System.out.println("endboard: " +endboard);
+		
 		BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
 		BoardListDAO boardlistdao = sqlsession.getMapper(BoardListDAO.class);
 
@@ -107,7 +112,10 @@ public class Boardcontroller {
 		model.addAttribute("boardlistlist", boardlistlist);//게시글 리스트
 		model.addAttribute("allcount", allcount);//게시글 리스트
 		
+		PagingUtil pagingUtil =  new PagingUtil(cpage, allcount, pagesize, 5);
 		
+		model.addAttribute("paging", pagingUtil);//게시글 리스트
+		model.addAttribute("pagesize", pagesize);
 		return "board.BoardList";
 		
 	}
