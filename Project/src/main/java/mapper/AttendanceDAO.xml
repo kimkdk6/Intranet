@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     <mapper namespace="dao.AttendanceDAO">
 
-    <insert id="checkin"  parameterType="java.lang.String">
+    <insert id="checkin"  parameterType="String">
   	insert into attendance(userid,attdate,attstarttime) values( #{userid}, to_char (sysdate, 'YYYY-MM-DD'), sysdate )
     </insert>
     
@@ -23,6 +23,10 @@
       <select id="latecheck" parameterType="String" resultType="String" >
 		select to_char (compstart, 'HH24:MI:SS') from company where to_char (compstart,'HH24') <![CDATA[   <  ]]> (select to_char (attstarttime,'HH24') from attendance where userid = #{userid} and to_char (attdate, 'YYYY-MM-DD') = to_char (sysdate, 'YYYY-MM-DD') )
     </select>
+    
+    <insert id="letereason"  parameterType="String">
+		insert into lateness(userid,attdate,ltreason) values (#{param1}, to_char (sysdate, 'YYYY-MM-DD'), #{param2})   
+	</insert>
     
    
   </mapper>

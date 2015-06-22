@@ -73,4 +73,17 @@ public class Attendancecontroller {
 
 		return Latecheck;
 	}
+
+	@RequestMapping(value = "latereason.htm")
+	public @ResponseBody String latereason(Principal principal,HttpServletRequest request, HttpServletResponse response) throws Exception
+	{
+		
+		AttendanceDAO Latereason = sqlSession.getMapper(AttendanceDAO.class);
+		
+		 Latereason.letereason(principal.getName(),request.getParameter("latereason"));
+		
+		return null;
+	}
+	
+	
 }

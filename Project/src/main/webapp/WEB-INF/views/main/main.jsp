@@ -13,6 +13,13 @@ String date = String.format("%TF",now);
 <c:set var="latecheck" value="${Latecheck}" />
  <script type="text/javascript">
 $(function(){
+	var latech = "";
+	if('${latecheck}' != ""){
+		 vi();
+	}
+	function vi(){
+		document.getElementById("lateid").style.visibility="visible";
+	}
 	$('#checkinAjax').click(function(){
 		$.ajax({
 			url:"<%=request.getContextPath() %>/attendance/checkincheck.htm",  //요청 URL
@@ -31,9 +38,8 @@ $(function(){
 							document.getElementById("checkin").innerHTML = data;
 							alert("출근처리가 정상적으로 처리됬습니다.");
 							 if('${latecheck}' != "''"){
-								/*  var input = prompt('지각사유');
-								alert(input); */
-								 document.getElementById("lateid").style.display="block";
+							
+								 document.getElementById("lateid").style.visibility="visible";
 							 } 
 						},
 						error :function(data){alert("이미 출근처리가 됬습니다.");}
@@ -76,6 +82,24 @@ $(function(){
 		});
 	});
 	
+	$('#latebtton').click(function(){
+		var form_data = {
+				latereason : document.getElementById("latereason").value
+			};
+		$.ajax({
+			url:"<%=request.getContextPath() %>/attendance/latereason.htm", 
+			type:"get",           
+			data: form_data,
+			dataType:"html",
+			success : function(data){
+				alert('지각 사유 입력 완료');
+			},
+			error :function(data){
+				alert('이미 처리되었습니다.');
+			}
+		});
+			
+		});
 	
 });
 
@@ -176,17 +200,17 @@ setTimeout("go_time()", 1000);
                       <td height="8" colspan="2"></td>
                       </tr>
                    
-                       <c:if test="${!empty latecheck}">  
-                		  <tr id="lateid" style="display: none">
+                  <%--      <c:if test="${!empty latecheck}">   --%>
+                		  <tr id="lateid" style="visibility: hidden;">
                       	<td >
                       		<b >&nbsp&nbsp&nbsp&nbsp&nbsp지각사유 :</b>
                       	</td>
-                       	<td><input type="text" style="border:2px solid #e3e3e3; width:100px;">
+                      	
+                       	<td><input type="text" id="latereason" style="border:2px solid #e3e3e3; width:100px;">
                       	</td>
-                      	<td style="padding-left: 5px;"><button class="btn btn-block btn-default btn-sm" style="padding-top: 2px; padding-bottom: 2px;">저장</button></td>
-                   
+                      	<td style="padding-left: 5px;"><button class="btn btn-block btn-default btn-sm" id ="latebtton" style="padding-top: 2px; padding-bottom: 2px;">저장</button></td>
                       </tr>
-                        </c:if> 
+                   <%--      </c:if>  --%>
                      
                       </table>
                       
