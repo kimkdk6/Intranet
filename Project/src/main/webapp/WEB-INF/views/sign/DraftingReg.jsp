@@ -1,6 +1,17 @@
+<%@page import="dto_vo.Emp.Emp"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	Date d1 = new Date();
+	SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+	String strdate = sdf1.format(d1);
+	System.out.println("오늘의 날짜: "+strdate);
+	
+%>
+
 <!DOCTYPE html>
 <section class="content-header">
    <h1>
@@ -506,17 +517,18 @@
                               </tr>
                               <tr>
                                  <td height="30" align="center" bgcolor="#f6f6f6" class="m_sp"><b>기안자</b></td>
-                                 <td style="padding: 0 0 0 12px;">데모사용자 대표이사 test</td>
+                                 <c:set var="emp" value="${sessionScope.myemp}"/>
+                                 <td style="padding: 0 0 0 12px;">${emp.ename} ${emp}</td>
                               </tr>
                               <tr>
                                  <td height="30" align="center" bgcolor="#f6f6f6" class="m_sp"
                                     valign="top" style="padding-top: 7px;"><b>기안일</b></td>
                                  <td colspan="2" style="padding: 0 0 0 12px;" valign="top">
+                                    <c:set var="todaydate" value="<%=strdate%>"/>
                                     <input
-                                    type="text" name="reportdt" readonly="" class="input_type2"
+                                    type="text" name="reportdt" readonly class="input_type2"
                                     style="width: 85px" maxlength="10"
-                                    onblur="constraintValue('DATEFORMAT',this)"
-                                    onclick="popUpCalendarYmd(this)" value="2015-06-16">
+                                      value="${todaydate}">
                                  </td>
                               </tr>
 

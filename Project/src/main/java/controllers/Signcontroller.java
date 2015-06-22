@@ -158,7 +158,7 @@ public class Signcontroller {
 	public String HolidayDocDetail(String docnum, Model model)
 			throws ClassNotFoundException, SQLException {
 		System.out.println("휴가계 상세페이지 보기");
-/*
+
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
 		// 결재 문서(기본 내용)
 		Sign sign = signdao.getSign(docnum);
@@ -169,7 +169,7 @@ public class Signcontroller {
 
 		model.addAttribute("sign", sign);
 		model.addAttribute("draftingdoc", draftingdoc);
-		model.addAttribute("signline", signline);*/
+		model.addAttribute("signline", signline);
 		return "sign.HolidayDocDetail";
 	}
 
