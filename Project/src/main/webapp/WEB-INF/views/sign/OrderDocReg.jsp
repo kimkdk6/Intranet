@@ -3,6 +3,107 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <script language="javascript">
+	
+	/* 
+	$(function() {
+		var valid = true;
+		
+		if(valid) {
+			$("").append(
+					"<tr height='27' align='center'>" + 
+					"<td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'>" +
+					"<input type='text' name='orname[]' class='input_approval' style='width: 90%' value=''>" +
+					"</td>" +
+					"<td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'>" +
+					"<input type='text' name='amount[]' rel='amount' onblur='constraintValue("FEE",this); calcAmount() class='input_approval' style='text-align: right; width: 90%' value=''>" +
+					"</td>" +
+					<td class="item"
+						style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
+						type="text" name="orcount[]" rel="count"
+						onblur="constraintValue('NUMBER',this); calcAmount()"
+						class="input_approval"
+						style="text-align: right; width: 90%" value=""></td>
+					<td class="item"
+						style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
+						type="text" name="standard[]"
+						class="input_approval" style="width: 90%"
+						value=""></td>
+					<td class="item"
+						style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
+						type="text" name="etc[]" class="input_approval"
+						style="width: 90%" value=""></td>
+					<td class="item" rel="fee" align="right"
+						style="border: solid 1px #C0BFC1;">0</td>
+				</tr>		
+			)
+		}
+	});
+ */
+
+
+
+
+ function addItemLine()
+ {
+     $("#detail_table").append(
+     "<tr height='27' align='center'>\n"+
+     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='orname[]' class='input_approval' style='width:90%' value=''></td>\n" +
+     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='amount[]' rel='amount' onBlur=\"constraintValue('FEE',this); calcAmount()\" class='input_approval' style='text-align:right;width:90%' value=''></td>\n" +
+     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='orcount[]' rel='count' onBlur=\"constraintValue('NUMBER',this); calcAmount()\" class='input_approval' style='text-align:right;width:90%' value=''></td>\n" +
+     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='standard[]' class='input_approval' style='width:90%' value=''></td>\n" +
+     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='etc[]' class='input_approval' style='width:90%' value=''></td>\n" +
+     " <td class='item' rel='fee' align='right' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'>0</td>\n" +
+     "</tr>"
+     );
+ }
+ 
+ 
+ function calcAmount()
+ {
+     
+     var total = 0;
+     var tax = 0;
+     $("input[rel='amount']").each(function(i,e){
+         if($(this).val())
+         {
+             if($(this).parent().parent().find("input[rel='count']").val() != '') 
+             {
+                 var amount = $(this).val();
+                 var count  = $(this).parent().parent().find("input[rel='count']").val();
+                 var linetotal = parseInt( amount.replaceAll(',',''),10) * parseInt(count, 10);
+                 
+                 total += linetotal;
+                 $(this).parent().parent().find("td[rel='fee']").text( number_format(linetotal) );
+                 
+             }
+         }
+     });
+
+     if($("#htax").attr("checked")) tax = 0;
+     else                     tax = total*0.1;
+     $("#detail_amount").text(number_format(total));
+     $("#detail_tax").text(number_format(tax));
+     $("#detail_total").text(number_format(total + tax));
+ }
+
+ function taxform(htax)
+ {
+     if(htax) $(".chtax").hide();
+     else     $(".chtax").show();
+         
+     calcAmount();
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
 	/* 결재자 메뉴 띄우는 기능 */
 	// ============= 첫번째 ======================
 	$(function() {
@@ -320,10 +421,9 @@
 																											<c:forEach items="${pos}" var="p">
 																												<c:if test="${p.poscode == e.poscode}">
 																													<i class="fa fa-fw fa-user-plus"></i> 
-                                                                                 ${t.teamname} ${e.ename} ${p.posname }
-                                                                                <input
-																														type="radio" name="name1" id="name1"
-																														value="${t.teamname} ${e.ename} ${p.posname}">
+                                                                                									${t.teamname} ${e.ename} ${p.posname }
+                                                                                									<input type="radio" name="name1" id="name1"
+																													value="${t.teamname} ${e.ename} ${p.posname}">
 																													<hr>
 																												</c:if>
 																											</c:forEach>
@@ -495,14 +595,28 @@
 																					</tr>
 																				</tbody>
 																			</table>
+																			
+																			
+																			
+																			<table width="100%" class="noborder" cellspacing="0"
+																				cellpadding="0">
+																				<tbody>
+																					<tr>
 
-
-
-
+																						<td width="50%" align="right" style="padding: 5px 5px 0px 0px; letter-spacing: -1px; font-size: 11px; color: #4f4c4c;">
+																							<a href="javascript:addItemLine()">
+																								<!-- <img src="/img/calendar/bt_plus.gif" align="absmiddle">
+																								라인추가 -->
+																								<input type="button" id="addline" value="라인 추가"/>
+																							</a>
+																						</td>
+																					</tr>
+																				</tbody>
+																			</table>
+																			
 																			<table id="detail_table" width="100%" cellspacing="0"
 																				cellpadding="0" class="tbl_appreport">
 																				<tbody>
-
 																					<tr>
 																						<td align="center" width="22%" class="title"
 																							bgcolor="F1F7F7"
@@ -523,33 +637,28 @@
 																							bgcolor="F1F7F7"
 																							style="border: solid 1px #C0BFC1;">금액</td>
 																					</tr>
+																					
 																					<tr height="27" align="center">
-																						<td class="item"
-																							style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
-																							type="text" name="orname[]"
-																							class="input_approval" style="width: 90%;"
-																							value=""></td>
-																						<td class="item"
-																							style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
-																							type="text" name="amount[]" rel="amount"
-																							onblur="constraintValue('FEE',this); calcAmount()"
-																							class="input_approval"
-																							style="text-align: right; width: 90%" value=""></td>
-																						<td class="item"
-																							style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
-																							type="text" name="orcount[]" rel="count"
-																							onblur="constraintValue('NUMBER',this); calcAmount()"
-																							class="input_approval"
-																							style="text-align: right; width: 90%" value=""></td>
-																						<td class="item"
-																							style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
-																							type="text" name="standard[]"
-																							class="input_approval" style="width: 90%"
-																							value=""></td>
-																						<td class="item"
-																							style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
-																							type="text" name="etc[]" class="input_approval"
-																							style="width: 90%" value=""></td>
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="orname[]" class="input_approval" style="width: 90%;" value="">
+																						</td>
+																						
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="amount[]" rel="amount" onblur="constraintValue('FEE',this); calcAmount()" class="input_approval" style="text-align: right; width: 90%" value="">
+																						</td>
+																						
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="orcount[]" rel="count" onblur="constraintValue('NUMBER',this); calcAmount()" class="input_approval" style="text-align: right; width: 90%" value="">
+																						</td>
+																						
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																						<input type="text" name="standard[]" class="input_approval" style="width: 90%" value="">
+																						</td>
+																						
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="etc[]" class="input_approval" style="width: 90%" value="">
+																						</td>
+																						
 																						<td class="item" rel="fee" align="right"
 																							style="border: solid 1px #C0BFC1;">0</td>
 																					</tr>
@@ -683,17 +792,15 @@
 																					</tr>
 																				</tbody>
 																			</table>
-																			<table width="100%" cellspacing="0" cellpadding="0"
-																				class="tbl_appreport">
+																			<table width="100%" cellspacing="0" cellpadding="0" class="tbl_appreport">
 																				<tbody>
 																					<tr height="27" class="chtax">
-																						<td width="80%" align="center" class="title"
-																							bgcolor="F1F7F7"
+																						<td width="80%" align="center" class="title" bgcolor="F1F7F7"
 																							style="border: solid 1px #C0BFC1;">공급가액</td>
 																						<td width="20%" align="right"
 																							style="border: solid 1px #C0BFC1; color: #000000;"
-																							class="item" style="border: solid 1px #C0BFC1;"><span
-																							id="detail_amount" style="color: #000000;">0</span></td>
+																							class="item" style="border: solid 1px #C0BFC1;">
+																							<span id="detail_amount" style="color: #000000;">0</span></td>
 																					</tr>
 																					<tr height="27" class="chtax">
 																						<td width="80%" align="center" class="title"
