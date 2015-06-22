@@ -82,23 +82,15 @@
 								class="tbl_appdoc">
 								<tbody>
 									<tr>
-										<td class="dochead" align="center" valign="top" style="padding-bottom: 20px;">
+										<td class="dochead" align="center" valign="top"
+											style="padding-bottom: 20px;">
 											<table width="100%" border="0" frame="void" cellspacing="0"
 												cellpadding="0">
 												<tbody>
 													<tr>
 														<td width="120"></td>
-														<td class="dochead" align="center" valign="top" style="font-size: 30px">발주서</td>
-														<td width="120" align="right" valign="bottom"><a
-															href="javascript:" rel="proc_s" onclick="mod_proc();"><img
-																src="/img/webmail/bt_modify3.gif"></a><a
-															href="javascript:" rel="proc_f" style="display: none;"
-															onclick="cancel_proc();"><img
-																src="/img/webmail/bt_cancel.gif"></a>&nbsp;<a
-															href="javascript:" rel="proc_f" style="display: none;"
-															onclick="save_proc();"><img
-																src="/img/webmail/bt_save.gif"></a></td>
-													</tr>
+														<td class="dochead" align="center" valign="top"
+															style="font-size: 30px">발주서</td>
 												</tbody>
 											</table>
 										</td>
@@ -107,34 +99,37 @@
 										<td align="center" valign="top">
 
 											<table width="100%" border="0" class="tbl_c9c9c9"
-												cellspacing="0" cellpadding="0" style="table-layout: fixed;">
+												cellspacing="0" cellpadding="0"
+												style="table-layout: fixed; border: solid 1px #C0BFC1;">
 												<tbody>
 
 													<tr>
 														<td width="95" height="30" align="center"
 															bgcolor="#E1F9DD" class="m_sp"><b>문서번호</b></td>
-														<td width="" style="padding: 0 0 0 12px;">${sign.docnum}</td>
+														<td width=""
+															style="padding: 0 0 0 12px; border: solid 1px #C0BFC1;">${sign.docnum}</td>
 														<td width="365" rowspan="3" align="center" valign="top"
-															style="padding: 0; border-bottom: 1px #E1F9DD solid;">
+															style="border: solid 2px; padding: 0;">
 
 															<table width="100%" cellpadding="0" cellspacing="0"
-																class="tbl_c9c9c9" style="table-layout: fixed;"
+																class="tbl_c9c9c9"
+																style="border: solid 1px; table-layout: fixed;"
 																rel="proc_s">
 																<tbody>
 																	<tr height="20" align="center" bgcolor="#E1F9DD">
-																		<td width="7%" rowspan="4"><b>결<br> <br>
-																				<br>재
+																		<td width="7%" rowspan="4" style="border: solid 1px;"><b>결<br>
+																				<br> <br>재
 																		</b></td>
 																		<td width="19%"
-																			style="border-bottom: 1px #E1F9DD solid; padding: 3px 0 0 0;">기안자</td>
+																			style="border: 1px solid; padding: 3px 0 0 0;">기안자</td>
 																		<td width="19%"
-																			style="border-bottom: 1px #E1F9DD solid; padding: 3px 0 0 0;">${sign.signer2}</td>
+																			style="border: 1px solid; padding: 3px 0 0 0;">${sign.signer2}</td>
 																		<td width="19%"
-																			style="border-bottom: 1px #E1F9DD solid; padding: 3px 0 0 0;">${sign.signer3}</td>
+																			style="border: 1px solid; padding: 3px 0 0 0;">${sign.signer3}</td>
 																		<td width="19%"
-																			style="border-bottom: 1px #E1F9DD solid; padding: 3px 0 0 0;">${sign.signer4}</td>
+																			style="border: 1px solid; padding: 3px 0 0 0;">${sign.signer4}</td>
 																		<td width="19%"
-																			style="border-bottom: 1px #E1F9DD solid; padding: 3px 0 0 0;">${sign.signer5}</td>
+																			style="border: 1px solid; padding: 3px 0 0 0;">${sign.signer5}</td>
 																	</tr>
 																	<tr height="70" align="center">
 																		<td style="border-bottom: 1px #E1F9DD solid;">
@@ -433,12 +428,14 @@
 													<tr>
 														<td height="30" align="center" bgcolor="#E1F9DD"
 															class="m_sp"><b>문서종류</b></td>
-														<td style="padding: 0 0 0 12px; ">발주서</td>
+														<td
+															style="border: solid 1px #C0BFC1; padding: 0 0 0 12px;">발주서</td>
 													</tr>
 													<tr>
 														<td height="30" align="center" bgcolor="#E1F9DD"
 															class="m_sp"><b>문서상태</b></td>
-														<td style="padding: 0 0 0 12px;"><c:choose>
+														<td
+															style="padding: 0 0 0 12px; border: solid 1px #C0BFC1;"><c:choose>
 																<c:when test="${sign.signstate == 0}">
                                  			결재 대기중
                                  		</c:when>
@@ -453,18 +450,21 @@
 													<tr>
 														<td height="30" align="center" bgcolor="#E1F9DD"
 															class="m_sp"><b>부서</b></td>
-														<td style="padding: 0 0 0 12px;">${sign.dept}</td>
+														<td colspan="2"
+															style="border: solid 1px #C0BFC1; padding: 0 0 0 12px;">${sign.dept}</td>
 													</tr>
 													<tr>
 														<td height="30" align="center" bgcolor="#E1F9DD"
 															class="m_sp"><b>기안자</b></td>
-														<td style="padding: 0 0 0 12px;">${sign.team}
+														<td colspan="2"
+															style="border: solid 1px #C0BFC1; padding: 0 0 0 12px;">${sign.team}
 															${sign.ename} ${sign.posname}</td>
 													</tr>
 													<tr>
 														<td height="30" align="center" bgcolor="#E1F9DD"
 															class="m_sp" style="padding: 7px 0 7px 0"><b>기안일</b></td>
-														<td style="padding: 7px 0 7px 12px;">${sign.draftdate }</td>
+														<td colspan="2"
+															style="border: solid 1px #C0BFC1; padding: 7px 0 7px 12px;">${sign.draftdate }</td>
 													</tr>
 
 
@@ -472,7 +472,8 @@
 													<tr>
 														<td height="30" align="center" bgcolor="#E1F9DD"
 															class="m_sp"><b>제목</b></td>
-														<td colspan="2" style="padding: 7px 0 7px 12px;">${sign.signtitle }</td>
+														<td colspan="2"
+															style="border: solid 1px #C0BFC1; padding: 7px 0 7px 12px;">${sign.signtitle }</td>
 													</tr>
 												</tbody>
 											</table>
@@ -482,28 +483,36 @@
 												<tbody>
 													<tr>
 														<td height="350" align="left" valign="top"
-															style=" border-top: 0; 
-   															 padding-top: 15px;
-    														padding-bottom: 8px;
-															">
+															style="border-top: 0; padding-top: 15px; padding-bottom: 8px;">
 															<table width="100%" border="0" cellspacing="0"
 																cellpadding="0">
 																<tbody>
 																	<tr>
-																		<td width="100%"
-																			style=" border: 0;">
+																		<td width="100%" style="border: 0;">
 																			<table id="detail_table" width="100%" cellspacing="0"
 																				cellpadding="0" class="tbl_appreport">
 																				<tbody>
-																				
-																				
+
+
 																					<tr>
-																						<td width="28%" class="title" bgcolor="F1F7F7" align="center">품명</td>
-																						<td width="15%" class="title" bgcolor="F1F7F7" align="center">단가</td>
-																						<td width="10%" class="title" bgcolor="F1F7F7" align="center">수량</td>
-																						<td width="10%" class="title" bgcolor="F1F7F7" align="center">규격</td>
-																						<td width="23%" class="title" bgcolor="F1F7F7" align="center">비고</td>
-																						<td width="23%" class="title" bgcolor="F1F7F7" align="center">금액</td>
+																						<td align="center" width="22%" class="title"
+																							bgcolor="F1F7F7"
+																							style="border: solid 1px #C0BFC1;">품명</td>
+																						<td align="center" width="15%" class="title"
+																							bgcolor="F1F7F7"
+																							style="border: solid 1px #C0BFC1;">단가</td>
+																						<td align="center" width="10%" class="title"
+																							bgcolor="F1F7F7"
+																							style="border: solid 1px #C0BFC1;">수량</td>
+																						<td align="center" width="10%" class="title"
+																							bgcolor="F1F7F7"
+																							style="border: solid 1px #C0BFC1;">규격</td>
+																						<td align="center" width="23%" class="title"
+																							bgcolor="F1F7F7"
+																							style="border: solid 1px #C0BFC1;">비고</td>
+																						<td align="center" width="20%" class="title"
+																							bgcolor="F1F7F7"
+																							style="border: solid 1px #C0BFC1;">금액</td>
 																					</tr>
 																				</tbody>
 																			</table>
@@ -518,26 +527,30 @@
 																			<table width="100%" cellspacing="0" cellpadding="0"
 																				class="tbl_appreport">
 																				<tbody>
-																					<tr height="27">
-																						<td width="80%" align="center" class="title">공급가액</td>
+																					<tr height="27" class="chtax">
+																						<td width="80%" align="center" class="title"
+																							bgcolor="F1F7F7"
+																							style="border: solid 1px #C0BFC1;">공급가액</td>
 																						<td width="20%" align="right"
-																							style="padding-right: 18px; color: #000000;"
-																							class="item"><span id="detail_amount"
-																							style="color: #000000;">0</span></td>
+																							style="border: solid 1px #C0BFC1; color: #000000;"
+																							class="item" style="border: solid 1px #C0BFC1;"><span
+																							id="detail_amount" style="color: #000000;">0</span></td>
 																					</tr>
-																					<tr height="27">
-																						<td width="80%" align="center" class="title">세
-																							액</td>
+																					<tr height="27" class="chtax">
+																						<td width="80%" align="center" class="title"
+																							bgcolor="F1F7F7"
+																							style="border: solid 1px #C0BFC1;">세 액</td>
 																						<td width="20%" align="right"
-																							style="padding-right: 18px; color: #000000;"
+																							style="border: solid 1px #C0BFC1; color: #000000;"
 																							class="item"><span id="detail_tax"
 																							style="color: #000000;">0</span></td>
 																					</tr>
 																					<tr height="27">
-																						<td width="80%" align="center" class="title">합
-																							계</td>
+																						<td width="80%" align="center" class="title"
+																							bgcolor="F1F7F7"
+																							style="border: solid 1px #C0BFC1;">합 계</td>
 																						<td width="20%" align="right"
-																							style="padding-right: 18px; color: #000000;"
+																							style="border: solid 1px #C0BFC1; color: #000000;"
 																							class="item"><b>\</b> <span
 																							id="detail_total"
 																							style="font-weight: bold; color: #000000; font-size: 14px;">0</span>
