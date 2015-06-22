@@ -77,7 +77,8 @@
             	   var dialog1;
             	   var dialog2;
             	   var dialog3;
-            	   
+            	 
+            	   $("#cancel").hide();
             	   dialog = $("#dialog").dialog({
                         autoOpen : false,
                         width : 500,
@@ -87,7 +88,7 @@
                         },
                         
                         hide : {
-                           /* effect : "explode", */
+                           /*  effect : "explode",  */
                            duration : 1000
                         },
                         
@@ -98,21 +99,30 @@
 							}
 						}
                      });
-            	   
+            	    
+            	    
+            	    
+            	    
                   function addUser() {
                      var valid = true;
 
                      if (valid) {
-                    	 $("#users").html(
-									"<td>" + $('input[name="name"]:checked').val() + 
-											 "<br><input type='button' id='cancel' value='취소'/> " +
-									"</td>");
+                    	 $("#opener").hide();
+                    	 $("#cancel").show();
+                    	 $("#users").prepend(
+									"<td id='signer1' name='signer1'>" + $('input[name="name"]:checked').val() + 
+									"</td>");  
+                    	
                         dialog.dialog("close");
                      }
                      
                      $("#cancel").click(function(){
-                    	 $("#users").html("<input type='button' id='opener' value='지정1'/>");
-                    	 // $("#users").html("<button onclick='function().dialog(#dialog)'>지정1</button>");
+                    	 $(this).hide('fast',function(){
+                    		 $("#signer1").remove();
+                    		 $("#opener").show();
+                    	 });
+                    	 
+                    	 
                       });
                      
                      return valid;
@@ -351,6 +361,7 @@
                                                   <!--  <button id="opener">지정1</button> -->
                                                   <input type="button" id="opener" value="지정1"/>
                                                    <!-- <button id="cancel1" >취소</button> -->
+                                                   <input type='button' id='cancel' value='취소'/>
                                              </td>
                                              
                                              <td id="users1" style="border-bottom: 1px #eaeaea solid;">
