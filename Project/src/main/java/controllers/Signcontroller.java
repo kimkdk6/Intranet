@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -68,14 +69,30 @@ public class Signcontroller {
 	}
 	
 	// 기안서 작성 
+		@Transactional
 		@RequestMapping(value = "DraftingReg.htm", method = RequestMethod.POST)
-		public String DraftingReg(Sign sign, Draftingdoc draftingdoc, Signline signline, Principal principal) 
+		public String DraftingReg(Sign sign, Draftingdoc drafting, Signline signline, Principal principal) 
 				throws ClassNotFoundException, SQLException {
 			System.out.println("기안서 작성");
 			SignDAO signdao = sqlsession.getMapper(SignDAO.class);
-			
+			System.out.println(sign.toString());
+			/*
+			// 결재인 넣기
 			sign.setUserid(principal.getName());
 			
+			// 결재라인
+			 signline.setSignok1(1);
+			if(sign.getSigner2() != null){ signline.setSignok2(0); }
+			if(sign.getSigner3() != null){ signline.setSignok3(0); }
+			if(sign.getSigner4() != null){ signline.setSignok4(0); }
+			if(sign.getSigner5() != null){ signline.setSignok5(0); }
+			 
+			// signline: signning
+			signline.setSignning(sign.getSigner2());
+			
+			signdao.insertSign(sign);
+			signdao.insertSignline(signline);
+			signdao.insertDrafting(drafting);*/
 
 			return "redirect:SignMain.htm";
 		}

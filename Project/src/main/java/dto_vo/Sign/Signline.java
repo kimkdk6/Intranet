@@ -8,11 +8,12 @@ public class Signline {
 	private int signok3; // 승인여부3
 	private int signok4; // 승인여부4
 	private int signok5; // 승인여부5
+	private String signning; // 누가승인중인지
 	
 	public Signline() {}
 
 	public Signline(int docnum, int signok1, int signok2, int signok3,
-			int signok4, int signok5) {
+			int signok4, int signok5, String signning) {
 		
 		this.docnum = docnum;
 		this.signok1 = signok1;
@@ -20,6 +21,7 @@ public class Signline {
 		this.signok3 = signok3;
 		this.signok4 = signok4;
 		this.signok5 = signok5;
+		this.signning = signning;
 	}
 	
 	public int getDocnum() {
@@ -70,11 +72,21 @@ public class Signline {
 		this.signok5 = signok5;
 	}
 
+	
+	
+	public String getSignning() {
+		return signning;
+	}
+
+	public void setSignning(String signning) {
+		this.signning = signning;
+	}
+
 	@Override
 	public String toString() {
 		return "Signline [docnum=" + docnum + ", signok1=" + signok1
 				+ ", signok2=" + signok2 + ", signok3=" + signok3
-				+ ", signok4=" + signok4 + ", signok5=" + signok5 + "]";
+				+ ", signok4=" + signok4 + ", signok5=" + signok5 + this.signning+"]";
 	}
 	
 }

@@ -37,10 +37,9 @@ public interface SignDAO {
 	
 	// 모든 결재
 	public int insertSign(Sign sign) throws ClassNotFoundException, SQLException;
-	// 기안서 작성
-	public int insertDrafting(Draftingdoc drafting) throws ClassNotFoundException, SQLException;
-	
 	// 모든 결재 라인
 	public int insertSignline(Signline signline) throws ClassNotFoundException, SQLException;
 	
+	// 기안서 작성
+	public int insertDrafting(Draftingdoc drafting) throws ClassNotFoundException, SQLException;
 }

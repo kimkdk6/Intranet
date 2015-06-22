@@ -63,5 +63,29 @@
 		select *
 		from position
 	</select>
+	
+	<!-- 결재 작성 -->
+	<select id="insertSign" parameterType="dto_vo.Sign.Sign">
+		insert into sign(docnum, userid, signtype, dept, team,  
+                 		 signfilesrc, signtitle, signnote, 
+               		     signer1, signer2, signer3, signer4, signer5,
+                 		 ename, posname)
+                  values(sign_docnum.nextval, #{userid}, #{signtype}, ${dept}, ${team}, 
+                         null, #{signtitle}, #{signnote}, 
+                         #{signer1},  #{signer2},  #{signer3},  #{signer4},  #{signer5},
+                         #{ename}, #{posname})
+	</select>
+	<!-- 결재 라인 작성 -->
+	<select id="insertSignline" parameterType="dto_vo.Sign.Signline">
+		insert into SIGNLINE(docnum, signok2, signok3, signok4, signok5, signning)
+            		  values(sign_docnum.currval, 
+            		  		 #{signok2}, #{signok3}, #{signok4}, #{signok5}, )
+	</select>
+	
+	<!-- 기안서 작성 -->
+	<select id="insertDrafting" parameterType="dto_vo.Sign.Draftingdoc">
+		insert into DRAFTINGDOC(docnum, dracontent)
+            			 values(sign_docnum.currval, #{dracontent})
+	</select>
 
 </mapper>

@@ -190,7 +190,7 @@ public class Sign {
 				+ ", signfilesrc=" + signfilesrc + ", signtitle=" + signtitle
 				+ ", signnote=" + signnote + ", signer1=" + signer1
 				+ ", signer2=" + signer2 + ", signer3=" + signer3
-				+ ", signer4=" + signer4 + ", signer5=" + signer5 + "]";
+				+ ", signer4=" + signer4 + ", signer5=" + signer5 + "ename, posname="+ename+"/"+posname+ "]";
 	}
 	
 }

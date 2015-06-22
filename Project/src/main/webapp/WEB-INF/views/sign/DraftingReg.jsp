@@ -32,6 +32,12 @@
       </h3>
    </div>
    <div class="box-body">
+<form action="" method="post" >
+<input type="hidden" id="signtype" name="signtype" value="1">
+<input type="hidden" id="dept" name="dept" value="${sessionScope.dept}">
+<input type="hidden" id="team" name="team" value="${sessionScope.team}">
+<input type="hidden" id="ename" name="ename" value="${sessionScope.myemp.ename}">
+<input type="hidden" id="posname" name="posname" value="${sessionScope.pos}">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
    <tbody>
       <tr>
@@ -105,7 +111,7 @@
                      }
                      
                      $("#cancel").click(function(){
-                    	 $("#users").html("<button id='opener'>지정1</button>");
+                    	 $("#users").html("<input type='button' id='opener' value='지정1'/>");
                     	 // $("#users").html("<button onclick='function().dialog(#dialog)'>지정1</button>");
                       });
                      
@@ -305,7 +311,7 @@
                                                 id="dept3"></td>
                                           </tr>
                                           <tr height="70" align="center">
-                                             <td style="border-bottom: 1px #eaeaea solid;">데모사용자</td>
+                                             <td style="border-bottom: 1px #eaeaea solid;">${sessionScope.myemp.ename}</td>
                                              
                                              <td id="users" style="border-bottom: 1px #eaeaea solid;">
                                                 <div id="dialog" title="결재자 지정하기">
@@ -342,7 +348,8 @@
                                                    <!-- <input type="button" value="완료" onclick="check()"> -->
                                                    </div>
                                                    
-                                                   <button id="opener">지정1</button>
+                                                  <!--  <button id="opener">지정1</button> -->
+                                                  <input type="button" id="opener" value="지정1"/>
                                                    <!-- <button id="cancel1" >취소</button> -->
                                              </td>
                                              
@@ -371,7 +378,7 @@
                                                          </c:forEach>
                                                    </div>
                                                 </div>
-                                                <button id="opener1">지정2</button>
+                                                <input type="button" id="opener1" value="지정2"/>
                                              </td>
                                              
                                              
@@ -400,7 +407,7 @@
                                                          </c:forEach>
                                                    </div>
                                                 </div>
-                                                <button id="opener2">지정3</button>
+                                                <input type="button" id="opener2" value="지정3"/>
                                              </td>
                                              
                                              <td id="users3" style="border-bottom: 1px #eaeaea solid;">
@@ -428,7 +435,7 @@
                                                          </c:forEach>
                                                    </div>
                                                 </div>
-                                                <button id="opener3">지정3</button>
+                                                <input type="button" id="opener3" value="지정4"/>
                                              </td>
                                           </tr>
                                           
@@ -536,7 +543,7 @@
                               <tr>
                                  <td align="center" bgcolor="#f6f6f6" class="m_sp"><b>파일첨부</b></td>
                                  <td colspan="2" style="padding: 0 0 0 12px;">
-                                 <input id="File_sign" name="File_sign" type="file"></td>
+                                 <input id="signfilesrc" name="signfilesrc" type="file"></td>
                               </tr>
                      
                               <tr>
@@ -544,7 +551,7 @@
                                     <b>제목</b>
                                  </td>
                                  <td colspan="2" style="padding: 0 0 0 12px;">
-                                    <input id="subject" name="subject" type="text"
+                                    <input id="signtitle" name="signtitle" type="text"
                                     class="input_type2" style="width: 630px;" value="">
                                  </td>
                               </tr>
@@ -586,9 +593,9 @@
                                                             
                                                             
                                                             
-                                                            <textarea rows="1000" cols="3000" name="CONTENT" id="CONTENT"></textarea>
+                                                            <textarea rows="1000" cols="3000" name="dracontent" id="dracontent"></textarea>
                                                                <script type="text/javascript">
-                                                                  CKEDITOR.replace('CONTENT');
+                                                                  CKEDITOR.replace('dracontent');
                                                                </script>
                                                          </td>
                                                       </tr>
@@ -606,7 +613,7 @@
                   </tr>
                </tbody>
             </table> 
-            
+           
          </td>
       </tr>
       <tr>
@@ -618,9 +625,10 @@
                      <td align="right" style="padding: 0 12px 0 0;">
                         <table border="0" cellspacing="0" cellpadding="0">
                            <tbody>
+                           
                               <tr>
                                  <td>
-                                    <input type="button" value="작성완료" onclick="check()">
+                                    <input type="submit" value="작성완료">
                                  </td>
                               </tr>
                            </tbody>
@@ -636,6 +644,7 @@
       </tr>
    </tbody>
 </table>
+ </form>
    </div>
 </div>
 </section>
