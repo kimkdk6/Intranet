@@ -67,35 +67,33 @@ public class Signcontroller {
 
 		return "sign.DraftingReg";
 	}
-	
-	// 기안서 작성 
-		@Transactional
-		@RequestMapping(value = "DraftingReg.htm", method = RequestMethod.POST)
-		public String DraftingReg(Sign sign, Draftingdoc drafting, Signline signline, Principal principal) 
-				throws ClassNotFoundException, SQLException {
-			System.out.println("기안서 작성");
-			SignDAO signdao = sqlsession.getMapper(SignDAO.class);
-			System.out.println(sign.toString());
-			/*
-			// 결재인 넣기
-			sign.setUserid(principal.getName());
-			
-			// 결재라인
-			 signline.setSignok1(1);
-			if(sign.getSigner2() != null){ signline.setSignok2(0); }
-			if(sign.getSigner3() != null){ signline.setSignok3(0); }
-			if(sign.getSigner4() != null){ signline.setSignok4(0); }
-			if(sign.getSigner5() != null){ signline.setSignok5(0); }
-			 
-			// signline: signning
-			signline.setSignning(sign.getSigner2());
-			
-			signdao.insertSign(sign);
-			signdao.insertSignline(signline);
-			signdao.insertDrafting(drafting);*/
 
-			return "redirect:SignMain.htm";
-		}
+	// 기안서 작성
+	@Transactional
+	@RequestMapping(value = "DraftingReg.htm", method = RequestMethod.POST)
+	public String DraftingReg(Sign sign, Draftingdoc drafting,
+			Signline signline, Principal principal)
+			throws ClassNotFoundException, SQLException {
+		System.out.println("기안서 작성");
+		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
+		System.out.println(sign.toString());
+		/*
+		 * // 결재인 넣기 sign.setUserid(principal.getName());
+		 * 
+		 * // 결재라인 signline.setSignok1(1); if(sign.getSigner2() != null){
+		 * signline.setSignok2(0); } if(sign.getSigner3() != null){
+		 * signline.setSignok3(0); } if(sign.getSigner4() != null){
+		 * signline.setSignok4(0); } if(sign.getSigner5() != null){
+		 * signline.setSignok5(0); }
+		 * 
+		 * // signline: signning signline.setSignning(sign.getSigner2());
+		 * 
+		 * signdao.insertSign(sign); signdao.insertSignline(signline);
+		 * signdao.insertDrafting(drafting);
+		 */
+
+		return "redirect:SignMain.htm";
+	}
 
 	// 기안서 상세 페이지 보기
 	@RequestMapping(value = "DraftingDetail.htm", method = RequestMethod.GET)
@@ -203,6 +201,92 @@ public class Signcontroller {
 		return "sign.HolidayDocDetail";
 	}
 
+	// 출장 신청서 작성 페이지 보기
+	@RequestMapping(value = "BizTripDocReg.htm", method = RequestMethod.GET)
+	public String BizTripDocReg(Model model) throws ClassNotFoundException,
+			SQLException {
+		System.out.println("출장 신청서 작성 페이지 열람");
+		// 부서
+		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
+		List<Dept> dept = signdao.getDepts();
+		// 팀
+		List<Team> team = signdao.getTeams();
+		// 사원
+		List<Emp> emp = signdao.getEmps();
+		// 직급
+		List<Position> pos = signdao.getPositions();
+
+		model.addAttribute("dept", dept);
+		model.addAttribute("emp", emp);
+		model.addAttribute("team", team);
+		model.addAttribute("pos", pos);
+
+		return "sign.BizTripDocReg";
+	}
+
+	// 출장 신청서 상세 페이지 보기
+	@RequestMapping(value = "BizTripDocDetail.htm", method = RequestMethod.GET)
+	public String BizTripDocDetail(String docnum, Model model)
+			throws ClassNotFoundException, SQLException {
+		System.out.println("출장 신청서 상세페이지 보기");
+
+		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
+		// 결재 문서(기본 내용)
+		Sign sign = signdao.getSign(docnum);
+		// 기안서
+		Draftingdoc draftingdoc = signdao.getDraftingdoc(docnum);
+		// 결재라인
+		Signline signline = signdao.getSignline(docnum);
+
+		model.addAttribute("sign", sign);
+		model.addAttribute("draftingdoc", draftingdoc);
+		model.addAttribute("signline", signline);
+		return "sign.BizTripDocDetail";
+	}
+
+	// 출장 결과 보고서 작성 페이지 보기
+	@RequestMapping(value = "BizTripRepReg.htm", method = RequestMethod.GET)
+	public String BizTripRepReg(Model model) throws ClassNotFoundException,
+			SQLException {
+		System.out.println("출장 결과 보고서 작성 페이지 열람");
+		// 부서
+		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
+		List<Dept> dept = signdao.getDepts();
+		// 팀
+		List<Team> team = signdao.getTeams();
+		// 사원
+		List<Emp> emp = signdao.getEmps();
+		// 직급
+		List<Position> pos = signdao.getPositions();
+
+		model.addAttribute("dept", dept);
+		model.addAttribute("emp", emp);
+		model.addAttribute("team", team);
+		model.addAttribute("pos", pos);
+
+		return "sign.BizTripRepReg";
+	}
+
+	// 출장 결과 보고서 상세 페이지 보기
+	@RequestMapping(value = "BizTripRepDetail.htm", method = RequestMethod.GET)
+	public String BizTripRepDetail(String docnum, Model model)
+			throws ClassNotFoundException, SQLException {
+		System.out.println("출장 결과 보고서 상세페이지 보기");
+
+		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
+		// 결재 문서(기본 내용)
+		Sign sign = signdao.getSign(docnum);
+		// 기안서
+		Draftingdoc draftingdoc = signdao.getDraftingdoc(docnum);
+		// 결재라인
+		Signline signline = signdao.getSignline(docnum);
+
+		model.addAttribute("sign", sign);
+		model.addAttribute("draftingdoc", draftingdoc);
+		model.addAttribute("signline", signline);
+		return "sign.BizTripRepDetail";
+	}
+
 	// 프린트 페이지 보기
 	@RequestMapping(value = "PrintPage.htm", method = RequestMethod.GET)
 	public String PrintPage(String docnum, Model model)
@@ -212,15 +296,5 @@ public class Signcontroller {
 		return "sign.PrintPage";
 	}
 
-	// 출장 결과 페이지 상세 보기
-	@RequestMapping(value = "BizTripRepDetail.htm", method = RequestMethod.GET)
-	public String BizTripRepDetail(String docnum, Model model)
-			throws ClassNotFoundException, SQLException {
-		System.out.println("출장 결과 페이지 상세보기");
 
-		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
-		Sign sign = signdao.getSign(docnum);
-
-		return "sign.BizTripRepDetail";
-	}
 }

@@ -92,6 +92,18 @@
 							<li><a
 								href="${pageContext.request.contextPath}/sign/HolidayDocDetail.htm?docnum=1"><i
 									class="fa fa-circle-o"></i>휴가계 상세</a></li>
+							<li><a
+								href="${pageContext.request.contextPath}/sign/BizTripDocReg.htm"><i
+									class="fa fa-circle-o"></i>출장 신청서</a></li>
+							<li><a
+								href="${pageContext.request.contextPath}/sign/BizTripRepReg.htm"><i
+									class="fa fa-circle-o"></i>출장 결과 보고서</a></li>
+							<li><a
+								href="${pageContext.request.contextPath}/sign/BizTripDocDetail.htm?docnum=1"><i
+									class="fa fa-circle-o"></i>출장 신청서 상세</a></li>
+							<li><a
+								href="${pageContext.request.contextPath}/sign/BizTripRepDetail.htm?docnum=1"><i
+									class="fa fa-circle-o"></i>출장 결과 보고서 상세</a></li>
 							<li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
 						</ul></li>
 				</ul></li>
