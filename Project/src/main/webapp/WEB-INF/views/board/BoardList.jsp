@@ -19,6 +19,12 @@
 %>
 
 <!--전체외곽TB START-->
+
+<script type="text/javascript">
+	function pageSizeGo(value){
+		window.location.href = value;
+	}
+</script>
 <table width="100%" height="100%" border="0" cellspacing="0"
    cellpadding="0" id="__top__">
    <tr>
@@ -43,21 +49,21 @@
                                     </td>
                                     <td width="" align="right" style="padding: 0 12px 0 0;">
                                        <!--검색TB START-->
-                                       <table border="0" cellspacing="0" cellpadding="0">
-                                          <tr>
-                                             <td><select name="searchkey" class="sel2">
-                                                   <option value="sc">제목+내용</option>
-                                                   <option value="subject">제목</option>
-                                                   <option value="content">내용</option>
-                                                   <option value="rname">작성자</option>
-                                             </select></td>
-                                             <td width="3"></td>
-                                             <td><input type="text" name="searchval"
-                                                class="input_search" style="width: 152;" value=""></td>
-                                             <td width="3"></td>
-                                             <td><input type="image"
-                                                src="../resources/img/bt_search.gif"></td>
-                                          </tr>
+<!--                                        <table border="0" cellspacing="0" cellpadding="0"> -->
+<!--                                           <tr> -->
+<!--                                              <td><select name="searchkey" class="sel2"> -->
+<!--                                                    <option value="sc">제목+내용</option> -->
+<!--                                                    <option value="subject">제목</option> -->
+<!--                                                    <option value="content">내용</option> -->
+<!--                                                    <option value="rname">작성자</option> -->
+<!--                                              </select></td> -->
+<!--                                              <td width="3"></td> -->
+<!--                                              <td><input type="text" name="searchval" -->
+<!--                                                 class="input_search" style="width: 152;" value=""></td> -->
+<!--                                              <td width="3"></td> -->
+<!--                                              <td><input type="image" -->
+<!--                                                 src="../resources/img/bt_search.gif"></td> -->
+<!--                                           </tr> -->
                                        </table> <!--검색TB END-->
                                     </td>
                                  </tr>
@@ -81,15 +87,16 @@
                                  </td>
                                  <td align="right" style="padding: 0 12px 0 0;"><select
                                     name="select4" class="sel2"
-                                    onChange="chgLcnt(this.options[this.selectedIndex].value)">
-                                       <option value="10" selected>10개씩 보기</option>
-                                       <option value="15">15개씩 보기</option>
-                                       <option value="20">20개씩 보기</option>
-                                       <option value="30">30개씩 보기</option>
-                                       <option value="40">40개씩 보기</option>
-                                       <option value="50">50개씩 보기</option>
-                                       <option value="80">80개씩 보기</option>
-                                       <option value="100">100개씩 보기</option>
+                                    onchange="pageSizeGo(value)">
+                                    <option>선택하세요</option>
+                                       <option value="${pageContext.request.contextPath}/board/BoardList.htm?boardcode=${boardlist.boardcode}&cpage=1&pagesize=10">10개씩 보기</option>
+                                       <option value="${pageContext.request.contextPath}/board/BoardList.htm?boardcode=${boardlist.boardcode}&cpage=1&pagesize=15">15개씩 보기</option>
+                                       <option value="${pageContext.request.contextPath}/board/BoardList.htm?boardcode=${boardlist.boardcode}&cpage=1&pagesize=20">20개씩 보기</option>
+                                       <option value="${pageContext.request.contextPath}/board/BoardList.htm?boardcode=${boardlist.boardcode}&cpage=1&pagesize=30">30개씩 보기</option>
+                                       <option value="${pageContext.request.contextPath}/board/BoardList.htm?boardcode=${boardlist.boardcode}&cpage=1&pagesize=40">40개씩 보기</option>
+                                       <option value="${pageContext.request.contextPath}/board/BoardList.htm?boardcode=${boardlist.boardcode}&cpage=1&pagesize=50">50개씩 보기</option>
+                                       <option value="${pageContext.request.contextPath}/board/BoardList.htm?boardcode=${boardlist.boardcode}&cpage=1&pagesize=80">80개씩 보기</option>
+                                       <option value="${pageContext.request.contextPath}/board/BoardList.htm?boardcode=${boardlist.boardcode}&cpage=1&pagesize=100">100개씩 보기</option>
                                  </select></td>
                               </tr>
                            </table> <!--기능TB END-->

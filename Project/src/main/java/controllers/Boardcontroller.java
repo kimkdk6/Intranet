@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.FileOutputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import dao.BoardDAO;
 import dao.BoardListDAO;
@@ -59,7 +61,7 @@ public class Boardcontroller {
 		model.addAttribute("boards", boards);
 		return "board.BoardMain";
 	}
-	
+	//게시판 상세보기
 	@RequestMapping(value = "BoardDetail.htm")
 	public String BoardDetail(@RequestParam(value="boardnum") int boardnum, Model model)throws ClassNotFoundException,SQLException{
 		
@@ -86,7 +88,7 @@ public class Boardcontroller {
 		return "board.BoardDetail";
 		
 	}
-	
+	//게시판 목록보기
 	@RequestMapping(value = "BoardList.htm")
 	public String BoardList(@RequestParam(value="boardcode") int boardcode,
 							@RequestParam(value="cpage", defaultValue="1") int cpage,
@@ -119,7 +121,7 @@ public class Boardcontroller {
 		return "board.BoardList";
 		
 	}
-	
+	//게시판 내 댓글 달기
 	@RequestMapping(value = "BoardReply.htm")
 	public String BoardReply(Reply reply, Model model)throws ClassNotFoundException,SQLException{
 	
@@ -169,7 +171,7 @@ public class Boardcontroller {
 	
 	
 	@RequestMapping(value = "BoardWriteOk.htm")
-	   public String BoardWriteOk(Board board, Model model)throws ClassNotFoundException,SQLException {
+	   public String BoardWriteOk(Board board, Model model,MultipartHttpServletRequest request)throws ClassNotFoundException,SQLException {
 	   
 			System.out.println("게시판 글쓰기 boardcode: " +board.getBoardcode());
 			System.out.println(board);
@@ -180,9 +182,38 @@ public class Boardcontroller {
 			BoardListDAO boardlistdao = sqlsession.getMapper(BoardListDAO.class);
 			BoardList boardlist =  boardlistdao.getBoardListforCode(board.getBoardcode());
 			
+			
+			
+			
+			
+	
+//					String fname = multipartFile.getOriginalFilename();
+//					String path = request.getServletContext().getRealPath("/board/upload");
+//					String fullpath = path + "\\" + fname;
+//					
+//					if(!fname.equals("")){
+//						//서버에 물리적 경로 파일쓰기작업
+//						FileOutputStream fs = new FileOutputStream(fullpath);
+//						fs.write(multipartFile.getBytes());
+//						fs.close();
+//					}
+				//	filenNames.add(fname); //파일의 이름만 별도 관리
+				
+			
+			
+			
+			
+			
+			
+			
+			
 			boarddao.insertNewBoard(board);
 			
 			//request.setAttribute("boardcode", board.getBoardcode());
+			
+			
+			
+			
 			
 			
 			model.addAttribute("boardlist", boardlist);
@@ -192,6 +223,57 @@ public class Boardcontroller {
 			
 //	      return "redirect:BoardList.htm?boardcode="+board.getBoardcode();
 	      return "redirect:BoardList.htm";//신기하네...
+	   }
+	
+	
+	
+	
+	
+	@RequestMapping(value = "BoardReWrite.htm")
+	   public String BoardReWrite(@RequestParam(value="boardnum")int boardnum, Model model)throws ClassNotFoundException,SQLException {
+	   
+			System.out.println("게시판 수정하기 boardnum: " +boardnum);
+			
+			
+			BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
+			BoardListDAO boardlistdao = sqlsession.getMapper(BoardListDAO.class);
+		
+			Board board = boarddao.getBoard(boardnum);
+			BoardList boardlist = boardlistdao.getBoardList(boardnum);
+			
+			System.out.println(board);
+			
+			model.addAttribute("boardlist", boardlist);
+			model.addAttribute("board", board);
+			
+	      return "board.BoardReWrite";
+	   }
+	
+	
+	@RequestMapping(value = "BoardReWriteOk.htm")
+	   public String BoardReWriteOk(Board board, Model model)throws ClassNotFoundException,SQLException {
+	   
+			System.out.println("게시판 수정 boardnum: " +board.getBoardcode());
+			System.out.println(board);
+			
+			
+			
+			BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
+			BoardListDAO boardlistdao = sqlsession.getMapper(BoardListDAO.class);
+			BoardList boardlist =  boardlistdao.getBoardListforCode(board.getBoardcode());
+			
+		//	boarddao.insertNewBoard(board);
+			
+			//request.setAttribute("boardcode", board.getBoardcode());
+			boarddao.updateBoard(board);
+			
+			model.addAttribute("boardlist", boardlist);
+		//	model.addAttribute("boardcode", board.getBoardcode());
+			
+		//	board/BoardList.jsp?boardcode=1
+			
+//	      return "redirect:BoardList.htm?boardcode="+board.getBoardcode();
+	      return "redirect:BoardDetail.htm?boardnum="+board.getBoardnum();//신기하네...
 	   }
 	
 }

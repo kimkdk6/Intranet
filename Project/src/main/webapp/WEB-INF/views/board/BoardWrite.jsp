@@ -66,7 +66,7 @@
                   </tr>
                   <tr>
                      <td valign="top">
-                        <form name="writeboard" method="post" action="${pageContext.request.contextPath}/board/BoardWriteOk.htm">
+                        <form name="writeboard" method="post" action="${pageContext.request.contextPath}/board/BoardWriteOk.htm" enctype="multipart/form-data">
                         	<input type="hidden" name="userid" value="${sessionScope.myemp.userid}">
                         	<input type="hidden" name="boardcode" value="${boardlist.boardcode}">
                         	<input type="hidden" name="boardnotice" value="0">  

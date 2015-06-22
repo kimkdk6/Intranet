@@ -33,11 +33,13 @@
 					});
 				});
 			});
-			function gotoModify() {
-				var f = document.writeBBS;
-				f.action = 'write.php';
-				f.del.value = '';
-				f.submit();
+			function gotoModify(boardnum) {
+// 				var f = document.writeBBS;
+// 				f.action = 'write.php';
+// 				f.del.value = '';
+// 				f.submit();
+
+				window.location.href = "BoardReWrite.htm?boardnum="+boardnum;
 			}
 			function gotoDelete() {
 				var f = document.writeBBS;
@@ -131,8 +133,9 @@ p {
 												<td><a href="${pageContext.request.contextPath}/board/BoardList.htm?boardcode=${board.boardcode}"><img
 														src="../resources/img/bt_list.gif"></a></td>
 												<td width="5"></td>
-												<td><a href="javascript:gotoModify()"><img
-														src="../resources/img/bt_modify.gif"></a></td>
+												<td><a href="javascript:gotoModify(${board.boardnum})"><img
+														src="../resources/img/bt_modify.gif"
+														onclick="if(!confirm('글을 수정하시겠습니까?')) return false;"></a></td>
 												<td width="5"></td>
 												<td><a href="javascript:gotoDelete()"><img
 														src="../resources/img/bt_delete.gif"

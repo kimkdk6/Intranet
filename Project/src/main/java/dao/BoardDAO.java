@@ -27,5 +27,6 @@ public interface BoardDAO {
 	
 	public void updateCount(int boardnum) throws ClassNotFoundException, SQLException;
 	
+	public void updateBoard(Board board) throws ClassNotFoundException, SQLException;
 	
 }
