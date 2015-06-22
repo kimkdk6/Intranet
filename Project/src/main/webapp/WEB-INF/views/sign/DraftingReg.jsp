@@ -11,6 +11,32 @@
 	System.out.println("오늘의 날짜: "+strdate);
 	
 %>
+<script type="text/javascript">
+		//sign 유효성 검사
+		function addsign(){
+			
+			if (!signform.signtitle.value) {
+				alert("문서 제목을 입력하세요.");
+				signform.signtitle.focus();
+				return false;
+			}
+			
+			var ckeditor = CKEDITOR.instances['dracontent']; //객체가져오기
+		    if (ckeditor.getData()=="") {//null값은 안옴 = 빈문자열
+		         alert("기안 내용을 입력하세요");
+		         ckeditor.focus();
+		         return false;
+		    }
+			
+		    if ($("#signer2").length < 1) {
+				alert("결재자를 선택하세요");
+				signform.users.focus();
+				return false;
+			}
+		    alert("전자 결재 문서 작성이 완료되었습니다.");
+		    signform.submit();
+		}
+</script>
 
 <!DOCTYPE html>
 <section class="content-header">
@@ -32,7 +58,7 @@
       </h3>
    </div>
    <div class="box-body">
-<form action="" method="post" >
+<form name="signform" action="" method="post" >
 <input type="hidden" id="signtype" name="signtype" value="1">
 <input type="hidden" id="dept" name="dept" value="${sessionScope.dept}">
 <input type="hidden" id="team" name="team" value="${sessionScope.team}">
@@ -69,6 +95,7 @@
             <!-- ck 에디터 끝 -->
             
             <script language="javascript">
+            
                
                /* 결재자 메뉴 띄우는 기능 */
                // ============= 첫번째 ======================
@@ -110,15 +137,17 @@
                     	 $("#opener").hide();
                     	 $("#cancel").show();
                     	 $("#users").prepend(
-									"<td id='signer1' name='signer1'>" + $('input[name="name"]:checked').val() + 
-									"</td>");  
+									"<td id='signer_1'>" + $('input[name="name"]:checked').val() + 
+									"<input type='hidden' name='signer2' id='signer2' value='"+
+									 $('input[name="name"]:checked').val().trim()+"'></td>");  
                     	
                         dialog.dialog("close");
                      }
                      
                      $("#cancel").click(function(){
                     	 $(this).hide('fast',function(){
-                    		 $("#signer1").remove();
+                    		 $("#signer_1").remove();
+                    		 $("#signer2").remove();
                     		 $("#opener").show();
                     	 });
                     	 
@@ -335,9 +364,10 @@
                                                                         <c:if test="${t.teamcode == e.teamcode }">
                                                                            <c:forEach items="${pos}" var="p">
                                                                               <c:if test="${p.poscode == e.poscode}">
+                                                                              <input type="radio" name="name" id="name" value="${e.userid}" >
                                                                                  <i class="fa fa-fw fa-user-plus"></i> 
                                                                                  ${t.teamname} ${e.ename} ${p.posname }
-                                                                                 <input type="radio" name="name" id="name" value="${t.teamname} ${e.ename} ${p.posname}" ><hr>
+                                                                                 <hr>
                                                                               </c:if>
                                                                            </c:forEach>
                                                                         </c:if>
@@ -563,7 +593,7 @@
                                  </td>
                                  <td colspan="2" style="padding: 0 0 0 12px;">
                                     <input id="signtitle" name="signtitle" type="text"
-                                    class="input_type2" style="width: 630px;" value="">
+                                    class="input_type2" style="width: 630px;">
                                  </td>
                               </tr>
                               <tr>
@@ -639,7 +669,7 @@
                            
                               <tr>
                                  <td>
-                                    <input type="submit" value="작성완료">
+                                    <input type="button" value="작성완료" onclick="addsign()">
                                  </td>
                               </tr>
                            </tbody>

@@ -65,27 +65,28 @@
 	</select>
 	
 	<!-- 결재 작성 -->
-	<select id="insertSign" parameterType="dto_vo.Sign.Sign">
+	<insert id="insertSign" parameterType="dto_vo.Sign.Sign" >
 		insert into sign(docnum, userid, signtype, dept, team,  
                  		 signfilesrc, signtitle, signnote, 
                		     signer1, signer2, signer3, signer4, signer5,
                  		 ename, posname)
-                  values(sign_docnum.nextval, #{userid}, #{signtype}, ${dept}, ${team}, 
-                         null, #{signtitle}, #{signnote}, 
-                         #{signer1},  #{signer2},  #{signer3},  #{signer4},  #{signer5},
+                  values((select NVL(MAX(TO_NUMBER(docnum))+1, 0) from sign), #{userid}, #{signtype}, #{dept}, #{team}, 
+                         #{signfilesrc, jdbcType=VARCHAR}, #{signtitle}, #{signnote, jdbcType=VARCHAR}, 
+                         #{signer1, jdbcType=VARCHAR}, #{signer2, jdbcType=VARCHAR}, 
+                         #{signer3, jdbcType=VARCHAR}, #{signer4, jdbcType=VARCHAR}, #{signer5, jdbcType=VARCHAR},
                          #{ename}, #{posname})
-	</select>
+	</insert>
 	<!-- 결재 라인 작성 -->
-	<select id="insertSignline" parameterType="dto_vo.Sign.Signline">
+	<insert id="insertSignline" parameterType="dto_vo.Sign.Signline">
 		insert into SIGNLINE(docnum, signok2, signok3, signok4, signok5, signning)
-            		  values(sign_docnum.currval, 
-            		  		 #{signok2}, #{signok3}, #{signok4}, #{signok5}, )
-	</select>
+            		  values((select NVL(MAX(TO_NUMBER(docnum)), 0) from sign), 
+            		  		 #{signok2}, #{signok3}, #{signok4}, #{signok5}, #{signning})
+	</insert>
 	
 	<!-- 기안서 작성 -->
-	<select id="insertDrafting" parameterType="dto_vo.Sign.Draftingdoc">
+	<insert id="insertDrafting" parameterType="dto_vo.Sign.Draftingdoc">
 		insert into DRAFTINGDOC(docnum, dracontent)
-            			 values(sign_docnum.currval, #{dracontent})
-	</select>
+            			 values((select NVL(MAX(TO_NUMBER(docnum)), 0) from sign), #{dracontent})
+	</insert>
 
 </mapper>

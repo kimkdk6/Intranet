@@ -76,21 +76,37 @@ public class Signcontroller {
 			throws ClassNotFoundException, SQLException {
 		System.out.println("기안서 작성");
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
+		
+		System.out.println(drafting.toString());
+		
+		// 결재인 넣기 
+		sign.setSigner1(principal.getName());
+		sign.setUserid(principal.getName());
 		System.out.println(sign.toString());
-		/*
-		 * // 결재인 넣기 sign.setUserid(principal.getName());
-		 * 
-		 * // 결재라인 signline.setSignok1(1); if(sign.getSigner2() != null){
-		 * signline.setSignok2(0); } if(sign.getSigner3() != null){
-		 * signline.setSignok3(0); } if(sign.getSigner4() != null){
-		 * signline.setSignok4(0); } if(sign.getSigner5() != null){
-		 * signline.setSignok5(0); }
-		 * 
-		 * // signline: signning signline.setSignning(sign.getSigner2());
-		 * 
-		 * signdao.insertSign(sign); signdao.insertSignline(signline);
-		 * signdao.insertDrafting(drafting);
-		 */
+		
+		// 결재라인 : 1>승인 2>반려 3>대기
+		signline.setSignok1(1);
+		if (sign.getSigner2() != null) {
+			signline.setSignok2(3);
+		}
+		if (sign.getSigner3() != null) {
+			signline.setSignok3(3);
+		}
+		if (sign.getSigner4() != null) {
+			signline.setSignok4(3);
+		}
+		if (sign.getSigner5() != null) {
+			signline.setSignok5(3);
+		}
+
+		// signline: signning 
+		
+		signline.setSignning(sign.getSigner2());
+		
+		System.out.println(signline.toString());
+		signdao.insertSign(sign);
+		signdao.insertSignline(signline);
+		signdao.insertDrafting(drafting);
 
 		return "redirect:SignMain.htm";
 	}
@@ -295,6 +311,5 @@ public class Signcontroller {
 
 		return "sign.PrintPage";
 	}
-
 
 }
