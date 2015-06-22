@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.ServletOutputStream;
@@ -188,16 +189,22 @@ public class Boardcontroller {
 		BoardListDAO boardlistdao = sqlsession.getMapper(BoardListDAO.class);
 		BoardList boardlist =  boardlistdao.getBoardListforCode(board.getBoardcode());
 
-
+		Calendar cal = Calendar.getInstance();
+		
+		
 		CommonsMultipartFile file =board.getFile();
+	//	file.getName();
+		
+		System.out.println(file);
+		
 		String fileName = null;
-		if(file != null){
+		if(!file.isEmpty()){
 			//이 경우라면 최소 한개는 파일첨부
 
-			String fname = file.getOriginalFilename();
+			String fname = cal.getTimeInMillis()+file.getOriginalFilename();
 			String path = request.getServletContext().getRealPath("/Upload");
 			String fullpath = path + "\\" + fname;
-
+			System.out.println(fullpath);
 			if(!fname.equals("")){
 				//서버에 물리적 경로 파일쓰기작업
 				FileOutputStream fs = new FileOutputStream(fullpath);
@@ -212,38 +219,9 @@ public class Boardcontroller {
 
 
 		board.setBoardfilesrc(fileName);
-
-
-
-		//					String fname = multipartFile.getOriginalFilename();
-		//					String path = request.getServletContext().getRealPath("/board/upload");
-		//					String fullpath = path + "\\" + fname;
-		//					
-		//					if(!fname.equals("")){
-		//						//서버에 물리적 경로 파일쓰기작업
-		//						FileOutputStream fs = new FileOutputStream(fullpath);
-		//						fs.write(multipartFile.getBytes());
-		//						fs.close();
-		//					}
-		//	filenNames.add(fname); //파일의 이름만 별도 관리
-
-
-
-
-
-
-
-
-
 		boarddao.insertNewBoard(board);
 
 		//request.setAttribute("boardcode", board.getBoardcode());
-
-
-
-
-
-
 		model.addAttribute("boardlist", boardlist);
 		model.addAttribute("boardcode", board.getBoardcode());
 
@@ -266,7 +244,7 @@ public class Boardcontroller {
 		BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
 		BoardListDAO boardlistdao = sqlsession.getMapper(BoardListDAO.class);
 
-
+		
 		Board board = boarddao.getBoard(boardnum);
 		BoardList boardlist = boardlistdao.getBoardList(boardnum);
 
@@ -284,50 +262,46 @@ public class Boardcontroller {
 
 		System.out.println("게시판 수정 boardnum: " +board.getBoardcode());
 		System.out.println(board);
-
-
-		CommonsMultipartFile file =board.getFile();
-		String fileName = null;
-		if(file != null){
-			//이 경우라면 최소 한개는 파일첨부
-
-			String fname = file.getOriginalFilename();
-			String path = request.getServletContext().getRealPath("/Upload");
-			String fullpath = path + "\\" + fname;
-
-			if(!fname.equals("")){
-				//서버에 물리적 경로 파일쓰기작업
-				FileOutputStream fs = new FileOutputStream(fullpath);
-				fs.write(file.getBytes());
-				fs.close();
-			}
-			fileName = fname; //파일의 이름만 별도 관리
-		}
-
-
-		//DB insert (파일명)
-
-
-		board.setBoardfilesrc(fileName);
-
-
-
-
+		
+		
 		BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
+		String filesrc = boarddao.getBoard(board.getBoardnum()).getBoardfilesrc();
+		
+		
+		Calendar cal = Calendar.getInstance();
+		
+		CommonsMultipartFile file =board.getFile();
+		
+		System.out.println("filesrc: " + filesrc);
+		System.out.println("getfilesrc: "+board.getBoardfilesrc());
+		
+		
+		if(!filesrc.equals(board.getBoardfilesrc()) ){
+			String fileName = null;
+			if(!file.isEmpty()){
+		
+				String fname = cal.getTimeInMillis()+file.getOriginalFilename();
+				String path = request.getServletContext().getRealPath("/Upload");
+				String fullpath = path + "\\" + fname;
+
+				if(!fname.equals("")){
+					//서버에 물리적 경로 파일쓰기작업
+					FileOutputStream fs = new FileOutputStream(fullpath);
+					fs.write(file.getBytes());
+					fs.close();
+				}
+				fileName = fname; //파일의 이름만 별도 관리
+			}
+			board.setBoardfilesrc(fileName);
+		}
+		
+
 		BoardListDAO boardlistdao = sqlsession.getMapper(BoardListDAO.class);
 		BoardList boardlist =  boardlistdao.getBoardListforCode(board.getBoardcode());
-
-		//	boarddao.insertNewBoard(board);
-
-		//request.setAttribute("boardcode", board.getBoardcode());
 		boarddao.updateBoard(board);
-
 		model.addAttribute("boardlist", boardlist);
 		model.addAttribute("boardcode", board.getBoardcode());
 
-		//	board/BoardList.jsp?boardcode=1
-
-		//	      return "redirect:BoardList.htm?boardcode="+board.getBoardcode();
 		return "redirect:BoardDetail.htm?boardnum="+board.getBoardnum();//신기하네...
 	}
 
