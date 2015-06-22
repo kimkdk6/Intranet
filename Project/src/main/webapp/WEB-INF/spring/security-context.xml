@@ -15,6 +15,11 @@
 		 <security:logout logout-success-url="/index.htm"/> 
 		
 		<security:intercept-url pattern="/sign/*" access="ROLE_USER" />
+		<security:intercept-url pattern="/board/*" access="ROLE_USER" />
+		<security:intercept-url pattern="/main/*" access="ROLE_USER" />
+		<security:intercept-url pattern="/schedule/*" access="ROLE_USER" />
+		<security:intercept-url pattern="/message/*" access="ROLE_USER" />
+		
 		<security:intercept-url pattern="/admin/*" access="ROLE_ADMIN" />
 	</security:http>
 	

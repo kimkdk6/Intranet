@@ -307,7 +307,7 @@ p {
 																<td width="80" class="m_sp"><img
 																	src="../resources/img/icon_pds.gif" align="absmiddle"><b>첨부파일</b></td>
 																<td width="" align="left" valign="top"><a
-																	href="${board.boardfilesrc}">${board.boardfilesrc}</a>&nbsp;<span
+																	href="${pageContext.request.contextPath}/board/download.htm?f=${board.boardfilesrc}">${board.boardfilesrc}</a>&nbsp;<span
 																	class="counter">
 <!-- 																	<font color="#666666">(7.3M)</font> -->
 																	</span>

@@ -1,11 +1,16 @@
 package controllers;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import dao.BoardDAO;
 import dao.BoardListDAO;
@@ -171,7 +177,7 @@ public class Boardcontroller {
 
 
 	@RequestMapping(value = "BoardWriteOk.htm")
-	public String BoardWriteOk(Board board, Model model)throws ClassNotFoundException,SQLException {
+	public String BoardWriteOk(Board board, Model model,HttpServletRequest request)throws ClassNotFoundException,SQLException, IOException {
 		//MultipartHttpServletRequest request
 		System.out.println("게시판 글쓰기 boardcode: " +board.getBoardcode());
 		System.out.println(board);
@@ -183,7 +189,29 @@ public class Boardcontroller {
 		BoardList boardlist =  boardlistdao.getBoardListforCode(board.getBoardcode());
 
 
+		CommonsMultipartFile file =board.getFile();
+		String fileName = null;
+		if(file != null){
+			//이 경우라면 최소 한개는 파일첨부
 
+			String fname = file.getOriginalFilename();
+			String path = request.getServletContext().getRealPath("/Upload");
+			String fullpath = path + "\\" + fname;
+
+			if(!fname.equals("")){
+				//서버에 물리적 경로 파일쓰기작업
+				FileOutputStream fs = new FileOutputStream(fullpath);
+				fs.write(file.getBytes());
+				fs.close();
+			}
+			fileName = fname; //파일의 이름만 별도 관리
+		}
+
+
+		//DB insert (파일명)
+
+
+		board.setBoardfilesrc(fileName);
 
 
 
@@ -230,13 +258,14 @@ public class Boardcontroller {
 
 
 	@RequestMapping(value = "BoardReWrite.htm")
-	public String BoardReWrite(@RequestParam(value="boardnum")int boardnum, Model model)throws ClassNotFoundException,SQLException {
+	public String BoardReWrite(@RequestParam(value="boardnum")int boardnum, Model model,HttpServletRequest request)throws ClassNotFoundException,SQLException {
 
 		System.out.println("게시판 수정하기 boardnum: " +boardnum);
 
 
 		BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
 		BoardListDAO boardlistdao = sqlsession.getMapper(BoardListDAO.class);
+
 
 		Board board = boarddao.getBoard(boardnum);
 		BoardList boardlist = boardlistdao.getBoardList(boardnum);
@@ -251,10 +280,36 @@ public class Boardcontroller {
 
 
 	@RequestMapping(value = "BoardReWriteOk.htm")
-	public String BoardReWriteOk(Board board, Model model)throws ClassNotFoundException,SQLException {
+	public String BoardReWriteOk(Board board, Model model, HttpServletRequest request)throws ClassNotFoundException,SQLException, IOException {
 
 		System.out.println("게시판 수정 boardnum: " +board.getBoardcode());
 		System.out.println(board);
+
+
+		CommonsMultipartFile file =board.getFile();
+		String fileName = null;
+		if(file != null){
+			//이 경우라면 최소 한개는 파일첨부
+
+			String fname = file.getOriginalFilename();
+			String path = request.getServletContext().getRealPath("/Upload");
+			String fullpath = path + "\\" + fname;
+
+			if(!fname.equals("")){
+				//서버에 물리적 경로 파일쓰기작업
+				FileOutputStream fs = new FileOutputStream(fullpath);
+				fs.write(file.getBytes());
+				fs.close();
+			}
+			fileName = fname; //파일의 이름만 별도 관리
+		}
+
+
+		//DB insert (파일명)
+
+
+		board.setBoardfilesrc(fileName);
+
 
 
 
@@ -289,5 +344,29 @@ public class Boardcontroller {
 		return "redirect:BoardList.htm?boardcode="+boardcode;
 	}
 
+
+	@RequestMapping("download.htm")
+	public void download(@RequestParam(value="f")String f,
+			HttpServletRequest request , 
+			HttpServletResponse response) throws IOException{
+
+		String fname = new String(f.getBytes("euc-kr"),"8859_1");
+
+		response.setHeader("Content-Disposition", "attachment;filename=" + fname +";");
+		//String fullpath = request.getServletContext().getRealPath("/Upload/" + p + "/" + f);
+		String fullpath = request.getServletContext().getRealPath("/Upload/" + f);
+		System.out.println(fullpath);
+		FileInputStream fin = new FileInputStream(fullpath);
+
+		ServletOutputStream sout = response.getOutputStream();
+		byte[] buf = new byte[1024]; //전체를 다읽지 않고 1204byte씩 읽어서
+		int size = 0;
+		while((size=fin.read(buf,0,buf.length)) != -1) //buffer 에 1024byte 담고
+		{                                              //마지막 남아있는 byte 담고  그다음 없으면 탈출
+			sout.write(buf, 0, size); //1kbyte씩 출력 
+		}
+		fin.close();
+		sout.close();
+	}
 }
 

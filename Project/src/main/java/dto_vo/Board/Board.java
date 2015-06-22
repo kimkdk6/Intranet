@@ -2,6 +2,8 @@ package dto_vo.Board;
 
 import java.sql.Date;
 
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 public class Board {
 
 	private int boardcode;
@@ -16,9 +18,19 @@ public class Board {
 	private int boardref;
 	private int boarddepth;
 	private int boardstep;
+	private CommonsMultipartFile file;
 	
+	
+	public CommonsMultipartFile getFile() {
+		return file;
+	}
+
 	public Board() { }
 	
+	public void setFile(CommonsMultipartFile file) {
+		this.file = file;
+	}
+
 	public Board(int boardcode, int boardnum, int boardnotice, String userid,
 			String boardtitle, String boardcontent, Date boarddate,
 			int boardcount, String boardfilesrc, int boardref, int boarddepth,

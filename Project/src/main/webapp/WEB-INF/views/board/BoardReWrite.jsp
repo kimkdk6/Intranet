@@ -70,7 +70,7 @@
                   </tr>
                   <tr>
                      <td valign="top">
-                        <form name="writeboard" method="post" action="${pageContext.request.contextPath}/board/BoardReWriteOk.htm">
+                        <form name="writeboard" method="post" action="${pageContext.request.contextPath}/board/BoardReWriteOk.htm" enctype="multipart/form-data">
                         	<input type="hidden" name="userid" value="${sessionScope.myemp.userid}">
                         	<input type="hidden" name="boardcode" value="${boardlist.boardcode}">
                         	<input type="hidden" name="boardnotice" value="0">
@@ -86,7 +86,7 @@
                                  <td align="left" bgcolor="#f6f6f6" class="m_sp" style="padding: 3px 0px 0px 12px; border-right: #eaeaea 1px solid; border-bottom: #eaeaea 1px solid;"><b>파일첨부</b></td>
                                  <td align="left" style="padding: 0px 11px 0px 11px; border-bottom: #eaeaea 1px solid;">
                                     <div id="u_w">
-                                       <input type="file" name="boardfilesrc" value="${board.boardfilesrc}" />
+                                       <input type="file" name="file" value="${board.boardfilesrc}" />
                                     </div>
                                  </td>
                               </tr>
