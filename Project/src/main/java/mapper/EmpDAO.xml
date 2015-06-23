@@ -40,7 +40,7 @@
       INSERT INTO EMP VALUES(#{userid}, emp_empno.nextval, #{emppwd}, #{ename}, '010-1234-5678', #{deptcode}, #{teamcode}, #{poscode}, 0)
    </insert>
    <insert id="joinMemberInfo">
-      INSERT INTO EMPINFO VALUES(#{userid}, null, #{useremail, jdbcType=VARCHAR}, #{birth, jdbcType=VARCHAR}, #{useraddr, jdbcType=VARCHAR}, 
+      INSERT INTO EMPINFO VALUES(#{userid}, #{userphoto, jdbcType=VARCHAR}, #{useremail, jdbcType=VARCHAR}, #{birth, jdbcType=VARCHAR}, #{useraddr, jdbcType=VARCHAR}, 
                            #{usertel, jdbcType=VARCHAR}, #{usermobile, jdbcType=VARCHAR}, #{hiredate, jdbcType=VARCHAR}, null)
    </insert>
 	

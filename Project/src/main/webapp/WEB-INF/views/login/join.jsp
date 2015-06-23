@@ -64,7 +64,7 @@
       </div>
       <div class="register-box-body">
          <p class="login-box-msg">Register a new membership</p>
-         <form action="" method="post">
+         <form action="" method="post" enctype="multipart/form-data">
             
             <!-- emp -->
             <div class="form-group has-feedback">
@@ -134,6 +134,7 @@
                <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
             
+            <input type="file" name=file> 
             
             <div class="row1">
                <div class="join">

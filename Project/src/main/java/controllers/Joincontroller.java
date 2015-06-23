@@ -1,9 +1,14 @@
 package controllers;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
@@ -12,10 +17,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.View;
 
 import dao.EmpDAO;
 import dao.JoinDAO;
+import dto_vo.Board.File;
 import dto_vo.Emp.Dept;
 import dto_vo.Emp.Emp;
 import dto_vo.Emp.Empinfo;
@@ -52,7 +59,7 @@ public class Joincontroller {
    }
    
    @RequestMapping(value="join.htm", method=RequestMethod.POST)
-   public String join(Emp emp, Empinfo empinfo) throws ClassNotFoundException, SQLException 
+   public String join(Emp emp, Empinfo empinfo,File File,HttpServletRequest request) throws ClassNotFoundException, SQLException, IOException 
    {
       /*System.out.println("id : " + emp.getUserid());
       System.out.println("pwd : " + emp.getEmppwd());
@@ -65,7 +72,32 @@ public class Joincontroller {
       System.out.println("empinfo mail : " + empinfo.getUseremail());
       System.out.println("empinfo birth : " + empinfo.getBirth());
       
+      CommonsMultipartFile file = File.getFile();
+      Calendar cal = Calendar.getInstance();
+      String fileName = null;
+      if(!file.isEmpty()){
+			//이 경우라면 최소 한개는 파일첨부
+
+			String fname = cal.getTimeInMillis()+file.getOriginalFilename();
+			String path = request.getServletContext().getRealPath("/Upload/ProfilePhoto/");
+			String fullpath = path + "\\" + fname;
+			System.out.println(fullpath);
+			if(!fname.equals("")){
+				//서버에 물리적 경로 파일쓰기작업
+				FileOutputStream fs = new FileOutputStream(fullpath);
+				fs.write(file.getBytes());
+				fs.close();
+			}
+			fileName = fname; //파일의 이름만 별도 관리
+		}
+      
+      
+      
+      
       EmpDAO empDAO = sqlSession.getMapper(EmpDAO.class);
+      empinfo.setUserphoto(fileName);
+      
+      
       empDAO.joinMember(emp);
       empDAO.joinMemberInfo(empinfo);
       
