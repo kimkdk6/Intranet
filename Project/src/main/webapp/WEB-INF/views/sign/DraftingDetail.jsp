@@ -10,6 +10,25 @@
 	    		'toolbar=0,location=0,directories=0, status=0,menubar=0,scrollbars=yes,resizable=1,width=800,height=600');
 	}
 
+	// 결재/반려
+	function myApp(proc)
+	{
+	    var f = document.draform;
+	    if(proc == 'F')
+	    {
+	        if( !confirm( '결재하시겠습니까.') ) return;
+	    }
+	    
+	    else if(proc == 'R')
+	    {
+	        if( !confirm('반려하시겠습니까.') ) return;
+	        f.action = '/approval/execute/doc_appreject_exe.php';
+	    }
+	  
+	    
+	    f.submit();
+	}
+
 </script>
 
 <section class="content-header">
@@ -33,6 +52,8 @@
 		</h3>
 	</div>
 	<div class="box-body">
+	<form name="draform" action="" method="post">
+	<%-- <input type="hidden" name="docnum" id="docnum" value="${param.docnum}"> --%>
 	<table>
    <tbody>
       
@@ -60,11 +81,10 @@
                         <table border="0" cellspacing="0" cellpadding="0">
                            <tbody>
                               <tr>
-                                 <td><a href="javascript:myApp('F')"><img
-                                       src="/img/approval/bt_approval.gif"></a></td>
+                                 <td><a href="javascript:myApp('F')"><span style="font-size: 20px;" class="label pull-right bg-green">
+                                 		결 재</span></a></td>
                                  <td width="5"></td>
-                                 <td><a href="javascript:myApp('S')"><img
-                                       src="/img/approval/bt_standby.gif"></a></td>
+                                 
                                  <td width="5"></td>
                                  <td><a href="javascript:myApp('R')"><img
                                        src="/img/approval/bt_return.gif"></a></td>
@@ -504,6 +524,7 @@
       </tr>
    </tbody>
 	</table>
+	</form>
 	</div>
 	
 </div>

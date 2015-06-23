@@ -42,4 +42,12 @@ public interface SignDAO {
 	
 	// 기안서 작성
 	public int insertDrafting(Draftingdoc drafting) throws ClassNotFoundException, SQLException;
+	
+	// 전자 결재 문서 승인 처리
+	// signline의 signok?값 변경/signning 값 변경 
+	public int updateSignline(String signok, String signning, String docnum) throws ClassNotFoundException, SQLException;
+	// sign의 currsign+1
+	public int updateSignCurr(String docnum) throws ClassNotFoundException, SQLException;
+	// sign의 signstae 변경 .. 반려시 바뀔 수 있을 듯
+	//public int updateSignState(String docnum) throws ClassNotFoundException, SQLException;
 }

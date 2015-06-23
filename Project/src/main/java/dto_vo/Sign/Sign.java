@@ -14,6 +14,8 @@ public class Sign {
 	private String signfilesrc; // 파일첨부시 파일경로
 	private String signtitle; // 기안 제목
 	private String signnote; // 기안 기타사항
+	private int totalsign; // 총 결재 수
+	private int currsign;  // 현재 결재 수 
 	private String signer1; // 결재자1
 	private String signer2; // 결재자2
 	private String signer3; // 결재자3
@@ -26,7 +28,8 @@ public class Sign {
 	
 	public Sign(int docnum, String userid, int signtype, String signstate, String dept, String team,
 				Date draftdate, String signfilesrc, String signtitle, String signnote, String signer1,
-				String signer2, String signer3, String signer4, String signer5, String ename, String posname) {
+				String signer2, String signer3, String signer4, String signer5, String ename, String posname,
+				int totalsign, int currsign) {
 		this.docnum = docnum;
 		this.userid = userid;
 		this.signtype = signtype;
@@ -44,6 +47,8 @@ public class Sign {
 		this.signer5 = signer5;
 		this.ename = ename;
 		this.posname = posname;
+		this.totalsign = totalsign;
+		this.currsign = currsign;
 	}
 
 	public String getEname() {
@@ -181,6 +186,23 @@ public class Sign {
 	public void setSigner5(String signer5) {
 		this.signer5 = signer5;
 	}
+	
+
+	public int getTotalsign() {
+		return totalsign;
+	}
+
+	public void setTotalsign(int totalsign) {
+		this.totalsign = totalsign;
+	}
+
+	public int getCurrsign() {
+		return currsign;
+	}
+
+	public void setCurrsign(int currsign) {
+		this.currsign = currsign;
+	}
 
 	@Override
 	public String toString() {
@@ -190,7 +212,8 @@ public class Sign {
 				+ ", signfilesrc=" + signfilesrc + ", signtitle=" + signtitle
 				+ ", signnote=" + signnote + ", signer1=" + signer1
 				+ ", signer2=" + signer2 + ", signer3=" + signer3
-				+ ", signer4=" + signer4 + ", signer5=" + signer5 + "ename, posname="+ename+"/"+posname+ "]";
+				+ ", signer4=" + signer4 + ", signer5=" + signer5 + "ename, posname="+ename+"/"+posname+ 
+				" curr/total="+this.currsign+"/"+this.totalsign+"]";
 	}
 	
 }

@@ -74,9 +74,9 @@ public class Signcontroller {
 	public String DraftingReg(Sign sign, Draftingdoc drafting,
 			Signline signline, Principal principal)
 			throws ClassNotFoundException, SQLException {
+		int totalsign=0;
 		System.out.println("기안서 작성");
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
-		
 		System.out.println(drafting.toString());
 		
 		// 결재인 넣기 
@@ -88,17 +88,25 @@ public class Signcontroller {
 		signline.setSignok1(1);
 		if (sign.getSigner2() != null) {
 			signline.setSignok2(3);
+			totalsign++;
 		}
 		if (sign.getSigner3() != null) {
 			signline.setSignok3(3);
+			totalsign++;
 		}
 		if (sign.getSigner4() != null) {
 			signline.setSignok4(3);
+			totalsign++;
 		}
 		if (sign.getSigner5() != null) {
 			signline.setSignok5(3);
+			totalsign++;
 		}
-
+		
+		// sign: totalsign
+		System.out.println("totalsign: "+totalsign);
+		sign.setTotalsign(totalsign);
+		
 		// signline: signning 
 		
 		signline.setSignning(sign.getSigner2());
@@ -129,6 +137,39 @@ public class Signcontroller {
 		model.addAttribute("draftingdoc", draftingdoc);
 		model.addAttribute("signline", signline);
 		return "sign.DraftingDetail";
+	}
+	
+	// 기안서 상세 페이지 보기
+	@RequestMapping(value = "DraftingDetail.htm", method = RequestMethod.POST)
+	public String DraftingDetail_signOK(String docnum)
+			throws ClassNotFoundException, SQLException {
+		System.out.println("기안서 승인");
+		System.out.println("승인처리된 결재 문서: "+docnum);
+		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
+		Sign sign = signdao.getSign(docnum);
+		//
+		int totalsign = sign.getTotalsign();
+		int currsign = sign.getCurrsign();
+		
+		if(currsign < totalsign){
+			if(currsign == 0){
+				// signlign=> signok2 가 바뀜 -> 1
+				
+				// sign=> currsign -> 1 update
+				// signning=> signning => signer3 
+			}else if(currsign == 1){
+				// signok3 가 바뀜
+			}else if(currsign == 2){
+				// signok4 가 바뀜
+			}else if(currsign == 3){
+				// signok5 가 바뀜
+			}
+		}else if(currsign == totalsign){
+			// sign => singstate-> 바뀜
+			// sign => currsign ..
+		}
+	
+		return "redirect:SignMain.htm";
 	}
 
 	// 발주서 작성 페이지 보기

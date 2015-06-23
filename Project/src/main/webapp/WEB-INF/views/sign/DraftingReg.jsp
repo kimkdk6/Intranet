@@ -33,8 +33,9 @@
 				signform.users.focus();
 				return false;
 			}
-		    alert("전자 결재 문서 작성이 완료되었습니다.");
+		    
 		    signform.submit();
+		    alert("전자 결재 문서 작성이 완료되었습니다.");
 		}
 </script>
 
@@ -106,6 +107,7 @@
             	   var dialog3;
             	 
             	   $("#cancel").hide();
+            	   $("#cancel1").hide();
             	   dialog = $("#dialog").dialog({
                         autoOpen : false,
                         width : 500,
@@ -182,10 +184,26 @@
                       var valid = true;
 
                       if (valid) {
-                     	 $("#users1").replaceWith(
- 									"<td>" + $('input[name="name1"]:checked').val() + "</td>");
+                    	 $("#opener1").hide();
+                     	 $("#cancel1").show();
+                     	 $("#users1").prepend(
+ 									"<td id='signer_2'>" + $('input[name="name1"]:checked').val() + 
+ 									"<input type='hidden' name='signer3' id='signer3' value='"+
+ 									 $('input[name="name1"]:checked').val().trim()+"'></td>");  
+                     	
                          dialog1.dialog("close");
                       }
+                      
+                      $("#cancel1").click(function(){
+                     	 $(this).hide('fast',function(){
+                     		 $("#signer_2").remove();
+                     		 $("#signer3").remove();
+                     		 $("#opener1").show();
+                     	 });
+                     	 
+                     	 
+                       });
+                      
                       return valid;
                   }
                   
@@ -406,9 +424,10 @@
                                                                         <c:if test="${t.teamcode == e.teamcode }">
                                                                            <c:forEach items="${pos}" var="p">
                                                                               <c:if test="${p.poscode == e.poscode}">
+                                                                                 <input type="radio" name="name1" id="name1" value="${e.userid}" >
                                                                                  <i class="fa fa-fw fa-user-plus"></i> 
-                                                                                 ${t.teamname} ${e.ename} ${p.posname }
-                                                                                <input type="radio" name="name1" id="name1" value="${t.teamname} ${e.ename} ${p.posname}" ><hr>
+                                                                                 ${t.teamname} ${e.ename} ${p.posname}
+                                                                                <hr>
                                                                               </c:if>
                                                                            </c:forEach>
                                                                         </c:if>
@@ -420,6 +439,7 @@
                                                    </div>
                                                 </div>
                                                 <input type="button" id="opener1" value="지정2"/>
+                                                 <input type='button' id='cancel1' value='취소'/>
                                              </td>
                                              
                                              

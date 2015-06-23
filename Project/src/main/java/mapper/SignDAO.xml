@@ -10,7 +10,7 @@
 		select *
 		from sign s join signline sl
 		on s.DOCNUM = sl.DOCNUM
-		where signstate = 0 and sl.SIGNNING like #{userid} and sl.SIGNNING != s.userid
+		where signstate = 0 and sl.SIGNNING = #{userid}
 	
 	</select>
 	
@@ -69,18 +69,18 @@
 		insert into sign(docnum, userid, signtype, dept, team,  
                  		 signfilesrc, signtitle, signnote, 
                		     signer1, signer2, signer3, signer4, signer5,
-                 		 ename, posname)
+                 		 ename, posname, totalsign, currsign)
                   values((select NVL(MAX(TO_NUMBER(docnum))+1, 0) from sign), #{userid}, #{signtype}, #{dept}, #{team}, 
                          #{signfilesrc, jdbcType=VARCHAR}, #{signtitle}, #{signnote, jdbcType=VARCHAR}, 
                          #{signer1, jdbcType=VARCHAR}, #{signer2, jdbcType=VARCHAR}, 
                          #{signer3, jdbcType=VARCHAR}, #{signer4, jdbcType=VARCHAR}, #{signer5, jdbcType=VARCHAR},
-                         #{ename}, #{posname})
+                         #{ename}, #{posname}, #{totalsign}, #{currsign})
 	</insert>
 	<!-- 결재 라인 작성 -->
 	<insert id="insertSignline" parameterType="dto_vo.Sign.Signline">
-		insert into SIGNLINE(docnum, signok2, signok3, signok4, signok5, signning)
+		insert into SIGNLINE(docnum, signok1, signok2, signok3, signok4, signok5, signning)
             		  values((select NVL(MAX(TO_NUMBER(docnum)), 0) from sign), 
-            		  		 #{signok2}, #{signok3}, #{signok4}, #{signok5}, #{signning})
+            		  		 #{signok1}, #{signok2}, #{signok3}, #{signok4}, #{signok5}, #{signning})
 	</insert>
 	
 	<!-- 기안서 작성 -->
@@ -89,4 +89,13 @@
             			 values((select NVL(MAX(TO_NUMBER(docnum)), 0) from sign), #{dracontent})
 	</insert>
 
+	<!-- 결재시 signline singok, signning 변경  -->
+	<update id="updateSignline" parameterType="hashmap">
+		<!-- update signline set signok2 = 1, signning = 'm5' where docnum=27 -->
+	</update>
+	
+	<update id="updateSignCurr">
+		<!-- update sign set currsign = currsign+1 where docnum=27 -->
+		
+	</update>
 </mapper>

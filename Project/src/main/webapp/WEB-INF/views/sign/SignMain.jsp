@@ -95,7 +95,7 @@
 								<td width="100" class="title bb1 br1 p3007"><font
 									color="#666666">${n.draftdate}</font></td>
 								<td width="70" class="title bb1 br1 p3007"><font
-									color="#666666">${n.signstate}</font></td>
+									color="#666666">${n.currsign}/${n.totalsign}</font></td>
 								<td width="200" class="title bb1 p3007"><font
 									color="#666666">${n.signtitle}</font></td>
 							</tr>
@@ -186,7 +186,7 @@
 								<td width="100" class="title bb1 br1 p3007"><font
 									color="#666666">${s.draftdate}</font></td>
 								<td width="100" class="title bb1 br1 p3007"><font
-									color="#666666">${s.signstate}</font></td>
+									color="#666666">${s.currsign}/${s.totalsign}</font></td>
 								<td width="100" class="title bb1 br1 p3007"><font
 									color="#666666">${s.signstate}</font></td>
 								<td width="70" class="title bb1 br1 p3007"><font
