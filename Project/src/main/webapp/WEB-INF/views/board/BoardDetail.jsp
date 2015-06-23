@@ -261,7 +261,7 @@ p {
 																								style="border: 1px solid #CCCCCC;">
 																						</c:when>
 																						<c:otherwise>
-																							<img width="50" src="../resources/img/josuck.jpg"
+																							<img width="50" src="../Upload/ProfilePhoto/AA.png"
 																								style="border: 1px solid #CCCCCC;">
 																						</c:otherwise>
 																					</c:choose>

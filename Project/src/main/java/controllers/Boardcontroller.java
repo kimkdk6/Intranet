@@ -100,7 +100,7 @@ public class Boardcontroller {
 	@RequestMapping(value = "BoardList.htm")
 	public String BoardList(@RequestParam(value="boardcode") int boardcode,
 			@RequestParam(value="cpage", defaultValue="1") int cpage,
-			@RequestParam(value="pagesize", defaultValue="10")int pagesize,
+			@RequestParam(value="pagesize", defaultValue="15")int pagesize,
 			Model model)throws ClassNotFoundException,SQLException{
 
 		int startboard = cpage * pagesize - (pagesize - 1);
@@ -211,7 +211,7 @@ public class Boardcontroller {
 			//이 경우라면 최소 한개는 파일첨부
 
 			String fname = cal.getTimeInMillis()+file.getOriginalFilename();
-			String path = request.getServletContext().getRealPath("/Upload");
+			String path = request.getServletContext().getRealPath("/Upload/BoardFile/");
 			String fullpath = path + "\\" + fname;
 			System.out.println(fullpath);
 			if(!fname.equals("")){
@@ -290,7 +290,7 @@ public class Boardcontroller {
 			if(!file.isEmpty()){
 		
 				String fname = cal.getTimeInMillis()+file.getOriginalFilename();
-				String path = request.getServletContext().getRealPath("/Upload");
+				String path = request.getServletContext().getRealPath("/Upload/BoardFile/");
 				String fullpath = path + "\\" + fname;
 
 				if(!fname.equals("")){
@@ -337,7 +337,7 @@ public class Boardcontroller {
 
 		response.setHeader("Content-Disposition", "attachment;filename=" + fname +";");
 		//String fullpath = request.getServletContext().getRealPath("/Upload/" + p + "/" + f);
-		String fullpath = request.getServletContext().getRealPath("/Upload/" + f);
+		String fullpath = request.getServletContext().getRealPath("/Upload/BoardFile/" + f);
 		System.out.println(fullpath);
 		FileInputStream fin = new FileInputStream(fullpath);
 
