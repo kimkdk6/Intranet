@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
@@ -113,17 +114,25 @@ public class Boardcontroller {
 
 		BoardList boardlist = boardlistdao.getBoardListforCode(boardcode);
 		List<Board> boardlistlist = boarddao.getBoardList(boardcode, startboard, endboard);
+		List<Board> noticelist = boarddao.getNoticeBoard(boardcode);
+		
+		for(Board notice : noticelist){
+			System.out.println(notice);
+		}
+		
+		
+		
 		int allcount = boarddao.getAllBoardCount(boardcode);
 
 		System.out.println(boardcode+"코드 게시판 총 게시글 수"+allcount);
 
 		model.addAttribute("boardlist", boardlist);//게시판 이름 코드
 		model.addAttribute("boardlistlist", boardlistlist);//게시글 리스트
-		model.addAttribute("allcount", allcount);//게시글 리스트
-
+		model.addAttribute("allcount", allcount);
+		model.addAttribute("noticelist", noticelist);//게시판 이름 코드
 		PagingUtil pagingUtil =  new PagingUtil(cpage, allcount, pagesize, 5);
 
-		model.addAttribute("paging", pagingUtil);//게시글 리스트
+		model.addAttribute("paging", pagingUtil);
 		model.addAttribute("pagesize", pagesize);
 		return "board.BoardList";
 
@@ -341,6 +350,25 @@ public class Boardcontroller {
 		}
 		fin.close();
 		sout.close();
+	}
+	
+	@RequestMapping("BoardNotice.htm")
+	public String BoardNotice(@RequestParam(value="boardnum")int boardnum,@RequestParam(value="notice",required=true)int boardnotice) throws IOException, ClassNotFoundException, SQLException{
+		
+		BoardDAO boarddao = sqlsession.getMapper(BoardDAO.class);
+		boarddao.updateNotice(boardnotice, boardnum);
+		
+		
+//		if(boardnotice == 1){
+//			boarddao.updateNotice(boardnotice, boardnum);
+//		}else if(boardnotice ==0 ){
+//			boarddao.updateNotice(boardnotice, boardnum);
+//		}else{
+//			System.out.println("error");
+//		}
+		
+		return "redirect:BoardDetail.htm?boardnum="+boardnum;
+		
 	}
 }
 

@@ -75,4 +75,17 @@
 		update board set boardtitle=#{boardtitle}, boardcontent=#{boardcontent},boardfilesrc=#{boardfilesrc,jdbcType=VARCHAR} where boardnum=#{boardnum}
 	</update>
 	
+	<update id="updateNotice" parameterType="Integer">
+		update board set boardnotice = #{param1} where boardnum=#{param2}
+	</update>
+	
+	<select id="getNoticeBoard" parameterType="Integer" resultType="dto_vo.Board.Board">
+		SELECT
+		BOARDCODE,BOARDNUM,BOARDNOTICE,USERID,BOARDTITLE,BOARDCONTENT,BOARDDATE,BOARDCOUNT,BOARDFILESRC,BOARDREF,BOARDDEPTH,BOARDSTEP
+		FROM (SELECT ROWNUM RN ,
+		BOARDCODE,BOARDNUM,BOARDNOTICE,USERID,BOARDTITLE,BOARDCONTENT,BOARDDATE,BOARDCOUNT,BOARDFILESRC,BOARDREF,BOARDDEPTH,BOARDSTEP
+		FROM (SELECT * FROM Board where boardcode = #{boardcode} and boardnotice = 1 ORDER BY
+		BOARDREF DESC , BOARDSTEP ASC) ) WHERE RN BETWEEN 1 AND 3
+	</select>
+	
 </mapper>

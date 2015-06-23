@@ -31,4 +31,9 @@ public interface BoardDAO {
 	
 	public void deleteBoard(int boardnum) throws ClassNotFoundException, SQLException;
 	
+	public void updateNotice(int boardnotice ,int boardnum) throws ClassNotFoundException, SQLException;
+	
+	
+	
+	public List<Board> getNoticeBoard(int boardcode) throws ClassNotFoundException, SQLException;
 }

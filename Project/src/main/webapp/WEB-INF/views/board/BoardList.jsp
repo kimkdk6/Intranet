@@ -7,7 +7,7 @@
    //model.addAttribute("boardlist", boardlist);//게시판 이름 코드
    //model.addAttribute("boardlistlist", boardlistlist);//게시글 리스트
    //model.addAttribute("paging", pagingUtil);//게시글 리스트
-   
+   //model.addAttribute("noticelist", noticelist);
    /*
    	해당게시판의 총 글수
    	현재 페이지
@@ -114,6 +114,53 @@
                                  <td width="90" align="center" style="border-bottom: 1px #eaeaea solid; border-right: 1px #eaeaea solid; padding: 3px 0 0 7px;" class="title"><font color="#666666">날짜</font><img src="../resources/img/list_up.gif" align="absmiddle"></td>
                                  <td width="80" align="center" style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 7px;"   class="title">조회수</td>
                               </tr>
+                              
+                              
+                              <!-- 공지 -->
+                              
+                               <c:forEach items="${noticelist}" var="nl" varStatus="nls">
+                                 <tr bgcolor='#f9f9f9'>
+                                    <td height="23" align="center" style="padding: 2px 0 0 0px; border-bottom: 1px #eaeaea solid;">
+                                       <img src="../resources/img/icon_notice.gif" border="0" align="absmiddle">
+                                    </td>
+
+                                    <td style="padding: 2px 0 0 7px; border-bottom: 1px #eaeaea solid;">
+                                       <a href="${pageContext.request.contextPath}/board/BoardDetail.htm?boardnum=${nl.boardnum}">
+                                          ${nl.boardtitle}
+                                       </a>
+                                    </td>
+                                    <td align="center" style="padding: 2px 7px 0 7px; border-bottom: 1px #eaeaea solid;">
+                                       
+                                       
+                                       <c:choose>
+                                             <c:when test="${boardlist.boardcode==3}">
+                                          Anonymous
+                                       </c:when>
+                                             <c:otherwise>
+                                           ${nl.userid}
+                                       </c:otherwise>
+                                          </c:choose>
+                                      
+                                       
+                                       
+                                       
+                                    </td>
+                                    <td align="center" class="date" style="border-bottom: 1px #eaeaea solid;">
+                                       ${nl.boarddate}
+                                    </td>
+                                    <td align="center" class="date" style="padding: 0px 7px 0 0; border-bottom: 1px #eaeaea solid;">
+                                       ${nl.boardcount}
+                                    </td>
+                                 </tr>
+                              </c:forEach>
+                              
+                              <!-- 공지 -->
+                              
+                              
+                              
+                              
+                              
+                              
                               
                               <c:forEach items="${boardlistlist}" var="bl" varStatus="bls">
                                  <tr bgcolor='#f9f9f9'>

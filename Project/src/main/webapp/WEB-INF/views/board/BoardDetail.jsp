@@ -16,6 +16,7 @@
 			var userid = "<c:out value='${sessionScope.myemp.userid}'/>";
 			var boarduserid = "<c:out value='${board.userid}'/>";
 			var boardnum = "<c:out value='${board.boardnum}'/>";
+			var boardcode="<c:out value='${board.boardcode}'/>"
 
 			$(document).ready(function() {
 				$("#bbs_content").find("a").attr("target", "_blank");
@@ -56,6 +57,16 @@
 				if (userid == boarduserid) {
 					window.location.href = "BoardDelete.htm?boardnum="
 							+ boardnum;
+				} else {
+					alert('글 작성자가 아닙니다.');
+				}
+
+			}
+			function gotoWrite() {
+
+				if (userid == boarduserid) {
+					window.location.href = "BoardWrite.htm?boardcode="
+							+ boardcode;
 				} else {
 					alert('글 작성자가 아닙니다.');
 				}
@@ -179,7 +190,7 @@ p {
 														onclick="if(!confirm('글을 삭제하시겠습니까?')) return false;"></a></td>
 												<td width="5"></td>
 												<td><a
-													href="${pageContext.request.contextPath}/board/BoardWrite.htm?boardcode=${board.boardcode}"><img
+													href="javascript:gotoWrite()"><img
 														src="../resources/img/bt_write2.gif"></a></td>
 												<td width="5"></td>
 												<td><a href="javascript:openMailWriteWindow()"><img
@@ -529,10 +540,24 @@ p {
 										border="0" cellspacing="0" cellpadding="0">
 										<tbody>
 											<tr>
-												<td><a
-													href="/bbs/make_notice_article.php?bbs_id=0009&amp;seq=8&amp;rtn_url=%2Fbbs%2Flist.php%3Fbbs_id%3D0009&amp;notice=0"><img
-														src="../resources/img/bt_notice_remove.gif"
-														onclick="if(!confirm('공지처리를 해제합니다.')) return false;"></a></td>
+											<td>
+												<c:choose>
+														<c:when test="${board.boardnotice==1}">
+															<a href="javascript:gotoNoticeFalse()"> <img
+																src="../resources/img/bt_notice_remove.gif"
+																onclick="if(!confirm('공지처리를 해제합니다.')) return false;">
+															</a>
+														</c:when>
+
+														<c:otherwise>
+															<a href="javascript:gotoNoticeTrue()"> <img
+																src="../resources/img/bt_notice_set.gif"
+																onclick="if(!confirm('공지로 설정합니다.')) return false;">
+															</a>
+														</c:otherwise>
+
+													</c:choose>
+													</td>
 											</tr>
 										</tbody>
 									</table></td>
