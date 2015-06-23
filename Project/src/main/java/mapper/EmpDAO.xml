@@ -9,9 +9,7 @@
 	<select id="isMemberInfo" resultType="dto_vo.Emp.Empinfo">
 		SELECT * FROM EMPINFO WHERE USERID=#{userid}
 	</select> -->
-	<insert id="joinMember">
-		INSERT INTO EMP VALUES(#{userid}, emp_empno.nextval, #{emppwd}, #{ename}, '010-1234-5678', 100, 1001, 10, 0)
-	</insert>
+
 	<select id="getEmp" resultType="dto_vo.Emp.Emp">
 		SELECT * FROM EMP WHERE USERID=#{userid}
 	</select>
@@ -37,4 +35,13 @@
 	    on e.POSCODE = p.POSCODE
 	    where userid = #{userid}
 	</select>
+	
+	<insert id="joinMember">
+      INSERT INTO EMP VALUES(#{userid}, emp_empno.nextval, #{emppwd}, #{ename}, '010-1234-5678', #{deptcode}, #{teamcode}, #{poscode}, 0)
+   </insert>
+   <insert id="joinMemberInfo">
+      INSERT INTO EMPINFO VALUES(#{userid}, null, #{useremail, jdbcType=VARCHAR}, #{birth, jdbcType=VARCHAR}, #{useraddr, jdbcType=VARCHAR}, 
+                           #{usertel, jdbcType=VARCHAR}, #{usermobile, jdbcType=VARCHAR}, #{hiredate, jdbcType=VARCHAR}, null)
+   </insert>
+	
 </mapper>

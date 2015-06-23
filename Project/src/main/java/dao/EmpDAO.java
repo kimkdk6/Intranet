@@ -10,7 +10,7 @@ public interface EmpDAO {
 	public Emp isMember( Emp emp ) throws ClassNotFoundException, SQLException;*/
 
 	// 회원 가입
-	public int joinMember( Emp emp ) throws ClassNotFoundException, SQLException;
+	//public int joinMember( Emp emp ) throws ClassNotFoundException, SQLException;
 	
 	/*// 회원 정보 가져오기
 	public Empinfo isMemberInfo( Empinfo empinfo ) throws ClassNotFoundException, SQLException;*/
@@ -29,4 +29,10 @@ public interface EmpDAO {
 	
 	// emp 직급
 	public String getEmpPos(String userid)  throws ClassNotFoundException, SQLException;
+	
+	// 회원 가입 emp
+	   public int joinMember( Emp emp ) throws ClassNotFoundException, SQLException;
+	   
+	   // 회원 가입 Empinfo
+	   public int joinMemberInfo( Empinfo empinfo ) throws ClassNotFoundException, SQLException;
 }
