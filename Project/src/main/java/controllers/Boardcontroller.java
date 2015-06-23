@@ -211,7 +211,8 @@ public class Boardcontroller {
 			//이 경우라면 최소 한개는 파일첨부
 
 			String fname = cal.getTimeInMillis()+file.getOriginalFilename();
-			String path = request.getServletContext().getRealPath("/Upload/BoardFile/");
+			//String path = request.getServletContext().getRealPath("/Upload/BoardFile/");
+			String path = finaldata.path+"BoardFile";
 			String fullpath = path + "\\" + fname;
 			System.out.println(fullpath);
 			if(!fname.equals("")){
@@ -282,15 +283,16 @@ public class Boardcontroller {
 		CommonsMultipartFile file =board.getFile();
 		
 		System.out.println("filesrc: " + filesrc);
-		System.out.println("getfilesrc: "+board.getBoardfilesrc());
+		System.out.println("getfilesrc: "+file.getName());
 		
 		
-		if(!filesrc.equals(board.getBoardfilesrc()) ){
+		if(!filesrc.equals(file.getName())){
 			String fileName = null;
 			if(!file.isEmpty()){
 		
 				String fname = cal.getTimeInMillis()+file.getOriginalFilename();
-				String path = request.getServletContext().getRealPath("/Upload/BoardFile/");
+				//String path = request.getServletContext().getRealPath("/Upload/BoardFile/");
+				String path = finaldata.path+"BoardFile";
 				String fullpath = path + "\\" + fname;
 
 				if(!fname.equals("")){
@@ -337,7 +339,10 @@ public class Boardcontroller {
 
 		response.setHeader("Content-Disposition", "attachment;filename=" + fname +";");
 		//String fullpath = request.getServletContext().getRealPath("/Upload/" + p + "/" + f);
-		String fullpath = request.getServletContext().getRealPath("/Upload/BoardFile/" + f);
+		//String fullpath = request.getServletContext().getRealPath("/Upload/BoardFile/" + f);
+		
+		
+		String fullpath = finaldata.path + "BoardFile\\"+f;
 		System.out.println(fullpath);
 		FileInputStream fin = new FileInputStream(fullpath);
 

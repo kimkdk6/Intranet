@@ -79,7 +79,10 @@ public class Joincontroller {
 			//이 경우라면 최소 한개는 파일첨부
 
 			String fname = cal.getTimeInMillis()+file.getOriginalFilename();
-			String path = request.getServletContext().getRealPath("/Upload/ProfilePhoto/");
+			//String path = request.getServletContext().getRealPath("/Upload/ProfilePhoto/");
+			String path = finaldata.path+"ProfilePhoto";
+			
+			
 			String fullpath = path + "\\" + fname;
 			System.out.println(fullpath);
 			if(!fname.equals("")){
