@@ -70,7 +70,7 @@
 													<td height="23" align="center"
 														style="padding: 2px 0 0 0px; border-bottom: 1px #eaeaea solid;">
 														<c:choose>
-															<c:when test="${b.boardnotice == 1}">
+															<c:when test="${b.boardcode == 1}">
 																<img src="../resources/img/icon_notice.gif" border="0"
 																	align="absmiddle">
 															</c:when>

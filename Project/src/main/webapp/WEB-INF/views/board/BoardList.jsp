@@ -80,8 +80,18 @@
                                  <td align="left">
                                     <table border="0" cellspacing="0" cellpadding="0">
                                        <tr>
-                                          <td><a href="${pageContext.request.contextPath}/board/BoardWrite.htm?boardcode=${boardlist.boardcode}"><img
-                                                src="../resources/img/bt_write.gif"></a></td>
+                                          <td>
+                                          
+                                          <c:choose>
+                                          	<c:when test="${(boardlist.boardcode==1) && (sessionScope.myemp.userid !='admin') }">
+<!--                                           		어드민이 아닙니다 -->
+                                          	</c:when>
+                                          	<c:otherwise>
+                                          	<a href="${pageContext.request.contextPath}/board/BoardWrite.htm?boardcode=${boardlist.boardcode}"><img
+                                                src="../resources/img/bt_write.gif"></a>
+                                          	</c:otherwise>
+                                          </c:choose>
+                                          </td>
                                        </tr>
                                     </table>
                                  </td>
