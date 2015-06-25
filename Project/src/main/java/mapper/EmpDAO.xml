@@ -43,5 +43,7 @@
       INSERT INTO EMPINFO VALUES(#{userid}, #{userphoto, jdbcType=VARCHAR}, #{useremail, jdbcType=VARCHAR}, #{birth, jdbcType=VARCHAR}, #{useraddr, jdbcType=VARCHAR}, 
                            #{usertel, jdbcType=VARCHAR}, #{usermobile, jdbcType=VARCHAR}, #{hiredate, jdbcType=VARCHAR}, null)
    </insert>
-	
+	<insert id="joinMemberAuthorities">
+      INSERT INTO Authorities VALUES(#{userid}, 'ROLE_USER')
+   </insert>
 </mapper>

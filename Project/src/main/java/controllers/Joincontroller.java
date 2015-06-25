@@ -63,7 +63,7 @@ public class Joincontroller {
    {
       /*System.out.println("id : " + emp.getUserid());
       System.out.println("pwd : " + emp.getEmppwd());
-      System.out.println("name : " + emp.getEname());*/
+      System.out.println("name : " + emp.getEname());
       System.out.println("emp deptcode : " + emp.getDeptcode());
       System.out.println("emp teamcode : " + emp.getTeamcode());
       System.out.println("emp poscode : " + emp.getPoscode());
@@ -71,6 +71,8 @@ public class Joincontroller {
       System.out.println("empinfo id : " + empinfo.getUserid());
       System.out.println("empinfo mail : " + empinfo.getUseremail());
       System.out.println("empinfo birth : " + empinfo.getBirth());
+<<<<<<< HEAD
+      */
       
       CommonsMultipartFile file = File.getFile();
       Calendar cal = Calendar.getInstance();
@@ -94,16 +96,13 @@ public class Joincontroller {
 			fileName = fname; //파일의 이름만 별도 관리
 		}
       
-      
-      
-      
       EmpDAO empDAO = sqlSession.getMapper(EmpDAO.class);
       empinfo.setUserphoto(fileName);
       
       
       empDAO.joinMember(emp);
       empDAO.joinMemberInfo(empinfo);
-      
+      empDAO.joinMemberAuthorities(emp.getUserid());
       
       return "login.login";
    
