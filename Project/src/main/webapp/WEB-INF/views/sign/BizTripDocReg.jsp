@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tbody>
 		<tr>
@@ -17,12 +18,12 @@
 				</table> <!--타이틀TB END-->
 			</td>
 		</tr>
-		
+
 		<tr>
 			<td align="center" valign="top" style="padding: 19px 15px 19px 15px;">
 
-				<script type="text/javascript" src="/js/upload.js"></script>
-				<script language="javascript">
+				<script type="text/javascript" src="/js/upload.js"></script> <script
+					language="javascript">
 					var oEditors = [];
 					var __maxsize = 31457280;
 					var __remains = 9686275080;
@@ -268,7 +269,7 @@
 
 						return -1;
 					}
-					
+
 					function applyAppLine(appmgno) {
 						for (var i = 0; i < 9; i++)
 							procCancel(i);
@@ -345,7 +346,7 @@
 				<table width="100%" border="0" cellspacing="0" cellpadding="0"
 					class="tbl_appdoc" id="writeForm">
 					<tbody>
-						
+
 						<tr>
 							<td align="center" valign="top">
 
@@ -554,8 +555,8 @@
 											<td height="30" align="center" bgcolor="#f6f6f6" class="m_sp">
 												<b>제 목</b>
 											</td>
-											<td colspan="2" style="padding: 0 0 0 12px;">
-												<input id="t_subject" name="subject" type="text"
+											<td colspan="2" style="padding: 0 0 0 12px;"><input
+												id="t_subject" name="subject" type="text"
 												class="input_type2" style="width: 630px;" value="">
 											</td>
 										</tr>
@@ -564,72 +565,72 @@
 												style="padding: 0; border: 0;">
 												<table width="100%" cellpadding="0" cellspacing="0">
 													<tbody>
-                                             <tr>
-                                                <td width="100%" style="padding: 0; border-top: 0;">
+														<tr>
+															<td width="100%" style="padding: 0; border-top: 0;">
 
-                                                   <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                      <tbody>
-                                                         <tr>
-                                                            <td width="100%"
-                                                               style="padding: 10px 17px 10px 17px; border: 0;">
-                                                               <table id="detail_table" width="100%"
-                                                                  cellspacing="0" cellpadding="0"
-                                                                  class="tbl_appreport">
-                                                                  <tbody>
-                                                                     <tr>
-                                                                        <td width="120" class="title">기간</td>
-                                                                        <td width="" class="item" align="left">
-                                                                        	<input type="text" name="bufrom" readonly=""
-                                                                             class="input_approval" style="width: 75px"
-                                                                           	 maxlength="10" onclick="popUpCalendarYmd(this)"
-                                                                             value=""> ~ 
-                                                                            <input type="text" name="buto" readonly="" class="input_approval"
-                                                                             style="width: 75px" maxlength="10"
-                                                                             onclick="popUpCalendarYmd(this)" value="">
-                                                                             &nbsp;
-                                                                             	<span id="vadate" style="font-weight: bold; color: #000">
-                                                                        		</span>
-                                                                        </td>
-                                                                     </tr>
-                                                                     <tr>
-                                                                        <td class="title">출장지</td>
-                                                                        <td class="item" align="left"><textarea
-                                                                              name="whereto"
-                                                                              style="width: 100%; height: 56px; padding: 8px 8px 5px 8px;"></textarea>
-                                                                        </td>
-                                                                     </tr>
-                                                                     <tr>
-                                                                        <td class="title">출장목적</td>
-                                                                        <td class="item" align="left"><textarea
-                                                                              name="reason"
-                                                                              style="width: 100%; height: 126px; padding: 8px 8px 5px 8px;"></textarea>
-                                                                        </td>
-                                                                     </tr>
-                                                                     <tr>
-                                                                        <td class="title">연락처</td>
-                                                                        <td class="item" align="left"><textarea
-                                                                              name="contact"
-                                                                              style="width: 100%; height: 56px; padding: 8px 8px 5px 8px;"></textarea>
-                                                                        </td>
-                                                                     </tr>
-                                                                     <tr>
-                                                                        <td class="title">기타사항</td>
-                                                                        <td class="item" align="left"><textarea
-                                                                              name="etc"
-                                                                              style="width: 100%; height: 126px; padding: 8px 8px 5px 8px;"></textarea></td>
-                                                                     </tr>
-                                                                  </tbody>
-                                                               </table>
-                                                               <div
-                                                                  style="height: 60px; text-align: center; padding-top: 20px;">
-                                                                  상기와 같이 출장 신청서를 제출하오니 재가바랍니다.</div>
-                                                            </td>
-                                                         </tr>
-                                                      </tbody>
-                                                   </table>
-                                                </td>
-                                             </tr>
-                                          </tbody>
+																<table width="100%" border="0" cellspacing="0"
+																	cellpadding="0">
+																	<tbody>
+																		<tr>
+																			<td width="100%"
+																				style="padding: 10px 17px 10px 17px; border: 0;">
+																				<table id="detail_table" width="100%"
+																					cellspacing="0" cellpadding="0"
+																					class="tbl_appreport">
+																					<tbody>
+																						<tr>
+																							<td width="120" class="title">기간</td>
+																							<td width="" class="item" align="left"><input
+																								type="text" name="bufrom" readonly=""
+																								class="input_approval" style="width: 75px"
+																								maxlength="10" onclick="popUpCalendarYmd(this)"
+																								value=""> ~ <input type="text"
+																								name="buto" readonly="" class="input_approval"
+																								style="width: 75px" maxlength="10"
+																								onclick="popUpCalendarYmd(this)" value="">
+																								&nbsp; <span id="vadate"
+																								style="font-weight: bold; color: #000"> </span>
+																							</td>
+																						</tr>
+																						<tr>
+																							<td class="title">출장지</td>
+																							<td class="item" align="left"><textarea
+																									name="whereto"
+																									style="width: 100%; height: 56px; padding: 8px 8px 5px 8px;"></textarea>
+																							</td>
+																						</tr>
+																						<tr>
+																							<td class="title">출장목적</td>
+																							<td class="item" align="left"><textarea
+																									name="reason"
+																									style="width: 100%; height: 126px; padding: 8px 8px 5px 8px;"></textarea>
+																							</td>
+																						</tr>
+																						<tr>
+																							<td class="title">연락처</td>
+																							<td class="item" align="left"><textarea
+																									name="contact"
+																									style="width: 100%; height: 56px; padding: 8px 8px 5px 8px;"></textarea>
+																							</td>
+																						</tr>
+																						<tr>
+																							<td class="title">기타사항</td>
+																							<td class="item" align="left"><textarea
+																									name="etc"
+																									style="width: 100%; height: 126px; padding: 8px 8px 5px 8px;"></textarea></td>
+																						</tr>
+																					</tbody>
+																				</table>
+																				<div
+																					style="height: 60px; text-align: center; padding-top: 20px;">
+																					상기와 같이 출장 신청서를 제출하오니 재가바랍니다.</div>
+																			</td>
+																		</tr>
+																	</tbody>
+																</table>
+															</td>
+														</tr>
+													</tbody>
 												</table>
 											</td>
 										</tr>
@@ -2207,8 +2208,7 @@
 								<table border="0" cellspacing="0" cellpadding="0">
 									<tbody>
 										<tr>
-											<td>
-												<input type="button" value="작성완료" onclick="check()">
+											<td><input type="button" value="작성완료" onclick="check()">
 											</td>
 										</tr>
 									</tbody>
