@@ -8,7 +8,7 @@
 <!--본문TB START-->
 <section class="content-header">
 	<h1>
-		전자결재 <small>상신 문서함 페이지</small>
+		전자결재 <small>반려 문서함 페이지</small>
 	</h1>
 	<ol class="breadcrumb">
 		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -34,14 +34,14 @@
 					<th style="width: 75px">문서번호</th>
 					<th style="width: 75px">문서종류</th>
 					<th style="width: 75px">기안일</th>
+					<th style="width: 75px">완료일</th>
 					<th style="width: 75px">결재완료수</th>
 					<th style="width: 75px">상태</th>
-					<!-- <th style="width: 75px">현재 결재자</th> -->
 					<th style="width: 75px">제목</th>
 				</tr>
 				<c:choose>
-					<c:when test="${fn:length(sendsignlist) > 0}">
-						<c:forEach items="${sendsignlist}" var="s">
+					<c:when test="${fn:length(rejectsignlist) > 0}">
+						<c:forEach items="${rejectsignlist}" var="s">
 							<c:set var="signtype" value="${s.signtype}" />
 							<tr>
 								<td width="100" class="title bb1 br1 p0007"><font
@@ -92,6 +92,8 @@
 								<td width="100" class="title bb1 br1 p3007"><font
 									color="#666666">${s.draftdate}</font></td>
 								<td width="100" class="title bb1 br1 p3007"><font
+									color="#666666">${s.refreshdate}</font></td>	
+								<td width="100" class="title bb1 br1 p3007"><font
 									color="#666666">${s.currsign}/${s.totalsign}</font></td>
 								<td width="100" class="title bb1 br1 p3007"><font
 									color="#666666">
@@ -107,8 +109,6 @@
 										</c:when>
 									</c:choose>	
 									</font></td>
-								<%-- <td width="70" class="title bb1 br1 p3007"><font
-									color="#666666">${s.signer1}</font></td> --%>
 								<td width="200" class="title bb1 p3007"><font
 									color="#666666">${s.signtitle}</font></td>
 							</tr>

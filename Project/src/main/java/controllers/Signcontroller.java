@@ -38,8 +38,9 @@ public class Signcontroller {
 
 		System.out.println("전자결재 메인 페이지 열람");
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
-		List<Sign> unsignlist = signdao.getUnSigns(principal.getName());
-		List<Sign> sendsignlist = signdao.getSendSigns(principal.getName());
+		// 최신 문서 3개씩
+		List<Sign> unsignlist = signdao.getUnSigns(principal.getName(), 0, 3, 0);
+		List<Sign> sendsignlist = signdao.getSendSigns(principal.getName(), 0, 3, 0);
 
 		model.addAttribute("unsignlist", unsignlist);
 		model.addAttribute("sendsignlist", sendsignlist);
@@ -47,18 +48,36 @@ public class Signcontroller {
 	}
 	
 	// 올린 결재 문서함 > 상신 문서 페이지 보기
-		@RequestMapping(value = "SendsignsList.htm")
-		public String SendsignsList(Model model, Principal principal)
-				throws ClassNotFoundException, SQLException {
+	@RequestMapping(value = "SendsignsList.htm")
+	public String SendsignsList(Model model, Principal principal)
+			throws ClassNotFoundException, SQLException {
 
-			System.out.println("상신 문서 페이지 열람");
-			SignDAO signdao = sqlsession.getMapper(SignDAO.class);
+		System.out.println("상신 문서 페이지 열람");
+		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
 			 
-			List<Sign> sendsignlist = signdao.getSendSigns(principal.getName());
+		String userid = principal.getName();
+		List<Sign> sendsignlist = signdao.getSendSigns(userid, 0, 
+										signdao.getCountSendSigns(userid, 0), 0);
 			 
-			model.addAttribute("sendsignlist", sendsignlist);
-			return "sign.SendsignsList";
-		}
+		model.addAttribute("sendsignlist", sendsignlist);
+		return "sign.SendsignsList";
+	}
+	
+	// 올린 결재 문서함 > 반려 문서 페이지 보기
+	@RequestMapping(value = "RejectsignsList.htm")
+	public String RejectsignsList(Model model, Principal principal)
+			throws ClassNotFoundException, SQLException {
+
+		System.out.println("반려 문서 페이지 열람");
+		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
+				 
+		String userid = principal.getName();
+		List<Sign> rejectsignlist = signdao.getSendSigns(userid, 0, 
+											signdao.getCountSendSigns(userid, 2), 2);
+				 
+		model.addAttribute("rejectsignlist", rejectsignlist);
+		return "sign.RejectsignsList";
+	}
 
 	// 기안서 작성 페이지 보기
 	@RequestMapping(value = "DraftingReg.htm", method = RequestMethod.GET)

@@ -23,13 +23,14 @@ public class Sign {
 	private String signer5; // 결재자5
 	private String ename;	// 기안자 이름
 	private String posname;	// 기안자 직급 이름
+	private Date refreshdate; // 갱신 날짜 (완료날짜)
 	
 	public Sign() {}
 	
 	public Sign(int docnum, String userid, int signtype, String signstate, String dept, String team,
 				Date draftdate, String signfilesrc, String signtitle, String signnote, String signer1,
 				String signer2, String signer3, String signer4, String signer5, String ename, String posname,
-				int totalsign, int currsign) {
+				int totalsign, int currsign, Date rejectsignlist) {
 		this.docnum = docnum;
 		this.userid = userid;
 		this.signtype = signtype;
@@ -49,6 +50,7 @@ public class Sign {
 		this.posname = posname;
 		this.totalsign = totalsign;
 		this.currsign = currsign;
+		this.refreshdate = rejectsignlist;
 	}
 
 	public String getEname() {
@@ -204,6 +206,14 @@ public class Sign {
 		this.currsign = currsign;
 	}
 
+	public Date getRefreshdate() {
+		return refreshdate;
+	}
+
+	public void setRefreshdate(Date refreshdate) {
+		this.refreshdate = refreshdate;
+	}
+
 	@Override
 	public String toString() {
 		return "Sign [docnum=" + docnum + ", userid=" + userid + ", signtype="
@@ -213,7 +223,7 @@ public class Sign {
 				+ ", signnote=" + signnote + ", signer1=" + signer1
 				+ ", signer2=" + signer2 + ", signer3=" + signer3
 				+ ", signer4=" + signer4 + ", signer5=" + signer5 + "ename, posname="+ename+"/"+posname+ 
-				" curr/total="+this.currsign+"/"+this.totalsign+"]";
+				" curr/total="+this.currsign+"/"+this.totalsign+"/"+this.refreshdate+"]";
 	}
 	
 }

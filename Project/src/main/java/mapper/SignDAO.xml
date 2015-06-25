@@ -6,7 +6,7 @@
 <mapper namespace="dao.SignDAO">
 	
 	<!-- 결재문서함>미결재문서 리스트 가져오기 최근 3개 -->
-	<select id="getUnSigns" parameterType="String" resultType="dto_vo.Sign.Sign">
+	<select id="getUnSigns" parameterType="hashmap" resultType="dto_vo.Sign.Sign">
 		<!-- select *
 		from sign s join signline sl
 		on s.DOCNUM = sl.DOCNUM
@@ -15,38 +15,51 @@
 		 select * from (
             select rownum, a.DOCNUM, a.USERID, a.SIGNTYPE, a.SIGNSTATE, a.DEPT, a.TEAM, a.DRAFTDATE, 
                     a.SIGNFILESRC, a.SIGNTITLE, a.SIGNNOTE, a.SIGNER1, a.SIGNER2, a.SIGNER3, a.SIGNER4, a.SIGNER5,
-                    a.ENAME, a.POSNAME, a.TOTALSIGN, a.CURRSIGN
+                    a.ENAME, a.POSNAME, a.TOTALSIGN, a.CURRSIGN, a.REFRESHDATE
             from (
                       select s.DOCNUM, s.USERID, s.SIGNTYPE, s.SIGNSTATE, s.DEPT, s.TEAM, s.DRAFTDATE, 
                               s.SIGNFILESRC, s.SIGNTITLE, s.SIGNNOTE, s.SIGNER1, s.SIGNER2, s.SIGNER3, s.SIGNER4, s.SIGNER5,
-                              s.ENAME, s.POSNAME, s.TOTALSIGN, s.CURRSIGN
+                              s.ENAME, s.POSNAME, s.TOTALSIGN, s.CURRSIGN, s.REFRESHDATE
                       from sign s join signline sl
                       on s.DOCNUM = sl.DOCNUM
-                      where signstate = 0 and sl.SIGNNING = #{userid}
+                      where signstate = ${param4} and sl.SIGNNING = #{param1}
                       order by s.DRAFTDATE desc
                     ) a
-            where rownum &lt;= 3
+            where rownum between ${param2} and ${param3}
      	)
 	</select>
 	
+	<select id="getCountUnsigns" parameterType="hashmap" resultType="int">
+		select count(*)
+		from sign s join signline sl
+		on s.DOCNUM = sl.DOCNUM
+		where signstate = ${param2} and sl.SIGNNING = #{param1}
+	</select>
+	
 	<!-- 개인문서함>상신문서 리스트 가져오기 -->
-	 <select id="getSendSigns" resultType="dto_vo.Sign.Sign">
+	 <select id="getSendSigns" parameterType="hashmap" resultType="dto_vo.Sign.Sign">
 		select * from (
             select rownum, a.DOCNUM, a.USERID, a.SIGNTYPE, a.SIGNSTATE, a.DEPT, a.TEAM, a.DRAFTDATE, 
                     a.SIGNFILESRC, a.SIGNTITLE, a.SIGNNOTE, a.SIGNER1, a.SIGNER2, a.SIGNER3, a.SIGNER4, a.SIGNER5,
-                    a.ENAME, a.POSNAME, a.TOTALSIGN, a.CURRSIGN, a.SIGNNING
+                    a.ENAME, a.POSNAME, a.TOTALSIGN, a.CURRSIGN, a.SIGNNING, a.REFRESHDATE
             from (
                       select s.DOCNUM, s.USERID, s.SIGNTYPE, s.SIGNSTATE, s.DEPT, s.TEAM, s.DRAFTDATE, 
                               s.SIGNFILESRC, s.SIGNTITLE, s.SIGNNOTE, s.SIGNER1, s.SIGNER2, s.SIGNER3, s.SIGNER4, s.SIGNER5,
-                              s.ENAME, s.POSNAME, s.TOTALSIGN, s.CURRSIGN, sl.SIGNNING
+                              s.ENAME, s.POSNAME, s.TOTALSIGN, s.CURRSIGN, s.REFRESHDATE, sl.SIGNNING
                       from sign s join signline sl
                       on s.DOCNUM = sl.DOCNUM
-                      where signstate = 0 and s.USERID = #{userid}
+                      where signstate = ${param4} and s.USERID = #{param1}
                       order by s.DRAFTDATE desc
                     ) a
-            where rownum &lt;= 3
+            where rownum between ${param2} and ${param3}
      	)
 	</select> 
+	
+	<select id="getCountSendSigns" parameterType="hashmap" resultType="int"> 
+		select count(*)
+        from sign 
+        where signstate = ${param2} and USERID = #{param1}
+	</select>
 	
 	<!-- 결재 문서 상세보기 문서 하나 가져오기 -->
 	<select id="getSign" resultType="dto_vo.Sign.Sign">
@@ -128,14 +141,14 @@
 	<update id="updateSignCurr">
 		<!-- update sign set currsign = currsign+1 where docnum=27 -->
 		update sign
-		set currsign = currsign + 1
+		set currsign = currsign + 1, refreshdate = sysdate
 		where docnum = #{docnum}
 	</update>
 	
 	<!-- 결재문서의 결재 상태 변경 -->
 	<update id="updateSignState" parameterType="hashmap">
 		 update sign 
-		 set signstate = #{param2}
+		 set signstate = #{param2}, refreshdate = sysdate
 		 where docnum = #{param1}
  	</update>
 </mapper>
