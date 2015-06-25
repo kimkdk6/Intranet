@@ -140,6 +140,7 @@ public class Signcontroller {
 	}
 	
 	// 기안서 상세 페이지 보기
+	@Transactional
 	@RequestMapping(value = "DraftingDetail.htm", method = RequestMethod.POST)
 	public String DraftingDetail_signOK(String docnum)
 			throws ClassNotFoundException, SQLException {
@@ -151,23 +152,29 @@ public class Signcontroller {
 		int totalsign = sign.getTotalsign();
 		int currsign = sign.getCurrsign();
 		
-		if(currsign < totalsign){
+		if(currsign == totalsign-1){// 현재 결재수가 총 결재수보다 하나 작으면 최종 결재자까지 갔다
+			signdao.updateSignline("signok"+String.valueOf(currsign+2), "결재완료", docnum);
+			// sign => currsign ..
+			signdao.updateSignCurr(docnum);
+			// sign => singstate-> 바뀜
+			signdao.updateSignState(docnum);
+		}else if(currsign < totalsign){
 			if(currsign == 0){
 				// signlign=> signok2 가 바뀜 -> 1
-				
-				// sign=> currsign -> 1 update
 				// signning=> signning => signer3 
+				signdao.updateSignline("signok2", sign.getSigner3(), docnum);
+				// sign=> currsign -> 1 update
+				signdao.updateSignCurr(docnum);
 			}else if(currsign == 1){
 				// signok3 가 바뀜
+				signdao.updateSignline("signok3", sign.getSigner4(), docnum);
+				signdao.updateSignCurr(docnum);
 			}else if(currsign == 2){
 				// signok4 가 바뀜
-			}else if(currsign == 3){
-				// signok5 가 바뀜
+				signdao.updateSignline("signok4", sign.getSigner5(), docnum);
+				signdao.updateSignCurr(docnum);
 			}
-		}else if(currsign == totalsign){
-			// sign => singstate-> 바뀜
-			// sign => currsign ..
-		}
+		} 
 	
 		return "redirect:SignMain.htm";
 	}

@@ -108,6 +108,8 @@
             	 
             	   $("#cancel").hide();
             	   $("#cancel1").hide();
+            	   $("#cancel2").hide();
+            	   $("#cancel3").hide();
             	   dialog = $("#dialog").dialog({
                         autoOpen : false,
                         width : 500,
@@ -231,10 +233,28 @@
                       var valid = true;
 
                       if (valid) {
-                     	 $("#users2").html(
- 									"<td>" + $('input[name="name2"]:checked').val() + "</td>");
-                         dialog2.dialog("close");
+                     	 
+                     	 $("#opener2").hide();
+                     	 $("#cancel2").show();
+                     	 $("#users2").prepend(
+ 									"<td id='signer_3'>" + $('input[name="name2"]:checked').val() + 
+ 									"<input type='hidden' name='signer4' id='signer4' value='"+
+ 									 $('input[name="name2"]:checked').val().trim()+"'></td>");  
+                     	
+                     	 
+                     	 dialog2.dialog("close");
                       }
+                      
+                      $("#cancel2").click(function(){
+                      	 $(this).hide('fast',function(){
+                      		 $("#signer_3").remove();
+                      		 $("#signer4").remove();
+                      		 $("#opener2").show();
+                      	 });
+                      	 
+                      	 
+                        });
+                      
                       return valid;
                   }
                   
@@ -262,10 +282,26 @@
                       var valid = true;
 
                       if (valid) {
-                     	 $("#users3").html(
- 									"<td>" + $('input[name="name3"]:checked').val() + "</td>");
+                     	 $("#opener3").hide();
+                     	 $("#cancel3").show();
+                     	 $("#users3").prepend(
+ 									"<td id='signer_4'>" + $('input[name="name3"]:checked').val() + 
+ 									"<input type='hidden' name='signer5' id='signer5' value='"+
+ 									 $('input[name="name3"]:checked').val().trim()+"'></td>");  
+                     	 
                          dialog3.dialog("close");
                       }
+                      
+                      $("#cancel3").click(function(){
+                       	 $(this).hide('fast',function(){
+                       		 $("#signer_4").remove();
+                       		 $("#signer5").remove();
+                       		 $("#opener3").show();
+                       	 });
+                       	 
+                       	 
+                         });
+                      
                       return valid;
                   }
 
@@ -455,9 +491,10 @@
                                                                         <c:if test="${t.teamcode == e.teamcode }">
                                                                            <c:forEach items="${pos}" var="p">
                                                                               <c:if test="${p.poscode == e.poscode}">
+                                                                                 <input type="radio" name="name2" id="name2" value="${e.userid}" >
                                                                                  <i class="fa fa-fw fa-user-plus"></i> 
                                                                                  ${t.teamname} ${e.ename} ${p.posname }
-                                                                                 <input type="radio" name="name2" id="name2" value="${t.teamname} ${e.ename} ${p.posname}" ><hr>
+                                                                                 <hr>
                                                                               </c:if>
                                                                            </c:forEach>
                                                                         </c:if>
@@ -469,6 +506,7 @@
                                                    </div>
                                                 </div>
                                                 <input type="button" id="opener2" value="지정3"/>
+                                                <input type='button' id='cancel2' value='취소'/>
                                              </td>
                                              
                                              <td id="users3" style="border-bottom: 1px #eaeaea solid;">
@@ -483,9 +521,10 @@
                                                                         <c:if test="${t.teamcode == e.teamcode }">
                                                                            <c:forEach items="${pos}" var="p">
                                                                               <c:if test="${p.poscode == e.poscode}">
+                                                                                 <input type="radio" name="name3" id="name3" value="${e.userid}" >
                                                                                  <i class="fa fa-fw fa-user-plus"></i> 
                                                                                  ${t.teamname} ${e.ename} ${p.posname }
-                                                                                 <input type="radio" name="name3" id="name3" value="${t.teamname} ${e.ename} ${p.posname}" ><hr>
+                                                                                 <hr>
                                                                               </c:if>
                                                                            </c:forEach>
                                                                         </c:if>
@@ -497,6 +536,7 @@
                                                    </div>
                                                 </div>
                                                 <input type="button" id="opener3" value="지정4"/>
+                                                 <input type='button' id='cancel3' value='취소'/>
                                              </td>
                                           </tr>
                                           

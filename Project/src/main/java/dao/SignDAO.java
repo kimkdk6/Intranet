@@ -49,5 +49,5 @@ public interface SignDAO {
 	// sign의 currsign+1
 	public int updateSignCurr(String docnum) throws ClassNotFoundException, SQLException;
 	// sign의 signstae 변경 .. 반려시 바뀔 수 있을 듯
-	//public int updateSignState(String docnum) throws ClassNotFoundException, SQLException;
+	public int updateSignState(String docnum) throws ClassNotFoundException, SQLException;
 }

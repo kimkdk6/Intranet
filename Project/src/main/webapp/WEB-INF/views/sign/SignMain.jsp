@@ -188,7 +188,19 @@
 								<td width="100" class="title bb1 br1 p3007"><font
 									color="#666666">${s.currsign}/${s.totalsign}</font></td>
 								<td width="100" class="title bb1 br1 p3007"><font
-									color="#666666">${s.signstate}</font></td>
+									color="#666666">
+									<c:choose>
+										<c:when test="${s.signstate == 1}">
+											결재완료										
+										</c:when>
+										<c:when test="${s.signstate == 2}">
+											반려
+										</c:when>
+										<c:when test="${s.signstate == 0}">
+											대기중
+										</c:when>
+									</c:choose>	
+									</font></td>
 								<td width="70" class="title bb1 br1 p3007"><font
 									color="#666666">${s.signer1}</font></td>
 								<td width="200" class="title bb1 p3007"><font

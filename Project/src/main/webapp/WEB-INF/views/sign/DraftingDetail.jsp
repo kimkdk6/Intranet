@@ -1,3 +1,4 @@
+<%@page import="dto_vo.Emp.Emp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -81,10 +82,16 @@
                         <table border="0" cellspacing="0" cellpadding="0">
                            <tbody>
                               <tr>
-                                 <td><a href="javascript:myApp('F')"><span style="font-size: 20px;" class="label pull-right bg-green">
+                              	 <c:set var="useridcheck" value="${sign.userid}"/>
+                              	 <c:set var="checkid" value="${sessionScope.myemp.userid}"/>
+                              	 <c:if test="${!useridcheck.equals(checkid)}">
+                              	 		<td><a href="javascript:myApp('F')"><span style="font-size: 20px;" class="label pull-right bg-green">
                                  		결 재</span></a></td>
+                              	 </c:if>
+                              	  
+                                	
                                  <td width="5"></td>
-                                 
+                                 	
                                  <td width="5"></td>
                                  <td><a href="javascript:myApp('R')"><img
                                        src="/img/approval/bt_return.gif"></a></td>
