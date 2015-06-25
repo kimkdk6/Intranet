@@ -21,7 +21,7 @@
 	<div class="box">
 		<div class="box-header with-border">
 			<h3 class="box-title">
-				<a class="title_txt" href="/approval/proc_wait_list.php"> 결재문서함
+				<a class="title_txt" href="ReceiveSignList.htm?type=2"> 결재문서함
 					&gt; 미결재 문서</a>
 			</h3>
 		</div>
