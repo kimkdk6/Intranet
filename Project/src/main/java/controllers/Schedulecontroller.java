@@ -19,7 +19,7 @@ public class Schedulecontroller {
 	@RequestMapping(value = "ScheduleMain.htm")
 	public String ScheduleMain(Model model) throws ClassNotFoundException,SQLException {
 
-		return "schedule.ScheduleMain";
+		return "schedule.schedule";
 	}
 }
 

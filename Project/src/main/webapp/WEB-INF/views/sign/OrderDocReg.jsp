@@ -2,108 +2,48 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<script language="javascript">
+
+<script type="text/javascript">
+
+	$('#calc').ready(function() {
+		/* 단가 X 수량 */
+	    $('.unitcost, .amount, .ordercost').keyup(function(){          
+	        $(this).val( $(this).val().replace(/[^0-9]/gi,"") ); //숫자만 입력가능
+	    });
 	
-	/* 
-	$(function() {
-		var valid = true;
-		
-		if(valid) {
-			$("").append(
-					"<tr height='27' align='center'>" + 
-					"<td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'>" +
-					"<input type='text' name='orname[]' class='input_approval' style='width: 90%' value=''>" +
-					"</td>" +
-					"<td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'>" +
-					"<input type='text' name='amount[]' rel='amount' onblur='constraintValue("FEE",this); calcAmount() class='input_approval' style='text-align: right; width: 90%' value=''>" +
-					"</td>" +
-					<td class="item"
-						style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
-						type="text" name="orcount[]" rel="count"
-						onblur="constraintValue('NUMBER',this); calcAmount()"
-						class="input_approval"
-						style="text-align: right; width: 90%" value=""></td>
-					<td class="item"
-						style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
-						type="text" name="standard[]"
-						class="input_approval" style="width: 90%"
-						value=""></td>
-					<td class="item"
-						style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
-						type="text" name="etc[]" class="input_approval"
-						style="width: 90%" value=""></td>
-					<td class="item" rel="fee" align="right"
-						style="border: solid 1px #C0BFC1;">0</td>
-				</tr>		
-			)
-		}
+	    $('.unitcost').keyup(function(){
+	        var num = $(".unitcost").index(this);
+	        $('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
+	    });
+	
+	    $('.amount').keyup(function(){
+	        var num = $(".amount").index(this);
+	        $('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
+	
+	    });
+	
+	    $('.ordercost').keyup(function(){
+	        var num = $(".ordercost").index(this);
+	        $('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
+	    });
 	});
- */
 
 
-
-
- function addItemLine()
- {
-     $("#detail_table").append(
-     "<tr height='27' align='center'>\n"+
-     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='orname[]' class='input_approval' style='width:90%' value=''></td>\n" +
-     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='amount[]' rel='amount' onBlur=\"constraintValue('FEE',this); calcAmount()\" class='input_approval' style='text-align:right;width:90%' value=''></td>\n" +
-     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='orcount[]' rel='count' onBlur=\"constraintValue('NUMBER',this); calcAmount()\" class='input_approval' style='text-align:right;width:90%' value=''></td>\n" +
-     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='standard[]' class='input_approval' style='width:90%' value=''></td>\n" +
-     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='etc[]' class='input_approval' style='width:90%' value=''></td>\n" +
-     " <td class='item' rel='fee' align='right' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'>0</td>\n" +
-     "</tr>"
-     );
- }
- 
- 
- function calcAmount()
- {
-     
-     var total = 0;
-     var tax = 0;
-     $("input[rel='amount']").each(function(i,e){
-         if($(this).val())
-         {
-             if($(this).parent().parent().find("input[rel='count']").val() != '') 
-             {
-                 var amount = $(this).val();
-                 var count  = $(this).parent().parent().find("input[rel='count']").val();
-                 var linetotal = parseInt( amount.replaceAll(',',''),10) * parseInt(count, 10);
-                 
-                 total += linetotal;
-                 $(this).parent().parent().find("td[rel='fee']").text( number_format(linetotal) );
-                 
-             }
-         }
-     });
-
-     if($("#htax").attr("checked")) tax = 0;
-     else                     tax = total*0.1;
-     $("#detail_amount").text(number_format(total));
-     $("#detail_tax").text(number_format(tax));
-     $("#detail_total").text(number_format(total + tax));
- }
-
- function taxform(htax)
- {
-     if(htax) $(".chtax").hide();
-     else     $(".chtax").show();
-         
-     calcAmount();
- }
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-
+	/* 라인 추가 */
+ 	function addItemLine()
+ 		{
+		     $("#detail_table").append(
+		     "<tr height='27' align='center'>\n"+
+		     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='orname[]' class='input_approval' style='width:90%' value=''></td>\n" +
+		     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='amount[]' rel='amount' onBlur=\"constraintValue('FEE',this); calcAmount()\" class='input_approval' style='text-align:right;width:90%' value=''></td>\n" +
+		     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='orcount[]' rel='count' onBlur=\"constraintValue('NUMBER',this); calcAmount()\" class='input_approval' style='text-align:right;width:90%' value=''></td>\n" +
+		     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='standard[]' class='input_approval' style='width:90%' value=''></td>\n" +
+		     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='etc[]' class='input_approval' style='width:90%' value=''></td>\n" +
+		     " <td class='item' rel='fee' align='right' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'>0</td>\n" +
+		     "</tr>"
+		     );
+ 		}
+	
 	/* 결재자 메뉴 띄우는 기능 */
 	// ============= 첫번째 ======================
 	$(function() {
@@ -638,29 +578,36 @@
 																							style="border: solid 1px #C0BFC1;">금액</td>
 																					</tr>
 																					
-																					<tr height="27" align="center">
+																					<tr height="27" align="center" id="calc">
+																						<!-- 품명 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="orname[]" class="input_approval" style="width: 90%;" value="">
+																							<input type="text" name="product" class="product" style="width: 90%;" value="">
 																						</td>
 																						
+																						<!-- 단가 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="amount[]" rel="amount" onblur="constraintValue('FEE',this); calcAmount()" class="input_approval" style="text-align: right; width: 90%" value="">
+																							<input type="text" name="unitcost" class="unitcost" style="text-align: right; width: 90%" value="">
 																						</td>
 																						
+																						<!-- 수량 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="orcount[]" rel="count" onblur="constraintValue('NUMBER',this); calcAmount()" class="input_approval" style="text-align: right; width: 90%" value="">
+																							<input type="text" name="amount" class="amount" style="text-align: right; width: 90%" value="">
 																						</td>
 																						
+																						<!-- 규격 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																						<input type="text" name="standard[]" class="input_approval" style="width: 90%" value="">
+																						<input type="text" name="odersize" class="odersize" style="width: 90%" value="">
 																						</td>
 																						
+																						<!-- 비고 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="etc[]" class="input_approval" style="width: 90%" value="">
+																							<input type="text" name="ordernote" class="ordernote" style="width: 90%" value="">
 																						</td>
 																						
-																						<td class="item" rel="fee" align="right"
-																							style="border: solid 1px #C0BFC1;">0</td>
+																						<!-- 금액출력 -->
+																						<td class="item" align="right" style="border: solid 1px #C0BFC1;">
+																							<input type="text" name="ordercost" class="ordercost" readonly="readonly">
+																						</td>
 																					</tr>
 																					<tr height="27" align="center">
 																						<td class="item"

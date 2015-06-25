@@ -200,7 +200,7 @@ setTimeout("go_time()", 1000);
                       <td height="8" colspan="2"></td>
                       </tr>
                    
-                  <%--      <c:if test="${!empty latecheck}">   --%>
+                 
                 		  <tr id="lateid" style="visibility: hidden;">
                       	<td >
                       		<b >&nbsp&nbsp&nbsp&nbsp&nbsp지각사유 :</b>
@@ -210,7 +210,7 @@ setTimeout("go_time()", 1000);
                       	</td>
                       	<td style="padding-left: 5px;"><button class="btn btn-block btn-default btn-sm" id ="latebtton" style="padding-top: 2px; padding-bottom: 2px;">저장</button></td>
                       </tr>
-                   <%--      </c:if>  --%>
+                  
                      
                       </table>
                       
@@ -241,6 +241,7 @@ setTimeout("go_time()", 1000);
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
             </div><!-- /.col -->
+            
             <div class="col-md-6">
               <div class="box">
                 <div class="box-header">
@@ -253,7 +254,7 @@ setTimeout("go_time()", 1000);
                    <c:forEach items="${RecentlyNotice}" var="r">
                     <tr>
                     <td><span class="fa fa-check-square-o"></span></td>
-                      <td style="padding-bottom: 19px"><a href="${pageContext.request.contextPath}/board/BoardDetail.htm?boardnum=${r.boardnum}">${r.boardtitle}</a></td>
+                      <td style="padding-bottom: 21px"><a href="${pageContext.request.contextPath}/board/BoardDetail.htm?boardnum=${r.boardnum}">${r.boardtitle}</a></td>
                       <td >
                            ${r.boarddate }
                       </td>
@@ -270,19 +271,25 @@ setTimeout("go_time()", 1000);
                   <h3 class="box-title">최신 앨범 게시판</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body no-padding">
-                  <table class="table table-striped">
-                     <tr>
-             <td height="250" align="left" valign="top" bgcolor="#d2d2d4" style="padding:11px 0 0 17px;"><table width="370" border="0" cellspacing="0" cellpadding="0">
-                <c:forEach items="${RecentlyPhoto}" var="e">
-                    <tr>
-                    <td><img alt="" src="<%=request.getContextPath() %>/Upload/BoardFile/${e.boardfilesrc}" height="50px">
+                  <table class="table table-striped">   
+                <tr>
+                
+                <c:forEach items="${RecentlyPhoto}" var="e"> 
+                    <td>
+                    <img src="<%=request.getContextPath() %>/Upload/BoardFile/${e.boardfilesrc}" style="width: 95px; height: 95px; margin-left: 20px;"> 
                     </td>
-                    </tr>
+
                     </c:forEach>  
-                    
-                  </table>
-                  </td>
-                  </tr>
+                   </tr>
+                   <tr>
+                   <c:forEach items="${RecentlyPhoto}" var="e"> 
+                   
+                   <td>
+                    ${e.boardtitle}
+                    </td>
+                   
+                   </c:forEach>
+                    </tr>
                   </table>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->

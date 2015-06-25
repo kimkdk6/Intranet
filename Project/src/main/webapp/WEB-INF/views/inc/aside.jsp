@@ -62,7 +62,7 @@
 						</c:forEach>
 					</li>
 				</ul></li>
-			<li><a href="pages/widgets.html"> <i class="fa fa-calendar"></i>
+			<li><a href="${pageContext.request.contextPath}/schedule/ScheduleMain.htm"> <i class="fa fa-calendar"></i>
 					<span>일정관리</span> <small class="label pull-right bg-green">new</small>
 			</a></li>
 			<li class="treeview"><a
