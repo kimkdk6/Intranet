@@ -5,20 +5,47 @@
 
 <mapper namespace="dao.SignDAO">
 	
-	<!-- 결재문서함>미결재문서 리스트 가져오기 -->
+	<!-- 결재문서함>미결재문서 리스트 가져오기 최근 3개 -->
 	<select id="getUnSigns" parameterType="String" resultType="dto_vo.Sign.Sign">
-		select *
+		<!-- select *
 		from sign s join signline sl
 		on s.DOCNUM = sl.DOCNUM
 		where signstate = 0 and sl.SIGNNING = #{userid}
-	
+		order by s.DRAFTDATE desc -->
+		 select * from (
+            select rownum, a.DOCNUM, a.USERID, a.SIGNTYPE, a.SIGNSTATE, a.DEPT, a.TEAM, a.DRAFTDATE, 
+                    a.SIGNFILESRC, a.SIGNTITLE, a.SIGNNOTE, a.SIGNER1, a.SIGNER2, a.SIGNER3, a.SIGNER4, a.SIGNER5,
+                    a.ENAME, a.POSNAME, a.TOTALSIGN, a.CURRSIGN
+            from (
+                      select s.DOCNUM, s.USERID, s.SIGNTYPE, s.SIGNSTATE, s.DEPT, s.TEAM, s.DRAFTDATE, 
+                              s.SIGNFILESRC, s.SIGNTITLE, s.SIGNNOTE, s.SIGNER1, s.SIGNER2, s.SIGNER3, s.SIGNER4, s.SIGNER5,
+                              s.ENAME, s.POSNAME, s.TOTALSIGN, s.CURRSIGN
+                      from sign s join signline sl
+                      on s.DOCNUM = sl.DOCNUM
+                      where signstate = 0 and sl.SIGNNING = #{userid}
+                      order by s.DRAFTDATE desc
+                    ) a
+            where rownum &lt;= 3
+     	)
 	</select>
 	
 	<!-- 개인문서함>상신문서 리스트 가져오기 -->
 	 <select id="getSendSigns" resultType="dto_vo.Sign.Sign">
-		select * 
-		from sign
-		where userid = #{userid}
+		select * from (
+            select rownum, a.DOCNUM, a.USERID, a.SIGNTYPE, a.SIGNSTATE, a.DEPT, a.TEAM, a.DRAFTDATE, 
+                    a.SIGNFILESRC, a.SIGNTITLE, a.SIGNNOTE, a.SIGNER1, a.SIGNER2, a.SIGNER3, a.SIGNER4, a.SIGNER5,
+                    a.ENAME, a.POSNAME, a.TOTALSIGN, a.CURRSIGN, a.SIGNNING
+            from (
+                      select s.DOCNUM, s.USERID, s.SIGNTYPE, s.SIGNSTATE, s.DEPT, s.TEAM, s.DRAFTDATE, 
+                              s.SIGNFILESRC, s.SIGNTITLE, s.SIGNNOTE, s.SIGNER1, s.SIGNER2, s.SIGNER3, s.SIGNER4, s.SIGNER5,
+                              s.ENAME, s.POSNAME, s.TOTALSIGN, s.CURRSIGN, sl.SIGNNING
+                      from sign s join signline sl
+                      on s.DOCNUM = sl.DOCNUM
+                      where signstate = 0 and s.USERID = #{userid}
+                      order by s.DRAFTDATE desc
+                    ) a
+            where rownum &lt;= 3
+     	)
 	</select> 
 	
 	<!-- 결재 문서 상세보기 문서 하나 가져오기 -->

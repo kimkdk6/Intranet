@@ -29,6 +29,8 @@ public class Signcontroller {
 	@Autowired
 	private SqlSession sqlsession;
 
+	
+	
 	// 전자 결재 메인 페이지 보기
 	@RequestMapping(value = "SignMain.htm")
 	public String SignMain(Model model, Principal principal)
@@ -38,12 +40,25 @@ public class Signcontroller {
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
 		List<Sign> unsignlist = signdao.getUnSigns(principal.getName());
 		List<Sign> sendsignlist = signdao.getSendSigns(principal.getName());
-		System.out.println(unsignlist.toString());
 
 		model.addAttribute("unsignlist", unsignlist);
 		model.addAttribute("sendsignlist", sendsignlist);
 		return "sign.SignMain";
 	}
+	
+	// 올린 결재 문서함 > 상신 문서 페이지 보기
+		@RequestMapping(value = "SendsignsList.htm")
+		public String SendsignsList(Model model, Principal principal)
+				throws ClassNotFoundException, SQLException {
+
+			System.out.println("상신 문서 페이지 열람");
+			SignDAO signdao = sqlsession.getMapper(SignDAO.class);
+			 
+			List<Sign> sendsignlist = signdao.getSendSigns(principal.getName());
+			 
+			model.addAttribute("sendsignlist", sendsignlist);
+			return "sign.SendsignsList";
+		}
 
 	// 기안서 작성 페이지 보기
 	@RequestMapping(value = "DraftingReg.htm", method = RequestMethod.GET)

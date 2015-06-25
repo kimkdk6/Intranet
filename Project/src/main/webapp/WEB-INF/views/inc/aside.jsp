@@ -73,7 +73,7 @@
 				<ul class="treeview-menu">
 					<li><a
 						href="${pageContext.request.contextPath}/sign/SignMain.htm"><i
-							class="fa fa-circle-o"></i>전자결재 메인</a></li>
+							class="fa fa-circle-o"></i> 전자결재</a></li>
 					<li><a href="#"><i class="fa fa-circle-o"></i> 결재문서 작성 <i
 							class="fa fa-angle-left pull-right"></i></a>
 						<ul class="treeview-menu">
@@ -105,7 +105,9 @@
 								href="${pageContext.request.contextPath}/sign/BizTripRepDetail.htm?docnum=1"><i
 									class="fa fa-circle-o"></i>출장 결과 보고서 상세</a></li>
 							<li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-						</ul></li>
+						</ul>
+					</li>
+					
 				</ul></li>
 			<li><a href="pages/widgets.html"> <i
 					class="fa fa-fw fa-group"></i> <span>조직도</span> <small
