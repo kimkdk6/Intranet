@@ -37,12 +37,34 @@ public class Signcontroller {
 		System.out.println("전자결재 메인 페이지 열람");
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
 		// 최신 문서 3개씩
-		List<Sign> unsignlist = signdao.getUnSigns(principal.getName(), 0, 3, 0);
+		List<Sign> unsignlist = signdao.getUnSigns(principal.getName(), 0, 3);
 		List<Sign> sendsignlist = signdao.getSendSigns(principal.getName(), 0, 3, 0);
 
 		model.addAttribute("unsignlist", unsignlist);
 		model.addAttribute("sendsignlist", sendsignlist);
 		return "sign.SignMain";
+	}
+	
+	// 전자 결재 메인 페이지 보기
+	@RequestMapping(value = "ReceiveSignList.htm")
+	public String ReceiveSignList(Model model, Principal principal, int type)
+			throws ClassNotFoundException, SQLException {
+
+		System.out.println("받은 페이지 열람");
+		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
+		String userid = principal.getName();	
+		List<Sign> signlist = null;
+		if(type == 1){			// 결재 승인 리스트
+			System.out.println("승인 문서 페이지 열람");
+			signlist = signdao.getReceiveSigns(userid, 0, signdao.getCountReceiveSigns(userid));
+		} else if(type == 2){	// 결재 반려 리스트 
+			System.out.println("반려 문서 페이지 열람");
+			signlist = signdao.getUnSigns(userid, 0, signdao.getCountUnsigns(userid));
+		}	
+
+		model.addAttribute("type", type);
+		model.addAttribute("signlist", signlist);
+		return "sign.ReceiveSignList";
 	}
 	
 	// 올린 결재 문서함 > 상신 문서 페이지 보기
@@ -61,20 +83,21 @@ public class Signcontroller {
 		return "sign.SendsignsList";
 	}
 	
-	// 올린 결재 문서함 > 반려 문서 페이지 보기
+	// 올린 결재 문서함 > 반려/결재 완료 문서 페이지 보기
 	@RequestMapping(value = "signsList.htm")
 	public String signsList(Model model, Principal principal, int type)
 			throws ClassNotFoundException, SQLException {
 
-		System.out.println("반려 문서 페이지 열람");
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
 		String userid = principal.getName();		 
 		List<Sign> signlist = null;
 		
 		if(type == 1){			// 결재 승인 리스트
+			System.out.println("승인 문서 페이지 열람");
 			signlist = signdao.getSendSigns(userid, 0, 
 					signdao.getCountSendSigns(userid, 1), 1);
 		} else if(type == 2){	// 결재 반려 리스트 
+			System.out.println("반려 문서 페이지 열람");
 			signlist = signdao.getSendSigns(userid, 0, 
 					signdao.getCountSendSigns(userid, 2), 2);
 		}		

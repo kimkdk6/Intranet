@@ -5,7 +5,7 @@
 
 <mapper namespace="dao.SignDAO">
 	
-	<!-- 결재문서함>미결재문서 리스트 가져오기 최근 3개 -->
+	<!-- 결재문서함>미결재문서 리스트 가져오기-->
 	<select id="getUnSigns" parameterType="hashmap" resultType="dto_vo.Sign.Sign">
 		<!-- select *
 		from sign s join signline sl
@@ -20,7 +20,7 @@
                               s.SIGNTITLE, s.ENAME, s.POSNAME, s.TOTALSIGN, s.CURRSIGN, s.REFRESHDATE
                       from sign s join signline sl
                       on s.DOCNUM = sl.DOCNUM
-                      where signstate = ${param4} and sl.SIGNNING = #{param1}
+                      where signstate = 0 and sl.SIGNNING = #{param1}
                       order by s.DRAFTDATE desc
                     ) a
             where rownum between ${param2} and ${param3}
@@ -31,7 +31,34 @@
 		select count(*)
 		from sign s join signline sl
 		on s.DOCNUM = sl.DOCNUM
-		where signstate = ${param2} and sl.SIGNNING = #{param1}
+		where signstate = 0 and sl.SIGNNING = #{param1}
+	</select>
+	
+	
+	<!-- 결재문서함>받은 결재 완료 문서 리스트 가져오기-->
+	<select id="getReceiveSigns" parameterType="hashmap" resultType="dto_vo.Sign.Sign">
+		<!-- select *
+		from sign s join signline sl
+		on s.DOCNUM = sl.DOCNUM
+		where signstate = 0 and sl.SIGNNING = #{userid}
+		order by s.DRAFTDATE desc -->
+		 select * from (
+            select rownum, a.DOCNUM, a.USERID, a.SIGNTYPE, a.SIGNSTATE, a.DEPT, a.TEAM, a.DRAFTDATE, 
+                    a.SIGNTITLE, a.ENAME, a.POSNAME, a.TOTALSIGN, a.CURRSIGN, a.REFRESHDATE
+            from (
+                      select *
+                      from sign  
+                      where signstate = 1 and (signer2 = #{param1} or signer3 = #{param1} or signer4 = #{param1} or signer5 = #{param1})
+                      order by DRAFTDATE desc
+                    ) a
+            where rownum between ${param2} and ${param3}
+     	)
+	</select>
+	
+	<select id="getCountReceiveSigns" parameterType="hashmap" resultType="int">
+		select count(*)
+		from sign 
+		where signstate = 1 and (signer2 = #{param1} or signer3 = #{param1} or signer4 = #{param1} or signer5 = #{param1})
 	</select>
 	
 	<!-- 개인문서함>상신문서 리스트 가져오기 -->

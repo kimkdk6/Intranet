@@ -15,8 +15,11 @@ import dto_vo.Sign.Signline;
 public interface SignDAO {
 	
 	// 결재문서함>미결재문서 리스트 뽑기
-	public List<Sign> getUnSigns(String userid, int from, int to, int signstate) throws ClassNotFoundException, SQLException;
-	public int getCountUnsigns(String userid, int signstate) throws ClassNotFoundException, SQLException;
+	public List<Sign> getUnSigns(String userid, int from, int to) throws ClassNotFoundException, SQLException;
+	public int getCountUnsigns(String userid) throws ClassNotFoundException, SQLException;
+	// 결재문서함>받은 결재 완료 문서 리스트 뽑기
+	public List<Sign> getReceiveSigns(String userid, int from, int to) throws ClassNotFoundException, SQLException;
+	public int getCountReceiveSigns(String userid) throws ClassNotFoundException, SQLException;
 	// 개인문서함>상신문서 리스트 뽑기
 	public List<Sign> getSendSigns(String userid, int from, int to, int signstate) throws ClassNotFoundException, SQLException;
 	public int getCountSendSigns(String userid, int signstate) throws ClassNotFoundException, SQLException;

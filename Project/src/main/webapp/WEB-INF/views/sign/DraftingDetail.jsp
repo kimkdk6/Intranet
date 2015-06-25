@@ -49,7 +49,7 @@
 	<div class="box-header with-border">
 	    <h3 class="box-title">
 	    	<a class="title_txt" href="#">
-	    			받은 결재 문서함 &gt; 미결재 문서 &gt;
+	    		 결재 문서함 &gt; 
                         문서조회</a>     	
 		</h3>
 	</div>
@@ -85,17 +85,11 @@
                               <tr>
                               	 <c:set var="useridcheck" value="${sign.userid}"/>
                               	 <c:set var="checkid" value="${sessionScope.myemp.userid}"/>
-                              	 <c:if test="${!useridcheck.equals(checkid)}">
+                              	 <c:if test="${!useridcheck.equals(checkid) && sign.signstate==0}">
                               	 		<td><a href="javascript:myApp('F')"><span style="font-size: 20px;" class="label pull-right bg-green">
                                  		결 재</span></a></td>
-                              	 </c:if>
-                              	  
-                                	
-                                 <td width="5"></td>
-                                 	
-                                 <td width="5"></td>
-                                <c:if test="${!useridcheck.equals(checkid)}">
-                              	 		<td><a href="javascript:myApp('R')"><span style="font-size: 20px;" class="label pull-right bg-red">
+                                 		<td width="5"></td>
+                                 		<td><a href="javascript:myApp('R')"><span style="font-size: 20px;" class="label pull-right bg-red">
                                  		반 려</span></a></td>
                               	 </c:if>
                               </tr>

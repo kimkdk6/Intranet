@@ -32,7 +32,7 @@
 	<div class="box">
 		<div class="box-header with-border">
 			<h3 class="box-title">
-				<a class="title_txt" href="SendsignsList.htm"> 개인문서함
+				<a class="title_txt" href="SendsignsList.htm"> 올린 결재 문서함
 					&gt; ${pagetitle} 문서</a>
 			</h3>
 		</div>

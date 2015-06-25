@@ -67,13 +67,13 @@
 			</a></li>
 			<li class="treeview"><a
 				href="${pageContext.request.contextPath}/sign/SignMain.htm"> <i
-					class="fa fa-fw fa-file-text"></i> <span>전자결재 메인</span> <i
+					class="fa fa-fw fa-file-text"></i> <span>전자결재</span> <i
 					class="fa fa-angle-left pull-right"></i>
 			</a>
 				<ul class="treeview-menu">
 					<li><a
 						href="${pageContext.request.contextPath}/sign/SignMain.htm"><i
-							class="fa fa-circle-o"></i> 전자결재</a></li>
+							class="fa fa-circle-o"></i> 전자결재 메인 </a></li>
 					<li><a href="#"><i class="fa fa-circle-o"></i> 결재문서 작성 <i
 							class="fa fa-angle-left pull-right"></i></a>
 						<ul class="treeview-menu">
@@ -111,10 +111,10 @@
 							class="fa fa-angle-left pull-right"></i></a>
 						<ul class="treeview-menu">
 							<li><a
-								href="${pageContext.request.contextPath}/sign/DraftingReg.htm"><i
+								href="${pageContext.request.contextPath}/sign/ReceiveSignList.htm?type=2"><i
 									class="fa fa-circle-o"></i>미결재 문서</a></li>
 							<li><a
-								href="${pageContext.request.contextPath}/sign/OrderDocReg.htm"><i
+								href="${pageContext.request.contextPath}/sign/ReceiveSignList.htm?type=1"><i
 									class="fa fa-circle-o"></i>결재 완료 문서</a></li>
 						</ul>
 					</li>
