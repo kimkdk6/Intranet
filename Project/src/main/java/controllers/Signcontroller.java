@@ -28,8 +28,6 @@ public class Signcontroller {
 
 	@Autowired
 	private SqlSession sqlsession;
-
-	
 	
 	// 전자 결재 메인 페이지 보기
 	@RequestMapping(value = "SignMain.htm")
@@ -64,19 +62,26 @@ public class Signcontroller {
 	}
 	
 	// 올린 결재 문서함 > 반려 문서 페이지 보기
-	@RequestMapping(value = "RejectsignsList.htm")
-	public String RejectsignsList(Model model, Principal principal)
+	@RequestMapping(value = "signsList.htm")
+	public String signsList(Model model, Principal principal, int type)
 			throws ClassNotFoundException, SQLException {
 
 		System.out.println("반려 문서 페이지 열람");
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
-				 
-		String userid = principal.getName();
-		List<Sign> rejectsignlist = signdao.getSendSigns(userid, 0, 
-											signdao.getCountSendSigns(userid, 2), 2);
-				 
-		model.addAttribute("rejectsignlist", rejectsignlist);
-		return "sign.RejectsignsList";
+		String userid = principal.getName();		 
+		List<Sign> signlist = null;
+		
+		if(type == 1){			// 결재 승인 리스트
+			signlist = signdao.getSendSigns(userid, 0, 
+					signdao.getCountSendSigns(userid, 1), 1);
+		} else if(type == 2){	// 결재 반려 리스트 
+			signlist = signdao.getSendSigns(userid, 0, 
+					signdao.getCountSendSigns(userid, 2), 2);
+		}		
+		
+		model.addAttribute("type", type);
+		model.addAttribute("signlist", signlist);
+		return "sign.signsList";
 	}
 
 	// 기안서 작성 페이지 보기

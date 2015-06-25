@@ -7,8 +7,16 @@
 <!DOCTYPE html>
 <!--본문TB START-->
 <section class="content-header">
+<c:choose>
+	<c:when test="${param.type == 1}">
+		<c:set var="pagetitle" value="결재 완료"/>
+	</c:when>
+	<c:when test="${param.type == 2}">
+		<c:set var="pagetitle" value="반려"/>
+	</c:when>
+</c:choose>
 	<h1>
-		전자결재 <small>반려 문서함 페이지</small>
+		전자결재 <small>${pagetitle} 문서함 페이지</small>
 	</h1>
 	<ol class="breadcrumb">
 		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -25,7 +33,7 @@
 		<div class="box-header with-border">
 			<h3 class="box-title">
 				<a class="title_txt" href="SendsignsList.htm"> 개인문서함
-					&gt; 상신문서</a>
+					&gt; ${pagetitle}</a>
 			</h3>
 		</div>
 		<div class="box-body">
@@ -40,8 +48,8 @@
 					<th style="width: 75px">제목</th>
 				</tr>
 				<c:choose>
-					<c:when test="${fn:length(rejectsignlist) > 0}">
-						<c:forEach items="${rejectsignlist}" var="s">
+					<c:when test="${fn:length(signlist) > 0}">
+						<c:forEach items="${signlist}" var="s">
 							<c:set var="signtype" value="${s.signtype}" />
 							<tr>
 								<td width="100" class="title bb1 br1 p0007"><font

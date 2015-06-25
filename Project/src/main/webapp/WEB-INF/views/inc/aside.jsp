@@ -125,10 +125,10 @@
 								href="${pageContext.request.contextPath}/sign/SendsignsList.htm"><i
 									class="fa fa-circle-o"></i>상신 문서</a></li>
 							<li><a
-								href="${pageContext.request.contextPath}/sign/RejectsignsList.htm"><i
+								href="${pageContext.request.contextPath}/sign/signsList.htm?type=2"><i
 									class="fa fa-circle-o"></i>반려 문서</a></li>
 							<li><a
-								href="${pageContext.request.contextPath}/sign/OrderDocReg.htm"><i
+								href="${pageContext.request.contextPath}/sign/signsList.htm?type=1"><i
 									class="fa fa-circle-o"></i>결재 완료 문서</a></li>
 						</ul>
 					</li>
