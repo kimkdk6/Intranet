@@ -18,12 +18,13 @@
 	    if(proc == 'F')
 	    {
 	        if( !confirm( '결재하시겠습니까.') ) return;
+	        f.action = "signOK.htm";
 	    }
 	    
 	    else if(proc == 'R')
 	    {
 	        if( !confirm('반려하시겠습니까.') ) return;
-	        f.action = '/approval/execute/doc_appreject_exe.php';
+	        f.action = 'reject.htm';
 	    }
 	  
 	    
@@ -54,7 +55,7 @@
 	</div>
 	<div class="box-body">
 	<form name="draform" action="" method="post">
-	<%-- <input type="hidden" name="docnum" id="docnum" value="${param.docnum}"> --%>
+	<input type="hidden" name="docnum" id="docnum" value="${param.docnum}">
 	<table>
    <tbody>
       
@@ -93,8 +94,10 @@
                                  <td width="5"></td>
                                  	
                                  <td width="5"></td>
-                                 <td><a href="javascript:myApp('R')"><img
-                                       src="/img/approval/bt_return.gif"></a></td>
+                                <c:if test="${!useridcheck.equals(checkid)}">
+                              	 		<td><a href="javascript:myApp('R')"><span style="font-size: 20px;" class="label pull-right bg-red">
+                                 		반 려</span></a></td>
+                              	 </c:if>
                               </tr>
                            </tbody>
                         </table>
@@ -202,6 +205,11 @@
 	                                                            style="background-repeat: no-repeat; color: #d30000; font-size: 11px; letter-spacing: -1px; padding: 3px 0 0 0;">
 	                                                            ${sign.signer2}</td>
 	                                                      	</c:when>
+	                                                      	<c:when test="${signline.signok2 == 2}">
+	                                                      		<td height="42" align="center" valign="middle" style="background-repeat:no-repeat;color:#d30000;font-size:11px;letter-spacing:-1px;padding:3px 0 0 0;">
+						                                                  <img src="../resources/img/icon_return.gif">
+						                                        </td>
+	                                                      	</c:when>
 	                                                      	<c:otherwise>
 	                                                      		<td height="42" align="center" valign="middle"
 	                                                            style="font-size: 11px; letter-spacing: -1px; padding: 3px 0 0 0;">
@@ -227,6 +235,11 @@
 		                                                            style="background-repeat: no-repeat; color: #d30000; font-size: 11px; letter-spacing: -1px; padding: 3px 0 0 0;">
 		                                                            ${sign.signer3}</td>
 		                                                      	</c:when>
+		                                                      	<c:when test="${signline.signok3 == 2}">
+	                                                      		<td height="42" align="center" valign="middle" style="background-repeat:no-repeat;color:#d30000;font-size:11px;letter-spacing:-1px;padding:3px 0 0 0;">
+						                                                  <img src="../resources/img/icon_return.gif">
+						                                        </td>
+	                                                      		</c:when>
 		                                                      	<c:otherwise>
 		                                                      		<td height="42" align="center" valign="middle"
 		                                                            style="font-size: 11px; letter-spacing: -1px; padding: 3px 0 0 0;">
@@ -252,6 +265,11 @@
 	                                                            style="background-repeat: no-repeat; color: #d30000; font-size: 11px; letter-spacing: -1px; padding: 3px 0 0 0;">
 	                                                            ${sign.signer4}</td>
 	                                                      	</c:when>
+	                                                      	<c:when test="${signline.signok4 == 2}">
+	                                                      		<td height="42" align="center" valign="middle" style="background-repeat:no-repeat;color:#d30000;font-size:11px;letter-spacing:-1px;padding:3px 0 0 0;">
+						                                                  <img src="../resources/img/icon_return.gif">
+						                                        </td>
+	                                                      	</c:when>
 	                                                      	<c:otherwise>
 	                                                      		<td height="42" align="center" valign="middle"
 	                                                            style="font-size: 11px; letter-spacing: -1px; padding: 3px 0 0 0;">
@@ -276,6 +294,11 @@
 	                                                            background="../resources/img/stamp_bg.gif"
 	                                                            style="background-repeat: no-repeat; color: #d30000; font-size: 11px; letter-spacing: -1px; padding: 3px 0 0 0;">
 	                                                            ${sign.signer5}</td>
+	                                                      	</c:when>
+	                                                      	<c:when test="${signline.signok5 == 2}">
+	                                                      		<td height="42" align="center" valign="middle" style="background-repeat:no-repeat;color:#d30000;font-size:11px;letter-spacing:-1px;padding:3px 0 0 0;">
+						                                                  <img src="../resources/img/icon_return.gif">
+						                                        </td>
 	                                                      	</c:when>
 	                                                      	<c:otherwise>
 	                                                      		<td height="42" align="center" valign="middle"

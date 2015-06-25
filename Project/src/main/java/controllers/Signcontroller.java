@@ -139,12 +139,12 @@ public class Signcontroller {
 		return "sign.DraftingDetail";
 	}
 	
-	// 기안서 상세 페이지 보기
+	// 결재문서 승인
 	@Transactional
-	@RequestMapping(value = "DraftingDetail.htm", method = RequestMethod.POST)
-	public String DraftingDetail_signOK(String docnum)
+	@RequestMapping(value = "signOK.htm", method = RequestMethod.POST)
+	public String signOK(String docnum)
 			throws ClassNotFoundException, SQLException {
-		System.out.println("기안서 승인");
+		System.out.println("결재 승인");
 		System.out.println("승인처리된 결재 문서: "+docnum);
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
 		Sign sign = signdao.getSign(docnum);
@@ -153,25 +153,25 @@ public class Signcontroller {
 		int currsign = sign.getCurrsign();
 		
 		if(currsign == totalsign-1){// 현재 결재수가 총 결재수보다 하나 작으면 최종 결재자까지 갔다
-			signdao.updateSignline("signok"+String.valueOf(currsign+2), "결재완료", docnum);
+			signdao.updateSignline("signok"+String.valueOf(currsign+2), "결재완료", docnum, 1);
 			// sign => currsign ..
 			signdao.updateSignCurr(docnum);
 			// sign => singstate-> 바뀜
-			signdao.updateSignState(docnum);
+			signdao.updateSignState(docnum, "1");
 		}else if(currsign < totalsign){
 			if(currsign == 0){
 				// signlign=> signok2 가 바뀜 -> 1
 				// signning=> signning => signer3 
-				signdao.updateSignline("signok2", sign.getSigner3(), docnum);
+				signdao.updateSignline("signok2", sign.getSigner3(), docnum, 1);
 				// sign=> currsign -> 1 update
 				signdao.updateSignCurr(docnum);
 			}else if(currsign == 1){
 				// signok3 가 바뀜
-				signdao.updateSignline("signok3", sign.getSigner4(), docnum);
+				signdao.updateSignline("signok3", sign.getSigner4(), docnum, 1);
 				signdao.updateSignCurr(docnum);
 			}else if(currsign == 2){
 				// signok4 가 바뀜
-				signdao.updateSignline("signok4", sign.getSigner5(), docnum);
+				signdao.updateSignline("signok4", sign.getSigner5(), docnum, 1);
 				signdao.updateSignCurr(docnum);
 			}
 		} 
@@ -179,6 +179,28 @@ public class Signcontroller {
 		return "redirect:SignMain.htm";
 	}
 
+	// 결재문서 반려
+	@Transactional
+	@RequestMapping(value = "reject.htm", method = RequestMethod.POST)
+	public String reject(String docnum)
+			throws ClassNotFoundException, SQLException {
+		System.out.println("결재 반려");
+		System.out.println("반려처리된 결재 문서: "+docnum);
+		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
+		Sign sign = signdao.getSign(docnum);
+		
+		int totalsign = sign.getTotalsign();
+		int currsign = sign.getCurrsign();
+			
+		if(currsign < totalsign){
+			signdao.updateSignline("signok"+String.valueOf(currsign+2), "결재반려", docnum, 2);
+			// sign => singstate-> 바뀜
+			signdao.updateSignState(docnum,"2");
+		}
+		
+		return "redirect:SignMain.htm";
+	}
+	
 	// 발주서 작성 페이지 보기
 	@RequestMapping(value = "OrderDocReg.htm", method = RequestMethod.GET)
 	public String OrderDocReg(Model model) throws ClassNotFoundException,

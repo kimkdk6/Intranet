@@ -93,7 +93,7 @@
 	<update id="updateSignline" parameterType="hashmap">
 		<!-- update signline set signok2 = 1, signning = 'm5' where docnum=27 -->
 		update signline
-		set ${param1} = 1, signning = #{param2}
+		set ${param1} = ${param4}, signning = #{param2}
 		where docnum = #{param3}
 	</update>
 	
@@ -106,9 +106,9 @@
 	</update>
 	
 	<!-- 결재문서의 결재 상태 변경 -->
-	<update id="updateSignState">
+	<update id="updateSignState" parameterType="hashmap">
 		 update sign 
-		 set signstate = 1 
-		 where docnum = #{ducnum}
+		 set signstate = #{param2}
+		 where docnum = #{param1}
  	</update>
 </mapper>
