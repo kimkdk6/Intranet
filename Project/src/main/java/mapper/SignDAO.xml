@@ -14,12 +14,10 @@
 		order by s.DRAFTDATE desc -->
 		 select * from (
             select rownum, a.DOCNUM, a.USERID, a.SIGNTYPE, a.SIGNSTATE, a.DEPT, a.TEAM, a.DRAFTDATE, 
-                    a.SIGNFILESRC, a.SIGNTITLE, a.SIGNNOTE, a.SIGNER1, a.SIGNER2, a.SIGNER3, a.SIGNER4, a.SIGNER5,
-                    a.ENAME, a.POSNAME, a.TOTALSIGN, a.CURRSIGN, a.REFRESHDATE
+                    a.SIGNTITLE, a.ENAME, a.POSNAME, a.TOTALSIGN, a.CURRSIGN, a.REFRESHDATE
             from (
                       select s.DOCNUM, s.USERID, s.SIGNTYPE, s.SIGNSTATE, s.DEPT, s.TEAM, s.DRAFTDATE, 
-                              s.SIGNFILESRC, s.SIGNTITLE, s.SIGNNOTE, s.SIGNER1, s.SIGNER2, s.SIGNER3, s.SIGNER4, s.SIGNER5,
-                              s.ENAME, s.POSNAME, s.TOTALSIGN, s.CURRSIGN, s.REFRESHDATE
+                              s.SIGNTITLE, s.ENAME, s.POSNAME, s.TOTALSIGN, s.CURRSIGN, s.REFRESHDATE
                       from sign s join signline sl
                       on s.DOCNUM = sl.DOCNUM
                       where signstate = ${param4} and sl.SIGNNING = #{param1}
@@ -40,12 +38,10 @@
 	 <select id="getSendSigns" parameterType="hashmap" resultType="dto_vo.Sign.Sign">
 		select * from (
             select rownum, a.DOCNUM, a.USERID, a.SIGNTYPE, a.SIGNSTATE, a.DEPT, a.TEAM, a.DRAFTDATE, 
-                    a.SIGNFILESRC, a.SIGNTITLE, a.SIGNNOTE, a.SIGNER1, a.SIGNER2, a.SIGNER3, a.SIGNER4, a.SIGNER5,
-                    a.ENAME, a.POSNAME, a.TOTALSIGN, a.CURRSIGN, a.SIGNNING, a.REFRESHDATE
+                    a.SIGNTITLE, a.ENAME, a.POSNAME, a.TOTALSIGN, a.CURRSIGN, a.SIGNNING, a.REFRESHDATE
             from (
                       select s.DOCNUM, s.USERID, s.SIGNTYPE, s.SIGNSTATE, s.DEPT, s.TEAM, s.DRAFTDATE, 
-                              s.SIGNFILESRC, s.SIGNTITLE, s.SIGNNOTE, s.SIGNER1, s.SIGNER2, s.SIGNER3, s.SIGNER4, s.SIGNER5,
-                              s.ENAME, s.POSNAME, s.TOTALSIGN, s.CURRSIGN, s.REFRESHDATE, sl.SIGNNING
+                              s.SIGNTITLE, s.ENAME, s.POSNAME, s.TOTALSIGN, s.CURRSIGN, s.REFRESHDATE, sl.SIGNNING
                       from sign s join signline sl
                       on s.DOCNUM = sl.DOCNUM
                       where signstate = ${param4} and s.USERID = #{param1}

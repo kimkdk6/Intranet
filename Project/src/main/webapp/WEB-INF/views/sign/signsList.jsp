@@ -33,7 +33,7 @@
 		<div class="box-header with-border">
 			<h3 class="box-title">
 				<a class="title_txt" href="SendsignsList.htm"> 개인문서함
-					&gt; ${pagetitle}</a>
+					&gt; ${pagetitle} 문서</a>
 			</h3>
 		</div>
 		<div class="box-body">
