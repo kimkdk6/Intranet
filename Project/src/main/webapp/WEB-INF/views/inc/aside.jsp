@@ -107,7 +107,31 @@
 							<li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
 						</ul>
 					</li>
-					
+					<li><a href="#"><i class="fa fa-circle-o"></i> 받은 결재 문서함 <i
+							class="fa fa-angle-left pull-right"></i></a>
+						<ul class="treeview-menu">
+							<li><a
+								href="${pageContext.request.contextPath}/sign/DraftingReg.htm"><i
+									class="fa fa-circle-o"></i>미결재 문서</a></li>
+							<li><a
+								href="${pageContext.request.contextPath}/sign/OrderDocReg.htm"><i
+									class="fa fa-circle-o"></i>결재 완료 문서</a></li>
+						</ul>
+					</li>
+					<li><a href="#"><i class="fa fa-circle-o"></i> 올린 결재 문서함 <i
+							class="fa fa-angle-left pull-right"></i></a>
+						<ul class="treeview-menu">
+							<li><a
+								href="${pageContext.request.contextPath}/sign/SendsignsList.htm"><i
+									class="fa fa-circle-o"></i>상신 문서</a></li>
+							<li><a
+								href="${pageContext.request.contextPath}/sign/OrderDocReg.htm"><i
+									class="fa fa-circle-o"></i>반려 문서</a></li>
+							<li><a
+								href="${pageContext.request.contextPath}/sign/OrderDocReg.htm"><i
+									class="fa fa-circle-o"></i>결재 완료 문서</a></li>
+						</ul>
+					</li>
 				</ul></li>
 			<li><a href="pages/widgets.html"> <i
 					class="fa fa-fw fa-group"></i> <span>조직도</span> <small
