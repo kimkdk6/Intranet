@@ -4,7 +4,23 @@
 <!DOCTYPE html>
 
 <script type="text/javascript">
-
+	
+	/* 라인 추가 */
+ 	/* function addItemLine()
+ 		{
+		     $("#detail_table").append(
+		     " <tr height='27' align='center' id='calc1'>\n"+
+		     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='product' class='product' style='width: 90%;' value=''></td>\n" +
+		     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='unitcost' class='unitcost' style='text-align: right; width: 90%;' value=''></td>\n" +
+		     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='amount' class='amount' style='text-align: right; width: 90%;' value=''></td>\n" +
+		     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='odersize' class='odersize' style='width: 90%;' value=''></td>\n" +
+		     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='ordernote' class='ordernote' style='width: 90%;' value=''></td>\n" +
+		     " <td class='item' align='right' style=border: solid 1px #C0BFC1;'><input type='text' name='ordercost' class='ordercost;  readonly='readonly'></td>\n" +
+		     "</tr>"
+		     );
+ 		} */
+	
+ 	/* 계산 */
 	$('#calc').ready(function() {
 		/* 단가 X 수량 */
 	    $('.unitcost, .amount, .ordercost').keyup(function(){          
@@ -26,23 +42,12 @@
 	        var num = $(".ordercost").index(this);
 	        $('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
 	    });
+	    
+	    /* 총합 */
+	    $('.sum')
 	});
-
-
-	/* 라인 추가 */
- 	function addItemLine()
- 		{
-		     $("#detail_table").append(
-		     "<tr height='27' align='center'>\n"+
-		     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='orname[]' class='input_approval' style='width:90%' value=''></td>\n" +
-		     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='amount[]' rel='amount' onBlur=\"constraintValue('FEE',this); calcAmount()\" class='input_approval' style='text-align:right;width:90%' value=''></td>\n" +
-		     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='orcount[]' rel='count' onBlur=\"constraintValue('NUMBER',this); calcAmount()\" class='input_approval' style='text-align:right;width:90%' value=''></td>\n" +
-		     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='standard[]' class='input_approval' style='width:90%' value=''></td>\n" +
-		     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='etc[]' class='input_approval' style='width:90%' value=''></td>\n" +
-		     " <td class='item' rel='fee' align='right' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'>0</td>\n" +
-		     "</tr>"
-		     );
- 		}
+ 		
+ 	
 	
 	/* 결재자 메뉴 띄우는 기능 */
 	// ============= 첫번째 ======================
@@ -502,11 +507,10 @@
 
 
 													<tr>
-														<td height="30" align="center" bgcolor="#E1F9DD"
-															class="m_sp"><b>제목</b></td>
-														<td colspan="2" style="padding: 0 0 0 2px;"><input
-															id="t_subject" name="subject" type="text"
-															style="width: 630px;" value=""></td>
+														<td height="30" align="center" bgcolor="#E1F9DD" class="m_sp"><b>제목</b></td>
+														<td colspan="2" style="padding: 0 0 0 2px;">
+															<input id="t_subject" name="subject" type="text" style="width: 630px;" value="">
+														</td>
 													</tr>
 												</tbody>
 											</table>
@@ -538,24 +542,22 @@
 																			
 																			
 																			
-																			<table width="100%" class="noborder" cellspacing="0"
-																				cellpadding="0">
+																			<table width="100%" class="noborder" cellspacing="0" cellpadding="0">
 																				<tbody>
 																					<tr>
 
 																						<td width="50%" align="right" style="padding: 5px 5px 0px 0px; letter-spacing: -1px; font-size: 11px; color: #4f4c4c;">
-																							<a href="javascript:addItemLine()">
+																							<!-- <a href="javascript:addItemLine()"> -->
 																								<!-- <img src="/img/calendar/bt_plus.gif" align="absmiddle">
 																								라인추가 -->
 																								<input type="button" id="addline" value="라인 추가"/>
-																							</a>
+																							<!-- </a> -->
 																						</td>
 																					</tr>
 																				</tbody>
 																			</table>
 																			
-																			<table id="detail_table" width="100%" cellspacing="0"
-																				cellpadding="0" class="tbl_appreport">
+																			<table id="detail_table" width="100%" cellspacing="0" cellpadding="0" class="tbl_appreport">
 																				<tbody>
 																					<tr>
 																						<td align="center" width="22%" class="title"
@@ -609,125 +611,132 @@
 																							<input type="text" name="ordercost" class="ordercost" readonly="readonly">
 																						</td>
 																					</tr>
-																					<tr height="27" align="center">
-																						<td class="item"
-																							style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
-																							type="text" name="orname[]"
-																							class="input_approval" style="width: 90%"
-																							value=""></td>
-																						<td class="item"
-																							style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
-																							type="text" name="amount[]" rel="amount"
-																							onblur="constraintValue('FEE',this); calcAmount()"
-																							class="input_approval"
-																							style="text-align: right; width: 90%" value=""></td>
-																						<td class="item"
-																							style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
-																							type="text" name="orcount[]" rel="count"
-																							onblur="constraintValue('NUMBER',this); calcAmount()"
-																							class="input_approval"
-																							style="text-align: right; width: 90%" value=""></td>
-																						<td class="item"
-																							style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
-																							type="text" name="standard[]"
-																							class="input_approval" style="width: 90%"
-																							value=""></td>
-																						<td class="item"
-																							style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
-																							type="text" name="etc[]" class="input_approval"
-																							style="width: 90%" value=""></td>
-																						<td class="item" rel="fee" align="right"
-																							style="border: solid 1px #C0BFC1;">0</td>
+																					
+																					<tr height="27" align="center" id="calc">
+																						<!-- 품명 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="product" class="product" style="width: 90%;" value="">
+																						</td>
+																						
+																						<!-- 단가 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="unitcost" class="unitcost" style="text-align: right; width: 90%" value="">
+																						</td>
+																						
+																						<!-- 수량 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="amount" class="amount" style="text-align: right; width: 90%" value="">
+																						</td>
+																						
+																						<!-- 규격 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																						<input type="text" name="odersize" class="odersize" style="width: 90%" value="">
+																						</td>
+																						
+																						<!-- 비고 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="ordernote" class="ordernote" style="width: 90%" value="">
+																						</td>
+																						
+																						<!-- 금액출력 -->
+																						<td class="item" align="right" style="border: solid 1px #C0BFC1;">
+																							<input type="text" name="ordercost" class="ordercost" readonly="readonly">
+																						</td>
 																					</tr>
-																					<tr height="27" align="center">
-																						<td class="item"
-																							style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
-																							type="text" name="orname[]"
-																							class="input_approval" style="width: 90%"
-																							value=""></td>
-																						<td class="item"
-																							style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
-																							type="text" name="amount[]" rel="amount"
-																							onblur="constraintValue('FEE',this); calcAmount()"
-																							class="input_approval"
-																							style="text-align: right; width: 90%" value=""></td>
-																						<td class="item"
-																							style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
-																							type="text" name="orcount[]" rel="count"
-																							onblur="constraintValue('NUMBER',this); calcAmount()"
-																							class="input_approval"
-																							style="text-align: right; width: 90%" value=""></td>
-																						<td class="item"
-																							style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
-																							type="text" name="standard[]"
-																							class="input_approval" style="width: 90%"
-																							value=""></td>
-																						<td class="item"
-																							style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
-																							type="text" name="etc[]" class="input_approval"
-																							style="width: 90%" value=""></td>
-																						<td class="item" rel="fee" align="right"
-																							style="border: solid 1px #C0BFC1;">0</td>
+																					<tr height="27" align="center" id="calc">
+																						<!-- 품명 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="product" class="product" style="width: 90%;" value="">
+																						</td>
+																						
+																						<!-- 단가 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="unitcost" class="unitcost" style="text-align: right; width: 90%" value="">
+																						</td>
+																						
+																						<!-- 수량 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="amount" class="amount" style="text-align: right; width: 90%" value="">
+																						</td>
+																						
+																						<!-- 규격 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																						<input type="text" name="odersize" class="odersize" style="width: 90%" value="">
+																						</td>
+																						
+																						<!-- 비고 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="ordernote" class="ordernote" style="width: 90%" value="">
+																						</td>
+																						
+																						<!-- 금액출력 -->
+																						<td class="item" align="right" style="border: solid 1px #C0BFC1;">
+																							<input type="text" name="ordercost" class="ordercost" readonly="readonly">
+																						</td>
 																					</tr>
-																					<tr height="27" align="center">
-																						<td class="item"
-																							style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
-																							type="text" name="orname[]"
-																							class="input_approval" style="width: 90%"
-																							value=""></td>
-																						<td class="item"
-																							style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
-																							type="text" name="amount[]" rel="amount"
-																							onblur="constraintValue('FEE',this); calcAmount()"
-																							class="input_approval"
-																							style="text-align: right; width: 90%" value=""></td>
-																						<td class="item"
-																							style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
-																							type="text" name="orcount[]" rel="count"
-																							onblur="constraintValue('NUMBER',this); calcAmount()"
-																							class="input_approval"
-																							style="text-align: right; width: 90%" value=""></td>
-																						<td class="item"
-																							style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
-																							type="text" name="standard[]"
-																							class="input_approval" style="width: 90%"
-																							value=""></td>
-																						<td class="item"
-																							style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
-																							type="text" name="etc[]" class="input_approval"
-																							style="width: 90%" value=""></td>
-																						<td class="item" rel="fee" align="right"
-																							style="border: solid 1px #C0BFC1;">0</td>
+																					
+																					<tr height="27" align="center" id="calc">
+																						<!-- 품명 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="product" class="product" style="width: 90%;" value="">
+																						</td>
+																						
+																						<!-- 단가 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="unitcost" class="unitcost" style="text-align: right; width: 90%" value="">
+																						</td>
+																						
+																						<!-- 수량 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="amount" class="amount" style="text-align: right; width: 90%" value="">
+																						</td>
+																						
+																						<!-- 규격 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																						<input type="text" name="odersize" class="odersize" style="width: 90%" value="">
+																						</td>
+																						
+																						<!-- 비고 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="ordernote" class="ordernote" style="width: 90%" value="">
+																						</td>
+																						
+																						<!-- 금액출력 -->
+																						<td class="item" align="right" style="border: solid 1px #C0BFC1;">
+																							<input type="text" name="ordercost" class="ordercost" readonly="readonly">
+																						</td>
 																					</tr>
-																					<tr height="27" align="center">
-																						<td class="item"
-																							style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
-																							type="text" name="orname[]"
-																							class="input_approval" style="width: 90%"
-																							value=""></td>
-																						<td class="item"
-																							style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
-																							type="text" name="amount[]" rel="amount"
-																							onblur="constraintValue('FEE',this); calcAmount()"
-																							class="input_approval"
-																							style="text-align: right; width: 90%" value=""></td>
-																						<td class="item"
-																							style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
-																							type="text" name="orcount[]" rel="count"
-																							onblur="constraintValue('NUMBER',this); calcAmount()"
-																							class="input_approval"
-																							style="text-align: right; width: 90%" value=""></td>
-																						<td class="item"
-																							style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
-																							type="text" name="standard[]"
-																							class="input_approval" style="width: 90%"
-																							value=""></td>
-																						<td class="item"
-																							style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input
-																							type="text" name="etc[]" class="input_approval"
-																							style="width: 90%" value=""></td>
-																						<td class="item" rel="fee" align="right"
-																							style="border: solid 1px #C0BFC1;">0</td>
+																					
+																					<tr height="27" align="center" id="calc">
+																						<!-- 품명 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="product" class="product" style="width: 90%;" value="">
+																						</td>
+																						
+																						<!-- 단가 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="unitcost" class="unitcost" style="text-align: right; width: 90%" value="">
+																						</td>
+																						
+																						<!-- 수량 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="amount" class="amount" style="text-align: right; width: 90%" value="">
+																						</td>
+																						
+																						<!-- 규격 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																						<input type="text" name="odersize" class="odersize" style="width: 90%" value="">
+																						</td>
+																						
+																						<!-- 비고 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="ordernote" class="ordernote" style="width: 90%" value="">
+																						</td>
+																						
+																						<!-- 금액출력 -->
+																						<td class="item" align="right" style="border: solid 1px #C0BFC1;">
+																							<input type="text" name="ordercost" class="ordercost" readonly="readonly">
+																						</td>
 																					</tr>
 																				</tbody>
 																			</table>
@@ -779,8 +788,7 @@
 																					</tr>
 																				</tbody>
 																			</table>
-																			<table id="detail_table" width="100%" cellspacing="0"
-																				cellpadding="0" class="tbl_appreport">
+																			<table id="detail_table" width="100%" cellspacing="0" cellpadding="0" class="tbl_appreport">
 																				<tbody>
 																					<tr>
 																						<td width="100" class="title" bgcolor="F1F7F7"
@@ -815,6 +823,44 @@
 		</div>
 	</div>
 </section>
+<script type="text/javascript">
+$('#addline').click(function() {
+	var contents = '';
+	contents += '<tr height="27" align="center" id="calc">';
+	contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" name="product" class="product" style="width: 90%;" value=""></td>';
+	contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" name="unitcost" class="unitcost" style="text-align: right; width: 90%" value=""></td>';
+	contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" name="amount" class="amount" style="text-align: right; width: 90%" value=""></td>';
+	contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" name="odersize" class="odersize" style="width: 90%" value=""></td>';
+	contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" name="ordernote" class="ordernote" style="width: 90%" value=""></td>';
+	contents += '<td class="item" align="right" style="border: solid 1px #C0BFC1;"><input type="text" name="ordercost" class="ordercost" readonly="readonly"></td>';
+	contents += '</tr>';
+	
+	$('#detail_table').append(contents); // 추가
+	
+	
+	 $('.unitcost, .amount, .ordercost').keyup(function() {
+		 $(this).val( $(this).val().replace(/[^0-9]/gi,"") ); //숫자만 입력가능
+	 });
+	
+	 $('.unitcost').keyup(function() {
+		 var num = $(".unitcost").index(this);
+	     $('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
+	 });
+	
+	 $('.amount').keyup(function() {
+	     var num = $(".amount").index(this);
+	     $('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
+	
+	 });
+	
+	 $('.ordercost').keyup(function() {
+	     var num = $(".ordercost").index(this);
+	     $('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
+	 });
+	
+});
+
+</script>
 
 </body>
 </html>
