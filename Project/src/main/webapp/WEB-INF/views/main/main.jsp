@@ -30,15 +30,15 @@ $(function(){
 					alert("이미 출근처리가 됬습니다.");
 				}else {
 					$.ajax({
-					
+						
 						url:"<%=request.getContextPath() %>/attendance/checkin.htm",  //요청 URL
 						type:"get",           //전송 타입
 						dataType:"html",
 						success : function(data){
 							document.getElementById("checkin").innerHTML = data;
 							alert("출근처리가 정상적으로 처리됬습니다.");
-							 if('${latecheck}' != "''"){
-							
+							 if('${latecheck}' != ""){
+								console.log('${latecheck}');
 								 document.getElementById("lateid").style.visibility="visible";
 							 } 
 						},
@@ -275,8 +275,8 @@ setTimeout("go_time()", 1000);
                 <tr>
                 
                 <c:forEach items="${RecentlyPhoto}" var="e"> 
-                    <td>
-                    <img src="<%=request.getContextPath() %>/Upload/BoardFile/${e.boardfilesrc}" style="width: 95px; height: 95px; margin-left: 20px;"> 
+                    <td style=" padding-left: 20px;">
+                    <img src="<%=request.getContextPath() %>/Upload/BoardFile/${e.boardfilesrc}" style="width: 95px; height: 95px;"> 
                     </td>
 
                     </c:forEach>  
@@ -284,8 +284,8 @@ setTimeout("go_time()", 1000);
                    <tr>
                    <c:forEach items="${RecentlyPhoto}" var="e"> 
                    
-                   <td>
-                    ${e.boardtitle}
+                   <td style="padding-left: 20px;">
+                   ${e.boardtitle}
                     </td>
                    
                    </c:forEach>
