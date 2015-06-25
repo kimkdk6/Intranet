@@ -14,7 +14,7 @@
 
 <section class="content-header">
 	<h1>
-		전자결재 문서 작성 <small>출장결과보고서 상세 페이지</small>
+		전자결재 문서 작성 <small>출장 결과 보고서 상세 페이지</small>
 	</h1>
 	<ol class="breadcrumb">
 		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -90,7 +90,7 @@
 													<tr>
 														<td width="120"></td>
 														<td class="dochead" align="center" valign="top"
-															style="font-size: 30px">출장결과보고서</td>
+															style="font-size: 30px">출장 결과 보고서</td>
 												</tbody>
 											</table>
 										</td>
@@ -429,7 +429,7 @@
 														<td height="30" align="center" bgcolor="#E1F9DD"
 															class="m_sp"><b>문서종류</b></td>
 														<td
-															style="border: solid 1px #C0BFC1; padding: 0 0 0 12px;">출장결과보고서</td>
+															style="border: solid 1px #C0BFC1; padding: 0 0 0 12px;">출장 결과 보고서</td>
 													</tr>
 													<tr>
 														<td height="30" align="center" bgcolor="#E1F9DD"

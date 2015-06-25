@@ -485,11 +485,11 @@
 																		<td width="100%" style="padding-top: 20px; border: 0;">
 																			<table id="detail_table" width="100%" cellspacing="0"
 																				cellpadding="0" class="tbl_appreport"
-																				style="border: solid 1px  #C0BFC1;">
+																				style="border: solid 1px #C0BFC1;">
 																				<tbody>
 																					<tr height="35">
 																						<td width="120" class="title" bgcolor="F1F7F7"
-																							align="center" style="border: solid 1px  #C0BFC1;">휴가기간</td>
+																							align="center" style="border: solid 1px #C0BFC1;">휴가기간</td>
 																						<td width="" class="item" align="left"
 																							style="border: solid 1px #C0BFC1; padding-left: 7px;""><input
 																							type="text" name="vafrom" readonly=""
@@ -568,6 +568,27 @@
 				</tbody>
 			</table>
 			</td>
+			</tr>
+			<tr>
+				<td height="30" bgcolor="#ececec"
+					style="border-bottom: 1px #c9c9c9 solid; border-top: 1px #c9c9c9 solid; padding: 0 0 0 12px;">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tbody>
+							<tr>
+								<td align="right" style="padding: 0 12px 0 0;">
+									<table border="0" cellspacing="0" cellpadding="0">
+										<tbody>
+											<tr>
+												<td><input type="button" value="작성완료" onclick="check()">
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
 			</tr>
 			<tr>
 				<td height="30"></td>
