@@ -62,24 +62,23 @@ public class Attendancecontroller {
 
 		return Checkout;
 	}
+	
 	@RequestMapping(value = "latecheck.htm")
 	public @ResponseBody String latecheck(Principal principal,HttpServletRequest request, HttpServletResponse response) throws Exception
 	{
 		
 		AttendanceDAO latecheck = sqlSession.getMapper(AttendanceDAO.class);
-		
-
 		String Latecheck= latecheck.latecheck(principal.getName());
 
 		return Latecheck;
 	}
-
+	
+	/*지각 여부*/
 	@RequestMapping(value = "latereason.htm")
 	public @ResponseBody String latereason(Principal principal,HttpServletRequest request, HttpServletResponse response) throws Exception
 	{
 		
 		AttendanceDAO Latereason = sqlSession.getMapper(AttendanceDAO.class);
-		
 		 Latereason.letereason(principal.getName(),request.getParameter("latereason"));
 		
 		return null;
