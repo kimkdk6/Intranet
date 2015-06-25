@@ -13,9 +13,9 @@
 	rownum as  rnum from ( select * from board where boardcode !=1 order by boardnum desc) a) where rnum <![CDATA[   <= 3  ]]>
   </select>
   
-   <select id="recentlyphoto" resultType="dto_vo.Board.Board" >
+   <select id="recentlyPhoto" resultType="dto_vo.Board.Board" >
     select * from (select a.boardcode, a.boardnum, a.boardnotice, a.userid, a.boardtitle, a.boardcontent, a.boarddate, a.boardcount, a.boardfilesrc, a.boardref, a.boarddepth, a.boardstep,
-	rownum as  rnum from ( select * from board where boardcode = 2 order by boardnum desc) a) where rnum <![CDATA[   <= 3  ]]>
+	rownum as  rnum from ( select * from board where boardcode = 4 order by boardnum desc) a) where rnum <![CDATA[   <= 3  ]]>
   </select>
   
   <select id="checkname" resultType="String">

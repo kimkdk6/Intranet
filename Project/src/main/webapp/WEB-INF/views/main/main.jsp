@@ -273,9 +273,9 @@ setTimeout("go_time()", 1000);
                   <table class="table table-striped">
                      <tr>
              <td height="250" align="left" valign="top" bgcolor="#d2d2d4" style="padding:11px 0 0 17px;"><table width="370" border="0" cellspacing="0" cellpadding="0">
-                <c:forEach items="${RecentlyBoard}" var="e">
+                <c:forEach items="${RecentlyPhoto}" var="e">
                     <tr>
-                    <td><img alt="" src="<%=request.getContextPath() %>/Upload/ProfilePhoto/${e.boardfilesrc}">
+                    <td><img alt="" src="<%=request.getContextPath() %>/Upload/BoardFile/${e.boardfilesrc}">
                     </td>
                     </tr>
                     </c:forEach>  

@@ -53,8 +53,8 @@ public class Logincontroller {
 		List<Board> RecentlyBoard= maindao.recentlyBoard();
 		model.addAttribute("RecentlyBoard", RecentlyBoard);
 		
-		List<Board> Recentlyphoto= maindao.recentlyphoto();
-		model.addAttribute("Recentlyphoto", Recentlyphoto);
+		List<Board> RecentlyPhoto= maindao.recentlyPhoto();
+		model.addAttribute("RecentlyPhoto", RecentlyPhoto);
 		
 		String Checkin= attcheck.checkincheck(principal.getName());
 		

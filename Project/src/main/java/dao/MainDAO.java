@@ -10,5 +10,5 @@ public interface MainDAO {
 	List<Board> recentlyNotice() throws ClassNotFoundException, SQLException;
 	List<Board> recentlyBoard() throws ClassNotFoundException, SQLException;
 	public String checkname(String userid) throws ClassNotFoundException, SQLException;
-	List<Board> recentlyphoto() throws ClassNotFoundException, SQLException;
+	List<Board> recentlyPhoto() throws ClassNotFoundException, SQLException;
 }
