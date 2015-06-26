@@ -59,7 +59,7 @@
       </h3>
    </div>
    <div class="box-body">
-<form name="signform" action="" method="post" >
+<form name="signform" action="" method="post"  enctype="multipart/form-data">
 <input type="hidden" id="signtype" name="signtype" value="1">
 <input type="hidden" id="dept" name="dept" value="${sessionScope.dept}">
 <input type="hidden" id="team" name="team" value="${sessionScope.team}">
@@ -607,7 +607,7 @@
                               <tr>
                                  <td align="center" bgcolor="#f6f6f6" class="m_sp"><b>파일첨부</b></td>
                                  <td colspan="2" style="padding: 0 0 0 12px;">
-                                 <input id="signfilesrc" name="signfilesrc" type="file"></td>
+                                 <input id="file" name="file" type="file"></td>
                               </tr>
                      
                               <tr>

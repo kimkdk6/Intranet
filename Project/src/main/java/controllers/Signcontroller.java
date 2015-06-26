@@ -1,9 +1,18 @@
 package controllers;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.security.Principal;
 import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
+
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +21,11 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import dao.SignDAO;
+import dto_vo.Board.File;
 import dto_vo.Emp.Dept;
 import dto_vo.Emp.Emp;
 import dto_vo.Emp.Position;
@@ -134,8 +146,8 @@ public class Signcontroller {
 	@Transactional
 	@RequestMapping(value = "DraftingReg.htm", method = RequestMethod.POST)
 	public String DraftingReg(Sign sign, Draftingdoc drafting,
-			Signline signline, Principal principal)
-			throws ClassNotFoundException, SQLException {
+			Signline signline, Principal principal, File File)
+			throws ClassNotFoundException, SQLException, IOException {
 		int totalsign=0;
 		System.out.println("기안서 작성");
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
@@ -173,6 +185,29 @@ public class Signcontroller {
 		
 		signline.setSignning(sign.getSigner2());
 		
+		
+		CommonsMultipartFile file = File.getFile();
+	      Calendar cal = Calendar.getInstance();
+	      String fileName = null;
+	      if(!file.isEmpty()){
+				//이 경우라면 최소 한개는 파일첨부
+				String fname = cal.getTimeInMillis()+file.getOriginalFilename();
+				//String path = request.getServletContext().getRealPath("/Upload/ProfilePhoto/");
+				String path = finaldata.path+"SignFile";
+				
+				String fullpath = path + "\\" + fname;
+				System.out.println(fullpath);
+				if(!fname.equals("")){
+					//서버에 물리적 경로 파일쓰기작업
+					FileOutputStream fs = new FileOutputStream(fullpath);
+					fs.write(file.getBytes());
+					fs.close();
+				}
+				fileName = fname; //파일의 이름만 별도 관리
+			}
+		
+	    sign.setSignfilesrc(fileName);  
+		
 		System.out.println(signline.toString());
 		signdao.insertSign(sign);
 		signdao.insertSignline(signline);
@@ -186,7 +221,7 @@ public class Signcontroller {
 	public String DraftingDetail(String docnum, Model model)
 			throws ClassNotFoundException, SQLException {
 		System.out.println("기안서 상세페이지 보기");
-
+				
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
 		// 결재 문서(기본 내용)
 		Sign sign = signdao.getSign(docnum);
@@ -194,11 +229,26 @@ public class Signcontroller {
 		Draftingdoc draftingdoc = signdao.getDraftingdoc(docnum);
 		// 결재라인
 		Signline signline = signdao.getSignline(docnum);
-
+		
 		model.addAttribute("sign", sign);
 		model.addAttribute("draftingdoc", draftingdoc);
 		model.addAttribute("signline", signline);
 		return "sign.DraftingDetail";
+	}
+	
+	@RequestMapping(value = "signerlist.htm", method = RequestMethod.GET)
+	public String signerlist(String userid, Model model)
+			throws ClassNotFoundException, SQLException {
+		System.out.println("signer 상세페이지 보기");
+				
+		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
+		// 결재 문서(기본 내용)
+		
+		// 결재자 정보
+		Emp signer = signdao.getEmp(userid);
+		
+		model.addAttribute("signer", signer);
+		return "redirect:DraftingDetail.htm";
 	}
 	
 	// 결재문서 승인
@@ -444,4 +494,30 @@ public class Signcontroller {
 		return "sign.PrintPage";
 	}
 
+	@RequestMapping("download.htm")
+	public void download(@RequestParam(value="f")String f,
+			HttpServletRequest request , 
+			HttpServletResponse response) throws IOException{
+
+		String fname = new String(f.getBytes("euc-kr"),"8859_1");
+
+		response.setHeader("Content-Disposition", "attachment;filename=" + fname +";");
+		//String fullpath = request.getServletContext().getRealPath("/Upload/" + p + "/" + f);
+		//String fullpath = request.getServletContext().getRealPath("/Upload/BoardFile/" + f);
+		
+		
+		String fullpath = finaldata.path + "SignFile\\"+f;
+		System.out.println(fullpath);
+		FileInputStream fin = new FileInputStream(fullpath);
+
+		ServletOutputStream sout = response.getOutputStream();
+		byte[] buf = new byte[1024]; //전체를 다읽지 않고 1204byte씩 읽어서
+		int size = 0;
+		while((size=fin.read(buf,0,buf.length)) != -1) //buffer 에 1024byte 담고
+		{                                              //마지막 남아있는 byte 담고  그다음 없으면 탈출
+			sout.write(buf, 0, size); //1kbyte씩 출력 
+		}
+		fin.close();
+		sout.close();
+	}
 }

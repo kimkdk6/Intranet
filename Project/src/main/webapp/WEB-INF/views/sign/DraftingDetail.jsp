@@ -154,8 +154,11 @@
                                              </b></td>
                                              <td width="19%"
                                                 style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;">기안자</td>
+                                             
                                              <td width="19%"
-                                                style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;">${sign.signer2}</td>
+                                                style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;">
+                                                	${sign.signer2}
+                                                </td>
                                              <td width="19%"
                                                 style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;">${sign.signer3}</td>
                                              <td width="19%"
@@ -174,7 +177,7 @@
 	                                                      		<td height="42" align="center" valign="middle"
 	                                                            background="../resources/img/stamp_bg.gif"
 	                                                            style="background-repeat: no-repeat; color: #d30000; font-size: 11px; letter-spacing: -1px; padding: 3px 0 0 0;">
-	                                                            ${sign.signer1}</td>
+	                                                            <div class="signer1"> ${sign.signer1} </div></td>
 	                                                      	</c:when>
 	                                                      	<c:otherwise>
 	                                                      		<td>${sign.signer1}</td>
@@ -182,7 +185,7 @@
 	                                                      </c:choose>
                                                       </tr>
                                                       <tr>
-                                                         <td height="20" align="center">${sign.signer1}</td>
+                                                         <td height="20" align="center"><div class="signer1">${sign.signer1}</div></td>
                                                       </tr>
                                                    </tbody>
                                                 </table>
@@ -512,7 +515,14 @@
                                  <td style="padding: 7px 0 7px 12px;">${sign.draftdate }</td>
                               </tr>
                              
-                              
+                              <tr>
+                                 <td height="30" align="center" bgcolor="#f6f6f6" class="m_sp"
+                                    style="padding: 7px 0 7px 0"><b>첨부파일</b></td>
+                                 <td style="padding: 7px 0 7px 12px;">
+                                 	<a
+									href="${pageContext.request.contextPath}/sign/download.htm?f=${sign.signfilesrc}">${sign.signfilesrc}</a>
+                                 </td>
+                              </tr>
                              
                               <tr>
                                  <td height="30" align="center" bgcolor="#f6f6f6" class="m_sp"><b>제목</b></td>

@@ -116,6 +116,15 @@
 		select *
 		from emp
 	</select>
+	<!-- 사원 가져오기  -->
+	<select id="getEmp" resultType="dto_vo.Emp.Emp">
+		 select e.userid, e.ename, d.deptname as deptcode, p.posname as poscode
+         from emp e join dept d 
+                    on e.DEPTCODE = d.DEPTCODE
+                    join position p
+                    on e.POSCODE = p.POSCODE
+         where e.userid = #{userid}
+	</select>
 	<!-- 팀 목록 가져오기  -->
 	<select id="getTeams" resultType="dto_vo.Emp.Team">
 		select *

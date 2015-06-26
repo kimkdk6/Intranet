@@ -31,13 +31,15 @@ public interface SignDAO {
 	// 결재 라인 가져오기
 	public Signline getSignline(String docnum) throws ClassNotFoundException, SQLException;
 
-	// 부서 가져오기
+	// 부서 리스트 가져오기
 	public List<Dept> getDepts() throws ClassNotFoundException, SQLException;
-	// 사원 가져오기
+	// 사원 리스트 가져오기
 	public List<Emp> getEmps() throws ClassNotFoundException, SQLException;
-	// 팀 가져오기
+	// 사원 가져오기
+	public Emp getEmp(String userid) throws ClassNotFoundException, SQLException;
+	// 팀 리스트 가져오기
 	public List<Team> getTeams() throws ClassNotFoundException, SQLException;
-	// 직급 가져오기
+	// 직급 리스트 가져오기
 	public List<Position> getPositions() throws ClassNotFoundException, SQLException;
 	
 	// 모든 결재
