@@ -975,3 +975,10 @@ be a descendant of the grid when it is being dragged.
 .fc-time-grid-event .fc-resizer:after {
 	content: "=";
 }
+
+.fc-sat {
+	color:blue;
+}
+.fc-sun {
+	color:red;
+}

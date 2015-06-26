@@ -1,4 +1,4 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
    
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -16,18 +16,21 @@
         <section class="content">
           <div class="row">
             <div class="col-md-3">
+              
+              
+              
               <div class="box box-solid">
                 <div class="box-header with-border">
-                  <h4 class="box-title">Draggable Events</h4>
+                  <h4 class="box-title">부서 일정</h4>
                 </div>
                 <div class="box-body">
                   <!-- the events -->
                   <div id='external-events'>
-                    <div class='external-event bg-green'>Lunch</div>
-                    <div class='external-event bg-yellow'>Go home</div>
-                    <div class='external-event bg-aqua'>Do homework</div>
-                    <div class='external-event bg-light-blue'>Work on UI design</div>
-                    <div class='external-event bg-red'>Sleep tight</div>
+<!--                     <div class='external-event bg-green'>Lunch</div> -->
+<!--                     <div class='external-event bg-yellow'>Go home</div> -->
+<!--                     <div class='external-event bg-aqua'>Do homework</div> -->
+<!--                     <div class='external-event bg-light-blue'>Work on UI design</div> -->
+<!--                     <div class='external-event bg-red'>Sleep tight</div> -->
                     <div class="checkbox">
                       <label for='drop-remove'>
                         <input type='checkbox' id='drop-remove' />
@@ -37,6 +40,53 @@
                   </div>
                 </div><!-- /.box-body -->
               </div><!-- /. box -->
+              
+              
+              <div class="box box-solid">
+                <div class="box-header with-border">
+                  <h4 class="box-title">팀 일정</h4>
+                </div>
+                <div class="box-body">
+                  <!-- the events -->
+                  <div id='external-events'>
+<!--                     <div class='external-event bg-green'>Lunch</div> -->
+<!--                     <div class='external-event bg-yellow'>Go home</div> -->
+<!--                     <div class='external-event bg-aqua'>Do homework</div> -->
+<!--                     <div class='external-event bg-light-blue'>Work on UI design</div> -->
+<!--                     <div class='external-event bg-red'>Sleep tight</div> -->
+                    <div class="checkbox">
+                      <label for='drop-remove'>
+                        <input type='checkbox' id='drop-remove' />
+                        remove after drop
+                      </label>
+                    </div>
+                  </div>
+                </div><!-- /.box-body -->
+              </div><!-- /. box -->
+              
+              <div class="box box-solid">
+                <div class="box-header with-border">
+                  <h4 class="box-title">개인 일정</h4>
+                </div>
+                <div class="box-body">
+                  <!-- the events -->
+                  <div id='external-events'>
+<!--                     <div class='external-event bg-green'>Lunch</div> -->
+<!--                     <div class='external-event bg-yellow'>Go home</div> -->
+<!--                     <div class='external-event bg-aqua'>Do homework</div> -->
+<!--                     <div class='external-event bg-light-blue'>Work on UI design</div> -->
+<!--                     <div class='external-event bg-red'>Sleep tight</div> -->
+                    <div class="checkbox">
+                      <label for='drop-remove'>
+                        <input type='checkbox' id='drop-remove' />
+                        remove after drop
+                      </label>
+                    </div>
+                  </div>
+                </div><!-- /.box-body -->
+              </div><!-- /. box -->
+              
+              
               <div class="box box-solid">
                 <div class="box-header with-border">
                   <h3 class="box-title">Create Event</h3>
@@ -68,12 +118,23 @@
                   </div><!-- /input-group -->
                 </div>
               </div>
+              
+              
+              
+              
             </div><!-- /.col -->
+            
+            
             <div class="col-md-9">
               <div class="box box-primary">
                 <div class="box-body no-padding">
                   <!-- THE CALENDAR -->
+                  
+                  
                   <div id="calendar"></div>
+                  
+                  
+                  
                 </div><!-- /.box-body -->
               </div><!-- /. box -->
             </div><!-- /.col -->
@@ -83,8 +144,8 @@
      
       
 
-    <script type="text/javascript">
-      $(function () {
+    <script type="text/javascript"> 
+    $(function () {
 
         /* initialize the external events
          -----------------------------------------------------------------*/
@@ -118,17 +179,19 @@
         var d = date.getDate(),
                 m = date.getMonth(),
                 y = date.getFullYear();
+        
+        
         $('#calendar').fullCalendar({
           header: {
             left: 'prev,next today',
             center: 'title',
-            right: 'month,agendaWeek,agendaDay'
+            right: 'month,basicWeek,basicDay'
           },
           buttonText: {
-            today: 'today',
-            month: 'month',
-            week: 'week',
-            day: 'day'
+            today: '오늘',
+            month: '월간',
+            week: '주간',
+            day: '일간'
           },
           //Random default events
           events: [

@@ -7,8 +7,7 @@
     <meta charset="UTF-8">
     <title>AdminLTE 2 | Dashboard</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-   <link href="<%=request.getContextPath() %>/resources/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css" />
-    <link href="<%=request.getContextPath() %>/resources/plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" type="text/css" media='print' />
+   
     <!-- Bootstrap 3.3.4 -->
     <link href="<%=request.getContextPath() %>/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" />    
     <!-- FontAwesome 4.3.0 -->
@@ -95,7 +94,10 @@
     <!-- AdminLTE for demo purposes -->
     <script src="<%=request.getContextPath() %>/resources/js/demo.js" type="text/javascript"></script>
   
-  <script src="<%=request.getContextPath() %>/resources/plugins/fullcalendar/fullcalendar.min.js" type="text/javascript"></script>
+  <script src="<%=request.getContextPath() %>/resources/plugins/fullcalendar/fullcalendar.js" type="text/javascript"></script>
+  <link href="<%=request.getContextPath() %>/resources/plugins/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css" />
+  <link href="<%=request.getContextPath() %>/resources/plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" type="text/css" media='print' />
+    
   </head>
   <body class="skin-blue sidebar-mini">
     <div class="wrapper">
