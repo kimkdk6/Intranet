@@ -22,4 +22,24 @@
    select ename from emp where userid = #{userid}
   </select>
   
+  <select id="getUnSigns" resultType="Integer">
+  select count(*) from (
+            select rownum, a.DOCNUM, a.USERID, a.SIGNTYPE, a.SIGNSTATE, a.DEPT, a.TEAM, a.DRAFTDATE, 
+                    a.SIGNTITLE, a.ENAME, a.POSNAME, a.TOTALSIGN, a.CURRSIGN, a.REFRESHDATE
+            from (
+                      select s.DOCNUM, s.USERID, s.SIGNTYPE, s.SIGNSTATE, s.DEPT, s.TEAM, s.DRAFTDATE, 
+                              s.SIGNTITLE, s.ENAME, s.POSNAME, s.TOTALSIGN, s.CURRSIGN, s.REFRESHDATE
+                      from sign s join signline sl
+                      on s.DOCNUM = sl.DOCNUM
+                      where signstate = 0 and sl.SIGNNING = #{userid}
+                      order by s.REFRESHDATE desc
+                    ) a
+        
+     	)
+  </select>
+    <select id="getReceiveSigns" resultType="Integer">
+		select count(*)
+        from sign 
+        where signstate = 0 and USERID = #{userid}
+  </select>
   </mapper>

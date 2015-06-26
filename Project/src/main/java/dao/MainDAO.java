@@ -11,4 +11,7 @@ public interface MainDAO {
 	List<Board> recentlyBoard() throws ClassNotFoundException, SQLException;
 	public String checkname(String userid) throws ClassNotFoundException, SQLException;
 	List<Board> recentlyPhoto() throws ClassNotFoundException, SQLException;
+	public int getUnSigns(String userid) throws ClassNotFoundException, SQLException;
+	public int getReceiveSigns(String userid) throws ClassNotFoundException, SQLException;
+	
 }

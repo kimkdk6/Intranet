@@ -85,7 +85,7 @@ public class Attendancecontroller {
 	}
 	
 	@RequestMapping(value = "Commute.htm")
-	public @ResponseBody String commute(Principal principal,HttpServletRequest request, HttpServletResponse response) throws Exception
+	public String commute(Principal principal,HttpServletRequest request, HttpServletResponse response) throws Exception
 	{
 	
 		/*AttendanceDAO checkin = sqlSession.getMapper(AttendanceDAO.class);
@@ -96,5 +96,16 @@ public class Attendancecontroller {
 		return "attendance.Commute";
 	}
 	
+	@RequestMapping(value = "AttendanceCheck.htm")
+	public String AttendanceCheck(Principal principal,HttpServletRequest request, HttpServletResponse response) throws Exception
+	{
+	
+		/*AttendanceDAO checkin = sqlSession.getMapper(AttendanceDAO.class);
+
+		checkin.checkin(principal.getName());
+		String Attendance= checkin.checkincheck(principal.getName());*/
+
+		return "attendance.AttendanceCheck";
+	}
 	
 }

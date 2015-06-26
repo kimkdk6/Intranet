@@ -11,6 +11,9 @@ String date = String.format("%TF",now);
 <c:set var="incheck" value="${Checkin}" />
 <c:set var="outcheck" value="${Checkout}" />
 <c:set var="latecheck" value="${Latecheck}" />
+<c:set var="getUnSigns" value="${getUnSigns}" />
+<c:set var="getReceiveSigns" value="${getReceiveSigns}" />
+
  <script type="text/javascript">
 $(function(){
 	var latech = "";
@@ -166,16 +169,18 @@ setTimeout("go_time()", 1000);
                         
                         </tr>
                         <tr>
-                          <td ><b>&nbsp&nbsp결재문서</b> : <a href=""><font color="#4e5fe8"><b><span>0</span></b></font>건</a></td>
+						<td ><b>&nbsp&nbsp상신문서</b> : <a href="${pageContext.request.contextPath}/sign/SendsignsList.htm"><font color="#4e5fe8"><b><span >${getReceiveSigns}</span></b></font>건</a></td>   
+						</tr>
+                        <tr>
+                          <td ><b>&nbsp&nbsp결재문서</b> : <a href="${pageContext.request.contextPath}/sign/ReceiveSignList.htm?type=2"><font color="#4e5fe8"><b><span>${getUnSigns}</span></b></font>건</a></td>
                           
                         </tr>
+                        
                         <tr>
                           <td><b>&nbsp&nbsp쪽&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp지</b> : <a href=""><font color="#4e5fe8"><b>0</b></font>건</a></td>
                         </tr>
 						
-						<tr>
-						<td ><b>&nbsp&nbsp상신문서</b> : <a href=""><font color="#4e5fe8"><b><span >3</span></b></font>건</a></td>   
-						</tr>
+						
                       </table>
                       <table >
                       <tr>

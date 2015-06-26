@@ -70,6 +70,11 @@ public class Logincontroller {
 		String Checkname = maindao.checkname(principal.getName());
 		model.addAttribute("Checkname", Checkname);
 		
+		int getUnSigns = maindao.getUnSigns(principal.getName());
+		model.addAttribute("getUnSigns", getUnSigns);
+		
+		int getReceiveSigns = maindao.getReceiveSigns(principal.getName());
+		model.addAttribute("getReceiveSigns", getReceiveSigns);
 		
 		
 		// 로그인 성공
