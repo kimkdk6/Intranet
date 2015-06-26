@@ -12,5 +12,7 @@ public interface AttendanceDAO {
 	public String checkoutcheck(String userid) throws ClassNotFoundException, SQLException;
 	public String latecheck(String userid) throws ClassNotFoundException, SQLException;
 	public int letereason(String userid, String reason) throws ClassNotFoundException, SQLException;
+	public String leavecheck(String userid, String reason) throws ClassNotFoundException, SQLException;
 
+	
 }

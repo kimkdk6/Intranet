@@ -83,6 +83,16 @@ public class Attendancecontroller {
 		
 		return null;
 	}
+	/*조퇴 여부*/
+	@RequestMapping(value = "latereason.htm")
+	public @ResponseBody String leavereason(Principal principal,HttpServletRequest request, HttpServletResponse response) throws Exception
+	{
+	
+		AttendanceDAO leavereason = sqlSession.getMapper(AttendanceDAO.class);
+		leavereason.leavecheck(principal.getName(),request.getParameter("leavereason"));
+
+		return null;
+	}
 	
 	@RequestMapping(value = "Commute.htm")
 	public String commute(Principal principal,HttpServletRequest request, HttpServletResponse response) throws Exception

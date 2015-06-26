@@ -11,18 +11,22 @@ String date = String.format("%TF",now);
 <c:set var="incheck" value="${Checkin}" />
 <c:set var="outcheck" value="${Checkout}" />
 <c:set var="latecheck" value="${Latecheck}" />
+\<c:set var="leavecheck" value="${Leavecheck}" />
 <c:set var="getUnSigns" value="${getUnSigns}" />
 <c:set var="getReceiveSigns" value="${getReceiveSigns}" />
 <c:set var="UserPhoto" value="${UserPhoto}" />
 
  <script type="text/javascript">
 $(function(){
-	var latech = "";
+
+	console.log('${latecheck}');
 	if('${latecheck}' != ""){
 		 vi();
 	}
 	function vi(){
-		document.getElementById("lateid").style.visibility="visible";
+		document.getElementById("commute").innerHTML = '&nbsp&nbsp&nbsp&nbsp&nbsp지각사유 :' ;
+		document.getElementById("commutecheck").style.visibility="visible";
+		document.getElementById("latereason").style.visibility="visible";
 	}
 	$('#checkinAjax').click(function(){
 		$.ajax({
@@ -41,9 +45,10 @@ $(function(){
 						success : function(data){
 							document.getElementById("checkin").innerHTML = data;
 							alert("출근처리가 정상적으로 처리됬습니다.");
-							 if('${latecheck}' != ""){
-								console.log('${latecheck}');
-								 document.getElementById("lateid").style.visibility="visible";
+							 if('${leavecheck}' != "''"){
+								 document.getElementById("commute").innerHTML = '&nbsp&nbsp&nbsp&nbsp&nbsp지각사유 :' ;								
+ 								 document.getElementById("commutecheck").style.visibility="visible";
+ 								document.getElementById("latereason").style.visibility="visible";
 							 } 
 						},
 						error :function(data){alert("이미 출근처리가 됬습니다.");}
@@ -74,6 +79,12 @@ $(function(){
 						success : function(data){
 							alert("퇴근처리가 정상적으로 처리됬습니다."),
 							document.getElementById("checkout").innerHTML = data;
+							 if('${leavecheck}' != ""){
+				
+									 document.getElementById("commute").innerHTML = '&nbsp&nbsp&nbsp&nbsp&nbsp조퇴사유 :' ;
+									 document.getElementById("commutecheck").style.visibility="visible";
+									 document.getElementById("leavereason").style.visibility="visible";
+							 } 
 						},
 						error :function(data){alert("이미 퇴근처리가 됬습니다.");}
 					});
@@ -97,6 +108,25 @@ $(function(){
 			dataType:"html",
 			success : function(data){
 				alert('지각 사유 입력 완료');
+			},
+			error :function(data){
+				alert('이미 처리되었습니다.');
+			}
+		});
+			
+		});
+	
+	$('#leavebtton').click(function(){
+		var form_data = {
+				latereason : document.getElementById("latereason").value
+			};
+		$.ajax({
+			url:"<%=request.getContextPath() %>/attendance/latereason.htm", 
+			type:"get",           
+			data: form_data,
+			dataType:"html",
+			success : function(data){
+				alert('조퇴 사유 입력 완료');
 			},
 			error :function(data){
 				alert('이미 처리되었습니다.');
@@ -207,19 +237,17 @@ setTimeout("go_time()", 1000);
                        <tr>
                       <td height="8" colspan="2"></td>
                       </tr>
-                   
-                 
-                		  <tr id="lateid" style="visibility: hidden;">
+                		  <tr id="commutecheck" style="visibility: hidden;">
                       	<td >
-                      		<b >&nbsp&nbsp&nbsp&nbsp&nbsp지각사유 :</b>
+                      		<b id="commute"></b>
                       	</td>
                       	
-                       	<td><input type="text" id="latereason" style="border:2px solid #e3e3e3; width:100px;">
+                       	<td><input type="text" id="latereason" style="border:2px solid #e3e3e3; width:100px; visibility: hidden;" >
+                       		<input type="text" id="leavereason" style="border:2px solid #e3e3e3; width:100px; visibility: hidden;">
                       	</td>
                       	<td style="padding-left: 5px;"><button class="btn btn-block btn-default btn-sm" id ="latebtton" style="padding-top: 2px; padding-bottom: 2px;">저장</button></td>
                       </tr>
-                  
-                     
+
                       </table>
                       
 					  </td>
