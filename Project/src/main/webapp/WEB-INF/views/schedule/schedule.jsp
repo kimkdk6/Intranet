@@ -26,11 +26,11 @@
 				<div class="box-body">
 					<!-- the events -->
 					<div id='external-events'>
-						<!--                     <div class='external-event bg-green'>Lunch</div> -->
-						<!--                     <div class='external-event bg-yellow'>Go home</div> -->
-						<!--                     <div class='external-event bg-aqua'>Do homework</div> -->
-						<!--                     <div class='external-event bg-light-blue'>Work on UI design</div> -->
-						<!--                     <div class='external-event bg-red'>Sleep tight</div> -->
+						                    <div class='external-event bg-green'> 점심식사</div>
+						                    <div class='external-event bg-yellow'>Go home</div>
+						                    <div class='external-event bg-aqua'>Do homework</div>
+						                    <div class='external-event bg-light-blue'>Work on UI design</div>
+						                    <div class='external-event bg-red'>Sleep tight</div>
 						<div class="checkbox">
 							<label for='drop-remove'> <input type='checkbox'
 								id='drop-remove' /> remove after drop
@@ -42,52 +42,6 @@
 			</div>
 			<!-- /. box -->
 
-
-			<div class="box box-solid">
-				<div class="box-header with-border">
-					<h4 class="box-title">팀 일정</h4>
-				</div>
-				<div class="box-body">
-					<!-- the events -->
-					<div id='external-events'>
-						<!--                     <div class='external-event bg-green'>Lunch</div> -->
-						<!--                     <div class='external-event bg-yellow'>Go home</div> -->
-						<!--                     <div class='external-event bg-aqua'>Do homework</div> -->
-						<!--                     <div class='external-event bg-light-blue'>Work on UI design</div> -->
-						<!--                     <div class='external-event bg-red'>Sleep tight</div> -->
-						<div class="checkbox">
-							<label for='drop-remove'> <input type='checkbox'
-								id='drop-remove' /> remove after drop
-							</label>
-						</div>
-					</div>
-				</div>
-				<!-- /.box-body -->
-			</div>
-			<!-- /. box -->
-
-			<div class="box box-solid">
-				<div class="box-header with-border">
-					<h4 class="box-title">개인 일정</h4>
-				</div>
-				<div class="box-body">
-					<!-- the events -->
-					<div id='external-events'>
-						<!--                     <div class='external-event bg-green'>Lunch</div> -->
-						<!--                     <div class='external-event bg-yellow'>Go home</div> -->
-						<!--                     <div class='external-event bg-aqua'>Do homework</div> -->
-						<!--                     <div class='external-event bg-light-blue'>Work on UI design</div> -->
-						<!--                     <div class='external-event bg-red'>Sleep tight</div> -->
-						<div class="checkbox">
-							<label for='drop-remove'> <input type='checkbox'
-								id='drop-remove' /> remove after drop
-							</label>
-						</div>
-					</div>
-				</div>
-				<!-- /.box-body -->
-			</div>
-			<!-- /. box -->
 
 
 			<div class="box box-solid">
@@ -173,18 +127,26 @@
 <script type="text/javascript"> 
     $(function () {
 
-        /* initialize the external events
+        /* initialize the external events 
+        // 외부 이벤트들을 초기화한다.
          -----------------------------------------------------------------*/
-        function ini_events(ele) {
-          ele.each(function () {
+        function ini_events(ele) { //$('h3').each(function(index,item))
+          ele.each(function () {   //  each는 반복문..
+        	  
 
+	
             // create an Event Object 
+            // 이벤트 객체를 생성한다.
             // it doesn't need to have a start or end
+            // 시작 이나 끝이 필요하지 않다.(??)
+            
             var eventObject = {
               title: $.trim($(this).text()) // use the element's text as the event title
+              								// 엘리먼트의 text 값을 이벤트 제목으로 사용	
             };
 
             // store the Event Object in the DOM element so we can get to it later
+            
             $(this).data('eventObject', eventObject);
 
             // make the event draggable using jQuery UI
@@ -197,15 +159,15 @@
           });
         }
         
-        ini_events($('#external-events div.external-event'));
+//        ini_events($('#external-events div.external-event'));
 
         /* initialize the calendar
          -----------------------------------------------------------------*/
         //Date for the calendar events (dummy data)
         var date = new Date();
         var d = date.getDate(),
-                m = date.getMonth(),
-                y = date.getFullYear();
+            m = date.getMonth(),
+            y = date.getFullYear();
         
         
         $('#calendar').fullCalendar({
@@ -220,7 +182,25 @@
             week: '주간',
             day: '일간'
           },
+          
+          
+          events: [
+                   {
+                     title: '이벤트 테스트',
+                     start: new Date(y, m, 1,12,30),//년,월,일,시,분
+                     end: new Date(y, m, 5,12,30),
+                     backgroundColor: "#f56954", //red
+                     borderColor: "#f56954" //red
+                   }
+                  ],
+          
+          
+          
+          
+          
           //Random default events
+          
+          /*
           events: [
             {
               title: 'All Day Event',
@@ -267,6 +247,7 @@
               borderColor: "#3c8dbc" //Primary (light-blue)
             }
           ],
+          */
           editable: true,
           droppable: true, // this allows things to be dropped onto the calendar !!!
           drop: function (date, allDay) { // this function is called when something is dropped
