@@ -138,12 +138,19 @@
                      var valid = true;
 
                      if (valid) {
+                    	  
+                    	  var res = $('input[name="name"]:checked').val().split(",");  
+                    	  var checkedvalpos = res[2];
+                    	  var checkedvalname = res[1]+" 님";
+                    	  var checkedvalid = res[0];
+                    		console.log("아이디1: "+checkedvalid.trim());  
                     	 $("#opener").hide();
                     	 $("#cancel").show();
+                    	 $("#dept0").html("<div id='dept0_'>"+checkedvalpos+"</div>");
                     	 $("#users").prepend(
-									"<td id='signer_1'>" + $('input[name="name"]:checked').val() + 
+									"<td id='signer_1'>" + checkedvalname + 
 									"<input type='hidden' name='signer2' id='signer2' value='"+
-									 $('input[name="name"]:checked').val().trim()+"'></td>");  
+									checkedvalid.trim()+"'></td>");  
                     	
                         dialog.dialog("close");
                      }
@@ -152,6 +159,7 @@
                     	 $(this).hide('fast',function(){
                     		 $("#signer_1").remove();
                     		 $("#signer2").remove();
+                    		 $("#dept0_").remove();
                     		 $("#opener").show();
                     	 });
                     	 
@@ -186,12 +194,18 @@
                       var valid = true;
 
                       if (valid) {
+                    	  var res = $('input[name="name1"]:checked').val().split(",");  
+                    	  var checkedvalpos = res[2];
+                    	  var checkedvalname = res[1]+" 님";
+                    	  var checkedvalid = res[0];
+                    		console.log("아이디2: "+checkedvalid.trim()); 
                     	 $("#opener1").hide();
                      	 $("#cancel1").show();
+                     	 $("#dept1").html("<div id='dept1_'>"+checkedvalpos+"</div>");
                      	 $("#users1").prepend(
- 									"<td id='signer_2'>" + $('input[name="name1"]:checked').val() + 
+ 									"<td id='signer_2'>" + checkedvalname  + 
  									"<input type='hidden' name='signer3' id='signer3' value='"+
- 									 $('input[name="name1"]:checked').val().trim()+"'></td>");  
+ 									checkedvalid.trim()+"'></td>");  
                      	
                          dialog1.dialog("close");
                       }
@@ -200,6 +214,7 @@
                      	 $(this).hide('fast',function(){
                      		 $("#signer_2").remove();
                      		 $("#signer3").remove();
+                     		 $("#dept1_").remove();
                      		 $("#opener1").show();
                      	 });
                      	 
@@ -233,13 +248,18 @@
                       var valid = true;
 
                       if (valid) {
-                     	 
+                    	  var res = $('input[name="name2"]:checked').val().split(",");  
+                    	  var checkedvalpos = res[2];
+                    	  var checkedvalname = res[1]+" 님";
+                    	  var checkedvalid = res[0];
+                    		console.log("아이디3: "+checkedvalid.trim()); 
                      	 $("#opener2").hide();
                      	 $("#cancel2").show();
+                     	 $("#dept2").html("<div id='dept2_'>"+checkedvalpos+"</div>");
                      	 $("#users2").prepend(
- 									"<td id='signer_3'>" + $('input[name="name2"]:checked').val() + 
+ 									"<td id='signer_3'>" + checkedvalname + 
  									"<input type='hidden' name='signer4' id='signer4' value='"+
- 									 $('input[name="name2"]:checked').val().trim()+"'></td>");  
+ 									checkedvalid.trim()+"'></td>");  
                      	
                      	 
                      	 dialog2.dialog("close");
@@ -249,6 +269,7 @@
                       	 $(this).hide('fast',function(){
                       		 $("#signer_3").remove();
                       		 $("#signer4").remove();
+                      		 $("#dept2_").remove();
                       		 $("#opener2").show();
                       	 });
                       	 
@@ -282,12 +303,18 @@
                       var valid = true;
 
                       if (valid) {
+                    	  var res = $('input[name="name3"]:checked').val().split(",");  
+                    	  var checkedvalpos = res[2];
+                    	  var checkedvalname = res[1]+" 님";
+                    	  var checkedvalid = res[0];
+                    		console.log("아이디4: "+checkedvalid.trim()); 
                      	 $("#opener3").hide();
                      	 $("#cancel3").show();
+                     	 $("#dept3").html("<div id='dept3_'>"+checkedvalpos+"</div>");
                      	 $("#users3").prepend(
- 									"<td id='signer_4'>" + $('input[name="name3"]:checked').val() + 
+ 									"<td id='signer_4'>" + checkedvalname + 
  									"<input type='hidden' name='signer5' id='signer5' value='"+
- 									 $('input[name="name3"]:checked').val().trim()+"'></td>");  
+ 									checkedvalid.trim()+"'></td>");  
                      	 
                          dialog3.dialog("close");
                       }
@@ -296,6 +323,7 @@
                        	 $(this).hide('fast',function(){
                        		 $("#signer_4").remove();
                        		 $("#signer5").remove();
+                       		 $("#dept3_").remove();
                        		 $("#opener3").show();
                        	 });
                        	 
@@ -382,7 +410,7 @@
                                     <b>문서번호</b>
                                  </td>
                                  <td width="" style="padding: 0 0 0 12px;"></td>
-                                 <td width="365" rowspan="6" align="center" valign="top" style="padding: 0; border-bottom:1px #afafaf solid;">
+                                 <td width="365" rowspan="3" align="center" valign="top" style="padding: 0; border-bottom:1px #afafaf solid;">
 
                                     <table width="100%" class="tbl_c9c9c9" cellpadding="0" cellspacing="0">
                                        <tbody>
@@ -418,9 +446,9 @@
                                                                         <c:if test="${t.teamcode == e.teamcode }">
                                                                            <c:forEach items="${pos}" var="p">
                                                                               <c:if test="${p.poscode == e.poscode}">
-                                                                              <input type="radio" name="name" id="name" value="${e.userid}" >
+                                                                              <input type="radio" name="name" id="name" value="${e.userid},${e.ename},${p.posname}" >
                                                                                  <i class="fa fa-fw fa-user-plus"></i> 
-                                                                                 ${t.teamname} ${e.ename} ${p.posname }
+                                                                                 	${t.teamname} ${e.ename} ${p.posname}
                                                                                  <hr>
                                                                               </c:if>
                                                                            </c:forEach>
@@ -460,7 +488,7 @@
                                                                         <c:if test="${t.teamcode == e.teamcode }">
                                                                            <c:forEach items="${pos}" var="p">
                                                                               <c:if test="${p.poscode == e.poscode}">
-                                                                                 <input type="radio" name="name1" id="name1" value="${e.userid}" >
+                                                                                 <input type="radio" name="name1" id="name1" value="${e.userid},${e.ename},${p.posname}" >
                                                                                  <i class="fa fa-fw fa-user-plus"></i> 
                                                                                  ${t.teamname} ${e.ename} ${p.posname}
                                                                                 <hr>
@@ -491,7 +519,7 @@
                                                                         <c:if test="${t.teamcode == e.teamcode }">
                                                                            <c:forEach items="${pos}" var="p">
                                                                               <c:if test="${p.poscode == e.poscode}">
-                                                                                 <input type="radio" name="name2" id="name2" value="${e.userid}" >
+                                                                                 <input type="radio" name="name2" id="name2" value="${e.userid},${e.ename},${p.posname}" >
                                                                                  <i class="fa fa-fw fa-user-plus"></i> 
                                                                                  ${t.teamname} ${e.ename} ${p.posname }
                                                                                  <hr>
@@ -521,7 +549,7 @@
                                                                         <c:if test="${t.teamcode == e.teamcode }">
                                                                            <c:forEach items="${pos}" var="p">
                                                                               <c:if test="${p.poscode == e.poscode}">
-                                                                                 <input type="radio" name="name3" id="name3" value="${e.userid}" >
+                                                                                 <input type="radio" name="name3" id="name3" value="${e.userid},${e.ename},${p.posname}" >
                                                                                  <i class="fa fa-fw fa-user-plus"></i> 
                                                                                  ${t.teamname} ${e.ename} ${p.posname }
                                                                                  <hr>
@@ -541,71 +569,6 @@
                                           </tr>
                                           
                                           
-                                          
-                                          <tr height="20" align="center" bgcolor="#f6f6f6">
-                                                   <input type="hidden" name="docproc[]" id="proc4" value="">
-                                                   <td style="border-bottom:1px #eaeaea solid;padding:3px 0 0 0;" id="dept4"></td>
-                                               <input type="hidden" name="docproc[]" id="proc5" value="">
-                                                   <td style="border-bottom:1px #eaeaea solid;padding:3px 0 0 0;" id="dept5"></td>
-                                               <input type="hidden" name="docproc[]" id="proc6" value="">
-                                                   <td style="border-bottom:1px #eaeaea solid;padding:3px 0 0 0;" id="dept6"></td>
-                                               <input type="hidden" name="docproc[]" id="proc7" value="">
-                                                   <td style="border-bottom:1px #eaeaea solid;padding:3px 0 0 0;" id="dept7"></td>
-                                               <input type="hidden" name="docproc[]" id="proc8" value="">
-                                                   <td style="border-bottom:1px #eaeaea solid;padding:3px 0 0 0;" id="dept8"></td>
-                                           </tr>
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          <tr height="70" align="center">
-                                                   <td>
-                                                     <div id="divCan4" style="display:none">
-                                                       <span id="procName4"></span>
-                                                       <br>
-                                                       <a href="javascript:procCancel('4')">
-                                                          <img src="/img/approval/bt_cancel.gif">
-                                                       </a>
-                                                     </div>
-                                                     
-              <div id="divSel4" style="display:block">
-                <a href="javascript:"><img class="bt_procsel" value="4" src="/img/approval/bt_sel.gif"></a>
-              </div>
-            </td>
-                        <td>
-              <div id="divCan5" style="display:none">
-                <span id="procName5"></span><br><a href="javascript:procCancel('5')"><img src="/img/approval/bt_cancel.gif"></a>
-              </div>
-              <div id="divSel5" style="display:block">
-                <a href="javascript:"><img class="bt_procsel" value="5" src="/img/approval/bt_sel.gif"></a>
-              </div>
-            </td>
-                        <td>
-              <div id="divCan6" style="display:none">
-                <span id="procName6"></span><br><a href="javascript:procCancel('6')"><img src="/img/approval/bt_cancel.gif"></a>
-              </div>
-              <div id="divSel6" style="display:block">
-                <a href="javascript:"><img class="bt_procsel" value="6" src="/img/approval/bt_sel.gif"></a>
-              </div>
-            </td>
-                        <td>
-              <div id="divCan7" style="display:none">
-                <span id="procName7"></span><br><a href="javascript:procCancel('7')"><img src="/img/approval/bt_cancel.gif"></a>
-              </div>
-              <div id="divSel7" style="display:block">
-                <a href="javascript:"><img class="bt_procsel" value="7" src="/img/approval/bt_sel.gif"></a>
-              </div>
-            </td>
-                        <td>
-              <div id="divCan8" style="display:none">
-                <span id="procName8"></span><br><a href="javascript:procCancel('8')"><img src="/img/approval/bt_cancel.gif"></a>
-              </div>
-              <div id="divSel8" style="display:block">
-                <a href="javascript:"><img class="bt_procsel" value="8" src="/img/approval/bt_sel.gif"></a>
-              </div>
-            </td>
-                      </tr>
                                        </tbody>
                                     </table>
 

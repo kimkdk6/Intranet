@@ -21,7 +21,7 @@
                       from sign s join signline sl
                       on s.DOCNUM = sl.DOCNUM
                       where signstate = 0 and sl.SIGNNING = #{param1}
-                      order by s.DRAFTDATE desc
+                      order by s.REFRESHDATE desc
                     ) a
             where rownum between ${param2} and ${param3}
      	)
@@ -49,7 +49,7 @@
                       select *
                       from sign  
                       where signstate = 1 and (signer2 = #{param1} or signer3 = #{param1} or signer4 = #{param1} or signer5 = #{param1})
-                      order by DRAFTDATE desc
+                      order by REFRESHDATE desc
                     ) a
             where rownum between ${param2} and ${param3}
      	)
@@ -72,7 +72,7 @@
                       from sign s join signline sl
                       on s.DOCNUM = sl.DOCNUM
                       where signstate = ${param4} and s.USERID = #{param1}
-                      order by s.DRAFTDATE desc
+                      order by s.REFRESHDATE desc
                     ) a
             where rownum between ${param2} and ${param3}
      	)

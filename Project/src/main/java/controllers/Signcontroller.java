@@ -45,7 +45,7 @@ public class Signcontroller {
 		return "sign.SignMain";
 	}
 	
-	// 전자 결재 메인 페이지 보기
+	// 받은 결재 문서함 > 미결재 / 결재 문서함 페이지 보기
 	@RequestMapping(value = "ReceiveSignList.htm")
 	public String ReceiveSignList(Model model, Principal principal, int type)
 			throws ClassNotFoundException, SQLException {
