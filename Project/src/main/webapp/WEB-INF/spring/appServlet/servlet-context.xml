@@ -16,7 +16,9 @@
 	<context:component-scan base-package="controllers" />
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
-	
+	 	 <!-- json ajax -->
+
+    <beans:bean id="jsonView" class="net.sf.json.spring.web.servlet.view.JsonView"/>
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />

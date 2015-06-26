@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.security.Principal;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
@@ -22,6 +23,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import dao.SignDAO;
@@ -221,7 +223,8 @@ public class Signcontroller {
 	public String DraftingDetail(String docnum, Model model)
 			throws ClassNotFoundException, SQLException {
 		System.out.println("기안서 상세페이지 보기");
-				
+		List<Emp> signerlist = new ArrayList<Emp>();
+		
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
 		// 결재 문서(기본 내용)
 		Sign sign = signdao.getSign(docnum);
@@ -229,26 +232,40 @@ public class Signcontroller {
 		Draftingdoc draftingdoc = signdao.getDraftingdoc(docnum);
 		// 결재라인
 		Signline signline = signdao.getSignline(docnum);
+		 
+		 
+		signerlist.add(signdao.getEmp(sign.getSigner1()));
+		signerlist.add(signdao.getEmp(sign.getSigner2()));
+		if(sign.getSigner3() != null){
+			signerlist.add(signdao.getEmp(sign.getSigner3()));
+		}
+		if(sign.getSigner4() != null){
+			signerlist.add(signdao.getEmp(sign.getSigner4()));
+		}
+		if(sign.getSigner5() != null){
+			signerlist.add(signdao.getEmp(sign.getSigner5()));
+		}
 		
+		System.out.println("signerlist 객체: "+signerlist.toString());
 		model.addAttribute("sign", sign);
 		model.addAttribute("draftingdoc", draftingdoc);
 		model.addAttribute("signline", signline);
+		model.addAttribute("signerlist", signerlist);
 		return "sign.DraftingDetail";
 	}
 	
 	@RequestMapping(value = "signerlist.htm", method = RequestMethod.GET)
-	public String signerlist(String userid, Model model)
+	public @ResponseBody Emp signer(String userid, Model model)
 			throws ClassNotFoundException, SQLException {
-		System.out.println("signer 상세페이지 보기");
-				
+		System.out.println("signer 상세페이지 보기: userid: "+userid);
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
 		// 결재 문서(기본 내용)
 		
 		// 결재자 정보
 		Emp signer = signdao.getEmp(userid);
-		
-		model.addAttribute("signer", signer);
-		return "redirect:DraftingDetail.htm";
+		System.out.println("결재자정보: "+signer.toString());
+		 
+		return signer;
 	}
 	
 	// 결재문서 승인

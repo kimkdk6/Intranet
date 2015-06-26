@@ -15,8 +15,7 @@
  	 	<property name="dataSource" ref="driverManagerDataSource"></property>
  	</bean>
  	
- 	 <!-- json ajax -->
-    <bean id="jsonView" class="net.sf.json.spring.web.servlet.view.JsonView"/>
+
     
  	<!-- 파일업로드 설정 -->
  	<bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">

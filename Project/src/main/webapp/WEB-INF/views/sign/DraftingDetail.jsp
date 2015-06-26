@@ -3,7 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-
+<c:set var="signer1" value="${sign.signer1}"/>
 <script language="javascript">
 	function _docprint(docmgno)
 	{
@@ -31,6 +31,34 @@
 	    f.submit();
 	}
 
+	
+	<%-- $(function() {
+				 console.log("왜 안나왕: "+'${signer1}');
+				 var signer1 = '${signer1}';
+				 console.log(signer1);
+				$.ajax({
+					type : "GET", //전송 타입
+					url : "<%=request.getContextPath() %>/sign/signerlist.htm", 
+					data : "userid="+signer1,
+				 	dataType : "json", //서버가 보내는 데이터 타입 : dataType 명시 (xml, json, script, or html ) 
+				 	contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					success : function(response) { 
+						/* var result = response.trim();
+						if (result != null) {
+							console.log("Emp: "+result);
+						} else {
+							 
+						} */
+						$.each(data,function(index,response){
+			                console.log('aa');
+						}); 
+
+					},
+					error : function(data) {
+						alert("error발생");
+					}
+				});
+	}); --%>
 </script>
 
 <section class="content-header">
@@ -157,14 +185,57 @@
                                              
                                              <td width="19%"
                                                 style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;">
-                                                	${sign.signer2}
+                                                	<c:forEach var="signer" items="${signerlist}">
+                                                		<c:choose>
+                                                			<c:when test="${sign.signer2 == signer.userid}">
+                                                				${signer.deptcode}
+                                                			</c:when>
+                                                			<c:otherwise>
+                                                			
+                                                			</c:otherwise>
+                                                		</c:choose>
+                                                	</c:forEach>
+                                                	
                                                 </td>
                                              <td width="19%"
-                                                style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;">${sign.signer3}</td>
+                                                style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;">
+												<c:forEach var="signer" items="${signerlist}">
+                                                		<c:choose>
+                                                			<c:when test="${sign.signer3 == signer.userid}">
+                                                				${signer.deptcode}
+                                                			</c:when>
+                                                			<c:otherwise>
+                                                			
+                                                			</c:otherwise>
+                                                		</c:choose>
+                                                </c:forEach>	
+											</td>
                                              <td width="19%"
-                                                style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;">${sign.signer4}</td>
+                                                style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;">
+												<c:forEach var="signer" items="${signerlist}">
+                                                		<c:choose>
+                                                			<c:when test="${sign.signer4 == signer.userid}">
+                                                				${signer.deptcode}
+                                                			</c:when>
+                                                			<c:otherwise>
+                                                			
+                                                			</c:otherwise>
+                                                		</c:choose>
+                                                	</c:forEach>
+											</td>
                                              <td width="19%"
-                                                style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;">${sign.signer5}</td>
+                                                style="border-bottom: 1px #eaeaea solid; padding: 3px 0 0 0;">
+													<c:forEach var="signer" items="${signerlist}">
+                                                		<c:choose>
+                                                			<c:when test="${sign.signer5 == signer.userid}">
+                                                				${signer.deptcode}
+                                                			</c:when>
+                                                			<c:otherwise>
+                                                			
+                                                			</c:otherwise>
+                                                		</c:choose>
+                                                	</c:forEach>
+											</td>
                                           </tr>
                                           <tr height="70" align="center">
                                              <td style="border-bottom: 1px #eaeaea solid;">
@@ -185,7 +256,18 @@
 	                                                      </c:choose>
                                                       </tr>
                                                       <tr>
-                                                         <td height="20" align="center"><div class="signer1">${sign.signer1}</div></td>
+                                                         <td height="20" align="center"><div class="signer1">
+															<c:forEach var="signer" items="${signerlist}">
+				                                                	<c:choose>
+				                                                		<c:when test="${sign.signer1 == signer.userid}">
+				                                                				${signer.ename}
+				                                                		</c:when>
+				                                                		<c:otherwise>
+				                                                			
+				                                                		</c:otherwise>
+				                                                	</c:choose>
+			                                                </c:forEach>
+														</div></td>
                                                       </tr>
                                                    </tbody>
                                                 </table>
@@ -215,7 +297,18 @@
 	                                                      </c:choose>
                                                       </tr>
                                                       <tr>
-                                                        <td height="20" align="center">${sign.signer2}</td>
+                                                        <td height="20" align="center">
+                                                        	<c:forEach var="signer" items="${signerlist}">
+				                                                	<c:choose>
+				                                                		<c:when test="${sign.signer2 == signer.userid}">
+				                                                				${signer.ename}
+				                                                		</c:when>
+				                                                		<c:otherwise>
+				                                                			
+				                                                		</c:otherwise>
+				                                                	</c:choose>
+			                                                </c:forEach>
+                                                        </td>
                                                       </tr>
                                                    </tbody>
                                                 </table>
@@ -245,7 +338,19 @@
 	                                                      	</c:choose>
 	                                                      </tr>
 	                                                      <tr>
-	                                                         <td height="20" align="center">${sign.signer3}</td>
+	                                                         <td height="20" align="center">
+	                                                         	<c:forEach var="signer" items="${signerlist}">
+				                                                	<c:choose>
+				                                                		<c:when test="${sign.signer3 == signer.userid}">
+				                                                				${signer.ename}
+				                                                		</c:when>
+				                                                		<c:otherwise>
+				                                                			
+				                                                		</c:otherwise>
+				                                                	</c:choose>
+			                                              	   </c:forEach>
+		
+															</td>
 	                                                      </tr>
 	                                                   </tbody>
 	                                                </table>
@@ -275,7 +380,18 @@
 	                                                      </c:choose>
                                                       </tr>
                                                       <tr>
-                                                         <td height="20" align="center">${sign.signer4}</td>
+                                                         <td height="20" align="center">
+                                                         	<c:forEach var="signer" items="${signerlist}">
+				                                                	<c:choose>
+				                                                		<c:when test="${sign.signer4 == signer.userid}">
+				                                                				${signer.ename}
+				                                                		</c:when>
+				                                                		<c:otherwise>
+				                                                			
+				                                                		</c:otherwise>
+				                                                	</c:choose>
+			                                                </c:forEach>
+                                                         </td>
                                                       </tr>
                                                    </tbody>
                                                 </table>
@@ -305,7 +421,18 @@
 	                                                      </c:choose>
                                                       </tr>
                                                       <tr>
-                                                         <td height="20" align="center">${sign.signer5}</td>
+                                                         <td height="20" align="center">
+                                                         		<c:forEach var="signer" items="${signerlist}">
+				                                                	<c:choose>
+				                                                		<c:when test="${sign.signer5 == signer.userid}">
+				                                                				${signer.ename}
+				                                                		</c:when>
+				                                                		<c:otherwise>
+				                                                			
+				                                                		</c:otherwise>
+				                                                	</c:choose>
+			                                                </c:forEach>
+                                                         </td>
                                                       </tr>
                                                    </tbody>
                                                 </table>
