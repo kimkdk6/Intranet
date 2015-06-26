@@ -13,6 +13,7 @@ String date = String.format("%TF",now);
 <c:set var="latecheck" value="${Latecheck}" />
 <c:set var="getUnSigns" value="${getUnSigns}" />
 <c:set var="getReceiveSigns" value="${getReceiveSigns}" />
+<c:set var="UserPhoto" value="${UserPhoto}" />
 
  <script type="text/javascript">
 $(function(){
@@ -158,7 +159,9 @@ setTimeout("go_time()", 1000);
                 </div><!-- /.box-header -->
                 <div class="box-body">
                    <div class="info-box">
-                <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+                <!-- <span class="info-box-icon bg-aqua"></span> -->
+                <img alt="" src="${pageContext.request.contextPath}/Upload/ProfilePhoto/${UserPhoto}" style="float: left; height: 90px; width: 90px;">
+                  
                 <div class="info-box-content" style="padding-top: 0px; padding-top: 0px; padding-right: 0px;">
                   <table >
                     <tr>

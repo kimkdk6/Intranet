@@ -42,4 +42,10 @@
         from sign 
         where signstate = 0 and USERID = #{userid}
   </select>
+  
+     <select id="userPhoto"  resultType="String">
+  	select userphoto from empinfo where userid= #{userid}
+  	
+    </select>
+    
   </mapper>

@@ -64,11 +64,13 @@ public class Logincontroller {
 		model.addAttribute("Checkout", Checkout);
 		
 		String Latecheck = attcheck.latecheck(principal.getName());
-		System.out.println(Latecheck);
 		model.addAttribute("Latecheck", Latecheck);
 		
 		String Checkname = maindao.checkname(principal.getName());
 		model.addAttribute("Checkname", Checkname);
+		
+		String UserPhoto = maindao.userPhoto(principal.getName());
+		model.addAttribute("UserPhoto", UserPhoto);
 		
 		int getUnSigns = maindao.getUnSigns(principal.getName());
 		model.addAttribute("getUnSigns", getUnSigns);
