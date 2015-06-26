@@ -2,6 +2,28 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
+<style>
+	#dialog {
+		padding: 10px;
+    	width: 350px;
+    	height: 220px;
+	}
+	#dialog1 {
+		padding: 10px;
+    	width: 350px;
+    	height: 220px;
+	}
+	#dialog2 {
+		padding: 10px;
+    	width: 350px;
+    	height: 220px;
+	}
+	#dialog3 {
+		padding: 10px;
+    	width: 350px;
+    	height: 220px;
+	}
+</style>
 
 <script type="text/javascript">
 	
@@ -217,23 +239,62 @@
 	/* 결재자 트리 띄우는 기능 */
 	$(function() {
 		$("#accordion").accordion({
-			heightStyle : "content"
+			heightStyle : "fill"
 		});
 	});
+	$(function() {
+		$( "#dialog" ).resizable({
+			minHeight: 100,
+	      	minWidth: 100,
+	      	resize: function() {
+	      		$( "#accordion" ).accordion( "refresh" );
+	      	}
+	    });
+	});
+	
 	$(function() {
 		$("#accordion1").accordion({
-			heightStyle : "content"
+			heightStyle : "fill"
 		});
 	});
+	$(function() {
+		$( "#dialog1" ).resizable({
+			minHeight: 100,
+	      	minWidth: 100,
+	      	resize: function() {
+	      		$( "#accordion1" ).accordion( "refresh" );
+	      	}
+	    });
+	});
+	
 	$(function() {
 		$("#accordion2").accordion({
-			heightStyle : "content"
+			heightStyle : "fill"
 		});
 	});
 	$(function() {
+		$( "#dialog2" ).resizable({
+			minHeight: 100,
+	      	minWidth: 100,
+	      	resize: function() {
+	      		$( "#accordion2" ).accordion( "refresh" );
+	      	}
+	    });
+	});
+	
+	$(function() {
 		$("#accordion3").accordion({
-			heightStyle : "content"
+			heightStyle : "fill"
 		});
+	});
+	$(function() {
+		$( "#dialog3" ).resizable({
+			minHeight: 100,
+	      	minWidth: 100,
+	      	resize: function() {
+	      		$( "#accordion3" ).accordion( "refresh" );
+	      	}
+	    });
 	});
 	/* 결재자 트리 띄우는 기능 끝*/
 </script>
