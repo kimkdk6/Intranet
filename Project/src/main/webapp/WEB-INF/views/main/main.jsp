@@ -287,7 +287,6 @@ setTimeout("go_time()", 1000);
                    <td style="padding-left: 40px;">
                    <a href="${pageContext.request.contextPath}/board/BoardDetail.htm?boardnum=${e.boardnum}">${e.boardtitle}</a>
                     </td>
-                   
                    </c:forEach>
                     </tr>
                   </table>

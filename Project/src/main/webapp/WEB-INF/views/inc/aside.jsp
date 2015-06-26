@@ -137,10 +137,21 @@
 					class="fa fa-fw fa-group"></i> <span>조직도</span> <small
 					class="label pull-right bg-green">new</small>
 			</a></li>
-			<li><a href="pages/widgets.html"> <i
-					class="fa fa-fw fa-sign-in"></i> <span>근태관리</span> <small
-					class="label pull-right bg-green">new</small>
-			</a></li>
+			<li class="treeview"><a
+				href="${pageContext.request.contextPath}/sign/SignMain.htm"> <i
+					class="fa fa-fw fa-file-text"></i> <span>근태관리</span> <i
+					class="fa fa-angle-left pull-right"></i>
+			</a>
+				<ul class="treeview-menu">
+					<li><a
+						href="${pageContext.request.contextPath}/attendance/Commute.htm"><i
+							class="fa fa-circle-o"></i> 출퇴근 체크 </a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/attendance/AttendanceCheck.htm"><i
+							class="fa fa-circle-o"></i> 근태 현황 </a></li>
+							</ul>
+							</li>
+							
 			<li><a href="pages/widgets.html"> <i
 					class="fa fa-fw fa-cogs"></i> <span>관리자</span> <small
 					class="label pull-right bg-green">new</small>
