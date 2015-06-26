@@ -116,7 +116,7 @@ $(function(){
 			
 		});
 	
-	$('#leavebtton').click(function(){
+<%-- 	$('#leavebtton').click(function(){
 		var form_data = {
 				latereason : document.getElementById("latereason").value
 			};
@@ -133,7 +133,7 @@ $(function(){
 			}
 		});
 			
-		});
+		}); --%>
 	
 });
 
