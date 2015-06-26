@@ -44,7 +44,10 @@
 	    });
 	    
 	    /* 총합 */
-	    $('.sum')
+	    $('.totalSum').keyup(function() {
+	    	var num = $(".totalSum").index(this);
+	    	$('.totalSum').eq(num).val($('.ordercost').eq(num).val());
+	    });
 	});
  		
  	
@@ -756,7 +759,9 @@
 																						<td width="20%" align="right"
 																							style="border: solid 1px #C0BFC1; color: #000000;"
 																							class="item" style="border: solid 1px #C0BFC1;">
-																							<span id="detail_amount" style="color: #000000;">0</span></td>
+																							<!-- <span id="detail_amount" style="color: #000000;">0</span> -->
+																							<input type="text" name="totalSum" class="totalSum" readonly="readonly" style="color: #000000;">
+																						</td>
 																					</tr>
 																					<tr height="27" class="chtax">
 																						<td width="80%" align="center" class="title"
@@ -838,14 +843,14 @@ $('#addline').click(function() {
 	$('#detail_table').append(contents); // 추가
 	
 	
-	 $('.unitcost, .amount, .ordercost').keyup(function() {
-		 $(this).val( $(this).val().replace(/[^0-9]/gi,"") ); //숫자만 입력가능
-	 });
+	$('.unitcost, .amount, .ordercost').keyup(function() {
+		$(this).val( $(this).val().replace(/[^0-9]/gi,"") ); //숫자만 입력가능
+	});
 	
-	 $('.unitcost').keyup(function() {
-		 var num = $(".unitcost").index(this);
-	     $('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
-	 });
+	$('.unitcost').keyup(function() {
+		var num = $(".unitcost").index(this);
+	    $('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
+	});
 	
 	 $('.amount').keyup(function() {
 	     var num = $(".amount").index(this);
