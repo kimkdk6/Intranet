@@ -508,7 +508,7 @@ public class Signcontroller {
 			throws ClassNotFoundException, SQLException {
 		System.out.println("프린트 페이지 보기");
 
-		return "sign.PrintPage";
+		return "print.PrintPage";
 	}
 
 	@RequestMapping("download.htm")
