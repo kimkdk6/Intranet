@@ -109,7 +109,7 @@
               			var res = $(this).val().split(",");
               			console.log("res[0]: "+res[0]);
               			if (res[0].trim() == '${empid}') {
-      		                alert("자신은 선택할 수 없습니다!");
+      		                alert("본인은 결재자에 포함될 수 없습니다.");
       		            	return false;
       		            }
               			return;
@@ -121,7 +121,7 @@
           			var res = $(this).val().split(",");
           			console.log("res[0]: "+res[0]);
           			if (res[0].trim() == '${empid}') {
-  		                alert("자신은 선택할 수 없습니다!");
+  		                alert("본인은 결재자에 포함될 수 없습니다.");
   		            	return false;
   		            }
           			return;
@@ -133,7 +133,7 @@
           			var res = $(this).val().split(",");
           			console.log("res[0]: "+res[0]);
           			if (res[0].trim() == '${empid}') {
-  		                alert("자신은 선택할 수 없습니다!");
+  		                alert("본인은 결재자에 포함될 수 없습니다.");
   		            	return false;
   		            }
           			return;
@@ -145,7 +145,7 @@
           			var res = $(this).val().split(",");
           			console.log("res[0]: "+res[0]);
           			if (res[0].trim() == '${empid}') {
-  		                alert("자신은 선택할 수 없습니다!");
+  		                alert("본인은 결재자에 포함될 수 없습니다.");
   		            	return false;
   		            }
           			return;
