@@ -72,7 +72,6 @@
 	    });
 	});
  		
- 	
 	
 	/* 결재자 메뉴 띄우는 기능 */
 	// ============= 첫번째 ======================
@@ -812,9 +811,10 @@
 																					</tr>
 																				</tbody>
 																			</table>
+																			
 																			<table width="100%" cellspacing="0" cellpadding="0" class="tbl_appreport">
 																				<tbody>
-																					<tr height="27" class="chtax">
+																					<tr height="27" class="calc">
 																						<td width="80%" align="center" class="title" bgcolor="F1F7F7"
 																							style="border: solid 1px #C0BFC1;">공급가액</td>
 																						<td width="20%" align="right"
@@ -889,7 +889,10 @@
 		</div>
 	</div>
 </section>
+
+
 <script type="text/javascript">
+/* 행 추가 */
 $('#addline').click(function() {
 	var contents = '';
 	contents += '<tr height="27" align="center" id="calc">';
@@ -904,6 +907,7 @@ $('#addline').click(function() {
 	$('#detail_table').append(contents); // 추가
 	
 	
+	/* 추가된 행 계산 */
 	$('.unitcost, .amount, .ordercost').keyup(function() {
 		$(this).val( $(this).val().replace(/[^0-9]/gi,"") ); //숫자만 입력가능
 	});
@@ -916,7 +920,6 @@ $('#addline').click(function() {
 	 $('.amount').keyup(function() {
 	     var num = $(".amount").index(this);
 	     $('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
-	
 	 });
 	
 	 $('.ordercost').keyup(function() {
