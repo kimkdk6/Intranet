@@ -11,6 +11,7 @@
 	System.out.println("오늘의 날짜: "+strdate);
 	
 %>
+<c:set var="empid" value="${sessionScope.myemp.userid}"/>
 <script type="text/javascript">
 		//sign 유효성 검사
 		function addsign(){
@@ -96,11 +97,62 @@
             <!-- ck 에디터 끝 -->
             
             <script language="javascript">
-            
+            	
                
                /* 결재자 메뉴 띄우는 기능 */
                // ============= 첫번째 ======================
                $(function() {
+            	   
+            	// 자신을 선택 못하게
+              	 $('input:radio[name="name"]').click(function () {
+              		 
+              			var res = $(this).val().split(",");
+              			console.log("res[0]: "+res[0]);
+              			if (res[0].trim() == '${empid}') {
+      		                alert("자신은 선택할 수 없습니다!");
+      		            	return false;
+      		            }
+              			return;
+              		 
+  		        });
+            	
+              	$('input:radio[name="name1"]').click(function () {
+             		 
+          			var res = $(this).val().split(",");
+          			console.log("res[0]: "+res[0]);
+          			if (res[0].trim() == '${empid}') {
+  		                alert("자신은 선택할 수 없습니다!");
+  		            	return false;
+  		            }
+          			return;
+          		 
+		        });
+              	
+              	$('input:radio[name="name2"]').click(function () {
+             		 
+          			var res = $(this).val().split(",");
+          			console.log("res[0]: "+res[0]);
+          			if (res[0].trim() == '${empid}') {
+  		                alert("자신은 선택할 수 없습니다!");
+  		            	return false;
+  		            }
+          			return;
+          		 
+		        });
+              	
+              	$('input:radio[name="name3"]').click(function () {
+             		 
+          			var res = $(this).val().split(",");
+          			console.log("res[0]: "+res[0]);
+          			if (res[0].trim() == '${empid}') {
+  		                alert("자신은 선택할 수 없습니다!");
+  		            	return false;
+  		            }
+          			return;
+          		 
+		        });
+            	   
+              	 
             	   var dialog;
             	   var dialog1;
             	   var dialog2;
@@ -144,15 +196,17 @@
                     	  var checkedvalname = res[1]+" 님";
                     	  var checkedvalid = res[0];
                     		console.log("아이디1: "+checkedvalid.trim());  
-                    	 $("#opener").hide();
-                    	 $("#cancel").show();
-                    	 $("#dept0").html("<div id='dept0_'>"+checkedvalpos+"</div>");
-                    	 $("#users").prepend(
-									"<td id='signer_1'>" + checkedvalname + 
-									"<input type='hidden' name='signer2' id='signer2' value='"+
-									checkedvalid.trim()+"'></td>");  
-                    	
-                        dialog.dialog("close");
+                    	 
+	                    	 $("#opener").hide();
+	                    	 $("#cancel").show();
+	                    	 $("#dept0").html("<div id='dept0_'>"+checkedvalpos+"</div>");
+	                    	 $("#users").prepend(
+										"<td id='signer_1'>" + checkedvalname + 
+										"<input type='hidden' name='signer2' id='signer2' value='"+
+										checkedvalid.trim()+"'></td>");  
+	                    	
+	                        dialog.dialog("close");
+                    	 
                      }
                      
                      $("#cancel").click(function(){
@@ -589,6 +643,7 @@
                               <tr>
                                  <td height="30" align="center" bgcolor="#f6f6f6" class="m_sp"><b>기안자</b></td>
                                  <c:set var="emp" value="${sessionScope.myemp}"/>
+                                 
                                  <td style="padding: 0 0 0 12px;"> ${emp.ename} ${sessionScope.pos} </td>
                               </tr>
                               <tr>
