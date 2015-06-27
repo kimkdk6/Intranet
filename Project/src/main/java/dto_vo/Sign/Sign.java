@@ -1,6 +1,8 @@
 package dto_vo.Sign;
 
-import java.util.Date;
+import java.sql.Date;
+
+
 
 // ==================결재=======================
 public class Sign {
