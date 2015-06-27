@@ -161,6 +161,12 @@
             			 values((select NVL(MAX(TO_NUMBER(docnum)), 0) from sign), #{dracontent})
 	</insert>
 
+	<!-- 휴가계 작성 -->
+	<insert id="insertHolidaydoc" parameterType="dto_vo.Sign.Holidaydoc">
+	 	insert into holidaydoc 
+	 	values((select NVL(MAX(TO_NUMBER(docnum)), 0) from sign), #{holstart}, #{holend}, #{holtype}, #{holreason}, #{destination})
+	</insert>
+
 	<!-- 결재시 signline singok, signning 변경  -->
 	<update id="updateSignline" parameterType="hashmap">
 		<!-- update signline set signok2 = 1, signning = 'm5' where docnum=27 -->

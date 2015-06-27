@@ -514,14 +514,9 @@
                                                          </div>
                                                          </c:forEach>
                                                          
-                                                        <!-- <h3>임원</h3>
-                                                        <div>
-                                                           대표이사 <input type="button" value="지정" onclick="check()">
-                                                         <hr>
-                                                         전무 <input type="button" value="지정" onclick="check()">
-                                                        </div> -->
+                                                         
                                                    </div>
-                                                   <!-- <input type="button" value="완료" onclick="check()"> -->
+                                                   
                                                    </div>
                                                    
                                                   <!--  <button id="opener">지정1</button> -->
@@ -644,7 +639,7 @@
                                  <td height="30" align="center" bgcolor="#f6f6f6" class="m_sp"><b>기안자</b></td>
                                  <c:set var="emp" value="${sessionScope.myemp}"/>
                                  
-                                 <td style="padding: 0 0 0 12px;"> ${emp.ename} ${sessionScope.pos} </td>
+                                 <td style="padding: 0 0 0 12px;">${sessionScope.team} ${emp.ename} ${sessionScope.pos} </td>
                               </tr>
                               <tr>
                                  <td height="30" align="center" bgcolor="#f6f6f6" class="m_sp"

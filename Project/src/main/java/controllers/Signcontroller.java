@@ -33,6 +33,7 @@ import dto_vo.Emp.Emp;
 import dto_vo.Emp.Position;
 import dto_vo.Emp.Team;
 import dto_vo.Sign.Draftingdoc;
+import dto_vo.Sign.Holidaydoc;
 import dto_vo.Sign.Sign;
 import dto_vo.Sign.Signline;
 
@@ -187,7 +188,7 @@ public class Signcontroller {
 		
 		signline.setSignning(sign.getSigner2());
 		
-		
+		// 첨부 파일 
 		CommonsMultipartFile file = File.getFile();
 	      Calendar cal = Calendar.getInstance();
 	      String fileName = null;
@@ -395,7 +396,57 @@ public class Signcontroller {
 
 		return "sign.HolidayDocReg";
 	}
-
+    
+	// 휴가계 작성
+	@Transactional
+	@RequestMapping(value = "HolidayDocReg.htm", method = RequestMethod.POST)
+	public String HolidayDocReg(Sign sign, Holidaydoc holidaydoc,
+			Signline signline, Principal principal)
+			throws ClassNotFoundException, SQLException, IOException {
+		System.out.println("휴가계 작성");
+		int totalsign=0;
+		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
+		
+		// 결재인 넣기 
+		sign.setSigner1(principal.getName());
+		sign.setUserid(principal.getName());
+		
+		// 결재라인 : 1>승인 2>반려 3>대기
+		signline.setSignok1(1);
+		if (sign.getSigner2() != null) {
+			signline.setSignok2(3);
+			totalsign++;
+		}
+		if (sign.getSigner3() != null) {
+			signline.setSignok3(3);
+			totalsign++;
+		}
+		if (sign.getSigner4() != null) {
+			signline.setSignok4(3);
+			totalsign++;
+		}
+		if (sign.getSigner5() != null) {
+			signline.setSignok5(3);
+			totalsign++;
+		}
+		
+		// sign: totalsign
+		System.out.println("totalsign: "+totalsign);
+		sign.setTotalsign(totalsign);
+		
+		// signline: signning 
+		signline.setSignning(sign.getSigner2());
+		
+		System.out.println("휴가계 결재 파일: "+sign.toString());
+		System.out.println("휴가계 파일: "+holidaydoc.toString());
+		System.out.println("결재 라인: "+signline.toString());
+		signdao.insertSign(sign);
+		signdao.insertSignline(signline);
+		signdao.insertHolidaydoc(holidaydoc);
+		
+		return "redirect:SignMain.htm";
+	}
+	
 	// 휴가계 상세 페이지 보기
 	@RequestMapping(value = "HolidayDocDetail.htm", method = RequestMethod.GET)
 	public String HolidayDocDetail(String docnum, Model model)

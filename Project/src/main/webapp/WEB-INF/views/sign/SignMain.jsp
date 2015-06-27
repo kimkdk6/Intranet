@@ -146,7 +146,9 @@
 													${s.docnum} </a>
 											</c:when>
 											<c:when test="${signtype == 2}">
-										휴가계 ${s.docnum} 
+												<a
+													href="${pageContext.request.contextPath}/sign/HolidayDocDetail.htm?docnum=${s.docnum}">
+													${s.docnum} </a>
 									</c:when>
 											<c:when test="${signtype == 3}">
 										발주서 ${s.docnum} 
