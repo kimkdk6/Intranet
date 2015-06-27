@@ -452,18 +452,32 @@ public class Signcontroller {
 	public String HolidayDocDetail(String docnum, Model model)
 			throws ClassNotFoundException, SQLException {
 		System.out.println("휴가계 상세페이지 보기");
+		List<Emp> signerlist = new ArrayList<Emp>();
 
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
 		// 결재 문서(기본 내용)
 		Sign sign = signdao.getSign(docnum);
-		// 기안서
-		Draftingdoc draftingdoc = signdao.getDraftingdoc(docnum);
+		// 휴가계
+		Holidaydoc holidaydoc = signdao.getHolidaydoc(docnum);
 		// 결재라인
 		Signline signline = signdao.getSignline(docnum);
 
+		signerlist.add(signdao.getEmp(sign.getSigner1()));
+		signerlist.add(signdao.getEmp(sign.getSigner2()));
+		if(sign.getSigner3() != null){
+			signerlist.add(signdao.getEmp(sign.getSigner3()));
+		}
+		if(sign.getSigner4() != null){
+			signerlist.add(signdao.getEmp(sign.getSigner4()));
+		}
+		if(sign.getSigner5() != null){
+			signerlist.add(signdao.getEmp(sign.getSigner5()));
+		}
+		
 		model.addAttribute("sign", sign);
-		model.addAttribute("draftingdoc", draftingdoc);
+		model.addAttribute("holidaydoc", holidaydoc);
 		model.addAttribute("signline", signline);
+		model.addAttribute("signerlist", signerlist);
 		return "sign.HolidayDocDetail";
 	}
 

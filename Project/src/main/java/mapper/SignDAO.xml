@@ -98,6 +98,13 @@
 		where docnum = #{docnum}
 	</select>
 	
+	<!-- 결재 > 휴가계 상세보기 가져오기 -->
+	<select id="getHolidaydoc" resultType="dto_vo.Sign.Holidaydoc">
+		select * 
+		from HOLIDAYDOC
+		where docnum = #{docnum}
+	</select>
+	
 	<!-- 결재 라인 가져오기  -->
 	<select id="getSignline" resultType="dto_vo.Sign.Signline">
 		select * 

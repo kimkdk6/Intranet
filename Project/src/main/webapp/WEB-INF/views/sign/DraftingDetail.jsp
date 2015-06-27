@@ -649,11 +649,11 @@
                                  </td>
                               </tr>
 
-                              <tr>
+                              <!-- <tr>
                                  <td align="left" valign="top" class="m_sp"
                                     style="padding: 8px 8px 8px 8px;">2015-06-17 10:08:50 -
                                     a1 상신</td>
-                              </tr>
+                              </tr> -->
                            </tbody>
                         </table>
                      </td>
