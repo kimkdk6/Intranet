@@ -4,11 +4,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <c:set var="signer1" value="${sign.signer1}"/>
+
 <script language="javascript">
-	function _docprint(docmgno)
+	function divPrint()
 	{
-	    window.open('PrintPage.htm?docnum='+docmgno, "PrintPage", 
-	    		'toolbar=0,location=0,directories=0, status=0,menubar=0,scrollbars=yes,resizable=1,width=800,height=600');
+		document.pf.printzone.value = printdiv.innerHTML;
+		window.open("PrintPage.htm", "print_open","width=800,height=700,top=0,left=0,noresizable,toolbar=no,status=no,scrollbars=yes,directory=no");
+        // document.body.innerHTML = printdiv.innerHTML;
+
 	}
 
 	// 결재/반려
@@ -32,35 +35,11 @@
 	}
 
 	
-	<%-- $(function() {
-				 console.log("왜 안나왕: "+'${signer1}');
-				 var signer1 = '${signer1}';
-				 console.log(signer1);
-				$.ajax({
-					type : "GET", //전송 타입
-					url : "<%=request.getContextPath() %>/sign/signerlist.htm", 
-					data : "userid="+signer1,
-				 	dataType : "json", //서버가 보내는 데이터 타입 : dataType 명시 (xml, json, script, or html ) 
-				 	contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-					success : function(response) { 
-						/* var result = response.trim();
-						if (result != null) {
-							console.log("Emp: "+result);
-						} else {
-							 
-						} */
-						$.each(data,function(index,response){
-			                console.log('aa');
-						}); 
-
-					},
-					error : function(data) {
-						alert("error발생");
-					}
-				});
-	}); --%>
+	 
 </script>
-
+<form name="pf">
+ <input type=hidden name="printzone">
+</form>
 <section class="content-header">
 	<h1>
 		전자결재 문서 보기 <small>전자결재 문서 보기 페이지</small>
@@ -84,6 +63,7 @@
 	<div class="box-body">
 	<form name="draform" action="" method="post">
 	<input type="hidden" name="docnum" id="docnum" value="${param.docnum}">
+	
 	<table>
    <tbody>
       
@@ -100,9 +80,11 @@
                               <tr>
                                  <td><a href=""><img src="/img/approval/bt_list.gif"></a></td>
                                  <td width="5"></td>
-                                 <td><a href="javascript:_docprint('9759')">
+                                 
+                                 <td><a href="javascript:divPrint();">
                                  <button type="button" class="btn btn-info pull-right">print</button>
                                  </a></td>
+                                 
                               </tr>
                            </tbody>
                         </table>
@@ -131,7 +113,7 @@
       </tr>
       <tr>
          <td align="center" valign="top" style="padding: 19px 15px 19px 15px;">
-            
+            <div id="printdiv">
             <table width="100%" border="0" cellspacing="0" cellpadding="0"
                class="tbl_appdoc">
                <tbody>
@@ -678,15 +660,15 @@
                   </tr>
                </tbody>
             </table>
-
+		</div>
             
       <tr>
          <td height="30"></td>
       </tr>
    </tbody>
 	</table>
+	</div>
 	</form>
 	</div>
-	
-</div>
+
 </section>

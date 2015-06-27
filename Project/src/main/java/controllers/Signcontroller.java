@@ -504,7 +504,7 @@ public class Signcontroller {
 
 	// 프린트 페이지 보기
 	@RequestMapping(value = "PrintPage.htm", method = RequestMethod.GET)
-	public String PrintPage(String docnum, Model model)
+	public String PrintPage(Model model)
 			throws ClassNotFoundException, SQLException {
 		System.out.println("프린트 페이지 보기");
 
