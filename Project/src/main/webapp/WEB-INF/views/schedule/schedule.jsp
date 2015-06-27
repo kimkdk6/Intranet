@@ -169,17 +169,22 @@
 
 		$('#calendar').fullCalendar(
 				{
-					header: {
-						left: "prev,next today",
-						center: "title",
-						right: "month,basicWeek,basicDay"
-						},	
-						
-// 						titleFormat: 'YYYY, MM, DD',
+					header : {
+						left : "prev,next today",
+						center : "title",
+						right : "month,basicWeek,basicDay"
+					},
+					monthNames : [ "1월", "2월", "3월", "4월", "5월", "6월", "7월",
+							"8월", "9월", "10월", "11월", "12월" ],
+					monthNamesShort : [ "1월", "2월", "3월", "4월", "5월", "6월",
+							"7월", "8월", "9월", "10월", "11월", "12월" ],
+					dayNames : [ "일요일", "월요일", "화요일", "수요일", "목요일", "금요일",
+							"토요일" ],
+					dayNamesShort : [ "일", "월", "화", "수", "목", "금", "토" ],
+
 					titleFormat : {
 						month : "YYYY년 MMMM",
-// 						week : "[YYYY] MMM d일{ [YYYY] MMM d일}",
-// 						week : "[YYYY년] MMM d일{ [YYYY년] MMM d일}",
+						week : 'YYYY년 MM월 DD일',
 						day : "YYYY년 MMM d일 dddd"
 					},
 					buttonText : {
@@ -188,71 +193,18 @@
 						week : "주별",
 						day : "일별"
 					},
-			
-					monthNames : [ "1월", "2월", "3월", "4월", "5월", "6월", "7월","8월", "9월", "10월", "11월", "12월" ],
-					monthNamesShort : [ "1월", "2월", "3월", "4월", "5월", "6월","7월", "8월", "9월", "10월", "11월", "12월" ],
-					dayNames : [ "일요일", "월요일", "화요일", "수요일", "목요일", "금요일","토요일" ],
-					dayNamesShort : [ "일", "월", "화", "수", "목", "금", "토" ],
-					
 
 					events : [ {
 						title : '이벤트 테스트',
 						start : new Date(y, m, 1, 12, 30),//년,월,일,시,분
 						end : new Date(y, m, 5, 12, 30),
+// 						url: 'http://google.com/',//URL
+// 						allDay: false,//하루종일
 						backgroundColor : "#f56954", //red
 						borderColor : "#f56954" //red
+						
 					} ],
 
-					//Random default events
-
-					/*
-					events: [
-					  {
-					    title: 'All Day Event',
-					    start: new Date(y, m, 1),
-					    backgroundColor: "#f56954", //red
-					    borderColor: "#f56954" //red
-					  },
-					  {
-					    title: 'Long Event',
-					    start: new Date(y, m, d - 5),
-					    end: new Date(y, m, d - 2),
-					    backgroundColor: "#f39c12", //yellow
-					    borderColor: "#f39c12" //yellow
-					  },
-					  {
-					    title: 'Meeting',
-					    start: new Date(y, m, d, 10, 30),
-					    allDay: false,
-					    backgroundColor: "#0073b7", //Blue
-					    borderColor: "#0073b7" //Blue
-					  },
-					  {
-					    title: 'Lunch',
-					    start: new Date(y, m, d, 12, 0),
-					    end: new Date(y, m, d, 14, 0),
-					    allDay: false,
-					    backgroundColor: "#00c0ef", //Info (aqua)
-					    borderColor: "#00c0ef" //Info (aqua)
-					  },
-					  {
-					    title: 'Birthday Party',
-					    start: new Date(y, m, d + 1, 19, 0),
-					    end: new Date(y, m, d + 1, 22, 30),
-					    allDay: false,
-					    backgroundColor: "#00a65a", //Success (green)
-					    borderColor: "#00a65a" //Success (green)
-					  },
-					  {
-					    title: 'Click for Google',
-					    start: new Date(y, m, 28),
-					    end: new Date(y, m, 29),
-					    url: 'http://google.com/',
-					    backgroundColor: "#3c8dbc", //Primary (light-blue)
-					    borderColor: "#3c8dbc" //Primary (light-blue)
-					  }
-					],
-					 */
 					editable : true,
 					droppable : true, // this allows things to be dropped onto the calendar !!!
 					drop : function(date, allDay) { // this function is called when something is dropped
@@ -274,8 +226,7 @@
 
 						// render the event on the calendar
 						// the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-						$('#calendar').fullCalendar('renderEvent',
-								copiedEventObject, true);
+						$('#calendar').fullCalendar('renderEvent',copiedEventObject, true);
 
 						// is the "remove after drop" checkbox checked?
 						if ($('#drop-remove').is(':checked')) {
@@ -284,7 +235,7 @@
 						}
 
 					}
-				});
+				});//캘린더 끝
 
 		/* ADDING EVENTS */
 		var currColor = "#3c8dbc"; //Red by default
