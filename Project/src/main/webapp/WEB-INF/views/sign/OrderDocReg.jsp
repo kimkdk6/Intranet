@@ -44,31 +44,31 @@
 	
  	/* 계산 */
 	$('#calc').ready(function() {
-		/* 단가 X 수량 */
+		
 	    $('.unitcost, .amount, .ordercost').keyup(function(){          
 	        $(this).val( $(this).val().replace(/[^0-9]/gi,"") ); //숫자만 입력가능
 	    });
 	
 	    $('.unitcost').keyup(function(){
 	        var num = $(".unitcost").index(this);
-	        $('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
+	        // $('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
 	    });
 	
 	    $('.amount').keyup(function(){
 	        var num = $(".amount").index(this);
 	        $('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
-	
-	    });
-	
-	    $('.ordercost').keyup(function(){
-	        var num = $(".ordercost").index(this);
-	        $('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
-	    });
-	    
-	    /* 총합 */
-	    $('.totalSum').keyup(function() {
-	    	var num = $(".totalSum").index(this);
-	    	$('.totalSum').eq(num).val($('.ordercost').eq(num).val());
+			
+	        $('.totalSum').val(
+	        	parseInt($('.ordercost').eq(0).val()) +
+	        	parseInt($('.ordercost').eq(1).val()) +
+	        	parseInt($('.ordercost').eq(2).val()) +
+	        	parseInt($('.ordercost').eq(3).val()) +
+	        	parseInt($('.ordercost').eq(4).val())
+	        );
+	        
+	        $('.addTax').val(
+	        	parseInt
+	        );
 	    });
 	});
  		
@@ -671,7 +671,7 @@
 																						
 																						<!-- 금액출력 -->
 																						<td class="item" align="right" style="border: solid 1px #C0BFC1;">
-																							<input type="text" name="ordercost" class="ordercost" readonly="readonly">
+																							<input type="text" name="ordercost" class="ordercost" value="0" readonly="readonly">
 																						</td>
 																					</tr>
 																					
@@ -703,7 +703,7 @@
 																						
 																						<!-- 금액출력 -->
 																						<td class="item" align="right" style="border: solid 1px #C0BFC1;">
-																							<input type="text" name="ordercost" class="ordercost" readonly="readonly">
+																							<input type="text" name="ordercost" class="ordercost" value="0" readonly="readonly">
 																						</td>
 																					</tr>
 																					<tr height="27" align="center" id="calc">
@@ -734,39 +734,7 @@
 																						
 																						<!-- 금액출력 -->
 																						<td class="item" align="right" style="border: solid 1px #C0BFC1;">
-																							<input type="text" name="ordercost" class="ordercost" readonly="readonly">
-																						</td>
-																					</tr>
-																					
-																					<tr height="27" align="center" id="calc">
-																						<!-- 품명 -->
-																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="product" class="product" style="width: 90%;" value="">
-																						</td>
-																						
-																						<!-- 단가 -->
-																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="unitcost" class="unitcost" style="text-align: right; width: 90%" value="">
-																						</td>
-																						
-																						<!-- 수량 -->
-																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="amount" class="amount" style="text-align: right; width: 90%" value="">
-																						</td>
-																						
-																						<!-- 규격 -->
-																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																						<input type="text" name="odersize" class="odersize" style="width: 90%" value="">
-																						</td>
-																						
-																						<!-- 비고 -->
-																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="ordernote" class="ordernote" style="width: 90%" value="">
-																						</td>
-																						
-																						<!-- 금액출력 -->
-																						<td class="item" align="right" style="border: solid 1px #C0BFC1;">
-																							<input type="text" name="ordercost" class="ordercost" readonly="readonly">
+																							<input type="text" name="ordercost" class="ordercost" value="0" readonly="readonly">
 																						</td>
 																					</tr>
 																					
@@ -798,11 +766,45 @@
 																						
 																						<!-- 금액출력 -->
 																						<td class="item" align="right" style="border: solid 1px #C0BFC1;">
-																							<input type="text" name="ordercost" class="ordercost" readonly="readonly">
+																							<input type="text" name="ordercost" class="ordercost" value="0" readonly="readonly">
+																						</td>
+																					</tr>
+																					
+																					<tr height="27" align="center" id="calc">
+																						<!-- 품명 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="product" class="product" style="width: 90%;" value="">
+																						</td>
+																						
+																						<!-- 단가 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="unitcost" class="unitcost" style="text-align: right; width: 90%" value="">
+																						</td>
+																						
+																						<!-- 수량 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="amount" class="amount" style="text-align: right; width: 90%" value="">
+																						</td>
+																						
+																						<!-- 규격 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																						<input type="text" name="odersize" class="odersize" style="width: 90%" value="">
+																						</td>
+																						
+																						<!-- 비고 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="ordernote" class="ordernote" style="width: 90%" value="">
+																						</td>
+																						
+																						<!-- 금액출력 -->
+																						<td class="item" align="right" style="border: solid 1px #C0BFC1;">
+																							<input type="text" name="ordercost" class="ordercost" value="0" readonly="readonly">
 																						</td>
 																					</tr>
 																				</tbody>
 																			</table>
+																			
+																			<!-- 분리선 -->
 																			<table width="100%" class="noborder" cellspacing="0"
 																				cellpadding="0">
 																				<tbody>
@@ -811,17 +813,18 @@
 																					</tr>
 																				</tbody>
 																			</table>
+																			<!-- 분리선 끝 -->
 																			
 																			<table width="100%" cellspacing="0" cellpadding="0" class="tbl_appreport">
 																				<tbody>
-																					<tr height="27" class="calc">
+																					<tr height="27" class="chtax">
 																						<td width="80%" align="center" class="title" bgcolor="F1F7F7"
 																							style="border: solid 1px #C0BFC1;">공급가액</td>
 																						<td width="20%" align="right"
 																							style="border: solid 1px #C0BFC1; color: #000000;"
 																							class="item" style="border: solid 1px #C0BFC1;">
 																							<!-- <span id="detail_amount" style="color: #000000;">0</span> -->
-																							<input type="text" name="totalSum" class="totalSum" readonly="readonly" style="color: #000000;">
+																							<input type="text" name="totalSum" class="totalSum" value="0" readonly="readonly" style="color: #000000;">
 																						</td>
 																					</tr>
 																					<tr height="27" class="chtax">
@@ -830,8 +833,10 @@
 																							style="border: solid 1px #C0BFC1;">세 액</td>
 																						<td width="20%" align="right"
 																							style="border: solid 1px #C0BFC1; color: #000000;"
-																							class="item"><span id="detail_tax"
-																							style="color: #000000;">0</span></td>
+																							class="item">
+																							<!-- <span id="detail_tax" style="color: #000000;">0</span> -->
+																							<input type="text" name="addTax" class="addTax" value="0" readonly="readonly" style="color: #000000;">
+																						</td>
 																					</tr>
 																					<tr height="27">
 																						<td width="80%" align="center" class="title"
@@ -846,6 +851,7 @@
 																					</tr>
 																				</tbody>
 																			</table>
+																			
 																			<table width="100%" class="noborder" cellspacing="0"
 																				cellpadding="0">
 																				<tbody>
@@ -895,17 +901,19 @@
 /* 행 추가 */
 $('#addline').click(function() {
 	var contents = '';
-	contents += '<tr height="27" align="center" id="calc">';
+	var buttoncount = 0;
+	contents += '<tr height="27" align="center" >';
 	contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" name="product" class="product" style="width: 90%;" value=""></td>';
 	contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" name="unitcost" class="unitcost" style="text-align: right; width: 90%" value=""></td>';
 	contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" name="amount" class="amount" style="text-align: right; width: 90%" value=""></td>';
 	contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" name="odersize" class="odersize" style="width: 90%" value=""></td>';
 	contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" name="ordernote" class="ordernote" style="width: 90%" value=""></td>';
-	contents += '<td class="item" align="right" style="border: solid 1px #C0BFC1;"><input type="text" name="ordercost" class="ordercost" readonly="readonly"></td>';
+	contents += '<td class="item" align="right" style="border: solid 1px #C0BFC1;"><input type="text" name="ordercost" class="ordercost" value="0" readonly="readonly"></td>';
 	contents += '</tr>';
 	
 	$('#detail_table').append(contents); // 추가
 	
+	buttoncount++;
 	
 	/* 추가된 행 계산 */
 	$('.unitcost, .amount, .ordercost').keyup(function() {
@@ -914,18 +922,45 @@ $('#addline').click(function() {
 	
 	$('.unitcost').keyup(function() {
 		var num = $(".unitcost").index(this);
-	    $('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
+	    // $('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
 	});
 	
 	 $('.amount').keyup(function() {
 	     var num = $(".amount").index(this);
 	     $('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
+	     
+	     /* var addtotal;
+	     addtotal = $('.totalSum').val(
+		    	 	parseInt($('.ordercost').eq(0).val()) +
+		    	 	parseInt($('.ordercost').eq(1).val()) +
+		    	 	parseInt($('.ordercost').eq(2).val()) +
+		    		parseInt($('.ordercost').eq(3).val()) +
+		    		parseInt($('.ordercost').eq(4).val())
+		 		 );
+	     alert(addtotal);
+	     for(var i=5;i<buttoncount+5; i++) {
+	    	 addtotal += $('.totalSum').val(
+	    			 	 	parseInt($('.ordercost').eq(i).val())	 
+	     	 		 	 );
+	     }
+	     alert(addtotal); */
+	     // $('.totalSum').val(parseInt(addtotal));
+	     
+	     $('.totalSum').val(
+	    		 parseInt($('.ordercost').eq(0).val()) +
+		         parseInt($('.ordercost').eq(1).val()) +
+		         parseInt($('.ordercost').eq(2).val()) +
+		         parseInt($('.ordercost').eq(3).val()) +
+		         parseInt($('.ordercost').eq(4).val()) +
+		         parseInt($('.ordercost').eq(5).val()) +
+		         parseInt($('.ordercost').eq(6).val())
+		 );
 	 });
 	
-	 $('.ordercost').keyup(function() {
+	 /* $('.ordercost').keyup(function() {
 	     var num = $(".ordercost").index(this);
 	     $('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
-	 });
+	 }); */
 	
 });
 
