@@ -1,9 +1,23 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	Date d1 = new Date();
+	SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+	String strdate = sdf1.format(d1);
+	System.out.println("오늘의 날짜: "+strdate);
+	
+%>
+<c:set var="empid" value="${sessionScope.myemp.userid}"/>
+<c:set var="todaydate" value="<%=strdate%>"/>
 <!DOCTYPE html>
 
 <script type="text/javascript">
+
+
+	// 
 	$('#calc').ready(
 			function() {
 				/* 단가 X 수량 */
@@ -861,6 +875,4 @@
 		</div>
 	</div>
 </section>
-
-</body>
-</html>
+ 
