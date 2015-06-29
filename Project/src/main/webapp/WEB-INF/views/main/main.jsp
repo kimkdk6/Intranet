@@ -26,7 +26,7 @@ $(function(){
 	function vi(){
 		document.getElementById("commute").innerHTML = '&nbsp&nbsp&nbsp&nbsp&nbsp지각사유 :' ;
 		document.getElementById("commutecheck").style.visibility="visible";
-		document.getElementById("latereason").style.visibility="visible";
+		document.getElementById("reason").style.visibility="visible";
 	}
 	$('#checkinAjax').click(function(){
 		$.ajax({
@@ -48,7 +48,7 @@ $(function(){
 							 if('${leavecheck}' != "''"){
 								 document.getElementById("commute").innerHTML = '&nbsp&nbsp&nbsp&nbsp&nbsp지각사유 :' ;								
  								 document.getElementById("commutecheck").style.visibility="visible";
- 								document.getElementById("latereason").style.visibility="visible";
+ 								document.getElementById("reason").style.visibility="visible";
 							 } 
 						},
 						error :function(data){alert("이미 출근처리가 됬습니다.");}
@@ -79,11 +79,11 @@ $(function(){
 						success : function(data){
 							alert("퇴근처리가 정상적으로 처리됬습니다."),
 							document.getElementById("checkout").innerHTML = data;
-							 if('${leavecheck}' != ""){
+							 if('${leavecheck}' != "''"){
 				
 									 document.getElementById("commute").innerHTML = '&nbsp&nbsp&nbsp&nbsp&nbsp조퇴사유 :' ;
 									 document.getElementById("commutecheck").style.visibility="visible";
-									 document.getElementById("leavereason").style.visibility="visible";
+									 document.getElementById("reason").style.visibility="visible";
 							 } 
 						},
 						error :function(data){alert("이미 퇴근처리가 됬습니다.");}
@@ -99,7 +99,7 @@ $(function(){
 	
 	$('#latebtton').click(function(){
 		var form_data = {
-				latereason : document.getElementById("latereason").value
+				latereason : document.getElementById("reason").value
 			};
 		$.ajax({
 			url:"<%=request.getContextPath() %>/attendance/latereason.htm", 
@@ -116,9 +116,9 @@ $(function(){
 			
 		});
 	
-<%-- 	$('#leavebtton').click(function(){
+ 	$('#leavebtton').click(function(){
 		var form_data = {
-				latereason : document.getElementById("latereason").value
+				latereason : document.getElementById("reason").value
 			};
 		$.ajax({
 			url:"<%=request.getContextPath() %>/attendance/latereason.htm", 
@@ -133,7 +133,7 @@ $(function(){
 			}
 		});
 			
-		}); --%>
+		}); 
 	
 });
 
@@ -239,11 +239,10 @@ setTimeout("go_time()", 1000);
                       </tr>
                 		  <tr id="commutecheck" style="visibility: hidden;">
                       	<td >
-                      		<b id="commute"></b>
+                      		<span id="commute"></span>
                       	</td>
                       	
-                       	<td><input type="text" id="latereason" style="border:2px solid #e3e3e3; width:100px; visibility: hidden;" >
-                       		<input type="text" id="leavereason" style="border:2px solid #e3e3e3; width:100px; visibility: hidden;">
+                       	<td><input type="text" id="reason" style="border:2px solid #e3e3e3; width:100px; visibility: hidden;" >
                       	</td>
                       	<td style="padding-left: 5px;"><button class="btn btn-block btn-default btn-sm" id ="latebtton" style="padding-top: 2px; padding-bottom: 2px;">저장</button></td>
                       </tr>
