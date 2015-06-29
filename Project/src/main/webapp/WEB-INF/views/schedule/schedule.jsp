@@ -166,121 +166,34 @@
 <!-- /.content -->
 
 
-<div id="_schedule_desc" width="100%" border="0" cellspacing="0"
-	cellpadding="0" class="left_menu" title="일정추가하기">
-	<form id="_schedule_form" name="_schedule_layer"
-		onsubmit="return exe_schedule(this)">
-		<table id="_schedule_table" width="100%" border="0" cellspacing="0"
-			cellpadding="0" class="left_menu">
+<div id="_schedule_desc" width="100%" border="0" cellspacing="0" cellpadding="0" class="left_menu" title="일정추가하기">
+	<form id="_schedule_form" name="_schedule_layer">
+	<input type="hidden" id="scstart" name="scstart"/>
+	<input type="hidden" id="scend" name="scend"/>
+	<input type="hidden" id="userid" name="userid"/>
+		<table id="_schedule_table" width="100%" border="0" cellspacing="0" cellpadding="0" class="left_menu">
 			<tbody>
 				<tr>
 					<td style="padding: 10px 20px 15px 20px;">
-						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<table width="100%">
 							<tbody>
+							
+								
 								<tr>
-									<td width="65" height="25" style="letter-spacing: 0px;">일시</td>
-									<td width="">
-										<!--             <input type="text" right="owner" name="startdate" readonly="" class="input_date" style="width:85px" maxlength="10" onblur="constraintValue('DATEFORMAT',this)" onclick="popUpCalendarYmd(this, '_schedule_desc')"> -->
-										<input type="text" right="owner" id="startdate"
-										name="startdate" readonly="" class="input_date"
-										style="width: 110px" maxlength="10""> <select
-										rel="time" right="owner" name="starthh">
-											<option value="00" selected="selected">오전 12시</option>
-											<option value="01">오전 01시</option>
-											<option value="02">오전 02시</option>
-											<option value="03">오전 03시</option>
-											<option value="04">오전 04시</option>
-											<option value="05">오전 05시</option>
-											<option value="06">오전 06시</option>
-											<option value="07">오전 07시</option>
-											<option value="08">오전 08시</option>
-											<option value="09">오전 09시</option>
-											<option value="10">오전 10시</option>
-											<option value="11">오전 11시</option>
-											<option value="12">오후 12시</option>
-											<option value="13">오후 01시</option>
-											<option value="14">오후 02시</option>
-											<option value="15">오후 03시</option>
-											<option value="16">오후 04시</option>
-											<option value="17">오후 05시</option>
-											<option value="18">오후 06시</option>
-											<option value="19">오후 07시</option>
-											<option value="20">오후 08시</option>
-											<option value="21">오후 09시</option>
-											<option value="22">오후 10시</option>
-											<option value="23">오후 11시</option>
-									</select> <select rel="time" right="owner" name="startmm">
-											<option value="00" selected="selected">00 분</option>
-											<option value="30">30 분</option>
-									</select> ~ <!--             <input type="text" right="owner" name="enddate" readonly="" class="input_date" style="width:85px" maxlength="10" onblur="constraintValue('DATEFORMAT',this)" onclick="popUpCalendarYmd(this, '_schedule_desc')"> -->
-										<input type="text" right="owner" id="enddate" name="enddate"
-										readonly="" class="input_date" style="width: 110px"
-										maxlength="10"> <select rel="time" right="owner"
-										name="endhh">
-											<option value="00" selected="selected">오전 12시</option>
-											<option value="01">오전 01시</option>
-											<option value="02">오전 02시</option>
-											<option value="03">오전 03시</option>
-											<option value="04">오전 04시</option>
-											<option value="05">오전 05시</option>
-											<option value="06">오전 06시</option>
-											<option value="07">오전 07시</option>
-											<option value="08">오전 08시</option>
-											<option value="09">오전 09시</option>
-											<option value="10">오전 10시</option>
-											<option value="11">오전 11시</option>
-											<option value="12">오후 12시</option>
-											<option value="13">오후 01시</option>
-											<option value="14">오후 02시</option>
-											<option value="15">오후 03시</option>
-											<option value="16">오후 04시</option>
-											<option value="17">오후 05시</option>
-											<option value="18">오후 06시</option>
-											<option value="19">오후 07시</option>
-											<option value="20">오후 08시</option>
-											<option value="21">오후 09시</option>
-											<option value="22">오후 10시</option>
-											<option value="23">오후 11시</option>
-									</select> <select rel="time" right="owner" name="endmm">
-											<option value="00" selected="selected">00 분</option>
-											<option value="30">30 분</option>
-									</select>
-									</td>
-								</tr>
-								<tr id="reFrame" style="display: none;">
-									<td></td>
-									<td style="padding-top: 5px; padding-bottom: 5px;">
-										<table width="100%" border="0" cellspacing="0" cellpadding="0">
-											<tbody>
-											</tbody>
-										</table>
-									</td>
-								</tr>
-								<tr>
-									<td height="3"></td>
-									<td></td>
-								</tr>
-
-
-								<tr>
-									<td height="25" valign="top" style="padding-top: 5px;">제목</td>
+									<td width="65" height="25" style="letter-spacing: 0px; padding-top: 5px;">카테고리</td>
 									<td>
 										<table width="100%" border="0" cellspacing="0" cellpadding="0">
 											<tbody>
 												<tr>
-													<td width="320"><input type="text" name="summary"
-														right="owner" class="input_type1" style="width: 100%;"></td>
-													<td width="80" align="right">카테고리</td>
-													<td width="" align="left" style="padding-left: 8px;">
-														<select id="schedule_category" name="catkey" right="owner"
-														style="width: 170"
-														onchange="changeCategory(this.form, this.options[this.selectedIndex].value); this.blur();">
-															<!--                                     <option value="72" style="color:#fff; background-color:#44be1e;" selected="selected">회사일정</option> -->
-															<!--                                     <option value="74" style="color:#fff; background-color:#4b4b4b;">개인</option> -->
-															<!--                                     <option value="2157" style="color:#fff; background-color:#b4b4b4;">테스트</option> -->
-															<!--                                     <option value="2357" style="color:#fff; background-color:#6e9cf2;">장혜졍씨</option> -->
-															<!--                                     <option value="2359" style="color:#fff; background-color:#6e9cf2;">김덕경씨</option> -->
-													</select> <span id="schedule_category_str"></span>
+													<td width="100%" align="left" style="padding-left: 8px;">
+														<select  id="catecode" name="catecode">
+															<option value="72" style="color:#fff; background-color:#44be1e;" selected="selected">회사일정</option>
+															<option value="74" style="color:#fff; background-color:#4b4b4b;">개인</option>
+															<option value="2157" style="color:#fff; background-color:#b4b4b4;">테스트</option>
+															<option value="2357" style="color:#fff; background-color:#6e9cf2;">장혜졍씨</option>
+															<option value="2359" style="color:#fff; background-color:#6e9cf2;">김덕경씨</option>
+														</select> 
+													<span id="schedule_category_str"></span>
 													</td>
 												</tr>
 											</tbody>
@@ -288,15 +201,111 @@
 									</td>
 								</tr>
 								<tr>
-									<td height="3"></td>
+								<tr>
+									<td height="10"></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td width="65" height="25" style="letter-spacing: 0px; padding-top: 5px;">시작일</td>
+									<td width="">
+										
+										<input type="text" id="startdate" name="startdate" class="input_date" style="width: 110px; margin-left: 7px" maxlength="10"> 
+										<select id="starthh" name="starthh">
+											<option value="00" selected="selected">오전 12시</option>
+											<option value="01">오전 01시</option>
+											<option value="02">오전 02시</option>
+											<option value="03">오전 03시</option>
+											<option value="04">오전 04시</option>
+											<option value="05">오전 05시</option>
+											<option value="06">오전 06시</option>
+											<option value="07">오전 07시</option>
+											<option value="08">오전 08시</option>
+											<option value="09">오전 09시</option>
+											<option value="10">오전 10시</option>
+											<option value="11">오전 11시</option>
+											<option value="12">오후 12시</option>
+											<option value="13">오후 01시</option>
+											<option value="14">오후 02시</option>
+											<option value="15">오후 03시</option>
+											<option value="16">오후 04시</option>
+											<option value="17">오후 05시</option>
+											<option value="18">오후 06시</option>
+											<option value="19">오후 07시</option>
+											<option value="20">오후 08시</option>
+											<option value="21">오후 09시</option>
+											<option value="22">오후 10시</option>
+											<option value="23">오후 11시</option>
+									</select> 
+									<select  id="startmm" name="startmm">
+											<option value="00" selected="selected">00 분</option>
+											<option value="30">30 분</option>
+									</select>
+									</td>
+								</tr>
+								<tr>
+									<td height="10"></td>
+									<td></td>
+								</tr>
+								<tr>
+								<td width="65" height="25" style="letter-spacing: 0px; padding-top: 5px;">
+									종료일
+								</td>
+									<td width="">
+									<input type="text" id="enddate" name="enddate" class="input_date" style="width: 110px; margin-left: 7px;" maxlength="10"> 
+									<select id="endmm" name="endhh">
+											<option value="00" selected="selected">오전 12시</option>
+											<option value="01">오전 01시</option>
+											<option value="02">오전 02시</option>
+											<option value="03">오전 03시</option>
+											<option value="04">오전 04시</option>
+											<option value="05">오전 05시</option>
+											<option value="06">오전 06시</option>
+											<option value="07">오전 07시</option>
+											<option value="08">오전 08시</option>
+											<option value="09">오전 09시</option>
+											<option value="10">오전 10시</option>
+											<option value="11">오전 11시</option>
+											<option value="12">오후 12시</option>
+											<option value="13">오후 01시</option>
+											<option value="14">오후 02시</option>
+											<option value="15">오후 03시</option>
+											<option value="16">오후 04시</option>
+											<option value="17">오후 05시</option>
+											<option value="18">오후 06시</option>
+											<option value="19">오후 07시</option>
+											<option value="20">오후 08시</option>
+											<option value="21">오후 09시</option>
+											<option value="22">오후 10시</option>
+											<option value="23">오후 11시</option>
+									</select> 
+									<select id="endmm" name="endmm">
+											<option value="00" selected="selected">00 분</option>
+											<option value="30">30 분</option>
+									</select>
+									</td>
+								</tr>
+								
+
+								<tr>
+									<td height="10"></td>
+									<td></td>
+								</tr>
+								
+								<tr>
+									<td height="20" valign="top" style="padding-top: 5px;">제목</td>
+									<td><input type="text" id="sctitle" name="sctitle" class="input_date" style="width: 100%; margin-left: 7px;">
+									</td>
+								</tr>
+								<tr>
+									<td height="10"></td>
 									<td></td>
 								</tr>
 
 								<tr>
 									<td height="20" valign="top" style="padding-top: 5px;">내용</td>
-									<td><textarea name="description" class="input_type1"
-											right="owner"
-											style="width: 100%; height: 160px; overflow: auto;"></textarea>
+									<td>
+										<textarea id ="sccontent" name="sccontent" class="input_type1" style="width: 100%; height: 160px; overflow: auto; margin-left: 7px">
+										</textarea>
 									</td>
 								</tr>
 							</tbody>
@@ -306,31 +315,98 @@
 			</tbody>
 		</table>
 	</form>
-
 </div>
 
-<!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all" /> -->
-<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> -->
-<!-- <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js" type="text/javascript"></script> -->
 
 
-<script
-	src="<%=request.getContextPath()%>/resources/plugins/schecule/jquery-ui-1.11.4.custom/jquery-ui.js"
-	type="text/javascript"></script>
-<link
-	href="<%=request.getContextPath()%>/resources/plugins/schecule/jquery-ui-1.11.4.custom/jquery-ui.css"
-	type="text/css" />
+<div id="_schedule_view" width="100%" border="0" cellspacing="0" cellpadding="0" class="left_menu" title="일정확인하기">
+	<form id="_read_schedule_form" name="_read_schedule_form">
+		<table id="_read_schedule_table" width="100%" border="0" cellspacing="0" cellpadding="0" class="left_menu">
+			<tbody>
+				<tr>
+					<td style="padding: 10px 20px 15px 20px;">
+						<table width="100%">
+							<tbody>
+							
+								
+								<tr>
+									<td width="65" height="25" style="letter-spacing: 0px; padding-top: 5px;">카테고리</td>
+									<td>
+										<table width="100%" border="0" cellspacing="0" cellpadding="0">
+											<tbody>
+												<tr>
+													<td width="100%" align="left">
+														<input type="text" id="readcatecode" name="readcatecode" class="input_date" style="width: 100%; margin-left: 7px">
+													<span id="schedule_category_str"></span>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+								<tr>
+								<tr>
+									<td height="10"></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td width="65" height="25" style="letter-spacing: 0px; padding-top: 5px;">시작일</td>
+									<td width="">
+										<input type="text" id="readstartdate" name="readstartdate" class="input_date" readonly="readonly" style="width: 200px; margin-left: 7px" maxlength="10"> 
+									</td>
+								</tr>
+								<tr>
+									<td height="10"></td>
+									<td></td>
+								</tr>
+								<tr>
+								<td width="65" height="25" style="letter-spacing: 0px; padding-top: 5px;">
+									종료일
+								</td>
+									<td width="">
+									<input type="text" right="owner" id="readenddate" name="readenddate" readonly="readonly" class="input_date" style="width: 200px; margin-left: 7px;" maxlength="10"> 
+									</td>
+								</tr>
+								
+
+								<tr>
+									<td height="10"></td>
+									<td></td>
+								</tr>
+								
+								<tr>
+									<td height="20" valign="top" style="padding-top: 5px;">제목</td>
+									<td><input type="text" id="readsctitle" name="readsctitle" readonly="readonly" class="input_date" style="width: 100%; margin-left: 7px;">
+									</td>
+								</tr>
+								<tr>
+									<td height="10"></td>
+									<td></td>
+								</tr>
+
+								<tr>
+									<td height="20" valign="top" style="padding-top: 5px;">내용</td>
+									<td>
+										<textarea id="readsccontent" name="readsccontent" class="input_type1" readonly="readonly" style="width: 100%; height: 160px; overflow: auto; margin-left: 7px">
+										</textarea>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+</div>
 
 
-<script
-	src="<%=request.getContextPath()%>/resources/plugins/fullcalendar/fullcalendar.js"
-	type="text/javascript"></script>
-<link
-	href="<%=request.getContextPath()%>/resources/plugins/fullcalendar/fullcalendar.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/resources/plugins/fullcalendar/fullcalendar.print.css"
-	rel="stylesheet" type="text/css" media='print' />
+
+<script src="<%=request.getContextPath()%>/resources/plugins/schecule/jquery-ui-1.11.4.custom/jquery-ui.js" type="text/javascript"></script>
+<link href="<%=request.getContextPath()%>/resources/plugins/schecule/jquery-ui-1.11.4.custom/jquery-ui.css" type="text/css" />
+<script src="<%=request.getContextPath()%>/resources/plugins/fullcalendar/fullcalendar.js" type="text/javascript"></script>
+<link href="<%=request.getContextPath()%>/resources/plugins/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath()%>/resources/plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" type="text/css" media='print'/>
 
 <script type="text/javascript">
 	$(function() {
@@ -397,8 +473,8 @@
 
 		var newEvent = $("#_schedule_desc").dialog({
 			autoOpen : false,
-			height : 400,
-			width : 750,
+			height : 500,
+			width : 600,
 			modal : true,
 			buttons : {
 				"저 장" : function() {
@@ -413,26 +489,24 @@
 			}
 		});
 		
+		var readEvent = $("#_schedule_view").dialog({
+			autoOpen : false,
+			height : 500,
+			width : 600,
+			modal : true,
+			buttons : {
+				"일정 삭제" : function() {
+					readEvent.dialog("close");
+				},
+				"일정 수정" : function() {
+					readEvent.dialog("close");
+				},
+				"취 소" : function() {
+					readEvent.dialog("close");
+				}
+			}
+		});
 		
-// 		var dialog = $("#_schedule_desc").dialog({
-// 			autoOpen : false,
-// 			height : 400,
-// 			width : 750,
-// 			modal : true,
-// 			buttons : {
-// 				"저 장" : function() {
-
-// 				},
-// 				"취 소" : function() {
-// 					document.getElementById("_schedule_form").reset();
-// 					dialog.dialog("close")
-// 					// 		  	      form("_schedule_form").reset();
-// 					// 		          allFields.removeClass( "ui-state-error" );
-// 				}
-// 			}
-// 		});
-	
-
 		/* initialize the calendar
 		 -----------------------------------------------------------------*/
 		//Date for the calendar events (dummy data)
@@ -466,11 +540,10 @@
 					},
 
 					dayClick : function(date, jsEvent, view) {
-
 						//alert('Clicked on: ' + date.format());
 						//$( "#startdate" ).datepicker( "option", "defaultDate", defaultDate );
 						//   $( "#startdate" ).datepicker( "setDate", date);
-						newEvent.dialog("open", date);
+						newEvent.dialog("open");
 
 						// 				        $("#calendar").fullCalendar( 'addEventSource', [{
 						// 				        	title : '이벤트 테스트2',
@@ -492,19 +565,13 @@
 
 					eventClick : function(calEvent, jsEvent, view) {
 
+						var pop_start_date = moment(calEvent.start).format(
+								"YYYY-MM-DD");
+						var pop_end_date = moment(calEvent.end).format(
+								"YYYY-MM-DD");
 
-						
-						 var pop_start_date =  moment(calEvent.start).format("YYYY-MM-DD");
-						 var pop_end_date =  moment(calEvent.end).format("YYYY-MM-DD");
-				
-						 console.log("title: "+calEvent.title+" start: "+pop_start_date+" end: "+pop_end_date);
-				
-
-
-
-// 						alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-// 						alert('View: ' + view.name);
-						// 				        $(this).css('border-color', 'red');		//change the border color just for fun
+						console.log("title: " + calEvent.title + " start: "+ pop_start_date + " end: " + pop_end_date);
+						readEvent.dialog("open");
 
 					},
 
