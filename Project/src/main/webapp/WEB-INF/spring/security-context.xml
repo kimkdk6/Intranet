@@ -29,7 +29,7 @@
 	<security:authentication-provider>
 		<!-- 2단계 Spring security JDBC -->
 		<security:jdbc-user-service data-source-ref="driverManagerDataSource"
-			users-by-username-query="SELECT USERID, emppwd AS PASSWORD ,  1 enabled FROM emp where userid=?"
+			users-by-username-query="SELECT USERID, emppwd AS PASSWORD ,  1 enabled FROM emp where userid=? and EMPAPPROVE=1"
 			authorities-by-username-query="select e.USERID, r.ROLE_NAME
 											from AUTHORITIES a join emp e on a.USERID=e.USERID
 											                   join roles r on a.AUTHORITY=r.AUTHORITY

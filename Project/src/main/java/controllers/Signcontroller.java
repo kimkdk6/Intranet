@@ -32,7 +32,9 @@ import dto_vo.Emp.Dept;
 import dto_vo.Emp.Emp;
 import dto_vo.Emp.Position;
 import dto_vo.Emp.Team;
+import dto_vo.Sign.Biztripcost;
 import dto_vo.Sign.Biztripdoc;
+import dto_vo.Sign.Biztriprep;
 import dto_vo.Sign.Draftingdoc;
 import dto_vo.Sign.Holidaydoc;
 import dto_vo.Sign.Sign;
@@ -615,6 +617,58 @@ public class Signcontroller {
 		return "sign.BizTripRepReg";
 	}
 
+	// 출장 신청서 작성
+	@Transactional
+	@RequestMapping(value = "BizTripRepReg.htm", method = RequestMethod.POST)
+	public String BizTripRepReg(Sign sign, Biztriprep biztriprep, List<Biztripcost> biztripcost,
+			Signline signline, Principal principal)
+			throws ClassNotFoundException, SQLException, IOException {
+		System.out.println("출장 결과 보고서 작성");
+		int totalsign=0;
+		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
+			
+		System.out.println("출장 결과 보고서 결재 파일: "+sign.toString());
+		System.out.println("출장 결과 보고서 파일: "+biztriprep.toString());
+		System.out.println("출장 경비 내역 리스트가 나오나: "+biztripcost.toString());
+		System.out.println("결재 라인: "+signline.toString());
+			
+		// 결재인 넣기 
+		/*sign.setSigner1(principal.getName());
+		  sign.setUserid(principal.getName());
+				
+		// 결재라인 : 1>승인 2>반려 3>대기
+		signline.setSignok1(1);
+		if (sign.getSigner2() != null) {
+			signline.setSignok2(3);
+			totalsign++;
+		}
+		if (sign.getSigner3() != null) {
+			signline.setSignok3(3);
+			totalsign++;
+		}
+		if (sign.getSigner4() != null) {
+			signline.setSignok4(3);
+			totalsign++;
+		}
+		if (sign.getSigner5() != null) {
+			signline.setSignok5(3);
+			totalsign++;
+		}
+				
+		// sign: totalsign
+		System.out.println("totalsign: "+totalsign);
+		sign.setTotalsign(totalsign);
+			
+			// signline: signning 
+			signline.setSignning(sign.getSigner2());
+			
+		signdao.insertSign(sign);
+		signdao.insertSignline(signline);
+		signdao.insertBizTripDoc(biztripdoc);*/
+			
+		return "redirect:SignMain.htm";
+	}
+	
 	// 출장 결과 보고서 상세 페이지 보기
 	@RequestMapping(value = "BizTripRepDetail.htm", method = RequestMethod.GET)
 	public String BizTripRepDetail(String docnum, Model model)

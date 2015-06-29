@@ -10,8 +10,8 @@
 	System.out.println("오늘의 날짜: "+strdate);
 	
 %>
-<c:set var="empid" value="${sessionScope.myemp.userid}"/>
-<c:set var="todaydate" value="<%=strdate%>"/>
+<c:set var="empid" value="${sessionScope.myemp.userid}" />
+<c:set var="todaydate" value="<%=strdate%>" />
 <!DOCTYPE html>
 <script type="text/javascript">
 		//sign 유효성 검사
@@ -409,343 +409,356 @@
 			</h3>
 		</div>
 		<div class="box-body">
-			<form name="signform" action="" method="post"  enctype="multipart/form-data">
+			<form name="signform" action="" method="post"
+				enctype="multipart/form-data">
 				<input type="hidden" id="signtype" name="signtype" value="4">
-				<input type="hidden" id="dept" name="dept" value="${sessionScope.dept}">
-				<input type="hidden" id="team" name="team" value="${sessionScope.team}">
-				<input type="hidden" id="ename" name="ename" value="${sessionScope.myemp.ename}">
-				<input type="hidden" id="posname" name="posname" value="${sessionScope.pos}">
-			<table>
-				<tbody>
-					<tr>
-						<td align="center" valign="top"
-							style="padding: 19px 15px 19px 15px;">
+				<input type="hidden" id="dept" name="dept"
+					value="${sessionScope.dept}"> <input type="hidden"
+					id="team" name="team" value="${sessionScope.team}"> <input
+					type="hidden" id="ename" name="ename"
+					value="${sessionScope.myemp.ename}"> <input type="hidden"
+					id="posname" name="posname" value="${sessionScope.pos}">
+				<table>
+					<tbody>
+						<tr>
+							<td align="center" valign="top"
+								style="padding: 19px 15px 19px 15px;">
 
-							<table width="100%" border="0" cellspacing="0" cellpadding="0"
-								class="tbl_appdoc">
-								<tbody>
-									<tr>
-										<td class="dochead" align="center" valign="top"
-											style="padding-bottom: 20px;">
-											<table width="100%" border="0" frame="void" cellspacing="0"
-												cellpadding="0">
-												<tbody>
-													<tr>
-														<td width="120"></td>
-														<td class="dochead" align="center" valign="top"
-															style="font-size: 30px">출장 보고서</td>
-													</tr>
-												</tbody>
-											</table>
-										</td>
-									</tr>
-									<tr>
-										<td align="center" valign="top">
-											 
-												
-											<table width="100%" border="0" class="tbl_c9c9c9"
-												cellspacing="0" cellpadding="0"
-												style="table-layout: fixed; border: solid 1px #C0BFC1;">
-												<tbody>
+								<table width="100%" border="0" cellspacing="0" cellpadding="0"
+									class="tbl_appdoc">
+									<tbody>
+										<tr>
+											<td class="dochead" align="center" valign="top"
+												style="padding-bottom: 20px;">
+												<table width="100%" border="0" frame="void" cellspacing="0"
+													cellpadding="0">
+													<tbody>
+														<tr>
+															<td width="120"></td>
+															<td class="dochead" align="center" valign="top"
+																style="font-size: 30px">출장 보고서</td>
+														</tr>
+													</tbody>
+												</table>
+											</td>
+										</tr>
+										<tr>
+											<td align="center" valign="top">
 
-													<tr>
-														<td width="95" height="30" align="center"
-															bgcolor="#E1F9DD" class="m_sp"><b>문서번호</b></td>
-														<td width=""
-															style="padding: 0 0 0 12px; border: solid 1px #C0BFC1;">${sign.docnum}</td>
-														<td width="365" rowspan="3" align="center" valign="top"
-															style="border: solid 2px; padding: 0;">
 
-															<table width="100%" cellpadding="0" cellspacing="0"
-																class="tbl_c9c9c9"
-																style="border: solid 1px; table-layout: fixed;"
-																rel="proc_s">
-																<tbody>
-																	<tr height="20" align="center" bgcolor="#E1F9DD"
-																		style="border: solid 1px;">
-																		<td width="7%" rowspan="4" style="border: solid 1px;"><b>결<br>
-																				<br> <br>재
-																		</b></td>
-																		<td width="19%"
-																			style="border: 1px solid; padding: 3px 0 0 0;">기안자</td>
-																		<td width="19%" id="dept0"
-																			style="border: 1px solid; padding: 3px 0 0 0;"> </td>
-																		<td width="19%" id="dept1"
-																			style="border: 1px solid; padding: 3px 0 0 0;"> </td>
-																		<td width="19%" id="dept2"
-																			style="border: 1px solid; padding: 3px 0 0 0;"> </td>
-																		<td width="19%" id="dept3"
-																			style="border: 1px solid; padding: 3px 0 0 0;"> </td>
-																	</tr>
-																	<tr height="70" align="center">
-																		<td>${sessionScope.myemp.ename}</td>
-																		  <td id="users" style="border-bottom: 1px #eaeaea solid;">
-                                                <div id="dialog" title="결재자 지정하기">
-                                                      <div id="accordion">
-                                                         <c:forEach items="${dept}" var="d">
-                                                            <h3>${d.deptname}</h3>
-                                                            <div>
-                                                               <c:forEach items="${emp}" var="e">
-                                                                  <c:if test="${d.deptcode == e.deptcode}">
-                                                                     <c:forEach items="${team}" var="t">
-                                                                        <c:if test="${t.teamcode == e.teamcode }">
-                                                                           <c:forEach items="${pos}" var="p">
-                                                                              <c:if test="${p.poscode == e.poscode}">
-                                                                              <input type="radio" name="name" id="name" value="${e.userid},${e.ename},${p.posname}" >
-                                                                                 <i class="fa fa-fw fa-user-plus"></i> 
+												<table width="100%" border="0" class="tbl_c9c9c9"
+													cellspacing="0" cellpadding="0"
+													style="table-layout: fixed; border: solid 1px #C0BFC1;">
+													<tbody>
+
+														<tr>
+															<td width="95" height="30" align="center"
+																bgcolor="#E1F9DD" class="m_sp"><b>문서번호</b></td>
+															<td width=""
+																style="padding: 0 0 0 12px; border: solid 1px #C0BFC1;">${sign.docnum}</td>
+															<td width="365" rowspan="3" align="center" valign="top"
+																style="border: solid 2px; padding: 0;">
+
+																<table width="100%" cellpadding="0" cellspacing="0"
+																	class="tbl_c9c9c9"
+																	style="border: solid 1px; table-layout: fixed;"
+																	rel="proc_s">
+																	<tbody>
+																		<tr height="20" align="center" bgcolor="#E1F9DD"
+																			style="border: solid 1px;">
+																			<td width="7%" rowspan="4" style="border: solid 1px;"><b>결<br>
+																					<br> <br>재
+																			</b></td>
+																			<td width="19%"
+																				style="border: 1px solid; padding: 3px 0 0 0;">기안자</td>
+																			<td width="19%" id="dept0"
+																				style="border: 1px solid; padding: 3px 0 0 0;">
+																			</td>
+																			<td width="19%" id="dept1"
+																				style="border: 1px solid; padding: 3px 0 0 0;">
+																			</td>
+																			<td width="19%" id="dept2"
+																				style="border: 1px solid; padding: 3px 0 0 0;">
+																			</td>
+																			<td width="19%" id="dept3"
+																				style="border: 1px solid; padding: 3px 0 0 0;">
+																			</td>
+																		</tr>
+																		<tr height="70" align="center">
+																			<td>${sessionScope.myemp.ename}</td>
+																			<td id="users"
+																				style="border-bottom: 1px #eaeaea solid;">
+																				<div id="dialog" title="결재자 지정하기">
+																					<div id="accordion">
+																						<c:forEach items="${dept}" var="d">
+																							<h3>${d.deptname}</h3>
+																							<div>
+																								<c:forEach items="${emp}" var="e">
+																									<c:if test="${d.deptcode == e.deptcode}">
+																										<c:forEach items="${team}" var="t">
+																											<c:if test="${t.teamcode == e.teamcode }">
+																												<c:forEach items="${pos}" var="p">
+																													<c:if test="${p.poscode == e.poscode}">
+																														<input type="radio" name="name" id="name"
+																															value="${e.userid},${e.ename},${p.posname}">
+																														<i class="fa fa-fw fa-user-plus"></i> 
                                                                                  	${t.teamname} ${e.ename} ${p.posname}
                                                                                  <hr>
-                                                                              </c:if>
-                                                                           </c:forEach>
-                                                                        </c:if>
-                                                                     </c:forEach>
-                                                                     
-                                                               </c:if>
-                                                            </c:forEach>   
-                                                         </div>
-                                                         </c:forEach>
-                                                         
-                                                         
-                                                   </div>
-                                                   
-                                                   </div>
-                                                   
-                                                  <!--  <button id="opener">지정1</button> -->
-                                                  <input type="button" id="opener" value="지정1"/>
-                                                   <!-- <button id="cancel1" >취소</button> -->
-                                                   <input type='button' id='cancel' value='취소'/>
-                                             </td>
-                                             
-                                             <td id="users1" style="border-bottom: 1px #eaeaea solid;">
-                                                <div id="dialog1" title="결재자 지정하기">
-                                                   <div id="accordion1">
-                                                         <c:forEach items="${dept}" var="d">
-                                                            <h3>${d.deptname}</h3>
-                                                            <div>
-                                                               <c:forEach items="${emp}" var="e">
-                                                                  <c:if test="${d.deptcode == e.deptcode}">
-                                                                     <c:forEach items="${team}" var="t">
-                                                                        <c:if test="${t.teamcode == e.teamcode }">
-                                                                           <c:forEach items="${pos}" var="p">
-                                                                              <c:if test="${p.poscode == e.poscode}">
-                                                                                 <input type="radio" name="name1" id="name1" value="${e.userid},${e.ename},${p.posname}" >
-                                                                                 <i class="fa fa-fw fa-user-plus"></i> 
+																													</c:if>
+																												</c:forEach>
+																											</c:if>
+																										</c:forEach>
+
+																									</c:if>
+																								</c:forEach>
+																							</div>
+																						</c:forEach>
+
+
+																					</div>
+
+																				</div> <!--  <button id="opener">지정1</button> --> <input
+																				type="button" id="opener" value="지정1" /> <!-- <button id="cancel1" >취소</button> -->
+																				<input type='button' id='cancel' value='취소' />
+																			</td>
+
+																			<td id="users1"
+																				style="border-bottom: 1px #eaeaea solid;">
+																				<div id="dialog1" title="결재자 지정하기">
+																					<div id="accordion1">
+																						<c:forEach items="${dept}" var="d">
+																							<h3>${d.deptname}</h3>
+																							<div>
+																								<c:forEach items="${emp}" var="e">
+																									<c:if test="${d.deptcode == e.deptcode}">
+																										<c:forEach items="${team}" var="t">
+																											<c:if test="${t.teamcode == e.teamcode }">
+																												<c:forEach items="${pos}" var="p">
+																													<c:if test="${p.poscode == e.poscode}">
+																														<input type="radio" name="name1"
+																															id="name1"
+																															value="${e.userid},${e.ename},${p.posname}">
+																														<i class="fa fa-fw fa-user-plus"></i> 
                                                                                  ${t.teamname} ${e.ename} ${p.posname}
                                                                                 <hr>
-                                                                              </c:if>
-                                                                           </c:forEach>
-                                                                        </c:if>
-                                                                     </c:forEach>
-                                                               </c:if>
-                                                            </c:forEach>   
-                                                         </div>
-                                                         </c:forEach>
-                                                   </div>
-                                                </div>
-                                                <input type="button" id="opener1" value="지정2"/>
-                                                 <input type='button' id='cancel1' value='취소'/>
-                                             </td>
-                                             
-                                             
-                                             <td id="users2" style="border-bottom: 1px #eaeaea solid;">
-                                                <div id="dialog2" title="결재자 지정하기">
-                                                   <div id="accordion2">
-                                                         <c:forEach items="${dept}" var="d">
-                                                            <h3>${d.deptname}</h3>
-                                                            <div>
-                                                               <c:forEach items="${emp}" var="e">
-                                                                  <c:if test="${d.deptcode == e.deptcode}">
-                                                                     <c:forEach items="${team}" var="t">
-                                                                        <c:if test="${t.teamcode == e.teamcode }">
-                                                                           <c:forEach items="${pos}" var="p">
-                                                                              <c:if test="${p.poscode == e.poscode}">
-                                                                                 <input type="radio" name="name2" id="name2" value="${e.userid},${e.ename},${p.posname}" >
-                                                                                 <i class="fa fa-fw fa-user-plus"></i> 
+																													</c:if>
+																												</c:forEach>
+																											</c:if>
+																										</c:forEach>
+																									</c:if>
+																								</c:forEach>
+																							</div>
+																						</c:forEach>
+																					</div>
+																				</div> <input type="button" id="opener1" value="지정2" /> <input
+																				type='button' id='cancel1' value='취소' />
+																			</td>
+
+
+																			<td id="users2"
+																				style="border-bottom: 1px #eaeaea solid;">
+																				<div id="dialog2" title="결재자 지정하기">
+																					<div id="accordion2">
+																						<c:forEach items="${dept}" var="d">
+																							<h3>${d.deptname}</h3>
+																							<div>
+																								<c:forEach items="${emp}" var="e">
+																									<c:if test="${d.deptcode == e.deptcode}">
+																										<c:forEach items="${team}" var="t">
+																											<c:if test="${t.teamcode == e.teamcode }">
+																												<c:forEach items="${pos}" var="p">
+																													<c:if test="${p.poscode == e.poscode}">
+																														<input type="radio" name="name2"
+																															id="name2"
+																															value="${e.userid},${e.ename},${p.posname}">
+																														<i class="fa fa-fw fa-user-plus"></i> 
                                                                                  ${t.teamname} ${e.ename} ${p.posname }
                                                                                  <hr>
-                                                                              </c:if>
-                                                                           </c:forEach>
-                                                                        </c:if>
-                                                                     </c:forEach>
-                                                               </c:if>
-                                                            </c:forEach>   
-                                                         </div>
-                                                         </c:forEach>
-                                                   </div>
-                                                </div>
-                                                <input type="button" id="opener2" value="지정3"/>
-                                                <input type='button' id='cancel2' value='취소'/>
-                                             </td>
-                                             
-                                             <td id="users3" style="border-bottom: 1px #eaeaea solid;">
-                                                <div id="dialog3" title="결재자 지정하기">
-                                                   <div id="accordion3">
-                                                         <c:forEach items="${dept}" var="d">
-                                                            <h3>${d.deptname}</h3>
-                                                            <div>
-                                                               <c:forEach items="${emp}" var="e">
-                                                                  <c:if test="${d.deptcode == e.deptcode}">
-                                                                     <c:forEach items="${team}" var="t">
-                                                                        <c:if test="${t.teamcode == e.teamcode }">
-                                                                           <c:forEach items="${pos}" var="p">
-                                                                              <c:if test="${p.poscode == e.poscode}">
-                                                                                 <input type="radio" name="name3" id="name3" value="${e.userid},${e.ename},${p.posname}" >
-                                                                                 <i class="fa fa-fw fa-user-plus"></i> 
+																													</c:if>
+																												</c:forEach>
+																											</c:if>
+																										</c:forEach>
+																									</c:if>
+																								</c:forEach>
+																							</div>
+																						</c:forEach>
+																					</div>
+																				</div> <input type="button" id="opener2" value="지정3" /> <input
+																				type='button' id='cancel2' value='취소' />
+																			</td>
+
+																			<td id="users3"
+																				style="border-bottom: 1px #eaeaea solid;">
+																				<div id="dialog3" title="결재자 지정하기">
+																					<div id="accordion3">
+																						<c:forEach items="${dept}" var="d">
+																							<h3>${d.deptname}</h3>
+																							<div>
+																								<c:forEach items="${emp}" var="e">
+																									<c:if test="${d.deptcode == e.deptcode}">
+																										<c:forEach items="${team}" var="t">
+																											<c:if test="${t.teamcode == e.teamcode }">
+																												<c:forEach items="${pos}" var="p">
+																													<c:if test="${p.poscode == e.poscode}">
+																														<input type="radio" name="name3"
+																															id="name3"
+																															value="${e.userid},${e.ename},${p.posname}">
+																														<i class="fa fa-fw fa-user-plus"></i> 
                                                                                  ${t.teamname} ${e.ename} ${p.posname }
                                                                                  <hr>
-                                                                              </c:if>
-                                                                           </c:forEach>
-                                                                        </c:if>
-                                                                     </c:forEach>
-                                                               </c:if>
-                                                            </c:forEach>   
-                                                         </div>
-                                                         </c:forEach>
-                                                   </div>
-                                                </div>
-                                                <input type="button" id="opener3" value="지정4"/>
-                                                 <input type='button' id='cancel3' value='취소'/>
-                                             </td>
+																													</c:if>
+																												</c:forEach>
+																											</c:if>
+																										</c:forEach>
+																									</c:if>
+																								</c:forEach>
+																							</div>
+																						</c:forEach>
+																					</div>
+																				</div> <input type="button" id="opener3" value="지정4" /> <input
+																				type='button' id='cancel3' value='취소' />
+																			</td>
 
-																	</tr>
+																		</tr>
 
-																	<tr align="center">
-																		<td></td>
-																		<td></td>
-																		<td></td>
-																		<td></td>
-																		<td></td>
-																	</tr>
-																</tbody>
-															</table>
+																		<tr align="center">
+																			<td></td>
+																			<td></td>
+																			<td></td>
+																			<td></td>
+																			<td></td>
+																		</tr>
+																	</tbody>
+																</table>
 
 
-														</td>
-													</tr>
-													<tr>
-														<td height="30" align="center" bgcolor="#E1F9DD"
-															class="m_sp"><b>문서종류</b></td>
-														<td
-															style="border: solid 1px #C0BFC1; padding: 0 0 0 12px;">출장
-															보고서</td>
-													</tr>
-													<tr>
-														<td height="30" align="center" bgcolor="#E1F9DD"
-															class="m_sp"><b>문서상태</b></td>
-														<td
-															style="padding: 0 0 0 12px; border: solid 1px #C0BFC1;">
+															</td>
+														</tr>
+														<tr>
+															<td height="30" align="center" bgcolor="#E1F9DD"
+																class="m_sp"><b>문서종류</b></td>
+															<td
+																style="border: solid 1px #C0BFC1; padding: 0 0 0 12px;">출장
+																보고서</td>
+														</tr>
+														<tr>
+															<td height="30" align="center" bgcolor="#E1F9DD"
+																class="m_sp"><b>문서상태</b></td>
+															<td
+																style="padding: 0 0 0 12px; border: solid 1px #C0BFC1;">
 																작성전 문서입니다.</td>
-													</tr>
-													<tr>
-														<td height="30" align="center" bgcolor="#E1F9DD"
-															class="m_sp"><b>부서</b></td>
-														<td colspan="2"
-															style="border: solid 1px #C0BFC1; padding: 0 0 0 12px;">
-															${sessionScope.dept}</td>
-													</tr>
-													<tr>
-														<td height="30" align="center" bgcolor="#E1F9DD"
-															class="m_sp"><b>기안자</b></td>
-														<td colspan="2"
-															style="border: solid 1px #C0BFC1; padding: 0 0 0 12px;">
-															<c:set var="empname" value="${sessionScope.myemp.ename}"/>
-															${sessionScope.team} ${empname} ${sessionScope.pos}
-														</td>
-													</tr>
-													<tr>
-														<td height="30" align="center" bgcolor="#E1F9DD"
-															class="m_sp" style="padding: 7px 0 7px 0"><b>기안일</b></td>
-														<td colspan="2"
-															style="border: solid 1px #C0BFC1; padding: 7px 0 7px 12px;">${todaydate}</td>
-													</tr>
+														</tr>
+														<tr>
+															<td height="30" align="center" bgcolor="#E1F9DD"
+																class="m_sp"><b>부서</b></td>
+															<td colspan="2"
+																style="border: solid 1px #C0BFC1; padding: 0 0 0 12px;">
+																${sessionScope.dept}</td>
+														</tr>
+														<tr>
+															<td height="30" align="center" bgcolor="#E1F9DD"
+																class="m_sp"><b>기안자</b></td>
+															<td colspan="2"
+																style="border: solid 1px #C0BFC1; padding: 0 0 0 12px;">
+																<c:set var="empname" value="${sessionScope.myemp.ename}" />
+																${sessionScope.team} ${empname} ${sessionScope.pos}
+															</td>
+														</tr>
+														<tr>
+															<td height="30" align="center" bgcolor="#E1F9DD"
+																class="m_sp" style="padding: 7px 0 7px 0"><b>기안일</b></td>
+															<td colspan="2"
+																style="border: solid 1px #C0BFC1; padding: 7px 0 7px 12px;">${todaydate}</td>
+														</tr>
 
 
 
-													<tr>
-														<td height="30" align="center" bgcolor="#E1F9DD"
-															class="m_sp"><b>제목</b></td>
-														<td colspan="2" style="padding: 0 0 0 2px;"><input
-															id="signtitle" name="signtitle" type="text"
-															style="width: 630px;" value=""></td>
-													</tr>
-												</tbody>
-											</table>
-									<tr>
-										<td colspan="3" align="center" valign="top" class="m_sp"
-											style="padding: 0; border: 0;">
-											<table width="100%" cellpadding="0" cellspacing="0">
-												<tbody>
-													<tr>
-														<td width="100%" style="padding: 0; border-top: 0;">
+														<tr>
+															<td height="30" align="center" bgcolor="#E1F9DD"
+																class="m_sp"><b>제목</b></td>
+															<td colspan="2" style="padding: 0 0 0 2px;"><input
+																id="signtitle" name="signtitle" type="text"
+																style="width: 630px;" value=""></td>
+														</tr>
+													</tbody>
+												</table>
+										<tr>
+											<td colspan="3" align="center" valign="top" class="m_sp"
+												style="padding: 0; border: 0;">
+												<table width="100%" cellpadding="0" cellspacing="0">
+													<tbody>
+														<tr>
+															<td width="100%" style="padding: 0; border-top: 0;">
 
-															<table width="100%" border="0" cellspacing="0"
-																cellpadding="0">
-																<tbody>
-																	<tr>
-																		<td width="100%"
-																			style="padding: 10px 17px 10px 17px; border: 0;">
-																			<table id="detail_table" width="100%" cellspacing="0"
-																				cellpadding="0" class="tbl_appreport">
-																				<tbody>
-																					<tr height="35">
-																						<td width="120" class="title" bgcolor="F1F7F7"
-																							align="center" style="border: solid 1px #C0BFC1;">기간</td>
-																						<td width="" class="item" align="left"
-																							style="border: solid 1px #C0BFC1; padding-left: 7px;""><input
-																							type="text" name="bizstart" id="bizstart" readonly=""
-																							class="input_approval" style="width: 85px"
-																							maxlength="10" 
-																							> ~ <input type="text"
-																							name="bizend" id="bizend" readonly="" class="input_approval"
-																							style="width: 85px" maxlength="10">
-																						</td>
-																					</tr>
-																					<td class="title" bgcolor="F1F7F7" align="center"
-																						style="border: solid 1px #C0BFC1;">출장지</td>
-																					<td class="item" align="left"
-																						style="border: solid 1px #C0BFC1; padding-top: 7px; padding-left: 7px; padding-right: 7px;"><textarea
-																							name="bizloc" id="bizloc"
-																							style="width: 100%; height: 56px; padding: 8px 8px 5px 8px;"></textarea>
-																					</td>
-																					<tr>
+																<table width="100%" border="0" cellspacing="0"
+																	cellpadding="0">
+																	<tbody>
+																		<tr>
+																			<td width="100%"
+																				style="padding: 10px 17px 10px 17px; border: 0;">
+																				<table id="detail_table" width="100%"
+																					cellspacing="0" cellpadding="0"
+																					class="tbl_appreport">
+																					<tbody>
+																						<tr height="35">
+																							<td width="120" class="title" bgcolor="F1F7F7"
+																								align="center"
+																								style="border: solid 1px #C0BFC1;">기간</td>
+																							<td width="" class="item" align="left"
+																								style="border: solid 1px #C0BFC1; padding-left: 7px;""><input
+																								type="text" name="bizstart" id="bizstart"
+																								readonly="" class="input_approval"
+																								style="width: 85px" maxlength="10">
+																								~ <input type="text" name="bizend" id="bizend"
+																								readonly="" class="input_approval"
+																								style="width: 85px" maxlength="10"></td>
+																						</tr>
 																						<td class="title" bgcolor="F1F7F7" align="center"
-																							style="border: solid 1px #C0BFC1;">출장목적</td>
+																							style="border: solid 1px #C0BFC1;">출장지</td>
 																						<td class="item" align="left"
 																							style="border: solid 1px #C0BFC1; padding-top: 7px; padding-left: 7px; padding-right: 7px;"><textarea
-																								name="bizpur" id="bizpur"
+																								name="bizloc" id="bizloc"
 																								style="width: 100%; height: 56px; padding: 8px 8px 5px 8px;"></textarea>
 																						</td>
-																					</tr>
-																					<tr>
-																						<td class="title" bgcolor="F1F7F7" align="center"
-																							style="border: solid 1px #C0BFC1;">기타사항</td>
-																						<td class="item" align="left"
-																							style="border: solid 1px #C0BFC1; padding-top: 7px; padding-left: 7px; padding-right: 7px;"><textarea
-																								name="signnote" id="signnote"
-																								style="width: 100%; height: 56px; padding: 8px 8px 5px 8px;"></textarea>
-																						</td>
-																					</tr>
-																				</tbody>
-																			</table>
-																			<div
-																				style="height: 60px; text-align: center; padding-top: 20px;">
-																				상기와 같은 사유로 인하여 출장 보고서를 제출하오니 재가바랍니다.</div>
-																		</td>
-																	</tr>
-																</tbody>
-															</table>
-														</td>
-													</tr>
-												</tbody>
-											</table>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+																						<tr>
+																							<td class="title" bgcolor="F1F7F7" align="center"
+																								style="border: solid 1px #C0BFC1;">출장목적</td>
+																							<td class="item" align="left"
+																								style="border: solid 1px #C0BFC1; padding-top: 7px; padding-left: 7px; padding-right: 7px;"><textarea
+																									name="bizpur" id="bizpur"
+																									style="width: 100%; height: 56px; padding: 8px 8px 5px 8px;"></textarea>
+																							</td>
+																						</tr>
+																						<tr>
+																							<td class="title" bgcolor="F1F7F7" align="center"
+																								style="border: solid 1px #C0BFC1;">기타사항</td>
+																							<td class="item" align="left"
+																								style="border: solid 1px #C0BFC1; padding-top: 7px; padding-left: 7px; padding-right: 7px;"><textarea
+																									name="signnote" id="signnote"
+																									style="width: 100%; height: 56px; padding: 8px 8px 5px 8px;"></textarea>
+																							</td>
+																						</tr>
+																					</tbody>
+																				</table>
+																				<div
+																					style="height: 60px; text-align: center; padding-top: 20px;">
+																					상기와 같은 사유로 인하여 출장 보고서를 제출하오니 재가바랍니다.</div>
+																			</td>
+																		</tr>
+																	</tbody>
+																</table>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</form>
 			</td>
 			</tr>
@@ -759,30 +772,30 @@
 									<table border="0" cellspacing="0" cellpadding="0">
 										<tbody>
 											<tr>
-												<td><input type="button" value="작성완료" onclick="addsign()">
-												</td>
+												<td><input type="button" value="작성완료"
+													onclick="addsign()"></td>
 											</tr>
 										</tbody>
 									</table>
-									
+
 								</td>
 							</tr>
 						</tbody>
 					</table>
-				
+
 				</td>
 			</tr>
 			<tr>
 				<td height="30"></td>
 			</tr>
 			</tbody>
-			
+
 			</table>
-			
+
 		</div>
 	</div>
 </section>
- <script type="text/javascript">
+<script type="text/javascript">
 
 	$(function() {
 		$( "#bizstart" ).datepicker({
