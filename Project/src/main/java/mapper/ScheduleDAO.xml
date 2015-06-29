@@ -17,4 +17,14 @@
    <select id="getSchCategory" resultType="dto_vo.Schedule.Schcategory">
       select * from SCHCATEGORY where userid = #{ userid }
    </select>
+   
+   <select id="getSchCategoryDept" resultType="dto_vo.Schedule.Schcategory">
+      select catename from SCHCATEGORY where userid = #{ userid } and deptcode is not null
+   </select>
+   <select id="getSchCategoryTeam" resultType="dto_vo.Schedule.Schcategory">
+      select catename from SCHCATEGORY where userid = #{ userid } and Teamcode is not null
+   </select>
+   <select id="getSchCategoryUser" resultType="dto_vo.Schedule.Schcategory">
+      select catename from SCHCATEGORY where userid = #{ userid } and deptcode is null and Teamcode is null
+   </select>
 </mapper>

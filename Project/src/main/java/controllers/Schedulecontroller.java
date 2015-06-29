@@ -32,11 +32,31 @@ public class Schedulecontroller {
 	
 
 	//게시판 메인 페이지 보기
-	@RequestMapping(value = "ScheduleMain.htm")
-	public String ScheduleMain(Model model) throws ClassNotFoundException,SQLException {
+	   @RequestMapping(value = "ScheduleMain.htm")
+	   public String ScheduleMain(Model model, HttpSession session) throws ClassNotFoundException,SQLException {
 
-		return "schedule.schedule";
-	}
+	      Emp emp = (Emp)session.getAttribute("myemp");
+	      //  System.out.println();
+	      System.out.println(emp);
+	           
+	      String userid = emp.getUserid();
+	      
+	      ScheduleDAO scheduleDAO = sqlsession.getMapper(ScheduleDAO.class);
+	      
+	       List<Schcategory> getSchCategoryDept = scheduleDAO.getSchCategoryDept(userid);
+	       List<Schcategory> getSchCategoryTeam = scheduleDAO.getSchCategoryTeam(userid);
+	       List<Schcategory> getSchCategoryUser = scheduleDAO.getSchCategoryUser(userid);
+	      
+	       System.out.println(getSchCategoryDept.toString());
+	       System.out.println(getSchCategoryTeam.toString());
+	       System.out.println(getSchCategoryUser.toString());
+	       
+	       model.addAttribute("getSchCategoryDept", getSchCategoryDept);
+	       model.addAttribute("getSchCategoryTeam", getSchCategoryTeam);
+	       model.addAttribute("getSchCategoryUser", getSchCategoryUser);
+	       
+	      return "schedule.schedule";
+	   }
 	
 	 @RequestMapping(value="getSchedule.htm")
 	    View getTeamName(Model model, HttpServletResponse response,HttpSession session) throws ClassNotFoundException, SQLException, UnsupportedEncodingException 

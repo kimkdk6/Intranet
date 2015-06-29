@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- Content Header (Page header) -->
 <section class="content-header">
 	<h1>
@@ -26,7 +26,9 @@
 				<div class="box-body">
 					<!-- the events -->
 					<div id='external-events'>
-						<div class='external-event bg-red'>새로운 부장님 오시는날</div>
+						<c:forEach items="${getSchCategoryDept}" var="d" varStatus="bs">
+                     <div class='external-event bg-red'>${d.catename}</div>
+                  </c:forEach>
 					</div>
 				</div>
 				<!-- /.box-body -->
@@ -40,8 +42,9 @@
 				<div class="box-body">
 					<!-- the events -->
 					<div id='external-events'>
-						<div class='external-event bg-green'>점심식사</div>
-						<div class='external-event bg-black'>95기 회식</div>
+						<c:forEach items="${getSchCategoryTeam}" var="t" varStatus="bs">
+                     <div class='external-event bg-green'>${ t.catename }</div>
+                  </c:forEach>
 					</div>
 				</div>
 				<!-- /.box-body -->
@@ -55,7 +58,9 @@
 				<div class="box-body">
 					<!-- the events -->
 					<div id='external-events'>
-						<div class='external-event bg-yellow'>여자친구 만나는날</div>
+						<c:forEach items="${getSchCategoryUser}" var="u" varStatus="bs">
+                     <div class='external-event bg-yellow'>${ u.catename }</div>
+                  </c:forEach>
 
 					</div>
 				</div>
@@ -252,7 +257,7 @@
 								</td>
 									<td width="">
 									<input type="text" id="enddate" name="enddate" class="input_date" style="width: 110px; margin-left: 7px;" maxlength="10"> 
-									<select id="endmm" name="endhh">
+									<select id="endhh" name="endhh">
 											<option value="00" selected="selected">오전 12시</option>
 											<option value="01">오전 01시</option>
 											<option value="02">오전 02시</option>
@@ -475,24 +480,45 @@
 			modal : true,
 			buttons : {
 				"저 장" : function() {
-
+					var startdate = $("#startdate").val()+" "+$("#starthh").val()+":"+$("#startmm").val()+":00";
+					var enddate = $("#enddate").val()+" "+$("#endhh").val()+":"+$("#endmm").val()+":00";
+					
+					console.log(startdate);
+					console.log(enddate);
+					$("#calendar").fullCalendar('addEventSource', [ {
+						
+						title :  $("#sctitle").val(),
+// 						start : new Date(y, m, 3, 12, 30),//년,월,일,시,분
+// 						end : new Date(y, m, 4, 12, 30),
+						start : new Date(startdate),//년,월,일,시,분
+						end : new Date(enddate),
+						backgroundColor : "#f56954", //red
+						borderColor : "#f56954", //red
+						userid : $('#userid').val(),
+						content: $('#sccontent').val
+					} ]);
+					newEvent.dialog("close");
+					document.getElementById("_schedule_form").reset();
+// 					document.getElementById("_schedule_form").submit();
 				},
 				"취 소" : function() {
 					document.getElementById("_schedule_form").reset();
 					newEvent.dialog("close")
-					// 		  	      form("_schedule_form").reset();
-					// 		          allFields.removeClass( "ui-state-error" );
+// 					form("_schedule_form").reset();
+// 					allFields.removeClass( "ui-state-error" );
 				}
 			}
 		});
 		
 		var readEvent = $("#_schedule_view").dialog({
+			
 			autoOpen : false,
 			height : 500,
 			width : 600,
 			modal : true,
 			buttons : {
 				"일정 삭제" : function() {
+					console.log(calEvent.title);
 					readEvent.dialog("close");
 				},
 				"일정 수정" : function() {
@@ -504,9 +530,7 @@
 			}
 		});
 		
-		/* initialize the calendar
-		 -----------------------------------------------------------------*/
-		//Date for the calendar events (dummy data)
+
 		var date = new Date();
 		var d = date.getDate(), m = date.getMonth(), y = date.getFullYear();
 
@@ -537,27 +561,7 @@
 					},
 
 					dayClick : function(date, jsEvent, view) {
-						//alert('Clicked on: ' + date.format());
-						//$( "#startdate" ).datepicker( "option", "defaultDate", defaultDate );
-						//   $( "#startdate" ).datepicker( "setDate", date);
 						newEvent.dialog("open");
-
-						// 				        $("#calendar").fullCalendar( 'addEventSource', [{
-						// 				        	title : '이벤트 테스트2',
-						// 							start : new Date(y, m, 3, 12, 30),//년,월,일,시,분
-						// 							end : new Date(y, m, 4, 12, 30),
-						// //	 						url: 'http://google.com/',//URL
-						// //	 						allDay: false,//하루종일
-						// 							backgroundColor : "#f56954", //red
-						// 							borderColor : "#f56954" //red
-						// 							} ]);
-
-						// 				       $("#schedule_insert").diolog("open");
-						// 				       alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-						// 				       alert('Current view: ' + view.name);
-						// 				       change the day's background color just for fun
-						// 				       $(this).css('background-color', 'red');
-
 					},
 
 					eventClick : function(calEvent, jsEvent, view) {
@@ -565,11 +569,18 @@
 						var pop_start_date = moment(calEvent.start).format("YYYY-MM-DD");
 						var pop_end_date = moment(calEvent.end).format("YYYY-MM-DD");
 						console.log("title: " + calEvent.title + " start: "+ pop_start_date + " end: " + pop_end_date);
-						readEvent.dialog("open");
+// 						readEvent.dialog("open");
+// 						readEvent.dialog("open",calEvent);
+
+						$( "#_schedule_view" ).dialog('open',function(calEvent){
+							console.log(calEvent.title);
+						//	$('#readsctitle').
+						})						
+						
 					},
 
 					editable : false,
-					droppable : false, // this allows things to be dropped onto the calendar !!!
+					droppable : false, 
 
 				});//캘린더 끝
 
@@ -593,7 +604,7 @@
 	             success:function( data ){
 	                 
 	                $.each(data.schedule, function(){
-	                   var a = this;
+	                   var a = this;//data.schedule
 	                   var b = data.schcategory;
 	                   $("#calendar").fullCalendar( 'addEventSource', [ {
 	                     title : a.sctitle,
@@ -601,8 +612,8 @@
 	                      end : new Date(y, m, 12, 12, 30), //년,월,일,시,분
 	                      backgroundColor : b.color, //red
 	                      borderColor : b.color, //red
-//	                       userid : this.userid,
-//	                       contents : "aaaa"
+						  userid : this.userid,
+//	                      contents : "aaaa"
 	                  } ] );
 	                   
 	                                   
