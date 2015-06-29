@@ -588,146 +588,151 @@
 															</b></td>
 															<td width="19%"
 																style="border: 1px solid; padding: 3px 0 0 0;">기안자</td>
-															<td width="19%"
-																style="border: 1px solid; padding: 3px 0 0 0;">${sign.signer2}</td>
-															<td width="19%"
-																style="border: 1px solid; padding: 3px 0 0 0;">${sign.signer3}</td>
-															<td width="19%"
-																style="border: 1px solid; padding: 3px 0 0 0;">${sign.signer4}</td>
-															<td width="19%"
-																style="border: 1px solid; padding: 3px 0 0 0;">${sign.signer5}</td>
+															<td width="19%" id="dept0"
+																			style="border: 1px solid; padding: 3px 0 0 0;"> </td>
+																		<td width="19%" id="dept1"
+																			style="border: 1px solid; padding: 3px 0 0 0;"> </td>
+																		<td width="19%" id="dept2"
+																			style="border: 1px solid; padding: 3px 0 0 0;"> </td>
+																		<td width="19%" id="dept3"
+																			style="border: 1px solid; padding: 3px 0 0 0;"> </td>
 														</tr>
 														<tr height="70" align="center">
-															<td>Cristiano Ronaldo</td>
-															<td id="users" style="border-bottom: 1px #eaeaea solid;">
-																<div id="dialog" title="결재자 지정하기">
-																	<div id="accordion">
-																		<c:forEach items="${dept}" var="d">
-																			<h3>${d.deptname}</h3>
-																			<div>
-																				<c:forEach items="${emp}" var="e">
-																					<c:if test="${d.deptcode == e.deptcode}">
-																						<c:forEach items="${team}" var="t">
-																							<c:if test="${t.teamcode == e.teamcode }">
-																								<c:forEach items="${pos}" var="p">
-																									<c:if test="${p.poscode == e.poscode}">
-																										<i class="fa fa-fw fa-user-plus"></i> 
-                                                                                									${t.teamname} ${e.ename} ${p.posname }
-                                                                                 									<input
-																											type="radio" name="name" id="name"
-																											value="${t.teamname} ${e.ename} ${p.posname}">
-																										<hr>
+																			<td>${sessionScope.myemp.ename}</td>
+																			<td id="users"
+																				style="border-bottom: 1px #eaeaea solid;">
+																				<div id="dialog" title="결재자 지정하기">
+																					<div id="accordion">
+																						<c:forEach items="${dept}" var="d">
+																							<h3>${d.deptname}</h3>
+																							<div>
+																								<c:forEach items="${emp}" var="e">
+																									<c:if test="${d.deptcode == e.deptcode}">
+																										<c:forEach items="${team}" var="t">
+																											<c:if test="${t.teamcode == e.teamcode }">
+																												<c:forEach items="${pos}" var="p">
+																													<c:if test="${p.poscode == e.poscode}">
+																														<input type="radio" name="name" id="name"
+																															value="${e.userid},${e.ename},${p.posname}">
+																														<i class="fa fa-fw fa-user-plus"></i> 
+                                                                                 	${t.teamname} ${e.ename} ${p.posname}
+                                                                                 <hr>
+																													</c:if>
+																												</c:forEach>
+																											</c:if>
+																										</c:forEach>
+
 																									</c:if>
 																								</c:forEach>
-																							</c:if>
+																							</div>
 																						</c:forEach>
 
-																					</c:if>
-																				</c:forEach>
-																			</div>
-																		</c:forEach>
+
+																					</div>
+
+																				</div> <!--  <button id="opener">지정1</button> --> <input
+																				type="button" id="opener" value="지정1" /> <!-- <button id="cancel1" >취소</button> -->
+																				<input type='button' id='cancel' value='취소' />
+																			</td>
+
+																			<td id="users1"
+																				style="border-bottom: 1px #eaeaea solid;">
+																				<div id="dialog1" title="결재자 지정하기">
+																					<div id="accordion1">
+																						<c:forEach items="${dept}" var="d">
+																							<h3>${d.deptname}</h3>
+																							<div>
+																								<c:forEach items="${emp}" var="e">
+																									<c:if test="${d.deptcode == e.deptcode}">
+																										<c:forEach items="${team}" var="t">
+																											<c:if test="${t.teamcode == e.teamcode }">
+																												<c:forEach items="${pos}" var="p">
+																													<c:if test="${p.poscode == e.poscode}">
+																														<input type="radio" name="name1"
+																															id="name1"
+																															value="${e.userid},${e.ename},${p.posname}">
+																														<i class="fa fa-fw fa-user-plus"></i> 
+                                                                                 ${t.teamname} ${e.ename} ${p.posname}
+                                                                                <hr>
+																													</c:if>
+																												</c:forEach>
+																											</c:if>
+																										</c:forEach>
+																									</c:if>
+																								</c:forEach>
+																							</div>
+																						</c:forEach>
+																					</div>
+																				</div> <input type="button" id="opener1" value="지정2" /> <input
+																				type='button' id='cancel1' value='취소' />
+																			</td>
 
 
-																	</div>
-																	<!-- <input type="button" value="완료" onclick="check()"> -->
-																</div>
-																<button id="opener">지정1</button> <!-- <button id="cancel1" >취소</button> -->
-															</td>
-
-															<td id="users1" style="border-bottom: 1px #eaeaea solid;">
-																<div id="dialog1" title="결재자 지정하기">
-																	<div id="accordion1">
-																		<c:forEach items="${dept}" var="d">
-																			<h3>${d.deptname}</h3>
-																			<div>
-																				<c:forEach items="${emp}" var="e">
-																					<c:if test="${d.deptcode == e.deptcode}">
-																						<c:forEach items="${team}" var="t">
-																							<c:if test="${t.teamcode == e.teamcode }">
-																								<c:forEach items="${pos}" var="p">
-																									<c:if test="${p.poscode == e.poscode}">
-																										<i class="fa fa-fw fa-user-plus"></i> 
+																			<td id="users2"
+																				style="border-bottom: 1px #eaeaea solid;">
+																				<div id="dialog2" title="결재자 지정하기">
+																					<div id="accordion2">
+																						<c:forEach items="${dept}" var="d">
+																							<h3>${d.deptname}</h3>
+																							<div>
+																								<c:forEach items="${emp}" var="e">
+																									<c:if test="${d.deptcode == e.deptcode}">
+																										<c:forEach items="${team}" var="t">
+																											<c:if test="${t.teamcode == e.teamcode }">
+																												<c:forEach items="${pos}" var="p">
+																													<c:if test="${p.poscode == e.poscode}">
+																														<input type="radio" name="name2"
+																															id="name2"
+																															value="${e.userid},${e.ename},${p.posname}">
+																														<i class="fa fa-fw fa-user-plus"></i> 
                                                                                  ${t.teamname} ${e.ename} ${p.posname }
-                                                                                <input
-																											type="radio" name="name1" id="name1"
-																											value="${t.teamname} ${e.ename} ${p.posname}">
-																										<hr>
+                                                                                 <hr>
+																													</c:if>
+																												</c:forEach>
+																											</c:if>
+																										</c:forEach>
 																									</c:if>
 																								</c:forEach>
-																							</c:if>
+																							</div>
 																						</c:forEach>
-																					</c:if>
-																				</c:forEach>
-																			</div>
-																		</c:forEach>
-																	</div>
-																</div>
-																<button id="opener1">지정2</button>
-															</td>
+																					</div>
+																				</div> <input type="button" id="opener2" value="지정3" /> <input
+																				type='button' id='cancel2' value='취소' />
+																			</td>
 
-															<td id="users2" style="border-bottom: 1px #eaeaea solid;">
-																<div id="dialog2" title="결재자 지정하기">
-																	<div id="accordion2">
-																		<c:forEach items="${dept}" var="d">
-																			<h3>${d.deptname}</h3>
-																			<div>
-																				<c:forEach items="${emp}" var="e">
-																					<c:if test="${d.deptcode == e.deptcode}">
-																						<c:forEach items="${team}" var="t">
-																							<c:if test="${t.teamcode == e.teamcode }">
-																								<c:forEach items="${pos}" var="p">
-																									<c:if test="${p.poscode == e.poscode}">
-																										<i class="fa fa-fw fa-user-plus"></i> 
+																			<td id="users3"
+																				style="border-bottom: 1px #eaeaea solid;">
+																				<div id="dialog3" title="결재자 지정하기">
+																					<div id="accordion3">
+																						<c:forEach items="${dept}" var="d">
+																							<h3>${d.deptname}</h3>
+																							<div>
+																								<c:forEach items="${emp}" var="e">
+																									<c:if test="${d.deptcode == e.deptcode}">
+																										<c:forEach items="${team}" var="t">
+																											<c:if test="${t.teamcode == e.teamcode }">
+																												<c:forEach items="${pos}" var="p">
+																													<c:if test="${p.poscode == e.poscode}">
+																														<input type="radio" name="name3"
+																															id="name3"
+																															value="${e.userid},${e.ename},${p.posname}">
+																														<i class="fa fa-fw fa-user-plus"></i> 
                                                                                  ${t.teamname} ${e.ename} ${p.posname }
-                                                                                 <input
-																											type="radio" name="name2" id="name2"
-																											value="${t.teamname} ${e.ename} ${p.posname}">
-																										<hr>
+                                                                                 <hr>
+																													</c:if>
+																												</c:forEach>
+																											</c:if>
+																										</c:forEach>
 																									</c:if>
 																								</c:forEach>
-																							</c:if>
+																							</div>
 																						</c:forEach>
-																					</c:if>
-																				</c:forEach>
-																			</div>
-																		</c:forEach>
-																	</div>
-																</div>
-																<button id="opener2">지정3</button>
-															</td>
+																					</div>
+																				</div> <input type="button" id="opener3" value="지정4" /> <input
+																				type='button' id='cancel3' value='취소' />
+																			</td>
 
-															<td id="users3" style="border-bottom: 1px #eaeaea solid;">
-																<div id="dialog3" title="결재자 지정하기">
-																	<div id="accordion3">
-																		<c:forEach items="${dept}" var="d">
-																			<h3>${d.deptname}</h3>
-																			<div>
-																				<c:forEach items="${emp}" var="e">
-																					<c:if test="${d.deptcode == e.deptcode}">
-																						<c:forEach items="${team}" var="t">
-																							<c:if test="${t.teamcode == e.teamcode }">
-																								<c:forEach items="${pos}" var="p">
-																									<c:if test="${p.poscode == e.poscode}">
-																										<i class="fa fa-fw fa-user-plus"></i> 
-                                                                                 ${t.teamname} ${e.ename} ${p.posname }
-                                                                                 <input
-																											type="radio" name="name3" id="name3"
-																											value="${t.teamname} ${e.ename} ${p.posname}">
-																										<hr>
-																									</c:if>
-																								</c:forEach>
-																							</c:if>
-																						</c:forEach>
-																					</c:if>
-																				</c:forEach>
-																			</div>
-																		</c:forEach>
-																	</div>
-																</div>
-																<button id="opener3">지정3</button>
-															</td>
-
-														</tr>
+																		</tr>
 
 														<tr align="center">
 															<td></td>

@@ -232,7 +232,7 @@
 																									<c:when test="${signline.signok1 == 1}">
 																										<td height="42" align="center" valign="middle"
 																											background="../resources/img/stamp_bg.gif"
-																											style="background-repeat: no-repeat; color: #E1F9DD; font-size: 11px; letter-spacing: -1px; padding: 3px 0 0 0;">
+																											style="background-repeat: no-repeat; color: #d30000; font-size: 11px; letter-spacing: -1px; padding: 3px 0 0 0;">
 																											<div class="signer1">${sign.signer1}</div>
 																										</td>
 																									</c:when>
@@ -677,8 +677,9 @@
 						</tr>
 					</tbody>
 				</table>
+			</form>
 		</div>
-		</form>
+		
 	</div>
 
 </section>

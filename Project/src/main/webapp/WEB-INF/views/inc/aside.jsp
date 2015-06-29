@@ -145,7 +145,19 @@
 			<li><a href="pages/widgets.html"> <i
 					class="fa fa-fw fa-cogs"></i> <span>관리자</span> <small
 					class="label pull-right bg-green">new</small>
-			</a></li>
+			</a>
+				<ul class="treeview-menu">
+					<li><a
+						href="${pageContext.request.contextPath}/sign/SignMain.htm"><i
+						class="fa fa-circle-o"></i> 커뮤니티 관리 </a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/sign/SignMain.htm"><i
+						class="fa fa-circle-o"></i> 직급?부서?관리 </a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/sign/SignMain.htm"><i
+						class="fa fa-circle-o"></i> 사원 관리 </a></li>	
+				</ul>
+			</li>
 	</section>
 	<!-- /.sidebar -->
 </aside>
