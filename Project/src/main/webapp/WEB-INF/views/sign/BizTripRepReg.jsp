@@ -13,6 +13,28 @@
 <c:set var="empid" value="${sessionScope.myemp.userid}"/>
 <c:set var="todaydate" value="<%=strdate%>"/>
 <!DOCTYPE html>
+<style>
+	#dialog {
+		padding: 10px;
+    	width: 350px;
+    	height: 220px;
+	}
+	#dialog1 {
+		padding: 10px;
+    	width: 350px;
+    	height: 220px;
+	}
+	#dialog2 {
+		padding: 10px;
+    	width: 350px;
+    	height: 220px;
+	}
+	#dialog3 {
+		padding: 10px;
+    	width: 350px;
+    	height: 220px;
+	}
+</style>
 <script type="text/javascript">
 		//sign 유효성 검사
 		 function addsign(){
@@ -78,17 +100,22 @@
 	$('#calc').ready(
 			function() {
 				/* 단가 X 수량 */
-				$('.unitcost, .amount, .ordercost').keyup(function() {
+				$('.bizcost').keyup(function() {
 					$(this).val($(this).val().replace(/[^0-9]/gi, "")); //숫자만 입력가능
 				});
 
-				$('.unitcost').keyup(
-						function() {
-							var num = $(".unitcost").index(this);
-							$('.ordercost').eq(num).val(
-									$('.unitcost').eq(num).val()
-											* $('.amount').eq(num).val());
-						});
+				$('.bizcost').keyup(function() {
+					var num = $(".bizcost").index(this);
+					// $('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
+					$('.biztot').val(
+						parseInt($('.bizcost').eq(0).val()) +
+						parseInt($('.bizcost').eq(1).val()) +
+						parseInt($('.bizcost').eq(2).val()) +
+						parseInt($('.bizcost').eq(3).val()) +
+						parseInt($('.bizcost').eq(4).val())
+					);
+					
+				});
 
 				$('.amount').keyup(
 						function() {
@@ -102,9 +129,7 @@
 				$('.ordercost').keyup(
 						function() {
 							var num = $(".ordercost").index(this);
-							$('.ordercost').eq(num).val(
-									$('.unitcost').eq(num).val()
-											* $('.amount').eq(num).val());
+							$('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
 						});
 			});
 
@@ -432,23 +457,65 @@
 	/* 결재자 트리 띄우는 기능 */
 	$(function() {
 		$("#accordion").accordion({
-			heightStyle : "content"
+			heightStyle : "fill"
 		});
 	});
+	$(function() {
+		$( "#dialog" ).resizable({
+			minHeight: 100,
+	      	minWidth: 100,
+	      	resize: function() {
+	      		$( "#accordion" ).accordion( "refresh" );
+	      	}
+	    });
+	});
+	
+	
 	$(function() {
 		$("#accordion1").accordion({
-			heightStyle : "content"
+			heightStyle : "fill"
 		});
 	});
+	$(function() {
+		$( "#dialog1" ).resizable({
+			minHeight: 100,
+	      	minWidth: 100,
+	      	resize: function() {
+	      		$( "#accordion1" ).accordion( "refresh" );
+	      	}
+	    });
+	});
+	
+	
 	$(function() {
 		$("#accordion2").accordion({
-			heightStyle : "content"
+			heightStyle : "fill"
 		});
 	});
 	$(function() {
+		$( "#dialog2" ).resizable({
+			minHeight: 100,
+	      	minWidth: 100,
+	      	resize: function() {
+	      		$( "#accordion2" ).accordion( "refresh" );
+	      	}
+	    });
+	});
+	
+	
+	$(function() {
 		$("#accordion3").accordion({
-			heightStyle : "content"
+			heightStyle : "fill"
 		});
+	});
+	$(function() {
+		$( "#dialog3" ).resizable({
+			minHeight: 100,
+	      	minWidth: 100,
+	      	resize: function() {
+	      		$( "#accordion3" ).accordion( "refresh" );
+	      	}
+	    });
 	});
 	/* 결재자 트리 띄우는 기능 끝*/
 </script>
@@ -556,8 +623,8 @@
 																														<input type="radio" name="name" id="name"
 																															value="${e.userid},${e.ename},${p.posname}">
 																														<i class="fa fa-fw fa-user-plus"></i> 
-                                                                                 	${t.teamname} ${e.ename} ${p.posname}
-                                                                                 <hr>
+									                                                                                 	${t.teamname} ${e.ename} ${p.posname}
+									                                                                                 <hr>
 																													</c:if>
 																												</c:forEach>
 																											</c:if>
@@ -593,8 +660,8 @@
 																															id="name1"
 																															value="${e.userid},${e.ename},${p.posname}">
 																														<i class="fa fa-fw fa-user-plus"></i> 
-                                                                                 ${t.teamname} ${e.ename} ${p.posname}
-                                                                                <hr>
+										                                                                                 ${t.teamname} ${e.ename} ${p.posname}
+										                                                                                <hr>
 																													</c:if>
 																												</c:forEach>
 																											</c:if>
@@ -626,8 +693,8 @@
 																															id="name2"
 																															value="${e.userid},${e.ename},${p.posname}">
 																														<i class="fa fa-fw fa-user-plus"></i> 
-                                                                                 ${t.teamname} ${e.ename} ${p.posname }
-                                                                                 <hr>
+										                                                                                ${t.teamname} ${e.ename} ${p.posname }
+										                                                                                <hr>
 																													</c:if>
 																												</c:forEach>
 																											</c:if>
@@ -761,10 +828,10 @@
 																		<td width="" class="item" align="left"
 																			style="border: solid 1px #C0BFC1; padding-left: 7px;""><input
 																			type="text" name="bizrepstart" id="bizrepstart" readonly=""
-																			class="input_approval" style="width: 85px"
+																			class="input_approval" style="width: 200px"
 																			maxlength="10"> ~ <input type="text" name="bizrepend" id="bizrepend"
 																			readonly="" class="input_approval"
-																			style="width: 85px" maxlength="10"
+																			style="width: 200px" maxlength="10"
 																			></td>
 																	</tr>
 																	<tr>
@@ -814,13 +881,13 @@
 																		<td width="50%" align="left"
 																			style="padding: 5px 5px 0px 0px;"><font
 																			color="#000">- 출장 경비 내역</font></td>
-																		<td width="50%" align="right"
+																		<!-- <td width="50%" align="right"
 																			style="padding: 5px 5px 0px 0px; letter-spacing: -1px; font-size: 11px; color: #4f4c4c;">
-																			<a href="javascript:addItemLine()"> <!-- <img src="/img/calendar/bt_plus.gif" align="absmiddle">
-																								라인추가 --> <input type="button" id="addline"
+																			<a href="javascript:addItemLine()"> <img src="/img/calendar/bt_plus.gif" align="absmiddle">
+																								라인추가 <input type="button" id="addline"
 																				value="라인 추가" />
 																		</a>
-																		</td>
+																		</td> -->
 																	</tr>
 																</tbody>
 															</table>
@@ -843,28 +910,28 @@
 																		<!-- 날짜 -->
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" id="bizdate1" name="bizdate" class="product"
+																			<input type="text" id="bizdate" name="bizdate" class="bizdate"
 																			style="width: 90%;" value="">
 																		</td>
 
 																		<!-- 지출내역 -->
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" name="bizcostdetail" id="bizcostdetail" class="unitcost"
+																			<input type="text" name="bizcostdetail" id="bizcostdetail" class="bizcostdetail"
 																			style="text-align: right; width: 90%">
 																		</td>
 
 																		<!-- 비고 -->
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" id="biznote" name="biznote" class="amount"
+																			<input type="text" id="biznote" name="biznote" class="biznote"
 																			style="text-align: right; width: 90%" >
 																		</td>
 
 																		<!-- 금액 -->
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" id="bizcost" name="bizcost" class="odersize"
+																			<input type="text" id="bizcost" name="bizcost" class="bizcost" value="0"
 																			style="width: 90%" >
 																		</td>
 
@@ -875,28 +942,28 @@
 																		<!-- 날짜 -->
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" id="bizdate2" name="bidate" class="product"
+																			<input type="text" id="bizdate1" name="bidate" class="bidate"
 																			style="width: 90%;" value="">
 																		</td>
 
 																		<!-- 지출내역 -->
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" name="bizcostdetail" class="unitcost"
+																			<input type="text" name="bizcostdetail" id="bizcostdetail" class="bizcostdetail"
 																			style="text-align: right; width: 90%" >
 																		</td>
 
 																		<!-- 비고 -->
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" name="biznote" class="amount"
+																			<input type="text" name="biznote" id="biznote" class="biznote"
 																			style="text-align: right; width: 90%">
 																		</td>
 
 																		<!-- 금액 -->
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" name="bizcost" class="odersize"
+																			<input type="text" name="bizcost" id="bizcost" class="bizcost" value="0"
 																			style="width: 90%" >
 																		</td>
 
@@ -907,28 +974,28 @@
 																		<!-- 날짜 -->
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" id="bizdate3" name="bidate" class="product"
+																			<input type="text" id="bizdate2" name="bizdate" class="bizdate"
 																			style="width: 90%;" value="">
 																		</td>
 
 																		<!-- 지출내역 -->
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" name="bizcostdetail" class="unitcost"
+																			<input type="text" name="bizcostdetail" id="bizcostdetail" class="bizcostdetail"
 																			style="text-align: right; width: 90%" >
 																		</td>
 
 																		<!-- 비고 -->
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" name="biznote" class="amount"
+																			<input type="text" name="biznote" id="biznote" class="biznote"
 																			style="text-align: right; width: 90%">
 																		</td>
 
 																		<!-- 금액 -->
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" name="bizcost" class="odersize"
+																			<input type="text" name="bizcost" id="bizcost" class="bizcost" value="0"
 																			style="width: 90%" >
 																		</td>
 
@@ -939,28 +1006,28 @@
 																	<!-- 날짜 -->
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" id="bizdate4" name="bidate" class="product"
+																			<input type="text" id="bizdate3" name="bizdate" class="bizdate"
 																			style="width: 90%;" value="">
 																		</td>
 
 																		<!-- 지출내역 -->
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" name="bizcostdetail" class="unitcost"
+																			<input type="text" name="bizcostdetail" id="bizcostdetail" class="bizcostdetail"
 																			style="text-align: right; width: 90%" >
 																		</td>
 
 																		<!-- 비고 -->
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" name="biznote" class="amount"
+																			<input type="text" name="biznote" id="biznote" class="biznote"
 																			style="text-align: right; width: 90%">
 																		</td>
 
 																		<!-- 금액 -->
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" name="bizcost" class="odersize"
+																			<input type="text" name="bizcost" id="bizcost" class="bizcost" value="0"
 																			style="width: 90%" >
 																		</td>
 
@@ -970,28 +1037,28 @@
 																		<!-- 날짜 -->
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" id="bizdate5" name="bidate" class="product"
+																			<input type="text" id="bizdate4" name="bizdate" class="bizdate"
 																			style="width: 90%;" value="">
 																		</td>
 
 																		<!-- 지출내역 -->
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" name="bizcostdetail" class="unitcost"
+																			<input type="text" name="bizcostdetail" id="bizcostdetail" class="bizcostdetail"
 																			style="text-align: right; width: 90%" >
 																		</td>
 
 																		<!-- 비고 -->
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" name="biznote" class="amount"
+																			<input type="text" name="biznote" id="biznote" class="biznote"
 																			style="text-align: right; width: 90%">
 																		</td>
 
 																		<!-- 금액 -->
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" name="bizcost" class="odersize"
+																			<input type="text" name="bizcost" id="bizcost" class="bizcost" value="0"
 																			style="width: 90%" >
 																		</td>
 
@@ -1017,8 +1084,9 @@
 																			</td>
 																		<td width="20%" align="right"
 																			style="border: solid 1px #C0BFC1; color: #000000;"
-																			class="item"><b>\</b> <span id="detail_total"
-																			style="font-weight: bold; color: #000000; font-size: 14px;">0</span>
+																			class="item">
+																			<!-- <span id="detail_total" style="font-weight: bold; color: #000000; font-size: 14px;">0</span> -->
+																			<input type="text" id="biztot" name="biztot" class="biztot" readonly="readonly" value="0">
 																		</td>
 																	</tr>
 																</tbody>
@@ -1076,23 +1144,135 @@
 		</div>
 	</div>
 </section>
+<!-- <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
  <script type="text/javascript">
 
 	$(function() {
 		$( "#bizrepstart" ).datepicker({
-		    dateFormat:'yy-mm-dd',
-		    // showAnim: "slide", 
+			changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
+	        changeYear: true, // 년을 바꿀 수 있는 셀렉트 박스를 표시한다.
+	        minDate: '-100y', // 현재날짜로부터 100년이전까지 년을 표시한다.
+	        nextText: '다음 달', // next 아이콘의 툴팁.
+	        prevText: '이전 달', // prev 아이콘의 툴팁.
+	        numberOfMonths: [1,1], // 한번에 얼마나 많은 월을 표시할것인가. [2,3] 일 경우, 2(행) x 3(열) = 6개의 월을 표시한다.
+	        yearRange: 'c-99:c+100', // 년도 선택 셀렉트박스를 현재 년도에서 이전, 이후로 얼마의 범위를 표시할것인가.
+	        currentText: '오늘 날짜' , // 오늘 날짜로 이동하는 버튼 패널
+	        closeText: '닫기',  // 닫기 버튼 패널
+	        dateFormat: "yy년 mm월 dd일", // 텍스트 필드에 입력되는 날짜 형식.
+	        showAnim: "blind", //애니메이션을 적용한다.
+	        showMonthAfterYear: true , // 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다. 
+	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], // 요일의 한글 형식.
+	        monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+			
+			
 		    onClose: function( selectedDate ) {
 		        $( "#bizrepend" ).datepicker( "option", "minDate", selectedDate );
 		      }
 		});
 		
 		$( "#bizrepend" ).datepicker({
-		    dateFormat:'yy-mm-dd',
-		    // showAnim: "slide", 
+			changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
+	        changeYear: true, // 년을 바꿀 수 있는 셀렉트 박스를 표시한다.
+	        minDate: '-100y', // 현재날짜로부터 100년이전까지 년을 표시한다.
+	        nextText: '다음 달', // next 아이콘의 툴팁.
+	        prevText: '이전 달', // prev 아이콘의 툴팁.
+	        numberOfMonths: [1,1], // 한번에 얼마나 많은 월을 표시할것인가. [2,3] 일 경우, 2(행) x 3(열) = 6개의 월을 표시한다.
+	        yearRange: 'c-99:c+100', // 년도 선택 셀렉트박스를 현재 년도에서 이전, 이후로 얼마의 범위를 표시할것인가.
+	        currentText: '오늘 날짜' , // 오늘 날짜로 이동하는 버튼 패널
+	        closeText: '닫기',  // 닫기 버튼 패널
+	        dateFormat: "yy년 mm월 dd일", // 텍스트 필드에 입력되는 날짜 형식.
+	        showAnim: "blind", //애니메이션을 적용한다.
+	        showMonthAfterYear: true , // 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다. 
+	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], // 요일의 한글 형식.
+	        monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
 		    onClose: function( selectedDate ) {
 		        $( "#bizrepstart" ).datepicker( "option", "maxDate", selectedDate );
 		        }
-		}); 
+		});
+		
+		$( "#bizdate").datepicker({
+	    			        changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
+	    			        changeYear: true, // 년을 바꿀 수 있는 셀렉트 박스를 표시한다.
+	    			        minDate: '-100y', // 현재날짜로부터 100년이전까지 년을 표시한다.
+	    			        nextText: '다음 달', // next 아이콘의 툴팁.
+	    			        prevText: '이전 달', // prev 아이콘의 툴팁.
+	    			        numberOfMonths: [1,1], // 한번에 얼마나 많은 월을 표시할것인가. [2,3] 일 경우, 2(행) x 3(열) = 6개의 월을 표시한다.
+	    			        yearRange: 'c-99:c+100', // 년도 선택 셀렉트박스를 현재 년도에서 이전, 이후로 얼마의 범위를 표시할것인가.
+	    			        currentText: '오늘 날짜' , // 오늘 날짜로 이동하는 버튼 패널
+	    			        closeText: '닫기',  // 닫기 버튼 패널
+	    			        dateFormat: "yy년 mm월 dd일", // 텍스트 필드에 입력되는 날짜 형식.
+	    			        showAnim: "blind", //애니메이션을 적용한다.
+	    			        showMonthAfterYear: true , // 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다. 
+	    			        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], // 요일의 한글 형식.
+	    			        monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] // 월의 한글 형식.
+		});
+		
+		$( "#bizdate1").datepicker({
+	        changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
+	        changeYear: true, // 년을 바꿀 수 있는 셀렉트 박스를 표시한다.
+	        minDate: '-100y', // 현재날짜로부터 100년이전까지 년을 표시한다.
+	        nextText: '다음 달', // next 아이콘의 툴팁.
+	        prevText: '이전 달', // prev 아이콘의 툴팁.
+	        numberOfMonths: [1,1], // 한번에 얼마나 많은 월을 표시할것인가. [2,3] 일 경우, 2(행) x 3(열) = 6개의 월을 표시한다.
+	        yearRange: 'c-99:c+100', // 년도 선택 셀렉트박스를 현재 년도에서 이전, 이후로 얼마의 범위를 표시할것인가.
+	        currentText: '오늘 날짜' , // 오늘 날짜로 이동하는 버튼 패널
+	        closeText: '닫기',  // 닫기 버튼 패널
+	        dateFormat: "yy년 mm월 dd일", // 텍스트 필드에 입력되는 날짜 형식.
+	        showAnim: "blind", //애니메이션을 적용한다.
+	        showMonthAfterYear: true , // 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다. 
+	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], // 요일의 한글 형식.
+	        monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] // 월의 한글 형식.
+	        });
+		
+		$( "#bizdate2").datepicker({
+	        changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
+	        changeYear: true, // 년을 바꿀 수 있는 셀렉트 박스를 표시한다.
+	        minDate: '-100y', // 현재날짜로부터 100년이전까지 년을 표시한다.
+	        nextText: '다음 달', // next 아이콘의 툴팁.
+	        prevText: '이전 달', // prev 아이콘의 툴팁.
+	        numberOfMonths: [1,1], // 한번에 얼마나 많은 월을 표시할것인가. [2,3] 일 경우, 2(행) x 3(열) = 6개의 월을 표시한다.
+	        yearRange: 'c-99:c+100', // 년도 선택 셀렉트박스를 현재 년도에서 이전, 이후로 얼마의 범위를 표시할것인가.
+	        currentText: '오늘 날짜' , // 오늘 날짜로 이동하는 버튼 패널
+	        closeText: '닫기',  // 닫기 버튼 패널
+	        dateFormat: "yy년 mm월 dd일", // 텍스트 필드에 입력되는 날짜 형식.
+	        showAnim: "blind", //애니메이션을 적용한다.
+	        showMonthAfterYear: true , // 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다. 
+	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], // 요일의 한글 형식.
+	        monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] // 월의 한글 형식.
+		});
+		
+		$( "#bizdate3").datepicker({
+	        changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
+	        changeYear: true, // 년을 바꿀 수 있는 셀렉트 박스를 표시한다.
+	        minDate: '-100y', // 현재날짜로부터 100년이전까지 년을 표시한다.
+	        nextText: '다음 달', // next 아이콘의 툴팁.
+	        prevText: '이전 달', // prev 아이콘의 툴팁.
+	        numberOfMonths: [1,1], // 한번에 얼마나 많은 월을 표시할것인가. [2,3] 일 경우, 2(행) x 3(열) = 6개의 월을 표시한다.
+	        yearRange: 'c-99:c+100', // 년도 선택 셀렉트박스를 현재 년도에서 이전, 이후로 얼마의 범위를 표시할것인가.
+	        currentText: '오늘 날짜' , // 오늘 날짜로 이동하는 버튼 패널
+	        closeText: '닫기',  // 닫기 버튼 패널
+	        dateFormat: "yy년 mm월 dd일", // 텍스트 필드에 입력되는 날짜 형식.
+	        showAnim: "blind", //애니메이션을 적용한다.
+	        showMonthAfterYear: true , // 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다. 
+	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], // 요일의 한글 형식.
+	        monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] // 월의 한글 형식.
+		});
+		
+		$( "#bizdate4").datepicker({
+	        changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
+	        changeYear: true, // 년을 바꿀 수 있는 셀렉트 박스를 표시한다.
+	        minDate: '-100y', // 현재날짜로부터 100년이전까지 년을 표시한다.
+	        nextText: '다음 달', // next 아이콘의 툴팁.
+	        prevText: '이전 달', // prev 아이콘의 툴팁.
+	        numberOfMonths: [1,1], // 한번에 얼마나 많은 월을 표시할것인가. [2,3] 일 경우, 2(행) x 3(열) = 6개의 월을 표시한다.
+	        yearRange: 'c-99:c+100', // 년도 선택 셀렉트박스를 현재 년도에서 이전, 이후로 얼마의 범위를 표시할것인가.
+	        currentText: '오늘 날짜' , // 오늘 날짜로 이동하는 버튼 패널
+	        closeText: '닫기',  // 닫기 버튼 패널
+	        dateFormat: "yy년 mm월 dd일", // 텍스트 필드에 입력되는 날짜 형식.
+	        showAnim: "blind", //애니메이션을 적용한다.
+	        showMonthAfterYear: true , // 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다. 
+	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], // 요일의 한글 형식.
+	        monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] // 월의 한글 형식.
+		});
 	});
 </script>
