@@ -11,6 +11,30 @@
 	System.out.println("오늘의 날짜: " + strdate);
 %>
 <c:set var="empid" value="${sessionScope.myemp.userid}" />
+
+<style>
+	#dialog {
+		padding: 10px;
+    	width: 350px;
+    	height: 220px;
+	}
+	#dialog1 {
+		padding: 10px;
+    	width: 350px;
+    	height: 220px;
+	}
+	#dialog2 {
+		padding: 10px;
+    	width: 350px;
+    	height: 220px;
+	}
+	#dialog3 {
+		padding: 10px;
+    	width: 350px;
+    	height: 220px;
+	}
+</style>
+
 <script type="text/javascript">
 	//sign 유효성 검사
 	function addsign() {
@@ -180,6 +204,7 @@
 										$("#cancel1").hide();
 										$("#cancel2").hide();
 										$("#cancel3").hide();
+										
 										dialog = $("#dialog").dialog({
 											autoOpen : false,
 											width : 500,
@@ -206,15 +231,12 @@
 
 											if (valid) {
 
-												var res = $(
-														'input[name="name"]:checked')
-														.val().split(",");
+												var res = $('input[name="name"]:checked').val().split(",");
 												var checkedvalpos = res[2];
 												var checkedvalname = res[1]
 														+ " 님";
 												var checkedvalid = res[0];
-												console.log("아이디1: "
-														+ checkedvalid.trim());
+												console.log("아이디1: " + checkedvalid.trim());
 
 												$("#opener").hide();
 												$("#cancel").show();
@@ -511,24 +533,68 @@
 									/* 결재자 트리 띄우는 기능 */
 									$(function() {
 										$("#accordion").accordion({
-											heightStyle : "content"
+											heightStyle : "fill"
 										});
 									});
+									$(function() {
+										$( "#dialog" ).resizable({
+											minHeight: 100,
+									      	minWidth: 100,
+									      	resize: function() {
+									      		$( "#accordion" ).accordion( "refresh" );
+									      	}
+									    });
+									});
+									
+									
 									$(function() {
 										$("#accordion1").accordion({
 											heightStyle : "content"
 										});
 									});
 									$(function() {
+										$( "#dialog1" ).resizable({
+											minHeight: 100,
+									      	minWidth: 100,
+									      	resize: function() {
+									      		$( "#accordion1" ).accordion( "refresh" );
+									      	}
+									    });
+									});
+									
+									
+									$(function() {
 										$("#accordion2").accordion({
 											heightStyle : "content"
 										});
 									});
 									$(function() {
+										$( "#dialog2" ).resizable({
+											minHeight: 100,
+									      	minWidth: 100,
+									      	resize: function() {
+									      		$( "#accordion2" ).accordion( "refresh" );
+									      	}
+									    });
+									});
+									
+									
+									$(function() {
 										$("#accordion3").accordion({
 											heightStyle : "content"
 										});
 									});
+									$(function() {
+										$( "#dialog3" ).resizable({
+											minHeight: 100,
+									      	minWidth: 100,
+									      	resize: function() {
+									      		$( "#accordion3" ).accordion( "refresh" );
+									      	}
+									    });
+									});
+									
+									
 									/* 결재자 트리 띄우는 기능 끝*/
 
 									/* ck 에디터 기능 */
