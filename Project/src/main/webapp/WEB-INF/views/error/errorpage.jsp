@@ -11,7 +11,7 @@
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">404 error</li>
+            <li class="active">access error</li>
           </ol>
         </section>
 
@@ -19,21 +19,29 @@
         <section class="content">
 
           <div class="error-page">
-            <h2 class="headline text-yellow"> 관리자</h2>
+            <h3 class="headline text-yellow"> ADMIN</h3>
             <div class="error-content">
-              <h3><i class="fa fa-warning text-yellow"></i> Oops! This page</h3>
+              <h3><i class="fa fa-warning text-yellow"></i> Oops! Accessed denied</h3>
               <p>
-                We could not find the page you were looking for.
-                Meanwhile, you may <a href='../../index.html'>return to dashboard</a> or try using the search form.
+                You could not access the page you were looking for.
+                Meanwhile, you may <a href='javascript:history.back()'>return to home</a> or login by admin.
               </p>
-             <!--  <form class='search-form'>
+               <form class='search-form'>
                 <div class='input-group'>
-                  <input type="text" name="search" class='form-control' placeholder="Search"/>
-                  <div class="input-group-btn">
-                    <button type="submit" name="submit" class="btn btn-warning btn-flat"><i class="fa fa-search"></i></button>
-                  </div>
-                </div>/.input-group
-              </form> -->
+                		
+                	<div class="small-box bg-yellow">
+		                <div class="inner">
+		                  <h3>Sorry</h3>
+		                  <p>for the inconvenient</p>
+		                </div>
+		                <div class="icon">
+		                  <i class="ion ion-person-add"></i>
+		                </div>
+		                <a href="javascript:history.back()" class="small-box-footer">return to back<i class="fa fa-arrow-circle-right"></i></a>
+		              </div>
+		                  
+                </div>
+              </form> 
             </div><!-- /.error-content -->
           </div><!-- /.error-page -->
         </section><!-- /.content -->
