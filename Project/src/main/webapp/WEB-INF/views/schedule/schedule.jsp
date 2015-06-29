@@ -170,7 +170,7 @@
 	<form id="_schedule_form" name="_schedule_layer">
 	<input type="hidden" id="scstart" name="scstart"/>
 	<input type="hidden" id="scend" name="scend"/>
-	<input type="hidden" id="userid" name="userid"/>
+	<input type="hidden" id="userid" name="userid" value="${userid}"/>
 		<table id="_schedule_table" width="100%" border="0" cellspacing="0" cellpadding="0" class="left_menu">
 			<tbody>
 				<tr>
@@ -317,8 +317,6 @@
 	</form>
 </div>
 
-
-
 <div id="_schedule_view" width="100%" border="0" cellspacing="0" cellpadding="0" class="left_menu" title="일정확인하기">
 	<form id="_read_schedule_form" name="_read_schedule_form">
 		<table id="_read_schedule_table" width="100%" border="0" cellspacing="0" cellpadding="0" class="left_menu">
@@ -399,7 +397,6 @@
 		</table>
 	</form>
 </div>
-
 
 
 <script src="<%=request.getContextPath()%>/resources/plugins/schecule/jquery-ui-1.11.4.custom/jquery-ui.js" type="text/javascript"></script>
@@ -565,14 +562,10 @@
 
 					eventClick : function(calEvent, jsEvent, view) {
 
-						var pop_start_date = moment(calEvent.start).format(
-								"YYYY-MM-DD");
-						var pop_end_date = moment(calEvent.end).format(
-								"YYYY-MM-DD");
-
+						var pop_start_date = moment(calEvent.start).format("YYYY-MM-DD");
+						var pop_end_date = moment(calEvent.end).format("YYYY-MM-DD");
 						console.log("title: " + calEvent.title + " start: "+ pop_start_date + " end: " + pop_end_date);
 						readEvent.dialog("open");
-
 					},
 
 					editable : false,
@@ -589,6 +582,37 @@
 			backgroundColor : "#f56954", //red
 			borderColor : "#f56954" //red
 		} ]);
+				
+				
+		var userid = { userid : $('#userid').val() };
+	       $.ajax({
+	             Type:"get",
+	             url:"<%= request.getContextPath() %>/schedule/getSchedule.htm",
+	             dataType:"json",
+	             data:userid,
+	             success:function( data ){
+	                 
+	                $.each(data.schedule, function(){
+	                   var a = this;
+	                   var b = data.schcategory;
+	                   $("#calendar").fullCalendar( 'addEventSource', [ {
+	                     title : a.sctitle,
+	                      start : new Date(y, m, 09, 12, 30), //년,월,일,시,분
+	                      end : new Date(y, m, 12, 12, 30), //년,월,일,시,분
+	                      backgroundColor : b.color, //red
+	                      borderColor : b.color, //red
+//	                       userid : this.userid,
+//	                       contents : "aaaa"
+	                  } ] );
+	                   
+	                                   
+	                });
+	              /*   $('#Team *').remove();    
+	                    $('#Team').append(toptions); */
+	                
+	             },
+	             error:function(data){alert("Error 발생");}
+	          });
 
 	});
 </script>

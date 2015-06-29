@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.ScheduleDAO">
+   
+   <select id="getSchedule" resultType="String">
+      <!-- select * from schedule where userid = #{ userid } -->
+      <!-- select sctitle, to_char(scstart, 'YYYY-MM-DD HH24:MI:SS') as scstart, to_char(scend, 'YYYY-MM-DD HH24:MI:SS') as scend, 
+            schnum, catecode, userid, sccontent
+      from Schedule where userid=#{ userid } -->
+      select to_char(scstart, 'YY, MM, DD HH, MI') as scstart, to_char(scend, 'YY, MM, DD HH, MI') as scend,
+      sctitle, schnum, catecode, userid, sccontent 
+      from Schedule where userid=#{ userid }
+   </select>
+   <select id="getSchCategory" resultType="dto_vo.Schedule.Schcategory">
+      select * from SCHCATEGORY where userid = #{ userid }
+   </select>
+</mapper>
