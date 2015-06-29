@@ -12,6 +12,29 @@
 %>
 <!DOCTYPE html>
 
+<style>
+	#dialog {
+		padding: 10px;
+    	width: 350px;
+    	height: 220px;
+	}
+	#dialog1 {
+		padding: 10px;
+    	width: 350px;
+    	height: 220px;
+	}
+	#dialog2 {
+		padding: 10px;
+    	width: 350px;
+    	height: 220px;
+	}
+	#dialog3 {
+		padding: 10px;
+    	width: 350px;
+    	height: 220px;
+	}
+</style>
+
 <c:set var="empid" value="${sessionScope.myemp.userid}"/>
 <c:set var="todaydate" value="<%=strdate%>"/>
 
@@ -375,24 +398,68 @@
 	/* 결재자 트리 띄우는 기능 */
 	$(function() {
 		$("#accordion").accordion({
-			heightStyle : "content"
+			heightStyle : "fill"
 		});
 	});
+	$(function() {
+		$( "#dialog" ).resizable({
+			minHeight: 100,
+	      	minWidth: 100,
+	      	resize: function() {
+	      		$( "#accordion" ).accordion( "refresh" );
+	      	}
+	    });
+	});
+	
+	
 	$(function() {
 		$("#accordion1").accordion({
-			heightStyle : "content"
+			heightStyle : "fill"
 		});
 	});
+	$(function() {
+		$( "#dialog1" ).resizable({
+			minHeight: 100,
+	      	minWidth: 100,
+	      	resize: function() {
+	      		$( "#accordion1" ).accordion( "refresh" );
+	      	}
+	    });
+	});
+	
+	
 	$(function() {
 		$("#accordion2").accordion({
-			heightStyle : "content"
+			heightStyle : "fill"
 		});
 	});
 	$(function() {
+		$( "#dialog2" ).resizable({
+			minHeight: 100,
+	      	minWidth: 100,
+	      	resize: function() {
+	      		$( "#accordion2" ).accordion( "refresh" );
+	      	}
+	    });
+	});
+	
+	
+	$(function() {
 		$("#accordion3").accordion({
-			heightStyle : "content"
+			heightStyle : "fill"
 		});
 	});
+	$(function() {
+		$( "#dialog3" ).resizable({
+			minHeight: 100,
+	      	minWidth: 100,
+	      	resize: function() {
+	      		$( "#accordion3" ).accordion( "refresh" );
+	      	}
+	    });
+	});
+	
+	
 	/* 결재자 트리 띄우는 기능 끝*/
 </script>
 
@@ -694,11 +761,10 @@
 																							style="border: solid 1px #C0BFC1; padding-left: 7px;"">
 																					    <input
 																							type="text" name="holstart" id="holstart" 
-																							class="input_approval" style="width: 85px"
-																							maxlength="10"> ~ 
+																							class="input_approval" style="width: 200px"> ~ 
 																						<input type="text"
 																							name="holend" id="holend" class="input_approval"
-																							style="width: 85px" maxlength="10">
+																							style="width: 200px" >
 																							&nbsp; <span id="vadate"
 																							style="font-weight: bold; color: #000"> </span> <span
 																							style="font-weight: bold; color: #000">

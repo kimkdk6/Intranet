@@ -13,6 +13,29 @@
 <c:set var="empid" value="${sessionScope.myemp.userid}" />
 <c:set var="todaydate" value="<%=strdate%>" />
 <!DOCTYPE html>
+<style>
+	#dialog {
+		padding: 10px;
+    	width: 350px;
+    	height: 220px;
+	}
+	#dialog1 {
+		padding: 10px;
+    	width: 350px;
+    	height: 220px;
+	}
+	#dialog2 {
+		padding: 10px;
+    	width: 350px;
+    	height: 220px;
+	}
+	#dialog3 {
+		padding: 10px;
+    	width: 350px;
+    	height: 220px;
+	}
+</style>
+
 <script type="text/javascript">
 		//sign 유효성 검사
 		 function addsign(){
