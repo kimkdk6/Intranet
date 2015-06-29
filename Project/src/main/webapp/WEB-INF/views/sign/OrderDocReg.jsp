@@ -896,27 +896,27 @@
 																					<tr height="27" align="center" id="calc">
 																						<!-- 품명 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="orderlist[0].product" class="product" style="width: 90%;" value="">
+																							<input type="text" name="orderlist[0].product" class="product" style="width: 90%;" value="0">
 																						</td>
 																						
 																						<!-- 단가 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="orderlist[0].unitcost" class="unitcost" style="text-align: right; width: 90%" value="">
+																							<input type="text" name="orderlist[0].unitcost" class="unitcost" style="text-align: right; width: 90%" value="0">
 																						</td>
 																						
 																						<!-- 수량 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="orderlist[0].amount" class="amount" style="text-align: right; width: 90%" value="">
+																							<input type="text" name="orderlist[0].amount" class="amount" style="text-align: right; width: 90%" value="0">
 																						</td>
 																						
 																						<!-- 규격 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																						<input type="text" name="orderlist[0].ordersize" class="odersize" style="width: 90%" value="">
+																						<input type="text" name="orderlist[0].ordersize" class="odersize" style="width: 90%" value="0">
 																						</td>
 																						
 																						<!-- 비고 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="orderlist[0].ordernote" class="ordernote" style="width: 90%" value="">
+																							<input type="text" name="orderlist[0].ordernote" class="ordernote" style="width: 90%" value="0">
 																						</td>
 																						
 																						<!-- 금액출력 -->
@@ -927,27 +927,27 @@
 																					<tr height="27" align="center" id="calc">
 																						<!-- 품명 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="orderlist[1].product" class="product" style="width: 90%;" value="">
+																							<input type="text" name="orderlist[1].product" class="product" style="width: 90%;" value="0">
 																						</td>
 																						
 																						<!-- 단가 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="orderlist[1].unitcost" class="unitcost" style="text-align: right; width: 90%" value="">
+																							<input type="text" name="orderlist[1].unitcost" class="unitcost" style="text-align: right; width: 90%" value="0">
 																						</td>
 																						
 																						<!-- 수량 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="orderlist[1].amount" class="amount" style="text-align: right; width: 90%" value="">
+																							<input type="text" name="orderlist[1].amount" class="amount" style="text-align: right; width: 90%" value="0">
 																						</td>
 																						
 																						<!-- 규격 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																						<input type="text" name="orderlist[1].ordersize" class="odersize" style="width: 90%" value="">
+																						<input type="text" name="orderlist[1].ordersize" class="odersize" style="width: 90%" value="0">
 																						</td>
 																						
 																						<!-- 비고 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="orderlist[1].ordernote" class="ordernote" style="width: 90%" value="">
+																							<input type="text" name="orderlist[1].ordernote" class="ordernote" style="width: 90%" value="0">
 																						</td>
 																						
 																						<!-- 금액출력 -->
@@ -958,27 +958,27 @@
 																					<tr height="27" align="center" id="calc">
 																						<!-- 품명 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="orderlist[2].product" class="product" style="width: 90%;" value="">
+																							<input type="text" name="orderlist[2].product" class="product" style="width: 90%;" value="0">
 																						</td>
 																						
 																						<!-- 단가 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="orderlist[2].unitcost" class="unitcost" style="text-align: right; width: 90%" value="">
+																							<input type="text" name="orderlist[2].unitcost" class="unitcost" style="text-align: right; width: 90%" value="0">
 																						</td>
 																						
 																						<!-- 수량 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="orderlist[2].amount" class="amount" style="text-align: right; width: 90%" value="">
+																							<input type="text" name="orderlist[2].amount" class="amount" style="text-align: right; width: 90%" value="0">
 																						</td>
 																						
 																						<!-- 규격 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																						<input type="text" name="orderlist[2].ordersize" class="odersize" style="width: 90%" value="">
+																						<input type="text" name="orderlist[2].ordersize" class="odersize" style="width: 90%" value="0">
 																						</td>
 																						
 																						<!-- 비고 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="orderlist[2].ordernote" class="ordernote" style="width: 90%" value="">
+																							<input type="text" name="orderlist[2].ordernote" class="ordernote" style="width: 90%" value="0">
 																						</td>
 																						
 																						<!-- 금액출력 -->
@@ -990,27 +990,27 @@
 																					<tr height="27" align="center" id="calc">
 																						<!-- 품명 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="orderlist[3].product" class="product" style="width: 90%;" value="">
+																							<input type="text" name="orderlist[3].product" class="product" style="width: 90%;" value="0">
 																						</td>
 																						
 																						<!-- 단가 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="orderlist[3].unitcost" class="unitcost" style="text-align: right; width: 90%" value="">
+																							<input type="text" name="orderlist[3].unitcost" class="unitcost" style="text-align: right; width: 90%" value="0">
 																						</td>
 																						
 																						<!-- 수량 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="orderlist[3].amount" class="amount" style="text-align: right; width: 90%" value="">
+																							<input type="text" name="orderlist[3].amount" class="amount" style="text-align: right; width: 90%" value="0">
 																						</td>
 																						
 																						<!-- 규격 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																						<input type="text" name="orderlist[3].ordersize" class="odersize" style="width: 90%" value="">
+																						<input type="text" name="orderlist[3].ordersize" class="odersize" style="width: 90%" value="0">
 																						</td>
 																						
 																						<!-- 비고 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="orderlist[3].ordernote" class="ordernote" style="width: 90%" value="">
+																							<input type="text" name="orderlist[3].ordernote" class="ordernote" style="width: 90%" value="0">
 																						</td>
 																						
 																						<!-- 금액출력 -->
@@ -1021,27 +1021,27 @@
 																					<tr height="27" align="center" id="calc">
 																						<!-- 품명 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="orderlist[4].product" class="product" style="width: 90%;" value="">
+																							<input type="text" name="orderlist[4].product" class="product" style="width: 90%;" value="0">
 																						</td>
 																						
 																						<!-- 단가 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="orderlist[4].unitcost" class="unitcost" style="text-align: right; width: 90%" value="">
+																							<input type="text" name="orderlist[4].unitcost" class="unitcost" style="text-align: right; width: 90%" value="0">
 																						</td>
 																						
 																						<!-- 수량 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="orderlist[4].amount" class="amount" style="text-align: right; width: 90%" value="">
+																							<input type="text" name="orderlist[4].amount" class="amount" style="text-align: right; width: 90%" value="0">
 																						</td>
 																						
 																						<!-- 규격 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																						<input type="text" name="orderlist[4].ordersize" class="odersize" style="width: 90%" value="">
+																						<input type="text" name="orderlist[4].ordersize" class="odersize" style="width: 90%" value="0">
 																						</td>
 																						
 																						<!-- 비고 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="orderlist[4].ordernote" class="ordernote" style="width: 90%" value="">
+																							<input type="text" name="orderlist[4].ordernote" class="ordernote" style="width: 90%" value="0">
 																						</td>
 																						
 																						<!-- 금액출력 -->
