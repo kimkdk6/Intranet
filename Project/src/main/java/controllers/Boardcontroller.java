@@ -130,6 +130,7 @@ public class Boardcontroller {
 		model.addAttribute("boardlistlist", boardlistlist);//게시글 리스트
 		model.addAttribute("allcount", allcount);
 		model.addAttribute("noticelist", noticelist);//게시판 이름 코드
+		
 		PagingUtil pagingUtil =  new PagingUtil(cpage, allcount, pagesize, 5);
 
 		model.addAttribute("paging", pagingUtil);
