@@ -5,14 +5,14 @@ import java.util.Date;
 // ==================출장 신청서========================
 public class Biztripdoc {
 	private int docnum; // 문서번호
-	private Date bizstart; // 출장시작일
-	private Date bizend; // 출장종료일
+	private String bizstart; // 출장시작일
+	private String bizend; // 출장종료일
 	private String bizloc; // 출장지
 	private String bizpur; // 출장목적
 	
 	public Biztripdoc() {}
 
-	public Biztripdoc(int docnum, Date bizstart, Date bizend, String bizloc,
+	public Biztripdoc(int docnum, String bizstart, String bizend, String bizloc,
 			String bizpur) {
 		this.docnum = docnum;
 		this.bizstart = bizstart;
@@ -29,19 +29,19 @@ public class Biztripdoc {
 		this.docnum = docnum;
 	}
 
-	public Date getBizstart() {
+	public String getBizstart() {
 		return bizstart;
 	}
 
-	public void setBizstart(Date bizstart) {
+	public void setBizstart(String bizstart) {
 		this.bizstart = bizstart;
 	}
 
-	public Date getBizend() {
+	public String getBizend() {
 		return bizend;
 	}
 
-	public void setBizend(Date bizend) {
+	public void setBizend(String bizend) {
 		this.bizend = bizend;
 	}
 

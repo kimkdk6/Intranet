@@ -875,7 +875,7 @@
 	        yearRange: 'c-99:c+100', // 년도 선택 셀렉트박스를 현재 년도에서 이전, 이후로 얼마의 범위를 표시할것인가.
 	        currentText: '오늘 날짜' , // 오늘 날짜로 이동하는 버튼 패널
 	        closeText: '닫기',  // 닫기 버튼 패널
-	        dateFormat: "yy년 mm월 dd일", // 텍스트 필드에 입력되는 날짜 형식.
+	        dateFormat: "yy-mm-dd", // 텍스트 필드에 입력되는 날짜 형식.
 	        showAnim: "blind", //애니메이션을 적용한다.
 	        showMonthAfterYear: true , // 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다. 
 	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], // 요일의 한글 형식.
@@ -895,7 +895,7 @@
 	        yearRange: 'c-99:c+100', // 년도 선택 셀렉트박스를 현재 년도에서 이전, 이후로 얼마의 범위를 표시할것인가.
 	        currentText: '오늘 날짜' , // 오늘 날짜로 이동하는 버튼 패널
 	        closeText: '닫기',  // 닫기 버튼 패널
-	        dateFormat: "yy년 mm월 dd일", // 텍스트 필드에 입력되는 날짜 형식.
+	        dateFormat: "yy-mm-dd", // 텍스트 필드에 입력되는 날짜 형식.
 	        showAnim: "blind", //애니메이션을 적용한다.
 	        showMonthAfterYear: true , // 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다. 
 	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], // 요일의 한글 형식.

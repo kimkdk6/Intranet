@@ -5,8 +5,8 @@ import java.util.Date;
 // =================출장결과 보고서=============================
 public class Biztriprep {
 	private int docnum; // 문서번호
-	private Date bizrepstart; // 출장시작일
-	private Date bizrepend; // 출장종료일
+	private String bizrepstart; // 출장시작일
+	private String bizrepend; // 출장종료일
 	private String bizloc; // 출장지
 	private String bizpur; // 출장목적
 	private int bizmem; // 인원
@@ -14,7 +14,7 @@ public class Biztriprep {
 	
 	public Biztriprep() {}
 
-	public Biztriprep(int docnum, Date bizrepstart, Date bizrepend,
+	public Biztriprep(int docnum, String bizrepstart, String bizrepend,
 			String bizloc, String bizpur, int bizmem, String bizcon) {
 		this.docnum = docnum;
 		this.bizrepstart = bizrepstart;
@@ -33,19 +33,19 @@ public class Biztriprep {
 		this.docnum = docnum;
 	}
 
-	public Date getBizrepstart() {
+	public String getBizrepstart() {
 		return bizrepstart;
 	}
 
-	public void setBizrepstart(Date bizrepstart) {
+	public void setBizrepstart(String bizrepstart) {
 		this.bizrepstart = bizrepstart;
 	}
 
-	public Date getBizrepend() {
+	public String getBizrepend() {
 		return bizrepend;
 	}
 
-	public void setBizrepend(Date bizrepend) {
+	public void setBizrepend(String bizrepend) {
 		this.bizrepend = bizrepend;
 	}
 
