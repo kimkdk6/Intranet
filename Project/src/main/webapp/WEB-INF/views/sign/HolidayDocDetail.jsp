@@ -50,7 +50,7 @@
 	<div class="box">
 		<div class="box-header with-border">
 			<h3 class="box-title">
-				<a class="title_txt" href="#"> 받은 결재 문서함 &gt; 미결재 문서 &gt; 문서조회</a>
+				<a class="title_txt" href="#"> 결재 문서함 &gt; 문서조회</a>
 			</h3>
 		</div>
 		<div class="box-body">
