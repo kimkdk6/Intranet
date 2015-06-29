@@ -488,6 +488,7 @@ public class Signcontroller {
 	public String BizTripDocReg(Model model) throws ClassNotFoundException,
 			SQLException {
 		System.out.println("출장 신청서 작성 페이지 열람");
+		
 		// 부서
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
 		List<Dept> dept = signdao.getDepts();
@@ -562,18 +563,32 @@ public class Signcontroller {
 	public String BizTripDocDetail(String docnum, Model model)
 			throws ClassNotFoundException, SQLException {
 		System.out.println("출장 신청서 상세페이지 보기");
-
+		List<Emp> signerlist = new ArrayList<Emp>();
+		
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
 		// 결재 문서(기본 내용)
 		Sign sign = signdao.getSign(docnum);
-		// 기안서
-		Draftingdoc draftingdoc = signdao.getDraftingdoc(docnum);
+		// 출장 신청서
+		Biztripdoc biztripdoc = signdao.getBizTripdoc(docnum);
 		// 결재라인
 		Signline signline = signdao.getSignline(docnum);
 
+		signerlist.add(signdao.getEmp(sign.getSigner1()));
+		signerlist.add(signdao.getEmp(sign.getSigner2()));
+		if(sign.getSigner3() != null){
+			signerlist.add(signdao.getEmp(sign.getSigner3()));
+		}
+		if(sign.getSigner4() != null){
+			signerlist.add(signdao.getEmp(sign.getSigner4()));
+		}
+		if(sign.getSigner5() != null){
+			signerlist.add(signdao.getEmp(sign.getSigner5()));
+		}
+		
 		model.addAttribute("sign", sign);
-		model.addAttribute("draftingdoc", draftingdoc);
+		model.addAttribute("biztripdoc", biztripdoc);
 		model.addAttribute("signline", signline);
+		model.addAttribute("signerlist", signerlist);
 		return "sign.BizTripDocDetail";
 	}
 

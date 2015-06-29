@@ -34,6 +34,8 @@ public interface SignDAO {
 	public Signline getSignline(String docnum) throws ClassNotFoundException, SQLException;
 	// 결재 > 휴가계 상세보기 가져오기
 	public Holidaydoc getHolidaydoc(String docnum) throws ClassNotFoundException, SQLException;
+	// 결재 > 출장 보고서 상세보기 가져오기
+	public Biztripdoc getBizTripdoc(String docnum) throws ClassNotFoundException, SQLException;
 	
 	// 부서 리스트 가져오기
 	public List<Dept> getDepts() throws ClassNotFoundException, SQLException;

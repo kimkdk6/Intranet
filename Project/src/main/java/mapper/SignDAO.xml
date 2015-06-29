@@ -105,6 +105,13 @@
 		where docnum = #{docnum}
 	</select>
 	
+	<!-- 결재 > 출장 보고서 상세보기 가져오기 -->
+	<select id="getBizTripdoc" resultType="dto_vo.Sign.Biztripdoc">
+	 	select *
+	 	from biztripdoc
+	 	where docnum = #{docnum}
+	</select>
+	
 	<!-- 결재 라인 가져오기  -->
 	<select id="getSignline" resultType="dto_vo.Sign.Signline">
 		select * 
