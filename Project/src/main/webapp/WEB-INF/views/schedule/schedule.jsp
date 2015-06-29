@@ -517,7 +517,7 @@
 			width : 600,
 			modal : true,
 			buttons : {
-				"일정 삭제" : function() {
+				"일정 삭제" : function(calEvent) { 
 					console.log(calEvent.title);
 					readEvent.dialog("close");
 				},
@@ -548,11 +548,11 @@
 					dayNames : [ "일요일", "월요일", "화요일", "수요일", "목요일", "금요일",
 							"토요일" ],
 					dayNamesShort : [ "일", "월", "화", "수", "목", "금", "토" ],
-					// 					titleFormat : {
-					// 						month : "YYYY년 MMMM",
-					// 						week : 'YYYY년 MM월 DD일',
-					// 						day : "YYYY년 MMM d일 dddd"
-					// 					},
+// 					titleFormat : {
+// 									month : "YYYY년 MMMM",
+// 									week : 'YYYY년 MM월 DD일',
+// 									day : "YYYY년 MMM d일 dddd"
+// 								  },
 					buttonText : {
 						today : "오늘",
 						month : "월별",
@@ -568,14 +568,17 @@
 
 						var pop_start_date = moment(calEvent.start).format("YYYY-MM-DD");
 						var pop_end_date = moment(calEvent.end).format("YYYY-MM-DD");
-						console.log("title: " + calEvent.title + " start: "+ pop_start_date + " end: " + pop_end_date);
+//						console.log("title: " + calEvent.title + " start: "+ pop_start_date + " end: " + pop_end_date+" content: "+calEvent.content+" userid:"+calEvent.userid);
 // 						readEvent.dialog("open");
-// 						readEvent.dialog("open",calEvent);
+						readEvent.dialog("open",calEvent);
 
 						$( "#_schedule_view" ).dialog('open',function(calEvent){
-							console.log(calEvent.title);
-						//	$('#readsctitle').
-						})						
+							
+							console.log(this.calEvent.title);
+						});
+
+// 						$('#readsctitle').val();
+			//			$('#readsctitle').attr('value',calEvent.title); 
 						
 					},
 
@@ -588,10 +591,10 @@
 			title : '이벤트 테스트2',
 			start : new Date(y, m, 3, 12, 30),//년,월,일,시,분
 			end : new Date(y, m, 4, 12, 30),
-			//	 						url: 'http://google.com/',//URL
-			//	 						allDay: false,//하루종일
 			backgroundColor : "#f56954", //red
-			borderColor : "#f56954" //red
+			borderColor : "#f56954", //red
+			userid : '김성익',
+			content: '시부랄 탱탱부랄'
 		} ]);
 				
 				
@@ -613,7 +616,7 @@
 	                      backgroundColor : b.color, //red
 	                      borderColor : b.color, //red
 						  userid : this.userid,
-//	                      contents : "aaaa"
+	                      contents : "aaaa"
 	                  } ] );
 	                   
 	                                   
