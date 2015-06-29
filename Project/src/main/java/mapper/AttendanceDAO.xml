@@ -4,6 +4,21 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     <mapper namespace="dao.AttendanceDAO">
 
+
+	<select id="allmember" resultType="java.util.Map">
+  	select * from (
+            select rownum, a.userid, a.empno, a.emppwd, a.ename, a.emptel, a.deptcode, a.teamcode, a.poscode, 
+                    a.empapprove,  a.deptname,  a.posname, a.attdate, a.attstarttime, a.attendtime 
+        from ( select e.userid, e.empno, e.emppwd, e.ename, e.emptel, e.deptcode, e.teamcode, e.poscode, 
+                    e.empapprove, d.deptname, p.posname, t.attdate, t.attstarttime, t.attendtime  
+        from emp e join dept d on e.deptcode = d.deptcode
+           join position p on e.poscode = p.poscode
+           join attendance t on e.userid = t.userid
+           ) a
+           where to_char (attdate, 'YYYY-MM-DD') = to_char (sysdate, 'YYYY-MM-DD')
+           )
+    </select>
+    
     <insert id="checkin"  parameterType="String">
   	insert into attendance(userid,attdate,attstarttime) values( #{userid}, to_char (sysdate, 'YYYY-MM-DD'), sysdate )
     </insert>

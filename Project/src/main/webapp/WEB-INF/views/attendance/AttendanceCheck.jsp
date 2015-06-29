@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <script type="text/javascript">
 jQuery(function($){
     $.datepicker.regional['ko'] = { // Default regional settings
@@ -30,6 +30,7 @@ jQuery(function($){
     });
 });
 </script>
+
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td height="40">
@@ -278,7 +279,7 @@ jQuery(function($){
   <tr>
     <td style="border-top:1px solid #eaeaea">
     <!--리스트TB START-->
-    <table class="tbl_board1">
+    <table width="100%" >
       <tr height="23" align="left">
         <td width="50" style="border-bottom:1px #eaeaea solid;border-right:1px #eaeaea solid;padding:3px 0 0 7px;" class="title">No</td>
         <td width="120" style="border-bottom:1px #eaeaea solid;border-right:1px #eaeaea solid;padding:3px 0 0 7px;" class="title">부서</td>
@@ -286,20 +287,22 @@ jQuery(function($){
         <td width="100" style="border-bottom:1px #eaeaea solid;border-right:1px #eaeaea solid;padding:3px 0 0 7px;" class="title">이름</td>
         <td width="70"  style="border-bottom:1px #eaeaea solid;border-right:1px #eaeaea solid;padding:3px 0 0 7px;" class="title">출근시간</td>
         <td width="70"  style="border-bottom:1px #eaeaea solid;border-right:1px #eaeaea solid;padding:3px 0 0 7px;" class="title">퇴근시간</td>
-        <td width=""    style="border-bottom:1px #eaeaea solid;border-right:1px #eaeaea solid;padding:3px 0 0 7px;" class="title">접속장소</td>
+        <!-- <td width=""    style="border-bottom:1px #eaeaea solid;border-right:1px #eaeaea solid;padding:3px 0 0 7px;" class="title">접속장소</td> -->
       </tr>
+       <c:forEach items="${all}" var="all">
             <tr bgcolor=#f9f9f9 height="28">
-        <td align="left" style="padding:2px 0px 0 7px;border-bottom:1px #eaeaea solid;">1</td>
-        <td align="left" style="padding:2px 0px 0 7px;border-bottom:1px #eaeaea solid;">전무 </td>
-        <td align="left" style="padding:2px 0px 0 7px;border-bottom:1px #eaeaea solid;">대표이사 test </td>
-        <td align="left" style="padding:2px 7px 0 7px;border-bottom:1px #eaeaea solid;">
-          1234                             </td>
-        <td align="left" style="padding:2px 7px 0 7px;border-bottom:1px #eaeaea solid;"></td>
-        <td align="left" style="padding:2px 7px 0 7px;border-bottom:1px #eaeaea solid;"></td>
-        <td align="left" style="padding:2px 7px 0 7px;border-bottom:1px #eaeaea solid;">
-                   </td>
-     <!--  </tr>
-            <tr bgcolor=#ffffff height="28">
+         
+        <td align="left" style="padding:2px 0px 0 7px;border-bottom:1px #eaeaea solid;">${all.ROWNUM}</td>
+        <td align="left" style="padding:2px 0px 0 7px;border-bottom:1px #eaeaea solid;">${all.DEPTNAME} </td>
+        <td align="left" style="padding:2px 0px 0 7px;border-bottom:1px #eaeaea solid;">${all.POSNAME} </td>
+        <td align="left" style="padding:2px 7px 0 7px;border-bottom:1px #eaeaea solid;">${all.ENAME} </td>
+        <td align="left" style="padding:2px 7px 0 7px;border-bottom:1px #eaeaea solid;">${all.ATTSTARTTIME}</td>
+        <td align="left" style="padding:2px 7px 0 7px;border-bottom:1px #eaeaea solid;">${all.ATTENDTIME}</td>
+        <%-- <td align="left" style="padding:2px 7px 0 7px;border-bottom:1px #eaeaea solid;">${a.rownum } </td> --%>
+      
+       </tr>
+        </c:forEach>
+        <!--    <tr bgcolor=#ffffff height="28">
         <td align="left" style="padding:2px 0px 0 7px;border-bottom:1px #eaeaea solid;">2</td>
         <td align="left" style="padding:2px 0px 0 7px;border-bottom:1px #eaeaea solid;">전무 </td>
         <td align="left" style="padding:2px 0px 0 7px;border-bottom:1px #eaeaea solid;">대표이사 test </td>

@@ -1,6 +1,8 @@
 package controllers;
 
 import java.security.Principal;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,8 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.View;
 
 import dao.AttendanceDAO;
 
@@ -19,6 +23,22 @@ public class Attendancecontroller {
 	
 	@Autowired
 	private SqlSession sqlSession;
+	
+	@Autowired
+	   private View jsonView;
+
+	@RequestMapping(value = "AttendanceCheck.htm")
+	public String AttendanceCheck(Model model,Principal principal,HttpServletRequest request, HttpServletResponse response) throws Exception
+	{
+		AttendanceDAO allmember = sqlSession.getMapper(AttendanceDAO.class);
+		List<String> all = allmember.allmember();
+		for(Object o : all){
+			System.out.println(o);
+		}
+		model.addAttribute("all", all);
+		
+		return "attendance.AttendanceCheck";
+	}
 	
 	@RequestMapping(value = "checkin.htm")
 	public @ResponseBody String checkin(Principal principal,HttpServletRequest request, HttpServletResponse response) throws Exception
@@ -105,16 +125,8 @@ public class Attendancecontroller {
 		return "attendance.Commute";
 	}
 	
-	@RequestMapping(value = "AttendanceCheck.htm")
-	public String AttendanceCheck(Principal principal,HttpServletRequest request, HttpServletResponse response) throws Exception
-	{
+
 	
-		/*AttendanceDAO checkin = sqlSession.getMapper(AttendanceDAO.class);
-
-		checkin.checkin(principal.getName());
-		String Attendance= checkin.checkincheck(principal.getName());*/
-
-		return "attendance.AttendanceCheck";
-	}
+	
 	
 }

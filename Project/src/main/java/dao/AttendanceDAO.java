@@ -2,6 +2,8 @@ package dao;
 
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 
 
 public interface AttendanceDAO {
@@ -14,6 +16,6 @@ public interface AttendanceDAO {
 	public void letereason(String userid, String reason) throws ClassNotFoundException, SQLException;
 	public String leavecheck(String userid) throws ClassNotFoundException, SQLException;
 	public void leavereason(String userid, String reason) throws ClassNotFoundException, SQLException;
-
+	public List<String> allmember() throws ClassNotFoundException, SQLException;
 	
 }
