@@ -51,7 +51,35 @@
 	
 	    $('.unitcost').keyup(function(){
 	        var num = $(".unitcost").index(this);
-	        // $('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
+	        $('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
+	        
+	        $('.totalSum').val(
+	        		parseInt($('.ordercost').eq(0).val()) +
+	  	        	parseInt($('.ordercost').eq(1).val()) +
+	  	        	parseInt($('.ordercost').eq(2).val()) +
+	  	        	parseInt($('.ordercost').eq(3).val()) +
+	  	        	parseInt($('.ordercost').eq(4).val())
+	        );
+	        
+	        $('.addTax').val(
+	        		Math.floor(parseInt($('.ordercost').eq(0).val())*0.1) +
+	  	        	Math.floor(parseInt($('.ordercost').eq(1).val())*0.1) +
+	  	        	Math.floor(parseInt($('.ordercost').eq(2).val())*0.1) +
+	  	        	Math.floor(parseInt($('.ordercost').eq(3).val())*0.1) +
+	  	        	Math.floor(parseInt($('.ordercost').eq(4).val())*0.1)
+	        );
+	        
+	        $('.totalSumTax').val(
+	        		parseInt($('.totalSum').val()) + parseInt($('.addTax').val())
+	        		
+	        );
+	        
+	        /* $('.totalSumTax').keyup(function() {
+		    	  var num = $(".totalSumTax").index(this);
+		    	  $('.totalSumTax').eq(num).val($('addTax').eq(0).val()+$('.totalSum').eq(0).val());
+		    }); */
+	        
+	        
 	    });
 	
 	    $('.amount').keyup(function(){
@@ -67,9 +95,62 @@
 	        );
 	        
 	        $('.addTax').val(
-	        	parseInt
+	        		Math.floor(parseInt($('.ordercost').eq(0).val())*0.1) +
+	  	        	Math.floor(parseInt($('.ordercost').eq(1).val())*0.1) +
+	  	        	Math.floor(parseInt($('.ordercost').eq(2).val())*0.1) +
+	  	        	Math.floor(parseInt($('.ordercost').eq(3).val())*0.1) +
+	  	        	Math.floor(parseInt($('.ordercost').eq(4).val())*0.1)
 	        );
+	        
+	        $('.totalSumTax').val(
+	        		parseInt($('.totalSum').val()) + parseInt($('.addTax').val())
+	        		
+	        );
+	        
+	        /* $('.totalSumTax').keyup(function() {
+		    	  var num = $(".totalSumTax").index(this);
+		    	  $('.totalSumTax').eq(num).val($('addTax').eq(0).val()+$('.totalSum').eq(0).val());
+		    }); */
 	    });
+	    
+	    $('.ordercost').keyup(function(){
+	          var num = $(".ordercost").index(this);
+	          $('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
+	          
+	          $('.totalSum').val(
+	        		floor(parseInt($('.ordercost').eq(0).val())*0.1) +
+		  	        floor(parseInt($('.ordercost').eq(1).val())*0.1) +
+		  	        floor(parseInt($('.ordercost').eq(2).val())*0.1) +
+		  	        floor(parseInt($('.ordercost').eq(3).val())*0.1) +
+		  	        floor(parseInt($('.ordercost').eq(4).val())*0.1)
+	          );
+	          
+	          $('.addTax').val(
+		        		Math.floor(parseInt($('.ordercost').eq(0).val())*0.1) +
+		  	        	Math.floor(parseInt($('.ordercost').eq(1).val())*0.1) +
+		  	        	Math.floor(parseInt($('.ordercost').eq(2).val())*0.1) +
+		  	        	Math.floor(parseInt($('.ordercost').eq(3).val())*0.1) +
+		  	        	Math.floor(parseInt($('.ordercost').eq(4).val())*0.1)
+		      );
+	          
+	          $('.totalSumTax').val(
+	        		  parseInt($('.totalSum').val()) + parseInt($('.addTax').val())
+		        		
+		      );
+	          
+	          /* $('.totalSumTax').val(
+	        		  	var num = $(".totalSumTax").index(this);
+		        		$('.totalSumTax').eq(num).val($('addTax').eq(0).val()+$('.totalSum').eq(0).val())
+		        		
+		      ); */
+		      
+		      /* $('.totalSumTax').keyup(function() {
+		    	  var num = $(".totalSumTax").index(this);
+		    	  $('.totalSumTax').eq(num).val($('addTax').eq(0).val()+$('.totalSum').eq(0).val());
+		      }); */
+	    });
+	    
+	    
 	});
  		
 	
@@ -460,8 +541,8 @@
 																											<c:forEach items="${pos}" var="p">
 																												<c:if test="${p.poscode == e.poscode}">
 																													<i class="fa fa-fw fa-user-plus"></i> 
-                                                                                 ${t.teamname} ${e.ename} ${p.posname }
-                                                                                 <input
+                                                                                 									${t.teamname} ${e.ename} ${p.posname }
+                                                                                									<input
 																														type="radio" name="name2" id="name2"
 																														value="${t.teamname} ${e.ename} ${p.posname}">
 																													<hr>
@@ -844,9 +925,9 @@
 																							style="border: solid 1px #C0BFC1;">합 계</td>
 																						<td width="20%" align="right"
 																							style="border: solid 1px #C0BFC1; color: #000000;"
-																							class="item"><b>\</b> <span
-																							id="detail_total"
-																							style="font-weight: bold; color: #000000; font-size: 14px;">0</span>
+																							class="item">
+																							<!-- <span id="detail_total" style="font-weight: bold; color: #000000; font-size: 14px;">0</span> -->
+																							<input type="text" name="totalSumTax" class="totalSumTax" value="0" readonly="readonly" >
 																						</td>
 																					</tr>
 																				</tbody>
@@ -922,12 +1003,31 @@ $('#addline').click(function() {
 	
 	$('.unitcost').keyup(function() {
 		var num = $(".unitcost").index(this);
-	    // $('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
+	    $('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
+	    
+	    $('.totalSum').val(
+	    		 parseInt($('.ordercost').eq(0).val()) +
+		         parseInt($('.ordercost').eq(1).val()) +
+		         parseInt($('.ordercost').eq(2).val()) +
+		         parseInt($('.ordercost').eq(3).val()) +
+		         parseInt($('.ordercost').eq(4).val())
+		         // parseInt($('.ordercost').eq(5).val()) +
+		         // parseInt($('.ordercost').eq(6).val())
+		);
+	    
+	    var testtest;
+		var addtotal = 0 ;
+	    testtest = $('#detail_table>tbody>tr').length;
+	    for(var i = 0; i< testtest; i++) {
+	    	addtotal = addtotal + parseInt($('.ordercost').eq(i).val());
+	    }
+	    $('.totalSum').val(addtotal);
+	    
 	});
 	
-	 $('.amount').keyup(function() {
-	     var num = $(".amount").index(this);
-	     $('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
+	$('.amount').keyup(function() {
+	    var num = $(".amount").index(this);
+	    $('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
 	     
 	     /* var addtotal;
 	     addtotal = $('.totalSum').val(
@@ -943,8 +1043,7 @@ $('#addline').click(function() {
 	    			 	 	parseInt($('.ordercost').eq(i).val())	 
 	     	 		 	 );
 	     }
-	     alert(addtotal); */
-	     // $('.totalSum').val(parseInt(addtotal));
+	     $('.totalSum').val(parseInt(addtotal)); */
 	     
 	     $('.totalSum').val(
 	    		 parseInt($('.ordercost').eq(0).val()) +
@@ -955,13 +1054,16 @@ $('#addline').click(function() {
 		         parseInt($('.ordercost').eq(5).val()) +
 		         parseInt($('.ordercost').eq(6).val())
 		 );
+		 
+		 
+		/*  var testtest;
+		 var addtotal = 0 ;
+	     testtest = $('#detail_table>tbody>tr').length;
+	     for(var i = 0; i< testtest; i++) {
+	    	 addtotal = addtotal + parseInt($('.ordercost').eq(i).val());
+	     }
+	     $('.totalSum').val(addtotal); */
 	 });
-	
-	 /* $('.ordercost').keyup(function() {
-	     var num = $(".ordercost").index(this);
-	     $('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
-	 }); */
-	
 });
 
 </script>
