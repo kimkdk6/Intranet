@@ -549,7 +549,7 @@
 									
 									$(function() {
 										$("#accordion1").accordion({
-											heightStyle : "content"
+											heightStyle : "fill"
 										});
 									});
 									$(function() {
@@ -565,7 +565,7 @@
 									
 									$(function() {
 										$("#accordion2").accordion({
-											heightStyle : "content"
+											heightStyle : "fill"
 										});
 									});
 									$(function() {
@@ -581,7 +581,7 @@
 									
 									$(function() {
 										$("#accordion3").accordion({
-											heightStyle : "content"
+											heightStyle : "fill"
 										});
 									});
 									$(function() {
@@ -681,8 +681,8 @@
 																														<input type="radio" name="name" id="name"
 																															value="${e.userid},${e.ename},${p.posname}">
 																														<i class="fa fa-fw fa-user-plus"></i> 
-                                                                                 	${t.teamname} ${e.ename} ${p.posname}
-                                                                                 <hr>
+                                                                                 										${t.teamname} ${e.ename} ${p.posname}
+                                                                                 										<hr>
 																													</c:if>
 																												</c:forEach>
 																											</c:if>
@@ -718,8 +718,8 @@
 																															id="name1"
 																															value="${e.userid},${e.ename},${p.posname}">
 																														<i class="fa fa-fw fa-user-plus"></i> 
-                                                                                 ${t.teamname} ${e.ename} ${p.posname}
-                                                                                <hr>
+                                                                                 										${t.teamname} ${e.ename} ${p.posname}
+                                                                                										<hr>
 																													</c:if>
 																												</c:forEach>
 																											</c:if>
