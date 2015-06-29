@@ -42,8 +42,8 @@ public class Schedulecontroller {
 	    View getTeamName(Model model, HttpServletResponse response,HttpSession session) throws ClassNotFoundException, SQLException, UnsupportedEncodingException 
 	    {
 		 
-		  Emp emp = (Emp)session.getAttribute("emp");
-		  
+		  Emp emp = (Emp)session.getAttribute("myemp");
+		//  System.out.println();
 		  System.out.println(emp);
 		  
 		  String userid = emp.getUserid();
