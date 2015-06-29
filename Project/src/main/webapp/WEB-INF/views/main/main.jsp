@@ -11,7 +11,7 @@ String date = String.format("%TF",now);
 <c:set var="incheck" value="${Checkin}" />
 <c:set var="outcheck" value="${Checkout}" />
 <c:set var="latecheck" value="${Latecheck}" />
-\<c:set var="leavecheck" value="${Leavecheck}" />
+<c:set var="leavecheck" value="${Leavecheck}" />
 <c:set var="getUnSigns" value="${getUnSigns}" />
 <c:set var="getReceiveSigns" value="${getReceiveSigns}" />
 <c:set var="UserPhoto" value="${UserPhoto}" />
@@ -45,7 +45,7 @@ $(function(){
 						success : function(data){
 							document.getElementById("checkin").innerHTML = data;
 							alert("출근처리가 정상적으로 처리됬습니다.");
-							 if('${leavecheck}' != "''"){
+							 if('${latecheck}' != ""){
 								 document.getElementById("commute").innerHTML = '&nbsp&nbsp&nbsp&nbsp&nbsp지각사유 :' ;								
  								 document.getElementById("commutecheck").style.visibility="visible";
  								document.getElementById("reason").style.visibility="visible";
@@ -79,7 +79,7 @@ $(function(){
 						success : function(data){
 							alert("퇴근처리가 정상적으로 처리됬습니다."),
 							document.getElementById("checkout").innerHTML = data;
-							 if('${leavecheck}' != "''"){
+							 if('${leavecheck}' != ""){
 				
 									 document.getElementById("commute").innerHTML = '&nbsp&nbsp&nbsp&nbsp&nbsp조퇴사유 :' ;
 									 document.getElementById("commutecheck").style.visibility="visible";

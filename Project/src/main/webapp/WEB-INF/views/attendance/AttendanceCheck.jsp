@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <script type="text/javascript">
-jQuery(function($){
+    $(function() {
+ 
     $.datepicker.regional['ko'] = { // Default regional settings
         closeText: '닫기',
         prevText: '이전달',
@@ -24,9 +25,22 @@ jQuery(function($){
     $.datepicker.setDefaults($.datepicker.regional['ko']);
 
     $('#datepicker').datepicker({
-    	
     	changeMonth: true,
-        changeYear: true
+        changeYear: true,
+        
+        onSelect: function(selectedDate) {
+        	var strArr = selectedDate.split('-');
+            alert(strArr);
+            $.ajax({
+				url:"<%=request.getContextPath() %>/attendance/AttendanceCheck.htm?yy=strArr[0]&mm=strArr[1]&dd=strArr[2]",  //요청 URL
+				type:"get",           //전송 타입
+				dataType:"html",
+				success : function(data){
+				},
+				error :function(data){alert("aa");}
+			});
+    }
+		
     });
 });
 </script>

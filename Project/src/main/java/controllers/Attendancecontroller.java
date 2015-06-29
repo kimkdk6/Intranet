@@ -89,7 +89,7 @@ public class Attendancecontroller {
 		
 		AttendanceDAO latecheck = sqlSession.getMapper(AttendanceDAO.class);
 		String Latecheck= latecheck.latecheck(principal.getName());
-
+		System.out.println(Latecheck);
 		return Latecheck;
 	}
 	
