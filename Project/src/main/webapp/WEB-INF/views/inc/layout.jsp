@@ -25,14 +25,14 @@
     <link href="<%=request.getContextPath() %>/resources/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
     <!-- jvectormap -->
     <link href="<%=request.getContextPath() %>/resources/plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
-    <!-- Date Picker -->
+   <%--  <!-- Date Picker -->
     <link href="<%=request.getContextPath() %>/resources/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
     <!-- Daterange picker -->
-    <link href="<%=request.getContextPath() %>/resources/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+    <link href="<%=request.getContextPath() %>/resources/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" /> --%>
     <!-- bootstrap wysihtml5 - text editor -->
     <link href="<%=request.getContextPath() %>/resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
 
-	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" type="text/css" />
    
    	 
    
@@ -73,11 +73,11 @@
     <!-- jQuery Knob Chart -->
     <script src="<%=request.getContextPath() %>/resources/plugins/knob/jquery.knob.js" type="text/javascript"></script>
     <!-- daterangepicker -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js" type="text/javascript"></script>
+<%--    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js" type="text/javascript"></script>
     <script src="<%=request.getContextPath() %>/resources/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
     <!-- datepicker -->
-    <script src="<%=request.getContextPath() %>/resources/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
-    <!-- Bootstrap WYSIHTML5 -->
+     <script src="<%=request.getContextPath() %>/resources/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+ --%>    <!-- Bootstrap WYSIHTML5 -->
     <script src="<%=request.getContextPath() %>/resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
     <!-- Slimscroll -->
     <script src="<%=request.getContextPath() %>/resources/plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
@@ -97,7 +97,6 @@
   <script src="<%=request.getContextPath() %>/resources/plugins/fullcalendar/fullcalendar.js" type="text/javascript"></script>
   <link href="<%=request.getContextPath() %>/resources/plugins/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css" />
   <link href="<%=request.getContextPath() %>/resources/plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" type="text/css" media='print' />
-    
   </head>
   <body class="skin-blue sidebar-mini">
     <div class="wrapper">
