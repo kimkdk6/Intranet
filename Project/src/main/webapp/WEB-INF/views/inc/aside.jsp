@@ -154,7 +154,7 @@
 						href="${pageContext.request.contextPath}/sign/SignMain.htm"><i
 						class="fa fa-circle-o"></i> 직급?부서?관리 </a></li>
 					<li><a
-						href="${pageContext.request.contextPath}/sign/SignMain.htm"><i
+						href="${pageContext.request.contextPath}/admin/empAdmin.htm"><i
 						class="fa fa-circle-o"></i> 사원 관리 </a></li>	
 				</ul>
 			</li>

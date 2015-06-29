@@ -38,7 +38,14 @@ public class Logincontroller {
 
 	}
 	
+	@RequestMapping(value = "errorpage.htm")
+	public String errorpage()
+	{
+		
+		return "error.errorpage";
 
+	}
+	
 	@RequestMapping(value="login.htm")
 	public String Main(Principal principal, Model model, HttpSession session, Emp emp, Empinfo empinfo, HttpServletRequest request ) throws ClassNotFoundException, SQLException {
 		

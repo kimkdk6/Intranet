@@ -13,7 +13,7 @@
 		 default-target-url="/login.htm"
 		 authentication-failure-url="/index.htm?error" /> 
 		 <security:logout logout-success-url="/index.htm"/> 
-		
+		<security:access-denied-handler error-page="/errorpage.htm"/>
 		<security:intercept-url pattern="/sign/*" access="ROLE_USER" />
 		<security:intercept-url pattern="/board/*" access="ROLE_USER" />
 		<security:intercept-url pattern="/main/*" access="ROLE_USER" />
