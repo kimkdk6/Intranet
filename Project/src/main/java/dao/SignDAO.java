@@ -10,6 +10,7 @@ import dto_vo.Emp.Team;
 import dto_vo.Sign.Biztripdoc;
 import dto_vo.Sign.Draftingdoc;
 import dto_vo.Sign.Holidaydoc;
+import dto_vo.Sign.Orderdoc;
 import dto_vo.Sign.Sign;
 import dto_vo.Sign.Signline;
 
@@ -36,6 +37,8 @@ public interface SignDAO {
 	public Holidaydoc getHolidaydoc(String docnum) throws ClassNotFoundException, SQLException;
 	// 결재 > 출장 보고서 상세보기 가져오기
 	public Biztripdoc getBizTripdoc(String docnum) throws ClassNotFoundException, SQLException;
+	// 결재 > 출장 보고서 상세보기 가져오기
+	public List<Orderdoc> getOrderdoc(String docnum) throws ClassNotFoundException, SQLException;
 	
 	// 부서 리스트 가져오기
 	public List<Dept> getDepts() throws ClassNotFoundException, SQLException;
@@ -55,6 +58,8 @@ public interface SignDAO {
 	
 	// 기안서 작성
 	public int insertDrafting(Draftingdoc drafting) throws ClassNotFoundException, SQLException;
+	// 발주서 작성
+	public int insertOrderDoc(Orderdoc orderdoc) throws ClassNotFoundException, SQLException;
 	// 휴가계 작성
 	public int insertHolidaydoc(Holidaydoc holidaydoc) throws ClassNotFoundException, SQLException;
 	// 출장 신청서 작성

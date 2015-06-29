@@ -64,7 +64,9 @@
 													${n.docnum} </a>
 									</c:when>
 											<c:when test="${signtype == 3}">
-										발주서
+												<a
+													href="${pageContext.request.contextPath}/sign/OrderDocDetail.htm?docnum=${n.docnum}">
+													${n.docnum} </a>
 									</c:when>
 											<c:when test="${signtype == 4}">
 												<a

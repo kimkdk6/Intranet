@@ -37,6 +37,7 @@ import dto_vo.Sign.Biztripdoc;
 import dto_vo.Sign.Biztriprep;
 import dto_vo.Sign.Draftingdoc;
 import dto_vo.Sign.Holidaydoc;
+import dto_vo.Sign.Orderdoc;
 import dto_vo.Sign.Sign;
 import dto_vo.Sign.Signline;
 
@@ -358,23 +359,91 @@ public class Signcontroller {
 		return "sign.OrderDocReg";
 	}
 
+	// 발주서 작성
+	@Transactional
+	@RequestMapping(value = "OrderDocReg.htm", method = RequestMethod.POST)
+	public String OrderDocReg(Sign sign, Orderdoc orderdoc,
+			Signline signline, Principal principal)
+			throws ClassNotFoundException, SQLException, IOException {
+		System.out.println("발주서 작성");
+		int totalsign=0;
+		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
+		
+		System.out.println("결재 라인: "+signline.toString());
+		
+		// 결재인 넣기 
+		sign.setSigner1(principal.getName());
+		sign.setUserid(principal.getName());
+		
+		// 결재라인 : 1>승인 2>반려 3>대기
+		signline.setSignok1(1);
+		if (sign.getSigner2() != null) {
+			signline.setSignok2(3);
+			totalsign++;
+		}
+		if (sign.getSigner3() != null) {
+			signline.setSignok3(3);
+			totalsign++;
+		}
+		if (sign.getSigner4() != null) {
+			signline.setSignok4(3);
+			totalsign++;
+		}
+		if (sign.getSigner5() != null) {
+			signline.setSignok5(3);
+			totalsign++;
+		}
+			
+		// sign: totalsign
+		System.out.println("totalsign: "+totalsign);
+		sign.setTotalsign(totalsign);
+		
+		// signline: signning 
+		signline.setSignning(sign.getSigner2());
+			
+		System.out.println("발주서 결재 파일: "+sign.toString());
+		System.out.println("결재 라인: "+signline.toString());
+		signdao.insertSign(sign);
+		signdao.insertSignline(signline);
+		List<Orderdoc> list = orderdoc.getOrderlist();
+		for(int i=0; i<list.size(); i++){
+			signdao.insertOrderDoc(list.get(i));
+		}
+			
+		return "redirect:SignMain.htm";
+	}	
+	
 	// 발주서 상세 페이지 보기
 	@RequestMapping(value = "OrderDocDetail.htm", method = RequestMethod.GET)
 	public String OrderDocDetail(String docnum, Model model)
 			throws ClassNotFoundException, SQLException {
 		System.out.println("발주서 상세페이지 보기");
+		List<Emp> signerlist = new ArrayList<Emp>();
 
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
 		// 결재 문서(기본 내용)
 		Sign sign = signdao.getSign(docnum);
-		// 기안서
-		Draftingdoc draftingdoc = signdao.getDraftingdoc(docnum);
+		// 발주서
+		List<Orderdoc> orderdoc = signdao.getOrderdoc(docnum);
 		// 결재라인
 		Signline signline = signdao.getSignline(docnum);
 
+		signerlist.add(signdao.getEmp(sign.getSigner1()));
+		signerlist.add(signdao.getEmp(sign.getSigner2()));
+		if(sign.getSigner3() != null){
+			signerlist.add(signdao.getEmp(sign.getSigner3()));
+		}
+		if(sign.getSigner4() != null){
+			signerlist.add(signdao.getEmp(sign.getSigner4()));
+		}
+		if(sign.getSigner5() != null){
+			signerlist.add(signdao.getEmp(sign.getSigner5()));
+		}
+		
 		model.addAttribute("sign", sign);
-		model.addAttribute("draftingdoc", draftingdoc);
+		model.addAttribute("orderdoc", orderdoc);
 		model.addAttribute("signline", signline);
+		model.addAttribute("signerlist", signerlist);
 		return "sign.OrderDocDetail";
 	}
 

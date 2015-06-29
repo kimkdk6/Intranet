@@ -1,5 +1,7 @@
 package dto_vo.Sign;
 
+import java.util.List;
+
 // =====================발주서================
 public class Orderdoc {
 	private int docnum; // 문서번호
@@ -7,23 +9,26 @@ public class Orderdoc {
 	private String product; // 품명
 	private int unitcost; // 단가
 	private int amount; // 수량
-	private int odersize; // 규격
+	private int ordersize; // 규격
 	private String ordernote; // 비고
 	private int ordercost; // 금액
+	
+	private List<Orderdoc> orderlist;
 	
 	public Orderdoc() {}
 
 	public Orderdoc(int docnum, int itemnum, String product, int unitcost,
-			int amount, int odersize, String ordernote, int ordercost) {
+			int amount, int ordersize, String ordernote, int ordercost, List<Orderdoc> orderlist) {
 		super();
 		this.docnum = docnum;
 		this.itemnum = itemnum;
 		this.product = product;
 		this.unitcost = unitcost;
 		this.amount = amount;
-		this.odersize = odersize;
+		this.ordersize = ordersize;
 		this.ordernote = ordernote;
 		this.ordercost = ordercost;
+		this.orderlist = orderlist;
 	}
 
 	public int getDocnum() {
@@ -66,12 +71,12 @@ public class Orderdoc {
 		this.amount = amount;
 	}
 
-	public int getOdersize() {
-		return odersize;
+	public int getOrdersize() {
+		return ordersize;
 	}
 
-	public void setOdersize(int odersize) {
-		this.odersize = odersize;
+	public void setOrdersize(int odersize) {
+		this.ordersize = odersize;
 	}
 
 	public String getOrdernote() {
@@ -90,12 +95,24 @@ public class Orderdoc {
 		this.ordercost = ordercost;
 	}
 
+
+	public List<Orderdoc> getOrderlist() {
+		return orderlist;
+	}
+
+	public void setOrderlist(List<Orderdoc> orderlist) {
+		this.orderlist = orderlist;
+	}
+
 	@Override
 	public String toString() {
 		return "Orderdoc [docnum=" + docnum + ", itemnum=" + itemnum
 				+ ", product=" + product + ", unitcost=" + unitcost
-				+ ", amount=" + amount + ", odersize=" + odersize
-				+ ", ordernote=" + ordernote + ", ordercost=" + ordercost + "]";
+				+ ", amount=" + amount + ", odersize=" + ordersize
+				+ ", ordernote=" + ordernote + ", ordercost=" + ordercost
+				+ ", orderdoc=" + orderlist + "]";
 	}
+
+	 
 	
 }

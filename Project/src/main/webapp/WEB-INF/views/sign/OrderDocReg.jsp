@@ -1,7 +1,46 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	Date d1 = new Date();
+	SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+	String strdate = sdf1.format(d1);
+	System.out.println("오늘의 날짜: "+strdate);
+	
+%>
+<c:set var="empid" value="${sessionScope.myemp.userid}"/>
+<c:set var="todaydate" value="<%=strdate%>"/>
 <!DOCTYPE html>
+<script type="text/javascript">
+		//sign 유효성 검사
+		 function addsign(){
+			
+			if (!signform.signtitle.value) {
+				alert("문서 제목을 입력하세요.");
+				signform.signtitle.focus();
+				return false;
+			}
+			
+			 if ($(".product").length < 1) {
+				alert("품명을 입력하세요");
+				signform.product.focus();
+				return false;
+			} 
+			
+		    if ($("#signer2").length < 1) {
+				alert("결재자를 선택하세요");
+				signform.users.focus();
+				return false;
+			}
+		    
+		    signform.submit();
+		    alert("전자 결재 문서 작성이 완료되었습니다.");
+		} 
+		
+		
+</script>
 <style>
 	#dialog {
 		padding: 10px;
@@ -26,21 +65,6 @@
 </style>
 
 <script type="text/javascript">
-	
-	/* 라인 추가 */
- 	/* function addItemLine()
- 		{
-		     $("#detail_table").append(
-		     " <tr height='27' align='center' id='calc1'>\n"+
-		     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='product' class='product' style='width: 90%;' value=''></td>\n" +
-		     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='unitcost' class='unitcost' style='text-align: right; width: 90%;' value=''></td>\n" +
-		     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='amount' class='amount' style='text-align: right; width: 90%;' value=''></td>\n" +
-		     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='odersize' class='odersize' style='width: 90%;' value=''></td>\n" +
-		     " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='ordernote' class='ordernote' style='width: 90%;' value=''></td>\n" +
-		     " <td class='item' align='right' style=border: solid 1px #C0BFC1;'><input type='text' name='ordercost' class='ordercost;  readonly='readonly'></td>\n" +
-		     "</tr>"
-		     );
- 		} */
 	
  	/* 계산 */
 	$('#calc').ready(function() {
@@ -157,11 +181,65 @@
 	/* 결재자 메뉴 띄우는 기능 */
 	// ============= 첫번째 ======================
 	$(function() {
+
+		// 자신을 선택 못하게
+		$('input:radio[name="name"]').click(function() {
+
+			var res = $(this).val().split(",");
+			console.log("res[0]: " + res[0]);
+			if (res[0].trim() == '${empid}') {
+				alert("본인은 결재자에 포함될 수 없습니다.");
+				return false;
+			}
+			return;
+
+		});
+
+		$('input:radio[name="name1"]').click(function() {
+
+			var res = $(this).val().split(",");
+			console.log("res[0]: " + res[0]);
+			if (res[0].trim() == '${empid}') {
+				alert("본인은 결재자에 포함될 수 없습니다.");
+				return false;
+			}
+			return;
+
+		});
+
+		$('input:radio[name="name2"]').click(function() {
+
+			var res = $(this).val().split(",");
+			console.log("res[0]: " + res[0]);
+			if (res[0].trim() == '${empid}') {
+				alert("본인은 결재자에 포함될 수 없습니다.");
+				return false;
+			}
+			return;
+
+		});
+
+		$('input:radio[name="name3"]').click(function() {
+
+			var res = $(this).val().split(",");
+			console.log("res[0]: " + res[0]);
+			if (res[0].trim() == '${empid}') {
+				alert("본인은 결재자에 포함될 수 없습니다.");
+				return false;
+			}
+			return;
+
+		});
+
 		var dialog;
 		var dialog1;
 		var dialog2;
 		var dialog3;
 
+		$("#cancel").hide();
+		$("#cancel1").hide();
+		$("#cancel2").hide();
+		$("#cancel3").hide();
 		dialog = $("#dialog").dialog({
 			autoOpen : false,
 			width : 500,
@@ -171,7 +249,7 @@
 			},
 
 			hide : {
-				/* effect : "explode", */
+				/*  effect : "explode",  */
 				duration : 1000
 			},
 
@@ -187,18 +265,36 @@
 			var valid = true;
 
 			if (valid) {
+
+				var res = $('input[name="name"]:checked').val().split(",");
+				var checkedvalpos = res[2];
+				var checkedvalname = res[1] + " 님";
+				var checkedvalid = res[0];
+				console.log("아이디1: " + checkedvalid.trim());
+
+				$("#opener").hide();
+				$("#cancel").show();
+				$("#dept0")
+						.html("<div id='dept0_'>" + checkedvalpos + "</div>");
 				$("#users")
-						.html(
-								"<td>"
-										+ $('input[name="name"]:checked').val()
-										+ "<br><input type='button' id='cancel' value='취소'/> "
-										+ "</td>");
+						.prepend(
+								"<td id='signer_1'>"
+										+ checkedvalname
+										+ "<input type='hidden' name='signer2' id='signer2' value='"
+										+ checkedvalid.trim() + "'></td>");
+
 				dialog.dialog("close");
+
 			}
 
 			$("#cancel").click(function() {
-				$("#users").html("<button id='opener'>지정1</button>");
-				// $("#users").html("<button onclick='function().dialog(#dialog)'>지정1</button>");
+				$(this).hide('fast', function() {
+					$("#signer_1").remove();
+					$("#signer2").remove();
+					$("#dept0_").remove();
+					$("#opener").show();
+				});
+
 			});
 
 			return valid;
@@ -229,11 +325,35 @@
 			var valid = true;
 
 			if (valid) {
-				$("#users1").replaceWith(
-						"<td>" + $('input[name="name1"]:checked').val()
-								+ "</td>");
+				var res = $('input[name="name1"]:checked').val().split(",");
+				var checkedvalpos = res[2];
+				var checkedvalname = res[1] + " 님";
+				var checkedvalid = res[0];
+				console.log("아이디2: " + checkedvalid.trim());
+				$("#opener1").hide();
+				$("#cancel1").show();
+				$("#dept1")
+						.html("<div id='dept1_'>" + checkedvalpos + "</div>");
+				$("#users1")
+						.prepend(
+								"<td id='signer_2'>"
+										+ checkedvalname
+										+ "<input type='hidden' name='signer3' id='signer3' value='"
+										+ checkedvalid.trim() + "'></td>");
+
 				dialog1.dialog("close");
 			}
+
+			$("#cancel1").click(function() {
+				$(this).hide('fast', function() {
+					$("#signer_2").remove();
+					$("#signer3").remove();
+					$("#dept1_").remove();
+					$("#opener1").show();
+				});
+
+			});
+
 			return valid;
 		}
 
@@ -261,11 +381,35 @@
 			var valid = true;
 
 			if (valid) {
-				$("#users2").html(
-						"<td>" + $('input[name="name2"]:checked').val()
-								+ "</td>");
+				var res = $('input[name="name2"]:checked').val().split(",");
+				var checkedvalpos = res[2];
+				var checkedvalname = res[1] + " 님";
+				var checkedvalid = res[0];
+				console.log("아이디3: " + checkedvalid.trim());
+				$("#opener2").hide();
+				$("#cancel2").show();
+				$("#dept2")
+						.html("<div id='dept2_'>" + checkedvalpos + "</div>");
+				$("#users2")
+						.prepend(
+								"<td id='signer_3'>"
+										+ checkedvalname
+										+ "<input type='hidden' name='signer4' id='signer4' value='"
+										+ checkedvalid.trim() + "'></td>");
+
 				dialog2.dialog("close");
 			}
+
+			$("#cancel2").click(function() {
+				$(this).hide('fast', function() {
+					$("#signer_3").remove();
+					$("#signer4").remove();
+					$("#dept2_").remove();
+					$("#opener2").show();
+				});
+
+			});
+
 			return valid;
 		}
 
@@ -293,11 +437,35 @@
 			var valid = true;
 
 			if (valid) {
-				$("#users3").html(
-						"<td>" + $('input[name="name3"]:checked').val()
-								+ "</td>");
+				var res = $('input[name="name3"]:checked').val().split(",");
+				var checkedvalpos = res[2];
+				var checkedvalname = res[1] + " 님";
+				var checkedvalid = res[0];
+				console.log("아이디4: " + checkedvalid.trim());
+				$("#opener3").hide();
+				$("#cancel3").show();
+				$("#dept3")
+						.html("<div id='dept3_'>" + checkedvalpos + "</div>");
+				$("#users3")
+						.prepend(
+								"<td id='signer_4'>"
+										+ checkedvalname
+										+ "<input type='hidden' name='signer5' id='signer5' value='"
+										+ checkedvalid.trim() + "'></td>");
+
 				dialog3.dialog("close");
 			}
+
+			$("#cancel3").click(function() {
+				$(this).hide('fast', function() {
+					$("#signer_4").remove();
+					$("#signer5").remove();
+					$("#dept3_").remove();
+					$("#opener3").show();
+				});
+
+			});
+
 			return valid;
 		}
 
@@ -393,10 +561,16 @@
 	<div class="box">
 		<div class="box-header with-border">
 			<h3 class="box-title">
-				<a class="title_txt" href="#"> 받은 결재 문서함 &gt; 미결재 문서 &gt; 문서작성</a>
+				<a class="title_txt" href="#"> 결재 문서 작성 &gt; 발주서  &gt; 문서작성</a>
 			</h3>
 		</div>
 		<div class="box-body">
+			<form name="signform" action="" method="post"  enctype="multipart/form-data">
+				<input type="hidden" id="signtype" name="signtype" value="3">
+				<input type="hidden" id="dept" name="dept" value="${sessionScope.dept}">
+				<input type="hidden" id="team" name="team" value="${sessionScope.team}">
+				<input type="hidden" id="ename" name="ename" value="${sessionScope.myemp.ename}">
+				<input type="hidden" id="posname" name="posname" value="${sessionScope.pos}">
 			<table>
 				<tbody>
 					<tr>
@@ -449,149 +623,151 @@
 																		</b></td>
 																		<td width="19%"
 																			style="border: 1px solid; padding: 3px 0 0 0;">기안자</td>
-																		<td width="19%"
-																			style="border: 1px solid; padding: 3px 0 0 0;">${sign.signer2}</td>
-																		<td width="19%"
-																			style="border: 1px solid; padding: 3px 0 0 0;">${sign.signer3}</td>
-																		<td width="19%"
-																			style="border: 1px solid; padding: 3px 0 0 0;">${sign.signer4}</td>
-																		<td width="19%"
-																			style="border: 1px solid; padding: 3px 0 0 0;">${sign.signer5}</td>
+																		<td width="19%" id="dept0"
+																			style="border: 1px solid; padding: 3px 0 0 0;"> </td>
+																		<td width="19%" id="dept1"
+																			style="border: 1px solid; padding: 3px 0 0 0;"> </td>
+																		<td width="19%" id="dept2"
+																			style="border: 1px solid; padding: 3px 0 0 0;"> </td>
+																		<td width="19%" id="dept3"
+																			style="border: 1px solid; padding: 3px 0 0 0;"> </td>
 																	</tr>
 																	<tr height="70" align="center">
-																		<td>데모사용자</td>
-																		<td id="users"
-																			style="border-bottom: 1px #eaeaea solid;">
-																			<div id="dialog" title="결재자 지정하기">
-																				<div id="accordion">
-																					<c:forEach items="${dept}" var="d">
-																						<h3>${d.deptname}</h3>
-																						<div>
-																							<c:forEach items="${emp}" var="e">
-																								<c:if test="${d.deptcode == e.deptcode}">
-																									<c:forEach items="${team}" var="t">
-																										<c:if test="${t.teamcode == e.teamcode }">
-																											<c:forEach items="${pos}" var="p">
-																												<c:if test="${p.poscode == e.poscode}">
-																													<i class="fa fa-fw fa-user-plus"></i> 
-                                                                                									${t.teamname} ${e.ename} ${p.posname }
-                                                                                 									<input
-																														type="radio" name="name" id="name"
-																														value="${t.teamname} ${e.ename} ${p.posname}">
-																													<hr>
-																												</c:if>
-																											</c:forEach>
-																										</c:if>
-																									</c:forEach>
+																			<td>${sessionScope.myemp.ename}</td>
+																			<td id="users"
+																				style="border-bottom: 1px #eaeaea solid;">
+																				<div id="dialog" title="결재자 지정하기">
+																					<div id="accordion">
+																						<c:forEach items="${dept}" var="d">
+																							<h3>${d.deptname}</h3>
+																							<div>
+																								<c:forEach items="${emp}" var="e">
+																									<c:if test="${d.deptcode == e.deptcode}">
+																										<c:forEach items="${team}" var="t">
+																											<c:if test="${t.teamcode == e.teamcode }">
+																												<c:forEach items="${pos}" var="p">
+																													<c:if test="${p.poscode == e.poscode}">
+																														<input type="radio" name="name" id="name"
+																															value="${e.userid},${e.ename},${p.posname}">
+																														<i class="fa fa-fw fa-user-plus"></i> 
+                                                                                 	${t.teamname} ${e.ename} ${p.posname}
+                                                                                 <hr>
+																													</c:if>
+																												</c:forEach>
+																											</c:if>
+																										</c:forEach>
 
-																								</c:if>
-																							</c:forEach>
-																						</div>
-																					</c:forEach>
+																									</c:if>
+																								</c:forEach>
+																							</div>
+																						</c:forEach>
 
 
-																				</div>
-																				<!-- <input type="button" value="완료" onclick="check()"> -->
-																			</div>
-																			<button id="opener">지정1</button> <!-- <button id="cancel1" >취소</button> -->
-																		</td>
+																					</div>
 
-																		<td id="users1"
-																			style="border-bottom: 1px #eaeaea solid;">
-																			<div id="dialog1" title="결재자 지정하기">
-																				<div id="accordion1">
-																					<c:forEach items="${dept}" var="d">
-																						<h3>${d.deptname}</h3>
-																						<div>
-																							<c:forEach items="${emp}" var="e">
-																								<c:if test="${d.deptcode == e.deptcode}">
-																									<c:forEach items="${team}" var="t">
-																										<c:if test="${t.teamcode == e.teamcode }">
-																											<c:forEach items="${pos}" var="p">
-																												<c:if test="${p.poscode == e.poscode}">
-																													<i class="fa fa-fw fa-user-plus"></i> 
-                                                                                									${t.teamname} ${e.ename} ${p.posname }
-                                                                                									<input type="radio" name="name1" id="name1"
-																													value="${t.teamname} ${e.ename} ${p.posname}">
-																													<hr>
-																												</c:if>
-																											</c:forEach>
-																										</c:if>
-																									</c:forEach>
-																								</c:if>
-																							</c:forEach>
-																						</div>
-																					</c:forEach>
-																				</div>
-																			</div>
-																			<button id="opener1">지정2</button>
-																		</td>
+																				</div> <!--  <button id="opener">지정1</button> --> <input
+																				type="button" id="opener" value="지정1" /> <!-- <button id="cancel1" >취소</button> -->
+																				<input type='button' id='cancel' value='취소' />
+																			</td>
 
-																		<td id="users2"
-																			style="border-bottom: 1px #eaeaea solid;">
-																			<div id="dialog2" title="결재자 지정하기">
-																				<div id="accordion2">
-																					<c:forEach items="${dept}" var="d">
-																						<h3>${d.deptname}</h3>
-																						<div>
-																							<c:forEach items="${emp}" var="e">
-																								<c:if test="${d.deptcode == e.deptcode}">
-																									<c:forEach items="${team}" var="t">
-																										<c:if test="${t.teamcode == e.teamcode }">
-																											<c:forEach items="${pos}" var="p">
-																												<c:if test="${p.poscode == e.poscode}">
-																													<i class="fa fa-fw fa-user-plus"></i> 
-                                                                                 									${t.teamname} ${e.ename} ${p.posname }
-                                                                                									<input
-																														type="radio" name="name2" id="name2"
-																														value="${t.teamname} ${e.ename} ${p.posname}">
-																													<hr>
-																												</c:if>
-																											</c:forEach>
-																										</c:if>
-																									</c:forEach>
-																								</c:if>
-																							</c:forEach>
-																						</div>
-																					</c:forEach>
-																				</div>
-																			</div>
-																			<button id="opener2">지정3</button>
-																		</td>
+																			<td id="users1"
+																				style="border-bottom: 1px #eaeaea solid;">
+																				<div id="dialog1" title="결재자 지정하기">
+																					<div id="accordion1">
+																						<c:forEach items="${dept}" var="d">
+																							<h3>${d.deptname}</h3>
+																							<div>
+																								<c:forEach items="${emp}" var="e">
+																									<c:if test="${d.deptcode == e.deptcode}">
+																										<c:forEach items="${team}" var="t">
+																											<c:if test="${t.teamcode == e.teamcode }">
+																												<c:forEach items="${pos}" var="p">
+																													<c:if test="${p.poscode == e.poscode}">
+																														<input type="radio" name="name1"
+																															id="name1"
+																															value="${e.userid},${e.ename},${p.posname}">
+																														<i class="fa fa-fw fa-user-plus"></i> 
+                                                                                 ${t.teamname} ${e.ename} ${p.posname}
+                                                                                <hr>
+																													</c:if>
+																												</c:forEach>
+																											</c:if>
+																										</c:forEach>
+																									</c:if>
+																								</c:forEach>
+																							</div>
+																						</c:forEach>
+																					</div>
+																				</div> <input type="button" id="opener1" value="지정2" /> <input
+																				type='button' id='cancel1' value='취소' />
+																			</td>
 
-																		<td id="users3"
-																			style="border-bottom: 1px #eaeaea solid;">
-																			<div id="dialog3" title="결재자 지정하기">
-																				<div id="accordion3">
-																					<c:forEach items="${dept}" var="d">
-																						<h3>${d.deptname}</h3>
-																						<div>
-																							<c:forEach items="${emp}" var="e">
-																								<c:if test="${d.deptcode == e.deptcode}">
-																									<c:forEach items="${team}" var="t">
-																										<c:if test="${t.teamcode == e.teamcode }">
-																											<c:forEach items="${pos}" var="p">
-																												<c:if test="${p.poscode == e.poscode}">
-																													<i class="fa fa-fw fa-user-plus"></i> 
+
+																			<td id="users2"
+																				style="border-bottom: 1px #eaeaea solid;">
+																				<div id="dialog2" title="결재자 지정하기">
+																					<div id="accordion2">
+																						<c:forEach items="${dept}" var="d">
+																							<h3>${d.deptname}</h3>
+																							<div>
+																								<c:forEach items="${emp}" var="e">
+																									<c:if test="${d.deptcode == e.deptcode}">
+																										<c:forEach items="${team}" var="t">
+																											<c:if test="${t.teamcode == e.teamcode }">
+																												<c:forEach items="${pos}" var="p">
+																													<c:if test="${p.poscode == e.poscode}">
+																														<input type="radio" name="name2"
+																															id="name2"
+																															value="${e.userid},${e.ename},${p.posname}">
+																														<i class="fa fa-fw fa-user-plus"></i> 
                                                                                  ${t.teamname} ${e.ename} ${p.posname }
-                                                                                 <input
-																														type="radio" name="name3" id="name3"
-																														value="${t.teamname} ${e.ename} ${p.posname}">
-																													<hr>
-																												</c:if>
-																											</c:forEach>
-																										</c:if>
-																									</c:forEach>
-																								</c:if>
-																							</c:forEach>
-																						</div>
-																					</c:forEach>
-																				</div>
-																			</div>
-																			<button id="opener3">지정3</button>
-																		</td>
+                                                                                 <hr>
+																													</c:if>
+																												</c:forEach>
+																											</c:if>
+																										</c:forEach>
+																									</c:if>
+																								</c:forEach>
+																							</div>
+																						</c:forEach>
+																					</div>
+																				</div> <input type="button" id="opener2" value="지정3" /> <input
+																				type='button' id='cancel2' value='취소' />
+																			</td>
 
-																	</tr>
+																			<td id="users3"
+																				style="border-bottom: 1px #eaeaea solid;">
+																				<div id="dialog3" title="결재자 지정하기">
+																					<div id="accordion3">
+																						<c:forEach items="${dept}" var="d">
+																							<h3>${d.deptname}</h3>
+																							<div>
+																								<c:forEach items="${emp}" var="e">
+																									<c:if test="${d.deptcode == e.deptcode}">
+																										<c:forEach items="${team}" var="t">
+																											<c:if test="${t.teamcode == e.teamcode }">
+																												<c:forEach items="${pos}" var="p">
+																													<c:if test="${p.poscode == e.poscode}">
+																														<input type="radio" name="name3"
+																															id="name3"
+																															value="${e.userid},${e.ename},${p.posname}">
+																														<i class="fa fa-fw fa-user-plus"></i> 
+                                                                                 ${t.teamname} ${e.ename} ${p.posname }
+                                                                                 <hr>
+																													</c:if>
+																												</c:forEach>
+																											</c:if>
+																										</c:forEach>
+																									</c:if>
+																								</c:forEach>
+																							</div>
+																						</c:forEach>
+																					</div>
+																				</div> <input type="button" id="opener3" value="지정4" /> <input
+																				type='button' id='cancel3' value='취소' />
+																			</td>
+
+																		</tr>
 
 																	<tr align="center">
 																		<td></td>
@@ -616,36 +792,29 @@
 														<td height="30" align="center" bgcolor="#E1F9DD"
 															class="m_sp"><b>문서상태</b></td>
 														<td
-															style="padding: 0 0 0 12px; border: solid 1px #C0BFC1;"><c:choose>
-																<c:when test="${sign.signstate == 0}">
-                                 			결재 대기중
-                                 		</c:when>
-																<c:when test="${sign.signstate == 1}">
-                                 			결재 완료 
-                                 		</c:when>
-																<c:when test="${sign.signstate == 2}">
-                                 			반려
-                                 		</c:when>
-															</c:choose></td>
+															style="padding: 0 0 0 12px; border: solid 1px #C0BFC1;">
+															작성전 문서입니다.</td>
 													</tr>
 													<tr>
 														<td height="30" align="center" bgcolor="#E1F9DD"
 															class="m_sp"><b>부서</b></td>
 														<td colspan="2"
-															style="border: solid 1px #C0BFC1; padding: 0 0 0 12px;">${sign.dept}</td>
+															style="border: solid 1px #C0BFC1; padding: 0 0 0 12px;">${sessionScope.dept}</td>
 													</tr>
 													<tr>
 														<td height="30" align="center" bgcolor="#E1F9DD"
 															class="m_sp"><b>기안자</b></td>
 														<td colspan="2"
-															style="border: solid 1px #C0BFC1; padding: 0 0 0 12px;">${sign.team}
-															${sign.ename} ${sign.posname}</td>
+															style="border: solid 1px #C0BFC1; padding: 0 0 0 12px;">
+																<c:set var="empname" value="${sessionScope.myemp.ename}" />
+																${sessionScope.team} ${empname} ${sessionScope.pos}
+															</td>
 													</tr>
 													<tr>
 														<td height="30" align="center" bgcolor="#E1F9DD"
 															class="m_sp" style="padding: 7px 0 7px 0"><b>기안일</b></td>
 														<td colspan="2"
-															style="border: solid 1px #C0BFC1; padding: 7px 0 7px 12px;">${sysDate }</td>
+															style="border: solid 1px #C0BFC1; padding: 7px 0 7px 12px;">${todaydate}</td>
 													</tr>
 
 
@@ -653,7 +822,7 @@
 													<tr>
 														<td height="30" align="center" bgcolor="#E1F9DD" class="m_sp"><b>제목</b></td>
 														<td colspan="2" style="padding: 0 0 0 2px;">
-															<input id="t_subject" name="subject" type="text" style="width: 630px;" value="">
+															<input id="signtitle" name="signtitle" type="text" style="width: 630px;" value="">
 														</td>
 													</tr>
 												</tbody>
@@ -727,159 +896,157 @@
 																					<tr height="27" align="center" id="calc">
 																						<!-- 품명 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="product" class="product" style="width: 90%;" value="">
+																							<input type="text" name="orderlist[0].product" class="product" style="width: 90%;" value="">
 																						</td>
 																						
 																						<!-- 단가 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="unitcost" class="unitcost" style="text-align: right; width: 90%" value="">
+																							<input type="text" name="orderlist[0].unitcost" class="unitcost" style="text-align: right; width: 90%" value="">
 																						</td>
 																						
 																						<!-- 수량 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="amount" class="amount" style="text-align: right; width: 90%" value="">
+																							<input type="text" name="orderlist[0].amount" class="amount" style="text-align: right; width: 90%" value="">
 																						</td>
 																						
 																						<!-- 규격 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																						<input type="text" name="odersize" class="odersize" style="width: 90%" value="">
+																						<input type="text" name="orderlist[0].ordersize" class="odersize" style="width: 90%" value="">
 																						</td>
 																						
 																						<!-- 비고 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="ordernote" class="ordernote" style="width: 90%" value="">
+																							<input type="text" name="orderlist[0].ordernote" class="ordernote" style="width: 90%" value="">
 																						</td>
 																						
 																						<!-- 금액출력 -->
 																						<td class="item" align="right" style="border: solid 1px #C0BFC1;">
-																							<input type="text" name="ordercost" class="ordercost" value="0" readonly="readonly">
+																							<input type="text" name="orderlist[0].ordercost" class="ordercost" value="0" readonly="readonly">
+																						</td>
+																					</tr>
+																					<tr height="27" align="center" id="calc">
+																						<!-- 품명 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="orderlist[1].product" class="product" style="width: 90%;" value="">
+																						</td>
+																						
+																						<!-- 단가 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="orderlist[1].unitcost" class="unitcost" style="text-align: right; width: 90%" value="">
+																						</td>
+																						
+																						<!-- 수량 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="orderlist[1].amount" class="amount" style="text-align: right; width: 90%" value="">
+																						</td>
+																						
+																						<!-- 규격 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																						<input type="text" name="orderlist[1].ordersize" class="odersize" style="width: 90%" value="">
+																						</td>
+																						
+																						<!-- 비고 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="orderlist[1].ordernote" class="ordernote" style="width: 90%" value="">
+																						</td>
+																						
+																						<!-- 금액출력 -->
+																						<td class="item" align="right" style="border: solid 1px #C0BFC1;">
+																							<input type="text" name="orderlist[1].ordercost" class="ordercost" value="0" readonly="readonly">
+																						</td>
+																					</tr>
+																					<tr height="27" align="center" id="calc">
+																						<!-- 품명 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="orderlist[2].product" class="product" style="width: 90%;" value="">
+																						</td>
+																						
+																						<!-- 단가 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="orderlist[2].unitcost" class="unitcost" style="text-align: right; width: 90%" value="">
+																						</td>
+																						
+																						<!-- 수량 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="orderlist[2].amount" class="amount" style="text-align: right; width: 90%" value="">
+																						</td>
+																						
+																						<!-- 규격 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																						<input type="text" name="orderlist[2].ordersize" class="odersize" style="width: 90%" value="">
+																						</td>
+																						
+																						<!-- 비고 -->
+																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
+																							<input type="text" name="orderlist[2].ordernote" class="ordernote" style="width: 90%" value="">
+																						</td>
+																						
+																						<!-- 금액출력 -->
+																						<td class="item" align="right" style="border: solid 1px #C0BFC1;">
+																							<input type="text" name="orderlist[2].ordercost" class="ordercost" value="0" readonly="readonly">
 																						</td>
 																					</tr>
 																					
 																					<tr height="27" align="center" id="calc">
 																						<!-- 품명 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="product" class="product" style="width: 90%;" value="">
+																							<input type="text" name="orderlist[3].product" class="product" style="width: 90%;" value="">
 																						</td>
 																						
 																						<!-- 단가 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="unitcost" class="unitcost" style="text-align: right; width: 90%" value="">
+																							<input type="text" name="orderlist[3].unitcost" class="unitcost" style="text-align: right; width: 90%" value="">
 																						</td>
 																						
 																						<!-- 수량 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="amount" class="amount" style="text-align: right; width: 90%" value="">
+																							<input type="text" name="orderlist[3].amount" class="amount" style="text-align: right; width: 90%" value="">
 																						</td>
 																						
 																						<!-- 규격 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																						<input type="text" name="odersize" class="odersize" style="width: 90%" value="">
+																						<input type="text" name="orderlist[3].ordersize" class="odersize" style="width: 90%" value="">
 																						</td>
 																						
 																						<!-- 비고 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="ordernote" class="ordernote" style="width: 90%" value="">
+																							<input type="text" name="orderlist[3].ordernote" class="ordernote" style="width: 90%" value="">
 																						</td>
 																						
 																						<!-- 금액출력 -->
 																						<td class="item" align="right" style="border: solid 1px #C0BFC1;">
-																							<input type="text" name="ordercost" class="ordercost" value="0" readonly="readonly">
+																							<input type="text" name="orderlist[3].ordercost" class="ordercost" value="0" readonly="readonly">
 																						</td>
 																					</tr>
 																					<tr height="27" align="center" id="calc">
 																						<!-- 품명 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="product" class="product" style="width: 90%;" value="">
+																							<input type="text" name="orderlist[4].product" class="product" style="width: 90%;" value="">
 																						</td>
 																						
 																						<!-- 단가 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="unitcost" class="unitcost" style="text-align: right; width: 90%" value="">
+																							<input type="text" name="orderlist[4].unitcost" class="unitcost" style="text-align: right; width: 90%" value="">
 																						</td>
 																						
 																						<!-- 수량 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="amount" class="amount" style="text-align: right; width: 90%" value="">
+																							<input type="text" name="orderlist[4].amount" class="amount" style="text-align: right; width: 90%" value="">
 																						</td>
 																						
 																						<!-- 규격 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																						<input type="text" name="odersize" class="odersize" style="width: 90%" value="">
+																						<input type="text" name="orderlist[4].ordersize" class="odersize" style="width: 90%" value="">
 																						</td>
 																						
 																						<!-- 비고 -->
 																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="ordernote" class="ordernote" style="width: 90%" value="">
+																							<input type="text" name="orderlist[4].ordernote" class="ordernote" style="width: 90%" value="">
 																						</td>
 																						
 																						<!-- 금액출력 -->
 																						<td class="item" align="right" style="border: solid 1px #C0BFC1;">
-																							<input type="text" name="ordercost" class="ordercost" value="0" readonly="readonly">
-																						</td>
-																					</tr>
-																					
-																					<tr height="27" align="center" id="calc">
-																						<!-- 품명 -->
-																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="product" class="product" style="width: 90%;" value="">
-																						</td>
-																						
-																						<!-- 단가 -->
-																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="unitcost" class="unitcost" style="text-align: right; width: 90%" value="">
-																						</td>
-																						
-																						<!-- 수량 -->
-																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="amount" class="amount" style="text-align: right; width: 90%" value="">
-																						</td>
-																						
-																						<!-- 규격 -->
-																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																						<input type="text" name="odersize" class="odersize" style="width: 90%" value="">
-																						</td>
-																						
-																						<!-- 비고 -->
-																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="ordernote" class="ordernote" style="width: 90%" value="">
-																						</td>
-																						
-																						<!-- 금액출력 -->
-																						<td class="item" align="right" style="border: solid 1px #C0BFC1;">
-																							<input type="text" name="ordercost" class="ordercost" value="0" readonly="readonly">
-																						</td>
-																					</tr>
-																					
-																					<tr height="27" align="center" id="calc">
-																						<!-- 품명 -->
-																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="product" class="product" style="width: 90%;" value="">
-																						</td>
-																						
-																						<!-- 단가 -->
-																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="unitcost" class="unitcost" style="text-align: right; width: 90%" value="">
-																						</td>
-																						
-																						<!-- 수량 -->
-																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="amount" class="amount" style="text-align: right; width: 90%" value="">
-																						</td>
-																						
-																						<!-- 규격 -->
-																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																						<input type="text" name="odersize" class="odersize" style="width: 90%" value="">
-																						</td>
-																						
-																						<!-- 비고 -->
-																						<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																							<input type="text" name="ordernote" class="ordernote" style="width: 90%" value="">
-																						</td>
-																						
-																						<!-- 금액출력 -->
-																						<td class="item" align="right" style="border: solid 1px #C0BFC1;">
-																							<input type="text" name="ordercost" class="ordercost" value="0" readonly="readonly">
+																							<input type="text" name="orderlist[4].ordercost" class="ordercost" value="0" readonly="readonly">
 																						</td>
 																					</tr>
 																				</tbody>
@@ -948,7 +1115,7 @@
 																							align="center" style="border: solid 1px #C0BFC1;">기타사항</td>
 																						<td class="item" width="" align="left"
 																							style="border: solid 1px #C0BFC1; padding-left: 7px; padding-right: 7px; padding-top: 7px;"><textarea
-																								name="content"
+																								name="signnote" id="signnote"
 																								style="width: 100%; height: 126px; padding: 8px 8px 5px 8px;"></textarea></td>
 																					</tr>
 
@@ -971,8 +1138,30 @@
 							</table>
 						</td>
 					</tr>
+					<tr>
+				<td height="30" bgcolor="#ececec"
+					style="border-bottom: 1px #c9c9c9 solid; border-top: 1px #c9c9c9 solid; padding: 0 0 0 12px;">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tbody>
+							<tr>
+								<td align="right" style="padding: 0 12px 0 0;">
+									<table border="0" cellspacing="0" cellpadding="0">
+										<tbody>
+											<tr>
+												<td><input type="button" value="작성완료" onclick="addsign()">
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
 				</tbody>
 			</table>
+			</form>
 		</div>
 	</div>
 </section>
@@ -1068,5 +1257,3 @@ $('#addline').click(function() {
 
 </script>
 
-</body>
-</html>

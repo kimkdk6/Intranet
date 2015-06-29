@@ -112,6 +112,13 @@
 	 	where docnum = #{docnum}
 	</select>
 	
+	<!-- 결재 > 발주서 목록 가져오기 -->
+	<select id="getOrderdoc" resultType="dto_vo.Sign.Orderdoc">
+		select * 
+		from orderdoc 
+		where docnum = #{docnum}
+	</select>
+	
 	<!-- 결재 라인 가져오기  -->
 	<select id="getSignline" resultType="dto_vo.Sign.Signline">
 		select * 
@@ -173,6 +180,14 @@
 	<insert id="insertDrafting" parameterType="dto_vo.Sign.Draftingdoc">
 		insert into DRAFTINGDOC(docnum, dracontent)
             			 values((select NVL(MAX(TO_NUMBER(docnum)), 0) from sign), #{dracontent})
+	</insert>
+
+	<!-- 발주서 작성 -->
+	<insert id="insertOrderDoc" parameterType="dto_vo.Sign.Orderdoc">
+		insert into orderdoc
+			   values((select NVL(MAX(TO_NUMBER(docnum)), 0) from sign),
+			   			(select NVL(MAX(TO_NUMBER(itemnum))+1, 0) from orderdoc), #{product},
+			   			#{unitcost}, #{amount}, #{ordersize}, #{ordernote, jdbcType=VARCHAR}, #{ordercost})
 	</insert>
 
 	<!-- 휴가계 작성 -->
