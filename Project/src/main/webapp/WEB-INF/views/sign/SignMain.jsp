@@ -44,7 +44,8 @@
 							<c:set var="signtype" value="${n.signtype}" />
 							<tr>
 								<td width="100" class="title bb1 br1 p0007"><font
-									color="#666666"> <c:choose>
+									color="#666666"> 
+									<c:choose>
 											<c:when test="${signtype == 1}">
 												<a
 													href="${pageContext.request.contextPath}/sign/DraftingDetail.htm?docnum=${n.docnum}">
@@ -54,13 +55,15 @@
 												<a
 													href="${pageContext.request.contextPath}/sign/HolidayDocDetail.htm?docnum=${n.docnum}">
 													${n.docnum} </a>
-									</c:when>
+										    </c:when>
 											<c:when test="${signtype == 3}">
-										발주서
-									</c:when>
+												발주서
+											</c:when>
 											<c:when test="${signtype == 4}">
-										출장 신청서
-									</c:when>
+												<a
+													href="${pageContext.request.contextPath}/sign/BizTripDocDetail.htm?docnum=${n.docnum}">
+													${n.docnum} </a>
+											</c:when>
 											<c:when test="${signtype == 5}">
 												<a
 													href="${pageContext.request.contextPath}/sign/BizTripRepDetail.htm">
@@ -156,7 +159,9 @@
 										발주서 ${s.docnum} 
 									</c:when>
 											<c:when test="${signtype == 4}">
-										출장 신청서 ${s.docnum} 
+												<a
+													href="${pageContext.request.contextPath}/sign/BizTripDocDetail.htm?docnum=${s.docnum}">
+													${s.docnum} </a>
 									</c:when>
 											<c:when test="${signtype == 5}">
 												<a

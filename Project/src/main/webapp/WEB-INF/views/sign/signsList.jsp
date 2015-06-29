@@ -68,7 +68,9 @@
 										발주서 ${s.docnum} 
 									</c:when>
 											<c:when test="${signtype == 4}">
-										출장 신청서 ${s.docnum} 
+												<a
+													href="${pageContext.request.contextPath}/sign/BizTripDocDetail.htm?docnum=${s.docnum}">
+													${s.docnum} </a>
 									</c:when>
 											<c:when test="${signtype == 5}">
 												<a

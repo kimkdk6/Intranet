@@ -7,6 +7,7 @@ import dto_vo.Emp.Dept;
 import dto_vo.Emp.Emp;
 import dto_vo.Emp.Position;
 import dto_vo.Emp.Team;
+import dto_vo.Sign.Biztripdoc;
 import dto_vo.Sign.Draftingdoc;
 import dto_vo.Sign.Holidaydoc;
 import dto_vo.Sign.Sign;
@@ -54,6 +55,8 @@ public interface SignDAO {
 	public int insertDrafting(Draftingdoc drafting) throws ClassNotFoundException, SQLException;
 	// 휴가계 작성
 	public int insertHolidaydoc(Holidaydoc holidaydoc) throws ClassNotFoundException, SQLException;
+	// 출장 신청서 작성
+	public int insertBizTripDoc(Biztripdoc biztripdoc) throws ClassNotFoundException, SQLException;
 	
 	// 전자 결재 문서 승인 처리
 	// signline의 signok?값 변경/signning 값 변경 

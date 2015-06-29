@@ -59,13 +59,17 @@
 													${n.docnum} </a>
 											</c:when>
 											<c:when test="${signtype == 2}">
-										휴가계
+												<a
+													href="${pageContext.request.contextPath}/sign/HolidayDocDetail.htm?docnum=${n.docnum}">
+													${n.docnum} </a>
 									</c:when>
 											<c:when test="${signtype == 3}">
 										발주서
 									</c:when>
 											<c:when test="${signtype == 4}">
-										출장 신청서
+												<a
+													href="${pageContext.request.contextPath}/sign/BizTripDocDetail.htm?docnum=${n.docnum}">
+													${n.docnum} </a>
 									</c:when>
 											<c:when test="${signtype == 5}">
 												<a
