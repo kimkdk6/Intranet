@@ -618,9 +618,7 @@
 																							style="border: solid 1px #C0BFC1;">합 계</td>
 																						<td width="20%" align="right"
 																							style="border: solid 1px #C0BFC1; color: #000000;"
-																							class="item"><b>${biztriprep.biztot}</b> <span
-																							id="detail_total"
-																							style="font-weight: bold; color: #000000; font-size: 14px;">0</span>
+																							class="item"><b>${biztriprep.biztot}</b> 
 																						</td>
 																					</tr>
 																				</tbody>

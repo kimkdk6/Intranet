@@ -1,6 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script language="javascript">
+	function myApp(proc, boardcode)
+	{
+	    var f = document.boardmg;
+	    if(proc == 'D')
+	    {
+	    	console.log("boardcode: "+boardcode);
+	        if( !confirm( '게시판을 삭제하시겠습니까?') ) return;
+	        f.action = "communityRemove.htm?boardcode="+boardcode;
+	    }
+	    
+	    if(proc == 'M')
+	    {
+	    	console.log("boardcode: "+boardcode);
+	        if( !confirm( '게시판을 수정하시겠습니까?') ) return;
+	        f.action = "communityModify.htm?boardcode="+boardcode;
+	    }
+	    
+	    f.submit();
+	}
+	
+	function addBoard(){
+		var f = document.newboard;
+		if(!f.boardname.value){
+			alert("생성할 게시판 명을 입력하세요");
+			f.boardname.focus();
+			return false;
+		}
+		
+		f.submit();
+		
+	}
+</script>
 <!DOCTYPE html>
 <section class="content-header">
 	<h1>
@@ -19,18 +52,20 @@
 		</div>
 		<div class="box-body">
 			<div class="input-group">
-						<input type="text" name="table_search"
-							class="form-control input-sm pull-right"
-							style="width: 200px; height: 35px;" placeholder="board name" />
-						<div class="input-group-btn">
-							<button class="btn btn-info btn-flat" type="button">추가</button>
-						</div>
+						<form name="newboard" action="communityAdd.htm" method="post">
+							<input type="text" name="boardname" id="boardname"
+								class="form-control input-sm pull-right"
+								style="width: 200px; height: 35px;" placeholder="board name" />
+							 
+								<button class="btn btn-info btn-flat" type="button" onclick="addBoard()">추가</button>
+							 
+						</form>
 					</div>
 		</div>
 		<!-- /.box-body -->
 	</div>
 </section>
-
+ 
 <section class="content-header">
 	<div class="box">
 		<div class="box-header">
@@ -39,23 +74,33 @@
 		</div>
 		<!-- /.box-header -->
 		<div class="box-body table-responsive no-padding">
-			<table class="table table-hover">
-				<tr>
-					<th>게시판명</th>
-					<th>게시글 수</th>
-					<th>관리</th>
-
-				</tr>
-				<c:forEach var="boardtype" items="${boardmap}">
+			<form name="boardmg" action="" method="post">
+				<table class="table table-hover">
 					<tr>
-						<td><input type="text" class="form-control"
-							value="${boardtype.key.boardname}"></td>
-						<td>${boardtype.value}</td>
-						<td><span class="label label-success">Approved</span></td>
-
+						<th>게시판명</th>
+						<th>게시글 수</th>
+						<th>관리</th>
+	
 					</tr>
-				</c:forEach>
-			</table>
+						
+					<c:forEach var="boardtype" items="${boardmap}">
+						<tr>
+							<td><input type="text" name="boardname" class="form-control"
+								value="${boardtype.key.boardname}"></td>
+							<td>${boardtype.value}</td>
+							<td>
+								<a href="javascript:myApp('M', ${boardtype.key.boardcode})">
+									<span class="label label-success">수정</span>
+								</a>
+									<a href="javascript:myApp('D', ${boardtype.key.boardcode})">
+								<span class="label label-danger">삭제</span></a>
+							
+							</td>
+							
+						</tr>
+					</c:forEach>
+				</table>
+			</form>
 		</div>
 		<!-- /.box-body -->
 	</div>

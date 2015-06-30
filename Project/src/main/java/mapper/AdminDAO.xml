@@ -10,12 +10,43 @@
 		order by boardcode
 	</select>
 	
+	<!-- 게시판 종류마다 게시글 가져오기 -->
 	<select id="getBoardofNum" resultType="int">
 		select count(*)
         from board b join boardlist l
                      on b.BOARDCODE = l.BOARDCODE
-        where l.BOARDCODE = #{boardcode}
+        where b.BOARDCODE = #{boardcode}
 	</select>
 
+	<!-- 게시판 추가 -->
+	<insert id="insertBoard" parameterType="dto_vo.Board.BoardList">
+		insert into boardlist(boardcode, boardname)
+        values((select NVL(MAX(TO_NUMBER(boardcode))+1, 0) from boardlist), #{boardname})
+	</insert>
+	
+	<!-- 게시판 삭제 -->
+	<delete id="deleteBoardlist">
+		delete from boardlist 
+		where boardcode = #{boardcode}
+	</delete>
+	
+	<!-- 게시판의 boardcode로 가져온 게시물 리스트 -->
+	<select id="getBoardListbyType" resultType="dto_vo.Board.Board">
+		select *
+		from board b join boardlist l
+        on b.BOARDCODE = l.BOARDCODE
+		where l.BOARDCODE = #{boardcode}
+	</select>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="deleteReply">
+		delete from reply 
+		where boardnum = #{boardnum}
+	</delete>
 
+	<!-- 게시글 삭제 -->
+	<delete id="deleteBoard">
+		delete from board
+		where boardnum = #{boardnum}
+	</delete>
 </mapper>
