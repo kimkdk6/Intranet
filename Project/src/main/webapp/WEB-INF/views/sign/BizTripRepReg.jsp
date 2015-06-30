@@ -97,9 +97,9 @@
 
 
 	// 
-	$('#calc').ready(
+	/* $('#calc').ready(
 			function() {
-				/* 단가 X 수량 */
+				
 				$('.bizcost').keyup(function() {
 					$(this).val($(this).val().replace(/[^0-9]/gi, "")); //숫자만 입력가능
 				});
@@ -131,10 +131,10 @@
 							var num = $(".ordercost").index(this);
 							$('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
 						});
-			});
+			}); */
 
 	/* 라인 추가 */
-	function addItemLine() {
+	/* function addItemLine() {
 		$("#detail_table")
 				.append(
 						"<tr height='27' align='center'>\n"
@@ -145,7 +145,7 @@
 								+ " <td class='item' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'><input type='text' name='etc[]' class='input_approval' style='width:90%' value=''></td>\n"
 								+ " <td class='item' rel='fee' align='right' style='border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;'>0</td>\n"
 								+ "</tr>");
-	}
+	} */
 
 	/* 결재자 메뉴 띄우는 기능 */
 	// ============= 첫번째 ======================
@@ -881,20 +881,19 @@
 																		<td width="50%" align="left"
 																			style="padding: 5px 5px 0px 0px;"><font
 																			color="#000">- 출장 경비 내역</font></td>
-																		<!-- <td width="50%" align="right"
+																		<td width="50%" align="right"
 																			style="padding: 5px 5px 0px 0px; letter-spacing: -1px; font-size: 11px; color: #4f4c4c;">
-																			<a href="javascript:addItemLine()"> <img src="/img/calendar/bt_plus.gif" align="absmiddle">
-																								라인추가 <input type="button" id="addline"
-																				value="라인 추가" />
+					
+																			<input type="button" id="addline" value="라인 추가" />
 																		</a>
-																		</td> -->
+																		</td>
 																	</tr>
 																</tbody>
 															</table>
 
 															<table id="detail_table" width="100%" cellspacing="0"
 																cellpadding="0" class="tbl_appreport">
-																<tbody>
+																<thead>
 																	<tr>
 																		<td align="center" width="22%" class="title"
 																			bgcolor="F1F7F7" style="border: solid 1px #C0BFC1;">날짜</td>
@@ -906,61 +905,61 @@
 																		<td align="center" width="20%" class="title"
 																			bgcolor="F1F7F7" style="border: solid 1px #C0BFC1;">금액</td>
 																	</tr>
-																	<tr height="27" align="center" id="calc">
-																		<!-- 날짜 -->
+																</thead>
+																<tbody id="AddOption">
+																	<!-- <tr height="27" align="center" id="calc">
+																		날짜
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
 																			<input type="text" id="bizdate" name="bizdate" class="bizdate"
 																			style="width: 90%;" value="">
 																		</td>
 
-																		<!-- 지출내역 -->
+																		지출내역
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
 																			<input type="text" name="bizcostdetail" id="bizcostdetail" class="bizcostdetail"
 																			style="text-align: right; width: 90%">
 																		</td>
 
-																		<!-- 비고 -->
+																		비고
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
 																			<input type="text" id="biznote" name="biznote" class="biznote"
 																			style="text-align: right; width: 90%" >
 																		</td>
 
-																		<!-- 금액 -->
+																		금액
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
 																			<input type="text" id="bizcost" name="bizcost" class="bizcost" value="0"
 																			style="width: 90%" >
 																		</td>
 
-
-
 																	</tr>
 																	<tr height="27" align="center" id="calc">
-																		<!-- 날짜 -->
+																		날짜
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
 																			<input type="text" id="bizdate1" name="bidate" class="bidate"
 																			style="width: 90%;" value="">
 																		</td>
 
-																		<!-- 지출내역 -->
+																		지출내역
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
 																			<input type="text" name="bizcostdetail" id="bizcostdetail" class="bizcostdetail"
 																			style="text-align: right; width: 90%" >
 																		</td>
 
-																		<!-- 비고 -->
+																		비고
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
 																			<input type="text" name="biznote" id="biznote" class="biznote"
 																			style="text-align: right; width: 90%">
 																		</td>
 
-																		<!-- 금액 -->
+																		금액
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
 																			<input type="text" name="bizcost" id="bizcost" class="bizcost" value="0"
@@ -971,28 +970,28 @@
 
 																	</tr>
 																	<tr height="27" align="center" id="calc">
-																		<!-- 날짜 -->
+																		날짜
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
 																			<input type="text" id="bizdate2" name="bizdate" class="bizdate"
 																			style="width: 90%;" value="">
 																		</td>
 
-																		<!-- 지출내역 -->
+																		지출내역
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
 																			<input type="text" name="bizcostdetail" id="bizcostdetail" class="bizcostdetail"
 																			style="text-align: right; width: 90%" >
 																		</td>
 
-																		<!-- 비고 -->
+																		비고
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
 																			<input type="text" name="biznote" id="biznote" class="biznote"
 																			style="text-align: right; width: 90%">
 																		</td>
 
-																		<!-- 금액 -->
+																		금액
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
 																			<input type="text" name="bizcost" id="bizcost" class="bizcost" value="0"
@@ -1003,28 +1002,28 @@
 
 																	</tr>
 																	<tr height="27" align="center" id="calc">
-																	<!-- 날짜 -->
+																	날짜
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
 																			<input type="text" id="bizdate3" name="bizdate" class="bizdate"
 																			style="width: 90%;" value="">
 																		</td>
 
-																		<!-- 지출내역 -->
+																		지출내역
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
 																			<input type="text" name="bizcostdetail" id="bizcostdetail" class="bizcostdetail"
 																			style="text-align: right; width: 90%" >
 																		</td>
 
-																		<!-- 비고 -->
+																		비고
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
 																			<input type="text" name="biznote" id="biznote" class="biznote"
 																			style="text-align: right; width: 90%">
 																		</td>
 
-																		<!-- 금액 -->
+																		금액
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
 																			<input type="text" name="bizcost" id="bizcost" class="bizcost" value="0"
@@ -1034,28 +1033,28 @@
 
 																	</tr>
 																	<tr height="27" align="center" id="calc">
-																		<!-- 날짜 -->
+																		날짜
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
 																			<input type="text" id="bizdate4" name="bizdate" class="bizdate"
 																			style="width: 90%;" value="">
 																		</td>
 
-																		<!-- 지출내역 -->
+																		지출내역
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
 																			<input type="text" name="bizcostdetail" id="bizcostdetail" class="bizcostdetail"
 																			style="text-align: right; width: 90%" >
 																		</td>
 
-																		<!-- 비고 -->
+																		비고
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
 																			<input type="text" name="biznote" id="biznote" class="biznote"
 																			style="text-align: right; width: 90%">
 																		</td>
 
-																		<!-- 금액 -->
+																		금액
 																		<td class="item"
 																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
 																			<input type="text" name="bizcost" id="bizcost" class="bizcost" value="0"
@@ -1064,7 +1063,7 @@
 
 
 																	</tr>
-
+ -->
 																</tbody>
 															</table>
 															<table width="100%" class="noborder" cellspacing="0"
@@ -1274,5 +1273,40 @@
 	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], // 요일의 한글 형식.
 	        monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] // 월의 한글 형식.
 		});
+	});
+
+	$('#addline').click(function() {
+		var contents ='';
+		contents += '<tr height="27" align="center">';
+		contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" id="bizdate" name="bizdate" class="bizdate" style="width: 90%;" value=""></td>';
+		contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" name="bizcostdetail" id="bizcostdetail" class="bizcostdetail" style="text-align: right; width: 90%"></td>';
+		contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" id="biznote" name="biznote" class="biznote" style="text-align: right; width: 90%" ></td>';
+		contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" id="bizcost" name="bizcost" class="bizcost" value="0" style="width: 90%" ></td>';
+		contents +=	'</tr>';
+		
+		$('#AddOption').append(contents); // 추가
+		
+		$('.bizcost').keyup(function() { // 숫자만
+			$(this).val($(this).val().replace(/[^0-9]/gi, "")); //숫자만 입력가능
+		});
+
+		$('.bizcost').keyup(function() {
+			var num = $(".bizcost").index(this);
+			var addtotal = 0;
+			var rowcount = $('#detail_table > tbody > tr').length;
+			for(var i = 0; i< rowcount; i++) {
+		    	addtotal = addtotal + parseInt($('.bizcost').eq(i).val());
+		    }
+			// $('.ordercost').eq(num).val($('.unitcost').eq(num).val() * $('.amount').eq(num).val());
+			$('.biztot').val(addtotal);
+		});
+
+		
+
+		
+		
+			
+			
+			
 	});
 </script>
