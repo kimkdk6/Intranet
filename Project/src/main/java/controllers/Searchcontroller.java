@@ -34,4 +34,8 @@ public class Searchcontroller {
 		
 		return "search.SearchEmp";
 	}
+	
+	//@RequestMapping(value = )
+	
+	
 }

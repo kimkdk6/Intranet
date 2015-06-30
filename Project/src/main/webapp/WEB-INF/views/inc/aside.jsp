@@ -118,7 +118,7 @@
 									class="fa fa-circle-o"></i>결재 완료 문서</a></li>
 						</ul></li>
 				</ul></li>
-			<li><a href="${pageContext.request.contextPath}/search/SearchEmp.html"> <i
+			<li><a href="${pageContext.request.contextPath}/search/SearchEmp.htm"> <i
 					class="fa fa-fw fa-group"></i> <span>조직도</span> <small
 					class="label pull-right bg-green">new</small>
 			</a></li>
