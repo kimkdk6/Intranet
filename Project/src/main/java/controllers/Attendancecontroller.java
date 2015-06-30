@@ -99,18 +99,17 @@ public class Attendancecontroller {
 	{
 		
 		AttendanceDAO Latereason = sqlSession.getMapper(AttendanceDAO.class);
-		Latereason.letereason(principal.getName(),request.getParameter("latereason"));
+		Latereason.letereason(principal.getName(),request.getParameter("reason"));
 		
 	}
 	/*조퇴 여부*/
 	@RequestMapping(value = "leavereason.htm")
-	public @ResponseBody String leavereason(Principal principal,HttpServletRequest request, HttpServletResponse response) throws Exception
+	public @ResponseBody void leavereason(Principal principal,HttpServletRequest request, HttpServletResponse response) throws Exception
 	{
 	
 		AttendanceDAO leavereason = sqlSession.getMapper(AttendanceDAO.class);
-		leavereason.letereason(principal.getName(),request.getParameter("leavereason"));
-
-		return null;
+		leavereason.leavereason(principal.getName(),request.getParameter("reason"));
+		System.out.println("asd");
 	}
 	
 	@RequestMapping(value = "Commute.htm")

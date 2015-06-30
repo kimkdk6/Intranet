@@ -27,6 +27,7 @@ $(function(){
 		document.getElementById("commute").innerHTML = '&nbsp&nbsp&nbsp&nbsp&nbsp지각사유 :' ;
 		document.getElementById("commutecheck").style.visibility="visible";
 		document.getElementById("reason").style.visibility="visible";
+		
 	}
 	$('#checkinAjax').click(function(){
 		$.ajax({
@@ -45,10 +46,11 @@ $(function(){
 						success : function(data){
 							document.getElementById("checkin").innerHTML = data;
 							alert("출근처리가 정상적으로 처리됬습니다.");
-							 if('${latecheck}' != ""){
+							 if('${latecheck}' != "''"){
 								 document.getElementById("commute").innerHTML = '&nbsp&nbsp&nbsp&nbsp&nbsp지각사유 :' ;								
- 								 document.getElementById("commutecheck").style.visibility="visible";
+								 document.getElementById("commutecheck").style.visibility="visible";
  								document.getElementById("reason").style.visibility="visible";
+ 								console.log(document.getElementById("latebtton"));
 							 } 
 						},
 						error :function(data){alert("이미 출근처리가 됬습니다.");}
@@ -79,11 +81,14 @@ $(function(){
 						success : function(data){
 							alert("퇴근처리가 정상적으로 처리됬습니다."),
 							document.getElementById("checkout").innerHTML = data;
-							 if('${leavecheck}' != ""){
-				
+							 if('${leavecheck}' != "''"){
 									 document.getElementById("commute").innerHTML = '&nbsp&nbsp&nbsp&nbsp&nbsp조퇴사유 :' ;
 									 document.getElementById("commutecheck").style.visibility="visible";
 									 document.getElementById("reason").style.visibility="visible";
+								 	 document.getElementById("latebtton").setAttribute("name", "leave"); 
+									 /*  document.getElementById("latebtton").id = "leavebtton"; */
+									   console.log(document.getElementById("latebtton").name);
+									  
 							 } 
 						},
 						error :function(data){alert("이미 퇴근처리가 됬습니다.");}
@@ -98,16 +103,21 @@ $(function(){
 	});
 	
 	$('#latebtton').click(function(){
+		console.log()
 		var form_data = {
-				latereason : document.getElementById("reason").value
+				reason : document.getElementById("reason").value
 			};
+		var url = "<%=request.getContextPath() %>/attendance/latereason.htm";
+		 if( document.getElementById("latebtton").name == "leave"){
+			 url = "<%=request.getContextPath() %>/attendance/leavereason.htm";
+		} 
 		$.ajax({
-			url:"<%=request.getContextPath() %>/attendance/latereason.htm", 
+			url: url, 
 			type:"get",           
 			data: form_data,
 			dataType:"html",
 			success : function(data){
-				alert('지각 사유 입력 완료');
+				alert('사유 입력 완료');
 			},
 			error :function(data){
 				alert('이미 처리되었습니다.');
@@ -116,12 +126,12 @@ $(function(){
 			
 		});
 	
- 	$('#leavebtton').click(function(){
+ 	<%-- $('#leavebtton').click(function(){
 		var form_data = {
-				latereason : document.getElementById("reason").value
+				leavereason : document.getElementById("reason").value
 			};
 		$.ajax({
-			url:"<%=request.getContextPath() %>/attendance/latereason.htm", 
+			url:"<%=request.getContextPath() %>/attendance/leavereason.htm", 
 			type:"get",           
 			data: form_data,
 			dataType:"html",
@@ -134,7 +144,7 @@ $(function(){
 		});
 			
 		}); 
-	
+	 --%>
 });
 
 setInterval("go_time()",1000);
@@ -244,7 +254,8 @@ setTimeout("go_time()", 1000);
                       	
                        	<td><input type="text" id="reason" style="border:2px solid #e3e3e3; width:100px; visibility: hidden;" >
                       	</td>
-                      	<td style="padding-left: 5px;"><button class="btn btn-block btn-default btn-sm" id ="latebtton" style="padding-top: 2px; padding-bottom: 2px;">저장</button></td>
+                      	<td style="padding-left: 5px;">
+                      	<button class="btn btn-block btn-default btn-sm" id ="latebtton" name="late" style="padding-top: 2px; padding-bottom: 2px;">저장</button></td>
                       </tr>
 
                       </table>
