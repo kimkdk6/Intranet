@@ -170,6 +170,158 @@
 </section>
 <!-- /.content -->
 
+<div id="_update_schedule_desc" width="100%" border="0" cellspacing="0" cellpadding="0" class="left_menu" title="일정수정하기">
+	<form id="_update_schedule_form" name="_schedule_layer">
+	<input type="hidden" id="_update_scstart" name="scstart"/>
+	<input type="hidden" id="_update_scend" name="scend"/>
+	<input type="hidden" id="_update_userid" name="userid" value="${userid}"/>
+		<table id="_update_schedule_table" width="100%" border="0" cellspacing="0" cellpadding="0" class="left_menu">
+			<tbody>
+				<tr>
+					<td style="padding: 10px 20px 15px 20px;">
+						<table width="100%">
+							<tbody>
+							
+								
+								<tr>
+									<td width="65" height="25" style="letter-spacing: 0px; padding-top: 5px;">카테고리</td>
+									<td>
+										<table width="100%" border="0" cellspacing="0" cellpadding="0">
+											<tbody>
+												<tr>
+													<td width="100%" align="left" style="padding-left: 8px;">
+														<select  id="_update_catecode" name="catecode">
+															<option value="72" style="color:#fff; background-color:#44be1e;" selected="selected">회사일정</option>
+															<option value="74" style="color:#fff; background-color:#4b4b4b;">개인</option>
+															<option value="2157" style="color:#fff; background-color:#b4b4b4;">테스트</option>
+															<option value="2357" style="color:#fff; background-color:#6e9cf2;">장혜졍씨</option>
+															<option value="2359" style="color:#fff; background-color:#6e9cf2;">김덕경씨</option>
+														</select> 
+													<span id="schedule_category_str"></span>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+								<tr>
+								<tr>
+									<td height="10"></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td width="65" height="25" style="letter-spacing: 0px; padding-top: 5px;">시작일</td>
+									<td width="">
+										
+										<input type="text" id="_update_startdate" name="startdate" class="input_date" style="width: 110px; margin-left: 7px" maxlength="10"> 
+										<select id="_update_starthh" name="starthh">
+											<option value="00" selected="selected">오전 12시</option>
+											<option value="01">오전 01시</option>
+											<option value="02">오전 02시</option>
+											<option value="03">오전 03시</option>
+											<option value="04">오전 04시</option>
+											<option value="05">오전 05시</option>
+											<option value="06">오전 06시</option>
+											<option value="07">오전 07시</option>
+											<option value="08">오전 08시</option>
+											<option value="09">오전 09시</option>
+											<option value="10">오전 10시</option>
+											<option value="11">오전 11시</option>
+											<option value="12">오후 12시</option>
+											<option value="13">오후 01시</option>
+											<option value="14">오후 02시</option>
+											<option value="15">오후 03시</option>
+											<option value="16">오후 04시</option>
+											<option value="17">오후 05시</option>
+											<option value="18">오후 06시</option>
+											<option value="19">오후 07시</option>
+											<option value="20">오후 08시</option>
+											<option value="21">오후 09시</option>
+											<option value="22">오후 10시</option>
+											<option value="23">오후 11시</option>
+									</select> 
+									<select  id="_update_startmm" name="startmm">
+											<option value="00" selected="selected">00 분</option>
+											<option value="30">30 분</option>
+									</select>
+									</td>
+								</tr>
+								<tr>
+									<td height="10"></td>
+									<td></td>
+								</tr>
+								<tr>
+								<td width="65" height="25" style="letter-spacing: 0px; padding-top: 5px;">
+									종료일
+								</td>
+									<td width="">
+									<input type="text" id="_update_enddate" name="enddate" class="input_date" style="width: 110px; margin-left: 7px;" maxlength="10"> 
+									<select id="_update_endhh" name="endhh">
+											<option value="00" selected="selected">오전 12시</option>
+											<option value="01">오전 01시</option>
+											<option value="02">오전 02시</option>
+											<option value="03">오전 03시</option>
+											<option value="04">오전 04시</option>
+											<option value="05">오전 05시</option>
+											<option value="06">오전 06시</option>
+											<option value="07">오전 07시</option>
+											<option value="08">오전 08시</option>
+											<option value="09">오전 09시</option>
+											<option value="10">오전 10시</option>
+											<option value="11">오전 11시</option>
+											<option value="12">오후 12시</option>
+											<option value="13">오후 01시</option>
+											<option value="14">오후 02시</option>
+											<option value="15">오후 03시</option>
+											<option value="16">오후 04시</option>
+											<option value="17">오후 05시</option>
+											<option value="18">오후 06시</option>
+											<option value="19">오후 07시</option>
+											<option value="20">오후 08시</option>
+											<option value="21">오후 09시</option>
+											<option value="22">오후 10시</option>
+											<option value="23">오후 11시</option>
+									</select> 
+									<select id="_update_endmm" name="endmm">
+											<option value="00" selected="selected">00 분</option>
+											<option value="30">30 분</option>
+									</select>
+									</td>
+								</tr>
+								
+
+								<tr>
+									<td height="10"></td>
+									<td></td>
+								</tr>
+								
+								<tr>
+									<td height="20" valign="top" style="padding-top: 5px;">제목</td>
+									<td><input type="text" id="_update_sctitle" name="sctitle" class="input_date" style="width: 100%; margin-left: 7px;">
+									</td>
+								</tr>
+								<tr>
+									<td height="10"></td>
+									<td></td>
+								</tr>
+
+								<tr>
+									<td height="20" valign="top" style="padding-top: 5px;">내용</td>
+									<td>
+										<textarea id ="_update_sccontent" name="sccontent" class="input_type1" style="width: 100%; height: 160px; overflow: auto; margin-left: 7px">
+										</textarea>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+</div>
+
+
 
 <div id="_schedule_desc" width="100%" border="0" cellspacing="0" cellpadding="0" class="left_menu" title="일정추가하기">
 	<form id="_schedule_form" name="_schedule_layer">
@@ -521,11 +673,38 @@
 					console.log(calEvent.title);
 					readEvent.dialog("close");
 				},
-				"일정 수정" : function() {
-					readEvent.dialog("close");
-				},
+// 				"일정 수정" : function() {
+// 					readEvent.dialog("close");
+					
+					
+// 					$("#_update_sctitle").val($("#sctitle").val());
+// 					$("#_update_sccontent").val($("#sccontent").val());
+// 					$("#_update_scuserid").val($("#userid").val());
+					
+// 					updateEvent.dialog('open');
+					
+// 				},
 				"취 소" : function() {
 					readEvent.dialog("close");
+				}
+			}
+		});
+		
+
+		
+		var updateEvent = $("#_update_schedule_desc").dialog({
+			
+			autoOpen : false,
+			height : 500,
+			width : 600,
+			modal : true,
+			buttons : {
+				"확 인" : function() { 
+					
+					updateEvent.dialog("close");
+				},
+				"취 소" : function() {
+					updateEvent.dialog("close");
 				}
 			}
 		});
@@ -559,6 +738,7 @@
 						week : "주별",
 						day : "일별"
 					},
+		//			timeFormat: 'yyyy-MM-dd hh:mm:',
 
 					dayClick : function(date, jsEvent, view) {
 						newEvent.dialog("open");
@@ -572,6 +752,34 @@
 // 						readEvent.dialog("open");
 						readEvent.dialog("open",calEvent);
 
+						
+						
+
+						var start = new Date(calEvent.start);
+						var startDate = moment(calEvent.start).format("YYYY-MM-DD");
+						var startHour = start.getHours();
+						var startMinute = start.getMinutes();
+						var startSecond = start.getSeconds();
+						var resultStart = startDate+" "+startHour+":"+startMinute+":00";
+						
+						console.log(resultStart);
+						
+						$('#readstartdate').val(resultStart);
+
+						var end = new Date(calEvent.end);
+						var endDate = moment(calEvent.end).format("YYYY-MM-DD");
+						var endHour = end.getHours();
+						var endMinute = end.getMinutes();
+						var endSecond = end.getSeconds();
+						var resultEnd = endDate+" "+endHour+":"+endMinute+":00";
+						
+						console.log(resultEnd);
+						
+						$('#readenddate').val(resultEnd);
+						
+						$('#readsctitle').val(calEvent.title);
+						$('#readsccontent').val(calEvent.content);
+						
 						$( "#_schedule_view" ).dialog('open',function(calEvent){
 							
 							console.log(this.calEvent.title);
