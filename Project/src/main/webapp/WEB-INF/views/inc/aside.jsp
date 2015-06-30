@@ -142,7 +142,7 @@
 			</a>
 				<ul class="treeview-menu">
 					<li><a
-						href="${pageContext.request.contextPath}/sign/SignMain.htm"><i
+						href="${pageContext.request.contextPath}/admin/communityAdmin.htm"><i
 							class="fa fa-circle-o"></i> 커뮤니티 관리 </a></li>
 					<li><a
 						href="${pageContext.request.contextPath}/sign/SignMain.htm"><i
