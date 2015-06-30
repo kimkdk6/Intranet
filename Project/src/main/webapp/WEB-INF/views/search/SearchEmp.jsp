@@ -1,235 +1,122 @@
-<%@page import="java.util.List"%>
-
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<% 
-	List MemberList = (List)request.getAttribute("MemberList");
-%>
-<!-- 사원검색 페이지 -->
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Insert title here</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
- 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-	<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-	<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
-	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="js/myscript.js"></script> -->
-	<style type="text/css">
-		body {
-			font-size: 72.5%;
-		}
-		
-		.btn-back {
-			background-color: #5B5847;
-			color: white;
-		}
-	</style>
-	<script type="text/javascript">
-		$(function(){
-			
-				// 처음에 부서목록 출력해주기
-	          $.ajax({
-	              url : './Emp_Search/Dept.jsp',
-	              dataType : "json",
-	              success : function(data){
-	            	  var options="";
-	            	  		 options += "<option value=''>부서선택</option>";
-	                  $.each(data, function(index,dlist){
-	                         options += "<option value="+dlist.deptcode+">"+dlist.deptname+"</option>";
-	                  });
-	                  $('#deptlist').append(options);
-	              },
-	             error: function (xhr,Options,thrownError) {
-	             }
-	          });
-	          	// 처음에 페이지 들어왔을때 전체사원의 목록이 나오게
-	          $.ajax({
-	        	  url : './Emp_Search/Ename.jsp',
-	        	  dataType : "json",
-	        	  data : {ename:$('#Ename').val()},
-	        	  success : function(data){
-	        		  $('#emplist').append(
-								"<tr>"
-							+	"<th>부서</th>"
-							+	"<th>팀</th>"
-							+	"<th>이름</th>"
-							+	"<th>직급</th>"
-							+	"<th>사내전화번호</th>"
-							+	"<th>핸드폰</th>"
-							+	"<th></th>"
-							+	"</tr>"		
-						);
-						$.each(data,function(index,entry){
-							$('#emplist').append(
-								"<tr><td>" + entry.deptname + 
-								"</td><td>" + entry.teamname + 
-								"</td><td>" + entry.ename + 
-								"</td><td>" + entry.gradename + 
-								"</td><td>" + entry.emptel + 
-								"</td><td>" + entry.celphone  + 
-								"</td><td><button onclick='info("+entry.empno+")' class='btn btn-back btn-xs'>상세정보</button>&nbsp;<button onclick='msgsend("+entry.empno+")'>&nbsp;&nbsp;쪽지&nbsp;&nbsp;</button>"
-								+ "</td></tr>"		
-							);
-						});
-	        	  },
-	        	  error: function (xhr,Options,thrownError) {
-		          }
-	          });
-	          	// 팀을 선택하면 사원들 목록 출력
- 			 $('#teamlist').on("change",function(){
-					$('#emplist').empty();
-					$.ajax({
-						url : "./Emp_Search/Search.jsp",
-						data:{deptcode:$('#deptlist').val(),
-							teamcode:$('#teamlist').val()},
-						dataType : "json",
-						success : function(data){
-							$('#emplist').append(
-									"<tr>"
-								+	"<th>부서</th>"
-								+	"<th>팀</th>"
-								+	"<th>이름</th>"
-								+	"<th>직급</th>"
-								+	"<th>사내전화번호</th>"
-								+	"<th>핸드폰</th>"
-								+	"<th></th>"
-								+	"</tr>"			
-							);
-							$.each(data,function(index,entry){
-								$('#emplist').append(
-									"<tr><td>" + entry.deptname + 
-									"</td><td>" + entry.teamname + 
-									"</td><td>" + entry.ename + 
-									"</td><td>" + entry.gradename + 
-									"</td><td>" + entry.emptel + 
-									"</td><td>" + entry.celphone  + 
-									"</td><td><button onclick='info("+entry.empno+")' class='btn btn-back btn-xs'>상세정보</button>&nbsp;<button onclick='msgsend("+entry.empno+")'>&nbsp;&nbsp;쪽지&nbsp;&nbsp;</button>"
-									+ "</td></tr>"		
-								);
-							});
-						},
-						error:function(data){alert("Error 발생");}
-					});
-			}); 
-				// 부서가 바뀌면 
-	          $('#deptlist').on("change",function(){
-	        	  	// 팀 목록 출력
-	        	  	$('#teamlist').empty();
-	        	  	 $.ajax({
-	   	              url : './Emp_Search/Team.jsp',
-	   	              data:{deptcode:$('#deptlist').val()},
-	   	              dataType : "json",
-	   	              success : function(data){
-	   	            	  var options="";
-	   	            		options += "<option value=''>팀선택</option>";
-	   	                  $.each(data, function(index,tlist){
-	   	                         options += "<option value="+tlist.teamcode+">"+tlist.teamname+"</option>";
-	   	                  });
-	   	                  $('#teamlist').append(options);
-	   	              },
-	   	             error: function (xhr,Options,thrownError) {
-	   	             }
-	        	  	});
-	        	  	// 사원 목록 출력
-					$('#emplist').empty();
-					$.ajax({
-						url : "./Emp_Search/Search.jsp",
-						data:{deptcode:$('#deptlist').val(), 
-							teamcode:$('#teamlist').val()},
-						dataType : "json",
-						success : function(data){
-							$('#emplist').append(
-									"<tr>"
-								+	"<th>부서</th>"
-								+	"<th>팀</th>"
-								+	"<th>이름</th>"
-								+	"<th>직급</th>"
-								+	"<th>사내전화번호</th>"
-								+	"<th>핸드폰</th>"
-								+	"<th></th>"
-								+	"</tr>"			
-							);
-							$.each(data,function(index,entry){
-								$('#emplist').append(
-									"<tr><td>" + entry.deptname + 
-									"</td><td>" + entry.teamname + 
-									"</td><td>" + entry.ename + 
-									"</td><td>" + entry.gradename + 
-									"</td><td>" + entry.emptel + 
-									"</td><td>" + entry.celphone  + 
-									"</td><td><button onclick='info("+entry.empno+")' class='btn btn-back btn-xs'>상세정보</button>&nbsp;<button onclick='msgsend("+entry.empno+")'>&nbsp;&nbsp;쪽지&nbsp;&nbsp;</button>"
-									+ "</td></tr>"		
-								);
-							});
-						},
-						error:function(data){alert("Error 발생");}
-					});
-			}); 
-	          
-	        // 버튼이 눌리면 사원목록 출력  
-	 		$('#btn').on("click",function(){
-						$('#emplist').empty();
-						$.ajax({
-							url : "./Emp_Search/Ename.jsp",
-							data:{ename:$('#Ename').val()},
-							dataType : "json",
-							success : function(data){
-								$('#emplist').append(
-										"<tr>"
-									+	"<th>부서</th>"
-									+	"<th>팀</th>"
-									+	"<th>이름</th>"
-									+	"<th>직급</th>"
-									+	"<th>사내전화번호</th>"
-									+	"<th>핸드폰</th>"
-									+	"<th></th>"
-									+	"</tr>"		
-								);
-								$.each(data,function(index,entry){
-									$('#emplist').append(
-										"<tr><td>" + entry.deptname + 
-										"</td><td>" + entry.teamname + 
-										"</td><td>" + entry.ename + 
-										"</td><td>" + entry.gradename + 
-										"</td><td>" + entry.emptel + 
-										"</td><td>" + entry.celphone  + 
-										"</td><td><button onclick='info("+entry.empno+")' class='btn btn-back btn-xs'>상세정보</button>&nbsp;<button onclick='msgsend("+entry.empno+")'>&nbsp;&nbsp;쪽지&nbsp;&nbsp;</button>"
-										+ "</td></tr>"		
-									);
-								});
-							},
-							error:function(data){alert("Error 발생");}
-						});
-				}); 
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
-		});
-	</script>
-</head>
-<body>
-<%-- <jsp:include page="../Main.jsp"></jsp:include>
-   <div id="main" align="center" >
-   <div id="wrapper" style="width: 90%;">
-   		<div align="left" style="height: 50px;"><h3>사원검색</h3></div>
-		<div align="center" style="margin-bottom: 0px;">
-			<div style=" float: left;"><select id="deptlist" class="form-control" style="width:150px; margin-left: 30px; margin-right: 20px; margin-bottom: 10px;"></select></div>
-			<div style=" float: left;"><select id="teamlist" class="form-control" style="width:250px; margin-right: 150px;">
-				<option>부서를 선택하세요</option>
-			</select>
-			</div>
-			<div style=" float: left;"><input type="text" class="form-control" style="width:200px; margin-right: 10px;" placeholder="이름으로 검색" id="Ename"></div>
-			<div style=" float: left;"><input type="button" value="검색" id="btn" class="btn btn-primary btn-md"></div>
-			</div>
-			<div style="width:90%; height: 500px; overflow: scroll; float: none;">
-			<table id="emplist" class="table">
+<!DOCTYPE html>
+<!--본문TB START-->
+
+	<!-- /.box-header -->
+	
+
+	<!-- /.box-header -->
+	<div class="box">
+		
+		<div class="box-body">
+			<table class="table table-hover">
+				<tr>
+					<th style="width: 75px">사용자 ID</th>
+					<th style="width: 75px">사원 번호</th>
+					<th style="width: 75px">사원 이름</th>
+					<th style="width: 75px">사원 전화번호</th>
+					<th style="width: 75px">부서명</th>
+					<th style="width: 75px">팀명</th>
+					<th style="width: 75px">직급</th>
+				</tr>
+				<c:choose>
+					<c:when test="${fn:length(emplist) > 0}">
+						<c:forEach items="${emplist}" var="e">
+							<c:set var="emptype" value="${e.emptype}" />
+							<tr>
+								<td width="100" class="title bb1 br1 p0007"><font
+									color="#666666"> <c:choose>
+											<c:when test="${emptype == 1}">
+												<a
+													href="${pageContext.request.contextPath}/search/DraftingDetail.htm?docnum=${s.docnum}">
+													${s.docnum} </a>
+											</c:when>
+											<c:when test="${signtype == 2}">
+												<a
+													href="${pageContext.request.contextPath}/sign/HolidayDocDetail.htm?docnum=${s.docnum}">
+													${s.docnum} </a>
+									</c:when>
+											<c:when test="${signtype == 3}">
+												<a
+													href="${pageContext.request.contextPath}/sign/OrderDocDetail.htm?docnum=${s.docnum}">
+													${s.docnum} </a>
+									</c:when>
+											<c:when test="${signtype == 4}">
+												<a
+													href="${pageContext.request.contextPath}/sign/BizTripDocDetail.htm?docnum=${s.docnum}">
+													${s.docnum} </a>
+									</c:when>
+											<c:when test="${signtype == 5}">
+												<a
+													href="${pageContext.request.contextPath}/sign/BizTripRepDetail.htm?docnum=${s.docnum}">
+													${s.docnum} </a>
+											</c:when>
+										</c:choose>
+
+								</font></td>
+								<td width="80" class="title bb1 br1 p3007"><font
+									color="#666666"> <c:choose>
+											<c:when test="${signtype == 1}">
+										기안서
+									</c:when>
+											<c:when test="${signtype == 2}">
+										휴가계
+									</c:when>
+											<c:when test="${signtype == 3}">
+										발주서
+									</c:when>
+											<c:when test="${signtype == 4}">
+										출장 신청서
+									</c:when>
+											<c:when test="${signtype == 5}">
+										출장 결과 보고서 
+									</c:when>
+										</c:choose>
+
+
+								</font></td>
+								<td width="100" class="title bb1 br1 p3007"><font
+									color="#666666">${s.draftdate}</font></td>
+								<td width="100" class="title bb1 br1 p3007"><font
+									color="#666666">${s.refreshdate}</font></td>	
+								<td width="100" class="title bb1 br1 p3007"><font
+									color="#666666">${s.currsign}/${s.totalsign}</font></td>
+								<td width="100" class="title bb1 br1 p3007"><font
+									color="#666666">
+									<c:choose>
+										<c:when test="${s.signstate == 1}">
+											결재완료										
+										</c:when>
+										<c:when test="${s.signstate == 2}">
+											반려
+										</c:when>
+										<c:when test="${s.signstate == 0}">
+											대기중
+										</c:when>
+									</c:choose>	
+									</font></td>
+								<td width="200" class="title bb1 p3007"><font
+									color="#666666">${s.signtitle}</font></td>
+							</tr>
+
+						</c:forEach>
+
+					</c:when>
+					<c:otherwise>
+						<tr height="60">
+							<td class="p2007 bb1" colspan="7" align="center"><b>조회된
+									문서가 없습니다.</b></td>
+						</tr>
+					</c:otherwise>
+				</c:choose>
 			</table>
-			</div>
+		</div>
 	</div>
-	</div>
-	<jsp:include page="../Footer.jsp"></jsp:include> --%>
-</body>
-</html>
+</section>
+
+

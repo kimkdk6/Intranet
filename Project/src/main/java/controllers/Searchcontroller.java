@@ -35,7 +35,13 @@ public class Searchcontroller {
 		return "search.SearchEmp";
 	}
 	
-	//@RequestMapping(value = )
+	/*@RequestMapping(value = "SearchEmpDetail.htm")
+	public String SearchEmpDetail(Model model, Principal principal) throws ClassNotFoundException, SQLException {
+		EmpDAO emplistdetail = sqlsession.getMapper(EmpDAO.class);
+		
+		
+		
+	}*/
 	
 	
 }
