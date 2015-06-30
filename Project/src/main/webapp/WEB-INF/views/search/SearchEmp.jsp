@@ -59,8 +59,9 @@
 										</c:choose>
 
 								</font></td>
-								<td width="80" class="title bb1 br1 p3007"><font
-									color="#666666"> <c:choose>
+								<%-- <td width="80" class="title bb1 br1 p3007"><font
+									color="#666666">
+									<c:choose>
 											<c:when test="${signtype == 1}">
 										기안서
 									</c:when>
@@ -79,7 +80,7 @@
 										</c:choose>
 
 
-								</font></td>
+								</font></td> --%>
 								<td width="100" class="title bb1 br1 p3007"><font
 									color="#666666">${s.draftdate}</font></td>
 								<td width="100" class="title bb1 br1 p3007"><font

@@ -11,8 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import dao.EmpDAO;
-
 import dto_vo.Emp.Emp;
+import dto_vo.Emp.Empinfo;
 
 @Controller
 
@@ -23,7 +23,7 @@ public class Searchcontroller {
 	private SqlSession sqlsession;
 	
 	@RequestMapping(value = "SearchEmp.htm")
-	public String SearchEmp(Model model, Principal principal) throws ClassNotFoundException, SQLException {
+	public String SearchEmp(Model model) throws ClassNotFoundException, SQLException {
 		System.out.println("회원 검색 페이지 열람");
 		EmpDAO empdao = sqlsession.getMapper(EmpDAO.class);
 		
@@ -35,14 +35,16 @@ public class Searchcontroller {
 		return "search.SearchEmp";
 	}
 	
-	/*@RequestMapping(value = "SearchEmpDetail.htm")
-	public String SearchEmpDetail(Model model, Principal principal) throws ClassNotFoundException, SQLException {
+	@RequestMapping(value = "SearchEmpDetail.htm")
+	public String SearchEmpDetail(Model model, String userid) throws ClassNotFoundException, SQLException {
+		System.out.println("회원 검색해서 상세보기");
 		EmpDAO empdao = sqlsession.getMapper(EmpDAO.class);
 		
+		Empinfo empinfo = empdao.getEmpInfo(userid);
 		
+		return "search.SearchEmp";
 		
-		
-	}*/
+	}
 	
 	
 }
