@@ -119,6 +119,20 @@
 		where docnum = #{docnum}
 	</select>
 	
+	<!-- 출장 결과 보고서 -->
+	<select id="getBiztriprep" resultType="dto_vo.Sign.Biztriprep">
+		select * 
+		from biztriprep
+		where docnum = #{docnum}
+	</select> 
+	
+	<!-- 출장 경비 내역 -->
+	<select id="getBiztripCost" resultType="dto_vo.Sign.Biztripcost">
+		select * 
+		from biztripcost 
+		where docnum = #{docnum}
+	</select>
+	
 	<!-- 결재 라인 가져오기  -->
 	<select id="getSignline" resultType="dto_vo.Sign.Signline">
 		select * 
@@ -204,9 +218,17 @@
 	
 	<!-- 출장 결과 보고서 작성 -->
 	<insert id="insertBizTripRep" parameterType="dto_vo.Sign.Biztriprep">
-		
+		insert into biztriprep 
+		values((select NVL(MAX(TO_NUMBER(docnum)), 0) from sign), #{bizrepstart}, #{bizrepend}, #{bizloc}, #{bizpur}, #{bizmem}, #{bizcon}, #{biztot})
 	</insert>
-
+	
+	<!-- 출장 경비 내역 작성 -->
+	<insert id="insertBizTripCost" parameterType="dto_vo.Sign.Biztripcost">
+		insert into biztripcost
+		values((select NVL(MAX(TO_NUMBER(docnum)), 0) from sign), #{bizdate},(select NVL(MAX(TO_NUMBER(bizcostnum))+1, 0) from biztripcost),
+				#{bizcostdetail}, #{biznote, jdbcType=VARCHAR}, #{bizcost})
+	</insert>
+	
 	<!-- 결재시 signline singok, signning 변경  -->
 	<update id="updateSignline" parameterType="hashmap">
 		<!-- update signline set signok2 = 1, signning = 'm5' where docnum=27 -->

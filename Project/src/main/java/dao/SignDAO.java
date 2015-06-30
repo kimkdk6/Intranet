@@ -7,6 +7,7 @@ import dto_vo.Emp.Dept;
 import dto_vo.Emp.Emp;
 import dto_vo.Emp.Position;
 import dto_vo.Emp.Team;
+import dto_vo.Sign.Biztripcost;
 import dto_vo.Sign.Biztripdoc;
 import dto_vo.Sign.Biztriprep;
 import dto_vo.Sign.Draftingdoc;
@@ -38,8 +39,12 @@ public interface SignDAO {
 	public Holidaydoc getHolidaydoc(String docnum) throws ClassNotFoundException, SQLException;
 	// 결재 > 출장 보고서 상세보기 가져오기
 	public Biztripdoc getBizTripdoc(String docnum) throws ClassNotFoundException, SQLException;
-	// 결재 > 출장 보고서 상세보기 가져오기
+	// 결재 > 발주서 상세보기 가져오기
 	public List<Orderdoc> getOrderdoc(String docnum) throws ClassNotFoundException, SQLException;
+	// 결재 > 출장 결과 보고서 상세보기 가져오기
+	public Biztriprep getBiztriprep(String docnum) throws ClassNotFoundException, SQLException;
+	// 결재 > 출장 결과 보고서의 출장 경비내역 상세 가져오기
+	public List<Biztripcost> getBiztripCost(String docnum) throws ClassNotFoundException, SQLException;
 	
 	// 부서 리스트 가져오기
 	public List<Dept> getDepts() throws ClassNotFoundException, SQLException;
@@ -67,6 +72,8 @@ public interface SignDAO {
 	public int insertBizTripDoc(Biztripdoc biztripdoc) throws ClassNotFoundException, SQLException;
 	// 출장 결과 보고서 작성
 	public int insertBizTripRep(Biztriprep biztriprep) throws ClassNotFoundException, SQLException;
+	// 출장 경비 내역 작성
+	public int insertBizTripCost(Biztripcost biztripcost) throws ClassNotFoundException, SQLException;
 	
 	// 전자 결재 문서 승인 처리
 	// signline의 signok?값 변경/signning 값 변경 

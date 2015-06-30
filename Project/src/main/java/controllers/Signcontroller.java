@@ -740,8 +740,10 @@ public class Signcontroller {
 			
 		signdao.insertSign(sign);
 		signdao.insertSignline(signline);
-		
-			
+		signdao.insertBizTripRep(biztriprep);
+		for(int i=0; i<list.size(); i++){
+			signdao.insertBizTripCost(list.get(i));
+		}
 		return "redirect:SignMain.htm";
 	}
 	
@@ -750,18 +752,33 @@ public class Signcontroller {
 	public String BizTripRepDetail(String docnum, Model model)
 			throws ClassNotFoundException, SQLException {
 		System.out.println("출장 결과 보고서 상세페이지 보기");
-
+		List<Emp> signerlist = new ArrayList<Emp>();
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
 		// 결재 문서(기본 내용)
 		Sign sign = signdao.getSign(docnum);
-		// 기안서
-		Draftingdoc draftingdoc = signdao.getDraftingdoc(docnum);
+		// 출장 결과 보고서
+		Biztriprep biztriprep = signdao.getBiztriprep(docnum);
+		List<Biztripcost> biztripcost = signdao.getBiztripCost(docnum);
 		// 결재라인
 		Signline signline = signdao.getSignline(docnum);
 
+		signerlist.add(signdao.getEmp(sign.getSigner1()));
+		signerlist.add(signdao.getEmp(sign.getSigner2()));
+		if(sign.getSigner3() != null){
+			signerlist.add(signdao.getEmp(sign.getSigner3()));
+		}
+		if(sign.getSigner4() != null){
+			signerlist.add(signdao.getEmp(sign.getSigner4()));
+		}
+		if(sign.getSigner5() != null){
+			signerlist.add(signdao.getEmp(sign.getSigner5()));
+		}
+		
 		model.addAttribute("sign", sign);
-		model.addAttribute("draftingdoc", draftingdoc);
+		model.addAttribute("biztriprep", biztriprep);
+		model.addAttribute("biztripcost", biztripcost);
 		model.addAttribute("signline", signline);
+		model.addAttribute("signerlist", signerlist);
 		return "sign.BizTripRepDetail";
 	}
 

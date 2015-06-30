@@ -11,11 +11,12 @@ public class Biztriprep {
 	private String bizpur; // 출장목적
 	private int bizmem; // 인원
 	private String bizcon; // 출장일지 및 업무내용
+	private int biztot; // 총합
 	
 	public Biztriprep() {}
 
 	public Biztriprep(int docnum, String bizrepstart, String bizrepend,
-			String bizloc, String bizpur, int bizmem, String bizcon) {
+			String bizloc, String bizpur, int bizmem, String bizcon, int biztot) {
 		this.docnum = docnum;
 		this.bizrepstart = bizrepstart;
 		this.bizrepend = bizrepend;
@@ -23,6 +24,7 @@ public class Biztriprep {
 		this.bizpur = bizpur;
 		this.bizmem = bizmem;
 		this.bizcon = bizcon;
+		this.biztot = biztot;
 	}
 
 	public int getDocnum() {
@@ -81,12 +83,23 @@ public class Biztriprep {
 		this.bizcon = bizcon;
 	}
 
+	public int getBiztot() {
+		return biztot;
+	}
+
+	public void setBiztot(int biztot) {
+		this.biztot = biztot;
+	}
+
 	@Override
 	public String toString() {
 		return "Biztriprep [docnum=" + docnum + ", bizrepstart=" + bizrepstart
 				+ ", bizrepend=" + bizrepend + ", bizloc=" + bizloc
 				+ ", bizpur=" + bizpur + ", bizmem=" + bizmem + ", bizcon="
-				+ bizcon + "]";
+				+ bizcon + ", biztot=" + biztot + "]";
 	}
+
+	
+	 
 	
 }

@@ -69,9 +69,9 @@
 				return false;
 			}
 			
-			if (!signform.bizmen.value) {
+			if (!signform.bizmem.value) {
 				alert("출장 인원을 입력하세요.");
-				signform.bizmen.focus();
+				signform.bizmem.focus();
 				return false;
 			}
 			
@@ -857,7 +857,7 @@
 																			style="border: solid 1px #C0BFC1;">인원</td>
 																		<td class="item" align="left"
 																			style="border: solid 1px #C0BFC1; padding-top: 7px; padding-left: 7px; padding-right: 7px;"><textarea
-																				name="bizmen" id="bizmen"
+																				name="bizmem" id="bizmem"
 																				style="width: 100%; height: 56px; padding: 8px 8px 5px 8px;"></textarea>
 																		</td>
 																	</tr>
@@ -1119,7 +1119,7 @@
 			$(this).val($(this).val().replace(/[^0-9]/gi, "")); //숫자만 입력가능
 		});
 		
-		$('#bizmen').keyup(function() { // 숫자만
+		$('#bizmem').keyup(function() { // 숫자만
 			$(this).val($(this).val().replace(/[^0-9]/gi, "")); //숫자만 입력가능
 		});
 
