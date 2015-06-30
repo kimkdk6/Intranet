@@ -46,7 +46,7 @@ $(function(){
 						success : function(data){
 							document.getElementById("checkin").innerHTML = data;
 							alert("출근처리가 정상적으로 처리됬습니다.");
-							 if('${latecheck}' != "''"){
+							 if('${latecheck}' != ""){
 								 document.getElementById("commute").innerHTML = '&nbsp&nbsp&nbsp&nbsp&nbsp지각사유 :' ;								
 								 document.getElementById("commutecheck").style.visibility="visible";
  								document.getElementById("reason").style.visibility="visible";
