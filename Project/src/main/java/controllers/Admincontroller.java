@@ -68,12 +68,18 @@ public class Admincontroller {
 	
 	// 게시판 추가 
 	@RequestMapping(value = "communityAdd.htm", method=RequestMethod.POST)
-	public String communityAdd(BoardList boardlist, HttpServletRequest request, HttpServletResponse response) throws Exception
+	public String communityAdd(BoardList boardlist, HttpSession session) throws Exception
 	{
 		System.out.println("게시판 추가 기능");
 		AdminDAO admindao = sqlSession.getMapper(AdminDAO.class);
 		// 게시판 삽입
 		admindao.insertBoard(boardlist);
+		
+		// aside boardlist 세션 가져오기
+		BoardListDAO boardlistDao = sqlSession.getMapper(BoardListDAO.class);
+		List<BoardList> boardli = boardlistDao.getAllBoardList();
+								
+		session.setAttribute("boardNameList", boardli);
 		
 		return "redirect:communityAdmin.htm";
 	}
