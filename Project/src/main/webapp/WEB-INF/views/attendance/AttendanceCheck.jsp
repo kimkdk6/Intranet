@@ -1,9 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<%
+     String yy = request.getParameter("yy");
+	String mm = request.getParameter("mm");
+	String dd = request.getParameter("dd");
+%>
     <script type="text/javascript">
+   
     $(function() {
- 
+    	 var nowday = "";
+    	if(<%=yy%>!=null){
+    		nowday = <%=yy%>+"-"+<%=mm%>+"-"+<%=dd%>;
+    	} 
     $.datepicker.regional['ko'] = { // Default regional settings
         closeText: '닫기',
         prevText: '이전달',
@@ -23,18 +33,16 @@
         yearSuffix: ''};
 
     $.datepicker.setDefaults($.datepicker.regional['ko']);
-
     $('#datepicker').datepicker({
     	changeMonth: true,
         changeYear: true,
-        
         onSelect: function(selectedDate) {
         	var strArr = selectedDate.split('-');
-        	console.log(strArr);
             window.location.href = "<%=request.getContextPath() %>/attendance/AttendanceCheck.htm?yy="+strArr[0]+"&mm="+strArr[1]+"&dd="+strArr[2];
-    }
+           
+        }
 		
-    });
+    }).datepicker( "setDate", nowday );
 });
 </script>
 
