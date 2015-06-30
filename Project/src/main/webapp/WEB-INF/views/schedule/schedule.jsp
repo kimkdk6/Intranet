@@ -324,10 +324,10 @@
 
 
 <div id="_schedule_desc" width="100%" border="0" cellspacing="0" cellpadding="0" class="left_menu" title="일정추가하기">
-	<form id="_schedule_form" name="_schedule_layer">
+	<form id="_schedule_form" name="_schedule_layer" action="">
 	<input type="hidden" id="scstart" name="scstart"/>
 	<input type="hidden" id="scend" name="scend"/>
-	<input type="hidden" id="userid" name="userid" value="${userid}"/>
+	<input type="hidden" id="userid" name="userid" value="${sessionScope.userid}"/>
 		<table id="_schedule_table" width="100%" border="0" cellspacing="0" cellpadding="0" class="left_menu">
 			<tbody>
 				<tr>
@@ -648,14 +648,11 @@
 					var startdate = $("#startdate").val()+" "+$("#starthh").val()+":"+$("#startmm").val()+":00";
 					var enddate = $("#enddate").val()+" "+$("#endhh").val()+":"+$("#endmm").val()+":00";
 					
-					//console.log(startdate);
-					//console.log(enddate);
-					//console.log($('#catecode').val());
+					
+					$('#scstart').val(startdate);
+					$('#scend').val(enddate);
 					var a = $('#catecode option:selected').css('background-color');
-					
-					console.log(a);
-					
-					
+
 					$("#calendar").fullCalendar('addEventSource', [ {
  						catecode: $('#catecode option:selected').val(),
 						catename:  $('#catecode option:selected').text(),
