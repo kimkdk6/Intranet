@@ -657,8 +657,8 @@
 					
 					
 					$("#calendar").fullCalendar('addEventSource', [ {
- 						catecode: $('#catecode').val(),
-						catename:  $('#catecode').text(),
+ 						catecode: $('#catecode option:selected').val(),
+						catename:  $('#catecode option:selected').text(),
 						title :  $("#sctitle").val(),
 						start : new Date(startdate),//년,월,일,시,분
 						end : new Date(enddate),
