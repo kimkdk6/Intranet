@@ -7,7 +7,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Error Page
+            Earning Page
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -19,7 +19,7 @@
         <section class="content">
 
           <div class="error-page">
-            <h3 class="headline text-yellow"> ADMIN</h3>
+            <h3 class="headline text-yellow"> ADMIN </h3> 
             <div class="error-content">
               <h3><i class="fa fa-warning text-yellow"></i> Oops! Accessed denied</h3>
               <p>
@@ -29,7 +29,7 @@
                <form class='search-form'>
                 <div class='input-group'>
                 		
-                	<div class="small-box bg-yellow">
+                	<!-- <div class="small-box bg-yellow">
 		                <div class="inner">
 		                  <h3>Sorry</h3>
 		                  <p>for the inconvenient</p>
@@ -38,7 +38,7 @@
 		                  <i class="ion ion-person-add"></i>
 		                </div>
 		                <a href="javascript:history.back()" class="small-box-footer">return to back<i class="fa fa-arrow-circle-right"></i></a>
-		              </div>
+		              </div> -->
 		                  
                 </div>
               </form> 
