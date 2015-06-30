@@ -343,12 +343,12 @@
 											<tbody>
 												<tr>
 													<td width="100%" align="left" style="padding-left: 8px;">
-														<select  id="catecode" name="catecode">
-															<option value="72" style="color:#fff; background-color:#44be1e;" selected="selected">회사일정</option>
-															<option value="74" style="color:#fff; background-color:#4b4b4b;">개인</option>
-															<option value="2157" style="color:#fff; background-color:#b4b4b4;">테스트</option>
-															<option value="2357" style="color:#fff; background-color:#6e9cf2;">장혜졍씨</option>
-															<option value="2359" style="color:#fff; background-color:#6e9cf2;">김덕경씨</option>
+														<select  id="catecode" name="catecode" data-catename="">
+															<option value="72" data-catename="회사일정" style="color:#fff; background-color:#44be1e;" selected="selected">회사일정</option>
+															<option value="74" data-catename="개인"style="color:#fff; background-color:#4b4b4b;">개인</option>
+															<option value="2157" data-catename="테스트" style="color:#fff; background-color:#b4b4b4;">테스트</option>
+															<option value="2357" data-catename="장혜졍씨" style="color:#fff; background-color:#6e9cf2;">장혜졍씨</option>
+															<option value="2359" data-catename="김덕경씨" style="color:#fff; background-color:#6e9cf2;">김덕경씨</option>
 														</select> 
 													<span id="schedule_category_str"></span>
 													</td>
@@ -491,7 +491,7 @@
 											<tbody>
 												<tr>
 													<td width="100%" align="left">
-														<input type="text" id="readcatecode" name="readcatecode" class="input_date" style="width: 100%; margin-left: 7px">
+														<input type="text" id="readcatename" name="readcatename" class="input_date" style="width: 100%; margin-left: 7px">
 													<span id="schedule_category_str"></span>
 													</td>
 												</tr>
@@ -637,16 +637,19 @@
 					
 					console.log(startdate);
 					console.log(enddate);
+					console.log($('#catecode').val());
 					
 					$("#calendar").fullCalendar('addEventSource', [ {
-						
+ 						catecode: $('#catecode').val(),
+						catename:  $('#catecode').data('catename'),
 						title :  $("#sctitle").val(),
 						start : new Date(startdate),//년,월,일,시,분
 						end : new Date(enddate),
 						backgroundColor : "#f56954", //red
 						borderColor : "#f56954", //red
 						userid : $('#userid').val(),
-						content: $('#sccontent').val
+						content: $('#sccontent').val()
+						
 					} ]);
 					newEvent.dialog("close");
 					document.getElementById("_schedule_form").reset();
@@ -774,9 +777,18 @@
 						$('#readenddate').val(resultEnd);
 						
 						$('#readsctitle').val(calEvent.title);
+						
+						console.log(calEvent.content);
+						
 						$('#readsccontent').val(calEvent.content);
 						
+						console.log(calEvent.catename);
+						
+						$('#readcatename').val(calEvent.catename);
+						
 						$( "#_schedule_view" ).dialog('open');
+						
+						
 						
 // 						$( "#_schedule_view" ).dialog('open',function(calEvent){
 							
@@ -805,35 +817,53 @@
 				
 				
 		var userid = { userid : $('#userid').val() };
-	       $.ajax({
-	             Type:"get",
-	             url:"<%= request.getContextPath() %>/schedule/getSchedule.htm",
-	             dataType:"json",
-	             data:userid,
-	             success:function( data ){
-	                 
-	                $.each(data.schedule, function(){
-	                   var a = this;//data.schedule
-	                   var b = data.schcategory;
-	                   $("#calendar").fullCalendar( 'addEventSource', [ {
-	                     title : a.sctitle,
-	                      start : new Date(y, m, 09, 12, 30), //년,월,일,시,분
-	                      end : new Date(y, m, 12, 12, 30), //년,월,일,시,분
-	                      backgroundColor : b.color, //red
-	                      borderColor : b.color, //red
-						  userid : this.userid,
-	                      contents : "aaaa"
-	                  } ] );
-	                   
-	                                   
-	                });
-	              /*   $('#Team *').remove();    
-	                    $('#Team').append(toptions); */
-	                
-	             },
-	             error:function(data){alert("Error 발생");}
-	          });
-
+        $.ajax({
+              Type:"get",
+              url:"<%= request.getContextPath() %>/schedule/getSchedule.htm",
+              dataType:"json",
+              data:userid,
+              success:function( data ){
+                  
+                 $.each(data.schedule, function(index, item){
+                    var a = this;//data.schedule
+                    var b = data.schcategory;
+                    var start = data.StartSchedule;
+                    var end = data.EndSchedule;
+                    
+                   /*  console.log(a.scstart);
+                    console.log(start[0]);
+                    console.log(start[1]); 
+                    console.log(end);*/
+                    console.log(b[1].color);
+                    console.log(b[2].color);
+                    console.log(b[3].color);
+                    console.log(b[4].color);
+                    console.log(b[5].color);
+                    console.log(b[6].color);
+                    console.log(b[7].color);
+                    
+                    $("#calendar").fullCalendar( 'addEventSource', [ {
+                       
+                   	   catecode:a.catecode,
+                       catename:a.catename,
+                       title : a.sctitle,
+                       start : new Date(start[index]), //년,월,일,시,분
+                       end : new Date(end[index]), //년,월,일,시,분
+                       backgroundColor : a.color, //red
+                       borderColor :  a.color, //red
+                       userid : a.userid,
+                       content: a.sccontent
+                  //userid : this.userid,
+//                       contents : "aaaa"
+                   } ] );
+                    
+                 });
+               /*   $('#Team *').remove();    
+                     $('#Team').append(toptions); */
+                 
+              },
+              error:function(data){alert("Error 발생");}
+           });
 	});
 </script>
 
