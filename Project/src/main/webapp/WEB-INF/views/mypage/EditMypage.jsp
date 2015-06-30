@@ -25,15 +25,13 @@
 				</h3>
 			</div>
 			<div class="box-body">
-				<form name="signform" action="" method="post"
+				<form name="signform" action="#" method="post"
 					enctype="multipart/form-data">
-					<input type="hidden" id="signtype" name="signtype" value="1">
-					<input type="hidden" id="dept" name="dept"
-						value="${sessionScope.dept}"> <input type="hidden"
-						id="team" name="team" value="${sessionScope.team}"> <input
-						type="hidden" id="ename" name="ename"
-						value="${sessionScope.myemp.ename}"> <input type="hidden"
-						id="posname" name="posname" value="${sessionScope.pos}">
+					
+					<input type="hidden" id="dept" name="dept" value="${sessionScope.dept}"> 
+					<input type="hidden" id="team" name="team" value="${sessionScope.team}"> 
+					<input type="hidden" id="ename" name="ename"value="${sessionScope.myemp.ename}"> 
+					<input type="hidden" id="posname" name="posname" value="${sessionScope.pos}">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 						<tbody>
 							<tr>
@@ -76,7 +74,7 @@
 											<tr height="30">
 												<td bgcolor="#E1F9DD" style="padding: 3px 0px 0px 12px;"><b>암호</b></td>
 												<td style="padding: 3px 0 0 12px;" class="stxt">
-												<input type="password" name="usrpass" class="input_type1" value="${emp.emppwd}"  style="width: 150px;">
+												<input type="password" name="emppwd" class="input_type1" value="${emp.emppwd}"  style="width: 150px;">
 													<div style="padding: 5px 0 5px 0;">
 														<span class="stxt">- 8자리 이상의 암호를 사용하세요. 영문,숫자,특수문자가
 															혼용되면 안전합니다. </span> <br> <span class="stxt">- 암호를
@@ -140,16 +138,20 @@
 
 											<tr height="30">
 												<td bgcolor="#E1F9DD" style="padding: 3px 0px 0px 12px;"><b>이름</b></td>
-												<td style="padding: 3px 0px 0px 12px;"><input
-													type="text" name="usrname" class="input_type1"
-													style="width: 150px;" value="${emp.ename}"></td>
+												<td style="padding: 3px 0px 0px 12px;">
+												<input 
+													type="hidden" name="ename" class="input_type1"
+													style="width: 150px;" value="${emp.ename}">
+													${emp.ename}
+													
+													</td>
 											</tr>
 
 											<tr height="30">
 												<td bgcolor="#E1F9DD" style="padding: 3px 0px 0px 12px;"><b>회사
 														전화</b></td>
 												<td style="padding: 0px 0px 0px 12px;"><input
-													type="text" name="office" class="input_type1"
+													type="text" name="emptel" class="input_type1"
 													style="width: 150px;" value="${emp.emptel}"
 													onblur="// constraintValue('NUMBER',this);"></td>
 											</tr>
@@ -158,14 +160,14 @@
 												<td bgcolor="#E1F9DD" style="padding: 3px 0px 0px 12px;"><b>핸드폰</b></td>
 												<td style="padding: 0px 0px 0px 12px;">
 													<!-- <input type="text" name="mobile" class="input_type1" style="width:150px;" value="" onBlur="constraintValue('MOBILE',this);"> -->
-													<input type="text" name="mobile" class="input_type1"
+													<input type="text" name="usermobile" class="input_type1"
 													style="width: 150px;" value="${empinfo.usermobile}">
 												</td>
 											</tr>
 											<tr height="30">
 												<td bgcolor="#E1F9DD" style="padding: 3px 0px 0px 12px;"><b>전자우편주소</b></td>
 												<td style="padding: 0px 0px 0px 12px;"><input
-													type="text" name="email" class="input_type1"
+													type="text" name="useremail" class="input_type1"
 													style="width: 200px;" value="${empinfo.useremail}"></td>
 											</tr>
 											<tr height="30">
@@ -191,14 +193,14 @@
 													&nbsp; <!--<input name="zipcode" type="text"
 													class="input_type1" style="width: 60px;" value=""
 													readonly=""> <input type="button" value="우편주소" onclick="addsign()" style="border-left-width: 2px; margin-left:4px;"> -->
-												<input type="text" name="address"
+												<input type="text" name="useraddr"
 													class="input_type1" style="width: 300px;" value="${empinfo.useraddr}"></td>
 											</tr>
 											<tr height="30">
 												<td bgcolor="#E1F9DD" style="padding: 3px 0px 0px 12px;"><b>자택
 														전화</b></td>
 												<td style="padding-left: 6px;">
-													&nbsp; <input type="text" name="home" class="input_type1"
+													&nbsp; <input type="text" name="usertel" class="input_type1"
 													style="width: 150px;" value="${empinfo.usertel}"
 													></td>
 											</tr>
@@ -217,19 +219,19 @@
 																<td width="30%" bgcolor="#E1F9DD"
 																	style="padding: 3px 0px 0px 12px;"><b>부서코드</b>
 																<td style="padding: 0px 0px 0px 12px;">
-																<input type="hidden" name="usrpos" value="${emp.deptcode}">${emp.deptcode}</td>	
+																<input type="hidden" name="deptcode" value="${emp.deptcode}">${emp.deptcode}</td>	
 																	</td>
 															</tr>		
 															<tr height="30">		
 																<td width="30%" bgcolor="#E1F9DD"
 																	style="padding: 3px 0px 0px 12px;"><b>직급코드</b>	
 																<td style="padding: 0px 0px 0px 12px;">
-																<input type="hidden" name="usrpos" value="${emp.poscode}">${emp.poscode}</td>
+																<input type="hidden" name="poscode" value="${emp.poscode}">${emp.poscode}</td>
 															</tr>
 															<tr height="30">
 																<td bgcolor="#E1F9DD" style="padding: 3px 0px 0px 12px;"><b>입사일</b></td>
 																<td style="padding: 0px 0px 0px 12px;"><input
-																	type="hidden" name="usrindt" value="${empinfo.hiredate}">${empinfo.hiredate}</td>
+																	type="hidden" name="hiredate" value="${empinfo.hiredate}">${empinfo.hiredate}</td>
 															</tr>
 
 

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.MypageDAO">
+
+	<update id="updateuser" parameterType="dto_vo.Emp.Emp">							
+	update emp set userid=#{userid}, emppwd=#{emppwd}, ename=#{ename}, emptel=#{emptel}, poscode=#{poscode}, deptcode=#{deptcode} where userid=#{userid}
+    </update>
+    
+    <update id="updateuserinfo" parameterType="dto_vo.Emp.Empinfo">							
+	update empinfo set userphoto=#{userphoto}, usermobile=#{usermobile}, useremail=#{useremail}, birth=#{birth}, useraddr=#{useraddr}, usertel=#{usertel}, hiredate=#{hiredate} where userid=#{userid}
+    </update>
+
+</mapper>
