@@ -67,7 +67,6 @@ public interface SignDAO {
 	public int insertBizTripDoc(Biztripdoc biztripdoc) throws ClassNotFoundException, SQLException;
 	// 출장 결과 보고서 작성
 	public int insertBizTripRep(Biztriprep biztriprep) throws ClassNotFoundException, SQLException;
-		
 	
 	// 전자 결재 문서 승인 처리
 	// signline의 signok?값 변경/signning 값 변경 

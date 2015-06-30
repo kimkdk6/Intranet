@@ -71,6 +71,7 @@ public class Logincontroller {
 		model.addAttribute("Checkout", Checkout);
 		
 		String Latecheck = attcheck.latecheck(principal.getName());
+		System.out.println(Latecheck);
 		model.addAttribute("Latecheck", Latecheck);
 		
 		String Leavecheck = attcheck.leavecheck(principal.getName());
