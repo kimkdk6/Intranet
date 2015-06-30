@@ -80,7 +80,11 @@
 				signform.bizcon.focus();
 				return false;
 			}
-			
+			if ($('#detail_table > tbody > tr').length < 1) {
+				alert("출장 경비 내역을 입력하세요.");
+				signform.bizcon.focus();
+				return false;
+			}
 		    if ($("#signer2").length < 1) {
 				alert("결재자를 선택하세요");
 				signform.users.focus();
