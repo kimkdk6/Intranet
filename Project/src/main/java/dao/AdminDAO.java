@@ -25,5 +25,7 @@ public interface AdminDAO {
 	
 	// boardlist의 게시글 리스트
 	public List<Board> getBoardListbyType(String boardcode) throws ClassNotFoundException, SQLException;
-	 
+	
+	// boardlist 이름 수정
+	public int updateBoardName(String boardcode, String boardname) throws ClassNotFoundException, SQLException;
 }

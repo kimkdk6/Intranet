@@ -49,4 +49,10 @@
 		delete from board
 		where boardnum = #{boardnum}
 	</delete>
+	
+	<update id="updateBoardName" parameterType="hashmap">
+		update boardlist 
+		set boardname = #{param2}
+		where boardcode = #{param1}
+	</update>
 </mapper>

@@ -98,14 +98,15 @@ public class Admincontroller {
 	}
 	
 	// 게시판 수정
-	@RequestMapping(value = "communityModify.htm", method=RequestMethod.POST)
+	@RequestMapping(value = "communityModify.htm")
 	public String communityModify(String boardcode, String boardname, HttpSession session) throws Exception
 	{
 		System.out.println("게시판 수정 기능");
 		AdminDAO admindao = sqlSession.getMapper(AdminDAO.class);
 		// 게시판  수정
 		System.out.println("게시판 수정 기능: "+boardcode+"/"+boardname);
-			
+		admindao.updateBoardName(boardcode, boardname);
+		
 		// aside boardlist 세션 가져오기
 		BoardListDAO boardlistDao = sqlSession.getMapper(BoardListDAO.class);
 		List<BoardList> boardlist = boardlistDao.getAllBoardList();
