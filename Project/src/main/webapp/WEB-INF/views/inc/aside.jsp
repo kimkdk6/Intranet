@@ -4,8 +4,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%-- <% 
-	Emp emp = (Emp)session.getAttribute("emp1"); 
-	Empinfo empinfo = (Empinfo)session.getAttribute("empinfo");
+   Emp emp = (Emp)session.getAttribute("emp1"); 
+   Empinfo empinfo = (Empinfo)session.getAttribute("empinfo");
 %> --%>
 
 <aside class="main-sidebar">
@@ -15,7 +15,7 @@
 		<div class="user-panel">
 			<div class="pull-left image">
 				<img
-					src="<%=request.getContextPath() %>/resources/img/user2-160x160.jpg"
+					src="<%=request.getContextPath()%>/resources/img/user2-160x160.jpg"
 					class="img-circle" alt="User Image" />
 			</div>
 			<div class="pull-left info">
@@ -48,22 +48,20 @@
 					class="label label-primary pull-right">4</span>
 			</a>
 				<ul class="treeview-menu">
-					<li>
-						
-							<a href="${pageContext.request.contextPath}/board/BoardMain.htm">
-								<i class="fa fa-circle-o"></i>
-								게시판 메인
+					<li><a
+						href="${pageContext.request.contextPath}/board/BoardMain.htm">
+							<i class="fa fa-circle-o"></i> 게시판 메인
+					</a> <c:forEach items="${boardNameList}" var="bnl" varStatus="bls">
+							<a
+								href="${pageContext.request.contextPath}/board/BoardList.htm?boardcode=${bnl.boardcode}">
+								<i class="fa fa-circle-o"></i> ${ bnl.boardname }
 							</a>
-						<c:forEach items="${boardNameList}" var="bnl" varStatus="bls">
-							<a href="${pageContext.request.contextPath}/board/BoardList.htm?boardcode=${bnl.boardcode}">
-								<i class="fa fa-circle-o"></i>
-								${ bnl.boardname }
-							</a>
-						</c:forEach>
-					</li>
+						</c:forEach></li>
 				</ul></li>
-			<li><a href="${pageContext.request.contextPath}/schedule/ScheduleMain.htm"> <i class="fa fa-calendar"></i>
-					<span>일정관리</span> <small class="label pull-right bg-green">new</small>
+			<li><a
+				href="${pageContext.request.contextPath}/schedule/ScheduleMain.htm">
+					<i class="fa fa-calendar"></i> <span>일정관리</span> <small
+					class="label pull-right bg-green">new</small>
 			</a></li>
 			<li class="treeview"><a
 				href="${pageContext.request.contextPath}/sign/SignMain.htm"> <i
@@ -92,11 +90,10 @@
 							<li><a
 								href="${pageContext.request.contextPath}/sign/BizTripRepReg.htm"><i
 									class="fa fa-circle-o"></i>출장 결과 보고서</a></li>
-							 
-							 
+
+
 							<li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-						</ul>
-					</li>
+						</ul></li>
 					<li><a href="#"><i class="fa fa-circle-o"></i> 받은 결재 문서함 <i
 							class="fa fa-angle-left pull-right"></i></a>
 						<ul class="treeview-menu">
@@ -106,8 +103,7 @@
 							<li><a
 								href="${pageContext.request.contextPath}/sign/ReceiveSignList.htm?type=1"><i
 									class="fa fa-circle-o"></i>결재 완료 문서</a></li>
-						</ul>
-					</li>
+						</ul></li>
 					<li><a href="#"><i class="fa fa-circle-o"></i> 올린 결재 문서함 <i
 							class="fa fa-angle-left pull-right"></i></a>
 						<ul class="treeview-menu">
@@ -120,8 +116,7 @@
 							<li><a
 								href="${pageContext.request.contextPath}/sign/signsList.htm?type=1"><i
 									class="fa fa-circle-o"></i>결재 완료 문서</a></li>
-						</ul>
-					</li>
+						</ul></li>
 				</ul></li>
 			<li><a href="pages/widgets.html"> <i
 					class="fa fa-fw fa-group"></i> <span>조직도</span> <small
@@ -139,9 +134,8 @@
 					<li><a
 						href="${pageContext.request.contextPath}/attendance/AttendanceCheck.htm"><i
 							class="fa fa-circle-o"></i> 근태 현황 </a></li>
-							</ul>
-							</li>
-							
+				</ul></li>
+
 			<li><a href="pages/widgets.html"> <i
 					class="fa fa-fw fa-cogs"></i> <span>관리자</span> <small
 					class="label pull-right bg-green">new</small>
@@ -149,15 +143,23 @@
 				<ul class="treeview-menu">
 					<li><a
 						href="${pageContext.request.contextPath}/sign/SignMain.htm"><i
-						class="fa fa-circle-o"></i> 커뮤니티 관리 </a></li>
+							class="fa fa-circle-o"></i> 커뮤니티 관리 </a></li>
 					<li><a
 						href="${pageContext.request.contextPath}/sign/SignMain.htm"><i
-						class="fa fa-circle-o"></i> 직급?부서?관리 </a></li>
+							class="fa fa-circle-o"></i> 직급?부서?관리 </a></li>
 					<li><a
-						href="${pageContext.request.contextPath}/sign/SignMain.htm"><i
-						class="fa fa-circle-o"></i> 사원 관리 </a></li>	
-				</ul>
+						href="${pageContext.request.contextPath}/admin/empAdmin.htm"><i
+							class="fa fa-circle-o"></i> 사원 관리 </a></li>
+				</ul></li>
+
+			<li class="treeview"><a
+				href="${pageContext.request.contextPath}/mypage/EditMypage.htm"><i
+					class="fa fa-fw fa-user"></i> <span>정보수정</span> <small
+					class="label pull-right bg-green">new</small></a>
 			</li>
 	</section>
 	<!-- /.sidebar -->
 </aside>
+
+
+

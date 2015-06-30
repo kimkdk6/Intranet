@@ -407,6 +407,7 @@ public class Signcontroller {
 		signdao.insertSignline(signline);
 		List<Orderdoc> list = orderdoc.getOrderlist();
 		for(int i=0; i<list.size(); i++){
+			System.out.println(list.get(i).getProduct()+"/"+list.get(i).getAmount());
 			signdao.insertOrderDoc(list.get(i));
 		}
 			
