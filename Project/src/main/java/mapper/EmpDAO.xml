@@ -23,7 +23,7 @@
 		on e.teamcode = t.teamcode
 		join position p
 		on e.poscode = p.poscode
-		order by empno;
+		order by empno
 	</select>
 	
 	<select id="getEmpInfo" resultType="dto_vo.Emp.Empinfo">
@@ -33,7 +33,7 @@
 	<select id="getEmpInfo2" resultType="dto_vo.Emp.Empinfo">
 		select userid, userphoto, useremail, birth, useraddr, usertel, usermobile
 		from empinfo
-		WHERE USERID=#{userid};
+		WHERE USERID=#{userid}
 	</select>
 	
 	<select id="getEmpDept" resultType="String">

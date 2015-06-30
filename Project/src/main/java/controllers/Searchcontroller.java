@@ -40,7 +40,7 @@ public class Searchcontroller {
 		System.out.println("회원 검색해서 상세보기");
 		EmpDAO empdao = sqlsession.getMapper(EmpDAO.class);
 		
-		Empinfo empinfo = empdao.getEmpInfo(userid);
+		Empinfo empinfo = empdao.getEmpInfo2(userid);
 		
 		return "search.SearchEmp";
 		
