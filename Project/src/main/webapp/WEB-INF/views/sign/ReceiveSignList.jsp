@@ -75,7 +75,7 @@
 									</c:when>
 											<c:when test="${signtype == 5}">
 												<a
-													href="${pageContext.request.contextPath}/sign/BizTripRepDetail.htm">
+													href="${pageContext.request.contextPath}/sign/BizTripRepDetail.htm?docnum=${n.docnum}">
 													${n.docnum} </a>
 											</c:when>
 										</c:choose>
