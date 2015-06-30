@@ -27,7 +27,7 @@
 					<!-- the events -->
 					<div id='external-events'>
 						<c:forEach items="${getSchCategoryDept}" var="d" varStatus="bs">
-                     <div class='external-event bg-red'>${d.catename}</div>
+                     <div class='external-event' style="color:#fff; background-color:${d.color};">${d.catename}</div>
                   </c:forEach>
 					</div>
 				</div>
@@ -43,7 +43,7 @@
 					<!-- the events -->
 					<div id='external-events'>
 						<c:forEach items="${getSchCategoryTeam}" var="t" varStatus="bs">
-                     <div class='external-event bg-green'>${ t.catename }</div>
+                     <div class='external-event' style="color:#fff; background-color:${t.color};">${ t.catename }</div>
                   </c:forEach>
 					</div>
 				</div>
@@ -59,7 +59,7 @@
 					<!-- the events -->
 					<div id='external-events'>
 						<c:forEach items="${getSchCategoryUser}" var="u" varStatus="bs">
-                     <div class='external-event bg-yellow'>${ u.catename }</div>
+                     <div class='external-event' style="color:#fff; background-color:${u.color};">${ u.catename }</div>
                   </c:forEach>
 
 					</div>
@@ -343,12 +343,25 @@
 											<tbody>
 												<tr>
 													<td width="100%" align="left" style="padding-left: 8px;">
-														<select  id="catecode" name="catecode" data-catename="">
-															<option value="72" data-catename="회사일정" style="color:#fff; background-color:#44be1e;" selected="selected">회사일정</option>
-															<option value="74" data-catename="개인"style="color:#fff; background-color:#4b4b4b;">개인</option>
-															<option value="2157" data-catename="테스트" style="color:#fff; background-color:#b4b4b4;">테스트</option>
-															<option value="2357" data-catename="장혜졍씨" style="color:#fff; background-color:#6e9cf2;">장혜졍씨</option>
-															<option value="2359" data-catename="김덕경씨" style="color:#fff; background-color:#6e9cf2;">김덕경씨</option>
+														<select  id="catecode" name="catecode" >
+															
+															
+															<c:forEach items="${getSchCategoryDept}" var="c" varStatus="bs">
+																<option value="${c.catecode }" style="color:#fff; background-color:${c.color};">${c.catename}</option> 
+															</c:forEach>
+															
+															<c:forEach items="${getSchCategoryTeam}" var="c" varStatus="bs">
+																<option value="${c.catecode }" style="color:#fff; background-color:${c.color};">${c.catename}</option>
+															</c:forEach>
+														
+															<c:forEach items="${getSchCategoryUser}" var="c" varStatus="bs">
+																<option value="${c.catecode }" style="color:#fff; background-color:${c.color};">${c.catename}</option>
+															</c:forEach>
+<!-- 															<option value="72" data-catename="회사일정" style="color:#fff; background-color:#44be1e;" selected="selected">회사일정</option> -->
+<!-- 															<option value="74" data-catename="개인"style="color:#fff; background-color:#4b4b4b;">개인</option> -->
+<!-- 															<option value="2157" data-catename="테스트" style="color:#fff; background-color:#b4b4b4;">테스트</option> -->
+<!-- 															<option value="2357" data-catename="장혜졍씨" style="color:#fff; background-color:#6e9cf2;">장혜졍씨</option> -->
+<!-- 															<option value="2359" data-catename="김덕경씨" style="color:#fff; background-color:#6e9cf2;">김덕경씨</option> -->
 														</select> 
 													<span id="schedule_category_str"></span>
 													</td>
@@ -635,18 +648,26 @@
 					var startdate = $("#startdate").val()+" "+$("#starthh").val()+":"+$("#startmm").val()+":00";
 					var enddate = $("#enddate").val()+" "+$("#endhh").val()+":"+$("#endmm").val()+":00";
 					
-					console.log(startdate);
-					console.log(enddate);
-					console.log($('#catecode').val());
+					//console.log(startdate);
+					//console.log(enddate);
+					//console.log($('#catecode').val());
+					var a = $('#catecode option:selected').css('background-color');
+					
+					console.log(a);
+					
 					
 					$("#calendar").fullCalendar('addEventSource', [ {
  						catecode: $('#catecode').val(),
-						catename:  $('#catecode').data('catename'),
+						catename:  $('#catecode').text(),
 						title :  $("#sctitle").val(),
 						start : new Date(startdate),//년,월,일,시,분
 						end : new Date(enddate),
-						backgroundColor : "#f56954", //red
-						borderColor : "#f56954", //red
+						
+						backgroundColor : a, //red
+						
+						
+						borderColor : a, //red
+						
 						userid : $('#userid').val(),
 						content: $('#sccontent').val()
 						
@@ -661,6 +682,7 @@
 				}
 			}
 		});
+		
 		
 		var readEvent = $("#_schedule_view").dialog({
 			
@@ -761,7 +783,7 @@
 						var startSecond = start.getSeconds();
 						var resultStart = startDate+" "+startHour+":"+startMinute+":00";
 						
-						console.log(resultStart);
+					//	console.log(resultStart);
 						
 						$('#readstartdate').val(resultStart);
 
@@ -772,13 +794,13 @@
 						var endSecond = end.getSeconds();
 						var resultEnd = endDate+" "+endHour+":"+endMinute+":00";
 						
-						console.log(resultEnd);
+						//console.log(resultEnd);
 						
 						$('#readenddate').val(resultEnd);
 						
 						$('#readsctitle').val(calEvent.title);
 						
-						console.log(calEvent.content);
+						//console.log(calEvent.content);
 						
 						$('#readsccontent').val(calEvent.content);
 						
@@ -789,14 +811,7 @@
 						$( "#_schedule_view" ).dialog('open');
 						
 						
-						
-// 						$( "#_schedule_view" ).dialog('open',function(calEvent){
-							
-// 							console.log(this.calEvent.title);
-// 						});
-
-// 						$('#readsctitle').val();
-			//			$('#readsctitle').attr('value',calEvent.title); 
+						 
 						
 					},
 
@@ -826,22 +841,9 @@
                   
                  $.each(data.schedule, function(index, item){
                     var a = this;//data.schedule
-                    var b = data.schcategory;
                     var start = data.StartSchedule;
                     var end = data.EndSchedule;
-                    
-                   /*  console.log(a.scstart);
-                    console.log(start[0]);
-                    console.log(start[1]); 
-                    console.log(end);*/
-                    console.log(b[1].color);
-                    console.log(b[2].color);
-                    console.log(b[3].color);
-                    console.log(b[4].color);
-                    console.log(b[5].color);
-                    console.log(b[6].color);
-                    console.log(b[7].color);
-                    
+
                     $("#calendar").fullCalendar( 'addEventSource', [ {
                        
                    	   catecode:a.catecode,
@@ -853,13 +855,10 @@
                        borderColor :  a.color, //red
                        userid : a.userid,
                        content: a.sccontent
-                  //userid : this.userid,
-//                       contents : "aaaa"
+
                    } ] );
                     
                  });
-               /*   $('#Team *').remove();    
-                     $('#Team').append(toptions); */
                  
               },
               error:function(data){alert("Error 발생");}
