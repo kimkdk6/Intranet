@@ -15,6 +15,8 @@ import dao.EmpDAO;
 import dto_vo.Emp.Emp;
 
 @Controller
+
+/*회원 리스트 보기*/
 @RequestMapping("/search/")
 public class Searchcontroller {
 	@Autowired
@@ -30,8 +32,6 @@ public class Searchcontroller {
 		
 		model.addAttribute("emplist", emplist);
 		
-		return "";
-		
-		
+		return "search.SearchEmp";
 	}
 }

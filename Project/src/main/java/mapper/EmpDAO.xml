@@ -13,6 +13,11 @@
 	<select id="getEmp" resultType="dto_vo.Emp.Emp">
 		SELECT * FROM EMP WHERE USERID=#{userid}
 	</select>
+	
+	<select id="getEmplist" resultType="dto_vo.Emp.Emp">
+		SELECT * FROM EMP
+	</select>
+	
 	<select id="getEmpInfo" resultType="dto_vo.Emp.Empinfo">
 		SELECT * FROM EMPINFO WHERE USERID=#{userid}
 	</select>
