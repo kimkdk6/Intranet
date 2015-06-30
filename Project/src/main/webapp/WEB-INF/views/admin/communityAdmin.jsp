@@ -1,51 +1,63 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<div class="box">
-	<div class="box-header">
-		<h3 class="box-title">Responsive Hover Table</h3>
-		<div class="box-tools">
-			<div class="input-group">
-				<input type="text" name="table_search"
-					class="form-control input-sm pull-right" style="width: 150px;"
-					placeholder="Search" />
-				<div class="input-group-btn">
-					<button class="btn btn-sm btn-default">
-						<i class="fa fa-search"></i>
-					</button>
-				</div>
-			</div>
+<section class="content-header">
+	<h1>
+		커뮤니티 관리 <small>커뮤니티 관리 페이지</small>
+	</h1>
+	<ol class="breadcrumb">
+		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li class="active">관리자</li>
+	</ol>
+</section>
+
+<section class="content-header">
+	<div class="box box-success">
+		<div class="box-header">
+			<h3 class="box-title">Add Board</h3>
 		</div>
+		<div class="box-body">
+			<div class="input-group">
+						<input type="text" name="table_search"
+							class="form-control input-sm pull-right"
+							style="width: 200px; height: 35px;" placeholder="board name" />
+						<div class="input-group-btn">
+							<button class="btn btn-info btn-flat" type="button">추가</button>
+						</div>
+					</div>
+		</div>
+		<!-- /.box-body -->
 	</div>
-	<!-- /.box-header -->
-	<div class="box-body table-responsive no-padding">
-		<table class="table table-hover">
-			<tr>
-				<th>ID</th>
-				<th>User</th>
-				<th>Date</th>
-				<th>Status</th>
-				<th>Reason</th>
-			</tr>
-			<tr>
-				<td>183</td>
-				<td>John Doe</td>
-				<td>11-7-2014</td>
-				<td><span class="label label-success">Approved</span></td>
-				<td>Bacon ipsum dolor sit amet salami venison chicken flank
-					fatback doner.</td>
-			</tr>
-			<tr>
-				<td>219</td>
-				<td>Alexander Pierce</td>
-				<td>11-7-2014</td>
-				<td><span class="label label-warning">Pending</span></td>
-				<td>Bacon ipsum dolor sit amet salami venison chicken flank
-					fatback doner.</td>
-			</tr>
-			 
-		</table>
+</section>
+
+<section class="content-header">
+	<div class="box">
+		<div class="box-header">
+			<h3 class="box-title">커뮤니티 관리</h3>
+
+		</div>
+		<!-- /.box-header -->
+		<div class="box-body table-responsive no-padding">
+			<table class="table table-hover">
+				<tr>
+					<th>게시판명</th>
+					<th>게시글 수</th>
+					<th>관리</th>
+
+				</tr>
+				<c:forEach var="boardtype" items="${boardmap}">
+					<tr>
+						<td><input type="text" class="form-control"
+							value="${boardtype.key.boardname}"></td>
+						<td>${boardtype.value}</td>
+						<td><span class="label label-success">Approved</span></td>
+
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
+		<!-- /.box-body -->
 	</div>
-	<!-- /.box-body -->
-</div>
-<!-- /.box -->
+	<!-- /.box -->
+</section>

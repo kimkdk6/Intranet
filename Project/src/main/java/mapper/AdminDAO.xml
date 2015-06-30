@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.AdminDAO">
+
+	<!-- 게시판 종류 리스트 가져오기 -->
+	<select id="getBoardListType" resultType="dto_vo.Board.BoardList">
+		select * from boardlist 
+		order by boardcode
+	</select>
+	
+	<select id="getBoardofNum" resultType="int">
+		select count(*)
+        from board b join boardlist l
+                     on b.BOARDCODE = l.BOARDCODE
+        where l.BOARDCODE = #{boardcode}
+	</select>
+
+
+</mapper>
