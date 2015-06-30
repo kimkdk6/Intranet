@@ -5,14 +5,13 @@
 
 <mapper namespace="dao.ScheduleDAO">
    
-   <select id="getSchedule" resultType="String">
+   <select id="getSchedule" resultType="dto_vo.Schedule.ScheduleView">
       <!-- select * from schedule where userid = #{ userid } -->
       <!-- select sctitle, to_char(scstart, 'YYYY-MM-DD HH24:MI:SS') as scstart, to_char(scend, 'YYYY-MM-DD HH24:MI:SS') as scend, 
             schnum, catecode, userid, sccontent
       from Schedule where userid=#{ userid } -->
-      select to_char(scstart, 'YY, MM, DD HH, MI') as scstart, to_char(scend, 'YY, MM, DD HH, MI') as scend,
-      sctitle, schnum, catecode, userid, sccontent 
-      from Schedule where userid=#{ userid }
+      select sctitle, schnum, catecode, userid, sccontent ,color,catename
+      from Scheduleview where userid=#{ userid }
    </select>
    <select id="getSchCategory" resultType="dto_vo.Schedule.Schcategory">
       select * from SCHCATEGORY where userid = #{ userid }
@@ -26,5 +25,20 @@
    </select>
    <select id="getSchCategoryUser" resultType="dto_vo.Schedule.Schcategory">
       select catename from SCHCATEGORY where userid = #{ userid } and deptcode is null and Teamcode is null
+   </select>
+   
+   <select id="getStartSchedule" resultType="String">
+      <!-- select * from schedule where userid = #{ userid } -->
+      <!-- select sctitle, to_char(scstart, 'YYYY-MM-DD HH24:MI:SS') as scstart, to_char(scend, 'YYYY-MM-DD HH24:MI:SS') as scend, 
+            schnum, catecode, userid, sccontent
+      from Schedule where userid=#{ userid } -->
+      select to_char(scstart, 'YYYY-MM-DD HH24:MI:SS') as scstart from Schedule where userid=#{ userid }
+   </select>
+   <select id="getEndSchedule" resultType="String">
+      <!-- select * from schedule where userid = #{ userid } -->
+      <!-- select sctitle, to_char(scstart, 'YYYY-MM-DD HH24:MI:SS') as scstart, to_char(scend, 'YYYY-MM-DD HH24:MI:SS') as scend, 
+            schnum, catecode, userid, sccontent
+      from Schedule where userid=#{ userid } -->
+      select to_char(scend, 'YYYY-MM-DD HH24:MI:SS') as scend from Schedule where userid=#{ userid }
    </select>
 </mapper>
