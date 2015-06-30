@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import dto_vo.Emp.Emp;
 import dto_vo.Emp.Empinfo;
@@ -17,6 +18,9 @@ public interface EmpDAO {
 	
 	// emp 가져오기
 	public Emp getEmp( String userid ) throws ClassNotFoundException, SQLException;
+	
+	// emp 가져오기
+	public List<Emp> getEmplist() throws ClassNotFoundException, SQLException;
 	
 	// empinfo 가져오기
 	public Empinfo getEmpInfo( String userid ) throws ClassNotFoundException, SQLException;
