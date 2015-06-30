@@ -1,6 +1,7 @@
 package controllers;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,6 +42,7 @@ public class Admincontroller {
 	{
 		System.out.println("게시판 관리 페이지");
 		AdminDAO admindao = sqlSession.getMapper(AdminDAO.class);
+		
 		// 게시판 목록
 		List<BoardList> boardtypelist = admindao.getBoardListType();
 		
@@ -50,8 +52,16 @@ public class Admincontroller {
 		for(int i=0; i<boardtypelist.size(); i++){
 			int bnum = admindao.getBoardofNum(boardtypelist.get(i).getBoardcode());
 			boardmap.put(boardtypelist.get(i), bnum);
+			
 		}
 		
+		/*List<Integer> boardofnum = new ArrayList<Integer>();
+		for(int i=0; i<boardtypelist.size(); i++){
+			boardofnum.add(admindao.getBoardofNum(boardtypelist.get(i).getBoardcode()));
+		}*/
+		
+		//model.addAttribute("boardtypelist", boardtypelist);
+		//model.addAttribute("boardofnum", boardofnum);
 		model.addAttribute("boardmap", boardmap);
 		return "admin.communityAdmin";
 	}

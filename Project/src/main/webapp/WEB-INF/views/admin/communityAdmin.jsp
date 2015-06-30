@@ -51,7 +51,7 @@
 						<th>관리</th>
 	
 					</tr>
-					<c:forEach var="boardtype" items="${boardmap}">
+					  <c:forEach var="boardtype" items="${boardmap}">
 						<tr>
 							<td><input type="text" name="boardname" class="form-control" id="boardname${boardtype.key.boardcode}"
 								value="${boardtype.key.boardname}"></td>
@@ -66,7 +66,9 @@
 							</td>
 							
 						</tr>
-					</c:forEach>
+					</c:forEach>  
+					 
+					
 				</table>
 			
 		</div>
