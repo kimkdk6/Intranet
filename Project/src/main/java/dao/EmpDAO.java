@@ -19,7 +19,7 @@ public interface EmpDAO {
 	// emp 가져오기
 	public Emp getEmp( String userid ) throws ClassNotFoundException, SQLException;
 	
-	// emp 가져오기
+	// emp 리스트 가져오기
 	public List<Emp> getEmplist() throws ClassNotFoundException, SQLException;
 	
 	// empinfo 가져오기

@@ -36,26 +36,26 @@
 													href="${pageContext.request.contextPath}/search/DraftingDetail.htm?docnum=${s.docnum}">
 													${s.docnum} </a>
 											</c:when>
-											<c:when test="${signtype == 2}">
+											<%-- <c:when test="${signtype == 2}">
 												<a
 													href="${pageContext.request.contextPath}/sign/HolidayDocDetail.htm?docnum=${s.docnum}">
 													${s.docnum} </a>
-									</c:when>
+											</c:when>
 											<c:when test="${signtype == 3}">
 												<a
 													href="${pageContext.request.contextPath}/sign/OrderDocDetail.htm?docnum=${s.docnum}">
 													${s.docnum} </a>
-									</c:when>
+											</c:when>
 											<c:when test="${signtype == 4}">
 												<a
 													href="${pageContext.request.contextPath}/sign/BizTripDocDetail.htm?docnum=${s.docnum}">
 													${s.docnum} </a>
-									</c:when>
+											</c:when>
 											<c:when test="${signtype == 5}">
 												<a
 													href="${pageContext.request.contextPath}/sign/BizTripRepDetail.htm?docnum=${s.docnum}">
 													${s.docnum} </a>
-											</c:when>
+											</c:when> --%>
 										</c:choose>
 
 								</font></td>

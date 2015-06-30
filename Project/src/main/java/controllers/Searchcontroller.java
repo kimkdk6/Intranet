@@ -28,7 +28,7 @@ public class Searchcontroller {
 		EmpDAO empdao = sqlsession.getMapper(EmpDAO.class);
 		
 		// String userid = principal.getName();
-		List<Emp> emplist = empdao.getEmplist();
+		List<Emp> emplist = empdao.getEmplist(); // List<Emp> 리스트 는 EmpDAO.java
 		
 		model.addAttribute("emplist", emplist);
 		
@@ -37,7 +37,8 @@ public class Searchcontroller {
 	
 	/*@RequestMapping(value = "SearchEmpDetail.htm")
 	public String SearchEmpDetail(Model model, Principal principal) throws ClassNotFoundException, SQLException {
-		EmpDAO emplistdetail = sqlsession.getMapper(EmpDAO.class);
+		EmpDAO empdao = sqlsession.getMapper(EmpDAO.class);
+		
 		
 		
 		

@@ -15,11 +15,25 @@
 	</select>
 	
 	<select id="getEmplist" resultType="dto_vo.Emp.Emp">
-		SELECT * FROM EMP
+		select e.userid, e.empno, e.ename, e.emptel, e.deptcode, e.teamcode, e.poscode
+		from emp e
+		join dept d
+		on e.deptcode = d.deptcode
+		join team t
+		on e.teamcode = t.teamcode
+		join position p
+		on e.poscode = p.poscode
+		order by empno;
 	</select>
 	
 	<select id="getEmpInfo" resultType="dto_vo.Emp.Empinfo">
 		SELECT * FROM EMPINFO WHERE USERID=#{userid}
+	</select>
+	
+	<select id="getEmpInfo2" resultType="dto_vo.Emp.Empinfo">
+		select userid, userphoto, useremail, birth, useraddr, usertel, usermobile
+		from empinfo
+		WHERE USERID=#{userid};
 	</select>
 	
 	<select id="getEmpDept" resultType="String">
