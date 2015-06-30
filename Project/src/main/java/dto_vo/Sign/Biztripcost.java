@@ -1,24 +1,30 @@
 package dto_vo.Sign;
 
 import java.util.Date;
+import java.util.List;
 
 // ==============출장경비내역==================
 public class Biztripcost {
 	private int docnum; // 문서번호
-	private Date bizdate; // 출장날짜
+	private int bizcostnum; // 경비내역번호
+	private String bizdate; // 출장날짜
 	private String bizcostdetail; // 지출내역
 	private String biznote; // 비고
 	private int bizcost; // 금액
 	
+	private List<Biztripcost> costlist;
+	
 	public Biztripcost() {}
 
-	public Biztripcost(int docnum, Date bizdate, String bizcostdetail,
-			String biznote, int bizcost) {
+	public Biztripcost(int docnum, int bizcostnum, String bizdate, String bizcostdetail,
+			String biznote, int bizcost, List<Biztripcost> costlist) {
 		this.docnum = docnum;
+		this.bizcostnum = bizcostnum;
 		this.bizdate = bizdate;
 		this.bizcostdetail = bizcostdetail;
 		this.biznote = biznote;
 		this.bizcost = bizcost;
+		this.costlist = costlist;
 	}
 
 	public int getDocnum() {
@@ -28,12 +34,20 @@ public class Biztripcost {
 	public void setDocnum(int docnum) {
 		this.docnum = docnum;
 	}
+	
+	public int getBizcostnum() {
+		return bizcostnum;
+	}
 
-	public Date getBizdate() {
+	public void setBizcostnum(int bizcostnum) {
+		this.bizcostnum = bizcostnum;
+	}
+
+	public String getBizdate() {
 		return bizdate;
 	}
 
-	public void setBizdate(Date bizdate) {
+	public void setBizdate(String bizdate) {
 		this.bizdate = bizdate;
 	}
 
@@ -60,13 +74,22 @@ public class Biztripcost {
 	public void setBizcost(int bizcost) {
 		this.bizcost = bizcost;
 	}
+	
+
+	public List<Biztripcost> getCostlist() {
+		return costlist;
+	}
+
+	public void setCostlist(List<Biztripcost> costlist) {
+		this.costlist = costlist;
+	}
 
 	@Override
 	public String toString() {
-		return "Biztripcost [docnum=" + docnum + ", bizdate=" + bizdate
-				+ ", bizcostdetail=" + bizcostdetail + ", biznote=" + biznote
-				+ ", bizcost=" + bizcost + "]";
+		return "Biztripcost [docnum=" + docnum + ", bizcostnum=" + bizcostnum
+				+ ", bizdate=" + bizdate + ", bizcostdetail=" + bizcostdetail
+				+ ", biznote=" + biznote + ", bizcost=" + bizcost
+				+ ", costlist=" + costlist + "]";
 	}
-	
-	
+
 }

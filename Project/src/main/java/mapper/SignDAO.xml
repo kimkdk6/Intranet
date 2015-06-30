@@ -201,6 +201,11 @@
 		insert into biztripdoc 
 		values((select NVL(MAX(TO_NUMBER(docnum)), 0) from sign), #{bizstart}, #{bizend}, #{bizloc}, #{bizpur})
 	</insert>
+	
+	<!-- 출장 결과 보고서 작성 -->
+	<insert id="insertBizTripRep" parameterType="dto_vo.Sign.Biztriprep">
+		
+	</insert>
 
 	<!-- 결재시 signline singok, signning 변경  -->
 	<update id="updateSignline" parameterType="hashmap">

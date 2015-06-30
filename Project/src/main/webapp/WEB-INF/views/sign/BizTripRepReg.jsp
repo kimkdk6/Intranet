@@ -907,163 +907,7 @@
 																	</tr>
 																</thead>
 																<tbody id="AddOption">
-																	<!-- <tr height="27" align="center" id="calc">
-																		날짜
-																		<td class="item"
-																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" id="bizdate" name="bizdate" class="bizdate"
-																			style="width: 90%;" value="">
-																		</td>
-
-																		지출내역
-																		<td class="item"
-																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" name="bizcostdetail" id="bizcostdetail" class="bizcostdetail"
-																			style="text-align: right; width: 90%">
-																		</td>
-
-																		비고
-																		<td class="item"
-																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" id="biznote" name="biznote" class="biznote"
-																			style="text-align: right; width: 90%" >
-																		</td>
-
-																		금액
-																		<td class="item"
-																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" id="bizcost" name="bizcost" class="bizcost" value="0"
-																			style="width: 90%" >
-																		</td>
-
-																	</tr>
-																	<tr height="27" align="center" id="calc">
-																		날짜
-																		<td class="item"
-																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" id="bizdate1" name="bidate" class="bidate"
-																			style="width: 90%;" value="">
-																		</td>
-
-																		지출내역
-																		<td class="item"
-																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" name="bizcostdetail" id="bizcostdetail" class="bizcostdetail"
-																			style="text-align: right; width: 90%" >
-																		</td>
-
-																		비고
-																		<td class="item"
-																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" name="biznote" id="biznote" class="biznote"
-																			style="text-align: right; width: 90%">
-																		</td>
-
-																		금액
-																		<td class="item"
-																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" name="bizcost" id="bizcost" class="bizcost" value="0"
-																			style="width: 90%" >
-																		</td>
-
-
-
-																	</tr>
-																	<tr height="27" align="center" id="calc">
-																		날짜
-																		<td class="item"
-																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" id="bizdate2" name="bizdate" class="bizdate"
-																			style="width: 90%;" value="">
-																		</td>
-
-																		지출내역
-																		<td class="item"
-																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" name="bizcostdetail" id="bizcostdetail" class="bizcostdetail"
-																			style="text-align: right; width: 90%" >
-																		</td>
-
-																		비고
-																		<td class="item"
-																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" name="biznote" id="biznote" class="biznote"
-																			style="text-align: right; width: 90%">
-																		</td>
-
-																		금액
-																		<td class="item"
-																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" name="bizcost" id="bizcost" class="bizcost" value="0"
-																			style="width: 90%" >
-																		</td>
-
-
-
-																	</tr>
-																	<tr height="27" align="center" id="calc">
-																	날짜
-																		<td class="item"
-																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" id="bizdate3" name="bizdate" class="bizdate"
-																			style="width: 90%;" value="">
-																		</td>
-
-																		지출내역
-																		<td class="item"
-																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" name="bizcostdetail" id="bizcostdetail" class="bizcostdetail"
-																			style="text-align: right; width: 90%" >
-																		</td>
-
-																		비고
-																		<td class="item"
-																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" name="biznote" id="biznote" class="biznote"
-																			style="text-align: right; width: 90%">
-																		</td>
-
-																		금액
-																		<td class="item"
-																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" name="bizcost" id="bizcost" class="bizcost" value="0"
-																			style="width: 90%" >
-																		</td>
-
-
-																	</tr>
-																	<tr height="27" align="center" id="calc">
-																		날짜
-																		<td class="item"
-																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" id="bizdate4" name="bizdate" class="bizdate"
-																			style="width: 90%;" value="">
-																		</td>
-
-																		지출내역
-																		<td class="item"
-																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" name="bizcostdetail" id="bizcostdetail" class="bizcostdetail"
-																			style="text-align: right; width: 90%" >
-																		</td>
-
-																		비고
-																		<td class="item"
-																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" name="biznote" id="biznote" class="biznote"
-																			style="text-align: right; width: 90%">
-																		</td>
-
-																		금액
-																		<td class="item"
-																			style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;">
-																			<input type="text" name="bizcost" id="bizcost" class="bizcost" value="0"
-																			style="width: 90%" >
-																		</td>
-
-
-																	</tr>
- -->
+																	
 																</tbody>
 															</table>
 															<table width="100%" class="noborder" cellspacing="0"
@@ -1189,22 +1033,6 @@
 		        }
 		});
 		
-		$( "#bizdate").datepicker({
-	    			        changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
-	    			        changeYear: true, // 년을 바꿀 수 있는 셀렉트 박스를 표시한다.
-	    			        minDate: '-100y', // 현재날짜로부터 100년이전까지 년을 표시한다.
-	    			        nextText: '다음 달', // next 아이콘의 툴팁.
-	    			        prevText: '이전 달', // prev 아이콘의 툴팁.
-	    			        numberOfMonths: [1,1], // 한번에 얼마나 많은 월을 표시할것인가. [2,3] 일 경우, 2(행) x 3(열) = 6개의 월을 표시한다.
-	    			        yearRange: 'c-99:c+100', // 년도 선택 셀렉트박스를 현재 년도에서 이전, 이후로 얼마의 범위를 표시할것인가.
-	    			        currentText: '오늘 날짜' , // 오늘 날짜로 이동하는 버튼 패널
-	    			        closeText: '닫기',  // 닫기 버튼 패널
-	    			        dateFormat: "yy-mm-dd", // 텍스트 필드에 입력되는 날짜 형식.
-	    			        showAnim: "blind", //애니메이션을 적용한다.
-	    			        showMonthAfterYear: true , // 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다. 
-	    			        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], // 요일의 한글 형식.
-	    			        monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] // 월의 한글 형식.
-		});
 		
 		$( "#bizdate1").datepicker({
 	        changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
@@ -1277,16 +1105,21 @@
 
 	$('#addline').click(function() {
 		var contents ='';
+		var idx = $('#detail_table > tbody > tr').length;
 		contents += '<tr height="27" align="center">';
-		contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" id="bizdate" name="bizdate" class="bizdate" style="width: 90%;" value=""></td>';
-		contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" name="bizcostdetail" id="bizcostdetail" class="bizcostdetail" style="text-align: right; width: 90%"></td>';
-		contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" id="biznote" name="biznote" class="biznote" style="text-align: right; width: 90%" ></td>';
-		contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" id="bizcost" name="bizcost" class="bizcost" value="0" style="width: 90%" ></td>';
+		contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" id="bizdate" name="costlist['+idx+'].bizdate" class="bizdate1" style="width: 90%;" value=""></td>';
+		contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" name="costlist['+idx+'].bizcostdetail" id="bizcostdetail" class="bizcostdetail" style="text-align: right; width: 90%"></td>';
+		contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" id="biznote" name="costlist['+idx+'].biznote" class="biznote" style="text-align: right; width: 90%" ></td>';
+		contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" id="bizcost" name="costlist['+idx+'].bizcost" class="bizcost" value="0" style="width: 90%" ></td>';
 		contents +=	'</tr>';
 		
 		$('#AddOption').append(contents); // 추가
 		
 		$('.bizcost').keyup(function() { // 숫자만
+			$(this).val($(this).val().replace(/[^0-9]/gi, "")); //숫자만 입력가능
+		});
+		
+		$('#bizmen').keyup(function() { // 숫자만
 			$(this).val($(this).val().replace(/[^0-9]/gi, "")); //숫자만 입력가능
 		});
 
@@ -1301,12 +1134,24 @@
 			$('.biztot').val(addtotal);
 		});
 
-		
+		$( ".bizdate1").datepicker({
+	        changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
+	        changeYear: true, // 년을 바꿀 수 있는 셀렉트 박스를 표시한다.
+	        minDate: '-100y', // 현재날짜로부터 100년이전까지 년을 표시한다.
+	        nextText: '다음 달', // next 아이콘의 툴팁.
+	        prevText: '이전 달', // prev 아이콘의 툴팁.
+	        numberOfMonths: [1,1], // 한번에 얼마나 많은 월을 표시할것인가. [2,3] 일 경우, 2(행) x 3(열) = 6개의 월을 표시한다.
+	        yearRange: 'c-99:c+100', // 년도 선택 셀렉트박스를 현재 년도에서 이전, 이후로 얼마의 범위를 표시할것인가.
+	        currentText: '오늘 날짜' , // 오늘 날짜로 이동하는 버튼 패널
+	        closeText: '닫기',  // 닫기 버튼 패널
+	        dateFormat: "yy-mm-dd", // 텍스트 필드에 입력되는 날짜 형식.
+	        showAnim: "blind", //애니메이션을 적용한다.
+	        showMonthAfterYear: true , // 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다. 
+	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], // 요일의 한글 형식.
+	        monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] // 월의 한글 형식.
+		});
 
-		
-		
-			
-			
-			
 	});
+	
+	
 </script>

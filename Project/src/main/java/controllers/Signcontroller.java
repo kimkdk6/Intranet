@@ -690,21 +690,17 @@ public class Signcontroller {
 	// 출장 신청서 작성
 	@Transactional
 	@RequestMapping(value = "BizTripRepReg.htm", method = RequestMethod.POST)
-	public String BizTripRepReg(Sign sign, Biztriprep biztriprep, List<Biztripcost> biztripcost,
+	public String BizTripRepReg(Sign sign, Biztriprep biztriprep, Biztripcost biztripcost,
 			Signline signline, Principal principal)
 			throws ClassNotFoundException, SQLException, IOException {
 		System.out.println("출장 결과 보고서 작성");
 		int totalsign=0;
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
-			
-		System.out.println("출장 결과 보고서 결재 파일: "+sign.toString());
-		System.out.println("출장 결과 보고서 파일: "+biztriprep.toString());
-		System.out.println("출장 경비 내역 리스트가 나오나: "+biztripcost.toString());
-		System.out.println("결재 라인: "+signline.toString());
+		List<Biztripcost> list = biztripcost.getCostlist();
 			
 		// 결재인 넣기 
-		/*sign.setSigner1(principal.getName());
-		  sign.setUserid(principal.getName());
+		sign.setSigner1(principal.getName());
+		 sign.setUserid(principal.getName());
 				
 		// 결재라인 : 1>승인 2>반려 3>대기
 		signline.setSignok1(1);
@@ -729,12 +725,22 @@ public class Signcontroller {
 		System.out.println("totalsign: "+totalsign);
 		sign.setTotalsign(totalsign);
 			
-			// signline: signning 
-			signline.setSignning(sign.getSigner2());
+		// signline: signning 
+		signline.setSignning(sign.getSigner2());
+		
+		System.out.println("출장 결과 보고서 결재 파일: "+sign.toString());
+		System.out.println("출장 결과 보고서: "+biztriprep.toString());
+		System.out.println("출장 결과 보고서 파일: "+biztriprep.toString());
+		
+		for(int i=0; i<list.size(); i++){
+			System.out.println("costlist: "+list.get(i).getBizcostnum()+"/"+list.get(i).getBizcostdetail());
+		}
+
+		System.out.println("결재 라인: "+signline.toString());
 			
 		signdao.insertSign(sign);
 		signdao.insertSignline(signline);
-		signdao.insertBizTripDoc(biztripdoc);*/
+		
 			
 		return "redirect:SignMain.htm";
 	}
