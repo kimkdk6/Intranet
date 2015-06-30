@@ -30,15 +30,8 @@
         
         onSelect: function(selectedDate) {
         	var strArr = selectedDate.split('-');
-            alert(strArr);
-            $.ajax({
-				url:"<%=request.getContextPath() %>/attendance/AttendanceCheck.htm?yy=strArr[0]&mm=strArr[1]&dd=strArr[2]",  //요청 URL
-				type:"get",           //전송 타입
-				dataType:"html",
-				success : function(data){
-				},
-				error :function(data){alert("aa");}
-			});
+        	console.log(strArr);
+            window.location.href = "<%=request.getContextPath() %>/attendance/AttendanceCheck.htm?yy="+strArr[0]+"&mm="+strArr[1]+"&dd="+strArr[2];
     }
 		
     });

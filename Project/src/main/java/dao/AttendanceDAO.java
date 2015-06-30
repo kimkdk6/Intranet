@@ -16,6 +16,6 @@ public interface AttendanceDAO {
 	public void letereason(String userid, String reason) throws ClassNotFoundException, SQLException;
 	public String leavecheck(String userid) throws ClassNotFoundException, SQLException;
 	public void leavereason(String userid, String reason) throws ClassNotFoundException, SQLException;
-	public List<String> allmember() throws ClassNotFoundException, SQLException;
+	public List<String> allmember(String yy, String mm, String dd) throws ClassNotFoundException, SQLException;
 	
 }

@@ -13,9 +13,9 @@
                     e.empapprove, d.deptname, p.posname, t.attdate, t.attstarttime, t.attendtime  
         from emp e join dept d on e.deptcode = d.deptcode
            join position p on e.poscode = p.poscode
-           join attendance t on e.userid = t.userid
+           join attendance t on e.userid = t.userid order by deptcode
            ) a
-           where to_char (attdate, 'YYYY-MM-DD') = to_char (sysdate, 'YYYY-MM-DD')
+           where to_char (attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}'
            )
     </select>
     

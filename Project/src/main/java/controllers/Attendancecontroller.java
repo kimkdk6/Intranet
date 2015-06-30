@@ -1,7 +1,7 @@
 package controllers;
 
 import java.security.Principal;
-import java.util.HashMap;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.View;
 
@@ -28,13 +29,18 @@ public class Attendancecontroller {
 	   private View jsonView;
 
 	@RequestMapping(value = "AttendanceCheck.htm")
-	public String AttendanceCheck(Model model,Principal principal,HttpServletRequest request, HttpServletResponse response) throws Exception
+	public String AttendanceCheck(@RequestParam(value="yy",defaultValue="")String yy, @RequestParam(value="mm",defaultValue="")String mm, @RequestParam(value="dd",defaultValue="")String dd, Model model,Principal principal,HttpServletRequest request, HttpServletResponse response) throws Exception
 	{
-		AttendanceDAO allmember = sqlSession.getMapper(AttendanceDAO.class);
-		List<String> all = allmember.allmember();
-		for(Object o : all){
-			System.out.println(o);
+		GregorianCalendar now = new GregorianCalendar();
+		String date = String.format("%TF",now);
+		if(yy.equals("")){
+			yy = date.split("-")[0];
+			mm = date.split("-")[1];
+			dd = date.split("-")[2];
 		}
+
+		AttendanceDAO allmember = sqlSession.getMapper(AttendanceDAO.class);
+		List<String> all = allmember.allmember(yy,mm,dd);
 		model.addAttribute("all", all);
 		
 		return "attendance.AttendanceCheck";
@@ -109,7 +115,7 @@ public class Attendancecontroller {
 	
 		AttendanceDAO leavereason = sqlSession.getMapper(AttendanceDAO.class);
 		leavereason.leavereason(principal.getName(),request.getParameter("reason"));
-		System.out.println("asd");
+		
 	}
 	
 	@RequestMapping(value = "Commute.htm")
