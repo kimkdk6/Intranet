@@ -83,11 +83,32 @@
                     on e.TEAMCODE = t.TEAMCODE
          where e.userid = #{userid}
 	</select>
-	
+	<!-- 팀 가져오기 -->
 	<select id="getTeamList" resultType="dto_vo.Emp.Team">
 		select *
 		from team
 		where deptcode = #{deptcode}
 	</select>
 	
+	<!-- 회원 승인 -->
+	<update id="updateEmpApprove" parameterType="hashmap">
+		 update emp 
+		 set empapprove=1, emptel=#{param2}
+		 where userid = #{param1}
+	</update>
+	
+	<!-- 회원 정보 수정 -->
+	<!--  userid,  emptel,  deptcode,  teamcode,  poscode -->
+	<update id="updateEmp" parameterType="hashmap">
+		 update emp set
+   		 emptel = #{param2}, deptcode=#{param3}, teamcode=#{param4}, poscode=#{param5}
+     	 where userid= #{param1}
+	</update>
+	
+	<!-- 회원 정보 수정 : 프로필 수정 -->
+	<update id="updateEmpinfo" parameterType="hashmap">
+		update empinfo 
+		set userphoto = #{param2}
+		where userid = #{param1}
+	</update>
 </mapper>

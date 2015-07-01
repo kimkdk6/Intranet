@@ -102,19 +102,15 @@ public class Empinfo {
    public void setFiredate(String firedate) {
       this.firedate = firedate;
    }
+
+@Override
+public String toString() {
+	return "Empinfo [userid=" + userid + ", userphoto=" + userphoto
+			+ ", useremail=" + useremail + ", birth=" + birth + ", useraddr="
+			+ useraddr + ", usertel=" + usertel + ", usermobile=" + usermobile
+			+ ", hiredate=" + hiredate + ", firedate=" + firedate + "]";
+}
    
-   @Override
-   public String toString(){
-      return " userid : " +   this.userid + "\n" + 
-            " userphoto : " +   this.userphoto + "\n" + 
-            " useremail :"      +   this.useremail + "\n" + 
-            " birth : " + this.birth+ "\n" + 
-            " useraddr : " + this.useraddr + "\n" + 
-            " usertel : " + this.usertel + "\n" + 
-            " usermobile : " + this.usermobile + "\n" + 
-            " hiredate : " + this.hiredate + "\n" + 
-            " firedate : " + this.firedate + "\n";
-   }
 
    
 }

@@ -1,7 +1,9 @@
 package controllers;
 
+import java.io.FileOutputStream;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +19,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.View;
 
 import dao.AdminDAO;
@@ -26,6 +30,7 @@ import dao.BoardListDAO;
 import dao.SignDAO;
 import dto_vo.Board.Board;
 import dto_vo.Board.BoardList;
+import dto_vo.Board.File;
 import dto_vo.Emp.Dept;
 import dto_vo.Emp.Emp;
 import dto_vo.Emp.Empinfo;
@@ -153,9 +158,12 @@ public class Admincontroller {
 	}
 	
 	// 회원 정보 수정 페이지
-	@RequestMapping(value = "EmpEditAdmin.htm", method=RequestMethod.GET)
-	public String EmpEditAdmin(Model model, String userid) throws Exception
+	@RequestMapping(value = "EmpEditAdmin.htm")
+	public String EmpEditAdmin(Model model, 
+		@RequestParam(value="userid",required=true)	String userid) throws Exception
 	{
+		System.out.println(userid);
+		
 		AdminDAO admindao = sqlSession.getMapper(AdminDAO.class);
 		SignDAO signdao = sqlSession.getMapper(SignDAO.class);
 		// 회원 목록
@@ -172,6 +180,9 @@ public class Admincontroller {
 		}
 		List<Team> teamlist = admindao.getTeamList(deptcode);
 		
+		System.out.println(emp);
+		System.out.println(empinfo);
+		
 		model.addAttribute("emp", emp);
 		model.addAttribute("empinfo", empinfo);
 		model.addAttribute("deptlist", deptlist);
@@ -181,14 +192,56 @@ public class Admincontroller {
 	}
 	
 	// 회원 정보 수정
-	@RequestMapping(value = "EmpEditAdmin.htm", method=RequestMethod.POST)
-	public String EmpEditAdmin(Model model) throws Exception
+	@RequestMapping(value = "EmpEdit.htm", method=RequestMethod.POST)
+	public String EmpEditAdmin(Model model, File file, Emp emp) throws Exception
 	{
 		AdminDAO admindao = sqlSession.getMapper(AdminDAO.class);
-		SignDAO signdao = sqlSession.getMapper(SignDAO.class);
-		// 회원 목록
-		System.out.println("회원 정보 수정 페이지 ");
+		// 회원 정보
+		System.out.println("회원 정보 수정");
+		System.out.println(file.getFile()+"/"+emp.getEmptel()+"/"+emp.getDeptcode()+"/"+emp.getTeamcode()+"/"+emp.getPoscode());
+		// 회원 정보 수정
 		
-		return "redirect:EmpEditAdmin.htm";
+		if(file.getFile() != null){
+			// 첨부 파일 
+			CommonsMultipartFile f = file.getFile();
+		      Calendar cal = Calendar.getInstance();
+		      String fileName = null;
+		      if(!f.isEmpty()){
+					//이 경우라면 최소 한개는 파일첨부
+					String fname = cal.getTimeInMillis()+f.getOriginalFilename();
+					//String path = request.getServletContext().getRealPath("/Upload/ProfilePhoto/");
+					String path = finaldata.path+"ProfilePhoto";
+					
+					String fullpath = path + "\\" + fname;
+					System.out.println(fullpath);
+					if(!fname.equals("")){
+						//서버에 물리적 경로 파일쓰기작업
+						FileOutputStream fs = new FileOutputStream(fullpath);
+						fs.write(f.getBytes());
+						fs.close();
+					}
+					fileName = fname; //파일의 이름만 별도 관리
+				}
+			
+		    // 파일 수정
+		      admindao.updateEmpinfo(emp.getUserid(), fileName);  
+		}
+		
+		admindao.updateEmp(emp.getUserid(), emp.getEmptel(), 
+					emp.getDeptcode(), emp.getTeamcode(), emp.getPoscode());
+		
+		return "forward:EmpEditAdmin.htm?userid="+emp.getUserid();
+	}
+
+	// 회원 승인
+	@RequestMapping(value = "EmpApproveAdmin.htm", method=RequestMethod.POST)
+	public String EmpApproveAdmin(Model model, String userid, String emptel) throws Exception
+	{
+		AdminDAO admindao = sqlSession.getMapper(AdminDAO.class);
+		// 회원 목록
+		System.out.println("회원 승인");
+		System.out.println(userid+"/"+emptel);
+		admindao.updateEmpApprove(userid, emptel);	 
+		return "forward:EmpEditAdmin.htm?userid="+userid;
 	}
 }

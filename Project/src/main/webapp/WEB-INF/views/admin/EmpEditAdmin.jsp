@@ -4,6 +4,25 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  <script>
+ 	function adminApp(proc)
+	{
+	    var f = document.empform;
+	    if(proc == 'A'){
+	     
+	        if( !confirm( '승인하시겠습니까?') ) return;
+	        f.action = "EmpApproveAdmin.htm";
+	    }
+	    
+	    else if(proc == 'M')
+	    {
+	        if( !confirm('수정하시겠습니까?.') ) return;
+	        f.action = 'EmpEdit.htm';
+	    }
+	  
+	    
+	    f.submit();
+	}
+ 
        $(function() {
            $('#deptcode').change(function() {
               var deptcode = { deptcode : $('#deptcode').val() };
@@ -55,8 +74,7 @@
 				</h3>
 			</div>
 			<div class="box-body">
-				<form name="signform" action="#" method="post"
-					enctype="multipart/form-data">
+				<form name="empform" action="" method="post" enctype="multipart/form-data">
 					 
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 						<tbody>
@@ -87,7 +105,7 @@
 												<td width="120" bgcolor="#E1F9DD"
 													style="padding: 3px 0px 0px 12px;"><b>아이디</b></td>
 												<td style="padding: 3px 0px 0px 12px;">
-												<input type="hidden" name="usriden" value="${emp.userid}">
+												<input type="hidden" name="userid" value="${emp.userid}">
 													${emp.userid}</td>
 											</tr>
 											<tr height="30">
@@ -108,12 +126,12 @@
 																	</c:when>
 						
 																	<c:otherwise>
-																	<img src="../resources/img/pic_bg.gif" id="imageArea">
+																	<img width="130px" height="146" src="../resources/img/pic_bg.gif" id="imageArea">
 																		
 																	</c:otherwise>
 																</c:choose>
 																	<div>
-																		<input type="file" name="uploadify" id="uploadify"
+																		<input type="file" name="file" id="file"
 																			width="60" height="20">
 																	</div>
 																	<div id="fileQueue"></div></td>
@@ -282,6 +300,17 @@
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tbody>
 										<tr>
+											<td align="left" style="padding: 0 12px 0 0;">
+												<table border="0" cellspacing="0" cellpadding="0">
+													<tbody>
+														<tr><td>
+														<input type="button" class="btn bg-navy margin" value="목 록" 
+														onclick="location.href='${pageContext.request.contextPath}/admin/empAdmin.htm'">
+														
+														</td></tr>
+													</tbody>
+												</table>
+											</td>
 											<td align="right" style="padding: 0 12px 0 0;">
 												<table border="0" cellspacing="0" cellpadding="0">
 													<tbody>
@@ -289,11 +318,11 @@
 														<c:choose>
 															<c:when test="${emp.empapprove == 0}">
 																<td><input type="button" class="btn bg-orange margin" value="승인"
-																onclick="addsign()"></td>
+																onclick="adminApp('A')"></td>
 															</c:when>
 															<c:otherwise>
 																<td><input type="button" class="btn bg-olive margin" value="수정완료"
-																onclick="addsign()"></td>
+																onclick="adminApp('M')"></td>
 															</c:otherwise>
 														</c:choose>
 														</tr>

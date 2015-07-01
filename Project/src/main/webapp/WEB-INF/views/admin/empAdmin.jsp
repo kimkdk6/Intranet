@@ -33,11 +33,7 @@
 									<td align="left">
 										<table border="0" cellspacing="0" cellpadding="0">
 											<tbody>
-												<tr>
-													<td><a
-														href="usrInfo.php?dept=&amp;rtn_url=%2Fadmin%2FusrList.php%3Fdept%3D"><img
-															src="/img/webmail/bt_add2.gif"></a></td>
-												</tr>
+											 
 											</tbody>
 										</table>
 									</td>
@@ -92,8 +88,8 @@
 											style="padding: 2px 7px 0 7px; border-bottom: 1px  #eaeaea solid;">
 											<c:choose>
 												<c:when test="${emp.empapprove == 0}">
-													<a href="${pageContext.request.contextPath}/admin/EmpEditAdmin.htm?userid=${emp.userid}"><font color="red">
-													${emp.ename} (대기중)</font></a>
+													<a href="${pageContext.request.contextPath}/admin/EmpEditAdmin.htm?userid=${emp.userid}">
+													<b>${emp.ename} <font color="red">(대기중)</font></b></a>
 												</c:when>
 												<c:otherwise>
 													<a href="${pageContext.request.contextPath}/admin/EmpEditAdmin.htm?userid=${emp.userid}"><font color="gray">
@@ -122,11 +118,7 @@
 									<td align="left">
 										<table border="0" cellspacing="0" cellpadding="0">
 											<tbody>
-												<tr>
-													<td><a
-														href="usrInfo.php?dept=&amp;rtn_url=%2Fadmin%2FusrList.php%3Fdept%3D"><img
-															src="/img/webmail/bt_add2.gif"></a></td>
-												</tr>
+												 
 											</tbody>
 										</table>
 									</td>
