@@ -29,4 +29,7 @@ public interface ScheduleDAO {
    
    // scedule end 시간
    List<Schcategory> getEndSchedule( String userid ) throws ClassNotFoundException, SQLException;
+   
+   // scedule Insert
+   public void InsertSchedule( Schedule schedule ) throws ClassNotFoundException, SQLException;
 }

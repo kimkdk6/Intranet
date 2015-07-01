@@ -41,4 +41,10 @@
       from Schedule where userid=#{ userid } -->
       select to_char(scend, 'YYYY-MM-DD HH24:MI:SS') as scend from Schedule where userid=#{ userid }
    </select>
+   <insert id="InsertSchedule" parameterType="dto_vo.Schedule.Schedule">
+         
+         insert into Schedule(schnum, Catecode, userid, scstart, scend, sctitle, sccontent) 
+      values( SCHEDULE_SCHNUM.NEXTVAL, #{catecode}, #{userid}, to_date( #{scstart},'YYYY-MM-DD HH24:MI:SS') ,to_date( #{scend},'YYYY-MM-DD HH24:MI:SS'), #{sctitle}, #{sccontent})
+   </insert>
+   
 </mapper>

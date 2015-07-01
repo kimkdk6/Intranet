@@ -97,6 +97,9 @@
   <script src="<%=request.getContextPath() %>/resources/plugins/fullcalendar/fullcalendar.js" type="text/javascript"></script>
   <link href="<%=request.getContextPath() %>/resources/plugins/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css" />
   <link href="<%=request.getContextPath() %>/resources/plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" type="text/css" media='print' />
+  
+  <script src="<%=request.getContextPath() %>/resources/plugins/colorpicker/bootstrap-colorpicker.min.js" type="text/javascript"></script>
+  <link href="<%=request.getContextPath() %>/resources/plugins/colorpicker/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css" media='print' />
   </head>
   <body class="skin-blue sidebar-mini">
     <div class="wrapper">

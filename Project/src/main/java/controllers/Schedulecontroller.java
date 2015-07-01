@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -38,7 +39,7 @@ public class Schedulecontroller {
 
          Emp emp = (Emp)session.getAttribute("myemp");
          //  System.out.println();
-         System.out.println(emp);
+//         System.out.println(emp);
               
          String userid = emp.getUserid();
          
@@ -48,9 +49,9 @@ public class Schedulecontroller {
           List<Schcategory> getSchCategoryTeam = scheduleDAO.getSchCategoryTeam(userid);
           List<Schcategory> getSchCategoryUser = scheduleDAO.getSchCategoryUser(userid);
          
-          System.out.println(getSchCategoryDept.toString());
-          System.out.println(getSchCategoryTeam.toString());
-          System.out.println(getSchCategoryUser.toString());
+//          System.out.println(getSchCategoryDept.toString());
+//          System.out.println(getSchCategoryTeam.toString());
+//          System.out.println(getSchCategoryUser.toString());
           
           model.addAttribute("getSchCategoryDept", getSchCategoryDept);
           model.addAttribute("getSchCategoryTeam", getSchCategoryTeam);
@@ -65,11 +66,11 @@ public class Schedulecontroller {
        
         Emp emp = (Emp)session.getAttribute("myemp");
       //  System.out.println();
-        System.out.println(emp);
+//        System.out.println(emp);
         
         String userid = emp.getUserid();
        
-         System.out.println("getSchedule.htm >> userid : " + userid);
+//         System.out.println("getSchedule.htm >> userid : " + userid);
          response.setContentType("text/html;charset=UTF-8");
          
          ScheduleDAO scheduleDAO = sqlsession.getMapper(ScheduleDAO.class);
@@ -96,6 +97,62 @@ public class Schedulecontroller {
        
          return jsonView;
        }
+    
+ // 게시판 메인 페이지 보기
+    @RequestMapping(value = "insertSchedule.htm")
+    public String InsertSchedule(Model model, HttpSession session, HttpServletRequest request) throws ClassNotFoundException, SQLException {
+
+       Emp emp = (Emp) session.getAttribute("myemp");
+       System.out.println(emp);
+
+       String userid = emp.getUserid();
+       int catecode = Integer.parseInt(request.getParameter("catecode"));
+       String scstart = request.getParameter("scstart");
+       String scend = request.getParameter("scend");
+       String sctitle = request.getParameter("sctitle");
+       String sccontent = request.getParameter("sccontent");
+       
+       System.out.println("catecode : " + catecode);
+       System.out.println("scstart : " + scstart);
+       
+ /*      System.out.println("insertSchedule.htm >> " + request.getParameter("catecode"));
+       System.out.println("insertSchedule.htm >> " + request.getParameter("scstart"));
+       System.out.println("insertSchedule.htm >> " + request.getParameter("scend"));t
+       System.out.println("insertSchedule.htm >> " + request.getParameter("sctitle"));
+       System.out.println("insertSchedule.htm >> " + request.getParameter("sccontent"));*/
+       
+       ScheduleDAO scheduleDAO = sqlsession.getMapper(ScheduleDAO.class);
+       
+       Schedule schedule = new Schedule();
+       schedule.setUserid(userid);
+       schedule.setCatecode(catecode);
+       schedule.setScstart(scstart);
+       schedule.setScend(scend);
+       schedule.setSctitle(sctitle);
+       schedule.setSccontent(sccontent);
+       
+       System.out.println(schedule);
+       
+       scheduleDAO.InsertSchedule(schedule);
+       
+       //scheduleDAO.InsertSchedule();
+       
+       /*ScheduleDAO scheduleDAO = sqlsession.getMapper(ScheduleDAO.class);
+
+       List<Schcategory> getSchCategoryDept = scheduleDAO.getSchCategoryDept(userid);
+       List<Schcategory> getSchCategoryTeam = scheduleDAO.getSchCategoryTeam(userid);
+       List<Schcategory> getSchCategoryUser = scheduleDAO.getSchCategoryUser(userid);
+
+       System.out.println(getSchCategoryDept.toString());
+       System.out.println(getSchCategoryTeam.toString());
+       System.out.println(getSchCategoryUser.toString());
+
+       model.addAttribute("getSchCategoryDept", getSchCategoryDept);
+       model.addAttribute("getSchCategoryTeam", getSchCategoryTeam);
+       model.addAttribute("getSchCategoryUser", getSchCategoryUser);
+ */
+       return "schedule.schedule";
+    }   
 }
 
 
