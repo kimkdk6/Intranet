@@ -21,8 +21,14 @@
 		<div class="box-body">
 			<div class="input-group">
 						<form name="newboard" action="communityAdd.htm" method="post">
+							<select id="deptcode" name="deptcode" class="form-control" style="width: 300px;" ${disabled}>
+								<option value="">부서를 선택하세요</option>
+								<c:forEach var="dept" items="${deptlist}">
+									<option value="${dept.deptcode}">${dept.deptname}</option>
+								</c:forEach>
+							</select>							
 							<input type="text" name="boardname" id="boardname"
-								class="form-control input-sm pull-right"
+								class="form-contro	l input-sm pull-left"
 								style="width: 200px; height: 35px;" placeholder="team name" />
 							 
 								<button class="btn btn-info btn-flat" type="button" onclick="addBoard()">추가</button>

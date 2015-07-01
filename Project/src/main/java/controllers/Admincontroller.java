@@ -58,22 +58,15 @@ public class Admincontroller {
 		List<BoardList> boardtypelist = admindao.getBoardListType();
 		
 		// 게시판타입이랑 게시판 갯수
-		Map<BoardList, Integer> boardmap = new HashMap<BoardList, Integer>();
+		List<Integer> boardnlist = new ArrayList<Integer>();
 		
 		for(int i=0; i<boardtypelist.size(); i++){
 			int bnum = admindao.getBoardofNum(boardtypelist.get(i).getBoardcode());
-			boardmap.put(boardtypelist.get(i), bnum);
-			
+			boardnlist.add(bnum);
 		}
 		
-		/*List<Integer> boardofnum = new ArrayList<Integer>();
-		for(int i=0; i<boardtypelist.size(); i++){
-			boardofnum.add(admindao.getBoardofNum(boardtypelist.get(i).getBoardcode()));
-		}*/
-		
-		//model.addAttribute("boardtypelist", boardtypelist);
-		//model.addAttribute("boardofnum", boardofnum);
-		model.addAttribute("boardmap", boardmap);
+		model.addAttribute("boardtypelist", boardtypelist);
+		model.addAttribute("boardnlist", boardnlist);
 		return "admin.communityAdmin";
 	}
 	
@@ -221,33 +214,23 @@ public class Admincontroller {
 		return "forward:EmpEditAdmin.htm?userid="+userid;
 	}
 	
-	// 게시판 관리 페이지
-		@RequestMapping(value = "teamAdmin.htm", method=RequestMethod.GET)
-		public String teamAdmin(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception
-		{
-			System.out.println("게시판 관리 페이지");
-			AdminDAO admindao = sqlSession.getMapper(AdminDAO.class);
+	// 팀 관리 페이지
+	@RequestMapping(value = "teamAdmin.htm", method=RequestMethod.GET)
+	public String teamAdmin(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception
+	{
+		System.out.println("팀 관리 페이지");
+		AdminDAO admindao = sqlSession.getMapper(AdminDAO.class);
+		SignDAO signdao = sqlSession.getMapper(SignDAO.class);
+		// 부서 목록
+		List<Dept> deptlist = signdao.getDepts();
+		// 팀 목록
+		List<Team> teamlist = signdao.getTeams();
+		
+		
 			
-			// 게시판 목록
-			List<BoardList> boardtypelist = admindao.getBoardListType();
+		 model.addAttribute("deptlist", deptlist);
 			
-			// 게시판타입이랑 게시판 갯수
-			Map<BoardList, Integer> boardmap = new HashMap<BoardList, Integer>();
-			
-			for(int i=0; i<boardtypelist.size(); i++){
-				int bnum = admindao.getBoardofNum(boardtypelist.get(i).getBoardcode());
-				boardmap.put(boardtypelist.get(i), bnum);
-				
-			}
-			
-			/*List<Integer> boardofnum = new ArrayList<Integer>();
-			for(int i=0; i<boardtypelist.size(); i++){
-				boardofnum.add(admindao.getBoardofNum(boardtypelist.get(i).getBoardcode()));
-			}*/
-			
-			//model.addAttribute("boardtypelist", boardtypelist);
-			//model.addAttribute("boardofnum", boardofnum);
-			model.addAttribute("boardmap", boardmap);
-			return "admin.teamAdmin";
-		}	
+		 
+		return "admin.teamAdmin";
+	}	
 }

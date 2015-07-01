@@ -51,23 +51,28 @@
 						<th>관리</th>
 	
 					</tr>
-					  <c:forEach var="boardtype" items="${boardmap}">
+					  
+					  <c:forEach var="boardtype" items="${boardtypelist}" varStatus="bt">
 						<tr>
-							<td><input type="text" name="boardname" class="form-control" id="boardname${boardtype.key.boardcode}"
-								value="${boardtype.key.boardname}"></td>
-							<td>${boardtype.value}</td>
 							<td>
-								<a href="javascript:myApp('M', ${boardtype.key.boardcode})">
-									<span class="label label-success">명칭바꾸기</span>
-								</a>
-									<a href="javascript:myApp('D', ${boardtype.key.boardcode})">
-								<span class="label label-danger">삭제</span></a>
-							
-							</td>
+								<c:if test="${boardtype.boardcode == 1 || boardtype.boardcode == 2 || boardtype.boardcode == 3 || boardtype.boardcode == 4}">
+								<span class="label pull-center bg-yellow">기본</span></c:if>
+								<input type="text" name="boardname" class="form-control" id="boardname${boardtype.boardcode}"
+								value="${boardtype.boardname}"></td>
+							<td style="font-align: center;">${boardnlist[bt.index]}</td>
+							 <td>
+								<a href="javascript:myApp('M', ${boardtype.boardcode})">
+									<span class="label label-success">명칭바꾸기</span></a>
+								 
+								<c:if test="${boardtype.boardcode != 1 && boardtype.boardcode != 2 
+										&& boardtype.boardcode != 3 && boardtype.boardcode != 4}">
+									<a href="javascript:myApp('D', ${boardtype.boardcode})">
+									<span class="label label-danger">삭제</span></a>
+								</c:if>
+							</td> 
 							
 						</tr>
-					</c:forEach>  
-					 
+					</c:forEach> 
 					
 				</table>
 			
