@@ -23,8 +23,14 @@ import org.springframework.web.servlet.View;
 import dao.AdminDAO;
 import dao.AttendanceDAO;
 import dao.BoardListDAO;
+import dao.SignDAO;
 import dto_vo.Board.Board;
 import dto_vo.Board.BoardList;
+import dto_vo.Emp.Dept;
+import dto_vo.Emp.Emp;
+import dto_vo.Emp.Empinfo;
+import dto_vo.Emp.Position;
+import dto_vo.Emp.Team;
 
 @Controller
 @RequestMapping("/admin/")
@@ -132,17 +138,47 @@ public class Admincontroller {
 		return "redirect:communityAdmin.htm";
 	}	
 	
+	
 	// 회원 관리 페이지
 	@RequestMapping(value = "empAdmin.htm", method=RequestMethod.GET)
-	public String empAdmin(Model model,Principal principal,HttpServletRequest request, HttpServletResponse response) throws Exception
+	public String empAdmin(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception
 	{
-		
+		AdminDAO admindao = sqlSession.getMapper(AdminDAO.class);
 		// 회원 목록
 		System.out.println("회원 관리 페이지 ");
+		List<Emp> emplist = admindao.getEmps();
+		
+		model.addAttribute("emplist", emplist);
 		return "admin.empAdmin";
 	}
 	
-	
+	// 회원 정보 수정 페이지
+	@RequestMapping(value = "EmpEditAdmin.htm", method=RequestMethod.GET)
+	public String EmpEditAdmin(Model model, String userid) throws Exception
+	{
+		AdminDAO admindao = sqlSession.getMapper(AdminDAO.class);
+		SignDAO signdao = sqlSession.getMapper(SignDAO.class);
+		// 회원 목록
+		System.out.println("회원 정보 수정 페이지 ");
+		Emp emp = admindao.getEmp(userid);
+		Empinfo empinfo = admindao.getEmpInfo(userid);
+		List<Dept> deptlist = signdao.getDepts();
+		List<Position> poslist = signdao.getPositions();
+		int deptcode = 0;
+		for(Dept l : deptlist){
+			if(emp.getDeptcode().equals(l.getDeptname())){
+				deptcode = l.getDeptcode();
+			}
+		}
+		List<Team> teamlist = admindao.getTeamList(deptcode);
+		
+		model.addAttribute("emp", emp);
+		model.addAttribute("empinfo", empinfo);
+		model.addAttribute("deptlist", deptlist);
+		model.addAttribute("poslist", poslist);
+		model.addAttribute("teamlist", teamlist);
+		return "admin.EmpEditAdmin";
+	}
 	
 	
 }

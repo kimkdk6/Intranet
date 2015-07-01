@@ -69,31 +69,45 @@
 										class="title">직원명</th>
 									<th align="left"
 										style="border-bottom: 1px #eaeaea solid; border-right: 1px #eaeaea solid; padding: 3px 0 0 7px;"
-										class="title">핸드폰</th>
-
-
+										class="title">사내 전화</th> 
 								</tr>
-								<tr bgcolor="#f9f9f9" height="23">
-									<td align="left"
-										style="padding: 2px 0px 0 7px; border-bottom: 1px #eaeaea solid;">1</td>
-									<td align="left"
-										style="padding: 2px 7px 0 7px; border-bottom: 1px #eaeaea solid;"><a
-										href="usrInfo.php?dept=&amp;usrmgno=3231&amp;rtn_url=%2Fadmin%2FusrList.php%3Fdept%3D"><b>abcc</b></a></td>
-									<td align="left"
-										style="padding: 2px 7px 0 7px; border-bottom: 1px #eaeaea solid;">전무</td>
-									<td align="left"
-										style="padding: 2px 7px 0 7px; border-bottom: 1px #eaeaea solid;">대표이사
-										test</td>
-									<td align="left"
-										style="padding: 2px 7px 0 7px; border-bottom: 1px #eaeaea solid;">
-										<a
-										href="usrInfo.php?dept=&amp;usrmgno=3231&amp;rtn_url=%2Fadmin%2FusrList.php%3Fdept%3D"><font
-											color="red">전무 abv 대표이사 test (대기중) </font></a>
-									</td>
-									<td align="left"
-										style="padding: 2px 7px 0 7px; border-bottom: 1px #eaeaea solid;">123</td>
-
-								</tr>
+								<c:forEach var="emp" items="${emplist}" varStatus="status">
+									<tr bgcolor="#f9f9f9" height="23">
+										<td align="center"
+											style="padding: 2px 0px 0 7px; border-bottom: 1px #eaeaea solid;">${status.count}</td>
+										<td align="left"
+											style="padding: 2px 7px 0 7px; border-bottom: 1px #eaeaea solid;"><a
+											href="${pageContext.request.contextPath}/admin/EmpEditAdmin.htm?userid=${emp.userid}">
+											<b>${emp.userid}</b></a>
+										</td>
+										<td align="left"
+											style="padding: 2px 7px 0 7px; border-bottom: 1px #eaeaea solid;">
+											${emp.deptcode}
+										</td>
+										<td align="left"
+											style="padding: 2px 7px 0 7px; border-bottom: 1px #eaeaea solid;">대표이사
+											${emp.poscode}
+										</td>
+										<td align="left"
+											style="padding: 2px 7px 0 7px; border-bottom: 1px  #eaeaea solid;">
+											<c:choose>
+												<c:when test="${emp.empapprove == 0}">
+													<a href="${pageContext.request.contextPath}/admin/EmpEditAdmin.htm?userid=${emp.userid}"><font color="red">
+													${emp.ename} (대기중)</font></a>
+												</c:when>
+												<c:otherwise>
+													<a href="${pageContext.request.contextPath}/admin/EmpEditAdmin.htm?userid=${emp.userid}"><font color="gray">
+													<b> ${emp.ename} </b></font></a>
+												</c:otherwise>
+											</c:choose>
+										</td>
+										<td align="left"
+											style="padding: 2px 7px 0 7px; border-bottom: 1px #eaeaea solid;">
+											${emp.emptel}
+										</td>
+									</tr>
+								</c:forEach>
+									
 
 							</tbody>
 						</table> <!--리스트TB END-->

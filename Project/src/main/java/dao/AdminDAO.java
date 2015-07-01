@@ -5,7 +5,9 @@ import java.util.List;
 
 import dto_vo.Board.Board;
 import dto_vo.Board.BoardList;
-import dto_vo.Board.Reply;
+import dto_vo.Emp.Emp;
+import dto_vo.Emp.Empinfo;
+import dto_vo.Emp.Team;
 
 public interface AdminDAO {
 
@@ -28,4 +30,13 @@ public interface AdminDAO {
 	
 	// boardlist 이름 수정
 	public int updateBoardName(String boardcode, String boardname) throws ClassNotFoundException, SQLException;
+	
+	// 사원 리스트 가져오기
+	public List<Emp> getEmps() throws ClassNotFoundException, SQLException;
+	// 사원 가져오기
+	public Emp getEmp(String userid) throws ClassNotFoundException, SQLException;
+	// 사원정보 리스트 가져오기
+	public Empinfo getEmpInfo(String userid) throws ClassNotFoundException, SQLException;
+	// team 가져오기
+	public List<Team> getTeamList(int deptcode)  throws ClassNotFoundException, SQLException;
 }
