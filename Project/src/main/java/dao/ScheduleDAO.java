@@ -13,7 +13,7 @@ public interface ScheduleDAO {
    List<ScheduleView> getSchedule( String userid ) throws ClassNotFoundException, SQLException;
    
    // schedule category 가져오기
-   List<Schcategory> getSchCategory( String userid ) throws ClassNotFoundException, SQLException;
+   //List<Schcategory> getSchCategory( String userid ) throws ClassNotFoundException, SQLException;
    
 // scedule category dept일정
    List<Schcategory> getSchCategoryDept( String userid ) throws ClassNotFoundException, SQLException;
@@ -24,11 +24,11 @@ public interface ScheduleDAO {
    // scedule category 개인일정
    List<Schcategory> getSchCategoryUser( String userid ) throws ClassNotFoundException, SQLException;
    
-   // scedule start 시간
+   /*// scedule start 시간
    List<Schcategory> getStartSchedule( String userid ) throws ClassNotFoundException, SQLException;
    
    // scedule end 시간
-   List<Schcategory> getEndSchedule( String userid ) throws ClassNotFoundException, SQLException;
+   List<Schcategory> getEndSchedule( String userid ) throws ClassNotFoundException, SQLException;*/
    
    // scedule Insert
    public void InsertSchedule( Schedule schedule ) throws ClassNotFoundException, SQLException;

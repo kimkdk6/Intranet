@@ -994,22 +994,19 @@
               data:userid,
               success:function( data ){
                   
-                 $.each(data.schedule, function(index, item){
-                    var a = this;//data.schedule
-                    var start = data.StartSchedule;
-                    var end = data.EndSchedule;
+                 $.each(data.schedule, function(){
 
                     $("#calendar").fullCalendar( 'addEventSource', [ {
                        
-                   	   catecode:a.catecode,
-                       catename:a.catename,
-                       title : a.sctitle,
-                       start : new Date(start[index]), //년,월,일,시,분
-                       end : new Date(end[index]), //년,월,일,시,분
-                       backgroundColor : a.color, //red
-                       borderColor :  a.color, //red
-                       userid : a.userid,
-                       content: a.sccontent
+                   	   catecode:this.catecode,
+                       catename:this.catename,
+                       title : this.sctitle,
+                       start : new Date(this.scstart), //년,월,일,시,분
+                       end : new Date(this.scend), //년,월,일,시,분
+                       backgroundColor : this.color, //red
+                       borderColor :  this.color, //red
+                       userid : this.userid,
+                       content: this.sccontent
 
                    } ] );
                     

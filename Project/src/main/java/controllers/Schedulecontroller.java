@@ -33,7 +33,7 @@ public class Schedulecontroller {
     private View jsonView;
    
 
-   //게시판 메인 페이지 보기
+   //寃뚯떆�뙋 硫붿씤 �럹�씠吏� 蹂닿린
       @RequestMapping(value = "ScheduleMain.htm")
       public String ScheduleMain(Model model, HttpSession session) throws ClassNotFoundException,SQLException {
 
@@ -76,29 +76,34 @@ public class Schedulecontroller {
          ScheduleDAO scheduleDAO = sqlsession.getMapper(ScheduleDAO.class);
          
          List<ScheduleView> schedule = scheduleDAO.getSchedule(userid);
-         List<Schcategory> schcategory = scheduleDAO.getSchCategory(userid);
          
+         /*
+         List<Schcategory> schcategory = scheduleDAO.getSchCategory(userid);
          List<Schcategory> getStartSchedule = scheduleDAO.getStartSchedule(userid);
          List<Schcategory> getEndSchedule = scheduleDAO.getEndSchedule(userid);
-         
-        /* System.out.println("aaaaaaa" + getStartSchedule.toString());
-         System.out.println("bbbbbbb" + getEndSchedule.toString());
+          */         
+       /*  System.out.println("schedule : " + schedule.toString());
+         System.out.println("start : " + getStartSchedule.toString());
+         System.out.println("end : " + getEndSchedule.toString());
          System.out.println(schedule.get(1).getSchnum());
          System.out.println(schedule.get(1).getScstart());
          
          System.out.println(schcategory.toString());
          System.out.println(schedule.toString());*/
          
-         model.addAttribute("schedule", schedule);
-         model.addAttribute("schcategory", schcategory);
          
-         model.addAttribute("StartSchedule", getStartSchedule);
-         model.addAttribute("EndSchedule", getEndSchedule);
+         model.addAttribute("schedule", schedule);
+        
+         
+         //model.addAttribute("schcategory", schcategory);
+       
+         /* model.addAttribute("StartSchedule", getStartSchedule);
+         model.addAttribute("EndSchedule", getEndSchedule);*/
        
          return jsonView;
        }
     
- // 게시판 메인 페이지 보기
+ // 寃뚯떆�뙋 硫붿씤 �럹�씠吏� 蹂닿린
     @RequestMapping(value = "insertSchedule.htm")
     public String InsertSchedule(Model model, HttpSession session, HttpServletRequest request) throws ClassNotFoundException, SQLException {
 
@@ -112,8 +117,8 @@ public class Schedulecontroller {
        String sctitle = request.getParameter("sctitle");
        String sccontent = request.getParameter("sccontent");
        
-       System.out.println("catecode : " + catecode);
-       System.out.println("scstart : " + scstart);
+       /*System.out.println("catecode : " + catecode);
+       System.out.println("scstart : " + scstart);*/
        
  /*      System.out.println("insertSchedule.htm >> " + request.getParameter("catecode"));
        System.out.println("insertSchedule.htm >> " + request.getParameter("scstart"));
@@ -135,22 +140,6 @@ public class Schedulecontroller {
        
        scheduleDAO.InsertSchedule(schedule);
        
-       //scheduleDAO.InsertSchedule();
-       
-       /*ScheduleDAO scheduleDAO = sqlsession.getMapper(ScheduleDAO.class);
-
-       List<Schcategory> getSchCategoryDept = scheduleDAO.getSchCategoryDept(userid);
-       List<Schcategory> getSchCategoryTeam = scheduleDAO.getSchCategoryTeam(userid);
-       List<Schcategory> getSchCategoryUser = scheduleDAO.getSchCategoryUser(userid);
-
-       System.out.println(getSchCategoryDept.toString());
-       System.out.println(getSchCategoryTeam.toString());
-       System.out.println(getSchCategoryUser.toString());
-
-       model.addAttribute("getSchCategoryDept", getSchCategoryDept);
-       model.addAttribute("getSchCategoryTeam", getSchCategoryTeam);
-       model.addAttribute("getSchCategoryUser", getSchCategoryUser);
- */
        return "schedule.schedule";
     }   
 }

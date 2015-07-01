@@ -1,4 +1,6 @@
 eclipse.preferences.version=1
+encoding//src/main/java/controllers/Schedulecontroller.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/board/BoardMain.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/message/schedule/schedule.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/sign/BizTripRepDetail.jsp=UTF-8
+encoding/<project>=UTF-8

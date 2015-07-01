@@ -7,8 +7,8 @@ public class ScheduleView {
 	private int schnum; // 스케쥴번호
 	private int catecode; // 카테고리코드
 	private String userid; // 사용자ID
-	private Date scstart; // 시작시간
-	private Date scend; // 종료시간
+	private String scstart; // 시작시간
+	private String scend; // 종료시간
 	private String sctitle; // 스케쥴제목
 	private String sccontent; // 스케쥴내용
 	private String color;
@@ -46,8 +46,8 @@ public class ScheduleView {
 		return catecode;
 	}
 
-	public ScheduleView(int schnum, int catecode, String userid, Date scstart,
-			Date scend, String sctitle, String sccontent, String color,
+	public ScheduleView(int schnum, int catecode, String userid, String scstart,
+			String scend, String sctitle, String sccontent, String color,
 			String catename) {
 		super();
 		this.schnum = schnum;
@@ -73,19 +73,19 @@ public class ScheduleView {
 		this.userid = userid;
 	}
 
-	public Date getScstart() {
+	public String getScstart() {
 		return scstart;
 	}
 
-	public void setScstart(Date scstart) {
+	public void setScstart(String scstart) {
 		this.scstart = scstart;
 	}
 
-	public Date getScend() {
+	public String getScend() {
 		return scend;
 	}
 
-	public void setScend(Date scend) {
+	public void setScend(String scend) {
 		this.scend = scend;
 	}
 
