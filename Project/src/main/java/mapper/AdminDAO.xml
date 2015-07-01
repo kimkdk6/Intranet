@@ -111,4 +111,23 @@
 		VALUES(#{userid}, 'ROLE_USER')
 	</insert>
 	 
+	<!-- 팀마다 사원수 -->
+	<select id="getEmpofTeam" resultType="int">
+		select count(*)
+		from emp e join team t
+				   on e.teamcode = t.teamcode
+		where t.teamcode = #{teamcode}
+	</select> 
+	<!-- 팀 추가 -->
+	<insert id="insertTeam" parameterType="hashmap">
+		 insert into team(deptcode, teamcode, TEAMNAME)
+	     values(#{param1}, ( select max(t.TEAMCODE)
+	     from dept d join team t
+	                 on d.DEPTCODE = t.DEPTCODE
+	     where d.DEPTCODE = #{param1})+1, #{param2})
+	</insert>
+	<delete id="deleteTeam" >
+		delete from team 
+		where teamcode = #{teamcode}
+	</delete>
 </mapper>

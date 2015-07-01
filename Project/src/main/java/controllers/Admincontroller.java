@@ -225,12 +225,41 @@ public class Admincontroller {
 		List<Dept> deptlist = signdao.getDepts();
 		// 팀 목록
 		List<Team> teamlist = signdao.getTeams();
-		
-		
 			
-		 model.addAttribute("deptlist", deptlist);
-			
-		 
+		List<Integer> teamnlist = new ArrayList<Integer>();
+		
+		for(int i=0; i<teamlist.size(); i++){
+			teamnlist.add(admindao.getEmpofTeam(teamlist.get(i).getTeamcode()));
+		}
+		
+		model.addAttribute("deptlist", deptlist);
+		model.addAttribute("teamlist", teamlist);
+		model.addAttribute("teamnlist", teamnlist);
 		return "admin.teamAdmin";
 	}	
+	
+	// 팀 추가 
+	@RequestMapping(value = "teamAdd.htm", method=RequestMethod.POST)
+	public String teamAdd(Dept dept, Team team, HttpSession session) throws Exception
+	{
+		System.out.println("팀 추가 기능");
+		AdminDAO admindao = sqlSession.getMapper(AdminDAO.class);
+		// 팀 삽입
+		System.out.println("dept/team:  "+dept.getDeptcode()+"/"+team.getTeamname());
+		admindao.insertTeam(dept.getDeptcode(), team.getTeamname());
+		
+		return "redirect:teamAdmin.htm";
+	}
+	// 팀 추가 
+	@RequestMapping(value = "teamRemove.htm", method=RequestMethod.POST)
+	public String teamRemove(String teamcode, HttpSession session) throws Exception
+	{
+		System.out.println("팀 추가 기능");
+		AdminDAO admindao = sqlSession.getMapper(AdminDAO.class);
+		// 팀 삭제
+		System.out.println("teamcode:  "+teamcode);
+		admindao.deleteTeam(teamcode);
+			
+		return "redirect:teamAdmin.htm";
+	}
 }

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
 
 <!DOCTYPE html>
 <section class="content-header">
@@ -20,18 +22,18 @@
 		</div>
 		<div class="box-body">
 			<div class="input-group">
-						<form name="newboard" action="communityAdd.htm" method="post">
+						<form name="newboard" action="teamAdd.htm" method="post">
 							<select id="deptcode" name="deptcode" class="form-control" style="width: 300px;" ${disabled}>
 								<option value="">부서를 선택하세요</option>
 								<c:forEach var="dept" items="${deptlist}">
 									<option value="${dept.deptcode}">${dept.deptname}</option>
 								</c:forEach>
 							</select>							
-							<input type="text" name="boardname" id="boardname"
+							<input type="text" name="teamname" id="teamname"
 								class="form-contro	l input-sm pull-left"
 								style="width: 200px; height: 35px;" placeholder="team name" />
 							 
-								<button class="btn btn-info btn-flat" type="button" onclick="addBoard()">추가</button>
+								<button class="btn btn-info btn-flat" type="button" onclick="addTeam()">추가</button>
 							 
 						</form>
 					</div>
@@ -52,26 +54,30 @@
 			</form>
 				<table class="table table-hover">
 					<tr>
-						<th>게시판명</th>
-						<th>게시글 수</th>
+						<th>부서명</th>
+						<th>팀 명</th>
+						<th>사원 수</th>
 						<th>관리</th>
 	
 					</tr>
-					  <c:forEach var="boardtype" items="${boardmap}">
-						<tr>
-							<td><input type="text" name="boardname" class="form-control" id="boardname${boardtype.key.boardcode}"
-								value="${boardtype.key.boardname}"></td>
-							<td>${boardtype.value}</td>
-							<td>
-								<a href="javascript:myApp('M', ${boardtype.key.boardcode})">
-									<span class="label label-success">명칭바꾸기</span>
-								</a>
-									<a href="javascript:myApp('D', ${boardtype.key.boardcode})">
-								<span class="label label-danger">삭제</span></a>
-							
-							</td>
-							
-						</tr>
+					  <c:forEach var="dept" items="${deptlist}">
+							<c:forEach var="team" items="${teamlist}" varStatus="i">
+								<c:if test="${dept.deptcode == team.deptcode}">
+									<tr>
+										<td>${dept.deptname}</td>
+										<td><input type="text" name="teamname" class="form-control" id="teamname${team.teamcode}"
+											value="${team.teamname}"></td>
+										<td>${teamnlist[i.index]}</td>
+										<td>
+											<a href="javascript:myApp('M', ${team.teamcode}, ${teamnlist[i.index]})">
+											<span class="label label-success">명칭바꾸기</span>
+											</a>
+											<a href="javascript:myApp('D', ${team.teamcode}, ${teamnlist[i.index]})">
+											<span class="label label-danger">삭제</span></a>
+										</td>
+									</tr>
+								</c:if>
+							</c:forEach>
 					</c:forEach>  
 					 
 					
@@ -83,14 +89,15 @@
 	<!-- /.box -->
 </section>
 <script language="javascript">
-	function myApp(proc, boardcode)
+	function myApp(proc, teamcode, teamnum)
 	{
 	    var f = document.boardmg;
 	    if(proc == 'D')
 	    {
-	    	console.log("boardcode: "+boardcode);
-	        if( !confirm( '게시판을 삭제하시겠습니까?') ) return;
-	        f.action = "communityRemove.htm?boardcode="+boardcode;
+	    	console.log("teamcode/teamnum: "+teamcode+"/"+teamnum);
+	    	if(teamnum > 0){alert('해당 부서의 팀에 포함된 직원이 존재하여 삭제되지 않습니다.'); return false;}
+	        if( !confirm( '해당 부서의 팀을 삭제하시겠습니까?') ) return;
+	        f.action = "teamRemove.htm?teamcode="+teamcode;
 	    }
 	    
 	    if(proc == 'M')
@@ -106,11 +113,18 @@
 	    f.submit();
 	}
 	
-	function addBoard(){
+	function addTeam(){
 		var f = document.newboard;
-		if(!f.boardname.value){
-			alert("생성할 게시판 명을 입력하세요");
-			f.boardname.focus();
+		
+		if(!f.deptcode.value && f.deptcode.value==""){
+			alert("부서를 선택하세요");
+			f.deptcode.focus();
+			return false;
+		}
+		
+		if(!f.teamname.value){
+			alert("생성할 팀 명을 입력하세요");
+			f.teamname.focus();
 			return false;
 		}
 		

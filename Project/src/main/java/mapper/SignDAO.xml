@@ -144,6 +144,7 @@
 	<select id="getDepts" resultType="dto_vo.Emp.Dept">
 		select *
 		from dept
+		order by deptcode asc
 	</select>
 	
 	<!-- 사원 목록 가져오기  -->
@@ -164,6 +165,7 @@
 	<select id="getTeams" resultType="dto_vo.Emp.Team">
 		select *
 		from team
+		order by TEAMCODE asc, DEPTCODE asc
 	</select>
 	<!-- 직급 목록 가져오기  -->
 	<select id="getPositions" resultType="dto_vo.Emp.Position">

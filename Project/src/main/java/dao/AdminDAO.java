@@ -42,12 +42,16 @@ public interface AdminDAO {
 	
 	// 회원 승인
 	public int updateEmpApprove(String userid, String emptel) throws ClassNotFoundException, SQLException;
-	
 	// 회원 정보 수정
 	// emp.getEmptel()+"/"+emp.getDeptcode()+"/"+emp.getTeamcode()+"/"+emp.getPoscode()
-	public int updateEmp(String userid, String emptel, String deptcode, String teamcode, String poscode)
-												throws ClassNotFoundException, SQLException;
+	public int updateEmp(String userid, String emptel, String deptcode, String teamcode, String poscode);
 	// 회원 권한 추가
 	public int insertEmpauth(String userid) throws ClassNotFoundException, SQLException;
-	
+
+	// 팀마다 사원 수 
+	public int getEmpofTeam(int teamcode) throws ClassNotFoundException, SQLException;
+	// 팀 추가 
+	public int insertTeam(int deptcode, String teamname) throws ClassNotFoundException, SQLException;
+	// 팀 삭제
+	public int deleteTeam(String teamcode) throws ClassNotFoundException, SQLException;
 }
