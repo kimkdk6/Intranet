@@ -67,26 +67,29 @@
 												type="hidden" name="userid" value="${emp.userid}">
 												${emp.userid}</td>
 										</tr>
+										
+										<!-- password에 disabled를 걸 경우 bgcolor 및 위치 변경 -->
 										<tr height="30">
 											<td bgcolor="#FFFFD7" align="center"><b>기존
 													암호</b></td>
 											<td style="padding: 3px 0px 0px 12px;" class="stxt"><input
-												type="password" autocomplete="off" name="passconf"
+												type="password" disabled style = "background-color: #FFFFFF; width: 150px; margin-bottom: 3px"autocomplete="off" name="passconf"
 												class="input_type1" value="${emp.emppwd}"
 												style="width: 150px;"></td>
 										</tr>
+										
 										<tr height="30">
 											<td bgcolor="#FFFFD7" align="center" ><b>암호</b></td>
 											<td style="padding: 3px 0 0 12px;" class="stxt"><input
 												type="password" name="emppwd" class="input_type1"
 												value="${emp.emppwd}" style="width: 150px;">
 												<div style="padding: 5px 0 5px 0;">
-													<span class="stxt">- 8자리 이상의 암호를 사용하세요. 영문,숫자,특수문자가
-														혼용되면 안전합니다. </span> <br> <span class="stxt">- 암호를 입력할
+													<span class="stxt"><span class="stxt">- 암호를 입력할
 														경우 암호가 입력된 암호로 변경됩니다.</span> <br> <span class="stxt">-
 														암호를 변경하려 할 경우가 아닌 경우 입력하지 마세요</span>
 												</div></td>
 										</tr>
+										
 										<tr height="30">
 											<td bgcolor="#FFFFD7" align="center">
 												<b>사진</b><br> <span class="stxt">(최적사이즈 130*146)</span>
@@ -218,6 +221,15 @@
 																type="hidden" name="deptcode" value="${emp.deptcode}">${emp.deptcode}</td>
 															</td>
 														</tr>
+														
+														<tr height="30">
+															<td width="30%" bgcolor="#FFF2F2" align="center"
+																><b>팀이름</b>
+															<td style="padding: 0px 0px 0px 12px;"><input
+																type="hidden" name="deptcode" value="${emp.teamcode}">${emp.teamcode}</td>
+															</td>
+														</tr>
+														
 														<tr height="30">
 															<td width="30%" bgcolor="#FFF2F2" align="center"
 																><b>직급이름</b>
