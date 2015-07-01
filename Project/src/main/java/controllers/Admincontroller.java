@@ -180,5 +180,15 @@ public class Admincontroller {
 		return "admin.EmpEditAdmin";
 	}
 	
-	
+	// 회원 정보 수정
+	@RequestMapping(value = "EmpEditAdmin.htm", method=RequestMethod.POST)
+	public String EmpEditAdmin(Model model) throws Exception
+	{
+		AdminDAO admindao = sqlSession.getMapper(AdminDAO.class);
+		SignDAO signdao = sqlSession.getMapper(SignDAO.class);
+		// 회원 목록
+		System.out.println("회원 정보 수정 페이지 ");
+		
+		return "redirect:EmpEditAdmin.htm";
+	}
 }

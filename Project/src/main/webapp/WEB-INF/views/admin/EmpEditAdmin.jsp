@@ -35,7 +35,10 @@
        
 </script>
 <!DOCTYPE html>
-
+<c:set var="approve" value="${emp.empapprove}"/>
+<c:if test="${emp.empapprove == 0}">
+	<c:set var="disabled" value="disabled"/>
+</c:if>
 	<section class="content-header">
 		<h1>&nbsp</h1>
 		<ol class="breadcrumb">
@@ -203,7 +206,7 @@
 																<td width="30%" bgcolor="#E1F9DD"
 																	style="padding: 3px 0px 0px 12px;"><b>부서 / 팀</b>
 																<td style="padding: 0px 0px 0px 12px;">
-																	<select id="deptcode" name="deptcode" class="form-control" style="width: 300px;">
+																	<select id="deptcode" name="deptcode" class="form-control" style="width: 300px;" ${disabled}>
 												                        <option value>부서를 선택하세요</option>
 												                        <c:forEach var="dept" items="${deptlist}">
 												                        	<c:choose>
@@ -219,7 +222,7 @@
 												                     </select>
 												                 </td>
 												                 <td style="padding: 0px 0px 0px 12px;">
-												                     <select id="Team" name="teamcode" class="form-control" style="width: 300px;">
+												                     <select id="Team" name="teamcode" class="form-control" style="width: 300px;" ${disabled}>
 												                        <option value>팀을 선택하세요</option>
 												                        <c:forEach var="team" items="${teamlist}">
 												                        	<c:choose>
@@ -239,7 +242,7 @@
 																<td width="30%" bgcolor="#E1F9DD"
 																	style="padding: 3px 0px 0px 12px;"><b>직급</b>	
 																<td style="padding: 0px 0px 0px 12px;" colspan="2">
-																	<select name="poscode" class="form-control" style="width: 300px;">
+																	<select name="poscode" class="form-control" style="width: 300px;" ${disabled}>
 												                        <option value>직급을 선택하세요</option>
 												                        <c:forEach var="pos" items="${poslist}">
 												                        	<c:choose>
@@ -283,8 +286,16 @@
 												<table border="0" cellspacing="0" cellpadding="0">
 													<tbody>
 														<tr>
-															<td><input type="button" value="수정완료"
+														<c:choose>
+															<c:when test="${emp.empapprove == 0}">
+																<td><input type="button" class="btn bg-orange margin" value="승인"
 																onclick="addsign()"></td>
+															</c:when>
+															<c:otherwise>
+																<td><input type="button" class="btn bg-olive margin" value="수정완료"
+																onclick="addsign()"></td>
+															</c:otherwise>
+														</c:choose>
 														</tr>
 													</tbody>
 												</table>
