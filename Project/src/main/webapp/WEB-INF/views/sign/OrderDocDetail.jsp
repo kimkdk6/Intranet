@@ -71,11 +71,10 @@
 											<table border="0" cellspacing="0" cellpadding="0">
 												<tbody>
 													<tr>
-														<td><a href=""><img
-																src="/img/approval/bt_list.gif"></a></td>
 														<td><a href="javascript:divPrint();">
-																	<button type="button" class="btn btn-info pull-right">print</button>
-															</a></td>
+																<button type="button" class="btn btn-info pull-right">print</button>
+															</a>
+														</td>
 													</tr>
 												</tbody>
 											</table>

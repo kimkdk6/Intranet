@@ -42,6 +42,8 @@ public class Searchcontroller {
 		
 		Empinfo empinfo = empdao.getEmpInfo2(userid);
 		
+		model.addAttribute("empinfo", empinfo);
+		
 		return "search.SearchEmp";
 		
 	}

@@ -3,11 +3,37 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<script language="javascript">
+	function divdetail() {
+		window.open("SearchEmpDetail.htm", "detail", "width=800,height=700,top=0,left=0,noresizable,toolbar=no,status=no,scrollbars=yes,directory=no")
+	}
+	
+	$(function() {
+		$('#deptlist').change(function() {
+			var deptcode = {deptcode : $('#deptlist').val()};
+			$.ajax({
+				dataType : "json",
+				url : "<%=request.getContextPath() %>/search/getTeamName.htm",
+			})
+		});
+	});
+</script>
+
+<!-- <style type="text/css">
+		body {
+			font-size: 100%;
+		}
+		
+		.btn-back {
+			background-color: #5B5847;
+			color: white;
+		}
+</style> -->
 
 <!DOCTYPE html>
-<!--본문TB START-->
-<section class="content-header">
+<html>
 
+<section class="content-header">
 	<h1>
 		조직도 <small>회원검색</small>
 	</h1>
@@ -17,73 +43,46 @@
 	</ol>
 </section>
 
-<section class="content-header">
-	<!-- /.box-header -->
-	
-
-	<!-- /.box-header -->
-	<div class="box">
-		<div class="box-header with-border">
-			<h3 class="box-title">
-				<a class="title_txt" href="SearchEmp.htm"> 조직도 </a>
-			</h3>
-		</div>
-		<div class="box-body">
-			<table class="table table-hover">
-				<tr>
-					<th style="width: 75px">사용자 ID</th>
-					<th style="width: 75px">사원 번호</th>
-					<th style="width: 75px">사원 이름</th>
-					<th style="width: 75px">사원 전화번호</th>
-					<th style="width: 75px">부서명</th>
-					<th style="width: 75px">팀명</th>
-					<th style="width: 75px">직급</th>
-				</tr>
+<body>
+	<div id="main" align="center" >
+		<div id="wrapper" style="width: 90%;">
+			<!-- <div align="left" style="height: 50px;"><h3>사원검색</h3></div> -->
+			<div align="center" style="margin-bottom: 0px;">
+				<div class="selectplz" id="deptselect" name="deptselect" style=" float: left;">
+					<select id="deptlist" class="form-control" style="width:250px; margin-left: 30px; margin-right: 20px; margin-bottom: 10px;">
+						<option selected disabled="disabled">Department</option>
+						<option>부서를 선택하세요</option>
+					</select>
+				</div>
 				
-				<c:choose>
-					<c:when test="${fn:length(emplist) > 0}">
-						<c:forEach items="${emplist}" var="e">
-							<%-- <c:set var="signtype" value="${s.signtype}" /> --%>
-							<tr>
-								<td width="100" class="title bb1 br1 p0007">
-									<font color="#666666">${e.userid}</font>
-								</td>
-								<td width="80" class="title bb1 br1 p3007">
-									<font color="#666666">${e.empno}</font>
-								</td>
-								<td width="100" class="title bb1 br1 p3007">
-									<font color="#666666">${e.ename}</font>
-								</td>
-								<td width="100" class="title bb1 br1 p3007">
-									<font color="#666666">${e.emptel}</font>
-								</td>	
-								<td width="100" class="title bb1 br1 p3007">
-									<font color="#666666">${e.deptcode}</font>
-								</td>
-								<td width="100" class="title bb1 br1 p3007">
-									<font color="#666666">${e.teamcode}</font>
-								</td>
-								<td width="100" class="title bb1 br1 p3007">
-									<font color="#666666">${e.poscode}</font>
-								</td>
-								
-								<td width="200" class="title bb1 p3007"><font
-									color="#666666">${s.signtitle}</font></td>
-							</tr>
-
-						</c:forEach>
-
-					</c:when>
-					<c:otherwise>
-						<tr height="60">
-							<td class="p2007 bb1" colspan="7" align="center"><b>조회된
-									문서가 없습니다.</b></td>
-						</tr>
-					</c:otherwise>
-				</c:choose>
-			</table>
+				<div class="selectplz" style=" float: left;">
+					<select id="teamlist" id="teamselect" name="teamselect" class="form-control" style="width:250px; margin-right: 150px;">
+						<option selected disabled="disabled">Team</option>
+						<option>팀을 선택하세요</option>
+					</select>
+				</div>
+				
+				<div style=" float: left;">
+					<input type="text" class="form-control" style="width:200px; margin-right: 10px;" placeholder="이름으로 검색" id="Ename">
+				</div>
+				
+				<div style=" float: left;">
+					<input type="button" value="검색" id="btn" class="btn btn-primary btn-md">
+				</div>
+			</div>
+			
+			<div style="width:90%; height: 500px; overflow: scroll; float: none;">
+				<table id="" class="table">
+					<tr>
+						<td>
+						asd
+						</td>
+					</tr>
+				</table>
+			</div>
+			
 		</div>
 	</div>
-</section>
-
+</body>
+</html>
 
