@@ -45,11 +45,14 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     
+    <!-- jQuery 2.1.4 -->
+	 <script src="<%=request.getContextPath() %>/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+     <!-- ChartJS 1.0.1 -->
+    <script src="<%=request.getContextPath() %>/resources/plugins/chartjs/Chart.min.js" type="text/javascript"></script>
     <!-- ck Editor -->
     <script type="text/javascript" src="<%=request.getContextPath() %>/resources/plugins/ckeditor/ckeditor.js"></script>
     
- <!-- jQuery 2.1.4 -->
-	 <script src="<%=request.getContextPath() %>/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+ 
 
  <!-- jQuery UI 1.11.4 -->
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
@@ -64,12 +67,12 @@
     <!-- Morris.js charts -->
     <script src="<%=request.getContextPath() %>/resources/plugins/morris/morris.min.js" type="text/javascript"></script>
     <!-- Sparkline -->
+    
     <script src="<%=request.getContextPath() %>/resources/plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
     <!-- jvectormap -->
     <script src="<%=request.getContextPath() %>/resources/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
     <script src="<%=request.getContextPath() %>/resources/plugins/jvectormap/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
-    <!-- ChartJS 1.0.1 -->
-    <script src="<%=request.getContextPath() %>/resources/plugins/chartjs/Chart.min.js" type="text/javascript"></script>
+    
     <!-- jQuery Knob Chart -->
     <script src="<%=request.getContextPath() %>/resources/plugins/knob/jquery.knob.js" type="text/javascript"></script>
     <!-- daterangepicker -->
@@ -83,6 +86,7 @@
     <script src="<%=request.getContextPath() %>/resources/plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
     <!-- FastClick -->
     <script src='<%=request.getContextPath() %>/resources/plugins/fastclick/fastclick.min.js'></script>
+    
     <!-- AdminLTE App -->
     <script src="<%=request.getContextPath() %>/resources/js/app.min.js" type="text/javascript"></script>    
       <!-- Morris.js charts , jQuery.js 와 충돌문제로 아래 삽입-->   
@@ -100,6 +104,7 @@
   
   <script src="<%=request.getContextPath() %>/resources/plugins/colorpicker/bootstrap-colorpicker.min.js" type="text/javascript"></script>
   <link href="<%=request.getContextPath() %>/resources/plugins/colorpicker/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css" media='print' />
+ 
   </head>
   <body class="skin-blue sidebar-mini">
     <div class="wrapper">
