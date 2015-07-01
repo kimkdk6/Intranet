@@ -96,6 +96,7 @@
 													<tbody>
 														<tr>
 															<td align="left" valign="top">
+															<input type="hidden" name="userphoto" value="${empinfo.userphoto}">
 																<!-- c:if --> <c:choose>
 																	<c:when test="${empinfo.userphoto!=null}">
 																		<img width="130px" height="146"
@@ -166,9 +167,13 @@
 										</tr>
 										<tr height="30">
 											<td bgcolor="#FFFFD7" align="center"><b>생년월일</b></td>
-											<td style="padding-left: 6px;">&nbsp; <input type="text"
+											<td style="padding-left: 6px;">&nbsp; 
+											<input type="hidden" 
 												name="birth" class="input_type1" style="width: 150px;"
-												value="${empinfo.birth}"> <!--  년 <input
+												value="${empinfo.birth}"> 
+												${empinfo.birth}
+												
+												<!--  년 <input
 													name="bmm" type="text" class="input_type1"
 													style="width: 25px;" maxlength="2" value=""
 													onblur="constraintValue('MONTH',this);"> 월 <input
@@ -208,14 +213,14 @@
 													<tbody>
 														<tr height="30">
 															<td width="30%" bgcolor="#FFF2F2" align="center"
-																><b>부서코드</b>
+																><b>부서이름</b>
 															<td style="padding: 0px 0px 0px 12px;"><input
 																type="hidden" name="deptcode" value="${emp.deptcode}">${emp.deptcode}</td>
 															</td>
 														</tr>
 														<tr height="30">
 															<td width="30%" bgcolor="#FFF2F2" align="center"
-																><b>직급코드</b>
+																><b>직급이름</b>
 															<td style="padding: 0px 0px 0px 12px;"><input
 																type="hidden" name="poscode" value="${emp.poscode}">${emp.poscode}</td>
 														</tr>

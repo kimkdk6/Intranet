@@ -98,6 +98,8 @@ public class Mypagecontroller {
 					fs.close();
 				}
 				fileName = fname; //파일의 이름만 별도 관리
+			}else{
+				fileName = empinfo.getUserphoto();
 			}
 		
 	    empinfo.setUserphoto(fileName);
