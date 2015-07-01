@@ -7,20 +7,13 @@
 <!DOCTYPE html>
 <!--본문TB START-->
 <section class="content-header">
-<c:choose>
-	<c:when test="${param.type == 1}">
-		<c:set var="pagetitle" value="결재 완료"/>
-	</c:when>
-	<c:when test="${param.type == 2}">
-		<c:set var="pagetitle" value="반려"/>
-	</c:when>
-</c:choose>
+
 	<h1>
-		전자결재 <small>${pagetitle} 문서함 페이지</small>
+		조직도 <small>회원검색</small>
 	</h1>
 	<ol class="breadcrumb">
 		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li class="active">전자결재</li>
+		<li class="active">조직도</li>
 	</ol>
 </section>
 
@@ -32,97 +25,48 @@
 	<div class="box">
 		<div class="box-header with-border">
 			<h3 class="box-title">
-				<a class="title_txt" href="SendsignsList.htm"> 올린 결재 문서함
-					&gt; ${pagetitle} 문서</a>
+				<a class="title_txt" href="SearchEmp.htm"> 조직도 </a>
 			</h3>
 		</div>
 		<div class="box-body">
 			<table class="table table-hover">
 				<tr>
-					<th style="width: 75px">문서번호</th>
-					<th style="width: 75px">문서종류</th>
-					<th style="width: 75px">기안일</th>
-					<th style="width: 75px">완료일</th>
-					<th style="width: 75px">결재완료수</th>
-					<th style="width: 75px">상태</th>
-					<th style="width: 75px">제목</th>
+					<th style="width: 75px">사용자 ID</th>
+					<th style="width: 75px">사원 번호</th>
+					<th style="width: 75px">사원 이름</th>
+					<th style="width: 75px">사원 전화번호</th>
+					<th style="width: 75px">부서명</th>
+					<th style="width: 75px">팀명</th>
+					<th style="width: 75px">직급</th>
 				</tr>
+				
 				<c:choose>
-					<c:when test="${fn:length(signlist) > 0}">
-						<c:forEach items="${signlist}" var="s">
-							<c:set var="signtype" value="${s.signtype}" />
+					<c:when test="${fn:length(emplist) > 0}">
+						<c:forEach items="${emplist}" var="e">
+							<%-- <c:set var="signtype" value="${s.signtype}" /> --%>
 							<tr>
-								<td width="100" class="title bb1 br1 p0007"><font
-									color="#666666"> <c:choose>
-											<c:when test="${signtype == 1}">
-												<a
-													href="${pageContext.request.contextPath}/sign/DraftingDetail.htm?docnum=${s.docnum}">
-													${s.docnum} </a>
-											</c:when>
-											<c:when test="${signtype == 2}">
-												<a
-													href="${pageContext.request.contextPath}/sign/HolidayDocDetail.htm?docnum=${s.docnum}">
-													${s.docnum} </a>
-									</c:when>
-											<c:when test="${signtype == 3}">
-												<a
-													href="${pageContext.request.contextPath}/sign/OrderDocDetail.htm?docnum=${s.docnum}">
-													${s.docnum} </a>
-									</c:when>
-											<c:when test="${signtype == 4}">
-												<a
-													href="${pageContext.request.contextPath}/sign/BizTripDocDetail.htm?docnum=${s.docnum}">
-													${s.docnum} </a>
-									</c:when>
-											<c:when test="${signtype == 5}">
-												<a
-													href="${pageContext.request.contextPath}/sign/BizTripRepDetail.htm?docnum=${s.docnum}">
-													${s.docnum} </a>
-											</c:when>
-										</c:choose>
-
-								</font></td>
-								<td width="80" class="title bb1 br1 p3007"><font
-									color="#666666"> <c:choose>
-											<c:when test="${signtype == 1}">
-										기안서
-									</c:when>
-											<c:when test="${signtype == 2}">
-										휴가계
-									</c:when>
-											<c:when test="${signtype == 3}">
-										발주서
-									</c:when>
-											<c:when test="${signtype == 4}">
-										출장 신청서
-									</c:when>
-											<c:when test="${signtype == 5}">
-										출장 결과 보고서 
-									</c:when>
-										</c:choose>
-
-
-								</font></td>
-								<td width="100" class="title bb1 br1 p3007"><font
-									color="#666666">${s.draftdate}</font></td>
-								<td width="100" class="title bb1 br1 p3007"><font
-									color="#666666">${s.refreshdate}</font></td>	
-								<td width="100" class="title bb1 br1 p3007"><font
-									color="#666666">${s.currsign}/${s.totalsign}</font></td>
-								<td width="100" class="title bb1 br1 p3007"><font
-									color="#666666">
-									<c:choose>
-										<c:when test="${s.signstate == 1}">
-											결재완료										
-										</c:when>
-										<c:when test="${s.signstate == 2}">
-											반려
-										</c:when>
-										<c:when test="${s.signstate == 0}">
-											대기중
-										</c:when>
-									</c:choose>	
-									</font></td>
+								<td width="100" class="title bb1 br1 p0007">
+									<font color="#666666">${e.userid}</font>
+								</td>
+								<td width="80" class="title bb1 br1 p3007">
+									<font color="#666666">${e.empno}</font>
+								</td>
+								<td width="100" class="title bb1 br1 p3007">
+									<font color="#666666">${e.ename}</font>
+								</td>
+								<td width="100" class="title bb1 br1 p3007">
+									<font color="#666666">${e.emptel}</font>
+								</td>	
+								<td width="100" class="title bb1 br1 p3007">
+									<font color="#666666">${e.deptcode}</font>
+								</td>
+								<td width="100" class="title bb1 br1 p3007">
+									<font color="#666666">${e.teamcode}</font>
+								</td>
+								<td width="100" class="title bb1 br1 p3007">
+									<font color="#666666">${e.poscode}</font>
+								</td>
+								
 								<td width="200" class="title bb1 p3007"><font
 									color="#666666">${s.signtitle}</font></td>
 							</tr>
