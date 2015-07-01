@@ -81,7 +81,7 @@
 											${emp.deptcode}
 										</td>
 										<td align="left"
-											style="padding: 2px 7px 0 7px; border-bottom: 1px #eaeaea solid;">대표이사
+											style="padding: 2px 7px 0 7px; border-bottom: 1px #eaeaea solid;">
 											${emp.poscode}
 										</td>
 										<td align="left"
