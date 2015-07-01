@@ -216,7 +216,7 @@
 													<tbody>
 														<tr height="30">
 															<td width="30%" bgcolor="#FFF2F2" align="center"
-																><b>부서이름</b>
+																><b>부서</b>
 															<td style="padding: 0px 0px 0px 12px;"><input
 																type="hidden" name="deptcode" value="${emp.deptcode}">${emp.deptcode}</td>
 															</td>
@@ -224,7 +224,7 @@
 														
 														<tr height="30">
 															<td width="30%" bgcolor="#FFF2F2" align="center"
-																><b>팀이름</b>
+																><b>팀</b>
 															<td style="padding: 0px 0px 0px 12px;"><input
 																type="hidden" name="deptcode" value="${emp.teamcode}">${emp.teamcode}</td>
 															</td>
@@ -232,7 +232,7 @@
 														
 														<tr height="30">
 															<td width="30%" bgcolor="#FFF2F2" align="center"
-																><b>직급이름</b>
+																><b>직급</b>
 															<td style="padding: 0px 0px 0px 12px;"><input
 																type="hidden" name="poscode" value="${emp.poscode}">${emp.poscode}</td>
 														</tr>
