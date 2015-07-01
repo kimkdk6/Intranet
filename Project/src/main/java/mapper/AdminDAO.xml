@@ -64,7 +64,7 @@
                     on e.DEPTCODE = d.DEPTCODE
                     join position p
                     on e.POSCODE = p.POSCODE
-        order by d.DEPTCODE
+        order by e.EMPAPPROVE asc, d.DEPTCODE
 	</select>
 	<!-- 사원 정보 목록 가져오기 -->
 	<select id="getEmpInfo" resultType="dto_vo.Emp.Empinfo">

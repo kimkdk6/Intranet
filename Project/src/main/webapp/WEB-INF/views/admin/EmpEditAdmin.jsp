@@ -28,8 +28,7 @@
               var deptcode = { deptcode : $('#deptcode').val() };
               $.ajax({
                Type:"post",
-               url:"<%=request.getContextPath()%>
-	/joinus/getTeamName.htm",
+               url:"<%=request.getContextPath()%>/joinus/getTeamName.htm",
 										dataType : "json",
 										data : deptcode,
 										contentType : "application/x-www-form-urlencoded; charset=UTF-8",
@@ -37,18 +36,14 @@
 											//alert("go");
 											var toptions = "<option selected disabled='disabled'>팀을 선택하세요</option>";
 
-											$
-													.each(
-															data.TeamInfo,
-															function() {
-																//alert(i);
-																console
-																		.log(this);
-																//var ajaxName = decodeURIComponent( this.teamname );
-																toptions += "<option value='" + this.teamcode + "'>"
-																		+ this.teamname
-																		+ "</option>";
-															});
+											$.each(
+													data.TeamInfo,
+													function() {
+													//alert(i);
+													console.log(this);
+													//var ajaxName = decodeURIComponent( this.teamname );
+												toptions += "<option value='" + this.teamcode + "'>"+ this.teamname+ "</option>";
+											});
 											$('#Team *').remove();
 											$('#Team').append(toptions);
 
