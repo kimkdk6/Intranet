@@ -250,16 +250,29 @@ public class Admincontroller {
 		
 		return "redirect:teamAdmin.htm";
 	}
-	// 팀 추가 
+	// 팀 삭제
 	@RequestMapping(value = "teamRemove.htm", method=RequestMethod.POST)
 	public String teamRemove(String teamcode, HttpSession session) throws Exception
 	{
-		System.out.println("팀 추가 기능");
+		System.out.println("팀 삭제 기능");
 		AdminDAO admindao = sqlSession.getMapper(AdminDAO.class);
 		// 팀 삭제
 		System.out.println("teamcode:  "+teamcode);
 		admindao.deleteTeam(teamcode);
 			
+		return "redirect:teamAdmin.htm";
+	}
+	// 팀 수정
+	@RequestMapping(value = "teamModify.htm", method=RequestMethod.POST)
+	public String teamModify(String teamcode, String teamname, HttpSession session) throws Exception
+	{
+		System.out.println("팀 명 수정 기능");
+		AdminDAO admindao = sqlSession.getMapper(AdminDAO.class);
+		// 팀 명 수정
+		System.out.println("teamcode/teamname:  "+teamcode+"/"+teamname);
+	
+		admindao.updateTeam(teamcode, teamname);
+				
 		return "redirect:teamAdmin.htm";
 	}
 }

@@ -54,4 +54,6 @@ public interface AdminDAO {
 	public int insertTeam(int deptcode, String teamname) throws ClassNotFoundException, SQLException;
 	// 팀 삭제
 	public int deleteTeam(String teamcode) throws ClassNotFoundException, SQLException;
+	// 팀 명 수정
+	public int updateTeam(String teamcode, String teamname) throws ClassNotFoundException, SQLException;
 }

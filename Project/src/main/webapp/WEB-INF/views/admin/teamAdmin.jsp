@@ -103,11 +103,11 @@
 	    if(proc == 'M')
 	    {
 	    	
-	    	console.log("boardcode: "+boardcode);
-	    	var name = $('#boardname'+boardcode).val();
+	    	console.log("teamcode: "+teamcode);
+	    	var name = $('#teamname'+teamcode).val();
 	    	console.log("boardname: "+name);
-	        if( !confirm( '게시판을 수정하시겠습니까?') ) return;
-	        f.action = "communityModify.htm?boardcode="+boardcode+"&boardname="+name;
+	        if( !confirm( '팀 명을 수정하시겠습니까?') ) return;
+	        f.action = "teamModify.htm?teamcode="+teamcode+"&teamname="+name;
 	    }
 	    
 	    f.submit();
