@@ -220,4 +220,34 @@ public class Admincontroller {
 		admindao.insertEmpauth(userid);
 		return "forward:EmpEditAdmin.htm?userid="+userid;
 	}
+	
+	// 게시판 관리 페이지
+		@RequestMapping(value = "teamAdmin.htm", method=RequestMethod.GET)
+		public String teamAdmin(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception
+		{
+			System.out.println("게시판 관리 페이지");
+			AdminDAO admindao = sqlSession.getMapper(AdminDAO.class);
+			
+			// 게시판 목록
+			List<BoardList> boardtypelist = admindao.getBoardListType();
+			
+			// 게시판타입이랑 게시판 갯수
+			Map<BoardList, Integer> boardmap = new HashMap<BoardList, Integer>();
+			
+			for(int i=0; i<boardtypelist.size(); i++){
+				int bnum = admindao.getBoardofNum(boardtypelist.get(i).getBoardcode());
+				boardmap.put(boardtypelist.get(i), bnum);
+				
+			}
+			
+			/*List<Integer> boardofnum = new ArrayList<Integer>();
+			for(int i=0; i<boardtypelist.size(); i++){
+				boardofnum.add(admindao.getBoardofNum(boardtypelist.get(i).getBoardcode()));
+			}*/
+			
+			//model.addAttribute("boardtypelist", boardtypelist);
+			//model.addAttribute("boardofnum", boardofnum);
+			model.addAttribute("boardmap", boardmap);
+			return "admin.teamAdmin";
+		}	
 }

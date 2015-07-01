@@ -145,8 +145,8 @@
 						href="${pageContext.request.contextPath}/admin/communityAdmin.htm"><i
 							class="fa fa-circle-o"></i> 커뮤니티 관리 </a></li>
 					<li><a
-						href="${pageContext.request.contextPath}/sign/SignMain.htm"><i
-							class="fa fa-circle-o"></i> 직급?부서?관리 </a></li>
+						href="${pageContext.request.contextPath}/admin/teamAdmin.htm"><i
+							class="fa fa-circle-o"></i> 팀 관리 </a></li>
 					<li><a
 						href="${pageContext.request.contextPath}/admin/empAdmin.htm"><i
 							class="fa fa-circle-o"></i> 사원 관리 </a></li>
