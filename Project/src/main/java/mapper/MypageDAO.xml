@@ -4,12 +4,29 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.MypageDAO">
 
+	<select id="getEmpInfo" resultType="dto_vo.Emp.Empinfo">
+		SELECT USERID,Userphoto,Useraddr,Useremail,Usermobile,Usertel,TO_CHAR(BIRTH,'YYYY-MM-DD') as birth,TO_CHAR(HIREDATE,'YYYY-MM-DD') as hiredate FROM EMPINFO WHERE USERID=#{userid}
+	</select>
+	
+	<!-- 사원 가져오기  -->
+	<select id="getEmp" resultType="dto_vo.Emp.Emp">
+		 select e.userid, e.ename, d.deptname as deptcode, p.posname as poscode, t.teamname as teamcode, e.emptel, e.empapprove,e.emppwd
+         from emp e join dept d 
+                    on e.DEPTCODE = d.DEPTCODE
+                    join position p
+                    on e.POSCODE = p.POSCODE
+                    join team t
+                    on e.TEAMCODE = t.TEAMCODE
+         where e.userid = #{userid}
+	</select>
+
+
 	<update id="updateuser" parameterType="dto_vo.Emp.Emp">							
-	update emp set userid=#{userid}, emppwd=#{emppwd}, ename=#{ename}, emptel=#{emptel}, poscode=#{poscode}, deptcode=#{deptcode} where userid=#{userid}
+	update emp set emppwd=#{emppwd}, emptel=#{emptel} where userid=#{userid}
     </update>
     
     <update id="updateuserinfo" parameterType="dto_vo.Emp.Empinfo">							
-	update empinfo set userphoto=#{userphoto}, usermobile=#{usermobile}, useremail=#{useremail}, birth=#{birth}, useraddr=#{useraddr}, usertel=#{usertel}, hiredate=#{hiredate} where userid=#{userid}
+	update empinfo set userphoto=#{userphoto}, usermobile=#{usermobile}, useremail=#{useremail}, useraddr=#{useraddr}, usertel=#{usertel} where userid=#{userid}
     </update>
 
 </mapper>

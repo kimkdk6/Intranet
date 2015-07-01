@@ -61,14 +61,14 @@
 									cellspacing="0" cellpadding="0" frame="void">
 									<tbody>
 										<tr height="30">
-											<td width="120" bgcolor="#FAFAD3" align="center"
+											<td width="120" bgcolor="#FFFFD7" align="center"
 												><b>아이디</b></td>
 											<td style="padding: 3px 0px 0px 12px;"><input
-												type="hidden" name="usriden" value="${emp.userid}">
+												type="hidden" name="userid" value="${emp.userid}">
 												${emp.userid}</td>
 										</tr>
 										<tr height="30">
-											<td bgcolor="#FAFAD3" align="center"><b>기존
+											<td bgcolor="#FFFFD7" align="center"><b>기존
 													암호</b></td>
 											<td style="padding: 3px 0px 0px 12px;" class="stxt"><input
 												type="password" autocomplete="off" name="passconf"
@@ -76,7 +76,7 @@
 												style="width: 150px;"></td>
 										</tr>
 										<tr height="30">
-											<td bgcolor="#FAFAD3" align="center" ><b>암호</b></td>
+											<td bgcolor="#FFFFD7" align="center" ><b>암호</b></td>
 											<td style="padding: 3px 0 0 12px;" class="stxt"><input
 												type="password" name="emppwd" class="input_type1"
 												value="${emp.emppwd}" style="width: 150px;">
@@ -88,7 +88,7 @@
 												</div></td>
 										</tr>
 										<tr height="30">
-											<td bgcolor="#FAFAD3" align="center">
+											<td bgcolor="#FFFFD7" align="center">
 												<b>사진</b><br> <span class="stxt">(최적사이즈 130*146)</span>
 											</td>
 											<td style="padding: 6px 0 6px 12px;">
@@ -112,7 +112,7 @@
 																<!-- 																	<img src="/img/webmail/bt_del.gif" align="absmiddle"> -->
 																<!-- 																	</a> -->
 																<div>
-																	<input type="file" name="uploadify" id="uploadify"
+																	<input type="file" name="file" id="file"
 																		width="60" height="20">
 																	<!-- 																		<object type="application/x-shockwave-flash" -->
 																	<!-- 																			data="/js/uploadify.swf" width="60" height="20" -->
@@ -134,7 +134,7 @@
 										</tr>
 
 										<tr height="30">
-											<td bgcolor="#FAFAD3" align="center"><b>이름</b></td>
+											<td bgcolor="#FFFFD7" align="center"><b>이름</b></td>
 											<td style="padding: 3px 0px 0px 12px;"><input
 												type="hidden" name="ename" class="input_type1"
 												style="width: 150px;" value="${emp.ename}">
@@ -142,7 +142,7 @@
 										</tr>
 
 										<tr height="30">
-											<td bgcolor="#FAFAD3" align="center" ><b>회사
+											<td bgcolor="#FFFFD7" align="center" ><b>회사
 													전화</b></td>
 											<td style="padding: 0px 0px 0px 12px;"><input
 												type="text" name="emptel" class="input_type1"
@@ -151,7 +151,7 @@
 										</tr>
 
 										<tr height="30">
-											<td bgcolor="#FAFAD3" align="center"><b>핸드폰</b></td>
+											<td bgcolor="#FFFFD7" align="center"><b>핸드폰</b></td>
 											<td style="padding: 0px 0px 0px 12px;">
 												<!-- <input type="text" name="mobile" class="input_type1" style="width:150px;" value="" onBlur="constraintValue('MOBILE',this);"> -->
 												<input type="text" name="usermobile" class="input_type1"
@@ -159,13 +159,13 @@
 											</td>
 										</tr>
 										<tr height="30">
-											<td bgcolor="#FAFAD3" align="center"><b>전자우편주소</b></td>
+											<td bgcolor="#FFFFD7" align="center"><b>전자우편주소</b></td>
 											<td style="padding: 0px 0px 0px 12px;"><input
 												type="text" name="useremail" class="input_type1"
 												style="width: 200px;" value="${empinfo.useremail}"></td>
 										</tr>
 										<tr height="30">
-											<td bgcolor="#FAFAD3" align="center"><b>생년월일</b></td>
+											<td bgcolor="#FFFFD7" align="center"><b>생년월일</b></td>
 											<td style="padding-left: 6px;">&nbsp; <input type="text"
 												name="birth" class="input_type1" style="width: 150px;"
 												value="${empinfo.birth}"> <!--  년 <input
@@ -180,7 +180,7 @@
 														value="0">음력</label> --></td>
 										</tr>
 										<tr height="30">
-											<td bgcolor="#FAFAD3" align="center" ><b>자택
+											<td bgcolor="#FFFFD7" align="center" ><b>자택
 													주소</b></td>
 											<td style="padding-left: 6px;">&nbsp; <!--<input name="zipcode" type="text"
 													class="input_type1" style="width: 60px;" value=""
@@ -189,7 +189,7 @@
 												style="width: 300px;" value="${empinfo.useraddr}"></td>
 										</tr>
 										<tr height="30">
-											<td bgcolor="#FAFAD3" align="center"><b>자택
+											<td bgcolor="#FFFFD7" align="center"><b>자택
 													전화</b></td>
 											<td style="padding-left: 6px;">&nbsp; <input type="text"
 												name="usertel" class="input_type1" style="width: 150px;"
@@ -198,7 +198,7 @@
 
 
 										<tr>
-											<td bgcolor="#FAFAD3" align="center" ><b>사내
+											<td bgcolor="#FFFFD7" align="center" ><b>사내
 													정보</b></td>
 											<td style="padding: 10px 10px 10px 12px;">
 
@@ -207,20 +207,20 @@
 													cellspacing="0" cellpadding="0" class="tbl_board1">
 													<tbody>
 														<tr height="30">
-															<td width="30%" bgcolor="#FDECFD" align="center"
+															<td width="30%" bgcolor="#FFF2F2" align="center"
 																><b>부서코드</b>
 															<td style="padding: 0px 0px 0px 12px;"><input
 																type="hidden" name="deptcode" value="${emp.deptcode}">${emp.deptcode}</td>
 															</td>
 														</tr>
 														<tr height="30">
-															<td width="30%" bgcolor="#FDECFD" align="center"
+															<td width="30%" bgcolor="#FFF2F2" align="center"
 																><b>직급코드</b>
 															<td style="padding: 0px 0px 0px 12px;"><input
 																type="hidden" name="poscode" value="${emp.poscode}">${emp.poscode}</td>
 														</tr>
 														<tr height="30">
-															<td bgcolor="#FDECFD" align="center" ><b>입사일</b></td>
+															<td bgcolor="#FFF2F2" align="center" ><b>입사일</b></td>
 															<td style="padding: 0px 0px 0px 12px;"><input
 																type="hidden" name="hiredate"
 																value="${empinfo.hiredate}">${empinfo.hiredate}</td>
@@ -248,8 +248,7 @@
 												<table border="0" cellspacing="0" cellpadding="0">
 													<tbody>
 														<tr>
-															<td><input type="button" value="수정완료"
-																onclick="addsign()"></td>
+															<td><input type="submit" class="btn bg-olive margin" value="수정완료"></td>
 														</tr>
 													</tbody>
 												</table>
