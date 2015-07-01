@@ -43,7 +43,5 @@ public interface EmpDAO {
 	// 회원 가입 Empinfo
 	public int joinMemberInfo( Empinfo empinfo ) throws ClassNotFoundException, SQLException;
 	
-	//INSERT INTO Authorities VALUES(?, ROLE_USER)
-	// 권한 변경
-	public int joinMemberAuthorities( String userid ) throws ClassNotFoundException, SQLException;
+	
 }

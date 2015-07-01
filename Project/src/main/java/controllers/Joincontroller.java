@@ -59,24 +59,12 @@ public class Joincontroller {
    }
    
    @RequestMapping(value="join.htm", method=RequestMethod.POST)
-   public String join(Emp emp, Empinfo empinfo,File File,HttpServletRequest request) throws ClassNotFoundException, SQLException, IOException 
+   public String join(Emp emp, Empinfo empinfo, File File, HttpServletRequest request) throws ClassNotFoundException, SQLException, IOException 
    {
-      /*System.out.println("id : " + emp.getUserid());
-      System.out.println("pwd : " + emp.getEmppwd());
-      System.out.println("name : " + emp.getEname());
-      System.out.println("emp deptcode : " + emp.getDeptcode());
-      System.out.println("emp teamcode : " + emp.getTeamcode());
-      System.out.println("emp poscode : " + emp.getPoscode());
-      
-      System.out.println("empinfo id : " + empinfo.getUserid());
-      System.out.println("empinfo mail : " + empinfo.getUseremail());
-      System.out.println("empinfo birth : " + empinfo.getBirth());
-<<<<<<< HEAD
-      */
-      
       CommonsMultipartFile file = File.getFile();
       Calendar cal = Calendar.getInstance();
       String fileName = null;
+      
       if(!file.isEmpty()){
 			//이 경우라면 최소 한개는 파일첨부
 
@@ -94,33 +82,21 @@ public class Joincontroller {
 				fs.close();
 			}
 			fileName = fname; //파일의 이름만 별도 관리
+			empinfo.setUserphoto(fileName);
+		} else {
+			
+			empinfo.setUserphoto("pic_bg.gif");
 		}
       
       EmpDAO empDAO = sqlSession.getMapper(EmpDAO.class);
-      empinfo.setUserphoto(fileName);
+ 
       
-      
+    
       empDAO.joinMember(emp);
       empDAO.joinMemberInfo(empinfo);
-      empDAO.joinMemberAuthorities(emp.getUserid());
       
       return "login.login";
    
-      /*   String inputPwd = emp.getEmppwd();
-      
-      EmpDao empDao = sqlSession.getMapper(EmpDao.class);
-      emp = empDao.isMember(emp);
-      
-      System.out.println(emp.getEmppwd());
-      System.out.println(emp.getEname());
-      
-      if( inputPwd.equals(emp.getEmppwd()))
-      {
-         // 메인 페이지 url
-         return "login.join";
-      } else {
-         return "login.login";
-      }*/
    } 
    
    @RequestMapping(value="getTeamName.htm")

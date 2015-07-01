@@ -52,4 +52,8 @@
       values( SCHEDULE_SCHNUM.NEXTVAL, #{catecode}, #{userid}, to_date( #{scstart},'YYYY-MM-DD HH24:MI:SS') ,to_date( #{scend},'YYYY-MM-DD HH24:MI:SS'), #{sctitle}, #{sccontent})
    </insert>
    
+   <delete id="DeleteSchedule" parameterType="Integer">
+		delete from schedule where schnum = #{ schnum }
+   </delete>
+   
 </mapper>

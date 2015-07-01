@@ -678,7 +678,9 @@
     </tbody></table> 
     </td> 
   </tr>   
+  
 </tbody></table> 
+
 </form>
 <div class="gbx_drag" style="cursor: move; height: 20px; z-index: -1; width: 400px; position: absolute; top: 0px; float: left;"></div></div>
 
@@ -692,11 +694,14 @@
  --%>
 <script type="text/javascript">
 	$(function() {
-		$('#colorpicker').colorpicker({
-			flat:true,
-			layout:'hex',
-			submit:0
-		});
+		
+		var currEvent;
+		
+// 		$('#colorpicker').colpick({
+// 			flat:true,
+// 			layout:'hex',
+// 			submit:0
+// 		});
 
 		//$('#colorpicker').colorpicker();
 		
@@ -798,7 +803,7 @@
 					} ]);
 					
 					var formData = $("#_schedule_form").serialize();
-		               console.log(formData);
+		               //console.log(formData);
 		               $.ajax({
 		                    Type:"POST",
 		                     url:"<%= request.getContextPath() %>/schedule/insertSchedule.htm",
@@ -827,6 +832,21 @@
 			modal : true,
 			buttons : {
 				"일정 삭제" : function() { 
+					
+					//console.log(currEvent);
+					var schnum = currEvent.schnum;
+					console.log(schnum);
+					
+					$.ajax({
+	                	Type:"get",
+	                    url:"<%= request.getContextPath() %>/schedule/deleteSchedule.htm",
+	                    data:{ schnum : schnum },
+	                    success:function( data ){ alert("delete Success!!");},
+	                    error:function(data){alert("Error 발생");}
+	               });
+					
+					$('#calendar').fullCalendar( 'removeEventSource', currEvent.source );
+					
 					readEvent.dialog("close");
 				},
 // 				"일정 수정" : function() {
@@ -961,12 +981,14 @@
 						
 						$('#readcatename').val(calEvent.catename);
 						
+						currEvent = calEvent; 
+						
 						$( "#_schedule_view" ).dialog('open');
 						
 						
 						 
 						
-					},
+					},	
 
 					editable : false,
 					droppable : false, 
@@ -997,7 +1019,7 @@
                  $.each(data.schedule, function(){
 
                     $("#calendar").fullCalendar( 'addEventSource', [ {
-                       
+                       schnum : this.schnum,
                    	   catecode:this.catecode,
                        catename:this.catename,
                        title : this.sctitle,

@@ -1,6 +1,7 @@
 package controllers;
 
 import java.io.UnsupportedEncodingException;
+import java.security.Principal;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -13,9 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.View;
 
+import dao.AttendanceDAO;
 import dao.ScheduleDAO;
 import dto_vo.Emp.Emp;
 import dto_vo.Schedule.Schcategory;
@@ -141,7 +145,26 @@ public class Schedulecontroller {
        scheduleDAO.InsertSchedule(schedule);
        
        return "schedule.schedule";
+    }  
+    
+    @RequestMapping(value = "deleteSchedule.htm", method= RequestMethod.GET)
+    public @ResponseBody void DeleteSchedule(Model model, @RequestParam(value="schnum")int schnum, HttpServletRequest request) throws ClassNotFoundException, SQLException {
+
+    	System.out.println("schnum : " + schnum);
+
+    	ScheduleDAO scheduleDAO = sqlsession.getMapper(ScheduleDAO.class);
+    	scheduleDAO.DeleteSchedule(schnum);
     }   
+    
+    
+   /* @RequestMapping(value = "latereason.htm")
+	public @ResponseBody void latereason(Principal principal,HttpServletRequest request, HttpServletResponse response) throws Exception
+	{
+		
+		AttendanceDAO Latereason = sqlSession.getMapper(AttendanceDAO.class);
+		Latereason.letereason(principal.getName(),request.getParameter("reason"));
+		
+	}*/
 }
 
 
