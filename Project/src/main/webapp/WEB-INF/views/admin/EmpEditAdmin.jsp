@@ -130,11 +130,7 @@
 																		
 																	</c:otherwise>
 																</c:choose>
-																	<div>
-																		<input type="file" name="file" id="file"
-																			width="60" height="20">
-																	</div>
-																	<div id="fileQueue"></div></td>
+																	 
 															</tr>
 														</tbody>
 													</table>

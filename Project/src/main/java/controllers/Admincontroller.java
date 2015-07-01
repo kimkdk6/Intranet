@@ -192,41 +192,15 @@ public class Admincontroller {
 	}
 	
 	// 회원 정보 수정
+	@Transactional
 	@RequestMapping(value = "EmpEdit.htm", method=RequestMethod.POST)
-	public String EmpEditAdmin(Model model, File file, Emp emp) throws Exception
+	public String EmpEditAdmin(Model model, Emp emp) throws Exception
 	{
 		AdminDAO admindao = sqlSession.getMapper(AdminDAO.class);
 		// 회원 정보
 		System.out.println("회원 정보 수정");
-		System.out.println(file.getFile()+"/"+emp.getEmptel()+"/"+emp.getDeptcode()+"/"+emp.getTeamcode()+"/"+emp.getPoscode());
+		System.out.println(emp.getEmptel()+"/"+emp.getDeptcode()+"/"+emp.getTeamcode()+"/"+emp.getPoscode());
 		// 회원 정보 수정
-		
-		if(file.getFile() != null){
-			// 첨부 파일 
-			CommonsMultipartFile f = file.getFile();
-		      Calendar cal = Calendar.getInstance();
-		      String fileName = null;
-		      if(!f.isEmpty()){
-					//이 경우라면 최소 한개는 파일첨부
-					String fname = cal.getTimeInMillis()+f.getOriginalFilename();
-					//String path = request.getServletContext().getRealPath("/Upload/ProfilePhoto/");
-					String path = finaldata.path+"ProfilePhoto";
-					
-					String fullpath = path + "\\" + fname;
-					System.out.println(fullpath);
-					if(!fname.equals("")){
-						//서버에 물리적 경로 파일쓰기작업
-						FileOutputStream fs = new FileOutputStream(fullpath);
-						fs.write(f.getBytes());
-						fs.close();
-					}
-					fileName = fname; //파일의 이름만 별도 관리
-				}
-			
-		    // 파일 수정
-		      admindao.updateEmpinfo(emp.getUserid(), fileName);  
-		}
-		
 		admindao.updateEmp(emp.getUserid(), emp.getEmptel(), 
 					emp.getDeptcode(), emp.getTeamcode(), emp.getPoscode());
 		

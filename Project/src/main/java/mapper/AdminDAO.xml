@@ -104,11 +104,5 @@
    		 emptel = #{param2}, deptcode=#{param3}, teamcode=#{param4}, poscode=#{param5}
      	 where userid= #{param1}
 	</update>
-	
-	<!-- 회원 정보 수정 : 프로필 수정 -->
-	<update id="updateEmpinfo" parameterType="hashmap">
-		update empinfo 
-		set userphoto = #{param2}
-		where userid = #{param1}
-	</update>
+	 
 </mapper>

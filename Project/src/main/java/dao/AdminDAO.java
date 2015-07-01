@@ -47,6 +47,4 @@ public interface AdminDAO {
 	// emp.getEmptel()+"/"+emp.getDeptcode()+"/"+emp.getTeamcode()+"/"+emp.getPoscode()
 	public int updateEmp(String userid, String emptel, String deptcode, String teamcode, String poscode)
 												throws ClassNotFoundException, SQLException;
-	// 회원 프로필 사진 수정
-	public int updateEmpinfo(String userid, String userphoto) throws ClassNotFoundException, SQLException;
 }
