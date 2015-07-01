@@ -1,7 +1,6 @@
 package controllers;
 
 import java.io.UnsupportedEncodingException;
-import java.security.Principal;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.View;
 
-import dao.AttendanceDAO;
 import dao.ScheduleDAO;
 import dto_vo.Emp.Emp;
 import dto_vo.Schedule.Schcategory;
@@ -48,18 +46,18 @@ public class Schedulecontroller {
          String userid = emp.getUserid();
          
          ScheduleDAO scheduleDAO = sqlsession.getMapper(ScheduleDAO.class);
+        
+         int deptcode = scheduleDAO.getDeptCode(userid);
+         int teamcode = scheduleDAO.getTeamCode(userid);
          
-          List<Schcategory> getSchCategoryDept = scheduleDAO.getSchCategoryDept(userid);
-          List<Schcategory> getSchCategoryTeam = scheduleDAO.getSchCategoryTeam(userid);
-          List<Schcategory> getSchCategoryUser = scheduleDAO.getSchCategoryUser(userid);
+         List<Schcategory> getSchCategoryDept = scheduleDAO.getSchCategoryDept(deptcode);
+         List<Schcategory> getSchCategoryTeam = scheduleDAO.getSchCategoryTeam(teamcode);
+         List<Schcategory> getSchCategoryUser = scheduleDAO.getSchCategoryUser(userid);
          
-//          System.out.println(getSchCategoryDept.toString());
-//          System.out.println(getSchCategoryTeam.toString());
-//          System.out.println(getSchCategoryUser.toString());
           
-          model.addAttribute("getSchCategoryDept", getSchCategoryDept);
-          model.addAttribute("getSchCategoryTeam", getSchCategoryTeam);
-          model.addAttribute("getSchCategoryUser", getSchCategoryUser);
+         model.addAttribute("getSchCategoryDept", getSchCategoryDept);
+         model.addAttribute("getSchCategoryTeam", getSchCategoryTeam);
+         model.addAttribute("getSchCategoryUser", getSchCategoryUser);
           
          return "schedule.schedule";
       }
@@ -69,18 +67,25 @@ public class Schedulecontroller {
        {
        
         Emp emp = (Emp)session.getAttribute("myemp");
-      //  System.out.println();
-//        System.out.println(emp);
+//  	System.out.println();
+//      System.out.println(emp);
         
         String userid = emp.getUserid();
        
-//         System.out.println("getSchedule.htm >> userid : " + userid);
-         response.setContentType("text/html;charset=UTF-8");
+//      System.out.println("getSchedule.htm >> userid : " + userid);
+        response.setContentType("text/html;charset=UTF-8");
          
-         ScheduleDAO scheduleDAO = sqlsession.getMapper(ScheduleDAO.class);
+        ScheduleDAO scheduleDAO = sqlsession.getMapper(ScheduleDAO.class);
          
-         List<ScheduleView> schedule = scheduleDAO.getSchedule(userid);
+        int deptcode = scheduleDAO.getDeptCode(userid);
+        int teamcode = scheduleDAO.getTeamCode(userid);
+        
+        System.out.println("deptcode : " + deptcode);
+        System.out.println("teamcode : " + teamcode);
+        
+        List<ScheduleView> schedule = scheduleDAO.getSchedule(deptcode, teamcode, userid);
          
+        System.out.println(schedule.toString());
          /*
          List<Schcategory> schcategory = scheduleDAO.getSchCategory(userid);
          List<Schcategory> getStartSchedule = scheduleDAO.getStartSchedule(userid);

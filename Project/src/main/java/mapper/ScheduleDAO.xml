@@ -11,8 +11,8 @@
             schnum, catecode, userid, sccontent
       from Schedule where userid=#{ userid } -->
       select to_char(scstart, 'YYYY-MM-DD HH24:MI:SS') as scstart, to_char(scend, 'YYYY-MM-DD HH24:MI:SS') as scend,
-      		 sctitle, schnum, catecode, userid, sccontent ,color,catename
-      from Scheduleview where userid=#{ userid }
+      		 sctitle, schnum, catecode, userid, sccontent ,color, catename, deptcode, teamcode
+      from Scheduleview where deptcode = #{ deptcode } or teamcode = #{ teamcode } or userid = #{ userid }
       <!-- sctitle, schnum, catecode, userid, sccontent ,color,catename -->
    </select>
    
@@ -21,10 +21,10 @@
    </select> -->
    
    <select id="getSchCategoryDept" resultType="dto_vo.Schedule.Schcategory">
-      select * from SCHCATEGORY where userid = #{ userid } and deptcode is not null
+      select * from SCHCATEGORY where deptcode = #{ deptcode }
    </select>
    <select id="getSchCategoryTeam" resultType="dto_vo.Schedule.Schcategory">
-      select * from SCHCATEGORY where userid = #{ userid } and Teamcode is not null
+      select * from SCHCATEGORY where teamcode = #{ teamcode }
    </select>
    <select id="getSchCategoryUser" resultType="dto_vo.Schedule.Schcategory">
       select * from SCHCATEGORY where userid = #{ userid } and deptcode is null and Teamcode is null
@@ -55,5 +55,12 @@
    <delete id="DeleteSchedule" parameterType="Integer">
 		delete from schedule where schnum = #{ schnum }
    </delete>
+   
+   <select id="getDeptCode" resultType="Integer">
+   		select deptcode from emp where userid = #{ userid }
+   </select>
+   <select id="getTeamCode" resultType="Integer">
+   		select teamcode from emp where userid = #{ userid }
+   </select>
    
 </mapper>

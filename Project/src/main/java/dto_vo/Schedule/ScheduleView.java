@@ -13,6 +13,8 @@ public class ScheduleView {
 	private String sccontent; // 스케쥴내용
 	private String color;
 	private String catename;
+	private int deptcode;
+	private int teamcode;
 	
 	public String getColor() {
 		return color;
@@ -42,14 +44,31 @@ public class ScheduleView {
 		this.schnum = schnum;
 	}
 
+	public int getDeptcode() {
+		return deptcode;
+	}
+
+	public void setDeptcode(int deptcode) {
+		this.deptcode = deptcode;
+	}
+
+	public int getTeamcode() {
+		return teamcode;
+	}
+
+	public void setTeamcode(int teamcode) {
+		this.teamcode = teamcode;
+	}
+
 	public int getCatecode() {
 		return catecode;
 	}
 
-	public ScheduleView(int schnum, int catecode, String userid, String scstart,
-			String scend, String sctitle, String sccontent, String color,
-			String catename) {
-		super();
+	
+
+	public ScheduleView(int schnum, int catecode, String userid,
+			String scstart, String scend, String sctitle, String sccontent,
+			String color, String catename, int deptcode, int teamcode) {
 		this.schnum = schnum;
 		this.catecode = catecode;
 		this.userid = userid;
@@ -59,6 +78,8 @@ public class ScheduleView {
 		this.sccontent = sccontent;
 		this.color = color;
 		this.catename = catename;
+		this.deptcode = deptcode;
+		this.teamcode = teamcode;
 	}
 
 	public void setCatecode(int catecode) {
@@ -107,10 +128,10 @@ public class ScheduleView {
 
 	@Override
 	public String toString() {
-		return "Schedule [schnum=" + schnum + ", catecode=" + catecode
+		return "ScheduleView [schnum=" + schnum + ", catecode=" + catecode
 				+ ", userid=" + userid + ", scstart=" + scstart + ", scend="
 				+ scend + ", sctitle=" + sctitle + ", sccontent=" + sccontent
-				+ "]";
+				+ ", color=" + color + ", catename=" + catename + ", deptcode="
+				+ deptcode + ", teamcode=" + teamcode + "]";
 	}
-	
 }
