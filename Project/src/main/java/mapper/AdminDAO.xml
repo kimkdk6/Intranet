@@ -104,5 +104,11 @@
    		 emptel = #{param2}, deptcode=#{param3}, teamcode=#{param4}, poscode=#{param5}
      	 where userid= #{param1}
 	</update>
+	
+	<!-- 회원 권한 추가 -->
+	<insert id="insertEmpauth" parameterType="String">
+		insert into AUTHORITIES 
+		VALUES(#{userid}, 'ROLE_USER')
+	</insert>
 	 
 </mapper>

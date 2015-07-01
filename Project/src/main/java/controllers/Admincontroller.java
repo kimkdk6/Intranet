@@ -192,7 +192,6 @@ public class Admincontroller {
 	}
 	
 	// 회원 정보 수정
-	@Transactional
 	@RequestMapping(value = "EmpEdit.htm", method=RequestMethod.POST)
 	public String EmpEditAdmin(Model model, Emp emp) throws Exception
 	{
@@ -208,6 +207,7 @@ public class Admincontroller {
 	}
 
 	// 회원 승인
+	@Transactional
 	@RequestMapping(value = "EmpApproveAdmin.htm", method=RequestMethod.POST)
 	public String EmpApproveAdmin(Model model, String userid, String emptel) throws Exception
 	{
@@ -215,7 +215,9 @@ public class Admincontroller {
 		// 회원 목록
 		System.out.println("회원 승인");
 		System.out.println(userid+"/"+emptel);
-		admindao.updateEmpApprove(userid, emptel);	 
+		admindao.updateEmpApprove(userid, emptel);
+		// 회원 권한
+		admindao.insertEmpauth(userid);
 		return "forward:EmpEditAdmin.htm?userid="+userid;
 	}
 }
