@@ -49,4 +49,77 @@
 		insert into leave(userid,attdate,lvreason) values (#{param1}, to_char (sysdate, 'YYYY-MM-DD'), #{param2})   
 	</insert> 
    
+   <select id="offlateness" parameterType="String" resultType="int" >
+			select count(*) from emp e join dept d on e.deptcode = d.deptcode
+           join lateness l on e.userid = l.userid
+           where to_char (l.attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}' and d.deptcode=100
+	</select>
+	
+	<select id="devellateness" parameterType="String" resultType="int" >
+			select count(*) from emp e join dept d on e.deptcode = d.deptcode
+           join lateness l on e.userid = l.userid
+           where to_char (l.attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}' and d.deptcode=200
+	</select>
+	
+	<select id="manalateness" parameterType="String" resultType="int" >
+			select count(*) from emp e join dept d on e.deptcode = d.deptcode
+           join lateness l on e.userid = l.userid
+           where to_char (l.attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}' and d.deptcode=300
+	</select>
+	
+	<select id="busilateness" parameterType="String" resultType="int" >
+			select count(*) from emp e join dept d on e.deptcode = d.deptcode
+           join lateness l on e.userid = l.userid
+           where to_char (l.attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}' and d.deptcode=400
+	</select>
+
+	<select id="offleave" parameterType="String" resultType="int" >
+			select count(*) from emp e join dept d on e.deptcode = d.deptcode
+           join leave l on e.userid = l.userid
+           where to_char (l.attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}' and d.deptcode=100
+	</select>
+	
+		<select id="develleave" parameterType="String" resultType="int" >
+			select count(*) from emp e join dept d on e.deptcode = d.deptcode
+           join leave l on e.userid = l.userid
+           where to_char (l.attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}' and d.deptcode=200
+	</select>
+	
+		<select id="manaleave" parameterType="String" resultType="int" >
+			select count(*) from emp e join dept d on e.deptcode = d.deptcode
+           join leave l on e.userid = l.userid
+           where to_char (l.attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}' and d.deptcode=300
+	</select>
+	
+		<select id="busileave" parameterType="String" resultType="int" >
+			select count(*) from emp e join dept d on e.deptcode = d.deptcode
+           join leave l on e.userid = l.userid
+           where to_char (l.attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}' and d.deptcode=400
+	</select>
+	
+	<select id="offabsence" parameterType="String" resultType="int" >
+			select count(*) from emp e join dept d on e.deptcode = d.deptcode
+           join absence l on e.userid = l.userid
+           where to_char (l.attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}' and d.deptcode=100
+	</select>
+	
+	<select id="develabsence" parameterType="String" resultType="int" >
+			select count(*) from emp e join dept d on e.deptcode = d.deptcode
+           join absence l on e.userid = l.userid
+           where to_char (l.attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}' and d.deptcode=200
+	</select>
+	
+	<select id="manaabsence" parameterType="String" resultType="int" >
+			select count(*) from emp e join dept d on e.deptcode = d.deptcode
+           join absence l on e.userid = l.userid
+           where to_char (l.attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}' and d.deptcode=300
+	</select>
+	
+	<select id="busiabsence" parameterType="String" resultType="int" >
+			select count(*) from emp e join dept d on e.deptcode = d.deptcode
+           join absence l on e.userid = l.userid
+           where to_char (l.attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}' and d.deptcode=400
+	</select>
+	
+	
   </mapper>

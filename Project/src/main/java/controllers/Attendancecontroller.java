@@ -39,9 +39,41 @@ public class Attendancecontroller {
 			dd = date.split("-")[2];
 		}
 
-		AttendanceDAO allmember = sqlSession.getMapper(AttendanceDAO.class);
-		List<String> all = allmember.allmember(yy,mm,dd);
+		AttendanceDAO attdao = sqlSession.getMapper(AttendanceDAO.class);
+		List<String> all = attdao.allmember(yy,mm,dd);
+		
+		int offlateness = attdao.offlateness(yy,mm,dd);
+		int devellateness = attdao.devellateness(yy,mm,dd);
+		int manalateness = attdao.manalateness(yy,mm,dd);
+		int busilateness = attdao.busilateness(yy,mm,dd);
+
 		model.addAttribute("all", all);
+		
+		model.addAttribute("offlateness", offlateness);
+		model.addAttribute("devellateness", devellateness);
+		model.addAttribute("manalateness", manalateness);
+		model.addAttribute("busilateness", busilateness);
+		
+		int offleave = attdao.offleave(yy,mm,dd);
+		int develleave = attdao.develleave(yy,mm,dd);
+		int manaleave = attdao.manaleave(yy,mm,dd);
+		int busileave = attdao.busileave(yy,mm,dd);
+		
+		model.addAttribute("offleave", offleave);
+		model.addAttribute("develleave", develleave);
+		model.addAttribute("manaleave", manaleave);
+		model.addAttribute("busileave", busileave);
+		
+		int offabsence = attdao.offabsence(yy,mm,dd);
+		int develabsence = attdao.develabsence(yy,mm,dd);
+		int manaabsence = attdao.manaabsence(yy,mm,dd);
+		int busiabsence = attdao.busiabsence(yy,mm,dd);
+		
+		
+		model.addAttribute("offabsence", offabsence);
+		model.addAttribute("develabsence", develabsence);
+		model.addAttribute("manaabsence", manaabsence);
+		model.addAttribute("busiabsence", busiabsence);
 		
 		return "attendance.AttendanceCheck";
 	}

@@ -7,9 +7,36 @@
 	String mm = request.getParameter("mm");
 	String dd = request.getParameter("dd");
 %>
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugins/jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/plugins/jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/plugins/jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/plugins/jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/plugins/jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/plugins/jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/plugins/jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/plugins/jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/plugins/jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/plugins/jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/plugins/jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/plugins/jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/plugins/jqwidgets/jqxgrid.pager.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/plugins/jqwidgets/jqxgrid.filter.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/plugins/jqwidgets/jqxcheckbox.js"></script>
 
+<c:set var="offlateness" value="${offlateness}" />
+<c:set var="devellateness" value="${devellateness}" />
+<c:set var="manalateness" value="${manalateness}" />
+<c:set var="manalateness" value="${manalateness}" />
 
+<c:set var="offleave" value="${offleave}" />
+<c:set var="develleave" value="${develleave}" />
+<c:set var="manaleave" value="${manaleave}" />
+<c:set var="busileave" value="${busileave}" />
 
+<c:set var="offabsence" value="${offabsence}" />
+<c:set var="develabsence" value="${develabsence}" />
+<c:set var="manaabsence" value="${manaabsence}" />
+<c:set var="busiabsence" value="${busiabsence}" />
     <script type="text/javascript">
   
 
@@ -48,6 +75,86 @@
 		
     }).datepicker( "setDate", nowday );
   
+    $(document).ready(function () {
+ 
+        // prepare chart data as an array
+        var sampleData = [
+                { Day: '임원', 지각 : '${offlateness}', 조퇴: '${offleave}', 결근: '${offabsence}' },
+                { Day: '개발부', 지각: '${devellateness}', 조퇴: '${develleave}', 결근: '${develabsence}' },
+                { Day: '총무부', 지각: '${manalateness}', 조퇴: '${manaleave}', 결근: '${manaabsence}' },
+                { Day: '영업부', 지각: '${busilateness}', 조퇴: '${busileave}', 결근: '${busiabsence}' },
+
+        ];
+        // prepare jqxChart settings
+        var settings = {
+            title: "부서별 근태현황",
+            description: "Time spent in vigorous exercise",
+            enableAnimations: true,
+            showLegend: true,
+            padding: { left: 5, top: 5, right: 5, bottom: 5 },
+            titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+            source: sampleData,
+            xAxis:
+                {
+                    dataField: 'Day',
+                    gridLines: { visible: true }
+                },
+            colorScheme: 'scheme01',
+            seriesGroups:
+                [
+                    {
+                        type: 'column',
+                        columnsGapPercent: 50,
+                        seriesGapPercent: 0,
+                        valueAxis:
+                        {
+                            visible: true,
+                            unitInterval: 10,
+                            minValue: 0,
+                            maxValue: 20,
+                            title: { text: '횟 수' }
+                        },
+                        series: [
+                                { dataField: '지각', displayText: '지각' },
+                                { dataField: '조퇴', displayText: '조퇴' },
+                                { dataField: '결근', displayText: '결근' }
+                        ]
+                    }
+                ]
+        };
+        // setup the chart
+        $('#jqxChart').jqxChart(settings);
+        var adapter = new $.jqx.dataAdapter({
+            datafields: [
+                { name: "Day", type: "string" },
+                { name: "지각", type: "number" },
+                { name: "조퇴", type: "number" },
+                { name: "결근", type: "number" }
+            ],
+            localdata: sampleData,
+            datatype: 'array'
+        });
+        $("#jqxGrid").jqxGrid({
+            width: 848,
+            height: 232,
+            filterable: true,
+            showfilterrow: true,
+            source: adapter,
+            columns:
+            [
+                { text: "Day", width: '40%', datafield: "Day", filteritems: ["임원", "개발부", "총무부", "영업부"], filtertype: "checkedlist" },
+                { text: "지각", width: '20%', datafield: "지각" },
+                { text: "조퇴", width: '20%', datafield: "조퇴" },
+                { text: "결근", width: '20%', datafield: "결근" }
+            ]
+        });
+        $("#jqxGrid").on('filter', function () {
+            var rows = $("#jqxGrid").jqxGrid('getrows');
+            var chart = $('#jqxChart').jqxChart('getInstance');
+            chart.source = rows;
+            chart.update();
+        });
+    });
 });
 </script>
 
@@ -86,6 +193,9 @@
         </td>
         <td width="" valign="top">
           <table>
+           <div id="jqxGrid"></div>
+    <div id='jqxChart' style="margin-top: 50px; width: 850px; height: 400px; position: relative; left: 0px; top: 0px;">
+          </div>
           
           </table>
           
