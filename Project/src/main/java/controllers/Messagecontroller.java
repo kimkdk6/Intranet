@@ -29,11 +29,10 @@ public class Messagecontroller {
 	// 메인 페이지 보기
 	@RequestMapping(value = "ReceiveMessage.htm")
 	public String RecieveMessage(Model model,HttpSession session,
-			@RequestParam(value="cpage", defaultValue="1") int cpage,
-			@RequestParam(value="pagesize", defaultValue="10")int pagesize
+			@RequestParam(value="cpage", defaultValue="1") int cpage
 			) throws ClassNotFoundException,SQLException {
 		
-		
+		int pagesize = 10;
 		Emp myemp = (Emp)session.getAttribute("myemp");
 		String userid = myemp.getUserid();
 
@@ -47,7 +46,7 @@ public class Messagecontroller {
 
 		
 		List<Message> messagelist = messageDao.RMessage(userid, startmessage, endmessage);
-		int totalCount = messageDao.totalCount(userid);
+		int totalCount = messageDao.totalReceiveCount(userid);
 		
 		
 		
@@ -59,16 +58,89 @@ public class Messagecontroller {
 		return "message.RMSGList";
 	}	
 	
+	
+	@RequestMapping(value = "SendMessage.htm")
+	public String SendMessage(Model model,HttpSession session,
+			@RequestParam(value="cpage", defaultValue="1") int cpage
+			) throws ClassNotFoundException,SQLException {
+		
+		int pagesize = 10;
+		Emp myemp = (Emp)session.getAttribute("myemp");
+		String userid = myemp.getUserid();
+
+		MessageDAO messageDao = sqlsession.getMapper(MessageDAO.class);
+
+		int startmessage = cpage * pagesize - (pagesize - 1);
+		int endmessage = cpage * pagesize;
+
+		System.out.println("startmessage: " +startmessage);
+		System.out.println("endmessage: " +endmessage);
+
+		
+		List<Message> messagelist = messageDao.SMessage(userid, startmessage, endmessage);
+		int totalCount = messageDao.totalSendCount(userid);
+		
+		
+		
+		PagingUtil pagingUtil = new PagingUtil(cpage, totalCount, pagesize, 5);
+
+		model.addAttribute("messagelist", messagelist);
+		model.addAttribute("paging", pagingUtil);
+
+		return "message.SMSGList";
+	}
+	
 	//게시판 메인 페이지 보기
 	@RequestMapping(value = "ReceiveDetail.htm")
 	public String ReceiveDetail(Model model,HttpSession session,
-			@RequestParam(value="msgnum") int schnum
+			@RequestParam(value="msgnum") int msgnum
 			) throws ClassNotFoundException,SQLException {
 		
+		MessageDAO messageDao = sqlsession.getMapper(MessageDAO.class);
 		
+		
+		Message message = messageDao.getMessage(msgnum);
+		
+		
+		model.addAttribute("message", message);
 		
 		return "message.RMSDetail";
 	}	
+	
+	
+	
+	
+	@RequestMapping(value = "ReceiveDelete.htm")
+	public String ReceiveDelete(Model model,HttpSession session,
+			@RequestParam(value="msgnum") int msgnum
+			) throws ClassNotFoundException,SQLException {
+		
+		MessageDAO messageDao = sqlsession.getMapper(MessageDAO.class);
+		
+		
+		messageDao.deleteRMessage(msgnum);
+		
+		
+		
+		return "redirect:ReceiveMessage.htm";
+	}
+	
+	
+	@RequestMapping(value = "SendDelete.htm")
+	public String SendDelete(Model model,HttpSession session,
+			@RequestParam(value="msgnum") int msgnum
+			) throws ClassNotFoundException,SQLException {
+		
+		MessageDAO messageDao = sqlsession.getMapper(MessageDAO.class);
+		
+		
+		messageDao.deleteRMessage(msgnum);
+		
+		
+		
+		return "redirect:message.SMSGList";
+	}	
+	
 }
 
 

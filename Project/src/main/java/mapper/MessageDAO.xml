@@ -27,23 +27,35 @@
 
 	</select>
 
-	<select id="SMessage" parameterType="Integer" resultType="dto_vo.Emp.Message">
+	<select id="SMessage" resultType="dto_vo.Emp.Message">
 
-		select
-		* from message where SENDID =#{USERID} and senddel=1 order by msgnum
-		desc
+		SELECT
+		msgnum,sendid,receiveid,msgtitle,msgcontent,msgdate,senddel,recdel
+		FROM (
+		select ROWNUM as
+		num,msgnum,sendid,receiveid,msgtitle,msgcontent,to_char(msgdate,'yyyy-mm-dd') as msgdate,senddel,recdel
+		FROM (
+		SELECT * FROM message WHERE sendID = #{userid} and senddel=1 order by
+		msgnum desc
+		)
+		) WHERE num BETWEEN #{startmessage} AND #{endmessage}
 
+	</select>
+	
+	<select id="getMessage" resultType="dto_vo.Emp.Message">
+		select msgnum,sendid,receiveid,msgtitle,msgcontent,to_char(msgdate,'yyyy-mm-dd') as msgdate,senddel,recdel from message where msgnum=#{msgnum}
+	
 	</select>
 
 
-	<delete id="deleteRMessage" parameterType="Integer">
+	<update id="deleteRMessage" parameterType="Integer">
 		UPDATE message SET
 		recdel = 0 WHERE msgnum =#{msgnum}
-	</delete>
+	</update>
 
 	<delete id="deleteSMessage" parameterType="Integer">
 		UPDATE message SET
-		recdel = 0 WHERE msgnum =#{msgnum}
+		senddel = 0 WHERE msgnum =#{msgnum}
 	</delete>
 
 	<insert id="insertNewMessage" parameterType="dto_vo.Emp.Message">
@@ -53,8 +65,13 @@
 	</insert>
 
 
-	<select id="totalCount" parameterType="String" resultType="Integer">
+	<select id="totalReceiveCount" parameterType="String" resultType="Integer">
 		select count(*) from message where RECEIVEID = #{userid} and recdel=1
+		order by msgnum desc
+	</select>
+
+	<select id="totalSendCount" parameterType="String" resultType="Integer">
+		select count(*) from message where SENDID = #{userid} and SENDDEL=1
 		order by msgnum desc
 	</select>
 
