@@ -15,6 +15,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.print.attribute.standard.SheetCollate;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,6 +32,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import dao.AttendanceDAO;
+import dao.ScheduleDAO;
 import dao.SignDAO;
 import dto_vo.Board.File;
 import dto_vo.Board.PagingUtil;
@@ -38,6 +40,8 @@ import dto_vo.Emp.Dept;
 import dto_vo.Emp.Emp;
 import dto_vo.Emp.Position;
 import dto_vo.Emp.Team;
+import dto_vo.Schedule.Schcategory;
+import dto_vo.Schedule.Schedule;
 import dto_vo.Sign.Biztripcost;
 import dto_vo.Sign.Biztripdoc;
 import dto_vo.Sign.Biztriprep;
@@ -318,7 +322,7 @@ public class Signcontroller {
 		System.out.println("승인처리된 결재 문서: "+docnum+"/ signtype= "+signtype);
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
 		Sign sign = signdao.getSign(docnum);
-		
+		ScheduleDAO schedao = sqlsession.getMapper(ScheduleDAO.class);
 		//
 		int totalsign = sign.getTotalsign();
 		int currsign = sign.getCurrsign();
@@ -343,6 +347,7 @@ public class Signcontroller {
 				        
 				        System.out.println("날 수: "+ diffDays);
 				        
+				        // 근태에
 				        // 첫 날 휴가
 				        System.out.println("휴가 첫 날: "+startdate);
 				        signdao.checkin(sign.getUserid(), holdoc.getHolstart());
@@ -357,11 +362,24 @@ public class Signcontroller {
 				        	signdao.checkin(sign.getUserid(), hd);
 				        	signdao.addholiday(sign.getUserid(), hd, holdoc.getHolreason());
 				        }
-				   
 				         
 				    } catch (ParseException e) {
 				        e.printStackTrace();
 				    }
+				    
+				    // 스케쥴에 휴가 추가
+				    Schedule schedule = new Schedule();
+				    System.out.println(sign.getUserid());
+				    System.out.println("팀 코드"+signdao.getTeamcode(sign.getUserid()));
+				    System.out.println("카테고리 코드"+signdao.getCateCode(signdao.getTeamcode(sign.getUserid())));
+				    schedule.setCatecode(signdao.getCateCode(signdao.getTeamcode(sign.getUserid())));
+				    schedule.setUserid(sign.getUserid());
+				    schedule.setScstart(holdoc.getHolstart());
+				    schedule.setScend(holdoc.getHolend());
+				    schedule.setSctitle(sign.getEname()+" "+sign.getPosname()+" : 휴가");
+				    schedule.setSccontent(sign.getEname()+" "+sign.getPosname()+" : 휴가");
+				    
+				    schedao.InsertSchedule(schedule);
 			}
 			
 		}else if(currsign < totalsign){

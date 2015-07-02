@@ -273,6 +273,15 @@
     <insert id="addholiday"  parameterType="hashmap">
   		insert into holiday(userid, attdate, holreason) values( #{param1}, #{param2}, #{param3})
     </insert>
-    
+    <select id="getTeamcode" resultType="int">
+    	select teamcode
+    	from emp
+    	where userid = #{userid}
+    </select>
+    <select id="getCateCode" resultType="int">
+    	 select catecode 
+    	 from SCHCATEGORY 
+    	 where userid='admin' and teamcode=#{teamcode}
+    </select>
  	
 </mapper>

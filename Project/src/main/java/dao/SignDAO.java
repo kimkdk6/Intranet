@@ -86,4 +86,6 @@ public interface SignDAO {
 	// ------------------------------ 근태 처리
 	public int checkin(String userid, String attdate) throws ClassNotFoundException, SQLException;
 	public int addholiday(String userid, String attdate, String holreason) throws ClassNotFoundException, SQLException;
+	public int getTeamcode(String userid) throws ClassNotFoundException, SQLException;
+	public int getCateCode(int teamcode) throws ClassNotFoundException, SQLException;
 }
