@@ -344,17 +344,20 @@ public class Signcontroller {
 				        System.out.println("날 수: "+ diffDays);
 				        
 				        // 첫 날 휴가
+				        System.out.println("휴가 첫 날: "+startdate);
 				        signdao.checkin(sign.getUserid(), holdoc.getHolstart());
 				        signdao.addholiday(sign.getUserid(), holdoc.getHolstart(), holdoc.getHolreason());
+				        Calendar cal = Calendar.getInstance();
+				        cal.setTime(startdate);
 				        // 그 뒤 휴가 
-				        
-				        // 날짜 더하기 
-				      /*  Calendar cal = Calendar.getInstance();
-				        cal.setTime(date);
-				        cal.add(Calendar.DATE, 2);
-				        cal.add(Calendar.MONTH, 2);
-				         
-				        System.err.println(df.format(cal.getTime()));*/
+				        for(int i=1; i<diffDays; i++){
+				        	 cal.add(Calendar.DATE, 1);
+				        	 String hd = df.format(cal.getTime());
+				        	System.out.println("휴가 날: "+hd);
+				        	signdao.checkin(sign.getUserid(), hd);
+				        	signdao.addholiday(sign.getUserid(), hd, holdoc.getHolreason());
+				        }
+				   
 				         
 				    } catch (ParseException e) {
 				        e.printStackTrace();

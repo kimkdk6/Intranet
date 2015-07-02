@@ -220,6 +220,7 @@
 		dialog = $("#dialog").dialog({
 			autoOpen : false,
 			width : 500,
+			modal: true,
 			show : {
 				effect : "blind",
 				duration : 1000
@@ -282,6 +283,7 @@
 		dialog1 = $("#dialog1").dialog({
 			autoOpen : false,
 			width : 500,
+			modal: true,
 			show : {
 				effect : "blind",
 				duration : 1000
@@ -338,6 +340,7 @@
 		dialog2 = $("#dialog2").dialog({
 			autoOpen : false,
 			width : 500,
+			modal: true,
 			show : {
 				effect : "blind",
 				duration : 1000
@@ -394,6 +397,7 @@
 		dialog3 = $("#dialog3").dialog({
 			autoOpen : false,
 			width : 500,
+			modal: true,
 			show : {
 				effect : "blind",
 				duration : 1000
