@@ -36,18 +36,63 @@
 		WHERE USERID=#{userid}
 	</select>
 	
+
+
+
+
+
+	<select id="getDeptName" resultType="dto_vo.Emp.Dept">
+		select * from dept
+	</select>
+	
+	<select id="getPosName" resultType="dto_vo.Emp.Position">
+      select * from position   
+    </select>
+	
+	<select id="getTeamName" resultType="dto_vo.Emp.Team">
+      select * from team where deptcode = #{deptcode}
+    </select>
+	
 	<select id="getEmpDept" resultType="String">
 		select d.DEPTNAME
 	    from emp e join dept d 
 	    on e.DEPTCODE = d.DEPTCODE
 	    where userid = #{userid}
 	</select>
+	
+	<select id="getEmpDept2" resultType="dto_vo.Emp.Emp">
+		select e.userid, e.empno, e.ename, e.emptel, d.deptname as deptcode, t.teamname as teamcode, p.posname as poscode
+		from emp e
+		join dept d
+		on e.deptcode = d.deptcode
+		join team t
+		on e.teamcode = t.teamcode
+		join position p
+		on e.poscode = p.poscode
+		where e.deptcode = #{deptcode}
+		order by e.empno
+	</select>
+	
 	<select id="getEmpTeam" resultType="String">
 		select t.TEAMNAME
 	    from emp e join team t 
 	    on e.TEAMCODE = t.TEAMCODE
 	    where userid = #{userid}
 	</select>
+	
+	<select id="getEmpTeam2" resultType="dto_vo.Emp.Emp">
+		select e.userid, e.empno, e.ename, e.emptel, d.deptname as deptcode, t.teamname as teamcode, p.posname as poscode
+		from emp e
+		join dept d
+		on e.deptcode = d.deptcode
+		join team t
+		on e.teamcode = t.teamcode
+		join position p
+		on e.poscode = p.poscode
+		where e.deptcode = #{param1} and e.teamcode = #{param2}
+		order by e.empno
+	</select>
+	
 	<select id="getEmpPos" resultType="String">
 		select p.POSNAME
 	    from emp e join position p 
@@ -62,5 +107,7 @@
       INSERT INTO EMPINFO VALUES(#{userid}, #{userphoto, jdbcType=VARCHAR}, #{useremail, jdbcType=VARCHAR}, #{birth, jdbcType=VARCHAR}, #{useraddr, jdbcType=VARCHAR}, 
                            #{usertel, jdbcType=VARCHAR}, #{usermobile, jdbcType=VARCHAR}, #{hiredate, jdbcType=VARCHAR}, null)
    </insert>
-	
+	<insert id="joinMemberAuthorities">
+      INSERT INTO Authorities VALUES(#{userid}, 'ROLE_USER')
+   </insert>
 </mapper>
