@@ -4,15 +4,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <script language="javascript">
-
-	function detailsearch()
-	{
-		window.open("SearchEmpDetail.htm", "detail_open","width=800,height=700,top=0,left=0,noresizable,toolbar=no,status=no,scrollbars=yes,directory=no");
-	    // document.body.innerHTML = printdiv.innerHTML;
+	function go_pop_search(url){
+		
+		window.open(url,"new","width=550, height=550, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
 	}
 
-
 	$(function() {
+		
+		/* // 상세보기
+		$("#detailbutton") */
+		
+		
 		// 처음에 부서 목록 출력
 		$.ajax({
 			url : "<%=request.getContextPath() %>/search/searchDeptName.htm",
@@ -37,6 +39,7 @@
 			data : {userid : $('#Emp').val()},
 			success : function(data) {
 				$('#Employee').append(
+					  
 					  "<tr>" + 
               		  "<th width='100' class='title bb1 br1 p0007'>사용자 ID</th>" +
               		  "<th width='100' class='title bb1 br1 p0007'>사원번호</th>" +
@@ -45,7 +48,8 @@
               		  "<th width='100' class='title bb1 br1 p0007'>부서이름</th>" +
               		  "<th width='100' class='title bb1 br1 p0007'>팀이름</th>" +
               		  "<th width='100' class='title bb1 br1 p0007'>직급</th>" +
-              		  "</tr>"		
+              		  "</tr>"
+              		  
 				);
 				
 				$.each(data.emplist2, function(index, entry) {
@@ -58,8 +62,13 @@
               			  "<td width='100' class='title bb1 br1 p0007'>" + entry.deptcode + "</td>" +
               			  "<td width='100' class='title bb1 br1 p0007'>" + entry.teamcode + "</td>" +
               			  "<td width='100' class='title bb1 br1 p0007'>" + entry.poscode + "</td>" +
-              			  "<td width='100' class='title bb1 br1 p0007'><button onclick='location.href='javascript:detailsearch();' class = 'btn btn-back btn-xs'>상세정보</button>" +
-              			  "</tr>"		
+              			  "<td width='100' class='title bb1 br1 p0007'>" + 
+              			  "<td>" +
+              			  "<input type='button' id='detailbutton' value='상세보기' onclick=\"javascript:go_pop_search('..\/search\/SearchEmpDetail.htm?userid="+entry.userid+"')\" class='btn btn-back btn-xs'>" +
+              			//  "<a href='javascript:go_pop_search('${pageContext.request.contextPath}/search/SearchEmpDetail.htm')'></a>" +
+              			  "</td>" +
+              			  "</tr>"
+              			  
 					)
 					
 				});
@@ -99,6 +108,9 @@
 		              			 "<td width='100' class='title bb1 br1 p0007'>" + entry.deptcode + "</td>" +
 		              			 "<td width='100' class='title bb1 br1 p0007'>" + entry.teamcode + "</td>" +
 		              			 "<td width='100' class='title bb1 br1 p0007'>" + entry.poscode + "</td>" +
+		              			 "<td>" +
+		              			 "<input type='button' id='detailbutton' value='상세보기' onclick=\"javascript:go_pop_search('..\/search\/SearchEmpDetail.htm?userid="+entry.userid+"')\" class='btn btn-back btn-xs'>" +
+		              			 "</td>" +
 		              			 "</tr>"	
 						)
 					});
@@ -161,6 +173,9 @@
 		              			  "<td width='100' class='title bb1 br1 p0007'>" + entry.deptcode + "</td>" +
 		              			  "<td width='100' class='title bb1 br1 p0007'>" + entry.teamcode + "</td>" +
 		              			  "<td width='100' class='title bb1 br1 p0007'>" + entry.poscode + "</td>" +
+		              			  "<td>" +
+		              			  "<input type='button' id='detailbutton' value='상세보기' onclick=\"javascript:go_pop_search('..\/search\/SearchEmpDetail.htm?userid="+entry.userid+"')\" class='btn btn-back btn-xs'>" +
+		              			  "</td>" +
 		              			  "</tr>"		
 						)
 					});

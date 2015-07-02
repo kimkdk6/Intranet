@@ -60,7 +60,7 @@ public class Searchcontroller {
 		
 		model.addAttribute("empinfo", empinfo);
 		
-		return "search.SearchEmp";
+		return "message.SearchEmpDetail";
 	}
 	
 	@RequestMapping(value = "searchTeamName.htm")
