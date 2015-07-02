@@ -63,11 +63,11 @@ function _delete()
     <td height="34" align="center" bgcolor="#f9f9f9" style="border-bottom:1px #d9d9d9 solid;padding:0 5px 0 5px;"><table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tbody><tr>
           <td width="110" align="left"><table border="0" cellspacing="0" cellpadding="0">
-              <tbody><tr>
+              <!-- <tbody><tr>
                 <td><a href="javascript:_delete()"><img src="../resources/img/message/bt_delete.gif"></a></td>
-<!--                 <td width="5"></td> -->
-<!--                 <td><a href="javascript:_keep()"><img src="../resources/img/message/bt_keep.gif" border="0"></a></td> -->
-              </tr>
+                <td width="5"></td>
+                <td><a href="javascript:_keep()"><img src="../resources/img/message/bt_keep.gif" border="0"></a></td>
+              </tr> -->
           </tbody></table></td>
           <td width="" align="center" class="m_sp" style="font-weight:bold;color:#000;padding:3px 0 0 0;">받은쪽지함</td>
           <td width="110">&nbsp;</td>
@@ -126,11 +126,11 @@ function _delete()
     <td height="34" align="center" bgcolor="#f9f9f9" style="border-bottom:1px #d9d9d9 solid;padding:0 5px 0 5px;"><table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tbody><tr>
           <td width="110" align="left"><table border="0" cellspacing="0" cellpadding="0">
-              <tbody><tr>
+              <tbody><!-- <tr>
                 <td><a href="javascript:_delete()"><img src="../resources/img/message/bt_delete.gif"></a></td>
-<!--                 <td width="5"></td> -->
-<!--                 <td><a href="javascript:_keep()"><img src="../resources/img/message/bt_keep.gif" border="0"></a></td> -->
-              </tr>
+                <td width="5"></td>
+                <td><a href="javascript:_keep()"><img src="../resources/img/message/bt_keep.gif" border="0"></a></td>
+              </tr> -->
           </tbody></table></td>
           <td width="" align="center" class="m_sp" style="font-weight:bold;color:#000;padding:3px 0 0 0;">받은쪽지함</td>
           <td width="110">&nbsp;</td>
