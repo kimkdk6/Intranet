@@ -228,13 +228,26 @@ public class Admincontroller {
 			
 		List<Integer> teamnlist = new ArrayList<Integer>();
 		
+		 
+		
 		for(int i=0; i<teamlist.size(); i++){
 			teamnlist.add(admindao.getEmpofTeam(teamlist.get(i).getTeamcode()));
 		}
 		
+		/*for(Dept d : deptlist){
+			List<Team> tl = new ArrayList<Team>();
+			for(Team t : teamlist){
+				if(d.getDeptcode() == t.getDeptcode()){
+					tl.add(t);
+				}
+			}
+			deptteam.add(tl);
+		}*/
+		
 		model.addAttribute("deptlist", deptlist);
 		model.addAttribute("teamlist", teamlist);
 		model.addAttribute("teamnlist", teamnlist);
+		 
 		return "admin.teamAdmin";
 	}	
 	

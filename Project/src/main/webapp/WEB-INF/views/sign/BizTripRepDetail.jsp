@@ -71,10 +71,11 @@
 											<table border="0" cellspacing="0" cellpadding="0">
 												<tbody>
 													<tr>
-														<td><a href=""><img
-																src="/img/approval/bt_list.gif"></a></td>
+														<td><a href="#">
+																	<button type="button" class="btn bg-orange margin">목 록</button>
+															</a></td>
 														<td><a href="javascript:divPrint();">
-																	<button type="button" class="btn btn-info pull-right">print</button>
+																	<button type="button" class="btn bg-navy margin">인 쇄</button>
 															</a></td>
 													</tr>
 												</tbody>

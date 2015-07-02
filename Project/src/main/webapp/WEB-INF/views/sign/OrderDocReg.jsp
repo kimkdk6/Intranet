@@ -1002,7 +1002,7 @@ $('#addline').click(function() {
 	contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" name="orderlist['+idx+'].product" class="product" style="width: 90%;" value=""></td>';
 	contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" name="orderlist['+idx+'].unitcost" class="unitcost" style="text-align: right; width: 90%" value=""></td>';
 	contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" name="orderlist['+idx+'].amount" class="amount" style="text-align: right; width: 90%" value=""></td>';
-	contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" name="orderlist['+idx+'].odersize" class="odersize" style="width: 90%" value=""></td>';
+	contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" name="orderlist['+idx+'].ordersize" class="odersize" style="width: 90%" value=""></td>';
 	contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" name="orderlist['+idx+'].ordernote" class="ordernote" style="width: 90%" value=""></td>';
 	contents += '<td class="item" align="right" style="border: solid 1px #C0BFC1;"><input type="text" name="orderlist['+idx+'].ordercost" class="ordercost" value="0" readonly="readonly"></td>';
 	contents += '</tr>';

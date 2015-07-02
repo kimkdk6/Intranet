@@ -27,6 +27,15 @@
 				<a class="title_txt" href="SendsignsList.htm"> 올린 결재 문서함
 					&gt; 상신문서</a>
 			</h3>
+			<div class="box-tools">
+                    <ul class="pagination pagination-sm no-margin pull-right">
+                      <li><a href="#">«</a></li>
+                      <li><a href="#">1</a></li>
+                      <li><a href="#">2</a></li>
+                      <li><a href="#">3</a></li>
+                      <li><a href="#">»</a></li>
+                    </ul>
+            </div>
 		</div>
 		<div class="box-body">
 			<table class="table table-hover">

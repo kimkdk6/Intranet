@@ -60,7 +60,7 @@
 						<th>관리</th>
 	
 					</tr>
-					  <c:forEach var="dept" items="${deptlist}">
+					   <c:forEach var="dept" items="${deptlist}">
 							<c:forEach var="team" items="${teamlist}" varStatus="i">
 								<c:if test="${dept.deptcode == team.deptcode}">
 									<tr>
@@ -78,7 +78,8 @@
 									</tr>
 								</c:if>
 							</c:forEach>
-					</c:forEach>  
+					</c:forEach>   
+					 
 					 
 					
 				</table>

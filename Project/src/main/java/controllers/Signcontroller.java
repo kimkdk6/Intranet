@@ -28,6 +28,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import dao.SignDAO;
 import dto_vo.Board.File;
+import dto_vo.Board.PagingUtil;
 import dto_vo.Emp.Dept;
 import dto_vo.Emp.Emp;
 import dto_vo.Emp.Position;
@@ -88,17 +89,30 @@ public class Signcontroller {
 	
 	// 올린 결재 문서함 > 상신 문서 페이지 보기
 	@RequestMapping(value = "SendsignsList.htm")
-	public String SendsignsList(Model model, Principal principal)
+	public String SendsignsList(Model model,@RequestParam(value="cpage", defaultValue="1") int cpage, Principal principal)
 			throws ClassNotFoundException, SQLException {
 
 		System.out.println("상신 문서 페이지 열람");
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
-			 
 		String userid = principal.getName();
-		List<Sign> sendsignlist = signdao.getSendSigns(userid, 0, 
-										signdao.getCountSendSigns(userid, 0), 0);
-		System.out.println("상신문서 페이지 열람:");
+		
+		int pagesize = 5;
+		int start = cpage * pagesize - (pagesize - 1);
+		int end = cpage * pagesize;
+		 
+		int listcount = signdao.getCountSendSigns(userid, 0);
+   		
+   		List<Sign> sendsignlist = signdao.getSendSigns(userid, start, end, 0);
+   		System.out.println("상신문서 페이지 열람:");
 		System.out.println(sendsignlist.toString());
+   		
+		PagingUtil pagingUtil =  new PagingUtil(cpage, listcount, pagesize, 5);
+		
+   	/*	model.addAttribute("p", page);
+   		model.addAttribute("maxpage", maxpage);
+   		model.addAttribute("startpage", startpage);
+   		model.addAttribute("endpage", endpage);*/
+   		model.addAttribute("listcount",listcount); 
 		model.addAttribute("sendsignlist", sendsignlist);
 		return "sign.SendsignsList";
 	}
