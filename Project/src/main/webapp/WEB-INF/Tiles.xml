@@ -95,6 +95,9 @@
           <definition name="print.*" template="/WEB-INF/views/inc/Printlayout.jsp"> 
          	<put-attribute name="content" value="/WEB-INF/views/sign/{1}.jsp" /> 
          </definition>
+          <definition name="message.*" template="/WEB-INF/views/inc/messagelayout.jsp"> 
+         	<put-attribute name="content" value="/WEB-INF/views/message/{1}.jsp" /> 
+         </definition>
          <definition name="index.*" template="/WEB-INF/views/inc/layout.jsp"> 
            	<put-attribute name="header"  value="/WEB-INF/views/inc/header.jsp" /> 
          	 <put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />

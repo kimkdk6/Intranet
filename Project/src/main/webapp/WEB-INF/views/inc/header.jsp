@@ -10,6 +10,13 @@
 	/* String emp = (String)session.getAttribute("emp"); */
 	
 %>
+<script type="text/javascript">
+
+function go_pop(url){
+	
+	window.open(url,"new","width=360, height=720, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
+}
+</script>
       <header class="main-header">
         <!-- Logo -->
         <a href="<%=request.getContextPath() %>/login.htm" class="logo">
@@ -33,7 +40,7 @@
                  <!--  <span class="label label-success">4</span> -->
                 </a>
                 <ul class="dropdown-menu">
-                  <li class="header">You have 4 messages</li>
+<!--                   <li class="header">You have 4 messages</li> -->
                       
                <%--    <li>
                     <!-- inner menu: contains the actual data -->
@@ -54,9 +61,9 @@
                   </li> --%>
             
                   <li class="footer">
-                  <a href="${pageContext.request.contextPath}/message/RMSGList.htm">받은 쪽지함</a>
-                  <a href="${pageContext.request.contextPath}/message/SMSGList.htm">보낸 쪽지함</a>
-                  <a href="${pageContext.request.contextPath}/message/MSGWrite.htm">쪽지 쓰기</a>
+                  <a href="javascript:go_pop('${pageContext.request.contextPath}/message/ReceiveMessage.htm')">받은 쪽지함</a>
+                  <a href="javascript:go_pop('${pageContext.request.contextPath}/message/SendMessage.htm')">보낸 쪽지함</a>
+                  <a href="javascript:go_pop('${pageContext.request.contextPath}/message/WriteMessage.htm')">쪽지 쓰기</a>
                   </li>
                 </ul>
               </li>
