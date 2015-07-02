@@ -19,8 +19,8 @@ String date = String.format("%TF",now);
  <script type="text/javascript">
 $(function(){
 
-	console.log('${latecheck}');
-	if('${latecheck}' != ""){
+	var ltc = '${latecheck}';
+	if(ltc != ""){
 		 vi();
 	}
 	function vi(){
@@ -46,11 +46,10 @@ $(function(){
 						success : function(data){
 							document.getElementById("checkin").innerHTML = data;
 							alert("출근처리가 정상적으로 처리됬습니다.");
-							 if('${latecheck}' != "''"){
-								 document.getElementById("commute").innerHTML = '&nbsp&nbsp&nbsp&nbsp&nbsp지각사유 :' ;								
-								 document.getElementById("commutecheck").style.visibility="visible";
- 								document.getElementById("reason").style.visibility="visible";
- 								console.log(document.getElementById("latebtton"));
+							var time = data.split(':');
+							console.log('${latecheck}');
+							 if(data >= "09"){
+								 vi();
 							 } 
 						},
 						error :function(data){alert("이미 출근처리가 됬습니다.");}
@@ -126,25 +125,7 @@ $(function(){
 			
 		});
 	
- 	<%-- $('#leavebtton').click(function(){
-		var form_data = {
-				leavereason : document.getElementById("reason").value
-			};
-		$.ajax({
-			url:"<%=request.getContextPath() %>/attendance/leavereason.htm", 
-			type:"get",           
-			data: form_data,
-			dataType:"html",
-			success : function(data){
-				alert('조퇴 사유 입력 완료');
-			},
-			error :function(data){
-				alert('이미 처리되었습니다.');
-			}
-		});
-			
-		}); 
-	 --%>
+ 	
 });
 
 setInterval("go_time()",1000);

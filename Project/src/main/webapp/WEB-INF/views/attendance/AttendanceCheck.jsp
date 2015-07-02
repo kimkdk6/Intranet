@@ -12,7 +12,7 @@
 
     <script type="text/javascript">
   
-    
+
     $(function() {
     	 var nowday = "";
     	if(<%=yy%>!=null){
