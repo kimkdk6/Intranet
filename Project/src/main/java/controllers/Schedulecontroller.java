@@ -38,7 +38,9 @@ public class Schedulecontroller {
    //寃뚯떆�뙋 硫붿씤 �럹�씠吏� 蹂닿린
       @RequestMapping(value = "ScheduleMain.htm")
       public String ScheduleMain(Model model, HttpSession session) throws ClassNotFoundException,SQLException {
-
+    	  
+    	  
+    	  System.out.println("ScheduleMain>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
          Emp emp = (Emp)session.getAttribute("myemp");
          //  System.out.println();
 //         System.out.println(emp);
@@ -65,7 +67,8 @@ public class Schedulecontroller {
     @RequestMapping(value="getSchedule.htm")
        View getTeamName(Model model, HttpServletResponse response,HttpSession session) throws ClassNotFoundException, SQLException, UnsupportedEncodingException 
        {
-       
+    	
+    	System.out.println("getSchedule>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         Emp emp = (Emp)session.getAttribute("myemp");
 //  	System.out.println();
 //      System.out.println(emp);
@@ -79,6 +82,7 @@ public class Schedulecontroller {
          
         int deptcode = scheduleDAO.getDeptCode(userid);
         int teamcode = scheduleDAO.getTeamCode(userid);
+        
         
         System.out.println("deptcode : " + deptcode);
         System.out.println("teamcode : " + teamcode);
@@ -112,10 +116,12 @@ public class Schedulecontroller {
          return jsonView;
        }
     
- // 寃뚯떆�뙋 硫붿씤 �럹�씠吏� 蹂닿린
+    // 스케줄 추가
     @RequestMapping(value = "insertSchedule.htm")
     public String InsertSchedule(Model model, HttpSession session, HttpServletRequest request) throws ClassNotFoundException, SQLException {
-
+    	
+    	
+    	System.out.println("insertSchedule>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
        Emp emp = (Emp) session.getAttribute("myemp");
        System.out.println(emp);
 
@@ -145,7 +151,7 @@ public class Schedulecontroller {
        schedule.setSctitle(sctitle);
        schedule.setSccontent(sccontent);
        
-       System.out.println(schedule);
+       //System.out.println(schedule);
        
        scheduleDAO.InsertSchedule(schedule);
        
@@ -155,22 +161,103 @@ public class Schedulecontroller {
     @RequestMapping(value = "deleteSchedule.htm", method= RequestMethod.GET)
     public @ResponseBody void DeleteSchedule(Model model, @RequestParam(value="schnum")int schnum, HttpServletRequest request) throws ClassNotFoundException, SQLException {
 
-    	System.out.println("schnum : " + schnum);
-
+    	//System.out.println("schnum : " + schnum);
+    	System.out.println("deleteSchedule>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
     	ScheduleDAO scheduleDAO = sqlsession.getMapper(ScheduleDAO.class);
     	scheduleDAO.DeleteSchedule(schnum);
     }   
     
-    
-   /* @RequestMapping(value = "latereason.htm")
-	public @ResponseBody void latereason(Principal principal,HttpServletRequest request, HttpServletResponse response) throws Exception
-	{
-		
-		AttendanceDAO Latereason = sqlSession.getMapper(AttendanceDAO.class);
-		Latereason.letereason(principal.getName(),request.getParameter("reason"));
-		
-	}*/
-}
+    // 카테고리 추가
+    @RequestMapping(value = "insertCategory.htm")
+    public String InsertCategory(Model model, HttpSession session, HttpServletRequest request) throws ClassNotFoundException, SQLException, UnsupportedEncodingException {
 
+    	System.out.println("insertCategory>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+		Emp emp = (Emp) session.getAttribute("myemp");
+		System.out.println(emp);
+		
+		String userid = emp.getUserid();
+		String catename = request.getParameter("catename");
+		catename = new String(catename.getBytes("ISO-8859-1"),"UTF-8");
+		String catecontent = request.getParameter("catecontent");
+		catecontent = new String(catecontent.getBytes("ISO-8859-1"),"UTF-8");
+		String cateshare = request.getParameter("cateshare");
+		
+		System.out.println("catename : " + catename);
+		System.out.println("catecontent : " + catecontent);
+		
+		
+		// String color = request.getParameter("currColor");
+		// System.out.println("color : " + color);
+
+		ScheduleDAO scheduleDAO = sqlsession.getMapper(ScheduleDAO.class);
+
+		int deptcode = scheduleDAO.getDeptCode(userid);
+        int teamcode = scheduleDAO.getTeamCode(userid);
+        
+		Schcategory schcategory = new Schcategory();
+		schcategory.setUserid(userid);
+		schcategory.setCatename(catename);
+		schcategory.setCatecontent(catecontent);
+		
+		if( cateshare.equals("d") )
+		{
+			schcategory.setDeptcode(deptcode);
+			scheduleDAO.InsertDeptCategory(schcategory);
+			
+		} else if( cateshare.equals("t") ) {
+			
+			schcategory.setTeamcode(teamcode);
+			scheduleDAO.InsertTeamCategory(schcategory);
+		} else {
+			
+			scheduleDAO.InsertUserCategory(schcategory);
+		}
+		
+		List<Schcategory> getSchCategoryDept = scheduleDAO.getSchCategoryDept(deptcode);
+        List<Schcategory> getSchCategoryTeam = scheduleDAO.getSchCategoryTeam(teamcode);
+        List<Schcategory> getSchCategoryUser = scheduleDAO.getSchCategoryUser(userid);
+        
+         
+        model.addAttribute("getSchCategoryDept", getSchCategoryDept);
+        model.addAttribute("getSchCategoryTeam", getSchCategoryTeam);
+        model.addAttribute("getSchCategoryUser", getSchCategoryUser);
+
+		return "schedule.schedule";
+	}
+    
+    @RequestMapping(value = "deleteCategory.htm")
+    public String DeleteCategory(Model model, HttpServletRequest request, HttpSession session) throws ClassNotFoundException, SQLException {
+
+    	//System.out.println("schnum : " + schnum);
+    	System.out.println("deleteSchedule>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+    	
+    	int catecode = Integer.parseInt(request.getParameter("catecode1"));
+    	Emp emp = (Emp) session.getAttribute("myemp");
+
+		String userid = emp.getUserid();
+		
+    	System.out.println("catecode : " + catecode);
+    	
+    	
+    	ScheduleDAO scheduleDAO = sqlsession.getMapper(ScheduleDAO.class);
+    	
+    	int deptcode = scheduleDAO.getDeptCode(userid);
+        int teamcode = scheduleDAO.getTeamCode(userid);
+    	
+    	scheduleDAO.DeleteScheduleCategory(catecode);
+    	scheduleDAO.DeleteCategory(catecode);
+    	
+    	List<Schcategory> getSchCategoryDept = scheduleDAO.getSchCategoryDept(deptcode);
+        List<Schcategory> getSchCategoryTeam = scheduleDAO.getSchCategoryTeam(teamcode);
+        List<Schcategory> getSchCategoryUser = scheduleDAO.getSchCategoryUser(userid);
+        
+         
+        model.addAttribute("getSchCategoryDept", getSchCategoryDept);
+        model.addAttribute("getSchCategoryTeam", getSchCategoryTeam);
+        model.addAttribute("getSchCategoryUser", getSchCategoryUser);
+    	
+        return "schedule.schedule";
+    }   
+}
 
    

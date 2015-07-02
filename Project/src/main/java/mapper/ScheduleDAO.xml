@@ -63,4 +63,23 @@
    		select teamcode from emp where userid = #{ userid }
    </select>
    
+    <insert id="InsertDeptCategory" parameterType="dto_vo.Schedule.Schcategory">
+         insert into SCHCATEGORY(catecode, catename, deptcode, teamcode, userid, catecontent, color) 
+         values(SCHCATEGORY_CATECODE.nextval, #{catename}, #{deptcode}, null, #{userid}, #{catecontent}, '#dd4b39')
+   </insert>
+   <insert id="InsertTeamCategory" parameterType="dto_vo.Schedule.Schcategory">
+         insert into SCHCATEGORY(catecode, catename, deptcode, teamcode, userid, catecontent, color) 
+         values(SCHCATEGORY_CATECODE.nextval, #{catename}, null, #{teamcode}, #{userid}, #{catecontent}, '#dd4b39')
+   </insert>
+   <insert id="InsertUserCategory" parameterType="dto_vo.Schedule.Schcategory">
+         insert into SCHCATEGORY(catecode, catename, deptcode, teamcode, userid, catecontent, color) 
+         values(SCHCATEGORY_CATECODE.nextval, #{catename}, null, null, #{userid}, #{catecontent}, '#dd4b39')
+   </insert>
+   
+   <delete id="DeleteCategory" parameterType="Integer">
+		delete from schcategory where catecode = #{ catecode }
+   </delete>
+   <delete id="DeleteScheduleCategory" parameterType="Integer">
+		delete from schedule where catecode = #{ catecode }
+   </delete>
 </mapper>

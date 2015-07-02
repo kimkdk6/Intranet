@@ -37,4 +37,19 @@ public interface ScheduleDAO {
    
    // getTeamCode
    public int getTeamCode( String userid ) throws ClassNotFoundException, SQLException;
+   
+   // Dept schedule Insert
+   public void InsertDeptCategory( Schcategory schcategory ) throws ClassNotFoundException, SQLException;
+   
+   // Team schedule Insert
+   public void InsertTeamCategory( Schcategory schcategory ) throws ClassNotFoundException, SQLException;
+   
+   // User schedule Insert
+   public void InsertUserCategory( Schcategory schcategory ) throws ClassNotFoundException, SQLException;	
+   
+   // category Delete
+   public void DeleteCategory( int catecode ) throws ClassNotFoundException, SQLException;
+   
+   // schedule Delete
+   public void DeleteScheduleCategory( int catecode ) throws ClassNotFoundException, SQLException;
 }

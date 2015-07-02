@@ -170,7 +170,7 @@
 </section>
 <!-- /.content -->
 
-<div id="_update_schedule_desc" width="100%" border="0" cellspacing="0" cellpadding="0" class="left_menu" title="일정수정하기">
+<%-- <div id="_update_schedule_desc" width="100%" border="0" cellspacing="0" cellpadding="0" class="left_menu" title="일정수정하기">
 	<form id="_update_schedule_form" name="_schedule_layer">
 	<input type="hidden" id="_update_scstart" name="scstart"/>
 	<input type="hidden" id="_update_scend" name="scend"/>
@@ -319,7 +319,7 @@
 			</tbody>
 		</table>
 	</form>
-</div>
+</div> --%>
 
 
 
@@ -343,7 +343,7 @@
 											<tbody>
 												<tr>
 													<td width="100%" align="left" style="padding-left: 8px;">
-														<select  id="catecode" name="catecode" >
+														<select  id="catecode" name="catecode" onchange="chg1();">
 															
 															
 															<c:forEach items="${getSchCategoryDept}" var="c" varStatus="bs">
@@ -568,10 +568,9 @@
 	</form>
 </div>
 
-
-
-<div id="_category_desc" title="새 일정 카테고리 만들기"> 
-<form id="_category_form" name="category_layer" onsubmit="return exe_category(this)">
+<!-- 카테고리 추가 -->
+<div id="_category_desc" title="새 카테고리 등록"> 
+<form id="_category_form" name="category_layer" action="<%= request.getContextPath() %>/schedule/insertCategory.htm">
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="left_menu"> 
   <tbody><tr> 
 <!--     <td height="30" id="cat_title_background" bgcolor="#f4f4f4" style="padding: 3px 0px 0px 20px; background-color: rgb(110, 156, 242);">  -->
@@ -590,49 +589,10 @@
         <td> 
           <table width="100%" border="0" cellspacing="0" cellpadding="0"> 
             <tbody><tr> 
-              <td width="" id="name_container" bgcolor="#638cd9" style="background-color: rgb(110, 156, 242);"><input name="catname" type="text" class="input_trans" style="width:100%;" title="카테고리명"></td> 
-              <td width="55" align="right">
-                <a href="javascript:"><img src="/img/calendar/bt_color.gif" onclick="_openColor(this)"></a>
-                <div id="_color_pic" style="border: 1px solid rgb(119, 119, 119); position: absolute; text-align: center; display: none; background-color: rgb(255, 255, 255);"> 
-<!--                 <table width="99" border="0" cellspacing="4" cellpadding="0" class="tbl_board9" style="border-collapse:separate;">  -->
-<!--                                                       <tbody><tr height="15" align="center"> -->
-<!--                                       <td width="15" bgcolor="#6e9cf2" class="vtd" onclick="document.category_layer.catrgb.value='#6e9cf2'; jQuery('#cat_title_background').css('background-color', '#6e9cf2'); jQuery('#name_container').css('background-color','#6e9cf2');">&nbsp;</td> -->
-<!--                                                                           <td width="15" bgcolor="#8394cf" class="vtd" onclick="document.category_layer.catrgb.value='#8394cf'; jQuery('#cat_title_background').css('background-color', '#8394cf'); jQuery('#name_container').css('background-color','#8394cf');">&nbsp;</td> -->
-<!--                                                                           <td width="15" bgcolor="#93cc4b" class="vtd" onclick="document.category_layer.catrgb.value='#93cc4b'; jQuery('#cat_title_background').css('background-color', '#93cc4b'); jQuery('#name_container').css('background-color','#93cc4b');">&nbsp;</td> -->
-<!--                                                                           <td width="15" bgcolor="#dec200" class="vtd" onclick="document.category_layer.catrgb.value='#dec200'; jQuery('#cat_title_background').css('background-color', '#dec200'); jQuery('#name_container').css('background-color','#dec200');">&nbsp;</td> -->
-<!--                                                                           <td width="15" bgcolor="#a28ab5" class="vtd" onclick="document.category_layer.catrgb.value='#a28ab5'; jQuery('#cat_title_background').css('background-color', '#a28ab5'); jQuery('#name_container').css('background-color','#a28ab5');">&nbsp;</td> -->
-<!--                                     </tr> -->
-<!--                                                                         <tr height="15" align="center"> -->
-<!--                                       <td width="15" bgcolor="#97add2" class="vtd" onclick="document.category_layer.catrgb.value='#97add2'; jQuery('#cat_title_background').css('background-color', '#97add2'); jQuery('#name_container').css('background-color','#97add2');">&nbsp;</td> -->
-<!--                                                                           <td width="15" bgcolor="#69c2d2" class="vtd" onclick="document.category_layer.catrgb.value='#69c2d2'; jQuery('#cat_title_background').css('background-color', '#69c2d2'); jQuery('#name_container').css('background-color','#69c2d2');">&nbsp;</td> -->
-<!--                                                                           <td width="15" bgcolor="#b0bc2d" class="vtd" onclick="document.category_layer.catrgb.value='#b0bc2d'; jQuery('#cat_title_background').css('background-color', '#b0bc2d'); jQuery('#name_container').css('background-color','#b0bc2d');">&nbsp;</td> -->
-<!--                                                                           <td width="15" bgcolor="#e6a11b" class="vtd" onclick="document.category_layer.catrgb.value='#e6a11b'; jQuery('#cat_title_background').css('background-color', '#e6a11b'); jQuery('#name_container').css('background-color','#e6a11b');">&nbsp;</td> -->
-<!--                                                                           <td width="15" bgcolor="#da9b9b" class="vtd" onclick="document.category_layer.catrgb.value='#da9b9b'; jQuery('#cat_title_background').css('background-color', '#da9b9b'); jQuery('#name_container').css('background-color','#da9b9b');">&nbsp;</td> -->
-<!--                                     </tr> -->
-<!--                                                                         <tr height="15" align="center"> -->
-<!--                                       <td width="15" bgcolor="#94a5b6" class="vtd" onclick="document.category_layer.catrgb.value='#94a5b6'; jQuery('#cat_title_background').css('background-color', '#94a5b6'); jQuery('#name_container').css('background-color','#94a5b6');">&nbsp;</td> -->
-<!--                                                                           <td width="15" bgcolor="#2eb8c7" class="vtd" onclick="document.category_layer.catrgb.value='#2eb8c7'; jQuery('#cat_title_background').css('background-color', '#2eb8c7'); jQuery('#name_container').css('background-color','#2eb8c7');">&nbsp;</td> -->
-<!--                                                                           <td width="15" bgcolor="#44be1e" class="vtd" onclick="document.category_layer.catrgb.value='#44be1e'; jQuery('#cat_title_background').css('background-color', '#44be1e'); jQuery('#name_container').css('background-color','#44be1e');">&nbsp;</td> -->
-<!--                                                                           <td width="15" bgcolor="#f3672a" class="vtd" onclick="document.category_layer.catrgb.value='#f3672a'; jQuery('#cat_title_background').css('background-color', '#f3672a'); jQuery('#name_container').css('background-color','#f3672a');">&nbsp;</td> -->
-<!--                                                                           <td width="15" bgcolor="#f62d2d" class="vtd" onclick="document.category_layer.catrgb.value='#f62d2d'; jQuery('#cat_title_background').css('background-color', '#f62d2d'); jQuery('#name_container').css('background-color','#f62d2d');">&nbsp;</td> -->
-<!--                                     </tr> -->
-<!--                                                                         <tr height="15" align="center"> -->
-<!--                                       <td width="15" bgcolor="#c08bd7" class="vtd" onclick="document.category_layer.catrgb.value='#c08bd7'; jQuery('#cat_title_background').css('background-color', '#c08bd7'); jQuery('#name_container').css('background-color','#c08bd7');">&nbsp;</td> -->
-<!--                                                                           <td width="15" bgcolor="#4587eb" class="vtd" onclick="document.category_layer.catrgb.value='#4587eb'; jQuery('#cat_title_background').css('background-color', '#4587eb'); jQuery('#name_container').css('background-color','#4587eb');">&nbsp;</td> -->
-<!--                                                                           <td width="15" bgcolor="#ccc05d" class="vtd" onclick="document.category_layer.catrgb.value='#ccc05d'; jQuery('#cat_title_background').css('background-color', '#ccc05d'); jQuery('#name_container').css('background-color','#ccc05d');">&nbsp;</td> -->
-<!--                                                                           <td width="15" bgcolor="#f06280" class="vtd" onclick="document.category_layer.catrgb.value='#f06280'; jQuery('#cat_title_background').css('background-color', '#f06280'); jQuery('#name_container').css('background-color','#f06280');">&nbsp;</td> -->
-<!--                                                                           <td width="15" bgcolor="#d2423c" class="vtd" onclick="document.category_layer.catrgb.value='#d2423c'; jQuery('#cat_title_background').css('background-color', '#d2423c'); jQuery('#name_container').css('background-color','#d2423c');">&nbsp;</td> -->
-<!--                                     </tr> -->
-<!--                                                                         <tr height="15" align="center"> -->
-<!--                                       <td width="15" bgcolor="#b4b4b4" class="vtd" onclick="document.category_layer.catrgb.value='#b4b4b4'; jQuery('#cat_title_background').css('background-color', '#b4b4b4'); jQuery('#name_container').css('background-color','#b4b4b4');">&nbsp;</td> -->
-<!--                                                                           <td width="15" bgcolor="#beb297" class="vtd" onclick="document.category_layer.catrgb.value='#beb297'; jQuery('#cat_title_background').css('background-color', '#beb297'); jQuery('#name_container').css('background-color','#beb297');">&nbsp;</td> -->
-<!--                                                                           <td width="15" bgcolor="#8c66d9" class="vtd" onclick="document.category_layer.catrgb.value='#8c66d9'; jQuery('#cat_title_background').css('background-color', '#8c66d9'); jQuery('#name_container').css('background-color','#8c66d9');">&nbsp;</td> -->
-<!--                                                                           <td width="15" bgcolor="#7b8493" class="vtd" onclick="document.category_layer.catrgb.value='#7b8493'; jQuery('#cat_title_background').css('background-color', '#7b8493'); jQuery('#name_container').css('background-color','#7b8493');">&nbsp;</td> -->
-<!--                                                                           <td width="15" bgcolor="#4b4b4b" class="vtd" onclick="document.category_layer.catrgb.value='#4b4b4b'; jQuery('#cat_title_background').css('background-color', '#4b4b4b'); jQuery('#name_container').css('background-color','#4b4b4b');">&nbsp;</td> -->
-<!--                                     </tr> -->
-<!--                                                     </tbody></table> -->
-                </div>
-              </td>
+              <td width="" id="name_container" bgcolor="#638cd9" style="background-color: rgb(110, 156, 242);">
+              <input name="catename" type="text" class="input_trans" style="width:100%;" title="카테고리명">
+              </td> 
+
             </tr>
           </tbody></table></td>
       </tr>
@@ -642,7 +602,7 @@
       </tr>
       <tr>
         <td height="50" valign="top" style="padding-top:5px;">설명</td>
-        <td><textarea id="id_content" name="content" class="input_type1" style="width:100%;height:48px;overflow:auto;"></textarea></td>
+        <td><textarea id="id_content" title="내용" name="catecontent" class="input_type1" style="width:100%;height:48px;overflow:auto;"></textarea></td>
       </tr>
       <tr>
         <td height="3"></td>
@@ -657,34 +617,100 @@
       <tr>
         <td height="20" valign="top" style="padding-top:5px;">일정 분류</td>
         <td>
-          <label title="같은 회사 직원과 일정을 공유합니다."><input type="radio" name="catshare" value="C" onclick="share_txt(this)"> 회사 일정 </label> &nbsp;
-          <label title="같은 부서 직원과 일정을 공유합니다."><input type="radio" name="catshare" value="D" onclick="share_txt(this)"> 부서 일정 </label> &nbsp;
-          <label title="해당 카테고리 일정은 개인 일정입니다."><input type="radio" name="catshare" value="N" onclick="share_txt(this)" checked="checked"> 개인 일정 </label>
+          <label title="같은 회사 직원과 일정을 공유합니다."><input type="radio" name="cateshare" value="d">부서 일정 </label> &nbsp;
+          <label title="같은 부서 직원과 일정을 공유합니다."><input type="radio" name="cateshare" value="t">팀 일정 </label> &nbsp;
+          <label title="해당 카테고리 일정은 개인 일정입니다."><input type="radio" name="cateshare" value="u" checked="checked">개인 일정 </label>
         </td>
       </tr>
 <!--       <tr> -->
 <!--         <td height="25" valign="top" style="padding-top:5px;"></td> -->
 <!--         <td><span rel="share_txt" class="stxt">해당 카테고리 일정은 개인 일정입니다.</span></td> -->
 <!--       </tr> -->
-      <tr>
-        <td height="3"></td>
-        <td></td>
-      </tr> 
-      <tr>
-      	<td>
-      		<div id=colorpicker></div>
-      	</td>
-      </tr>        
+
+     
     </tbody></table> 
     </td> 
-  </tr>   
+  </tr>  
+  <tr> 
+  <td>
+<!--   <div class="box box-solid"> -->
+                     <div class="box-header with-border">
+                           <ul class="fc-color-picker" id="color-chooser" name="color-chooser">
+                              <li><a class="text-aqua" href="#"><i class="fa fa-square" ></i></a></li>
+                              <li><a class="text-blue" href="#"><i class="fa fa-square"></i></a></li>
+                              <li><a class="text-light-blue" href="#"><i class="fa fa-square"></i></a></li>
+                              <li><a class="text-teal" href="#"><i class="fa fa-square"></i></a></li>
+                              <li><a class="text-yellow" href="#"><i class="fa fa-square"></i></a></li>
+                              <li><a class="text-orange" href="#"><i class="fa fa-square"></i></a></li>
+                              <li><a class="text-green" href="#"><i class="fa fa-square"></i></a></li>
+                              <li><a class="text-lime" href="#"><i class="fa fa-square"></i></a></li>
+                              <li><a class="text-red" href="#"><i class="fa fa-square"></i></a></li>
+                              <li><a class="text-purple" href="#"><i class="fa fa-square"></i></a></li>
+                              <li><a class="text-fuchsia" href="#"><i class="fa fa-square"></i></a></li>
+                              <li><a class="text-muted" href="#"><i class="fa fa-square"></i></a></li>
+<!--                            <li><a class="text-pink" href="#"><i class="fa fa-square"></i></a></li> -->
+<!--                            <li><a class="text-brown" href="#"><i class="fa fa-square"></i></a></li> -->
+<!--                            <li><a class="text-silver" href="#"><i class="fa fa-square"></i></a></li> -->
+<!--                            <li><a class="text-gold" href="#"><i class="fa fa-square"></i></a></li> -->
+<!--                            <li><a class="text-bronze" href="#"><i class="fa fa-square"></i></a></li> -->
+                           </ul>
+                           </div>
+<!--                            </div> -->
+                           </td>
   
 </tbody></table> 
 
 </form>
-<div class="gbx_drag" style="cursor: move; height: 20px; z-index: -1; width: 400px; position: absolute; top: 0px; float: left;"></div></div>
+</div>
 
+<!-- 카테고리 삭제  -->
+<div id="_category_delete" title="카테고리 삭제">
+	<form id="_category_delform" name="category_layer" action="<%=request.getContextPath()%>/schedule/deleteCategory.htm">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0"
+			class="left_menu">
+			<tbody>
+				<tr>
+					<td style="padding: 10px 20px 15px 20px;">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tbody>
+								<tr>
+									<td width="65" height="25" style="letter-spacing: 0px; padding-top: 5px;">카테고리</td>
+									<td>
+										<table width="100%" border="0" cellspacing="0" cellpadding="0">
+											<tbody>
+												<tr>
+													<td width="100%" align="left" style="padding-left: 8px;">
+														<select  id="catecode1" name="catecode1" onchange="chg();">
+															<!--this.ontions[this.selectedIndex].  -->
+															
+															<c:forEach items="${getSchCategoryDept}" var="c" varStatus="bs">
+																<option value="${c.catecode }" style="color:#fff; background-color:${c.color};">${c.catename}</option> 
+															</c:forEach>
+															
+															<c:forEach items="${getSchCategoryTeam}" var="c" varStatus="bs">
+																<option value="${c.catecode }" style="color:#fff; background-color:${c.color};">${c.catename}</option>
+															</c:forEach>
+														
+															<c:forEach items="${getSchCategoryUser}" var="c" varStatus="bs">
+																<option value="${c.catecode }" style="color:#fff; background-color:${c.color};">${c.catename}</option>
+															</c:forEach>
+														</select> 
+													<span id="schedule_category_str"></span>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 
+	</form>
+</div>
 
 <%-- <script src="<%=request.getContextPath()%>/resources/plugins/schecule/jquery-ui-1.11.4.custom/jquery-ui.js" type="text/javascript"></script> --%>
 <%-- <link href="<%=request.getContextPath()%>/resources/plugins/schecule/jquery-ui-1.11.4.custom/jquery-ui.css" type="text/css" /> --%>
@@ -693,6 +719,29 @@
 <link href="<%=request.getContextPath()%>/resources/plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" type="text/css" media='print'/>
  --%>
 <script type="text/javascript">
+	
+	
+	
+// 	$('select[id$=-status][id^=id_item-]').change(
+// 		    function (){
+// 		        var color = $('option:selected',this).css('background-color');
+// 		        $(this).css('background-color',color);
+// 		    }
+// 		).change();
+	function chg() {
+			
+		//$('catecode1').css('background-color', color);
+		var color = $("#catecode1 option:selected").css('background-color');
+		$('#catecode1').css('background-color', color);
+	}
+	
+	function chg1() {
+		
+		//$('catecode1').css('background-color', color);
+		var color = $("#catecode option:selected").css('background-color');
+		$('#catecode').css('background-color', color);
+	}
+	
 	$(function() {
 		
 		var currEvent;
@@ -703,11 +752,15 @@
 // 			submit:0
 // 		});
 
-		//$('#colorpicker').colorpicker();
-		
+				
 		$('#add-category').click(function(){
 			$('#_category_desc').dialog('open');
 		});		
+		
+		$('#delete-category').click(function(){
+			$('#_category_delete').dialog('open');
+		});		
+		
 		
 		var defaultDate;
 		$("#startdate").datepicker(
@@ -791,17 +844,14 @@
 						title :  $("#sctitle").val(),
 						start : new Date(startdate),//년,월,일,시,분
 						end : new Date(enddate),
-						
 						backgroundColor : a, //red
-						
-						
 						borderColor : a, //red
-						
 						userid : $('#userid').val(),
 						content: $('#sccontent').val()
 						
 					} ]);
 					
+					// 일정 추가 
 					var formData = $("#_schedule_form").serialize();
 		               //console.log(formData);
 		               $.ajax({
@@ -868,7 +918,7 @@
 		
 
 		
-		var updateEvent = $("#_update_schedule_desc").dialog({
+		/* var updateEvent = $("#_update_schedule_desc").dialog({
 			
 			autoOpen : false,
 			height : 500,
@@ -883,19 +933,34 @@
 					updateEvent.dialog("close");
 				}
 			}
-		});
+		}); */
 		
-		//_category_desc
-
+		// 카테고리 추가
+		//Color chooser button
+		//var colorChooser = $("#color-chooser-btn");
+// 		$("#color-chooser > li > a").click(function(e) {
+// 			e.preventDefault();
+// 			//Save color
+// 			currColor = $(this).css("color");
+// 		});
+// 		console.log("color : " + currColor);
 		var categoryEvent = $("#_category_desc").dialog({
 			
 			autoOpen : false,
-			height : 400,
-			width : 600,
+			height : 350,
+			width : 450,
 			modal : true,
+			
 			buttons : {
 				"확 인" : function() { 
+					/* $("#color-chooser > li > a").click(function(e) {
+						e.preventDefault();
+						//Save color
+						currColor = $(this).css("color");
+						console.log("color : " + currColor);
+					}); */
 					
+		            document.getElementById("_category_form").submit();
 					categoryEvent.dialog("close");
 				},
 				"취 소" : function() {
@@ -903,6 +968,36 @@
 				}
 			}
 		});
+		
+		
+		var categoryEvent = $("#_category_delete").dialog({
+			
+			autoOpen : false,
+			height : 200,
+			width : 450,
+			modal : true,
+			
+			buttons : {
+				"확 인" : function() { 
+					
+		            document.getElementById("_category_delform").submit();
+					categoryEvent.dialog("close");
+				},
+				"취 소" : function() {
+					categoryEvent.dialog("close");
+				}
+			}
+		});
+		
+		<%-- var formData = $("#_category_form").serialize();
+        console.log("카테고리 추가" + formData);
+        $.ajax({
+        	Type:"POST",
+            url:"<%= request.getContextPath() %>/schedule/insertCategory.htm",
+            data:formData,
+            success:function( data ){ alert("insert Success!!");},
+            error:function(data){alert("Error 발생");}
+        }); --%>
 		
 		var date = new Date();
 		var d = date.getDate(), m = date.getMonth(), y = date.getFullYear();
@@ -1100,6 +1195,8 @@
 	//// 							$(this).remove();
 	//// 						}
 	//}
+	
+	
 	/* ADDING EVENTS */
 	//	var currColor = "#3c8dbc"; //Red by default
 	//	//Color chooser button
@@ -1114,6 +1211,8 @@
 	//			"border-color" : currColor
 	//		});
 	//	});
+	
+	
 	//	$("#add-new-event").click(function(e) {
 	//		e.preventDefault();
 	//		//Get value and make sure it is not null
