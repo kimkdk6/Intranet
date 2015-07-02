@@ -108,6 +108,22 @@ public class Messagecontroller {
 	}	
 	
 	
+	@RequestMapping(value = "SendDetail.htm")
+	public String SendDetail(Model model,HttpSession session,
+			@RequestParam(value="msgnum") int msgnum
+			) throws ClassNotFoundException,SQLException {
+		
+		MessageDAO messageDao = sqlsession.getMapper(MessageDAO.class);
+		
+		
+		Message message = messageDao.getMessage(msgnum);
+		
+		
+		model.addAttribute("message", message);
+		
+		return "message.SMSDetail";
+	}	
+	
 	
 	
 	@RequestMapping(value = "ReceiveDelete.htm")
@@ -138,7 +154,7 @@ public class Messagecontroller {
 		
 		
 		
-		return "redirect:message.SMSGList";
+		return "redirect:SendMessage.htm";
 	}	
 	
 }

@@ -14,7 +14,7 @@
 
 function go_pop(url){
 	
-	window.open(url,"new","width=360, height=720, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
+	window.open(url,"new","width=360, height=320, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
 }
 </script>
       <header class="main-header">
