@@ -67,21 +67,31 @@ public class Signcontroller {
 	
 	// 받은 결재 문서함 > 미결재 / 결재 문서함 페이지 보기
 	@RequestMapping(value = "ReceiveSignList.htm")
-	public String ReceiveSignList(Model model, Principal principal, int type)
+	public String ReceiveSignList(Model model, @RequestParam(value="cpage", defaultValue="1") int cpage, Principal principal, int type)
 			throws ClassNotFoundException, SQLException {
 
 		System.out.println("받은 페이지 열람");
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
 		String userid = principal.getName();	
 		List<Sign> signlist = null;
-		if(type == 1){			// 결재 승인 리스트
-			System.out.println("승인 문서 페이지 열람");
-			signlist = signdao.getReceiveSigns(userid, 0, signdao.getCountReceiveSigns(userid));
-		} else if(type == 2){	// 결재 반려 리스트 
-			System.out.println("반려 문서 페이지 열람");
-			signlist = signdao.getUnSigns(userid, 0, signdao.getCountUnsigns(userid));
+		
+		int pagesize = 5;
+		int start = cpage * pagesize - (pagesize - 1);
+		int end = cpage * pagesize;
+		int listcount = 0;
+		if(type == 1){			// 받은 결재 리스트
+			System.out.println("받은 미 문서 페이지 열람");
+			signlist = signdao.getReceiveSigns(userid, start, end);
+			listcount = signdao.getCountReceiveSigns(userid);
+		} else if(type == 2){	// 받은 미결재 리스트 
+			System.out.println("받은 문서 페이지 열람");
+			signlist = signdao.getUnSigns(userid, start, end);
+			listcount = signdao.getCountUnsigns(userid);
 		}	
-
+		
+		PagingUtil pagingUtil =  new PagingUtil(cpage, listcount, pagesize, 3);
+		
+		model.addAttribute("paging", pagingUtil);
 		model.addAttribute("type", type);
 		model.addAttribute("signlist", signlist);
 		return "sign.ReceiveSignList";
@@ -101,17 +111,14 @@ public class Signcontroller {
 		int end = cpage * pagesize;
 		 
 		int listcount = signdao.getCountSendSigns(userid, 0);
-   		
+   		System.out.println("start: "+start+"/ end: "+end);
    		List<Sign> sendsignlist = signdao.getSendSigns(userid, start, end, 0);
    		System.out.println("상신문서 페이지 열람:");
 		System.out.println(sendsignlist.toString());
    		
-		PagingUtil pagingUtil =  new PagingUtil(cpage, listcount, pagesize, 5);
+		PagingUtil pagingUtil =  new PagingUtil(cpage, listcount, pagesize, 3);
 		
-   	/*	model.addAttribute("p", page);
-   		model.addAttribute("maxpage", maxpage);
-   		model.addAttribute("startpage", startpage);
-   		model.addAttribute("endpage", endpage);*/
+		model.addAttribute("paging", pagingUtil);
    		model.addAttribute("listcount",listcount); 
 		model.addAttribute("sendsignlist", sendsignlist);
 		return "sign.SendsignsList";
@@ -119,22 +126,31 @@ public class Signcontroller {
 	
 	// 올린 결재 문서함 > 반려/결재 완료 문서 페이지 보기
 	@RequestMapping(value = "signsList.htm")
-	public String signsList(Model model, Principal principal, int type)
+	public String signsList(Model model, Principal principal, @RequestParam(value="cpage", defaultValue="1") int cpage, int type)
 			throws ClassNotFoundException, SQLException {
 
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
 		String userid = principal.getName();		 
 		List<Sign> signlist = null;
 		
+		int pagesize = 5;
+		int start = cpage * pagesize - (pagesize - 1);
+		int end = cpage * pagesize;
+		int listcount = 0;
+		
 		if(type == 1){			// 결재 승인 리스트
 			System.out.println("승인 문서 페이지 열람");
-			signlist = signdao.getSendSigns(userid, 0, 
-					signdao.getCountSendSigns(userid, 1), 1);
+			signlist = signdao.getSendSigns(userid, start, end, 1);
+			listcount = signdao.getCountSendSigns(userid, 1);
 		} else if(type == 2){	// 결재 반려 리스트 
 			System.out.println("반려 문서 페이지 열람");
-			signlist = signdao.getSendSigns(userid, 0, 
-					signdao.getCountSendSigns(userid, 2), 2);
+			signlist = signdao.getSendSigns(userid, start, end, 2);
+			listcount = signdao.getCountSendSigns(userid, 2);
 		}		
+		
+		PagingUtil pagingUtil =  new PagingUtil(cpage, listcount, pagesize, 3);
+		
+		model.addAttribute("paging", pagingUtil);
 		
 		model.addAttribute("type", type);
 		model.addAttribute("signlist", signlist);

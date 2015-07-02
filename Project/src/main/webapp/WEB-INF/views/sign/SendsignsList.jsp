@@ -27,15 +27,7 @@
 				<a class="title_txt" href="SendsignsList.htm"> 올린 결재 문서함
 					&gt; 상신문서</a>
 			</h3>
-			<div class="box-tools">
-                    <ul class="pagination pagination-sm no-margin pull-right">
-                      <li><a href="#">«</a></li>
-                      <li><a href="#">1</a></li>
-                      <li><a href="#">2</a></li>
-                      <li><a href="#">3</a></li>
-                      <li><a href="#">»</a></li>
-                    </ul>
-            </div>
+			
 		</div>
 		<div class="box-body">
 			<table class="table table-hover">
@@ -140,6 +132,44 @@
 				</c:choose>
 			</table>
 		</div>
+		<div class="box-footer clearfix" >
+			<div align="center">
+                    <ul class="pagination pagination-sm no-margin pull-right">
+                      <c:choose>
+   						   		<c:when test="${paging.start==1}">
+   						   			  	 
+   						   		</c:when>
+   						   		<c:otherwise>
+   						   			 <li><a href="${pageContext.request.contextPath}/sign/SendsignsList.htm?cpage=${paging.start-1}">이전</a></li> 
+   						   		</c:otherwise>
+   						</c:choose> 
+                       
+   					  <c:forEach begin="${paging.start}" end="${paging.end}" var="page">
+                           		<c:choose>
+                           			<c:when test="${paging.currentPage==page}">
+                           				<li><a href="#"><font color="#ff6600"><b>${page}</b></font></a></li>
+                           			</c:when>
+                           			<c:otherwise>
+                           				<li> <a href="${pageContext.request.contextPath}/sign/SendsignsList.htm?cpage=${page}">
+                           				<b>${page}</b></a></li>
+                           			</c:otherwise>
+                           		</c:choose>
+                           		
+                           		
+                     	 </c:forEach>
+                     	 
+                       	 <c:choose>
+   						   		<c:when test="${paging.end < paging.finalPage}">
+   						   			<li><a href="${pageContext.request.contextPath}/sign/SendsignsList.htm?cpage=${paging.end+1}">다음</a></li>
+   						   		</c:when>
+   						   		<c:otherwise>
+   						   			 
+   						   		</c:otherwise>
+   						  </c:choose>
+   						
+                    </ul>
+                    </div>
+            </div>
 	</div>
 </section>
 

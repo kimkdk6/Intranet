@@ -12,8 +12,10 @@
 		on s.DOCNUM = sl.DOCNUM
 		where signstate = 0 and sl.SIGNNING = #{userid}
 		order by s.DRAFTDATE desc -->
-		 select * from (
-            select rownum, a.DOCNUM, a.USERID, a.SIGNTYPE, a.SIGNSTATE, a.DEPT, a.TEAM, a.DRAFTDATE, 
+		 select DOCNUM, USERID, SIGNTYPE, SIGNSTATE, DEPT, TEAM, DRAFTDATE, 
+                    SIGNTITLE, ENAME, POSNAME, TOTALSIGN, CURRSIGN, REFRESHDATE 
+         from (
+            select rownum as r, a.DOCNUM, a.USERID, a.SIGNTYPE, a.SIGNSTATE, a.DEPT, a.TEAM, a.DRAFTDATE, 
                     a.SIGNTITLE, a.ENAME, a.POSNAME, a.TOTALSIGN, a.CURRSIGN, a.REFRESHDATE
             from (
                       select s.DOCNUM, s.USERID, s.SIGNTYPE, s.SIGNSTATE, s.DEPT, s.TEAM, s.DRAFTDATE, 
@@ -23,8 +25,7 @@
                       where signstate = 0 and sl.SIGNNING = #{param1}
                       order by s.REFRESHDATE desc
                     ) a
-            where rownum between ${param2} and ${param3}
-     	)
+     	)where r between ${param2} and ${param3}
 	</select>
 	
 	<select id="getCountUnsigns" parameterType="hashmap" resultType="int">
@@ -42,8 +43,10 @@
 		on s.DOCNUM = sl.DOCNUM
 		where signstate = 0 and sl.SIGNNING = #{userid}
 		order by s.DRAFTDATE desc -->
-		 select * from (
-            select rownum, a.DOCNUM, a.USERID, a.SIGNTYPE, a.SIGNSTATE, a.DEPT, a.TEAM, a.DRAFTDATE, 
+		 select DOCNUM, USERID, SIGNTYPE, SIGNSTATE, DEPT, TEAM, DRAFTDATE, 
+             SIGNTITLE, ENAME, POSNAME, TOTALSIGN, CURRSIGN, REFRESHDATE
+		 from (
+            select rownum as r, a.DOCNUM, a.USERID, a.SIGNTYPE, a.SIGNSTATE, a.DEPT, a.TEAM, a.DRAFTDATE, 
                     a.SIGNTITLE, a.ENAME, a.POSNAME, a.TOTALSIGN, a.CURRSIGN, a.REFRESHDATE
             from (
                       select *
@@ -51,8 +54,7 @@
                       where signstate = 1 and (signer2 = #{param1} or signer3 = #{param1} or signer4 = #{param1} or signer5 = #{param1})
                       order by REFRESHDATE desc
                     ) a
-            where rownum between ${param2} and ${param3}
-     	)
+     	)  where r between ${param2} and ${param3}
 	</select>
 	
 	<select id="getCountReceiveSigns" parameterType="hashmap" resultType="int">
@@ -63,7 +65,7 @@
 	
 	<!-- 개인문서함>상신문서 리스트 가져오기 -->
 	 <select id="getSendSigns" parameterType="hashmap" resultType="dto_vo.Sign.Sign">
-		select * from (
+		<!-- select * from (
             select rownum, a.DOCNUM, a.USERID, a.SIGNTYPE, a.SIGNSTATE, a.DEPT, a.TEAM, a.DRAFTDATE, 
                     a.SIGNTITLE, a.ENAME, a.POSNAME, a.TOTALSIGN, a.CURRSIGN, a.SIGNNING, a.REFRESHDATE
             from (
@@ -74,8 +76,16 @@
                       where signstate = ${param4} and s.USERID = #{param1}
                       order by s.REFRESHDATE desc
                     ) a
-            where rownum between ${param2} and ${param3}
-     	)
+     	) where rownum between ${param2} and ${param3}-->
+     	 select  DOCNUM, USERID, SIGNTYPE, SIGNSTATE, DEPT, TEAM, DRAFTDATE, 
+              SIGNTITLE, ENAME, POSNAME, TOTALSIGN, CURRSIGN,  REFRESHDATE
+     	 from ( select rownum as r,  DOCNUM, USERID, SIGNTYPE, SIGNSTATE, DEPT, TEAM, DRAFTDATE, 
+                    SIGNTITLE, ENAME, POSNAME, TOTALSIGN, CURRSIGN,  REFRESHDATE
+             from ( select * from sign 
+                    where signstate = ${param4} and userid = #{param1}
+                    order by REFRESHDATE desc
+             )
+      	 ) where r between ${param2} and ${param3}
 	</select> 
 	
 	<select id="getCountSendSigns" parameterType="hashmap" resultType="int"> 

@@ -139,6 +139,44 @@
 				</c:choose>
 			</table>
 		</div>
+		<div class="box-footer clearfix" >
+			<div align="center">
+                    <ul class="pagination pagination-sm no-margin pull-right">
+                      <c:choose>
+   						   		<c:when test="${paging.start==1}">
+   						   			  	 
+   						   		</c:when>
+   						   		<c:otherwise>
+   						   			 <li><a href="${pageContext.request.contextPath}/sign/signsList.htm?cpage=${paging.start-1}&type=${param.type}">이전</a></li> 
+   						   		</c:otherwise>
+   						</c:choose> 
+                       
+   					  <c:forEach begin="${paging.start}" end="${paging.end}" var="page">
+                           		<c:choose>
+                           			<c:when test="${paging.currentPage==page}">
+                           				<li><a href="#"><font color="#ff6600"><b>${page}</b></font></a></li>
+                           			</c:when>
+                           			<c:otherwise>
+                           				<li> <a href="${pageContext.request.contextPath}/sign/signsList.htm?cpage=${page}&type=${param.type}">
+                           				<b>${page}</b></a></li>
+                           			</c:otherwise>
+                           		</c:choose>
+                           		
+                           		
+                     	 </c:forEach>
+                     	 
+                       	 <c:choose>
+   						   		<c:when test="${paging.end < paging.finalPage}">
+   						   			<li><a href="${pageContext.request.contextPath}/sign/signsList.htm?cpage=${paging.end+1}&type=${param.type}">다음</a></li>
+   						   		</c:when>
+   						   		<c:otherwise>
+   						   			 
+   						   		</c:otherwise>
+   						  </c:choose>
+   						
+                    </ul>
+                    </div>
+            </div>
 	</div>
 </section>
 
