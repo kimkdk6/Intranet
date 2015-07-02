@@ -185,7 +185,7 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     fill: #333333;
     color: #333333;
     font-size: 11px;
-    font-family: Verdana;
+ 
 }
 /*jqxChart Style*/
 .jqx-chart-axis-text,
@@ -195,23 +195,23 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
 {
     fill: #333333;
     color: #333333;
-    font-size: 11px;
-    font-family: Verdana;
+    font-size: 16px;
+   
 }
 .jqx-chart-axis-description
 {
     fill: #555555;
     color: #555555;
-    font-size: 11px;
-    font-family: Verdana;
+    font-size: 17px;
+
 }
 .jqx-chart-title-text
 {
     fill: #111111;
     color: #111111;
-    font-size: 14px;
+    font-size: 19px;
     font-weight: bold;
-    font-family: Verdana;
+  
 }
 .jqx-chart-title-description
 {
@@ -219,7 +219,7 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     color: #111111;
     font-size: 12px;
     font-weight: normal;
-    font-family: Verdana;
+
 }
 
 /*applied to the Grid's element.*/
