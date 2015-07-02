@@ -110,7 +110,7 @@
 	
 	<!-- 결재 > 휴가계 상세보기 가져오기 -->
 	<select id="getHolidaydoc" resultType="dto_vo.Sign.Holidaydoc">
-		select * 
+		select DOCNUM, TO_CHAR(HOLSTART,'YYYY-MM-DD') as HOLSTART, TO_CHAR(HOLEND,'YYYY-MM-DD') as HOLEND, HOLTYPE, HOLREASON, DESTINATION
 		from HOLIDAYDOC
 		where docnum = #{docnum}
 	</select>
@@ -263,4 +263,16 @@
 		 set signstate = #{param2}, refreshdate = sysdate
 		 where docnum = #{param1}
  	</update>
+ 	
+ 	<!-- ********************************************** -->
+ 	<!-- 휴가계 결재 승인 시 처리되는 날짜 (근태 테이블)-->
+ 	<insert id="checkin"  parameterType="hashmap">
+  		insert into attendance(userid,attdate) values( #{param1}, to_char (#{param2}, 'YYYY-MM-DD'))
+    </insert>
+    <!-- 휴가계 결재 승인 시 (holiday) -->
+    <insert id="checkin"  parameterType="hashmap">
+  		insert into addholiday(userid,attdate,holreason) values( #{param1}, to_char (#{param2}, 'YYYY-MM-DD'), #{param3})
+    </insert>
+    
+ 	
 </mapper>

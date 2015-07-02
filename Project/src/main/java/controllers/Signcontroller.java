@@ -6,9 +6,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.security.Principal;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletOutputStream;
@@ -26,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import dao.AttendanceDAO;
 import dao.SignDAO;
 import dto_vo.Board.File;
 import dto_vo.Board.PagingUtil;
@@ -313,6 +318,7 @@ public class Signcontroller {
 		System.out.println("승인처리된 결재 문서: "+docnum+"/ signtype= "+signtype);
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
 		Sign sign = signdao.getSign(docnum);
+		
 		//
 		int totalsign = sign.getTotalsign();
 		int currsign = sign.getCurrsign();
@@ -323,6 +329,38 @@ public class Signcontroller {
 			signdao.updateSignCurr(docnum);
 			// sign => singstate-> 바뀜
 			signdao.updateSignState(docnum, "1");
+			
+			// 결재 완료 시 휴가계일때
+			if(sign.getSigntype() == 2){
+				 Holidaydoc holdoc = signdao.getHolidaydoc(docnum);
+				 DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+				    try {
+				        Date startdate = df.parse(holdoc.getHolstart());
+				        Date enddate = df.parse(holdoc.getHolend());
+				        
+				        long diff = enddate.getTime() - startdate.getTime();
+				        long diffDays = diff / (24 * 60 * 60 * 1000)+1;
+				        
+				        System.out.println("날 수: "+ diffDays);
+				        
+				        // 첫 날 휴가
+				        signdao.checkin(sign.getUserid(), holdoc.getHolstart());
+				        signdao.addholiday(sign.getUserid(), holdoc.getHolstart(), holdoc.getHolreason());
+				        // 그 뒤 휴가 
+				        
+				        // 날짜 더하기 
+				      /*  Calendar cal = Calendar.getInstance();
+				        cal.setTime(date);
+				        cal.add(Calendar.DATE, 2);
+				        cal.add(Calendar.MONTH, 2);
+				         
+				        System.err.println(df.format(cal.getTime()));*/
+				         
+				    } catch (ParseException e) {
+				        e.printStackTrace();
+				    }
+			}
+			
 		}else if(currsign < totalsign){
 			if(currsign == 0){
 				// signlign=> signok2 가 바뀜 -> 1

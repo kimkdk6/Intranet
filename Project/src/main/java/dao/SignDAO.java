@@ -82,4 +82,8 @@ public interface SignDAO {
 	public int updateSignCurr(String docnum) throws ClassNotFoundException, SQLException;
 	// sign의 signstae 변경 .. 반려시 바뀔 수 있을 듯
 	public int updateSignState(String docnum, String signstate) throws ClassNotFoundException, SQLException;
+	
+	// ------------------------------ 근태 처리
+	public int checkin(String userid, String attdate) throws ClassNotFoundException, SQLException;
+	public int addholiday(String userid, String attdate, String holreason) throws ClassNotFoundException, SQLException;
 }

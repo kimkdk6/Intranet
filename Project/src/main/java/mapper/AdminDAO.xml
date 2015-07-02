@@ -68,7 +68,7 @@
 	</select>
 	<!-- 사원 정보 목록 가져오기 -->
 	<select id="getEmpInfo" resultType="dto_vo.Emp.Empinfo">
-		select *
+		select USERID,Userphoto,Useraddr,Useremail,Usermobile,Usertel,TO_CHAR(BIRTH,'YYYY-MM-DD') as birth,TO_CHAR(HIREDATE,'YYYY-MM-DD') as hiredate
 		from empinfo
 		where userid = #{userid}
 	</select>	
