@@ -58,6 +58,7 @@
               			  "<td width='100' class='title bb1 br1 p0007'>" + entry.deptcode + "</td>" +
               			  "<td width='100' class='title bb1 br1 p0007'>" + entry.teamcode + "</td>" +
               			  "<td width='100' class='title bb1 br1 p0007'>" + entry.poscode + "</td>" +
+              			  "<td width='100' class='title bb1 br1 p0007'><button onclick='location.href='javascript:detailsearch();' class = 'btn btn-back btn-xs'>상세정보</button>" +
               			  "</tr>"		
 					)
 					
