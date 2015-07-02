@@ -270,8 +270,8 @@
   		insert into attendance(userid,attdate) values( #{param1}, to_char (#{param2}, 'YYYY-MM-DD'))
     </insert>
     <!-- 휴가계 결재 승인 시 (holiday) -->
-    <insert id="checkin"  parameterType="hashmap">
-  		insert into addholiday(userid,attdate,holreason) values( #{param1}, to_char (#{param2}, 'YYYY-MM-DD'), #{param3})
+    <insert id="addholiday"  parameterType="hashmap">
+  		insert into aholiday(userid,attdate,holreason) values( #{param1}, to_char (#{param2}, 'YYYY-MM-DD'), #{param3})
     </insert>
     
  	
