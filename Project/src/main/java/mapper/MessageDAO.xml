@@ -5,42 +5,57 @@
 
 <mapper namespace="dao.MessageDAO">
 
- 	<!-- 해당게시판 글5개 뽑아오기 -->
-<!-- 	<select id="getBoardRecent5" parameterType="Integer" resultType="dto_vo.Board.Board">
+	<!-- 해당게시판 글5개 뽑아오기 -->
+	<!-- <select id="getBoardRecent5" parameterType="Integer" resultType="dto_vo.Board.Board"> 
+		SELECT BOARDCODE,BOARDNUM,BOARDNOTICE,USERID,BOARDTITLE,BOARDCONTENT,BOARDDATE,BOARDCOUNT,BOARDFILESRC,BOARDREF,BOARDDEPTH,BOARDSTEP 
+		FROM (SELECT ROWNUM RN , BOARDCODE,BOARDNUM,BOARDNOTICE,USERID,BOARDTITLE,BOARDCONTENT,BOARDDATE,BOARDCOUNT,BOARDFILESRC,BOARDREF,BOARDDEPTH,BOARDSTEP 
+		FROM (SELECT * FROM Board where boardcode = #{boardcode} ORDER BY BOARDREF 
+		DESC , BOARDSTEP ASC) ) WHERE RN BETWEEN 1 AND 5 </select> -->
+
+	<select id="RMessage" resultType="dto_vo.Emp.Message">
+
 		SELECT
-		BOARDCODE,BOARDNUM,BOARDNOTICE,USERID,BOARDTITLE,BOARDCONTENT,BOARDDATE,BOARDCOUNT,BOARDFILESRC,BOARDREF,BOARDDEPTH,BOARDSTEP
-		FROM (SELECT ROWNUM RN ,
-		BOARDCODE,BOARDNUM,BOARDNOTICE,USERID,BOARDTITLE,BOARDCONTENT,BOARDDATE,BOARDCOUNT,BOARDFILESRC,BOARDREF,BOARDDEPTH,BOARDSTEP
-		FROM (SELECT * FROM Board where boardcode = #{boardcode} ORDER BY
-		BOARDREF DESC , BOARDSTEP ASC) ) WHERE RN BETWEEN 1 AND 5
-	</select> -->
-
-	<select id="RMessage" parameterType="Integer" resultType="dto_vo.Emp.Message">
-
-		select * from message where RECEIVEID =#{USERID} and recdel=1 order by msgnum desc
+		msgnum,sendid,receiveid,msgtitle,msgcontent,msgdate,senddel,recdel
+		FROM (
+		select ROWNUM as
+		num,msgnum,sendid,receiveid,msgtitle,msgcontent,to_char(msgdate,'yyyy-mm-dd') as msgdate,senddel,recdel
+		FROM (
+		SELECT * FROM message WHERE RECEIVEID = #{userid} and recdel=1 order by
+		msgnum desc
+		)
+		) WHERE num BETWEEN #{startmessage} AND #{endmessage}
 
 	</select>
 
 	<select id="SMessage" parameterType="Integer" resultType="dto_vo.Emp.Message">
 
-		select * from message where SENDID =#{USERID} and senddel=1 order by msgnum desc
+		select
+		* from message where SENDID =#{USERID} and senddel=1 order by msgnum
+		desc
 
 	</select>
 
 
 	<delete id="deleteRMessage" parameterType="Integer">
-		UPDATE message SET recdel = 0 WHERE msgnum =#{msgnum}
+		UPDATE message SET
+		recdel = 0 WHERE msgnum =#{msgnum}
 	</delete>
-	
+
 	<delete id="deleteSMessage" parameterType="Integer">
-		UPDATE message SET recdel = 0 WHERE msgnum =#{msgnum}
+		UPDATE message SET
+		recdel = 0 WHERE msgnum =#{msgnum}
 	</delete>
 
 	<insert id="insertNewMessage" parameterType="dto_vo.Emp.Message">
 		insert into
-		 message(MSGNUM,SENDID,RECEIVEID,MSGTITLE,MSGCONTENT,MSGDATE)
-		 values(#{MSGNUM},#{USERID},#{RECEIVEID},#{msgtitle},#{msgcontent},sysdate)
+		message(MSGNUM,SENDID,RECEIVEID,MSGTITLE,MSGCONTENT,MSGDATE)
+		values(message_msgnum.nextval,#{USERID},#{RECEIVEID},#{msgtitle},#{msgcontent},sysdate)
 	</insert>
-	
-	
+
+
+	<select id="totalCount" parameterType="String" resultType="Integer">
+		select count(*) from message where RECEIVEID = #{userid} and recdel=1
+		order by msgnum desc
+	</select>
+
 </mapper>

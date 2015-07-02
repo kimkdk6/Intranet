@@ -9,24 +9,12 @@ public class Message {
 	private String receiveid; // 받은사원
 	private String msgtitle; // 쪽지제목
 	private String msgcontent; // 쪽지내용
-	private Date msgdate; // 쪽지작성일
+//	private Date msgdate; // 쪽지작성일
+	private String msgdate; // 쪽지작성일
 	private int senddel; // 보낸삭제
 	private int recdel; // 받은삭제
 	
 	public Message() {}
-
-	public Message(int msgnum, String sendid, String receiveid,
-			String msgtitle, String msgcontent, Date msgdate, int senddel,
-			int recdel) {
-		this.msgnum = msgnum;
-		this.sendid = sendid;
-		this.receiveid = receiveid;
-		this.msgtitle = msgtitle;
-		this.msgcontent = msgcontent;
-		this.msgdate = msgdate;
-		this.senddel = senddel;
-		this.recdel = recdel;
-	}
 
 	public int getMsgnum() {
 		return msgnum;
@@ -68,11 +56,11 @@ public class Message {
 		this.msgcontent = msgcontent;
 	}
 
-	public Date getMsgdate() {
+	public String getMsgdate() {
 		return msgdate;
 	}
 
-	public void setMsgdate(Date msgdate) {
+	public void setMsgdate(String msgdate) {
 		this.msgdate = msgdate;
 	}
 
@@ -92,6 +80,20 @@ public class Message {
 		this.recdel = recdel;
 	}
 
+	public Message(int msgnum, String sendid, String receiveid,
+			String msgtitle, String msgcontent, String msgdate, int senddel,
+			int recdel) {
+		super();
+		this.msgnum = msgnum;
+		this.sendid = sendid;
+		this.receiveid = receiveid;
+		this.msgtitle = msgtitle;
+		this.msgcontent = msgcontent;
+		this.msgdate = msgdate;
+		this.senddel = senddel;
+		this.recdel = recdel;
+	}
+
 	@Override
 	public String toString() {
 		return "Message [msgnum=" + msgnum + ", sendid=" + sendid
@@ -99,5 +101,6 @@ public class Message {
 				+ ", msgcontent=" + msgcontent + ", msgdate=" + msgdate
 				+ ", senddel=" + senddel + ", recdel=" + recdel + "]";
 	}
+
 	
 }
