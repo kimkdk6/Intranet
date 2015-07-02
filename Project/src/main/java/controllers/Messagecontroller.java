@@ -17,7 +17,7 @@ import dto_vo.Board.PagingUtil;
 import dto_vo.Emp.Emp;
 import dto_vo.Emp.Message;
 
-
+//ReceiveDetail
 
 @Controller
 @RequestMapping("/message/")
@@ -26,7 +26,7 @@ public class Messagecontroller {
 	@Autowired
 	private SqlSession sqlsession;
 
-	//게시판 메인 페이지 보기
+	// 메인 페이지 보기
 	@RequestMapping(value = "ReceiveMessage.htm")
 	public String RecieveMessage(Model model,HttpSession session,
 			@RequestParam(value="cpage", defaultValue="1") int cpage,
@@ -57,6 +57,17 @@ public class Messagecontroller {
 		model.addAttribute("paging", pagingUtil);
 
 		return "message.RMSGList";
+	}	
+	
+	//게시판 메인 페이지 보기
+	@RequestMapping(value = "ReceiveDetail.htm")
+	public String ReceiveDetail(Model model,HttpSession session,
+			@RequestParam(value="msgnum") int schnum
+			) throws ClassNotFoundException,SQLException {
+		
+		
+		
+		return "message.RMSDetail";
 	}	
 }
 
