@@ -88,7 +88,7 @@
         // prepare jqxChart settings
         var settings = {
             title: "부서별 근태현황",
-            description: "",
+            description: "",  
             enableAnimations: true,
             showLegend: true,
             padding: { left: 5, top: 5, right: 5, bottom: 5 },
