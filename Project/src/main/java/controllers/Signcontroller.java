@@ -307,10 +307,10 @@ public class Signcontroller {
 	// 결재문서 승인
 	@Transactional
 	@RequestMapping(value = "signOK.htm", method = RequestMethod.POST)
-	public String signOK(String docnum)
+	public String signOK(String docnum, String signtype)
 			throws ClassNotFoundException, SQLException {
 		System.out.println("결재 승인");
-		System.out.println("승인처리된 결재 문서: "+docnum);
+		System.out.println("승인처리된 결재 문서: "+docnum+"/ signtype= "+signtype);
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
 		Sign sign = signdao.getSign(docnum);
 		//

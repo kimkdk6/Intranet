@@ -57,6 +57,8 @@
 			<form name="draform" action="" method="post">
 				<input type="hidden" name="docnum" id="docnum"
 					value="${param.docnum}">
+				<input type="hidden" name="signtype" id="signtype"
+					value="${sign.signtype}">
 				<table>
 					<tbody>
 
