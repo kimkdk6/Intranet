@@ -586,7 +586,7 @@
 
 													<tr>
 														<td width="95" height="30" align="center"
-															bgcolor="#E1F9DD" class="m_sp"><b>문서번호</b></td>
+															bgcolor="#FFFDCD" class="m_sp"><b>문서번호</b></td>
 														<td width=""
 															style="padding: 0 0 0 12px; border: solid 1px #C0BFC1;">${sign.docnum}</td>
 														<td width="365" rowspan="3" align="center" valign="top"
@@ -647,8 +647,8 @@
 																					</div>
 
 																				</div> <!--  <button id="opener">지정1</button> --> <input
-																				type="button" id="opener" value="지정1" /> <!-- <button id="cancel1" >취소</button> -->
-																				<input type='button' id='cancel' value='취소' />
+																				type="button" id="opener" value="지정1" class="btn btn-default" style="padding-left: 3px;padding-right: 3px;"/> <!-- <button id="cancel1" >취소</button> -->
+																				<input type='button' id='cancel' class="btn btn-default" style="padding-left: 3px;padding-right: 3px;" value='취소' />
 																			</td>
 
 																			<td id="users1"
@@ -679,7 +679,7 @@
 																							</div>
 																						</c:forEach>
 																					</div>
-																				</div> <input type="button" id="opener1" value="지정2" /> <input
+																				</div> <input type="button" id="opener1" value="지정2" class="btn btn-default" style="padding-left: 3px;padding-right: 3px;"/> <input
 																				type='button' id='cancel1' value='취소' />
 																			</td>
 
@@ -712,7 +712,7 @@
 																							</div>
 																						</c:forEach>
 																					</div>
-																				</div> <input type="button" id="opener2" value="지정3" /> <input
+																				</div> <input type="button" id="opener2" value="지정3" class="btn btn-default" style="padding-left: 3px;padding-right: 3px;"/> <input
 																				type='button' id='cancel2' value='취소' />
 																			</td>
 
@@ -744,7 +744,7 @@
 																							</div>
 																						</c:forEach>
 																					</div>
-																				</div> <input type="button" id="opener3" value="지정4" /> <input
+																				</div> <input type="button" id="opener3" value="지정4" class="btn btn-default" style="padding-left: 3px;padding-right: 3px;"/> <input
 																				type='button' id='cancel3' value='취소' />
 																			</td>
 
@@ -764,20 +764,20 @@
 														</td>
 													</tr>
 													<tr>
-														<td height="30" align="center" bgcolor="#E1F9DD"
+														<td height="30" align="center" bgcolor="#FFFDCD"
 															class="m_sp"><b>문서종류</b></td>
 														<td
 															style="border: solid 1px #C0BFC1; padding: 0 0 0 12px;">출장 결과 보고서</td>
 													</tr>
 													<tr>
-														<td height="30" align="center" bgcolor="#E1F9DD"
+														<td height="30" align="center" bgcolor="#FFFDCD"
 															class="m_sp"><b>문서상태</b></td>
 														<td
 															style="padding: 0 0 0 12px; border: solid 1px #C0BFC1;">
 															작성전 문서입니다.</td>
 													</tr>
 													<tr>
-														<td height="30" align="center" bgcolor="#E1F9DD"
+														<td height="30" align="center" bgcolor="#FFFDCD"
 															class="m_sp"><b>부서</b></td>
 														<td colspan="2"
 															style="border: solid 1px #C0BFC1; padding: 0 0 0 12px;">
@@ -785,7 +785,7 @@
 														</td>
 													</tr>
 													<tr>
-														<td height="30" align="center" bgcolor="#E1F9DD"
+														<td height="30" align="center" bgcolor="#FFFDCD"
 															class="m_sp"><b>기안자</b></td>
 														<td colspan="2"
 															style="border: solid 1px #C0BFC1; padding: 0 0 0 12px;">${sign.team}
@@ -793,7 +793,7 @@
 																${sessionScope.team} ${empname} ${sessionScope.pos}</td>
 													</tr>
 													<tr>
-														<td height="30" align="center" bgcolor="#E1F9DD"
+														<td height="30" align="center" bgcolor="#FFFDCD"
 															class="m_sp" style="padding: 7px 0 7px 0"><b>기안일</b></td>
 														<td colspan="2"
 															style="border: solid 1px #C0BFC1; padding: 7px 0 7px 12px;">${todaydate}</td>
@@ -802,7 +802,7 @@
 
 
 													<tr>
-														<td height="30" align="center" bgcolor="#E1F9DD"
+														<td height="30" align="center" bgcolor="#FFFDCD"
 															class="m_sp"><b>제목</b></td>
 														<td colspan="2" style="padding: 0 0 0 2px;"><input
 															id="signtitle" name="signtitle" type="text"
@@ -892,7 +892,11 @@
 																		<td width="50%" align="right"
 																			style="padding: 5px 5px 0px 0px; letter-spacing: -1px; font-size: 11px; color: #4f4c4c;">
 					
-																			<input type="button" id="addline" value="라인 추가" />
+																			<input type="button" class="btn btn-warning" value="라인 추가" style="
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 5px;
+" id="addline" value="라인 추가" />
 																		</a>
 																		</td>
 																	</tr>
@@ -975,7 +979,7 @@
 									<table border="0" cellspacing="0" cellpadding="0">
 										<tbody>
 											<tr>
-												<td><input type="button" value="작성완료" onclick="addsign()">
+												<td><input type="button" class="btn bg-navy margin" value="작성완료" onclick="addsign()">
 												</td>
 											</tr>
 										</tbody>

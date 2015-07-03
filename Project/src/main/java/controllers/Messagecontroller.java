@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import dao.MessageDAO;
 import dto_vo.Board.PagingUtil;
@@ -29,19 +30,26 @@ public class Messagecontroller {
 	
 	
 	@RequestMapping(value = "WriteMessage.htm" , method=RequestMethod.GET)
-	public String WriteMessage(Model model,HttpSession session
-			) throws ClassNotFoundException,SQLException {
+	public String WriteMessage(Model model,HttpSession session,
+			@RequestParam(value="userid",required=false)String receiveid) throws ClassNotFoundException,SQLException {
 		
+		model.addAttribute("receiveid", receiveid);
 
 		return "message.MSGWrite";
 	}	
 
 	@RequestMapping(value = "WriteMessage.htm" , method=RequestMethod.POST)
-	public String WriteMessageOK(Model model,HttpSession session
-			) throws ClassNotFoundException,SQLException {
-		
-
-		return "message.MSGWrite";
+	@ResponseBody()
+	public String WriteMessageOK(Model model,HttpSession session,
+			Message message) throws ClassNotFoundException,SQLException {
+		System.out.println(message);
+		MessageDAO messageDao = sqlsession.getMapper(MessageDAO.class);
+		messageDao.insertNewMessage(message);
+	//	return "message.MSGWrite";
+		return "  <script> "
+				+ "alert( 'success' );"
+				+ "window.close();"
+				+ "</script>";
 	}	
 
 

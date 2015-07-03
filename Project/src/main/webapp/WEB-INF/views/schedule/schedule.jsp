@@ -90,58 +90,6 @@
 			</div>
 			<!-- /. box -->
 
-			<!-- 			<div class="box box-solid"> -->
-			<!-- 				<div class="box-header with-border"> -->
-			<!-- 					<h3 class="box-title">Create Event</h3> -->
-			<!-- 				</div> -->
-			<!-- 				<div class="box-body"> -->
-			<!-- 					<div class="btn-group" style="width: 100%; margin-bottom: 10px;"> -->
-			<!-- 						<button type="button" id="color-chooser-btn" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown">Color <span class="caret"></span></button> -->
-			<!-- 						<ul class="fc-color-picker" id="color-chooser"> -->
-			<!-- 							<li><a class="text-aqua" href="#"><i -->
-			<!-- 									class="fa fa-square"></i></a></li> -->
-			<!-- 							<li><a class="text-blue" href="#"><i -->
-			<!-- 									class="fa fa-square"></i></a></li> -->
-			<!-- 							<li><a class="text-light-blue" href="#"><i -->
-			<!-- 									class="fa fa-square"></i></a></li> -->
-			<!-- 							<li><a class="text-teal" href="#"><i -->
-			<!-- 									class="fa fa-square"></i></a></li> -->
-			<!-- 							<li><a class="text-yellow" href="#"><i -->
-			<!-- 									class="fa fa-square"></i></a></li> -->
-			<!-- 							<li><a class="text-orange" href="#"><i -->
-			<!-- 									class="fa fa-square"></i></a></li> -->
-			<!-- 							<li><a class="text-green" href="#"><i -->
-			<!-- 									class="fa fa-square"></i></a></li> -->
-			<!-- 							<li><a class="text-lime" href="#"><i -->
-			<!-- 									class="fa fa-square"></i></a></li> -->
-			<!-- 							<li><a class="text-red" href="#"><i class="fa fa-square"></i></a></li> -->
-			<!-- 							<li><a class="text-purple" href="#"><i -->
-			<!-- 									class="fa fa-square"></i></a></li> -->
-			<!-- 							<li><a class="text-fuchsia" href="#"><i -->
-			<!-- 									class="fa fa-square"></i></a></li> -->
-			<!-- 							<li><a class="text-muted" href="#"><i -->
-			<!-- 									class="fa fa-square"></i></a></li> -->
-			<!-- 							<li><a class="text-navy" href="#"><i -->
-			<!-- 									class="fa fa-square"></i></a></li> -->
-			<!-- 						</ul> -->
-			<!-- 					</div> -->
-			<!-- 					/btn-group -->
-			<!-- 					<div class="input-group"> -->
-			<!-- 						<input id="new-event" type="text" class="form-control" -->
-			<!-- 							placeholder="Event Title"> -->
-			<!-- 						<div class="input-group-btn"> -->
-			<!-- 							<button id="add-new-event" type="button" -->
-			<!-- 								class="btn btn-primary btn-flat">Add</button> -->
-			<!-- 						</div> -->
-			<!-- 						/btn-group -->
-			<!-- 					</div> -->
-			<!-- 					/input-group -->
-			<!-- 				</div> -->
-			<!-- 			</div> -->
-
-
-
-
 		</div>
 		<!-- /.col -->
 		<div class="col-md-9">
@@ -173,8 +121,6 @@
 					<td style="padding: 10px 20px 15px 20px;">
 						<table width="100%">
 							<tbody>
-							
-								
 								<tr>
 									<td width="65" height="25" style="letter-spacing: 0px; padding-top: 5px;">카테고리</td>
 									<td>
@@ -434,11 +380,9 @@
 										<table width="100%" border="0" cellspacing="0" cellpadding="0">
 											<tbody>
 												<tr>
-													<td width="" id="name_container" bgcolor="#638cd9"
-														style="background-color: rgb(110, 156, 242);"><input
-														name="catename" type="text" class="input_trans"
-														style="width: 100%;" title="카테고리명"></td>
-
+													<td width="" id="name_container" bgcolor="#638cd9" style="background-color: rgb(110, 156, 242);">
+														<input id="catename" name="catename" type="text" class="input_trans" style="width: 100%;" title="카테고리명">
+													</td>
 												</tr>
 											</tbody>
 										</table>
@@ -450,16 +394,14 @@
 								</tr>
 								<tr>
 									<td height="50" valign="top" style="padding-top: 5px;">설명</td>
-									<td><textarea id="id_content" title="내용"
-											name="catecontent" class="input_type1"
-											style="width: 100%; height: 48px; overflow: auto;"></textarea></td>
+									<td>
+										<textarea id="id_content" title="내용" name="catecontent" class="input_type1" style="width: 100%; height: 48px; overflow: auto;"></textarea>
+									</td>
 								</tr>
 								<tr>
 									<td height="3"></td>
 									<td></td>
 								</tr>
-
-
 								<!-- 공유 설정 -->
 								<tr>
 									<td colspan="2" height="1" bgcolor="#efefef"></td>
@@ -468,11 +410,11 @@
 									<td height="20" valign="top" style="padding-top: 5px;">일정
 										분류</td>
 									<td><label title="같은 회사 직원과 일정을 공유합니다."><input
-											type="radio" name="cateshare" value="d">부서 일정 </label> &nbsp;
+											type="radio" name="cateshare" id="cateshare" value="d">부서 일정 </label> &nbsp;
 										<label title="같은 부서 직원과 일정을 공유합니다."><input
-											type="radio" name="cateshare" value="t">팀 일정 </label> &nbsp;
+											type="radio" name="cateshare" id="cateshare" value="t">팀 일정 </label> &nbsp;
 										<label title="해당 카테고리 일정은 개인 일정입니다."><input
-											type="radio" name="cateshare" value="u" checked="checked">개인
+											type="radio" name="cateshare" id="cateshare" value="u" checked="checked">개인
 											일정 </label></td>
 								</tr>
 							</tbody>
@@ -544,16 +486,16 @@
 												<tr>
 													<td width="100%" align="left" style="padding-left: 8px;">
 														<select  id="catecode1" name="catecode1" style="width: 300px"  onchange="chg_categoryDel();">
-															<option selected disabled="disabled">선택하세요</option>
-															<option disabled="disabled">부서 일정</option>															
+															<option selected disabled="disabled" style="background-color: white">선택하세요</option>
+															<option disabled="disabled" style="background-color: white">부서 일정</option>															
 															<c:forEach items="${getSchCategoryDept}" var="c" varStatus="bs">
 																<option value="${c.catecode }" style="color:#fff; background-color:${c.color};">${c.catename}</option> 
 															</c:forEach>
-															<option disabled="disabled">팀 일정</option>	
+															<option disabled="disabled" style="background-color: white">팀 일정</option>	
 															<c:forEach items="${getSchCategoryTeam}" var="c" varStatus="bs">
 																<option value="${c.catecode }" style="color:#fff; background-color:${c.color};">${c.catename}</option>
 															</c:forEach>
-															<option disabled="disabled">개인 일정</option>	
+															<option disabled="disabled" style="background-color: white">개인 일정</option>	
 															<c:forEach items="${getSchCategoryUser}" var="c" varStatus="bs">
 																<option value="${c.catecode }" style="color:#fff; background-color:${c.color};">${c.catename}</option>
 															</c:forEach>
@@ -571,18 +513,9 @@
 				</tr>
 			</tbody>
 		</table>
-		<input type="button" value="삭제" onclick="checkform()">
-        <input type="reset" value="취소" >
 	</form>
 </div>
 
-
-<%-- <script src="<%=request.getContextPath()%>/resources/plugins/schecule/jquery-ui-1.11.4.custom/jquery-ui.js" type="text/javascript"></script> --%>
-<%-- <link href="<%=request.getContextPath()%>/resources/plugins/schecule/jquery-ui-1.11.4.custom/jquery-ui.css" type="text/css" /> --%>
-<%-- <script src="<%=request.getContextPath()%>/resources/plugins/fullcalendar/fullcalendar.js" type="text/javascript"></script>
-<link href="<%=request.getContextPath()%>/resources/plugins/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css" />
-<link href="<%=request.getContextPath()%>/resources/plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" type="text/css" media='print'/>
- --%>
 <script type="text/javascript">
 	
 	function chg_categoryDel() {
@@ -721,13 +654,16 @@
 					
 					// 일정 추가 
 					var formData = $("#_schedule_form").serialize();
-		               //console.log(formData);
+		              /*  console.log(formData.scstart);
+		               console.log(formData);
+		               console.log(scstart.value);
+		               console.log(formData[1]); */
 		               $.ajax({
 		                    Type:"POST",
 		                     url:"<%= request.getContextPath() %>/schedule/insertSchedule.htm",
 		                     data:formData,
 		                     success:function( data ){ alert("insert Success!!");},
-		                     error:function(data){alert("입력 해주세요!!");}
+		                     error:function(data){alert("일정을 입력 해주세요!!");}
 		               });
 					
 					newEvent.dialog("close");
@@ -762,7 +698,7 @@
 	                    url:"<%= request.getContextPath() %>/schedule/deleteSchedule.htm",
 	                    data:{ schnum : schnum },
 	                    success:function( data ){ alert("delete Success!!");},
-	                    error:function(data){alert("Error 발생");}
+	                    error:function(data){alert("일정을 선택해주세요");}
 	               });
 					
 					$('#calendar').fullCalendar( 'removeEventSource', currEvent.source );
@@ -786,9 +722,23 @@
 			
 			buttons : {
 				"확 인" : function() { 
-										
-		            document.getElementById("_category_form").submit();
-					categoryEvent.dialog("close");
+					
+					if( catename.value == "" ) {
+
+						alert("카테고리명을 작성하세요");
+					} else if( id_content.value == "" )
+					{
+						
+						alert("카테고리 설명을 작성하세요");
+					} else if( catecode2.value == "선택하세요" )
+					{
+						
+						alert("카테고리를 선택해 주세요");
+					} else {
+						
+						document.getElementById("_category_form").submit();
+						categoryEvent.dialog("close");
+					}
 				},
 				
 				"취 소" : function(){
@@ -808,31 +758,31 @@
 			width : 450,
 			modal : true,
 			
-			/* buttons : {
+			buttons : {
 				"확 인" : function() { 
 					
-		            document.getElementById("_category_delform").submit();
-					categoryEvent.dialog("close");
+					//var formData = $("#_category_delform").serialize();
+					//console.log("aaaa" + catecode1.value);
+					
+					if( catecode1.value == "선택하세요" ) {
+						alert("카테고리를 선택해 주세요");
+					} else {
+						document.getElementById("_category_delform").submit();
+						categoryEvent.dialog("close");
+					}
+					
+		           
 				},
 				"취 소" : function() {
+					
+					document.getElementById("_category_delform").reset();
 					categoryEvent.dialog("close");
 				}
-			} */
+			} 
 		});
-		
-		<%-- var formData = $("#_category_form").serialize();
-        console.log("카테고리 추가" + formData);
-        $.ajax({
-        	Type:"POST",
-            url:"<%= request.getContextPath() %>/schedule/insertCategory.htm",
-            data:formData,
-            success:function( data ){ alert("insert Success!!");},
-            error:function(data){alert("Error 발생");}
-        }); --%>
 		
 		var date = new Date();
 		var d = date.getDate(), m = date.getMonth(), y = date.getFullYear();
-
 		$('#calendar').fullCalendar(
 				{
 					header : {
@@ -911,9 +861,6 @@
 						
 						$( "#_schedule_view" ).dialog('open');
 						
-						
-						 
-						
 					},	
 
 					editable : false,
@@ -930,9 +877,6 @@
 			userid : '김성익',
 			content: '시부랄 탱탱부랄'
 		} ]);
-				
-				
-		
 				
 		var userid = { userid : $('#userid').val() };
         $.ajax({

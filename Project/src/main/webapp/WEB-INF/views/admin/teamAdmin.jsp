@@ -5,10 +5,7 @@
 
 
 <!DOCTYPE html>
-<section class="content-header" style="
-   
-    padding-left: 70px;
-    padding-right: 70px;">
+<section class="content-header">
 	<h1>
 		팀 관리 <small>팀 관리 페이지</small>
 	</h1>

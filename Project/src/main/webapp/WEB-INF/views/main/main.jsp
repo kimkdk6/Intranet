@@ -334,7 +334,6 @@ $(function(){
 						</tr>
 						<tr>
 							<c:forEach items="${RecentlyPhoto}" var="e">
-
 								<td style="padding-left: 40px;"><a
 									href="${pageContext.request.contextPath}/board/BoardDetail.htm?boardnum=${e.boardnum}">${e.boardtitle}</a>
 								</td>
