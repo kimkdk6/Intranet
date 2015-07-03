@@ -117,7 +117,7 @@
 	
 	<!-- 결재 > 출장 보고서 상세보기 가져오기 -->
 	<select id="getBizTripdoc" resultType="dto_vo.Sign.Biztripdoc">
-	 	select *
+	 	select docnum, TO_CHAR(bizstart,'YYYY-MM-DD') as bizstart, TO_CHAR(bizend,'YYYY-MM-DD') as bizend, BIZLOC, BIZPUR
 	 	from biztripdoc
 	 	where docnum = #{docnum}
 	</select>
@@ -131,7 +131,7 @@
 	
 	<!-- 출장 결과 보고서 -->
 	<select id="getBiztriprep" resultType="dto_vo.Sign.Biztriprep">
-		select * 
+		select docnum, TO_CHAR(BIZREPSTART,'YYYY-MM-DD') as BIZREPSTART, TO_CHAR(BIZREPEND,'YYYY-MM-DD') as BIZREPEND, BIZLOC, BIZPUR, BIZMEM, BIZCON, BIZTOT
 		from biztriprep
 		where docnum = #{docnum}
 	</select> 
@@ -278,10 +278,15 @@
     	from emp
     	where userid = #{userid}
     </select>
-    <select id="getCateCode" resultType="int">
+    <select id="getCateCode" parameterType="hashmap" resultType="int">
     	 select catecode 
     	 from SCHCATEGORY 
-    	 where userid='admin' and teamcode=#{teamcode}
+    	 where userid='admin' and teamcode=#{param1} and catecontent=#{param2}
     </select>
+    
+    <!-- 출장계 결재 승인시 시 (biztrip) -->
+    <insert id="addbiztrip" parameterType="hashmap">
+    	insert into biztrip(userid, attdate, btreason) values( #{param1}, #{param2}, #{param3})
+    </insert>
  	
 </mapper>
