@@ -264,18 +264,27 @@ public class Admincontroller {
 		// 팀 삽입
 		System.out.println("dept/team:  "+dept.getDeptcode()+"/"+team.getTeamname());
 		admindao.insertTeam(dept.getDeptcode(), team.getTeamname());
+		
 		// 팀 휴가 카테고리 추가
-	
 		System.out.println("팀 코드: "+ admindao.getTeamcode(dept.getDeptcode()));
-		Schcategory schcategory = new Schcategory();
-		schcategory.setCatename(team.getTeamname()+":휴가");
-		schcategory.setTeamcode(admindao.getTeamcode(dept.getDeptcode()));
-		schcategory.setUserid("admin");
-		schcategory.setCatecontent("휴가");
-		int color = (int)(Math.random() * 16777215);
-		System.out.println("추가된 팀의 휴가 카테고리 색깔: "+color);
-		schcategory.setColor(String.valueOf(color));
-		schedao.InsertTeamCategory(schcategory);
+		Schcategory schcategoryH = new Schcategory();
+		schcategoryH.setCatename(team.getTeamname()+":휴가");
+		schcategoryH.setTeamcode(admindao.getTeamcode(dept.getDeptcode()));
+		schcategoryH.setUserid("admin");
+		schcategoryH.setCatecontent("휴가");
+		int colorH = (int)(Math.random() * 16777215);
+		System.out.println("추가된 팀의 휴가 카테고리 색깔: "+colorH);
+		schcategoryH.setColor(String.valueOf(colorH));
+		schedao.InsertTeamCategory(schcategoryH);
+		// 출장 카테고리
+		Schcategory schcategoryB = new Schcategory();
+		schcategoryB.setCatename(team.getTeamname()+":출장");
+		schcategoryB.setTeamcode(admindao.getTeamcode(dept.getDeptcode()));
+		schcategoryB.setUserid("admin");
+		schcategoryB.setCatecontent("출장");
+		int colorB = (int)(Math.random() * 16777215);
+		System.out.println("추가된 팀의 출장 카테고리 색깔: "+colorB);
+		schedao.InsertTeamCategory(schcategoryB);
 		
 		return "redirect:teamAdmin.htm";
 	}
@@ -289,9 +298,11 @@ public class Admincontroller {
 		ScheduleDAO schedao = sqlSession.getMapper(ScheduleDAO.class);
 		// 팀 휴가 카테고리 / 팀 삭제
 		System.out.println("teamcode:  "+teamcode);
-		int catecode = admindao.getTeamHolCate(teamcode);
-		System.out.println("삭제할 휴가 카테고리 코드: "+catecode);
-		schedao.DeleteCategory(catecode);
+		int catecodeH = admindao.getTeamHolCate(teamcode);
+		int catecodeB = admindao.getTeamBizCate(teamcode);
+		System.out.println("삭제할 휴가/출장 카테고리 코드: "+catecodeH+"/"+catecodeB);
+		schedao.DeleteCategory(catecodeH);
+		schedao.DeleteCategory(catecodeB);
 		admindao.deleteTeam(teamcode);
 			
 		return "redirect:teamAdmin.htm";
@@ -307,10 +318,13 @@ public class Admincontroller {
 		System.out.println("teamcode/teamname:  "+teamcode+"/"+teamname);
 		
 		admindao.updateTeam(teamcode, teamname);
-		int catecode = admindao.getTeamHolCate(teamcode);
-		System.out.println("catecode : "+catecode);
-		String catename = teamname+":휴가";
-		admindao.updateTeamCate(catecode, catename);
+		int catecodeH = admindao.getTeamHolCate(teamcode);
+		int catecodeB = admindao.getTeamBizCate(teamcode);
+		System.out.println("catecodeH/B : "+catecodeH+"/"+catecodeB);
+		String catenameH = teamname+":휴가";
+		String catenameB = teamname+":출장";
+		admindao.updateTeamCate(catecodeH, catenameH);
+		admindao.updateTeamCate(catecodeB, catenameB);
 		return "redirect:teamAdmin.htm";
 	}
 }

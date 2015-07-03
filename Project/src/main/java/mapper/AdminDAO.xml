@@ -141,6 +141,11 @@
 		from SCHCATEGORY 
 		where teamcode=#{teamcode} and userid='admin' and deptcode is null and CATECONTENT = '휴가'
 	</select>
+	<select id="getTeamBizCate" resultType="int">
+		select catecode 
+		from SCHCATEGORY 
+		where teamcode=#{teamcode} and userid='admin' and deptcode is null and CATECONTENT = '출장'
+	</select>
 	<update id="updateTeam" parameterType="hashmap">
 		update team
 		set teamname = #{param2}

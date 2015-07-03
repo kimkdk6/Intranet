@@ -59,6 +59,7 @@ public interface AdminDAO {
 	public int deleteTeam(String teamcode) throws ClassNotFoundException, SQLException;
 	// 팀의 카테고리 검색
 	public int getTeamHolCate(String teamcode) throws ClassNotFoundException, SQLException;
+	public int getTeamBizCate(String teamcode) throws ClassNotFoundException, SQLException;
 	// 팀 명 수정
 	public int updateTeam(String teamcode, String teamname) throws ClassNotFoundException, SQLException;
 	// 팀 카테고리 이름 수정
