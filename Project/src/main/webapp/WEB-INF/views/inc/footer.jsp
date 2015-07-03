@@ -3,7 +3,6 @@
 
   <footer class="main-footer">
         <div class="pull-right hidden-xs">
-          <b>Version</b> 2.0
         </div>
-        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 1983-2015 <a href="http://cafe.naver.com/kosta95th">Se7en International</a>.</strong> All rights reserved. Special thx 2 MISAENG
       </footer>
