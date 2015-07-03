@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import dao.MessageDAO;
@@ -25,6 +26,24 @@ public class Messagecontroller {
 
 	@Autowired
 	private SqlSession sqlsession;
+	
+	
+	@RequestMapping(value = "WriteMessage.htm" , method=RequestMethod.GET)
+	public String WriteMessage(Model model,HttpSession session
+			) throws ClassNotFoundException,SQLException {
+		
+
+		return "message.MSGWrite";
+	}	
+
+	@RequestMapping(value = "WriteMessage.htm" , method=RequestMethod.POST)
+	public String WriteMessageOK(Model model,HttpSession session
+			) throws ClassNotFoundException,SQLException {
+		
+
+		return "message.MSGWrite";
+	}	
+
 
 	// 메인 페이지 보기
 	@RequestMapping(value = "ReceiveMessage.htm")

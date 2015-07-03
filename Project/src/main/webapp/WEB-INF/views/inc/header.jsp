@@ -16,6 +16,10 @@ function go_pop(url){
 	
 	window.open(url,"new","width=360, height=320, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
 }
+function go_pop2(url){
+	
+	window.open(url,"new","width=360, height=430, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
+}
 </script>
       <header class="main-header">
         <!-- Logo -->
@@ -63,7 +67,7 @@ function go_pop(url){
                   <li class="footer">
                   <a href="javascript:go_pop('${pageContext.request.contextPath}/message/ReceiveMessage.htm')">받은 쪽지함</a>
                   <a href="javascript:go_pop('${pageContext.request.contextPath}/message/SendMessage.htm')">보낸 쪽지함</a>
-                  <a href="javascript:go_pop('${pageContext.request.contextPath}/message/WriteMessage.htm')">쪽지 쓰기</a>
+                  <a href="javascript:go_pop2('${pageContext.request.contextPath}/message/WriteMessage.htm')">쪽지 쓰기</a>
                   </li>
                 </ul>
               </li>
