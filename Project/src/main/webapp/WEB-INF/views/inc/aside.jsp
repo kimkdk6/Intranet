@@ -156,7 +156,6 @@
 						href="${pageContext.request.contextPath}/admin/empAdmin.htm"><i
 							class="fa fa-circle-o"></i> 사원 관리 </a></li>
 				</ul></li>
-
 			<li class="treeview"><a
 				href="${pageContext.request.contextPath}/mypage/EditMypage.htm"><i
 					class="fa fa-fw fa-user"></i> <span>정보수정</span> <!-- <small
