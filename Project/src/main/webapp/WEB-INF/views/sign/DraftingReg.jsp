@@ -640,7 +640,7 @@
 									cellpadding="0" style="table-layout: fixed; border: solid 1px #C0BFC1;">
 									<tbody>
 										<tr>
-											<td width="95" height="30" align="center" bgcolor="#E1F9DD"
+											<td width="95" height="30" align="center" bgcolor="#FFFDCD"
 												class="m_sp"><b>문서번호</b></td>
 											<td width="" style="padding: 0 0 0 12px; border: solid 1px #C0BFC1;"></td>
 											<td width="365" rowspan="3" align="center" valign="top"
@@ -701,7 +701,7 @@
 																					</div>
 
 																				</div> <!--  <button id="opener">지정1</button> --> <input
-																				type="button" id="opener" value="지정1" /> <!-- <button id="cancel1" >취소</button> -->
+																				type="button"  id="opener" value="지정1" class="btn btn-default" style="padding-left: 3px;padding-right: 3px;"/> <!-- <button id="cancel1" >취소</button> -->
 																				<input type='button' id='cancel' value='취소' />
 																			</td>
 
@@ -733,7 +733,7 @@
 																							</div>
 																						</c:forEach>
 																					</div>
-																				</div> <input type="button" id="opener1" value="지정2" /> <input
+																				</div> <input type="button" id="opener1" value="지정2" class="btn btn-default" style="padding-left: 3px;padding-right: 3px;"/> <input
 																				type='button' id='cancel1' value='취소' />
 																			</td>
 
@@ -766,7 +766,7 @@
 																							</div>
 																						</c:forEach>
 																					</div>
-																				</div> <input type="button" id="opener2" value="지정3" /> <input
+																				</div> <input type="button" id="opener2" value="지정3" class="btn btn-default" style="padding-left: 3px;padding-right: 3px;"/> <input
 																				type='button' id='cancel2' value='취소' />
 																			</td>
 
@@ -798,7 +798,7 @@
 																							</div>
 																						</c:forEach>
 																					</div>
-																				</div> <input type="button" id="opener3" value="지정4" /> <input
+																				</div> <input type="button" id="opener3" value="지정4" class="btn btn-default" style="padding-left: 3px;padding-right: 3px;"/> <input
 																				type='button' id='cancel3' value='취소' />
 																			</td>
 
@@ -817,26 +817,26 @@
 											</td>
 										</tr>
 										<tr>
-											<td height="30" align="center" bgcolor="#E1F9DD" class="m_sp"><b>문서종류</b></td>
+											<td height="30" align="center" bgcolor="#FFFDCD" class="m_sp"><b>문서종류</b></td>
 											<td style="border: solid 1px #C0BFC1; padding: 0 0 0 12px;">기안서</td>
 										</tr>
 										<tr>
-											<td height="30" align="center" bgcolor="#E1F9DD" class="m_sp"><b>문서상태</b></td>
+											<td height="30" align="center" bgcolor="#FFFDCD" class="m_sp"><b>문서상태</b></td>
 											<td style="border: solid 1px #C0BFC1; padding: 0 0 0 12px;">작성전 문서입니다.</td>
 										</tr>
 										<tr>
-											<td height="30" align="center" bgcolor="#E1F9DD" class="m_sp"><b>부서</b></td>
+											<td height="30" align="center" bgcolor="#FFFDCD" class="m_sp"><b>부서</b></td>
 											<td colspan="2" style="border: solid 1px #C0BFC1; padding: 0 0 0 12px;">${sessionScope.dept}</td>
 										</tr>
 										<tr>
-											<td height="30" align="center" bgcolor="#E1F9DD" class="m_sp"><b>기안자</b></td>
+											<td height="30" align="center" bgcolor="#FFFDCD" class="m_sp"><b>기안자</b></td>
 											<c:set var="emp" value="${sessionScope.myemp}" />
 
 											<td colspan="2" style="padding: 0 0 0 12px; border: solid 1px #C0BFC1;">${sessionScope.team}
 												${emp.ename} ${sessionScope.pos}</td>
 										</tr>
 										<tr>
-											<td height="30" align="center" bgcolor="#E1F9DD" class="m_sp"
+											<td height="30" align="center" bgcolor="#FFFDCD" class="m_sp"
 												valign="top" style="padding-top: 7px;"><b>기안일</b></td>
 											<td colspan="2" style="padding: 0 0 0 12px; border: solid 1px #C0BFC1;" valign="top">
 												<c:set var="todaydate" value="<%=strdate%>" /> <input
@@ -847,13 +847,14 @@
 
 
 										<tr>
-											<td align="center" bgcolor="#E1F9DD" class="m_sp"><b>파일첨부</b></td>
+											<td align="center" bgcolor="#FFFDCD" class="m_sp"><b>파일첨부</b></td>
 											<td colspan="2" style="padding: 0 0 0 12px; border: solid 1px #C0BFC1;"><input
-												id="file" name="file" type="file"></td>
-										</tr>
+												id="file" name="file" type="file" style="padding-top: 5px; padding-bottom: 5px" ></td>
+												
+										</tr>	
 
 										<tr>
-											<td height="30" align="center" bgcolor="#E1F9DD" class="m_sp">
+											<td height="30" align="center" bgcolor="#FFFDCD" class="m_sp">
 												<b>제목</b>
 											</td>
 											<td colspan="2" style="padding: 0 0 0 12px; border: solid 1px #C0BFC1;"><input
@@ -928,7 +929,7 @@
 											<tbody>
 
 												<tr>
-													<td><input type="button" value="작성완료"
+													<td><input type="button" class="btn bg-navy margin" value="작성완료" style=" margin-top: 10px;"
 														onclick="addsign()"></td>
 												</tr>
 											</tbody>
