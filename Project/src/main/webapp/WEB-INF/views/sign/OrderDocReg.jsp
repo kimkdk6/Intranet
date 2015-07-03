@@ -680,7 +680,7 @@
 																						</c:forEach>
 																					</div>
 																				</div> <input type="button" id="opener1" class="btn btn-default" style="padding-left: 3px;padding-right: 3px;" value="지정2" /> <input
-																				type='button' id='cancel1' value='취소' />
+																				type='button' id='cancel1' value='취소' class="btn btn-default" style="padding-left: 3px;padding-right: 3px;"/>
 																			</td>
 
 
@@ -713,7 +713,7 @@
 																						</c:forEach>
 																					</div>
 																				</div> <input type="button" id="opener2" class="btn btn-default" style="padding-left: 3px;padding-right: 3px;" value="지정3" /> <input
-																				type='button' id='cancel2' value='취소' />
+																				type='button' id='cancel2' value='취소' class="btn btn-default" style="padding-left: 3px;padding-right: 3px;"/>
 																			</td>
 
 																			<td id="users3"
@@ -745,7 +745,7 @@
 																						</c:forEach>
 																					</div>
 																				</div> <input type="button" id="opener3" class="btn btn-default" style="padding-left: 3px;padding-right: 3px;" value="지정4" /> <input
-																				type='button' id='cancel3' value='취소' />
+																				type='button' id='cancel3' value='취소' class="btn btn-default" style="padding-left: 3px;padding-right: 3px;"/>
 																			</td>
 
 																		</tr>

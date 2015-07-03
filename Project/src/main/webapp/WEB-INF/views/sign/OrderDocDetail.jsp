@@ -108,7 +108,7 @@
 									</tr>
 								</tbody>
 							</table> <!--기능TB END-->
-						</td>
+						
 					</tr>
 					<tr>
 						<td align="center" valign="top"

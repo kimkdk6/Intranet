@@ -63,8 +63,7 @@
 					<tbody>
 
 						<tr>
-							<td height="30" bgcolor="#ececec"
-								style="border-bottom: 1px #c9c9c9 solid; border-top: 1px #c9c9c9 solid; padding: 0 0 0 12px;">
+							
 								<!--기능TB START-->
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tbody>
@@ -73,10 +72,13 @@
 												<table border="0" cellspacing="0" cellpadding="0">
 													<tbody>
 														<tr>
-															<td><a href=""><img
-																	src="/img/approval/bt_list.gif"></a></td>
+															
 															<td><a href="javascript:divPrint();">
-																	<button type="button" class="btn btn-info pull-right">print</button>
+																	<button type="button" class="btn bg-orange" style="
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;">프린트</button>
 															</a></td>
 														</tr>
 													</tbody>
@@ -105,7 +107,7 @@
 										</tr>
 									</tbody>
 								</table> <!--기능TB END-->
-							</td>
+							
 						</tr>
 						<tr>
 							<td align="center" valign="top"
@@ -122,8 +124,8 @@
 														<tbody>
 															<tr>
 																<td width="120"></td>
-																<td class="dochead" align="center" valign="top"
-																	style="font-size: 30px">휴가계</td>
+																<td class="dochead"  valign="top"
+																	style="font-size: 30px; padding-left: 400px">휴가계</td>
 														</tbody>
 													</table>
 												</td>
@@ -138,7 +140,7 @@
 
 															<tr>
 																<td width="95" height="30" align="center"
-																	bgcolor="#E1F9DD" class="m_sp"><b>문서번호</b></td>
+																	bgcolor="#FFFDCD" class="m_sp"><b>문서번호</b></td>
 																<td width=""
 																	style="padding: 0 0 0 12px; border: solid 1px #C0BFC1;">${sign.docnum}</td>
 																<td width="365" rowspan="3" align="center" valign="top"
@@ -435,7 +437,7 @@
 																		<table width="100%" class="tbl_c9c9c9" cellpadding="0"
 																			cellspacing="0" rel="proc_f" style="display: none;">
 																			<tbody>
-																				<tr height="20" align="center" bgcolor="#E1F9DD">
+																				<tr height="20" align="center" bgcolor="#FFFDCD">
 																					<td width="7%" rowspan="4"><b>결<br> <br>
 																							<br>재
 																					</b></td>
@@ -495,7 +497,7 @@
 																						</div>
 																					</td>
 																				</tr>
-																				<tr height="20" align="center" bgcolor="#E1F9DD">
+																				<tr height="20" align="center" bgcolor="#FFFDCD">
 																					<input type="hidden" name="docproc[]" id="proc4"
 																						value="">
 																					<td
@@ -586,13 +588,13 @@
 																</td>
 															</tr>
 															<tr>
-																<td height="30" align="center" bgcolor="#E1F9DD"
+																<td height="30" align="center" bgcolor="#FFFDCD"
 																	class="m_sp"><b>문서종류</b></td>
 																<td
 																	style="border: solid 1px #C0BFC1; padding: 0 0 0 12px;">휴가계</td>
 															</tr>
 															<tr>
-																<td height="30" align="center" bgcolor="#E1F9DD"
+																<td height="30" align="center" bgcolor="#FFFDCD"
 																	class="m_sp"><b>문서상태</b></td>
 																<td
 																	style="padding: 0 0 0 12px; border: solid 1px #C0BFC1;"><c:choose>
@@ -608,20 +610,20 @@
 																	</c:choose></td>
 															</tr>
 															<tr>
-																<td height="30" align="center" bgcolor="#E1F9DD"
+																<td height="30" align="center" bgcolor="#FFFDCD"
 																	class="m_sp"><b>부서</b></td>
 																<td colspan="2"
 																	style="border: solid 1px #C0BFC1; padding: 0 0 0 12px;">${sign.dept}</td>
 															</tr>
 															<tr>
-																<td height="30" align="center" bgcolor="#E1F9DD"
+																<td height="30" align="center" bgcolor="#FFFDCD"
 																	class="m_sp"><b>기안자</b></td>
 																<td colspan="2"
 																	style="border: solid 1px #C0BFC1; padding: 0 0 0 12px;">${sign.team}
 																	${sign.ename} ${sign.posname}</td>
 															</tr>
 															<tr>
-																<td height="30" align="center" bgcolor="#E1F9DD"
+																<td height="30" align="center" bgcolor="#FFFDCD"
 																	class="m_sp" style="padding: 7px 0 7px 0"><b>기안일</b></td>
 																<td colspan="2"
 																	style="border: solid 1px #C0BFC1; padding: 7px 0 7px 12px;">${sign.draftdate }</td>
@@ -630,7 +632,7 @@
 
 
 															<tr>
-																<td height="30" align="center" bgcolor="#E1F9DD"
+																<td height="30" align="center" bgcolor="#FFFDCD"
 																	class="m_sp"><b>제목</b></td>
 																<td colspan="2"
 																	style="border: solid 1px #C0BFC1; padding: 7px 0 7px 12px;">${sign.signtitle }</td>

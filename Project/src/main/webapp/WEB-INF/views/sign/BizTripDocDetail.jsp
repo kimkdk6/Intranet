@@ -63,8 +63,7 @@
 				<tbody>
 
 					<tr>
-						<td height="30" bgcolor="#ececec"
-							style="border-bottom: 1px #c9c9c9 solid; border-top: 1px #c9c9c9 solid; padding: 0 0 0 12px;">
+						
 							<!--기능TB START-->
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 								<tbody>
@@ -73,10 +72,14 @@
 											<table border="0" cellspacing="0" cellpadding="0">
 												<tbody>
 													<tr>
-														<td><a href=""><img
-																src="/img/approval/bt_list.gif"></a></td>
+														
 														<td><a href="javascript:divPrint();">
-																	<button type="button" class="btn btn-info pull-right">print</button>
+																	<button type="button" class="btn bg-orange" style="
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+">프린트</button>
 															</a></td>
 													</tr>
 												</tbody>
@@ -105,7 +108,7 @@
 									</tr>
 								</tbody>
 							</table> <!--기능TB END-->
-						</td>
+					
 					</tr>
 					<tr>
 						<td align="center" valign="top"
@@ -122,8 +125,8 @@
 												<tbody>
 													<tr>
 														<td width="120"></td>
-														<td class="dochead" align="center" valign="top"
-															style="font-size: 30px">출장 보고서</td>
+														<td class="dochead"  valign="top"
+															style="font-size: 30px; padding-left: 400px">출장 보고서</td>
 												</tbody>
 											</table>
 										</td>
@@ -643,13 +646,13 @@
 												<tbody>
 													<tr>
 														<td height="350" align="left" valign="top"
-															style="padding: 8px 8px 5px 8px; border-top: 0">
+															>
 															<table width="100%" border="0" cellspacing="0"
 																cellpadding="0">
 																<tbody>
 																	<tr>
 																		<td width="100%"
-																			style="padding: 10px 17px 10px 17px; border: 0;">
+																			style="padding-top: 50px"	>
 																			<table id="detail_table" width="100%" cellspacing="0"
 																				cellpadding="0" class="tbl_appreport">
 																				<tbody>
@@ -720,11 +723,7 @@
 										</td>
 									</tr>
 
-									<tr>
-										<td align="left" valign="top" class="m_sp"
-											style="padding: 8px 8px 8px 8px;">2015-06-17 19:12:24 -
-											a1 상신</td>
-									</tr>
+									
 								</tbody>
 							</table>
 							</div>

@@ -63,8 +63,7 @@
 				<tbody>
 
 					<tr>
-						<td height="30" bgcolor="#ececec"
-							style="border-bottom: 1px #c9c9c9 solid; border-top: 1px #c9c9c9 solid; padding: 0 0 0 12px;">
+						
 							<!--기능TB START-->
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 								<tbody>
@@ -74,10 +73,21 @@
 												<tbody>
 													<tr>
 														<td><a href="#">
-																	<button type="button" class="btn bg-orange margin">목 록</button>
+																	<button type="button" class="btn bg-maroon" style="
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: 10px
+">목 록</button>
 															</a></td>
 														<td><a href="javascript:divPrint();">
-																	<button type="button" class="btn bg-navy margin">인 쇄</button>
+																	<button type="button" class="btn bg-orange" style="
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+">인 쇄</button>
 															</a></td>
 													</tr>
 												</tbody>
@@ -106,7 +116,7 @@
 									</tr>
 								</tbody>
 							</table> <!--기능TB END-->
-						</td>
+						
 					</tr>
 					<tr>
 						<td align="center" valign="top"
@@ -123,8 +133,8 @@
 												<tbody>
 													<tr>
 														<td width="120"></td>
-														<td class="dochead" align="center" valign="top"
-															style="font-size: 30px">출장 결과 보고서</td>
+														<td class="dochead" valign="top"
+															style="font-size: 30px; padding-left: 330px">출장 결과 보고서</td>
 												</tbody>
 											</table>
 										</td>
@@ -139,7 +149,7 @@
 
 													<tr>
 														<td width="95" height="30" align="center"
-															bgcolor="#E1F9DD" class="m_sp"><b>문서번호</b></td>
+															bgcolor="#FFFDCD" class="m_sp"><b>문서번호</b></td>
 														<td width=""
 															style="padding: 0 0 0 12px; border: solid 1px #C0BFC1;">${sign.docnum}</td>
 														<td width="365" rowspan="3" align="center" valign="top"
@@ -433,13 +443,13 @@
 														</td>
 													</tr>
 													<tr>
-														<td height="30" align="center" bgcolor="#E1F9DD"
+														<td height="30" align="center" bgcolor="#FFFDCD"
 															class="m_sp"><b>문서종류</b></td>
 														<td
 															style="border: solid 1px #C0BFC1; padding: 0 0 0 12px;">출장 결과 보고서</td>
 													</tr>
 													<tr>
-														<td height="30" align="center" bgcolor="#E1F9DD"
+														<td height="30" align="center" bgcolor="#FFFDCD"
 															class="m_sp"><b>문서상태</b></td>
 														<td
 															style="padding: 0 0 0 12px; border: solid 1px #C0BFC1;"><c:choose>
@@ -455,20 +465,20 @@
 															</c:choose></td>
 													</tr>
 													<tr>
-														<td height="30" align="center" bgcolor="#E1F9DD"
+														<td height="30" align="center" bgcolor="#FFFDCD"
 															class="m_sp"><b>부서</b></td>
 														<td colspan="2"
 															style="border: solid 1px #C0BFC1; padding: 0 0 0 12px;">${sign.dept}</td>
 													</tr>
 													<tr>
-														<td height="30" align="center" bgcolor="#E1F9DD"
+														<td height="30" align="center" bgcolor="#FFFDCD"
 															class="m_sp"><b>기안자</b></td>
 														<td colspan="2"
 															style="border: solid 1px #C0BFC1; padding: 0 0 0 12px;">${sign.team}
 															${sign.ename} ${sign.posname}</td>
 													</tr>
 													<tr>
-														<td height="30" align="center" bgcolor="#E1F9DD"
+														<td height="30" align="center" bgcolor="#FFFDCD"
 															class="m_sp" style="padding: 7px 0 7px 0"><b>기안일</b></td>
 														<td colspan="2"
 															style="border: solid 1px #C0BFC1; padding: 7px 0 7px 12px;">${sign.draftdate }</td>
@@ -477,7 +487,7 @@
 
 
 													<tr>
-														<td height="30" align="center" bgcolor="#E1F9DD"
+														<td height="30" align="center" bgcolor="#FFFDCD"
 															class="m_sp"><b>제목</b></td>
 														<td colspan="2"
 															style="border: solid 1px #C0BFC1; padding: 7px 0 7px 12px;">${sign.signtitle }</td>
@@ -490,13 +500,13 @@
 												<tbody>
 													<tr>
 														<td height="350" align="left" valign="top"
-															style="padding: 8px 8px 5px 8px; border-top: 0">
+															style="padding-top: 50px">
 															<table width="100%" border="0" cellspacing="0"
 																cellpadding="0">
 																<tbody>
 																	<tr>
 																		<td width="100%"
-																			style="padding: 10px 17px 10px 17px; border: 0">
+																			>
 																			<table id="detail_table" width="100%" cellspacing="0"
 																				cellpadding="0" class="tbl_appreport">
 																				<tbody>
@@ -557,16 +567,16 @@
 																			</table>
 
 																			<table width="100%" border="0" class="tbl_c9c9c9"
-												cellspacing="0" cellpadding="0">
+												cellspacing="0" cellpadding="0" style="padding-top: 50px;"	>
 												<tbody>
 													<tr>
 														<td height="350" align="left" valign="top"
-															style="border-top: 0; padding-top: 15px; padding-bottom: 8px;">
+															>
 															<table width="100%" border="0" cellspacing="0"
-																cellpadding="0">
+																cellpadding="0" >
 																<tbody>
 																	<tr>
-																		<td width="100%" style="border: 0;">
+																		<td width="100%" style="padding-top: 30px">
 																			<table id="detail_table" width="100%" cellspacing="0"
 																				cellpadding="0" class="tbl_appreport">
 																				<tbody>
