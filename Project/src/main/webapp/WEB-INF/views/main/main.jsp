@@ -49,7 +49,7 @@ $(function(){
 							alert("출근처리가 정상적으로 처리됬습니다.");
 							var time = data.split(':');
 							console.log('${latecheck}');
-							 if(data >= "09"){
+							 if(time[0] >= "09"){
 								 vi();
 							 } 
 						},
@@ -82,7 +82,7 @@ $(function(){
 							alert("퇴근처리가 정상적으로 처리됬습니다."),
 							document.getElementById("checkout").innerHTML = data;
 							var time = data.split(':');
-							 if(data > "18"){
+							 if(time[0] < "18"){
 									 document.getElementById("commute").innerHTML = '&nbsp&nbsp&nbsp&nbsp&nbsp조퇴사유 :' ;
 									 document.getElementById("commutecheck").style.visibility="visible";
 									 document.getElementById("reason").style.visibility="visible";
@@ -327,7 +327,7 @@ $(function(){
 							<c:forEach items="${RecentlyPhoto}" var="e">
 								<td style="padding-left: 40px;"><a
 									href="${pageContext.request.contextPath}/board/BoardDetail.htm?boardnum=${e.boardnum}"><img
-										src="<%=request.getContextPath() %>/Upload/BoardFile/${e.boardfilesrc}"
+										src="${pageContext.request.contextPath}/Upload/BoardFile/${e.boardfilesrc}"
 										style="width: 95px; height: 95px;"></a></td>
 
 							</c:forEach>

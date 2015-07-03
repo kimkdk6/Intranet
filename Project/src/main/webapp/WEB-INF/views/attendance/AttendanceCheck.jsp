@@ -144,7 +144,7 @@
                     }
                 ]
         };
-        // setup the chart
+        // setup the chart  
         $('#jqxChart').jqxChart(settings);
         var adapter = new $.jqx.dataAdapter({
             datafields: [
