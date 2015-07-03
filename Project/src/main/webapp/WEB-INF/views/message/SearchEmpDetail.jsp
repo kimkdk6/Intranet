@@ -4,6 +4,32 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
+<script type="text/javascript">
+
+$(function() {
+	
+	$('#search').click(function() {
+		$.ajax({
+			url : "<%=request.getContextPath() %>/message/WriteMessage.htm",
+			dataType : "json",
+			data : {userid : $('#Emp').val()},
+			success : function(data) {
+				window.open(url,"new","width=550, height=550, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
+			}
+		});
+	});
+	
+	$.ajax({
+		
+	});
+});
+
+
+/* function go_pop_message(url){
+	window.open(url,"new","width=550, height=550, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
+} */
+</script>
+
 <table height="400px" width="500px">
 		<tr>
 			<td colspan="2" style="border-bottom: 2px solid #0469AF"><h4>${emp.ename}님의 사원정보</h4></td>
@@ -77,7 +103,7 @@
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
-			<input type="button" class="btn btn-primary" value="쪽지 보내기" onclick="editAdmin(${member.empno})">&nbsp;
+			<input type="button" id="search" class="btn btn-primary" value="쪽지 보내기" onclick="javascript:go_pop_message('${pageContext.request.contextPath}/message/WriteMessage.htm')">&nbsp;
 			<input type="button" class="btn btn-default" value="닫기" onclick="window.close()"></td>
 		</tr>
 	</table>
