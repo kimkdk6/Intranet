@@ -20,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
@@ -376,5 +377,17 @@ public class Boardcontroller {
 		return "redirect:BoardDetail.htm?boardnum="+boardnum;
 		
 	}
+	
+	@RequestMapping(value = "ReplyDelete.htm")
+	public String ReplyDelete(Model model,@RequestParam(value="replynum")int replynum,@RequestParam(value="boardnum")int boardnum) throws ClassNotFoundException,SQLException {
+		
+		ReplyDAO replydao = sqlsession.getMapper(ReplyDAO.class);
+		replydao.deleteReply(replynum);
+		
+		return "redirect:BoardDetail.htm?boardnum="+boardnum;
+	}
+
+
 }
+
 

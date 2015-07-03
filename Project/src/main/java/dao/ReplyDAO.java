@@ -20,4 +20,5 @@ public interface ReplyDAO {
 	
 	public void insertReply(Reply reply) throws ClassNotFoundException, SQLException;
 	
+	public void deleteReply(int replynum) throws ClassNotFoundException, SQLException;
 }

@@ -30,4 +30,10 @@
 	<insert id="insertReply" parameterType="dto_vo.Board.Reply">
 		insert into reply(REPLYNUM,BOARDNUM,USERID,REPLYCONTENT,REPLYDATE) values(reply_replyno.nextval,#{boardnum},#{userid},#{replycontent},sysdate)
 	</insert>
+	
+	
+	<delete id="deleteReply" >
+		delete from reply where replynum=#{replynum}
+	
+	</delete>
 </mapper>

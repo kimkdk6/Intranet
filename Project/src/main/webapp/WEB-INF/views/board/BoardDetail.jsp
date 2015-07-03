@@ -400,15 +400,17 @@ p {
 																					<td width="110" align="center" valign="top"
 																						class="counter"
 																						style="padding: 3px 0px 3px 0px; letter-spacing: -1px;">
-																						<font color="#999999">${rp.replydate}</font> <c:if
-																							test="${rp.userid}==${sessionScope.myemp.userid}">
+																						<font color="#999999">${rp.replydate}</font> 
+																						<c:if
+																							test="${rp.userid==sessionScope.myemp.userid}">
 																							<br>
-																							<span id="pbt1"> <a
-																								href="javascript:alert('아직안됌')"><img
-																									src="../resources/img/bt_modify.gif"></a> <a
-																								href="${pageContext.request.contextPath}/board/ReplyDelete.htm?replynum=${rp.replynum}"><img
-																									src="../resources/img/bt_delete3.gif"
-																									onclick="if(!confirm('댓글을 삭제하시겠습니까?')) return false;"></a>
+																							<span id="pbt1">
+<!-- 																							 <a -->
+<!-- 																								href="javascript:alert('아직안됌')"><img -->
+<!-- 																									src="../resources/img/bt_modify.gif"></a> -->
+																									 <a
+																								href="${pageContext.request.contextPath}/board/ReplyDelete.htm?replynum=${rp.replynum}&boardnum=${board.boardnum}">
+																								<img src="../resources/img/bt_delete.gif" onclick="if(!confirm('댓글을 삭제하시겠습니까?')) return false;"></a>
 																							</span>
 																						</c:if>
 
