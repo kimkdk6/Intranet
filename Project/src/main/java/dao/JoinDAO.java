@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import dto_vo.Emp.Dept;
+import dto_vo.Emp.Emp;
 import dto_vo.Emp.Position;
 import dto_vo.Emp.Team;
 
@@ -18,4 +19,7 @@ public interface JoinDAO {
    
    // 팀 목록 가져오기
    List<Team> getTeamName( int deptcode ) throws ClassNotFoundException, SQLException;
+   
+   // 사원 목록 가져와
+   List<Emp> getEmp() throws ClassNotFoundException, SQLException;
 }

@@ -48,9 +48,9 @@ public class Joincontroller {
       
       List<Position> PosName = joinDAO.getPosName();
       
-      /*System.out.println(DeptInfo.get(1));
+      System.out.println(DeptInfo.get(1));
       System.out.println(DeptInfo.get(2));
-      System.out.println(DeptInfo.get(3));*/
+      System.out.println(DeptInfo.get(3));
       
       model.addAttribute("DeptInfo", DeptInfo);
       model.addAttribute("PosName", PosName);
@@ -118,4 +118,5 @@ public class Joincontroller {
       
       return jsonView;
    }
+   
 }

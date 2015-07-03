@@ -15,4 +15,11 @@
    <select id="getTeamName" resultType="dto_vo.Emp.Team">
       select * from team where deptcode = #{deptcode}
    </select>
+   
+   
+   
+   
+   <select id="getEmp" resultType="dto_vo.Emp.Emp">
+   	  select * from emp
+   </select>
 </mapper>

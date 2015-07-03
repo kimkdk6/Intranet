@@ -13,7 +13,58 @@
            <%-- 해결좀
            $.backstretch("<%=request.getContextPath()%>/resources/img/bg.jpg", {speed: 500});
             --%>
-          
+            
+            
+            
+            
+            
+           /*  function idCheckAjax(){
+                var param = "joinId=" + $("#joinId").val();
+                $.ajax({
+                    type:"POST",
+                    data:param,
+                    url:"idCheck.do",
+                    success:function(result){
+                        if(result=="OK"){
+                            document.getElementById("inputId").innerHTML="사용가능";
+                            document.getElementById("inputId").style.color="blue";
+            }else{
+                            document.getElementById("inputId").innerHTML="중복된아이디";
+                            document.getElementById("inputId").style.color="red";
+                            document.getElementById("id").value = "";
+                            document.getElementById("id").focus(); 
+            }
+                    },
+            	error:function(){
+            	alert("통신오류가 발생하였습니다. 재시도 해주세요");
+            	}
+            });
+            	} */
+            
+            
+           
+            
+           // 중복체크============================================
+           /* if($("#joinId").val() != "") {
+        	   $("#joinId").keyup();
+           };
+           
+           $("#joinId").keyup(function() {
+        	  $.post("<c:url value ="/test/test"/>",
+        			  {"joinId" : $("#joinId").val()},
+        			  function(data) {
+        				  console.log(data);
+        				  
+        				  if(data == "true") {
+        					  $("#inputId").text("이미 사용중인 아이디 입니다.")
+        				  }
+        				  else {
+        					  $("#inputId").text("사용 가능한 아이디 입니다.")
+        				  }
+        			  }
+        	  ); 
+           }); */
+           // =====================================================
            
            $('#Department').change(function() {
               var deptcode = { deptcode : $('#Department').val() };
@@ -68,8 +119,8 @@
             
             <!-- emp -->
             <div class="form-group has-feedback">
-               <input type="text" name="userid" class="form-control" placeholder="Id" />
-               <span class="glyphicon glyphicon-user form-control-feedback"></span>
+               <input type="text" name="userid" class="form-control" placeholder="Id" id="joinId" />
+               <span id="inputId" class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
                <input type="password" name="emppwd" class="form-control" placeholder="Password" />
