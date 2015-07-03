@@ -1,3 +1,4 @@
+<%@ page import="java.util.GregorianCalendar"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -6,7 +7,10 @@
      String yy = request.getParameter("yy");
 	String mm = request.getParameter("mm");
 	String dd = request.getParameter("dd");
+	GregorianCalendar now = new GregorianCalendar();
+	String date = String.format("%TF", now);
 %>
+
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugins/jqwidgets/styles/jqx.base.css" type="text/css" />
     <script type="text/javascript" src="<%=request.getContextPath()%>/resources/plugins/jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/resources/plugins/jqwidgets/jqxdraw.js"></script>
@@ -27,16 +31,31 @@
 <c:set var="devellateness" value="${devellateness}" />
 <c:set var="manalateness" value="${manalateness}" />
 <c:set var="manalateness" value="${manalateness}" />
+<c:set var="alllateness" value="${alllateness}" />
 
 <c:set var="offleave" value="${offleave}" />
 <c:set var="develleave" value="${develleave}" />
 <c:set var="manaleave" value="${manaleave}" />
 <c:set var="busileave" value="${busileave}" />
+<c:set var="allleave" value="${allleave}" />
 
 <c:set var="offabsence" value="${offabsence}" />
 <c:set var="develabsence" value="${develabsence}" />
 <c:set var="manaabsence" value="${manaabsence}" />
 <c:set var="busiabsence" value="${busiabsence}" />
+<c:set var="allabsence" value="${allabsence}" />
+
+<c:set var="offholiday" value="${offholiday}" />
+<c:set var="develholiday" value="${develholiday}" />
+<c:set var="manaholiday" value="${manaholiday}" />
+<c:set var="busiholiday" value="${busiholiday}" />
+<c:set var="allholiday" value="${allholiday}" />
+
+<c:set var="offbiztrip" value="${offbiztrip}" />
+<c:set var="develbiztrip" value="${develbiztrip}" />
+<c:set var="manabiztrip" value="${manabiztrip}" />
+<c:set var="busibiztrip" value="${busibiztrip}" />
+<c:set var="allbiztrip" value="${allbiztrip}" />
     <script type="text/javascript">
   
 
@@ -79,10 +98,11 @@
  
         // prepare chart data as an array
         var sampleData = [
-                { Day: '임원', 지각 : '${offlateness}', 조퇴: '${offleave}', 결근: '${offabsence}' },
-                { Day: '개발부', 지각: '${devellateness}', 조퇴: '${develleave}', 결근: '${develabsence}' },
-                { Day: '총무부', 지각: '${manalateness}', 조퇴: '${manaleave}', 결근: '${manaabsence}' },
-                { Day: '영업부', 지각: '${busilateness}', 조퇴: '${busileave}', 결근: '${busiabsence}' },
+                { Day: '임원', 지각 : '${offlateness}', 조퇴: '${offleave}', 결근: '${offabsence}', 휴가: '${offholiday}', 출장: '${offbiztrip}'},
+                { Day: '개발부', 지각: '${devellateness}', 조퇴: '${develleave}', 결근: '${develabsence}', 휴가: '${develholiday}', 출장: '${develbiztrip}' },
+                { Day: '총무부', 지각: '${manalateness}', 조퇴: '${manaleave}', 결근: '${manaabsence}', 휴가: '${manaholiday}', 출장: '${manabiztrip}' },
+                { Day: '영업부', 지각: '${busilateness}', 조퇴: '${busileave}', 결근: '${busiabsence}', 휴가: '${busiholiday}', 출장: '${busibiztrip}' },
+                { Day: '합계', 지각: '${alllateness}', 조퇴: '${allleave}', 결근: '${allabsence}', 휴가: '${allholiday}', 출장: '${allbiztrip}' },
 
         ];
         // prepare jqxChart settings
@@ -117,19 +137,23 @@
                         series: [
                                 { dataField: '지각', displayText: '지각' },
                                 { dataField: '조퇴', displayText: '조퇴' },
-                                { dataField: '결근', displayText: '결근' }
+                                { dataField: '결근', displayText: '결근' },
+                                { dataField: '휴가', displayText: '휴가' },
+                                { dataField: '출장', displayText: '출장' }
                         ]
                     }
                 ]
         };
-        // setup the chart
+        // setup the chart  
         $('#jqxChart').jqxChart(settings);
         var adapter = new $.jqx.dataAdapter({
             datafields: [
                 { name: "Day", type: "string" },
                 { name: "지각", type: "number" },
                 { name: "조퇴", type: "number" },
-                { name: "결근", type: "number" }
+                { name: "결근", type: "number" },
+                { name: "휴가", type: "number" },
+                { name: "출장", type: "number" }
             ],
             localdata: sampleData,
             datatype: 'array'
@@ -142,10 +166,12 @@
             source: adapter,
             columns:
             [
-                { text: "Day", width: '40%', datafield: "Day", filteritems: ["임원", "개발부", "총무부", "영업부"], filtertype: "checkedlist" },
+                { text: "부서", width: '40%', datafield: "Day", filteritems: ["임원", "개발부", "총무부", "영업부","합계"], filtertype: "checkedlist" },
                 { text: "지각", width: '20%', datafield: "지각" },
                 { text: "조퇴", width: '20%', datafield: "조퇴" },
-                { text: "결근", width: '20%', datafield: "결근" }
+                { text: "결근", width: '20%', datafield: "결근" },
+                { text: "휴가", width: '20%', datafield: "휴가" },
+                { text: "출장", width: '20%', datafield: "출장" }
             ]
         });
         $("#jqxGrid").on('filter', function () {
@@ -173,35 +199,33 @@
   </tr>
   <tr>
     <td height="30" bgcolor="#ececec" style="border-bottom:1px #c9c9c9 solid;border-top:1px #c9c9c9 solid;padding:0 0 0 12px;">
-      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <table style="width=100%">
         <tr>
-          <td align="right" style="padding:0 15px 0 0;" class="bigtxt2">
-            2015년 06월 29일
+          <td align="left" style="padding:0 15px 0 0;" width="100%">
+            <%=date%>
                        </td>
         </tr>
       </table>
-    </td>
-  </tr>
 
-  <tr>
+  <tr style="width=100%">
     <td style="padding:15px;">
 
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <table style="width: 100%">
       <tr>
-        <td width="250" style="padding-right:15px;" valign="top">
+        <td  style="padding-right:15px;" valign="top">
 		<div id="datepicker"></div>
         </td>
-        <td width="" valign="top">
-          <table>
+        <td >
            <div id="jqxGrid"></div>
-    <div id='jqxChart' style="margin-top: 50px; width: 850px; height: 400px; position: relative; left: 0px; top: 0px;">
-          </div>
-          
-          </table>
-          
-              
-        </td>
+        </td>   
       </tr>
+      <tr>
+      <td colspan="2">
+       <div id='jqxChart' style="margin-top: 50px; width: 100%; height: 400px; position: relative; left: 0px; top: 0px;">
+        </div>  
+      </td>
+      </tr>
+
     </table>
     </td>
   </tr>

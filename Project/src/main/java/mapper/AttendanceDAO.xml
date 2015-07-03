@@ -72,6 +72,12 @@
            join lateness l on e.userid = l.userid
            where to_char (l.attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}' and d.deptcode=400
 	</select>
+	
+	<select id="alllateness" parameterType="String" resultType="int" >
+			select count(*) from emp e join dept d on e.deptcode = d.deptcode
+           join lateness l on e.userid = l.userid
+           where to_char (l.attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}' 
+	</select>
 
 	<select id="offleave" parameterType="String" resultType="int" >
 			select count(*) from emp e join dept d on e.deptcode = d.deptcode
@@ -97,6 +103,12 @@
            where to_char (l.attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}' and d.deptcode=400
 	</select>
 	
+	<select id="allleave" parameterType="String" resultType="int" >
+			select count(*) from emp e join dept d on e.deptcode = d.deptcode
+           join leave l on e.userid = l.userid
+           where to_char (l.attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}' 
+	</select>
+	
 	<select id="offabsence" parameterType="String" resultType="int" >
 			select count(*) from emp e join dept d on e.deptcode = d.deptcode
            join absence l on e.userid = l.userid
@@ -119,6 +131,72 @@
 			select count(*) from emp e join dept d on e.deptcode = d.deptcode
            join absence l on e.userid = l.userid
            where to_char (l.attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}' and d.deptcode=400
+	</select>
+	
+	<select id="allabsence" parameterType="String" resultType="int" >
+			select count(*) from emp e join dept d on e.deptcode = d.deptcode
+           join absence l on e.userid = l.userid
+           where to_char (l.attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}'
+	</select>
+	
+	<select id="offholiday" parameterType="String" resultType="int" >
+			select count(*) from emp e join dept d on e.deptcode = d.deptcode
+           join holiday h on e.userid = h.userid
+           where to_char (h.attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}' and d.deptcode=100
+	</select>
+	
+	<select id="develholiday" parameterType="String" resultType="int" >
+			select count(*) from emp e join dept d on e.deptcode = d.deptcode
+           join holiday h on e.userid = h.userid
+           where to_char (h.attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}' and d.deptcode=200
+	</select>
+	
+	<select id="manaholiday" parameterType="String" resultType="int" >
+			select count(*) from emp e join dept d on e.deptcode = d.deptcode
+           join holiday h on e.userid = h.userid
+           where to_char (h.attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}' and d.deptcode=300
+	</select>
+	
+	<select id="busiholiday" parameterType="String" resultType="int" >
+			select count(*) from emp e join dept d on e.deptcode = d.deptcode
+           join holiday h on e.userid = h.userid
+           where to_char (h.attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}' and d.deptcode=400
+	</select>
+	
+	<select id="allholiday" parameterType="String" resultType="int" >
+			select count(*) from emp e join dept d on e.deptcode = d.deptcode
+           join holiday h on e.userid = h.userid
+           where to_char (h.attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}'
+	</select>
+	
+	<select id="offbiztrip" parameterType="String" resultType="int" >
+			select count(*) from emp e join dept d on e.deptcode = d.deptcode
+           join biztrip b on e.userid = b.userid
+           where to_char (b.attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}' and d.deptcode=100
+	</select>
+	
+	<select id="develbiztrip" parameterType="String" resultType="int" >
+			select count(*) from emp e join dept d on e.deptcode = d.deptcode
+           join biztrip b on e.userid = b.userid
+           where to_char (b.attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}' and d.deptcode=200
+	</select>
+	
+	<select id="manabiztrip" parameterType="String" resultType="int" >
+			select count(*) from emp e join dept d on e.deptcode = d.deptcode
+           join biztrip b on e.userid = b.userid
+           where to_char (b.attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}' and d.deptcode=300
+	</select>
+	
+	<select id="busibiztrip" parameterType="String" resultType="int" >
+			select count(*) from emp e join dept d on e.deptcode = d.deptcode
+           join biztrip b on e.userid = b.userid
+           where to_char (b.attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}' and d.deptcode=400
+	</select>
+	
+	<select id="allbiztrip" parameterType="String" resultType="int" >
+			select count(*) from emp e join dept d on e.deptcode = d.deptcode
+           join biztrip b on e.userid = b.userid
+           where to_char (b.attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}'
 	</select>
 	
 	

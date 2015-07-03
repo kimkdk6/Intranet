@@ -16,9 +16,6 @@
 <section class="content">
 	<div class="row">
 		<div class="col-md-3">
-
-
-
 			<div class="box box-solid">
 				<div class="box-header with-border">
 					<h4 class="box-title">부서</h4>
@@ -147,18 +144,12 @@
 
 		</div>
 		<!-- /.col -->
-
-
 		<div class="col-md-9">
 			<div class="box box-primary">
 				<div class="box-body no-padding">
 					<!-- THE CALENDAR -->
-
-
 					<div id="calendar"></div>
-
-
-
+					
 				</div>
 				<!-- /.box-body -->
 			</div>
@@ -170,159 +161,7 @@
 </section>
 <!-- /.content -->
 
-<%-- <div id="_update_schedule_desc" width="100%" border="0" cellspacing="0" cellpadding="0" class="left_menu" title="일정수정하기">
-	<form id="_update_schedule_form" name="_schedule_layer">
-	<input type="hidden" id="_update_scstart" name="scstart"/>
-	<input type="hidden" id="_update_scend" name="scend"/>
-	<input type="hidden" id="_update_userid" name="userid" value="${userid}"/>
-		<table id="_update_schedule_table" width="100%" border="0" cellspacing="0" cellpadding="0" class="left_menu">
-			<tbody>
-				<tr>
-					<td style="padding: 10px 20px 15px 20px;">
-						<table width="100%">
-							<tbody>
-							
-								
-								<tr>
-									<td width="65" height="25" style="letter-spacing: 0px; padding-top: 5px;">카테고리</td>
-									<td>
-										<table width="100%" border="0" cellspacing="0" cellpadding="0">
-											<tbody>
-												<tr>
-													<td width="100%" align="left" style="padding-left: 8px;">
-														<select  id="_update_catecode" name="catecode">
-															<option value="72" style="color:#fff; background-color:#44be1e;" selected="selected">회사일정</option>
-															<option value="74" style="color:#fff; background-color:#4b4b4b;">개인</option>
-															<option value="2157" style="color:#fff; background-color:#b4b4b4;">테스트</option>
-															<option value="2357" style="color:#fff; background-color:#6e9cf2;">장혜졍씨</option>
-															<option value="2359" style="color:#fff; background-color:#6e9cf2;">김덕경씨</option>
-														</select> 
-													<span id="schedule_category_str"></span>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-									</td>
-								</tr>
-								<tr>
-								<tr>
-									<td height="10"></td>
-									<td></td>
-								</tr>
-								<tr>
-									<td width="65" height="25" style="letter-spacing: 0px; padding-top: 5px;">시작일</td>
-									<td width="">
-										
-										<input type="text" id="_update_startdate" name="startdate" class="input_date" style="width: 110px; margin-left: 7px" maxlength="10"> 
-										<select id="_update_starthh" name="starthh">
-											<option value="00" selected="selected">오전 12시</option>
-											<option value="01">오전 01시</option>
-											<option value="02">오전 02시</option>
-											<option value="03">오전 03시</option>
-											<option value="04">오전 04시</option>
-											<option value="05">오전 05시</option>
-											<option value="06">오전 06시</option>
-											<option value="07">오전 07시</option>
-											<option value="08">오전 08시</option>
-											<option value="09">오전 09시</option>
-											<option value="10">오전 10시</option>
-											<option value="11">오전 11시</option>
-											<option value="12">오후 12시</option>
-											<option value="13">오후 01시</option>
-											<option value="14">오후 02시</option>
-											<option value="15">오후 03시</option>
-											<option value="16">오후 04시</option>
-											<option value="17">오후 05시</option>
-											<option value="18">오후 06시</option>
-											<option value="19">오후 07시</option>
-											<option value="20">오후 08시</option>
-											<option value="21">오후 09시</option>
-											<option value="22">오후 10시</option>
-											<option value="23">오후 11시</option>
-									</select> 
-									<select  id="_update_startmm" name="startmm">
-											<option value="00" selected="selected">00 분</option>
-											<option value="30">30 분</option>
-									</select>
-									</td>
-								</tr>
-								<tr>
-									<td height="10"></td>
-									<td></td>
-								</tr>
-								<tr>
-								<td width="65" height="25" style="letter-spacing: 0px; padding-top: 5px;">
-									종료일
-								</td>
-									<td width="">
-									<input type="text" id="_update_enddate" name="enddate" class="input_date" style="width: 110px; margin-left: 7px;" maxlength="10"> 
-									<select id="_update_endhh" name="endhh">
-											<option value="00" selected="selected">오전 12시</option>
-											<option value="01">오전 01시</option>
-											<option value="02">오전 02시</option>
-											<option value="03">오전 03시</option>
-											<option value="04">오전 04시</option>
-											<option value="05">오전 05시</option>
-											<option value="06">오전 06시</option>
-											<option value="07">오전 07시</option>
-											<option value="08">오전 08시</option>
-											<option value="09">오전 09시</option>
-											<option value="10">오전 10시</option>
-											<option value="11">오전 11시</option>
-											<option value="12">오후 12시</option>
-											<option value="13">오후 01시</option>
-											<option value="14">오후 02시</option>
-											<option value="15">오후 03시</option>
-											<option value="16">오후 04시</option>
-											<option value="17">오후 05시</option>
-											<option value="18">오후 06시</option>
-											<option value="19">오후 07시</option>
-											<option value="20">오후 08시</option>
-											<option value="21">오후 09시</option>
-											<option value="22">오후 10시</option>
-											<option value="23">오후 11시</option>
-									</select> 
-									<select id="_update_endmm" name="endmm">
-											<option value="00" selected="selected">00 분</option>
-											<option value="30">30 분</option>
-									</select>
-									</td>
-								</tr>
-								
-
-								<tr>
-									<td height="10"></td>
-									<td></td>
-								</tr>
-								
-								<tr>
-									<td height="20" valign="top" style="padding-top: 5px;">제목</td>
-									<td><input type="text" id="_update_sctitle" name="sctitle" class="input_date" style="width: 100%; margin-left: 7px;">
-									</td>
-								</tr>
-								<tr>
-									<td height="10"></td>
-									<td></td>
-								</tr>
-
-								<tr>
-									<td height="20" valign="top" style="padding-top: 5px;">내용</td>
-									<td>
-										<textarea id ="_update_sccontent" name="sccontent" class="input_type1" style="width: 100%; height: 160px; overflow: auto; margin-left: 7px">
-										</textarea>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</form>
-</div> --%>
-
-
-
+<!-- 스케줄 추가 -->
 <div id="_schedule_desc" width="100%" border="0" cellspacing="0" cellpadding="0" class="left_menu" title="일정추가하기">
 	<form id="_schedule_form" name="_schedule_layer" action="">
 	<input type="hidden" id="scstart" name="scstart"/>
@@ -343,17 +182,17 @@
 											<tbody>
 												<tr>
 													<td width="100%" align="left" style="padding-left: 8px;">
-														<select  id="catecode" name="catecode" onchange="chg1();">
-															
-															
+														<select  id="catecode" name="catecode" onchange="chg_category();">
+															<option selected disabled="disabled">선택하세요</option>
+															<option disabled="disabled">부서 일정</option>	
 															<c:forEach items="${getSchCategoryDept}" var="c" varStatus="bs">
 																<option value="${c.catecode }" style="color:#fff; background-color:${c.color};">${c.catename}</option> 
 															</c:forEach>
-															
+															<option disabled="disabled">팀 일정</option>	
 															<c:forEach items="${getSchCategoryTeam}" var="c" varStatus="bs">
 																<option value="${c.catecode }" style="color:#fff; background-color:${c.color};">${c.catename}</option>
 															</c:forEach>
-														
+															<option disabled="disabled">개인 일정</option>	
 															<c:forEach items="${getSchCategoryUser}" var="c" varStatus="bs">
 																<option value="${c.catecode }" style="color:#fff; background-color:${c.color};">${c.catename}</option>
 															</c:forEach>
@@ -487,6 +326,7 @@
 	</form>
 </div>
 
+<!-- 스케줄 확인 -->
 <div id="_schedule_view" width="100%" border="0" cellspacing="0" cellpadding="0" class="left_menu" title="일정확인하기">
 	<form id="_read_schedule_form" name="_read_schedule_form">
 		<table id="_read_schedule_table" width="100%" border="0" cellspacing="0" cellpadding="0" class="left_menu">
@@ -569,98 +409,121 @@
 </div>
 
 <!-- 카테고리 추가 -->
-<div id="_category_desc" title="새 카테고리 등록"> 
-<form id="_category_form" name="category_layer" action="<%= request.getContextPath() %>/schedule/insertCategory.htm">
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="left_menu"> 
-  <tbody><tr> 
-<!--     <td height="30" id="cat_title_background" bgcolor="#f4f4f4" style="padding: 3px 0px 0px 20px; background-color: rgb(110, 156, 242);">  -->
-<!--       <table width="100%" border="0" cellspacing="0" cellpadding="0">  -->
-<!--         <tbody><tr>  -->
-<!--           <td style="letter-spacing:-1px;font-weight:bold;color:#fff;" id="cat_layer_title">새 카테고리 만들기</td>  -->
-<!--           <td width="22" align="left"><a href="javascript:"><img src="/img/webmail/bt_closelayer.gif" onclick="jQuery('#_category_desc').gbxHide();"></a></td>  -->
-<!--         </tr>  -->
-<!--       </tbody></table></td>  -->
-  </tr> 
-  <tr> 
-    <td style="padding:10px 20px 15px 20px;"> 
-    <table width="100%" border="0" cellspacing="0" cellpadding="0"> 
-      <tbody><tr> 
-        <td width="85" height="20" style="letter-spacing:0px;">카테고리명</td> 
-        <td> 
-          <table width="100%" border="0" cellspacing="0" cellpadding="0"> 
-            <tbody><tr> 
-              <td width="" id="name_container" bgcolor="#638cd9" style="background-color: rgb(110, 156, 242);">
-              <input name="catename" type="text" class="input_trans" style="width:100%;" title="카테고리명">
-              </td> 
+<div id="_category_desc" title="새 카테고리 등록">
+	<form id="_category_form" name="category_layer"
+		action="<%=request.getContextPath()%>/schedule/insertCategory.htm">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0"
+			class="left_menu">
+			<tbody>
+				<tr>
+					<!--     <td height="30" id="cat_title_background" bgcolor="#f4f4f4" style="padding: 3px 0px 0px 20px; background-color: rgb(110, 156, 242);">  -->
+					<!--       <table width="100%" border="0" cellspacing="0" cellpadding="0">  -->
+					<!--         <tbody><tr>  -->
+					<!--           <td style="letter-spacing:-1px;font-weight:bold;color:#fff;" id="cat_layer_title">새 카테고리 만들기</td>  -->
+					<!--           <td width="22" align="left"><a href="javascript:"><img src="/img/webmail/bt_closelayer.gif" onclick="jQuery('#_category_desc').gbxHide();"></a></td>  -->
+					<!--         </tr>  -->
+					<!--       </tbody></table></td>  -->
+				</tr>
+				<tr>
+					<td style="padding: 10px 20px 15px 20px;">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tbody>
+								<tr>
+									<td width="85" height="20" style="letter-spacing: 0px;">카테고리명</td>
+									<td>
+										<table width="100%" border="0" cellspacing="0" cellpadding="0">
+											<tbody>
+												<tr>
+													<td width="" id="name_container" bgcolor="#638cd9"
+														style="background-color: rgb(110, 156, 242);"><input
+														name="catename" type="text" class="input_trans"
+														style="width: 100%;" title="카테고리명"></td>
 
-            </tr>
-          </tbody></table></td>
-      </tr>
-      <tr>
-        <td height="3"></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td height="50" valign="top" style="padding-top:5px;">설명</td>
-        <td><textarea id="id_content" title="내용" name="catecontent" class="input_type1" style="width:100%;height:48px;overflow:auto;"></textarea></td>
-      </tr>
-      <tr>
-        <td height="3"></td>
-        <td></td>
-      </tr>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+								<tr>
+									<td height="3"></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td height="50" valign="top" style="padding-top: 5px;">설명</td>
+									<td><textarea id="id_content" title="내용"
+											name="catecontent" class="input_type1"
+											style="width: 100%; height: 48px; overflow: auto;"></textarea></td>
+								</tr>
+								<tr>
+									<td height="3"></td>
+									<td></td>
+								</tr>
 
 
-      <!-- 공유 설정 -->
-      <tr>
-          <td colspan="2" height="1" bgcolor="#efefef"></td>
-      </tr>
-      <tr>
-        <td height="20" valign="top" style="padding-top:5px;">일정 분류</td>
-        <td>
-          <label title="같은 회사 직원과 일정을 공유합니다."><input type="radio" name="cateshare" value="d">부서 일정 </label> &nbsp;
-          <label title="같은 부서 직원과 일정을 공유합니다."><input type="radio" name="cateshare" value="t">팀 일정 </label> &nbsp;
-          <label title="해당 카테고리 일정은 개인 일정입니다."><input type="radio" name="cateshare" value="u" checked="checked">개인 일정 </label>
-        </td>
-      </tr>
-<!--       <tr> -->
-<!--         <td height="25" valign="top" style="padding-top:5px;"></td> -->
-<!--         <td><span rel="share_txt" class="stxt">해당 카테고리 일정은 개인 일정입니다.</span></td> -->
-<!--       </tr> -->
-
-     
-    </tbody></table> 
-    </td> 
-  </tr>  
-  <tr> 
-  <td>
-<!--   <div class="box box-solid"> -->
-                     <div class="box-header with-border">
-                           <ul class="fc-color-picker" id="color-chooser" name="color-chooser">
-                              <li><a class="text-aqua" href="#"><i class="fa fa-square" ></i></a></li>
-                              <li><a class="text-blue" href="#"><i class="fa fa-square"></i></a></li>
-                              <li><a class="text-light-blue" href="#"><i class="fa fa-square"></i></a></li>
-                              <li><a class="text-teal" href="#"><i class="fa fa-square"></i></a></li>
-                              <li><a class="text-yellow" href="#"><i class="fa fa-square"></i></a></li>
-                              <li><a class="text-orange" href="#"><i class="fa fa-square"></i></a></li>
-                              <li><a class="text-green" href="#"><i class="fa fa-square"></i></a></li>
-                              <li><a class="text-lime" href="#"><i class="fa fa-square"></i></a></li>
-                              <li><a class="text-red" href="#"><i class="fa fa-square"></i></a></li>
-                              <li><a class="text-purple" href="#"><i class="fa fa-square"></i></a></li>
-                              <li><a class="text-fuchsia" href="#"><i class="fa fa-square"></i></a></li>
-                              <li><a class="text-muted" href="#"><i class="fa fa-square"></i></a></li>
-<!--                            <li><a class="text-pink" href="#"><i class="fa fa-square"></i></a></li> -->
-<!--                            <li><a class="text-brown" href="#"><i class="fa fa-square"></i></a></li> -->
-<!--                            <li><a class="text-silver" href="#"><i class="fa fa-square"></i></a></li> -->
-<!--                            <li><a class="text-gold" href="#"><i class="fa fa-square"></i></a></li> -->
-<!--                            <li><a class="text-bronze" href="#"><i class="fa fa-square"></i></a></li> -->
-                           </ul>
-                           </div>
-<!--                            </div> -->
-                           </td>
-  
-</tbody></table> 
-
-</form>
+								<!-- 공유 설정 -->
+								<tr>
+									<td colspan="2" height="1" bgcolor="#efefef"></td>
+								</tr>
+								<tr>
+									<td height="20" valign="top" style="padding-top: 5px;">일정
+										분류</td>
+									<td><label title="같은 회사 직원과 일정을 공유합니다."><input
+											type="radio" name="cateshare" value="d">부서 일정 </label> &nbsp;
+										<label title="같은 부서 직원과 일정을 공유합니다."><input
+											type="radio" name="cateshare" value="t">팀 일정 </label> &nbsp;
+										<label title="해당 카테고리 일정은 개인 일정입니다."><input
+											type="radio" name="cateshare" value="u" checked="checked">개인
+											일정 </label></td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<!--   <div class="box box-solid"> -->
+						<!-- <div class="box-header with-border"> -->
+							<!-- <ul class="fc-color-picker" id="color-chooser" name="color-chooser" onclick="click_ul()">
+								<li value="#00c0ef"><a class="text-aqua" href="#"><i class="fa fa-square"></i></a></li>
+								<li value="#0073b7"><a class="text-blue" href="#"><i class="fa fa-square"></i></a></li>
+								<li value="#3c8dbc"><a class="text-light-blue" href="#"><i class="fa fa-square"></i></a></li>
+								<li value="#39cccc"><a class="text-teal" href="#"><i class="fa fa-square"></i></a></li>
+								<li value="#f39c12"><a class="text-yellow" href="#"><i class="fa fa-square"></i></a></li>
+								<li value="#ff851b"><a class="text-orange" href="#"><i class="fa fa-square"></i></a></li>
+								<li value="#00a65a"><a class="text-green" href="#"><i class="fa fa-square"></i></a></li>
+								<li value="#01ff70"><a class="text-lime" href="#"><i class="fa fa-square"></i></a></li>
+								<li value="#dd4b39"><a class="text-red" href="#"><i class="fa fa-square"></i></a></li>
+								<li value="#605ca8"><a class="text-purple" href="#"><i class="fa fa-square"></i></a></li>
+								<li value="#f012be"><a class="text-fuchsia" href="#"><i class="fa fa-square"></i></a></li>
+								<li value="#222222"><a class="text-muted" href="#"><i class="fa fa-square"></i></a></li>
+								                           <li><a class="text-pink" href="#"><i class="fa fa-square"></i></a></li>
+								                           <li><a class="text-brown" href="#"><i class="fa fa-square"></i></a></li>
+								                           <li><a class="text-silver" href="#"><i class="fa fa-square"></i></a></li>
+								                           <li><a class="text-gold" href="#"><i class="fa fa-square"></i></a></li>
+								                           <li><a class="text-bronze" href="#"><i class="fa fa-square"></i></a></li>
+							</ul> -->
+							<select id="catecode2" name="catecode2" onchange="chg_categoryIns();" style="width: 400px">
+								<option selected disabled="disabled">선택하세요</option>
+								<option value="#CC3D3D" style="background-color: #CC3D3D">Se7en International</option>															
+								<option value="#CC723D" style="background-color: #CC723D">Se7en International</option>	
+								<option value="#CCA63D" style="background-color: #CCA63D">Se7en International</option>
+								<option value="#C4B73B" style="background-color: #C4B73B">Se7en International</option>
+								<option value="#9FC93C" style="background-color: #9FC93C">Se7en International</option>
+								<option value="#47C83E" style="background-color: #47C83E">Se7en International</option>
+								<option value="#3DB7CC" style="background-color: #3DB7CC">Se7en International</option>
+								<option value="#6799FF" style="background-color: #6799FF">Se7en International</option>
+								<option value="#6B66FF" style="background-color: #6B66FF">Se7en International</option>
+								<option value="#A566FF" style="background-color: #A566FF">Se7en International</option>
+								<option value="#F361DC" style="background-color: #F361DC">Se7en International</option>
+								<option value="#F361A6" style="background-color: #F361A6">Se7en International</option>
+								<option value="#A6A6A6" style="background-color: #A6A6A6">Se7en International</option>
+								<option value="#5D5D5D" style="background-color: #5D5D5D">Se7en International</option>
+							</select>
+						<!-- </div> --> 
+					</td>
+			</tbody>
+		</table>
+	</form>
 </div>
 
 <!-- 카테고리 삭제  -->
@@ -680,17 +543,17 @@
 											<tbody>
 												<tr>
 													<td width="100%" align="left" style="padding-left: 8px;">
-														<select  id="catecode1" name="catecode1" onchange="chg();">
-															<!--this.ontions[this.selectedIndex].  -->
-															
+														<select  id="catecode1" name="catecode1" style="width: 300px"  onchange="chg_categoryDel();">
+															<option selected disabled="disabled">선택하세요</option>
+															<option disabled="disabled">부서 일정</option>															
 															<c:forEach items="${getSchCategoryDept}" var="c" varStatus="bs">
 																<option value="${c.catecode }" style="color:#fff; background-color:${c.color};">${c.catename}</option> 
 															</c:forEach>
-															
+															<option disabled="disabled">팀 일정</option>	
 															<c:forEach items="${getSchCategoryTeam}" var="c" varStatus="bs">
 																<option value="${c.catecode }" style="color:#fff; background-color:${c.color};">${c.catename}</option>
 															</c:forEach>
-														
+															<option disabled="disabled">개인 일정</option>	
 															<c:forEach items="${getSchCategoryUser}" var="c" varStatus="bs">
 																<option value="${c.catecode }" style="color:#fff; background-color:${c.color};">${c.catename}</option>
 															</c:forEach>
@@ -708,9 +571,11 @@
 				</tr>
 			</tbody>
 		</table>
-
+		<input type="button" value="삭제" onclick="checkform()">
+        <input type="reset" value="취소" >
 	</form>
 </div>
+
 
 <%-- <script src="<%=request.getContextPath()%>/resources/plugins/schecule/jquery-ui-1.11.4.custom/jquery-ui.js" type="text/javascript"></script> --%>
 <%-- <link href="<%=request.getContextPath()%>/resources/plugins/schecule/jquery-ui-1.11.4.custom/jquery-ui.css" type="text/css" /> --%>
@@ -720,26 +585,27 @@
  --%>
 <script type="text/javascript">
 	
-	
-	
-// 	$('select[id$=-status][id^=id_item-]').change(
-// 		    function (){
-// 		        var color = $('option:selected',this).css('background-color');
-// 		        $(this).css('background-color',color);
-// 		    }
-// 		).change();
-	function chg() {
+	function chg_categoryDel() {
 			
 		//$('catecode1').css('background-color', color);
 		var color = $("#catecode1 option:selected").css('background-color');
 		$('#catecode1').css('background-color', color);
 	}
 	
-	function chg1() {
+	function chg_category() {
 		
 		//$('catecode1').css('background-color', color);
 		var color = $("#catecode option:selected").css('background-color');
 		$('#catecode').css('background-color', color);
+	}
+	
+	function chg_categoryIns() {
+		
+		//$('catecode1').css('background-color', color);
+		//var color = $("#catecode option:selected").css('background-color');
+		// style="border: 3px solid black;
+		var color = $("#catecode2 option:selected").css('background-color');
+		$('#catecode2').css('background-color', color);
 	}
 	
 	$(function() {
@@ -823,6 +689,8 @@
 					}
 				});
 
+		
+		/* 스케쥴 추가 */
 		var newEvent = $("#_schedule_desc").dialog({
 			autoOpen : false,
 			height : 500,
@@ -859,23 +727,25 @@
 		                     url:"<%= request.getContextPath() %>/schedule/insertSchedule.htm",
 		                     data:formData,
 		                     success:function( data ){ alert("insert Success!!");},
-		                     error:function(data){alert("Error 발생");}
+		                     error:function(data){alert("입력 해주세요!!");}
 		               });
 					
 					newEvent.dialog("close");
 					document.getElementById("_schedule_form").reset();
 // 					document.getElementById("_schedule_form").submit();
 				},
-				"취 소" : function() {
+				
+				
+				"취 소" : function(){
+					newEvent.dialog("close");
 					document.getElementById("_schedule_form").reset();
-					newEvent.dialog("close")
+					
 				}
 			}
 		});
 		
-		
+		/* 일정 확인 */
 		var readEvent = $("#_schedule_view").dialog({
-			
 			autoOpen : false,
 			height : 500,
 			width : 600,
@@ -899,85 +769,46 @@
 					
 					readEvent.dialog("close");
 				},
-// 				"일정 수정" : function() {
-// 					readEvent.dialog("close");
-					
-					
-// 					$("#_update_sctitle").val($("#sctitle").val());
-// 					$("#_update_sccontent").val($("#sccontent").val());
-// 					$("#_update_scuserid").val($("#userid").val());
-					
-// 					updateEvent.dialog('open');
-					
-// 				},
+
 				"취 소" : function() {
 					readEvent.dialog("close");
 				}
 			}
 		});
 		
-
-		
-		/* var updateEvent = $("#_update_schedule_desc").dialog({
-			
-			autoOpen : false,
-			height : 500,
-			width : 600,
-			modal : true,
-			buttons : {
-				"확 인" : function() { 
-					
-					updateEvent.dialog("close");
-				},
-				"취 소" : function() {
-					updateEvent.dialog("close");
-				}
-			}
-		}); */
-		
-		// 카테고리 추가
-		//Color chooser button
-		//var colorChooser = $("#color-chooser-btn");
-// 		$("#color-chooser > li > a").click(function(e) {
-// 			e.preventDefault();
-// 			//Save color
-// 			currColor = $(this).css("color");
-// 		});
-// 		console.log("color : " + currColor);
+		/* 카테고리 추가  */
 		var categoryEvent = $("#_category_desc").dialog({
 			
 			autoOpen : false,
-			height : 350,
+			height : 290,
 			width : 450,
 			modal : true,
 			
 			buttons : {
 				"확 인" : function() { 
-					/* $("#color-chooser > li > a").click(function(e) {
-						e.preventDefault();
-						//Save color
-						currColor = $(this).css("color");
-						console.log("color : " + currColor);
-					}); */
-					
+										
 		            document.getElementById("_category_form").submit();
 					categoryEvent.dialog("close");
 				},
-				"취 소" : function() {
-					categoryEvent.dialog("close");
+				
+				"취 소" : function(){
+					//alert("cate del");
+					
+					document.getElementById("_category_form").reset();
+					$("#_category_desc").dialog("close");
 				}
 			}
 		});
 		
-		
+		/* 카테고리 삭제 */
 		var categoryEvent = $("#_category_delete").dialog({
 			
 			autoOpen : false,
-			height : 200,
+			height : 178,
 			width : 450,
 			modal : true,
 			
-			buttons : {
+			/* buttons : {
 				"확 인" : function() { 
 					
 		            document.getElementById("_category_delform").submit();
@@ -986,7 +817,7 @@
 				"취 소" : function() {
 					categoryEvent.dialog("close");
 				}
-			}
+			} */
 		});
 		
 		<%-- var formData = $("#_category_form").serialize();

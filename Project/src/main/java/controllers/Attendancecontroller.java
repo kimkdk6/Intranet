@@ -46,6 +46,7 @@ public class Attendancecontroller {
 		int devellateness = attdao.devellateness(yy,mm,dd);
 		int manalateness = attdao.manalateness(yy,mm,dd);
 		int busilateness = attdao.busilateness(yy,mm,dd);
+		int alllateness = attdao.alllateness(yy,mm,dd);
 
 		model.addAttribute("all", all);
 		
@@ -53,27 +54,55 @@ public class Attendancecontroller {
 		model.addAttribute("devellateness", devellateness);
 		model.addAttribute("manalateness", manalateness);
 		model.addAttribute("busilateness", busilateness);
+		model.addAttribute("alllateness", alllateness);
 		
 		int offleave = attdao.offleave(yy,mm,dd);
 		int develleave = attdao.develleave(yy,mm,dd);
 		int manaleave = attdao.manaleave(yy,mm,dd);
 		int busileave = attdao.busileave(yy,mm,dd);
+		int allleave = attdao.allleave(yy,mm,dd);
 		
 		model.addAttribute("offleave", offleave);
 		model.addAttribute("develleave", develleave);
 		model.addAttribute("manaleave", manaleave);
 		model.addAttribute("busileave", busileave);
+		model.addAttribute("allleave", allleave);
 		
 		int offabsence = attdao.offabsence(yy,mm,dd);
 		int develabsence = attdao.develabsence(yy,mm,dd);
 		int manaabsence = attdao.manaabsence(yy,mm,dd);
 		int busiabsence = attdao.busiabsence(yy,mm,dd);
-		
+		int allabsence = attdao.allabsence(yy,mm,dd);
 		
 		model.addAttribute("offabsence", offabsence);
 		model.addAttribute("develabsence", develabsence);
 		model.addAttribute("manaabsence", manaabsence);
 		model.addAttribute("busiabsence", busiabsence);
+		model.addAttribute("allabsence", allabsence);
+		
+		int offholiday = attdao.offholiday(yy,mm,dd);
+		int develholiday = attdao.develholiday(yy,mm,dd);
+		int manaholiday = attdao.manaholiday(yy,mm,dd);
+		int busiholiday = attdao.busiholiday(yy,mm,dd);
+		int allholiday = attdao.allholiday(yy,mm,dd);
+		
+		model.addAttribute("offholiday", offholiday);
+		model.addAttribute("develholiday", develholiday);
+		model.addAttribute("manaholiday", manaholiday);
+		model.addAttribute("busiholiday", busiholiday);
+		model.addAttribute("allholiday", allholiday);
+		
+		int offbiztrip = attdao.offbiztrip(yy,mm,dd);
+		int develbiztrip = attdao.develbiztrip(yy,mm,dd);
+		int manabiztrip = attdao.manabiztrip(yy,mm,dd);
+		int busibiztrip = attdao.busibiztrip(yy,mm,dd);
+		int allbiztrip = attdao.allbiztrip(yy,mm,dd);
+		
+		model.addAttribute("offbiztrip", offbiztrip);
+		model.addAttribute("develbiztrip", develbiztrip);
+		model.addAttribute("manabiztrip", manabiztrip);
+		model.addAttribute("busibiztrip", busibiztrip);
+		model.addAttribute("allbiztrip", allbiztrip);
 		
 		return "attendance.AttendanceCheck";
 	}

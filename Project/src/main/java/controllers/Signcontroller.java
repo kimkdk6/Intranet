@@ -371,8 +371,8 @@ public class Signcontroller {
 				    Schedule schedule = new Schedule();
 				    System.out.println(sign.getUserid());
 				    System.out.println("팀 코드"+signdao.getTeamcode(sign.getUserid()));
-				    System.out.println("카테고리 코드"+signdao.getCateCode(signdao.getTeamcode(sign.getUserid())));
-				    schedule.setCatecode(signdao.getCateCode(signdao.getTeamcode(sign.getUserid())));
+				    System.out.println("카테고리 코드"+signdao.getCateCode(signdao.getTeamcode(sign.getUserid()),"휴가"));
+				    schedule.setCatecode(signdao.getCateCode(signdao.getTeamcode(sign.getUserid()),"휴가"));
 				    schedule.setUserid(sign.getUserid());
 				    schedule.setScstart(holdoc.getHolstart()+" 09:00:00");
 				    schedule.setScend(holdoc.getHolend()+" 18:00:00");
@@ -380,6 +380,54 @@ public class Signcontroller {
 				    schedule.setSccontent(sign.getEname()+" "+sign.getPosname()+" : 휴가");
 				    
 				    schedao.InsertSchedule(schedule);
+			}
+			
+			// 결제 완료시 출장계
+			if(sign.getSigntype() == 4){
+				Biztripdoc bizdoc = signdao.getBizTripdoc(docnum);
+				DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+			    try {
+			        Date startdate = df.parse(bizdoc.getBizstart());
+			        Date enddate = df.parse(bizdoc.getBizend());
+			        
+			        long diff = enddate.getTime() - startdate.getTime();
+			        long diffDays = diff / (24 * 60 * 60 * 1000)+1;
+			        
+			        System.out.println("날 수: "+ diffDays);
+			        
+			        // 근태에
+			        // 출장 휴가
+			        System.out.println("출장 첫 날: "+startdate);
+			        signdao.checkin(sign.getUserid(), bizdoc.getBizstart());
+			        signdao.addbiztrip(sign.getUserid(), bizdoc.getBizstart(), bizdoc.getBizpur());
+			        Calendar cal = Calendar.getInstance();
+			        cal.setTime(startdate);
+			        // 그 뒤 휴가 
+			        for(int i=1; i<diffDays; i++){
+			        	 cal.add(Calendar.DATE, 1);
+			        	 String hd = df.format(cal.getTime());
+			        	System.out.println("출장 날: "+hd);
+			        	signdao.checkin(sign.getUserid(), hd);
+			        	signdao.addbiztrip(sign.getUserid(), hd, bizdoc.getBizpur());
+			        }
+			         
+			    } catch (ParseException e) {
+			        e.printStackTrace();
+			    }
+			    
+			 // 스케쥴에 출장 추가
+			    Schedule schedule = new Schedule();
+			    System.out.println(sign.getUserid());
+			    System.out.println("팀 코드"+signdao.getTeamcode(sign.getUserid()));
+			    System.out.println("카테고리 코드"+signdao.getCateCode(signdao.getTeamcode(sign.getUserid()),"출장"));
+			    schedule.setCatecode(signdao.getCateCode(signdao.getTeamcode(sign.getUserid()),"출장"));
+			    schedule.setUserid(sign.getUserid());
+			    schedule.setScstart(bizdoc.getBizstart()+" 09:00:00");
+			    schedule.setScend(bizdoc.getBizend()+" 18:00:00");
+			    schedule.setSctitle(sign.getEname()+" "+sign.getPosname()+" : 출장");
+			    schedule.setSccontent(sign.getEname()+" "+sign.getPosname()+" : 출장");
+			    
+			    schedao.InsertSchedule(schedule);
 			}
 			
 		}else if(currsign < totalsign){

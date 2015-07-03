@@ -61,7 +61,7 @@
 	<insert id="insertNewMessage" parameterType="dto_vo.Emp.Message">
 		insert into
 		message(MSGNUM,SENDID,RECEIVEID,MSGTITLE,MSGCONTENT,MSGDATE)
-		values(message_msgnum.nextval,#{USERID},#{RECEIVEID},#{msgtitle},#{msgcontent},sysdate)
+		values(message_msgnum.nextval,#{sendid},#{receiveid},#{msgtitle},#{msgcontent},sysdate)
 	</insert>
 
 

@@ -52,12 +52,17 @@ public class Searchcontroller {
 	
 	// 상세보기
 	@RequestMapping(value = "SearchEmpDetail.htm")
-	public String SearchEmpDetail(Model model, String userid) throws ClassNotFoundException, SQLException {
-		System.out.println("회원 검색해서 상세보기");
+	public String SearchEmpDetail(Model model,
+		@RequestParam(value="userid", required=true) String userid) throws ClassNotFoundException, SQLException {
+		
+		System.out.println("회원 검색해서 상세보기" + userid);
+		
 		EmpDAO empdao = sqlsession.getMapper(EmpDAO.class);
 		
+		Emp emp = empdao.getEmp2(userid);
 		Empinfo empinfo = empdao.getEmpInfo2(userid);
 		
+		model.addAttribute("emp", emp);
 		model.addAttribute("empinfo", empinfo);
 		
 		return "message.SearchEmpDetail";
@@ -90,14 +95,14 @@ public class Searchcontroller {
 	
 	// 처음에 전체 리스트 보기
 	@RequestMapping(value = "SearchEmpList.htm")
-	View SearchEmpList (Model model, Emp emp, String ename, HttpServletResponse response) throws ClassNotFoundException, SQLException, UnsupportedEncodingException {
+	View SearchEmpList (Model model,@RequestParam(value="ename", required=false) String ename, HttpServletResponse response) throws ClassNotFoundException, SQLException, UnsupportedEncodingException {
 		EmpDAO empdao = sqlsession.getMapper(EmpDAO.class);
 		response.setContentType("text/html;charset=UTF-8");
 		
 		List<Emp> emplist2 = empdao.getEmplist(ename);
 		// List<Emp> emplist3 = empdao.getEmplist2(ename);
-		
-		model.addAttribute("emplist2", emplist2);
+		 
+			model.addAttribute("emplist2", emplist2);
 		// model.addAttribute("emplist3", emplist3);
 		
 		return jsonView;
@@ -118,7 +123,22 @@ public class Searchcontroller {
 	}
 	*/
 	
+	// 버튼 클릭했을때 전체 나오게
+	@RequestMapping(value = "SearchEmpList2.htm")
+	View SearchEmpList2 (Model model,@RequestParam(value="ename", required=false) String ename, HttpServletResponse response) throws ClassNotFoundException, SQLException, UnsupportedEncodingException {
+		EmpDAO empdao = sqlsession.getMapper(EmpDAO.class);
+		response.setContentType("text/html;charset=UTF-8");
+		
+		List<Emp> emplistbutton = empdao.getEmplist(ename);
+		// List<Emp> emplist3 = empdao.getEmplist2(ename);
+		 
+			model.addAttribute("emplistbutton", emplistbutton);
+		// model.addAttribute("emplist3", emplist3);
+		
+		return jsonView;
+	}
 	
+	// 부서만 선택 했을때 사원들 출력
 	@RequestMapping(value = "SearchDeptList.htm")
 	View SearchDeptList (Model model, int deptcode, HttpServletResponse response) throws ClassNotFoundException, SQLException, UnsupportedEncodingException {
 		EmpDAO empdao = sqlsession.getMapper(EmpDAO.class);
@@ -133,6 +153,7 @@ public class Searchcontroller {
 		return jsonView;
 	}
 	
+	// 부서, 팀 선택 했을때 사원 출력
 	@RequestMapping(value = "SearchTeamList.htm")
 	View SearchTeamList (Model model, int deptcode, int teamcode, HttpServletResponse response) throws ClassNotFoundException, SQLException, UnsupportedEncodingException {
 		EmpDAO empdao = sqlsession.getMapper(EmpDAO.class);

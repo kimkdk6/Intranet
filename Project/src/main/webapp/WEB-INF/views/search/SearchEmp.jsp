@@ -5,7 +5,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <script language="javascript">
 	function go_pop_search(url){
-		
 		window.open(url,"new","width=550, height=550, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
 	}
 
@@ -67,8 +66,8 @@
               			  "<input type='button' id='detailbutton' value='상세보기' onclick=\"javascript:go_pop_search('..\/search\/SearchEmpDetail.htm?userid="+entry.userid+"')\" class='btn btn-back btn-xs'>" +
               			//  "<a href='javascript:go_pop_search('${pageContext.request.contextPath}/search/SearchEmpDetail.htm')'></a>" +
               			  "</td>" +
-              			  "</tr>"
-              			  
+              			  "</tr>" +
+              			console.log(entry.userid)
 					)
 					
 				});
@@ -188,10 +187,11 @@
 		// 버튼이 눌리면 사원목록 출력
 		$('#btn').on("click", function() {
 			$('#Employee').empty();
+			console.log("ename: "+$('#Ename1').val());
 			$.ajax({
-				url : "<%=request.getContextPath() %>/search/SearchEmpList.htm",
+				url : "<%=request.getContextPath() %>/search/SearchEmpList2.htm",
 				dataType : "json",
-				data : {ename : $('#Emp').val()},
+				data : {ename : $('#Ename1').val()},
 				success : function(data) {
 					$('#Employee').append(
 						  
@@ -207,7 +207,7 @@
 	              		  
 					);
 					
-					$.each(data.emplist3, function(index, entry) {
+					$.each(data.emplistbutton, function(index, entry) {
 						$('#Employee').append(
 							  "<tr>" + 
 	              			  "<td width='100' class='title bb1 br1 p0007'>" + entry.userid + "</td>" +
@@ -288,7 +288,7 @@
 				</div> -->
 				
 				<div style=" float: left;">
-					<input type="text" class="form-control" style="width:250px; margin-right: 20px;" placeholder="이름으로 검색" id="Emp">
+					<input type="text" class="form-control" style="width:250px; margin-right: 20px;" placeholder="이름으로 검색" id="Ename1">
 				</div>
 				
 				<div style=" float: left;">

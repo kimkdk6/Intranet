@@ -75,6 +75,7 @@ public class Logincontroller {
 		model.addAttribute("Latecheck", Latecheck);
 		
 		String Leavecheck = attcheck.leavecheck(principal.getName());
+		System.out.println("리브체크"+Leavecheck);
 		model.addAttribute("Leavecheck", Leavecheck);
 		
 		String Checkname = maindao.checkname(principal.getName());

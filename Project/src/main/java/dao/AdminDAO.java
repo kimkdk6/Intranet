@@ -8,6 +8,7 @@ import dto_vo.Board.BoardList;
 import dto_vo.Emp.Emp;
 import dto_vo.Emp.Empinfo;
 import dto_vo.Emp.Team;
+import dto_vo.Schedule.Schcategory;
 
 public interface AdminDAO {
 
@@ -52,8 +53,15 @@ public interface AdminDAO {
 	public int getEmpofTeam(int teamcode) throws ClassNotFoundException, SQLException;
 	// 팀 추가 
 	public int insertTeam(int deptcode, String teamname) throws ClassNotFoundException, SQLException;
+	// 팀 코드 가져오기
+	public int getTeamcode(int deptcode) throws ClassNotFoundException, SQLException;
 	// 팀 삭제
 	public int deleteTeam(String teamcode) throws ClassNotFoundException, SQLException;
+	// 팀의 카테고리 검색
+	public int getTeamHolCate(String teamcode) throws ClassNotFoundException, SQLException;
+	public int getTeamBizCate(String teamcode) throws ClassNotFoundException, SQLException;
 	// 팀 명 수정
 	public int updateTeam(String teamcode, String teamname) throws ClassNotFoundException, SQLException;
+	// 팀 카테고리 이름 수정
+	public int updateTeamCate(int catecode, String catename) throws ClassNotFoundException, SQLException;
 }
