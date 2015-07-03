@@ -14,6 +14,18 @@
 		SELECT * FROM EMP WHERE USERID=#{userid}
 	</select>
 	
+	<select id="getEmp2" resultType="dto_vo.Emp.Emp">
+		select e.userid, e.empno, e.ename, e.emptel, d.deptname as deptcode, t.teamname as teamcode, p.posname as poscode
+		from emp e
+		join dept d
+		on e.deptcode = d.deptcode
+		join team t
+		on e.teamcode = t.teamcode
+		join position p
+		on e.poscode = p.poscode
+		where e.userid = #{userid}
+	</select>
+	
 	<select id="getEmplist" resultType="dto_vo.Emp.Emp">
 		select e.userid, e.empno, e.ename, e.emptel, d.deptname as deptcode, t.teamname as teamcode, p.posname as poscode
 		from emp e

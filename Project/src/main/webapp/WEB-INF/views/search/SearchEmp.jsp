@@ -5,7 +5,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <script language="javascript">
 	function go_pop_search(url){
-		
 		window.open(url,"new","width=550, height=550, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
 	}
 
@@ -67,8 +66,8 @@
               			  "<input type='button' id='detailbutton' value='상세보기' onclick=\"javascript:go_pop_search('..\/search\/SearchEmpDetail.htm?userid="+entry.userid+"')\" class='btn btn-back btn-xs'>" +
               			//  "<a href='javascript:go_pop_search('${pageContext.request.contextPath}/search/SearchEmpDetail.htm')'></a>" +
               			  "</td>" +
-              			  "</tr>"
-              			  
+              			  "</tr>" +
+              			console.log(entry.userid)
 					)
 					
 				});
