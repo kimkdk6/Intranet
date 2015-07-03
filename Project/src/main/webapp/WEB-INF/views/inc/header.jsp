@@ -73,10 +73,10 @@ function go_pop2(url){
               </li>
               <!-- Notifications: style can be found in dropdown.less -->
               <li class="dropdown notifications-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <!--     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <i class="fa fa-bell-o"></i>
                   <span class="label label-warning">10</span>
-                </a>
+                </a> -->
                 <ul class="dropdown-menu">
                   <li class="header">You have 10 notifications</li>
                   <li>
@@ -130,20 +130,20 @@ function go_pop2(url){
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="<%=request.getContextPath() %>/resources/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
+                  <img src="../Upload/ProfilePhoto/${empinfo.userphoto}" class="user-image" alt="User Image"/>
                   <span class="hidden-xs"><%-- <%= emp.getEname() %> --%></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="<%=request.getContextPath() %>/resources/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+                    <img src="../Upload/ProfilePhoto/${empinfo.userphoto}" class="img-circle" alt="User Image" />
                     <p>
                      <%--  <%= emp.getEname() %> - <%= empinfo.getUseremail() %> --%>
-                      <small>Member since Nov. 2012</small>
+                      <small>Member since ${empinfo.hiredate}</small>
                     </p>
                   </li>
                   <!-- Menu Body -->
-                  <li class="user-body">
+                 <!--  <li class="user-body">
                     <div class="col-xs-4 text-center">
                       <a href="#">Followers</a>
                     </div>
@@ -152,12 +152,12 @@ function go_pop2(url){
                     </div>
                     <div class="col-xs-4 text-center">
                       <a href="#">Friends</a>
-                    </div>
+                    </div> -->
                   </li>
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat">Profile</a>
+                      <a href="${pageContext.request.contextPath}/mypage/EditMypage.htm" class="btn btn-default btn-flat">Profile</a>
                     </div>
                     <div class="pull-right">
 		                <se:authorize ifAnyGranted="ROLE_USER,ROLE_ADMIN">
@@ -170,9 +170,10 @@ function go_pop2(url){
                 </ul>
               </li>
               <!-- Control Sidebar Toggle Button -->
-              <li>
-                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-              </li>
+              <!-- <li>
+                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i>
+                </a>
+              </li> -->
             </ul>
           </div>
         </nav>
