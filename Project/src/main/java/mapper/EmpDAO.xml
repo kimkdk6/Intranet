@@ -26,7 +26,7 @@
 		where e.userid = #{userid}
 	</select>
 	
-	<select id="getEmplist" resultType="dto_vo.Emp.Emp">
+	<select id="getEmplist" parameterType="java.lang.String" resultType="dto_vo.Emp.Emp">
 		select e.userid, e.empno, e.ename, e.emptel, d.deptname as deptcode, t.teamname as teamcode, p.posname as poscode
 		from emp e
 		join dept d
