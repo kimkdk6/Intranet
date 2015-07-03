@@ -173,7 +173,6 @@ public class Schedulecontroller {
 
     	System.out.println("insertCategory>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 		Emp emp = (Emp) session.getAttribute("myemp");
-		System.out.println(emp);
 		
 		String userid = emp.getUserid();
 		String catename = request.getParameter("catename");
@@ -181,6 +180,8 @@ public class Schedulecontroller {
 		String catecontent = request.getParameter("catecontent");
 		catecontent = new String(catecontent.getBytes("ISO-8859-1"),"UTF-8");
 		String cateshare = request.getParameter("cateshare");
+
+		String color = request.getParameter("catecode2");
 		
 		System.out.println("catename : " + catename);
 		System.out.println("catecontent : " + catecontent);
@@ -198,6 +199,7 @@ public class Schedulecontroller {
 		schcategory.setUserid(userid);
 		schcategory.setCatename(catename);
 		schcategory.setCatecontent(catecontent);
+		schcategory.setColor(color);
 		
 		if( cateshare.equals("d") )
 		{
@@ -225,6 +227,7 @@ public class Schedulecontroller {
 		return "schedule.schedule";
 	}
     
+    // 카테고리 삭제
     @RequestMapping(value = "deleteCategory.htm")
     public String DeleteCategory(Model model, HttpServletRequest request, HttpSession session) throws ClassNotFoundException, SQLException {
 

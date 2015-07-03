@@ -73,7 +73,7 @@
    </insert>
    <insert id="InsertUserCategory" parameterType="dto_vo.Schedule.Schcategory">
          insert into SCHCATEGORY(catecode, catename, deptcode, teamcode, userid, catecontent, color) 
-         values(SCHCATEGORY_CATECODE.nextval, #{catename}, null, null, #{userid}, #{catecontent}, '#dd4b39')
+         values(SCHCATEGORY_CATECODE.nextval, #{catename}, null, null, #{userid}, #{catecontent}, #{color})
    </insert>
    
    <delete id="DeleteCategory" parameterType="Integer">
