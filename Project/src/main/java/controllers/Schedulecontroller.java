@@ -40,7 +40,7 @@ public class Schedulecontroller {
       public String ScheduleMain(Model model, HttpSession session) throws ClassNotFoundException,SQLException {
     	  
     	  
-    	  System.out.println("ScheduleMain>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+    	 System.out.println("ScheduleMain>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
          Emp emp = (Emp)session.getAttribute("myemp");
          //  System.out.println();
 //         System.out.println(emp);
@@ -55,7 +55,6 @@ public class Schedulecontroller {
          List<Schcategory> getSchCategoryDept = scheduleDAO.getSchCategoryDept(deptcode);
          List<Schcategory> getSchCategoryTeam = scheduleDAO.getSchCategoryTeam(teamcode);
          List<Schcategory> getSchCategoryUser = scheduleDAO.getSchCategoryUser(userid);
-         
           
          model.addAttribute("getSchCategoryDept", getSchCategoryDept);
          model.addAttribute("getSchCategoryTeam", getSchCategoryTeam);
@@ -89,7 +88,7 @@ public class Schedulecontroller {
         
         List<ScheduleView> schedule = scheduleDAO.getSchedule(deptcode, teamcode, userid);
          
-        System.out.println(schedule.toString());
+        System.out.println("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb " + schedule.toString());
          /*
          List<Schcategory> schcategory = scheduleDAO.getSchCategory(userid);
          List<Schcategory> getStartSchedule = scheduleDAO.getStartSchedule(userid);
