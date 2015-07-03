@@ -702,7 +702,7 @@
 
 																				</div> <!--  <button id="opener">지정1</button> --> <input
 																				type="button"  id="opener" value="지정1" class="btn btn-default" style="padding-left: 3px;padding-right: 3px;"/> <!-- <button id="cancel1" >취소</button> -->
-																				<input type='button' id='cancel' value='취소' />
+																				<input type='button' id='cancel' class="btn btn-default" style="padding-left: 3px;padding-right: 3px;" value='취소' />
 																			</td>
 
 																			<td id="users1"
