@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <script type="text/javascript" src="/js/jquery/jquery.history.js"></script>
 <script type="text/javascript" src="/js/jquery/jquery.form.js"></script>
@@ -8,7 +8,15 @@
 <script type="text/javascript" src="/js/jquery/jquery.cookie.js"></script>
 <script type="text/javascript" src="/js/jquery/jquery.dynatree.min.js"></script>
 
+<script type="text/javascript">
 
+	function popupOpen(){
+	var popUrl = "AddressWindow.htm";	//팝업창에 출력될 페이지 URL
+	var popOption = "width=370, height=500, resizable=no, scrollbars=no, status=no, left=100, top=100;";    //팝업창 옵션(optoin)
+		window.open(popUrl,"",popOption);
+	}
+
+</script>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tbody>
@@ -43,11 +51,15 @@
 								<td width="42" class="m_sp" style="padding: 3px 0 0 0;"><b>받는이</b></td>
 							</tr>
 							<tr>
-								<td colspan="2"><input width="100%" type="text"
-									id="receiveid" name="receiveid" class="input_type1"
-									 value="${receiveid}"></td>
-								<td align="right"><button
-										style="padding: 3px 0 0 0; font-weight: bold; font-size: 13px;">선택하기</button></td>
+								<td colspan="2">
+									<input width="100%" type="text"
+									id="receiveid" name="receiveid" class="input_type1">
+								</td>
+								
+								<td align="right"> <input type="button" id="selectreceiver" onclick="popupOpen()"
+										style="padding: 3px 0 0 0; font-weight: bold; font-size: 13px;" value="선택하기">
+										
+								</td>
 							</tr>
 							<tr>
 								<td width="42" class="m_sp" style="padding: 3px 0 0 0;"><b>제목</b></td>
@@ -88,3 +100,5 @@
 		</tbody>
 	</table>
 </form>
+
+

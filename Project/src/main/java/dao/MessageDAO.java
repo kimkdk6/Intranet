@@ -5,8 +5,12 @@ import java.util.List;
 
 
 
+
+
 import org.apache.ibatis.annotations.Param;
 
+import dto_vo.Emp.Dept;
+import dto_vo.Emp.Emp;
 import dto_vo.Emp.Message;
 
 public interface MessageDAO {
@@ -27,5 +31,7 @@ public interface MessageDAO {
 	
 	public Message getMessage(int msgnum) throws ClassNotFoundException, SQLException;
 	
+	public List<Emp> getEmps() throws ClassNotFoundException, SQLException;
+	public List<Dept> getDepts() throws ClassNotFoundException, SQLException;
 	
 }

@@ -8,7 +8,24 @@
 	        $.backstretch("<%=request.getContextPath()%>/resources/img/bg.jpg", {speed: 500});
 	    });
     </script>
-    
+<script type="text/javascript">
+$(function(){
+	$("#loginbtn").click(function(){
+		if($("#j_username").val() == ""){
+			alert("로그인 아이디를 입력해주세요.");
+			$("#j_username").focus();
+			return false;
+		}else if($("#j_password").val() == ""){
+			alert("로그인 비밀번호를 입력해주세요.");
+			$("#j_password").focus();
+			return false;
+		} 
+			$("#f").submit();
+		
+	});
+});
+	
+</script>
 	<div class="login-box">
 		<div class="login-logo">
 			Se<b>7</b>en International<br/>
@@ -27,20 +44,21 @@
 		<div class="login-box-body">
 			
 			<c:url value="/j_spring_security_check" var="loginURL"></c:url>
-			<form name="f" 
+			<form name="f" id="f"
 				  action="${loginURL}" 
 				  method="post">
 				<div class="form-group has-feedback">
-					<input type="text" name="j_username" class="form-control" placeholder="Id" /> <span
+					<input type="text" name="j_username" id="j_username" class="form-control" placeholder="Id" /> <span
 						class="glyphicon glyphicon-envelope form-control-feedback"></span>
 				</div>
 				<div class="form-group has-feedback">
-					<input type="password" name="j_password" class="form-control" placeholder="Password" />
+					<input type="password" name="j_password" id="j_password" class="form-control" placeholder="Password" />
 					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
 				</div>
 				<div class="row1">
 					<div class="login">
-						<button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+						<!-- <button id="loginbtn" type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button> -->
+						<input id="loginbtn" type="button" class="btn btn-primary btn-block btn-flat" value="Sign In">
 					</div>
 				</div>
 			</form>

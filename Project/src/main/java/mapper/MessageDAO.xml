@@ -75,4 +75,21 @@
 		order by msgnum desc
 	</select>
 
+	<!-- 사원 목록  -->
+	<select id="getEmps" resultType="dto_vo.Emp.Emp">
+		 select e.userid, e.ename, d.deptname as deptcode, p.posname as poscode, t.teamname as teamcode
+         from emp e join dept d 
+                    on e.DEPTCODE = d.DEPTCODE
+                    join position p
+                    on e.POSCODE = p.POSCODE
+                    join team t
+                    on e.teamcode = t.teamcode
+         order by d.deptcode, t.teamcode, p.poscode
+	</select>
+	<!-- 부서 목록 -->
+	<select id="getDepts" resultType="dto_vo.Emp.Dept">
+		select *
+		from dept
+		order by deptcode asc
+	</select>
 </mapper>

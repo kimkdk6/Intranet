@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import dao.MessageDAO;
 import dto_vo.Board.PagingUtil;
+import dto_vo.Emp.Dept;
 import dto_vo.Emp.Emp;
 import dto_vo.Emp.Message;
 
@@ -32,11 +33,26 @@ public class Messagecontroller {
 	@RequestMapping(value = "WriteMessage.htm" , method=RequestMethod.GET)
 	public String WriteMessage(Model model,HttpSession session,
 			@RequestParam(value="userid",required=false)String receiveid) throws ClassNotFoundException,SQLException {
+		MessageDAO messageDao = sqlsession.getMapper(MessageDAO.class);
 		
 		model.addAttribute("receiveid", receiveid);
-
+		
 		return "message.MSGWrite";
 	}	
+	
+	// 주소록 새창
+	@RequestMapping(value = "AddressWindow.htm" , method=RequestMethod.GET)
+	public String AddressWindow(Model model,HttpSession session) throws ClassNotFoundException,SQLException {
+		MessageDAO messageDao = sqlsession.getMapper(MessageDAO.class);
+		
+		List<Dept> deptlist = messageDao.getDepts();
+		List<Emp> emplist = messageDao.getEmps();
+		
+		model.addAttribute("deptlist", deptlist);
+		model.addAttribute("emplist", emplist);
+		
+		return "message.AddressWindow";
+	}
 
 	@RequestMapping(value = "WriteMessage.htm" , method=RequestMethod.POST)
 	@ResponseBody()
