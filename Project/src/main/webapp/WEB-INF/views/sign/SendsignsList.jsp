@@ -3,7 +3,57 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-
+<script type="text/javascript">
+ 
+	$(function(){
+		 
+		$('#').on("change", function() {
+			$('#listtable').empty();
+			// 부서이름 
+			console.log("ename: "+$('#Ename1').val());
+			$.ajax({
+				url : "<%=request.getContextPath() %>/sign/.htm",
+				dataType : "json",
+				data : {ename : $('#Ename1').val()},
+				success : function(data) {
+					$('#listtable').append(
+							"<tr>" +
+							"<th style='width: 75px'>문서번호</th>"+
+							"<th style='width: 75px'>문서종류</th>"+
+							"<th style='width: 75px'>기안일</th>"+
+							"<th style='width: 75px'>결재완료수</th>"+
+							"<th style='width: 75px'>상태</th>"+
+							"<th style='width: 75px'>제목</th>"+
+							"</tr>"	
+					);
+					
+					$.each(data.d, function(index, entry) {
+						$('#listtable').append(
+							  "<tr>" + 
+	              			  "<td width='100' class='title bb1 br1 p0007'><font color='#666666'>" + entry.docnum + "</font></td>" +
+	              			  "<td width='100' class='title bb1 br1 p0007'><font color='#666666'>" +  + "</font></td>" +
+	              			  "<td width='100' class='title bb1 br1 p0007'><font color='#666666'>" + entry.ename + "</font></td>" +
+	              			  "<td width='100' class='title bb1 br1 p0007'><font color='#666666'>" + entry.emptel + "</font></td>" +
+	              			  "<td width='100' class='title bb1 br1 p0007'><font color='#666666'>" + entry.deptcode + "</font></td>" +
+	              			  "<td width='100' class='title bb1 br1 p0007'><font color='#666666'>" + entry.teamcode + "</font></td>" +
+	              			   
+	              			 
+	              			//  "<input type='button' id='detailbutton' value='상세보기' onclick=\"javascript:go_pop_search('..\/search\/SearchEmpDetail.htm?userid="+entry.userid+"')\" class='btn btn-back btn-xs'>" +
+	              			//  "<a href='javascript:go_pop_search('${pageContext.request.contextPath}/search/SearchEmpDetail.htm')'></a>" +
+	              			   
+	              			  "</tr>"
+	              			  
+						)
+						
+					});
+				},
+				error: function (xhr,Options,thrownError) {
+			    },
+				
+			});
+		});
+	});
+</script>
 <!DOCTYPE html>
 <!--본문TB START-->
 <section class="content-header">
@@ -30,7 +80,7 @@
 			
 		</div>
 		<div class="box-body">
-			<table class="table table-hover">
+			<table class="table table-hover" id="listtable">
 				<tr>
 					<th style="width: 75px">문서번호</th>
 					<th style="width: 75px">문서종류</th>
