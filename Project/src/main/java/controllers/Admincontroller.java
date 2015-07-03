@@ -273,6 +273,7 @@ public class Admincontroller {
 		schcategory.setUserid("admin");
 		schcategory.setCatecontent("휴가");
 		int color = (int)(Math.random() * 16777215);
+		System.out.println("추가된 팀의 휴가 카테고리 색깔: "+color);
 		schcategory.setColor(String.valueOf(color));
 		schedao.InsertTeamCategory(schcategory);
 		
