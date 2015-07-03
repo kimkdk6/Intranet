@@ -174,6 +174,7 @@ function go_pop2(url){
                 <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i>
                 </a>
               </li> -->
+              
             </ul>
           </div>
         </nav>
