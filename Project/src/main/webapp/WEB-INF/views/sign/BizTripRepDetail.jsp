@@ -134,6 +134,8 @@
 													<tr>
 														<td width="120"></td>
 														<td class="dochead" valign="top"
+														
+														
 															style="font-size: 30px; padding-left: 330px">출장 결과 보고서</td>
 												</tbody>
 											</table>
