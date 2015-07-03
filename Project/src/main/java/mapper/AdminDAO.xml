@@ -126,13 +126,29 @@
 	                 on d.DEPTCODE = t.DEPTCODE
 	     where d.DEPTCODE = #{param1})+1, #{param2})
 	</insert>
+	<select id="getTeamcode" resultType="int">
+		select max(t.TEAMCODE)
+	     from dept d join team t
+	                 on d.DEPTCODE = t.DEPTCODE
+	     where d.DEPTCODE = #{deptcode}
+	</select>
 	<delete id="deleteTeam" >
 		delete from team 
 		where teamcode = #{teamcode}
 	</delete>
+	<select id="getTeamHolCate" resultType="int">
+		select catecode 
+		from SCHCATEGORY 
+		where teamcode=#{teamcode} and userid='admin' and deptcode is null and CATECONTENT = '휴가'
+	</select>
 	<update id="updateTeam" parameterType="hashmap">
 		update team
 		set teamname = #{param2}
 		where teamcode = #{param1}
+	</update>
+	<update id="updateTeamCate" parameterType="hashmap">
+		update SCHCATEGORY
+		set catename = #{param2}
+		where catecode = #{param1}
 	</update>
 </mapper>

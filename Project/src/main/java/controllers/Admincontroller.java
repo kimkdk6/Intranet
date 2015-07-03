@@ -27,6 +27,7 @@ import org.springframework.web.servlet.View;
 import dao.AdminDAO;
 import dao.AttendanceDAO;
 import dao.BoardListDAO;
+import dao.ScheduleDAO;
 import dao.SignDAO;
 import dto_vo.Board.Board;
 import dto_vo.Board.BoardList;
@@ -36,6 +37,7 @@ import dto_vo.Emp.Emp;
 import dto_vo.Emp.Empinfo;
 import dto_vo.Emp.Position;
 import dto_vo.Emp.Team;
+import dto_vo.Schedule.Schcategory;
 
 @Controller
 @RequestMapping("/admin/")
@@ -252,30 +254,49 @@ public class Admincontroller {
 	}	
 	
 	// 팀 추가 
+	@Transactional
 	@RequestMapping(value = "teamAdd.htm", method=RequestMethod.POST)
 	public String teamAdd(Dept dept, Team team, HttpSession session) throws Exception
 	{
 		System.out.println("팀 추가 기능");
 		AdminDAO admindao = sqlSession.getMapper(AdminDAO.class);
+		ScheduleDAO schedao = sqlSession.getMapper(ScheduleDAO.class);
 		// 팀 삽입
 		System.out.println("dept/team:  "+dept.getDeptcode()+"/"+team.getTeamname());
 		admindao.insertTeam(dept.getDeptcode(), team.getTeamname());
+		// 팀 휴가 카테고리 추가
+	
+		System.out.println("팀 코드: "+ admindao.getTeamcode(dept.getDeptcode()));
+		Schcategory schcategory = new Schcategory();
+		schcategory.setCatename(team.getTeamname()+":휴가");
+		schcategory.setTeamcode(admindao.getTeamcode(dept.getDeptcode()));
+		schcategory.setUserid("admin");
+		schcategory.setCatecontent("휴가");
+		int color = (int)(Math.random() * 16777215);
+		schcategory.setColor(String.valueOf(color));
+		schedao.InsertTeamCategory(schcategory);
 		
 		return "redirect:teamAdmin.htm";
 	}
 	// 팀 삭제
+	@Transactional
 	@RequestMapping(value = "teamRemove.htm", method=RequestMethod.POST)
 	public String teamRemove(String teamcode, HttpSession session) throws Exception
 	{
 		System.out.println("팀 삭제 기능");
 		AdminDAO admindao = sqlSession.getMapper(AdminDAO.class);
-		// 팀 삭제
+		ScheduleDAO schedao = sqlSession.getMapper(ScheduleDAO.class);
+		// 팀 휴가 카테고리 / 팀 삭제
 		System.out.println("teamcode:  "+teamcode);
+		int catecode = admindao.getTeamHolCate(teamcode);
+		System.out.println("삭제할 휴가 카테고리 코드: "+catecode);
+		schedao.DeleteCategory(catecode);
 		admindao.deleteTeam(teamcode);
 			
 		return "redirect:teamAdmin.htm";
 	}
 	// 팀 수정
+	@Transactional
 	@RequestMapping(value = "teamModify.htm", method=RequestMethod.POST)
 	public String teamModify(String teamcode, String teamname, HttpSession session) throws Exception
 	{
@@ -283,9 +304,12 @@ public class Admincontroller {
 		AdminDAO admindao = sqlSession.getMapper(AdminDAO.class);
 		// 팀 명 수정
 		System.out.println("teamcode/teamname:  "+teamcode+"/"+teamname);
-	
+		
 		admindao.updateTeam(teamcode, teamname);
-				
+		int catecode = admindao.getTeamHolCate(teamcode);
+		System.out.println("catecode : "+catecode);
+		String catename = teamname+":휴가";
+		admindao.updateTeamCate(catecode, catename);
 		return "redirect:teamAdmin.htm";
 	}
 }
