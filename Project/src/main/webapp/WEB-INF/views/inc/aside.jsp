@@ -95,7 +95,7 @@
 									class="fa fa-circle-o"></i>출장 결과 보고서</a></li>
 
 
-							<li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+							
 						</ul></li>
 					<li><a href="#"><i class="fa fa-circle-o"></i> 받은 결재 문서함 <i
 							class="fa fa-angle-left pull-right"></i></a>
