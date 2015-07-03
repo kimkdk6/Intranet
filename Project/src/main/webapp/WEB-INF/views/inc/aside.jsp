@@ -40,9 +40,9 @@
 		<!-- sidebar menu: : style can be found in sidebar.less -->
 		<ul class="sidebar-menu">
 			<li class="header">MAIN NAVIGATION</li>
-			<li><a href="pages/widgets.html"> <i class="fa fa-envelope"></i>
+		<!-- 	<li><a href="pages/widgets.html"> <i class="fa fa-envelope"></i>
 					<span>웹메일</span> <small class="label pull-right bg-green">new</small>
-			</a></li>
+			</a></li> -->
 			<li class="treeview"><a href="#"> <i
 					class="fa fa-fw fa-comments"></i> <span>커뮤니티</span> <span
 					class="label label-primary pull-right">4</span>
