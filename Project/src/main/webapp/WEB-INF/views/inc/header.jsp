@@ -137,7 +137,7 @@ function go_pop2(url){
                   <!-- User image -->
                   <li class="user-header">
                     <img src="${pageContext.request.contextPath}/Upload/ProfilePhoto/${sessionScope.empinfo.userphoto}" class="img-circle" alt="User Image" />
-                    <p>
+                    <p> 
                      <%--  <%= emp.getEname() %> - <%= empinfo.getUseremail() %> --%>
                       <small>
                       Member since ${sessionScope.empinfo.hiredate}
