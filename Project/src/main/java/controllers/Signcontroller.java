@@ -374,8 +374,8 @@ public class Signcontroller {
 				    System.out.println("카테고리 코드"+signdao.getCateCode(signdao.getTeamcode(sign.getUserid())));
 				    schedule.setCatecode(signdao.getCateCode(signdao.getTeamcode(sign.getUserid())));
 				    schedule.setUserid(sign.getUserid());
-				    schedule.setScstart(holdoc.getHolstart());
-				    schedule.setScend(holdoc.getHolend());
+				    schedule.setScstart(holdoc.getHolstart()+" 09:00:00");
+				    schedule.setScend(holdoc.getHolend()+" 18:00:00");
 				    schedule.setSctitle(sign.getEname()+" "+sign.getPosname()+" : 휴가");
 				    schedule.setSccontent(sign.getEname()+" "+sign.getPosname()+" : 휴가");
 				    
