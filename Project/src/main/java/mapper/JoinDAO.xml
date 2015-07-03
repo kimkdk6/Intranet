@@ -22,4 +22,10 @@
    <select id="getEmp" resultType="dto_vo.Emp.Emp">
    	  select * from emp
    </select>
+   
+   <select id="getEmpUserid" resultType="dto_vo.Emp.Emp">
+   	  select userid
+	  from emp
+	  where userid = =#{userid}
+   </select>
 </mapper>
