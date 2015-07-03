@@ -130,13 +130,13 @@ function go_pop2(url){
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="../Upload/ProfilePhoto/${empinfo.userphoto}" class="user-image" alt="User Image"/>
+                  <img src="${pageContext.request.contextPath}/Upload/ProfilePhoto/${sessionScope.empinfo.userphoto}" class="user-image" alt="User Image"/>
                   <span class="hidden-xs"><%-- <%= emp.getEname() %> --%></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="../Upload/ProfilePhoto/${empinfo.userphoto}" class="img-circle" alt="User Image" />
+                    <img src="${pageContext.request.contextPath}/Upload/ProfilePhoto/${sessionScope.empinfo.userphoto}" class="img-circle" alt="User Image" />
                     <p>
                      <%--  <%= emp.getEname() %> - <%= empinfo.getUseremail() %> --%>
                       <small>Member since ${empinfo.hiredate}</small>
