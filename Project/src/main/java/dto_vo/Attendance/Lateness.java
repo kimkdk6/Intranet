@@ -5,12 +5,12 @@ import java.sql.Date;
 public class Lateness {
 	
 	private String userid;
-	private Date attdate;
+	private String attdate;
 	private String ltreason;
 	
 	public Lateness() { }
 
-	public Lateness(String userid, Date attdate, String ltreason) {
+	public Lateness(String userid, String attdate, String ltreason) {
 		this.userid = userid;
 		this.attdate = attdate;
 		this.ltreason = ltreason;
@@ -24,11 +24,11 @@ public class Lateness {
 		this.userid = userid;
 	}
 
-	public Date getAttdate() {
+	public String getAttdate() {
 		return attdate;
 	}
 
-	public void setAttdate(Date attdate) {
+	public void setAttdate(String attdate) {
 		this.attdate = attdate;
 	}
 

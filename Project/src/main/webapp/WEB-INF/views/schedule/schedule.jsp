@@ -868,16 +868,18 @@
 
 				});//캘린더 끝
 
-		$("#calendar").fullCalendar('addEventSource', [ {
-			title : '이벤트 테스트2',
-			start : new Date(y, m, 3, 12, 30),//년,월,일,시,분
-			end : new Date(y, m, 4, 12, 30),
-			backgroundColor : "#f56954", //red
-			borderColor : "#f56954", //red
-			userid : '김성익',
-			content: '시부랄 탱탱부랄'
-		} ]);
+// 		$("#calendar").fullCalendar('addEventSource', [ {
+// 			title : '이벤트 테스트2',
+// 			start : new Date(y, m, 3, 12, 30),//년,월,일,시,분
+// 			end : new Date(y, m, 4, 12, 30),
+// 			backgroundColor : "#f56954", //red
+// 			borderColor : "#f56954", //red
+// 			userid : '김성익',
+// 			content: '시부랄 탱탱부랄'
+// 		} ]);
 				
+				
+		// 일정 추가		
 		var userid = { userid : $('#userid').val() };
         $.ajax({
               Type:"get",
@@ -887,7 +889,7 @@
               success:function( data ){
                   
                  $.each(data.schedule, function(){
-
+					//console.log("bbbbb : " + this.scstart);
                     $("#calendar").fullCalendar( 'addEventSource', [ {
                        schnum : this.schnum,
                    	   catecode:this.catecode,

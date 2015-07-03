@@ -53,7 +53,7 @@
 							<tr>
 								<td colspan="2">
 									<input width="100%" type="text"
-									id="receiveid" name="receiveid" class="input_type1" readonly="readonly">
+									id="receiveid" name="receiveid" class="input_type1" readonly="readonly" value="${receiveid}">
 								</td>
 								
 								<td align="right"> <input type="button" id="selectreceiver" onclick="popupOpen()"

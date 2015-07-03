@@ -1,11 +1,14 @@
 package controllers;
 
+import java.io.UnsupportedEncodingException;
 import java.security.Principal;
+import java.sql.SQLException;
 import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.View;
 
 import dao.AttendanceDAO;
+import dao.ScheduleDAO;
+import dto_vo.Attendance.Absence;
+import dto_vo.Attendance.Biztrip;
+import dto_vo.Attendance.Holiday;
+import dto_vo.Attendance.Lateness;
+import dto_vo.Attendance.Leave;
+import dto_vo.Emp.Emp;
+import dto_vo.Schedule.Schcategory;
+import dto_vo.Schedule.ScheduleView;
 
 @Controller
 @RequestMapping("/attendance/")
@@ -179,18 +191,63 @@ public class Attendancecontroller {
 		
 	}
 	
-	@RequestMapping(value = "Commute.htm")
-	public String commute(Principal principal,HttpServletRequest request, HttpServletResponse response) throws Exception
-	{
 	
+	@RequestMapping(value = "Commute.htm")
+	public String commute(Principal principal,HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception
+	{
+		
+		
+		
 		/*AttendanceDAO checkin = sqlSession.getMapper(AttendanceDAO.class);
 
 		checkin.checkin(principal.getName());
 		String Attendance= checkin.checkincheck(principal.getName());*/
 
+		
+		
 		return "attendance.Commute";
 	}
 	
+	 @RequestMapping(value="getCommute.htm")
+     View getCommute(Model model, HttpServletResponse response,HttpSession session) throws ClassNotFoundException, SQLException, UnsupportedEncodingException 
+     {
+  	
+		System.out.println("getCommute>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+
+		response.setContentType("text/html;charset=UTF-8");
+        Emp emp = (Emp)session.getAttribute("myemp");
+        //  System.out.println();
+//         System.out.println(emp);
+              
+        String userid = emp.getUserid();
+		System.out.println("Commute userid : " + userid );
+		
+		AttendanceDAO commute = sqlSession.getMapper(AttendanceDAO.class);
+		List<Leave> Leave = commute.getLeave(userid);
+        List<Absence> Absence = commute.getAbsence(userid);
+        List<Lateness> Lateness = commute.getLateness(userid);
+        List<Biztrip> Biztrip = commute.getBiztrip(userid);
+        List<Holiday> Holiday = commute.getHoliday(userid);
+        
+        System.out.println("getLeave : " + Leave.toString());
+        System.out.println("getAbsence : " + Absence.toString());
+        
+        //System.out.println("aaaaaaa " + getAbsence.get(0));
+        
+        System.out.println("getLateness : " + Lateness.toString());
+        System.out.println("getBiztrip : " + Biztrip.toString());
+        System.out.println("getHoliday : " + Holiday.toString());
+        
+        
+		//model.addAttribute("schedule", schedule);
+        model.addAttribute("Leave", Leave);
+        model.addAttribute("Absence", Absence);
+        model.addAttribute("Lateness", Lateness);
+        model.addAttribute("Biztrip", Biztrip);
+        model.addAttribute("Holiday", Holiday);
+		
+		return jsonView;
+	}	
 
 	
 	

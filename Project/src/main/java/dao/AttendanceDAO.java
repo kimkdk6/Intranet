@@ -5,6 +5,15 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
+import dto_vo.Attendance.Absence;
+import dto_vo.Attendance.Biztrip;
+import dto_vo.Attendance.Holiday;
+import dto_vo.Attendance.Lateness;
+import dto_vo.Attendance.Leave;
+import dto_vo.Schedule.Schcategory;
+
 
 public interface AttendanceDAO {
 
@@ -47,5 +56,22 @@ public interface AttendanceDAO {
 	public int manabiztrip(String yy, String mm, String dd) throws ClassNotFoundException, SQLException;
 	public int busibiztrip(String yy, String mm, String dd) throws ClassNotFoundException, SQLException;
 	public int allbiztrip(String yy, String mm, String dd) throws ClassNotFoundException, SQLException;
+	
+	
+	// Commute
+	// 개인 조퇴 일정
+	List<Leave> getLeave( @Param("userid")String userid ) throws ClassNotFoundException, SQLException;
+	
+	// 개인 결근 일정
+	List<Absence> getAbsence( @Param("userid")String userid ) throws ClassNotFoundException, SQLException;
+	
+	// 개인 지각 일정
+	List<Lateness> getLateness( @Param("userid")String userid ) throws ClassNotFoundException, SQLException;
+	
+	
+	// 개인 출장 일정
+	List<Biztrip> getBiztrip( @Param("userid")String userid ) throws ClassNotFoundException, SQLException;
+	// 개인 휴가 일정
+	List<Holiday> getHoliday( @Param("userid")String userid ) throws ClassNotFoundException, SQLException;
 	
 }

@@ -5,13 +5,13 @@ import java.sql.Date;
 public class Holiday {
 	
 	private String userid;
-	private Date attdate;
+	private String attdate;
 	private String holreason;
 	 
 	
 	public Holiday() { }
 
-	public Holiday(String userid, Date attdate, String holreason
+	public Holiday(String userid, String attdate, String holreason
 			 ) {
 		this.userid = userid;
 		this.attdate = attdate;
@@ -27,11 +27,11 @@ public class Holiday {
 		this.userid = userid;
 	}
 
-	public Date getAttdate() {
+	public String getAttdate() {
 		return attdate;
 	}
 
-	public void setAttdate(Date attdate) {
+	public void setAttdate(String attdate) {
 		this.attdate = attdate;
 	}
 
@@ -42,8 +42,6 @@ public class Holiday {
 	public void setHolreason(String holreason) {
 		this.holreason = holreason;
 	}
-
-	 
 
 	@Override
 	public String toString() {
