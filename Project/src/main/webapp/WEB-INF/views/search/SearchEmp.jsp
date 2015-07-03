@@ -185,6 +185,55 @@
 			});
 		});
 		
+		// 버튼이 눌리면 사원목록 출력
+		$('#btn').on("click", function() {
+			$('#Employee').empty();
+			$.ajax({
+				url : "<%=request.getContextPath() %>/search/SearchEmpList.htm",
+				dataType : "json",
+				data : {ename : $('#Emp').val()},
+				success : function(data) {
+					$('#Employee').append(
+						  
+						  "<tr>" + 
+	              		  "<th width='100' class='title bb1 br1 p0007'>사용자 ID</th>" +
+	              		  "<th width='100' class='title bb1 br1 p0007'>사원번호</th>" +
+	              		  "<th width='100' class='title bb1 br1 p0007'>사원이름</th>" +
+	              		  "<th width='100' class='title bb1 br1 p0007'>사내전화</th>" +
+	              		  "<th width='100' class='title bb1 br1 p0007'>부서이름</th>" +
+	              		  "<th width='100' class='title bb1 br1 p0007'>팀이름</th>" +
+	              		  "<th width='100' class='title bb1 br1 p0007'>직급</th>" +
+	              		  "</tr>"
+	              		  
+					);
+					
+					$.each(data.emplist3, function(index, entry) {
+						$('#Employee').append(
+							  "<tr>" + 
+	              			  "<td width='100' class='title bb1 br1 p0007'>" + entry.userid + "</td>" +
+	              			  "<td width='100' class='title bb1 br1 p0007'>" + entry.empno + "</td>" +
+	              			  "<td width='100' class='title bb1 br1 p0007'>" + entry.ename + "</td>" +
+	              			  "<td width='100' class='title bb1 br1 p0007'>" + entry.emptel + "</td>" +
+	              			  "<td width='100' class='title bb1 br1 p0007'>" + entry.deptcode + "</td>" +
+	              			  "<td width='100' class='title bb1 br1 p0007'>" + entry.teamcode + "</td>" +
+	              			  "<td width='100' class='title bb1 br1 p0007'>" + entry.poscode + "</td>" +
+	              			  "<td width='100' class='title bb1 br1 p0007'>" + 
+	              			  "<td>" +
+	              			  "<input type='button' id='detailbutton' value='상세보기' onclick=\"javascript:go_pop_search('..\/search\/SearchEmpDetail.htm?userid="+entry.userid+"')\" class='btn btn-back btn-xs'>" +
+	              			//  "<a href='javascript:go_pop_search('${pageContext.request.contextPath}/search/SearchEmpDetail.htm')'></a>" +
+	              			  "</td>" +
+	              			  "</tr>"
+	              			  
+						)
+						
+					});
+				},
+				error: function (xhr,Options,thrownError) {
+			    },
+				
+			});
+		});
+		
 		
 		
 		
@@ -229,21 +278,21 @@
 				</div>
 				
 				<div class="selectplz" style=" float: left;">
-					<select id="teamlist" class="form-control" style="width:250px; margin-right: 10px;">
+					<select id="teamlist" class="form-control" style="width:250px; margin-right: 20px;">
 						<option selected disabled="disabled">Team</option>
 					</select>
 				</div>
 				
-				<div style=" float: left; margin-right: 70px;">
+				<!-- <div style=" float: left; margin-right: 70px;">
 					<input type="button" value="검색" id="btn1" class="btn btn-primary btn-md">
+				</div> -->
+				
+				<div style=" float: left;">
+					<input type="text" class="form-control" style="width:250px; margin-right: 20px;" placeholder="이름으로 검색" id="Emp">
 				</div>
 				
 				<div style=" float: left;">
-					<input type="text" class="form-control" style="width:200px; margin-right: 10px;" placeholder="이름으로 검색" id="namesearch">
-				</div>
-				
-				<div style=" float: left;">
-					<input type="button" value="검색" id="btn2" class="btn btn-primary btn-md">
+					<input type="button" value="검색" id="btn" class="btn btn-primary btn-md">
 				</div>
 			</div>
 			

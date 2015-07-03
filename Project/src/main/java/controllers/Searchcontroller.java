@@ -35,11 +35,11 @@ public class Searchcontroller {
 	private View jsonView;
 	
 	@RequestMapping(value = "SearchEmp.htm")
-	public String SearchEmp(Model model) throws ClassNotFoundException, SQLException {
+	public String SearchEmp(Model model, String ename) throws ClassNotFoundException, SQLException {
 		System.out.println("회원 검색 페이지 열람");
 		EmpDAO empdao = sqlsession.getMapper(EmpDAO.class);
 		
-		List<Emp> emplist = empdao.getEmplist(); // List<Emp> 리스트 는 EmpDAO.java
+		List<Emp> emplist = empdao.getEmplist(ename); // List<Emp> 리스트 는 EmpDAO.java
 		List<Dept> DeptInfo =  empdao.getDeptName();
 		List<Position> PosName = empdao.getPosName();
 		
@@ -90,16 +90,34 @@ public class Searchcontroller {
 	
 	// 처음에 전체 리스트 보기
 	@RequestMapping(value = "SearchEmpList.htm")
-	View SearchEmpList (Model model, Emp emp,  HttpServletResponse response) throws ClassNotFoundException, SQLException, UnsupportedEncodingException {
+	View SearchEmpList (Model model, Emp emp, String ename, HttpServletResponse response) throws ClassNotFoundException, SQLException, UnsupportedEncodingException {
 		EmpDAO empdao = sqlsession.getMapper(EmpDAO.class);
 		response.setContentType("text/html;charset=UTF-8");
 		
-		List<Emp> emplist2 = empdao.getEmplist();
+		List<Emp> emplist2 = empdao.getEmplist(ename);
+		// List<Emp> emplist3 = empdao.getEmplist2(ename);
 		
 		model.addAttribute("emplist2", emplist2);
+		// model.addAttribute("emplist3", emplist3);
 		
 		return jsonView;
 	}
+	
+	/*@RequestMapping(value = "SearchEmpList2.htm")
+	View SearchEmpList (Model model, Emp emp, String ename, HttpServletResponse response) throws ClassNotFoundException, SQLException, UnsupportedEncodingException {
+		EmpDAO empdao = sqlsession.getMapper(EmpDAO.class);
+		response.setContentType("text/html;charset=UTF-8");
+		System.out.println("버튼클릭했다" + ename);
+		// List<Emp> emplist2 = empdao.getEmplist();
+		List<Emp> emplist3 = empdao.getEmplist2(ename);
+		
+		// model.addAttribute("emplist2", emplist2);
+		model.addAttribute("emplist3", emplist3);
+		
+		return jsonView;
+	}
+	*/
+	
 	
 	@RequestMapping(value = "SearchDeptList.htm")
 	View SearchDeptList (Model model, int deptcode, HttpServletResponse response) throws ClassNotFoundException, SQLException, UnsupportedEncodingException {
