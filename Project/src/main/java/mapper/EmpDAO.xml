@@ -35,7 +35,7 @@
 		on e.teamcode = t.teamcode
 		join position p
 		on e.poscode = p.poscode
-		where e.ename like '%${ename}%'
+		where e.ename like '%${value}%'
 		order by empno
 	</select>
 	<!-- 
