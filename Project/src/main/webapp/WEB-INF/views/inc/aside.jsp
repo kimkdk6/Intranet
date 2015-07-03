@@ -156,12 +156,12 @@
 						href="${pageContext.request.contextPath}/admin/empAdmin.htm"><i
 							class="fa fa-circle-o"></i> 사원 관리 </a></li>
 				</ul></li>
-			<li class="treeview"><a
-				href="${pageContext.request.contextPath}/mypage/EditMypage.htm"><i
+			<li class="treeview">
+			<a href="${pageContext.request.contextPath}/mypage/EditMypage.htm"><i
 					class="fa fa-fw fa-user"></i> <span>정보수정</span> <!-- <small
 					class="label pull-right bg-green">Modify</small></a> -->
 				<i
-					class="fa fa-angle-left pull-right"></i>
+					class="fa fa-angle-left pull-right"></i></a>
 			</li>
 	</section>
 	<!-- /.sidebar -->
