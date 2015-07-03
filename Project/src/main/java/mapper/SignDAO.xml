@@ -161,6 +161,7 @@
 	<select id="getEmps" resultType="dto_vo.Emp.Emp">
 		select *
 		from emp
+		order by deptcode, teamcode, poscode
 	</select>
 	<!-- 사원 가져오기  -->
 	<select id="getEmp" resultType="dto_vo.Emp.Emp">
