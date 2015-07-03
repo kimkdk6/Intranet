@@ -15,7 +15,7 @@
 		<div class="user-panel">
 			<div class="pull-left image">
 				<img
-					src="<%=request.getContextPath()%>/resources/img/user2-160x160.jpg"
+					src="${pageContext.request.contextPath}/Upload/ProfilePhoto/${sessionScope.empinfo.userphoto}"
 					class="img-circle" alt="User Image" />
 			</div>
 			<div class="pull-left info">
