@@ -44,8 +44,8 @@
 					<span>웹메일</span> <small class="label pull-right bg-green">new</small>
 			</a></li> -->
 			<li class="treeview"><a href="#"> <i
-					class="fa fa-fw fa-comments"></i> <span>커뮤니티</span> <span
-					class="label label-primary pull-right">4</span>
+					class="fa fa-fw fa-comments"></i> <span>커뮤니티</span> <i
+					class="fa fa-angle-left pull-right"></i>
 			</a>
 				<ul class="treeview-menu">
 					<li><a
@@ -60,8 +60,11 @@
 				</ul></li>
 			<li><a
 				href="${pageContext.request.contextPath}/schedule/ScheduleMain.htm">
-					<i class="fa fa-calendar"></i> <span>일정관리</span> <small
-					class="label pull-right bg-green">new</small>
+					<i class="fa fa-calendar"></i> <span>일정관리</span>
+					<i
+					class="fa fa-angle-left pull-right"></i>
+<!-- <small
+					class="label pull-right bg-green">Schedule</small> -->
 			</a></li>
 			<li class="treeview"><a
 				href="${pageContext.request.contextPath}/sign/SignMain.htm"> <i
@@ -119,8 +122,10 @@
 						</ul></li>
 				</ul></li>
 			<li><a href="${pageContext.request.contextPath}/search/SearchEmp.htm"> <i
-					class="fa fa-fw fa-group"></i> <span>조직도</span> <small
-					class="label pull-right bg-green">new</small>
+					class="fa fa-fw fa-group"></i> <span>조직도</span><!--  <small
+					class="label pull-right bg-green">Group</small> -->
+					<i
+					class="fa fa-angle-left pull-right"></i>
 			</a></li>
 			<li class="treeview"><a
 				href="${pageContext.request.contextPath}/sign/SignMain.htm"> <i
@@ -137,8 +142,8 @@
 				</ul></li>
 
 			<li><a href="pages/widgets.html"> <i
-					class="fa fa-fw fa-cogs"></i> <span>관리자</span> <small
-					class="label pull-right bg-green">new</small>
+					class="fa fa-fw fa-cogs"></i> <span>관리자</span> <i
+					class="fa fa-angle-left pull-right"></i>
 			</a>
 				<ul class="treeview-menu">
 					<li><a
@@ -154,8 +159,10 @@
 
 			<li class="treeview"><a
 				href="${pageContext.request.contextPath}/mypage/EditMypage.htm"><i
-					class="fa fa-fw fa-user"></i> <span>정보수정</span> <small
-					class="label pull-right bg-green">new</small></a>
+					class="fa fa-fw fa-user"></i> <span>정보수정</span> <!-- <small
+					class="label pull-right bg-green">Modify</small></a> -->
+				<i
+					class="fa fa-angle-left pull-right"></i>
 			</li>
 	</section>
 	<!-- /.sidebar -->
