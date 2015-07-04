@@ -9,25 +9,62 @@
 	<!-- 		<li class="active">Calendar</li> -->
 	<!-- 	</ol> -->
 </section>
+<!-- Main content -->
 <section class="content">
 	<input type="hidden" id="userid" name="userid" value="${sessionScope.myemp.userid}"/>
 	<div class="row">
-		
-       <div class="col-md-9">
-			<div class="box box-primary">
-				<div class="box-body no-padding">
-					<!-- THE CALENDAR -->
-					<div id="calendar">
+		<div style="height: 800px">
+			<div class="col-md-3">
+				<div class="box box-solid">
+					<div class="box-header with-border" style="background-color: #FFA7A7">
+						<h4 class="box-title">휴가</h4>
+					</div>
+				</div>
+				<!-- /. box -->
+				<di00v class="box box-solid">
+					<div class="box-header with-border" style="background-color: #BDBDBD">
+						<h4 class="box-title">출장</h4>
+					</div>
+				</div>
+				<!-- /. box -->
+				<div class="box box-solid">
+					<div class="box-header with-border" style="background-color: #3DB7CC">
+						<h4 class="box-title">조퇴</h4>
+					</div>
+				</div>
+				<!-- /. box -->
+				<div class="box box-solid">
+					<div class="box-header with-border" style="background-color: #47C83E">
+						<h4 class="box-title">지각</h4>
+					</div>
+				</div>
+				<!-- /. box -->
+				<div class="box box-solid">
+					<div class="box-header with-border" style="background-color: #CCA63D">
+						<h4 class="box-title">결근</h4>
+					</div>
+				</div>
+				<!-- /. box -->
+				
+			</div>
+			<!-- /.col -->
+			<div class="col-md-9">
+				<div class="box box-primary">
+					<div class="box-body no-padding">
+						<!-- THE CALENDAR -->
+						<div id="calendar"></div>
 						
 					</div>
-					
+					<!-- /.box-body -->
 				</div>
-				<!-- /.box-body -->
+				<!-- /. box -->
 			</div>
-			<!-- /. box -->
+			<!-- /.col -->
 		</div>
 	</div>
+	<!-- /.row -->
 </section>
+<!-- /.content -->
 <script type="text/javascript">
 	$(function () {
 	
@@ -127,7 +164,7 @@
 
 				});//캘린더 끝
 				
-		$("#calendar").fullCalendar('addEventSource', [ {
+		/* $("#calendar").fullCalendar('addEventSource', [ {
 			title : '이벤트 테스트2',
 			start : new Date(y, m, 3, 12, 30),//년,월,일,시,분
 			end : new Date(y, m, 4, 12, 30),
@@ -135,42 +172,106 @@
 			borderColor : "#f56954", //red
 			userid : '김성익',
 			content: '시부랄 탱탱부랄'
-		} ]);
+		} ]); */
 				
 		// 지각		
 		//var userid = $('#userid').val();
 		//console.log('aaaa : ' + userid);
+		$.ajax({
+            Type:"get",
+            url:"<%= request.getContextPath() %>/attendance/getCommute.htm",
+            dataType:"json",
+            //data:userid,
+            success:function( data ){
+            	$.each(data.Leave, function(){
+              	$("#calendar").fullCalendar( 'addEventSource', [ {
+                     	title : this.lvreason,
+                     	start : new Date(this.attdate), //년,월,일,시,분
+                     	end : new Date(this.attdate), //년,월,일,시,분
+                     	backgroundColor : "#3DB7CC", 
+                        borderColor : "#3DB7CC", 
+                 } ] );
+               });
+               
+            },
+            error:function(data){alert("Error 발생");}
+         });
         $.ajax({
               Type:"get",
               url:"<%= request.getContextPath() %>/attendance/getCommute.htm",
               dataType:"json",
               //data:userid,
               success:function( data ){
-                  
               	$.each(data.Absence, function(){
-					console.log("aaaaaaaa" + this.attdate);
                 	$("#calendar").fullCalendar( 'addEventSource', [ {
-/*                     	schnum : this.schnum,
-                   	   	catecode:this.catecode,
-                       	catename:this.catename, */
                        	title : this.abreason,
                        	start : new Date(this.attdate), //년,월,일,시,분
-                       	end : new Date(y, m, 4, 12, 30), //년,월,일,시,분
-                       /* 	backgroundColor : this.color, //red
-                       	borderColor :  this.color, //red
-                       	userid : this.userid,
-                       	content: this.sccontent */
-
-                   } ] ); 
-                   
-                    
+                       	end : new Date(this.attdate), //년,월,일,시,분
+                       	backgroundColor : "#CCA63D", 
+                        borderColor : "#CCA63D", 
+                   } ] );
                  });
-                 
-                 alert("success");
                  
               },
               error:function(data){alert("Error 발생");}
            });		
+        $.ajax({
+            Type:"get",
+            url:"<%= request.getContextPath() %>/attendance/getCommute.htm",
+            dataType:"json",
+            //data:userid,
+            success:function( data ){
+            	$.each(data.Lateness, function(){
+              	$("#calendar").fullCalendar( 'addEventSource', [ {
+                     	title : this.ltreason,
+                     	start : new Date(this.attdate), //년,월,일,시,분
+                     	end : new Date(this.attdate), //년,월,일,시,분
+                     	backgroundColor : "#47C83E", 
+                        borderColor : "#47C83E", 
+                 } ] );
+               });
+               
+            },
+            error:function(data){alert("Error 발생");}
+         });		
+        $.ajax({
+            Type:"get",
+            url:"<%= request.getContextPath() %>/attendance/getCommute.htm",
+            dataType:"json",
+            //data:userid,
+            success:function( data ){
+            	$.each(data.Biztrip, function(){
+              	$("#calendar").fullCalendar( 'addEventSource', [ {
+                     	title : this.sctitle,
+                     	start : new Date(this.scstart), //년,월,일,시,분
+                     	end : new Date(this.scend), //년,월,일,시,분
+                     	backgroundColor : "#BDBDBD", 
+                        borderColor : "#BDBDBD", 
+                 } ] );
+               });
+               
+            },
+            error:function(data){alert("Error 발생");}
+         });
+        $.ajax({
+            Type:"get",
+            url:"<%= request.getContextPath() %>/attendance/getCommute.htm",
+            dataType:"json",
+            //data:userid,
+            success:function( data ){
+            	$.each(data.Holiday, function(){
+              	$("#calendar").fullCalendar( 'addEventSource', [ {
+                     	title : this.sctitle,
+                     	start : new Date(this.scstart), //년,월,일,시,분
+                     	end : new Date(this.scend), //년,월,일,시,분
+                     	backgroundColor : "#FFA7A7", 
+                        borderColor : "#FFA7A7", 
+                 } ] );
+               });
+               
+            },
+            error:function(data){alert("Error 발생");}
+         });
 
 	});
 </script>
