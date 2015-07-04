@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <script language="javascript">
 	function go_pop_search(url){
-		window.open(url,"new","width=550, height=550, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
+		window.open(url,"new","width=500, height=425, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
 	}
 
 	$(function() {
