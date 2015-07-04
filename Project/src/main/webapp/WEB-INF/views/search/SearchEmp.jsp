@@ -271,7 +271,7 @@
 	<div id="main" align="center" style="
     margin-top: 50px; 
 " >
-		<div id="wrapper" style="width: 90%;">
+		<div id="wrapper" style="width: 90%; padding-bottom: 30px;">
 			<!-- <div align="left" style="height: 50px;"><h3>사원검색</h3></div> -->
 			<div align="center" style="margin-bottom: 0px;">
 				<div class="selectplz" style=" float: left;">
