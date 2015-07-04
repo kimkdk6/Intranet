@@ -422,46 +422,38 @@
 					</td>
 				</tr>
 				<tr>
-					<td>
-						<!--   <div class="box box-solid"> -->
-						<!-- <div class="box-header with-border"> -->
-							<!-- <ul class="fc-color-picker" id="color-chooser" name="color-chooser" onclick="click_ul()">
-								<li value="#00c0ef"><a class="text-aqua" href="#"><i class="fa fa-square"></i></a></li>
-								<li value="#0073b7"><a class="text-blue" href="#"><i class="fa fa-square"></i></a></li>
-								<li value="#3c8dbc"><a class="text-light-blue" href="#"><i class="fa fa-square"></i></a></li>
-								<li value="#39cccc"><a class="text-teal" href="#"><i class="fa fa-square"></i></a></li>
-								<li value="#f39c12"><a class="text-yellow" href="#"><i class="fa fa-square"></i></a></li>
-								<li value="#ff851b"><a class="text-orange" href="#"><i class="fa fa-square"></i></a></li>
-								<li value="#00a65a"><a class="text-green" href="#"><i class="fa fa-square"></i></a></li>
-								<li value="#01ff70"><a class="text-lime" href="#"><i class="fa fa-square"></i></a></li>
-								<li value="#dd4b39"><a class="text-red" href="#"><i class="fa fa-square"></i></a></li>
-								<li value="#605ca8"><a class="text-purple" href="#"><i class="fa fa-square"></i></a></li>
-								<li value="#f012be"><a class="text-fuchsia" href="#"><i class="fa fa-square"></i></a></li>
-								<li value="#222222"><a class="text-muted" href="#"><i class="fa fa-square"></i></a></li>
-								                           <li><a class="text-pink" href="#"><i class="fa fa-square"></i></a></li>
-								                           <li><a class="text-brown" href="#"><i class="fa fa-square"></i></a></li>
-								                           <li><a class="text-silver" href="#"><i class="fa fa-square"></i></a></li>
-								                           <li><a class="text-gold" href="#"><i class="fa fa-square"></i></a></li>
-								                           <li><a class="text-bronze" href="#"><i class="fa fa-square"></i></a></li>
-							</ul> -->
-							<select id="catecode2" name="catecode2" onchange="chg_categoryIns();" style="width: 400px">
-								<option selected disabled="disabled">선택하세요</option>
-								<option value="#CC3D3D" style="background-color: #CC3D3D">Se7en International</option>															
-								<option value="#CC723D" style="background-color: #CC723D">Se7en International</option>	
-								<option value="#CCA63D" style="background-color: #CCA63D">Se7en International</option>
-								<option value="#C4B73B" style="background-color: #C4B73B">Se7en International</option>
-								<option value="#9FC93C" style="background-color: #9FC93C">Se7en International</option>
-								<option value="#47C83E" style="background-color: #47C83E">Se7en International</option>
-								<option value="#3DB7CC" style="background-color: #3DB7CC">Se7en International</option>
-								<option value="#6799FF" style="background-color: #6799FF">Se7en International</option>
-								<option value="#6B66FF" style="background-color: #6B66FF">Se7en International</option>
-								<option value="#A566FF" style="background-color: #A566FF">Se7en International</option>
-								<option value="#F361DC" style="background-color: #F361DC">Se7en International</option>
-								<option value="#F361A6" style="background-color: #F361A6">Se7en International</option>
-								<option value="#A6A6A6" style="background-color: #A6A6A6">Se7en International</option>
-								<option value="#5D5D5D" style="background-color: #5D5D5D">Se7en International</option>
-							</select>
-						<!-- </div> --> 
+					<td><select id="catecode2" name="catecode2"
+						onchange="chg_categoryIns();" style="width: 400px">
+							<option selected disabled="disabled">선택하세요</option>
+							<option value="#CC3D3D" style="background-color: #CC3D3D">Se7en
+								International</option>
+							<option value="#CC723D" style="background-color: #CC723D">Se7en
+								International</option>
+							<option value="#CCA63D" style="background-color: #CCA63D">Se7en
+								International</option>
+							<option value="#C4B73B" style="background-color: #C4B73B">Se7en
+								International</option>
+							<option value="#9FC93C" style="background-color: #9FC93C">Se7en
+								International</option>
+							<option value="#47C83E" style="background-color: #47C83E">Se7en
+								International</option>
+							<option value="#3DB7CC" style="background-color: #3DB7CC">Se7en
+								International</option>
+							<option value="#6799FF" style="background-color: #6799FF">Se7en
+								International</option>
+							<option value="#6B66FF" style="background-color: #6B66FF">Se7en
+								International</option>
+							<option value="#A566FF" style="background-color: #A566FF">Se7en
+								International</option>
+							<option value="#F361DC" style="background-color: #F361DC">Se7en
+								International</option>
+							<option value="#F361A6" style="background-color: #F361A6">Se7en
+								International</option>
+							<option value="#A6A6A6" style="background-color: #A6A6A6">Se7en
+								International</option>
+							<option value="#5D5D5D" style="background-color: #5D5D5D">Se7en
+								International</option>
+					</select> <!-- </div> --> 
 					</td>
 			</tbody>
 		</table>
