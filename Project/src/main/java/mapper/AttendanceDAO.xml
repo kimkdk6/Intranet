@@ -201,7 +201,7 @@
 	
 	
 	<!-- Commute -->
-	<select id="getLeave" resultType="String">
+	<select id="getLeave" resultType="dto_vo.Attendance.Leave">
 		select to_char(attdate, 'YYYY-MM-DD HH24:MI:SS') as attdate, lvreason 
 		from leave where userid = #{ userid }
 	</select>
@@ -209,7 +209,7 @@
 		select to_char(attdate, 'YYYY-MM-DD HH24:MI:SS') as attdate
 		from absence where userid = #{ userid }
 	</select>
-	<select id="getLateness" resultType="String">
+	<select id="getLateness" resultType="dto_vo.Attendance.Lateness">
 		select to_char(attdate, 'YYYY-MM-DD HH24:MI:SS') as attdate, ltreason 
 		from lateness where userid = #{ userid }
 	</select>
