@@ -188,13 +188,9 @@ $(function(){
 							style="padding-top: 0px; padding-top: 0px; padding-right: 0px;">
 							<table>
 								<tr>
-									<td>
+									<td> 
 										<table style="float: left; margin-right: 50px;">
-											<tr>
-												<td><b>&nbsp&nbsp메&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp일</b>
-													: <a href=""><font color="#4e5fe8"><b><span>2</span></b></font>건</a></td>
-
-											</tr>
+											
 											<tr>
 												<td><b>&nbsp&nbsp상신문서</b> : <a
 													href="${pageContext.request.contextPath}/sign/SendsignsList.htm"><font
