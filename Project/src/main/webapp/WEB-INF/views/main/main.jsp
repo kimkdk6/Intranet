@@ -44,7 +44,6 @@ $(function(){
 						success : function(data){
 							document.getElementById("checkin").innerHTML = data;
 							alert("출근처리가 정상적으로 처리됬습니다.");
-							alert(data);
 							var time = data.split(':');
 							console.log('${latecheck}');
 							 if(time[0] >= "09"){
@@ -72,7 +71,6 @@ $(function(){
 			dataType:"html",
 			success : function(data){
 				if(data != null){
-					
 					$.ajax({
 						url:"<%=request.getContextPath()%>/attendance/checkout.htm",  //요청 URL
 						type:"get",           //전송 타입
@@ -84,6 +82,7 @@ $(function(){
 							 if(time[0] < "18"){
 									 document.getElementById("commute").innerHTML = '&nbsp&nbsp&nbsp&nbsp&nbsp조퇴사유 :' ;
 									 document.getElementById("commutecheck").style.visibility="visible";
+									 document.getElementById("reason").val("");
 									 document.getElementById("reason").style.visibility="visible";
 								 	 document.getElementById("latebtton").setAttribute("name", "leave"); 
 									  
