@@ -185,18 +185,16 @@
 </script>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td height="40">
-    <!--타이틀TB START-->
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td width="360" align="left" class="title_txt" style="padding:5px 0 0 14px;">근태현황</td>
-        <td width="" align="right" style="padding:0 12px 0 0;">&nbsp;</td>
-      </tr>
-    </table>
-    <!--타이틀TB END-->
-    </td>
-  </tr>
+  <section class="content-header">
+	<h1>
+		 근태 관리 <small>Se7en Internatinal</small>
+	</h1>
+	<ol class="breadcrumb">
+		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li class="active">근태 현황</li>
+	</ol><hr style=	"border-color: white;" >
+</section>
+
   <tr>
     <td height="30" bgcolor="#ececec" style="border-bottom:1px #c9c9c9 solid;border-top:1px #c9c9c9 solid;padding:0 0 0 12px;">
       <table style="width=100%">

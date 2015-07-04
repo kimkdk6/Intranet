@@ -2,12 +2,13 @@
     pageEncoding="UTF-8"%>
 <!-- Content Header (Page header) -->
 <section class="content-header">
-	<h1>출퇴근 체크<small>Se7en Internatinal</small>
+	<h1>
+		 근태 관리 <small>Se7en Internatinal</small>
 	</h1>
-	<!-- 	<ol class="breadcrumb"> -->
-	<!-- 		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li> -->
-	<!-- 		<li class="active">Calendar</li> -->
-	<!-- 	</ol> -->
+	<ol class="breadcrumb">
+		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li class="active">출퇴근 체크</li>
+	</ol><hr style=	"border-color: white;" >
 </section>
 <!-- Main content -->
 <section class="content">
