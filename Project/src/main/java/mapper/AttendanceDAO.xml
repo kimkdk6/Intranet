@@ -206,7 +206,7 @@
 		from leave where userid = #{ userid }
 	</select>
 	<select id="getAbsence" resultType="String">
-		select to_char(attdate, 'YYYY-MM-DD HH24:MI:SS') as attdate, abreason 
+		select to_char(attdate, 'YYYY-MM-DD HH24:MI:SS') as attdate
 		from absence where userid = #{ userid }
 	</select>
 	<select id="getLateness" resultType="String">
