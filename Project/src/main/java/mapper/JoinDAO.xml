@@ -16,8 +16,12 @@
       select * from team where deptcode = #{deptcode}
    </select>
    
-   
-   
+   <!-- 아이디 중복체크 -->
+   <select id="duuserid" resultType="String">
+   		 select userid
+   		 from emp
+    	 where userid = #{id}
+   </select>
    
    <!-- <select id="getEmp" resultType="dto_vo.Emp.Emp">
    	  select * from emp
