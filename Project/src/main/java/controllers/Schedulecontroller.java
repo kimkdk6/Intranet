@@ -184,7 +184,7 @@ public class Schedulecontroller {
 		
 		System.out.println("catename : " + catename);
 		System.out.println("catecontent : " + catecontent);
-		
+		System.out.println("color : " + color);
 		
 		// String color = request.getParameter("currColor");
 		// System.out.println("color : " + color);
@@ -199,6 +199,8 @@ public class Schedulecontroller {
 		schcategory.setCatename(catename);
 		schcategory.setCatecontent(catecontent);
 		schcategory.setColor(color);
+		
+		//System.out.println(schcategory.getColor());
 		
 		if( cateshare.equals("d") )
 		{
