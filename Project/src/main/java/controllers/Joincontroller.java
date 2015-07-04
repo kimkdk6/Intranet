@@ -130,5 +130,21 @@ public class Joincontroller {
    
    /*@RequestMapping(value="checkId.htm")
    public checkId()*/
-   
+   // 아이디 중복체크
+   @RequestMapping(value="IDcheck.htm", method=RequestMethod.POST)
+   View IDcheck(Model model, String id, HttpServletResponse response) throws ClassNotFoundException, SQLException, UnsupportedEncodingException 
+   {
+      JoinDAO joinDAO = sqlSession.getMapper(JoinDAO.class);
+      response.setContentType("text/html;charset=UTF-8");
+      int result = 0;
+      System.out.println("id: "+id);
+      
+      	if(joinDAO.duuserid(id) != null){
+      		result = 1;
+      	}
+      
+      model.addAttribute("result", result);
+      
+      return jsonView;
+   }
 }

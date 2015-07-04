@@ -358,9 +358,10 @@
  	                // document.getElementById("sample6_postcode").value = data.postcode; //6자리 우편번호 사용
  	                // document.getElementById("sample6_postcode").value = data.zonecode; //5자리 기초구역번호 사용
  	                document.getElementById("useraddr").value = fullAddr;
+ 	               // sample6_execDaumPostcode.close();
 
  	                // 커서를 상세주소 필드로 이동한다.
- 	                document.getElementById("sample6_address2").focus();
+ 	                document.getElementById("useraddr2").focus();
  	            }
  	        }).open();
  	    }
@@ -370,6 +371,37 @@
        
 </script>
 
+<script type="text/javascript">
+	
+	$(function() {
+		// 아이디 중복체크 
+		$('#userid').change(function(){
+			 
+			console.log($(this).val());
+			
+			$.ajax({
+				url : "<%=request.getContextPath() %>/joinus/IDcheck.htm",
+				type : "POST",
+				dataType : "json",
+				data : {id : $(this).val()},
+				success : function(data) {
+					console.log("data: "+data.result);
+					var msg = "";
+					 if(data.result == 1){
+						 msg ='color:#FF0000">아이디가 중복됩니다.';
+						 
+					 }else{
+						 msg = 'color:#0054FF">사용 가능한 아이디입니다.';
+					 }
+				 	$('#idcheck').html('<font style="font-weight:bold;'+msg+'</font>'); 
+				},
+				error: function (xhr,Options,thrownError) {
+			    },
+				
+			});
+		});
+	});
+</script>		
    <div class="register-box">
       <div class="register-logo">
          Se<b>7</b>en International</a>
@@ -382,7 +414,10 @@
             <div class="form-group has-feedback">
                <input type="text" name="userid" class="form-control" placeholder="Id" id="userid" />
                <span id="inputId" class="glyphicon glyphicon-user form-control-feedback"></span>
-               <input class="btn btn-lg btn-danger btn-block" type="button" value="중복확인" id="checkuserid">
+               
+            </div>
+            <div id="idcheck">
+            	
             </div>
             <div class="form-group has-feedback">
                <input type="password" name="emppwd" id="emppwd" class="form-control" placeholder="Password" />
