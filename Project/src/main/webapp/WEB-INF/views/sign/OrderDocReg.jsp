@@ -1035,9 +1035,10 @@ $('#addline').click(function() {
 	
 	
 	/* 추가된 행 계산 */
-	$('.unitcost, .amount, .ordercost').keyup(function() {
+	$('.unitcost, .amount, .ordercost, .ordersize').keyup(function() {
 		$(this).val( $(this).val().replace(/[^0-9]/gi,"") ); //숫자만 입력가능
 	});
+ 
 	
 	$('.unitcost').keyup(function() {
 		var num = $(".unitcost").index(this);

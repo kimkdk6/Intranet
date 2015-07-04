@@ -122,7 +122,7 @@
 						</ul></li>
 				</ul></li>
 			<li><a href="${pageContext.request.contextPath}/search/SearchEmp.htm"> <i
-					class="fa fa-fw fa-group"></i> <span>조직도</span><!--  <small
+					class="fa fa-fw fa-group"></i> <span>주소록</span><!--  <small
 					class="label pull-right bg-green">Group</small> -->
 					<i
 					class="fa fa-angle-left pull-right"></i>
@@ -135,10 +135,10 @@
 				<ul class="treeview-menu">
 					<li><a
 						href="${pageContext.request.contextPath}/attendance/Commute.htm"><i
-							class="fa fa-circle-o"></i> 출퇴근 체크 </a></li>
+							class="fa fa-circle-o"></i> 나의 근태 현황</a></li>
 					<li><a
 						href="${pageContext.request.contextPath}/attendance/AttendanceCheck.htm"><i
-							class="fa fa-circle-o"></i> 근태 현황 </a></li>
+							class="fa fa-circle-o"></i> 전체 근태 현황 </a></li>
 				</ul></li>
 
 			<li><a href="pages/widgets.html"> <i

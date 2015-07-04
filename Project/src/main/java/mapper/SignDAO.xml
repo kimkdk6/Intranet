@@ -161,6 +161,7 @@
 	<select id="getEmps" resultType="dto_vo.Emp.Emp">
 		select *
 		from emp
+		where empapprove = 1
 		order by deptcode, teamcode, poscode
 	</select>
 	<!-- 사원 가져오기  -->

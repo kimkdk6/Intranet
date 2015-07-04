@@ -1148,6 +1148,7 @@
 		$('#bizmem').keyup(function() { // 숫자만
 			$(this).val($(this).val().replace(/[^0-9]/gi, "")); //숫자만 입력가능
 		});
+	
 
 		$('.bizcost').keyup(function() {
 			var num = $(".bizcost").index(this);
