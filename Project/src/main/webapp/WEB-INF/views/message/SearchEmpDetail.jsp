@@ -53,7 +53,8 @@ function go_pop_message(url){
 					<tr>
 						<!-- <td align="center" style="background-image: url('../resources/img/7inter_logo.PNG');"></td> -->
 						<td align="center">
-							<b>정직원</b>
+							<b>돈을 많이 버는 회사</b><br>
+							<b>7 International</b>
 						</td>
 					</tr>
 				</table>
