@@ -15,11 +15,20 @@
 	<div class="row">
 		<div style="height: 800px">
 			<div class="col-md-3">
-				<div class="box box-solid">
+				<!-- <div class="box box-solid">
 					<div class="box-header with-border" style="background-color: #FFA7A7">
 						<h4 class="box-title">휴가</h4>
 					</div>
-				</div>
+				</div> -->
+				<div class="box box-solid">
+					<div class="box-header with-border" style="background-color: #FFA7A7">
+				        <a href="#" onclick="showID('content');"><h4 class="box-title">휴가</h4></a>
+				    </div>
+			    </div>
+			    <div id="content" style="display:none;">
+			        	내용
+			    </div>
+			    
 				<!-- /. box -->
 				<div class="box box-solid">
 					<div class="box-header with-border" style="background-color: #BDBDBD">
@@ -52,8 +61,9 @@
 				<div class="box box-primary">
 					<div class="box-body no-padding">
 						<!-- THE CALENDAR -->
-						<div id="calendar"></div>
-						
+						<div id="calendar">
+													
+						</div>
 					</div>
 					<!-- /.box-body -->
 				</div>
@@ -66,6 +76,42 @@
 </section>
 <!-- /.content -->
 <script type="text/javascript">
+	
+	function showID(id)
+	{
+		obj=document.getElementById(id);
+		
+		if(obj.style.display == "none") 
+		{	
+			obj.style.display="inline";
+		
+			$.ajax({
+	            Type:"get",
+	            url:"<%= request.getContextPath() %>/attendance/getCommute.htm",
+	            dataType:"json",
+	            //data:userid,
+	            success:function( data ){
+	            	$.each(data.Holiday, function(){
+	              	$("#calendar").fullCalendar( 'addEventSource', [ {
+	                     	title : this.sctitle,
+	                     	start : new Date(this.scstart), //년,월,일,시,분
+	                     	end : new Date(this.scend), //년,월,일,시,분
+	                     	backgroundColor : "#FFA7A7", 
+	                        borderColor : "#FFA7A7", 
+	                 } ] );
+	               });
+	               
+	            },
+	            error:function(data){alert("Error 발생");}
+	         });
+			
+		}
+		else
+		  
+		  obj.style.display="none";
+	}
+
+
 	$(function () {
 	
 		
@@ -253,7 +299,7 @@
             },
             error:function(data){alert("Error 발생");}
          });
-        $.ajax({
+        <%-- $.ajax({
             Type:"get",
             url:"<%= request.getContextPath() %>/attendance/getCommute.htm",
             dataType:"json",
@@ -272,6 +318,6 @@
             },
             error:function(data){alert("Error 발생");}
          });
-
+ --%>
 	});
 </script>
