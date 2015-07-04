@@ -201,23 +201,23 @@
 	
 	
 	<!-- Commute -->
-	<select id="getLeave" resultType="dto_vo.Attendance.Leave">
+	<select id="getLeave" resultType="String">
 		select to_char(attdate, 'YYYY-MM-DD HH24:MI:SS') as attdate, lvreason 
 		from leave where userid = #{ userid }
 	</select>
-	<select id="getAbsence" resultType="dto_vo.Attendance.Absence">
+	<select id="getAbsence" resultType="String">
 		select to_char(attdate, 'YYYY-MM-DD HH24:MI:SS') as attdate, abreason 
 		from absence where userid = #{ userid }
 	</select>
-	<select id="getLateness" resultType="dto_vo.Attendance.Lateness">
+	<select id="getLateness" resultType="String">
 		select to_char(attdate, 'YYYY-MM-DD HH24:MI:SS') as attdate, ltreason 
 		from lateness where userid = #{ userid }
 	</select>
-	<select id="getBiztrip" resultType="dto_vo.Schedule.Schedule">
+	<select id="getBiztrip" resultType="dto_vo.Schedule.ScheduleView">
 		select to_char(scstart, 'YYYY-MM-DD HH24:MI:SS') as scstart, to_char(scend, 'YYYY-MM-DD HH24:MI:SS') as scend, sctitle 
 		from schedule where userid = #{ userid } and sctitle like '송민경 사원 : 출장'
 	</select>
-	<select id="getHoliday" resultType="dto_vo.Schedule.Schedule">
+	<select id="getHoliday" resultType="dto_vo.Schedule.ScheduleView">
 		select to_char(scstart, 'YYYY-MM-DD HH24:MI:SS') as scstart, to_char(scend, 'YYYY-MM-DD HH24:MI:SS') as scend, sctitle 
 		from schedule where userid = #{ userid } and sctitle like '송민경 사원 : 휴가'
 	</select>

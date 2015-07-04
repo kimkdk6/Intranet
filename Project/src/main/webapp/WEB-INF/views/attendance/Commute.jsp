@@ -21,7 +21,7 @@
 					</div>
 				</div>
 				<!-- /. box -->
-				<di00v class="box box-solid">
+				<div class="box box-solid">
 					<div class="box-header with-border" style="background-color: #BDBDBD">
 						<h4 class="box-title">출장</h4>
 					</div>
