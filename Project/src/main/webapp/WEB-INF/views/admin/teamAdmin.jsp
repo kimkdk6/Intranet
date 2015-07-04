@@ -59,7 +59,7 @@
     padding-right: 30px;">
 		
 		<div class="box-header">
-			<h3 class="box-title">커뮤니티 관리</h3>
+			<h3 class="box-title">팀 관리</h3>
 
 		</div>
 		<!-- /.box-header -->
