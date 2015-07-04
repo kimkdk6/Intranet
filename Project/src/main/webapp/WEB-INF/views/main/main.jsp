@@ -82,7 +82,6 @@ $(function(){
 							 if(time[0] < "18"){
 									 document.getElementById("commute").innerHTML = '&nbsp&nbsp&nbsp&nbsp&nbsp조퇴사유 :' ;
 									 document.getElementById("commutecheck").style.visibility="visible";
-									 document.getElementById("reason").val("");
 									 document.getElementById("reason").style.visibility="visible";
 								 	 document.getElementById("latebtton").setAttribute("name", "leave"); 
 									  
