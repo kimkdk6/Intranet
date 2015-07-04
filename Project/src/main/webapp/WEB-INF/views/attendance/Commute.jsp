@@ -16,31 +16,31 @@
 		<div style="height: 800px">
 			<div class="col-md-3">
 				<div class="box box-solid">
-					<div class="box-header with-border" style="background-color: #FFA7A7">
+					<div class="box-header with-border" style="background-color: #dd4b39">
 						<h4 class="box-title">휴가</h4>
 					</div>
 				</div>
 				<!-- /. box -->
 				<div class="box box-solid">
-					<div class="box-header with-border" style="background-color: #BDBDBD">
+					<div class="box-header with-border" style="background-color: #3c8dbc">
 						<h4 class="box-title">출장</h4>
 					</div>
 				</div>
 				<!-- /. box -->
 				<div class="box box-solid">
-					<div class="box-header with-border" style="background-color: #3DB7CC">
+					<div class="box-header with-border" style="background-color: #00a65a">
 						<h4 class="box-title">조퇴</h4>
 					</div>
 				</div>
 				<!-- /. box -->
 				<div class="box box-solid">
-					<div class="box-header with-border" style="background-color: #47C83E">
+					<div class="box-header with-border" style="background-color: #00c0ef">
 						<h4 class="box-title">지각</h4>
 					</div>
 				</div>
 				<!-- /. box -->
 				<div class="box box-solid">
-					<div class="box-header with-border" style="background-color: #CCA63D">
+					<div class="box-header with-border" style="background-color: #f39c12">
 						<h4 class="box-title">결근</h4>
 					</div>
 				</div>
@@ -188,8 +188,8 @@
                      	title : this.lvreason,
                      	start : new Date(this.attdate), //년,월,일,시,분
                      	end : new Date(this.attdate), //년,월,일,시,분
-                     	backgroundColor : "#3DB7CC", 
-                        borderColor : "#3DB7CC", 
+                     	backgroundColor : "#00a65a", 
+                        borderColor : "#00a65a", 
                  } ] );
                });
                
@@ -207,8 +207,8 @@
                        	title : this.abreason,
                        	start : new Date(this.attdate), //년,월,일,시,분
                        	end : new Date(this.attdate), //년,월,일,시,분
-                       	backgroundColor : "#CCA63D", 
-                        borderColor : "#CCA63D", 
+                       	backgroundColor : "#f39c12", 
+                        borderColor : "#f39c12", 
                    } ] );
                  });
                  
@@ -226,8 +226,8 @@
                      	title : this.ltreason,
                      	start : new Date(this.attdate), //년,월,일,시,분
                      	end : new Date(this.attdate), //년,월,일,시,분
-                     	backgroundColor : "#47C83E", 
-                        borderColor : "#47C83E", 
+                     	backgroundColor : "#00c0ef", 
+                        borderColor : "#00c0ef", 
                  } ] );
                });
                
@@ -245,8 +245,8 @@
                      	title : this.sctitle,
                      	start : new Date(this.scstart), //년,월,일,시,분
                      	end : new Date(this.scend), //년,월,일,시,분
-                     	backgroundColor : "#BDBDBD", 
-                        borderColor : "#BDBDBD", 
+                     	backgroundColor : "#3c8dbc", 
+                        borderColor : "#3c8dbc", 
                  } ] );
                });
                
@@ -264,8 +264,8 @@
                      	title : this.sctitle,
                      	start : new Date(this.scstart), //년,월,일,시,분
                      	end : new Date(this.scend), //년,월,일,시,분
-                     	backgroundColor : "#FFA7A7", 
-                        borderColor : "#FFA7A7", 
+                     	backgroundColor : "#dd4b39", 
+                        borderColor : "#dd4b39", 
                  } ] );
                });
             },
