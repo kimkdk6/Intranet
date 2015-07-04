@@ -822,9 +822,6 @@
 // 						readEvent.dialog("open");
 						readEvent.dialog("open",calEvent);
 
-						
-						
-
 						var start = new Date(calEvent.start);
 						var startDate = moment(calEvent.start).format("YYYY-MM-DD");
 						var startHour = start.getHours();
@@ -867,17 +864,6 @@
 					droppable : false, 
 
 				});//캘린더 끝
-
-// 		$("#calendar").fullCalendar('addEventSource', [ {
-// 			title : '이벤트 테스트2',
-// 			start : new Date(y, m, 3, 12, 30),//년,월,일,시,분
-// 			end : new Date(y, m, 4, 12, 30),
-// 			backgroundColor : "#f56954", //red
-// 			borderColor : "#f56954", //red
-// 			userid : '김성익',
-// 			content: '시부랄 탱탱부랄'
-// 		} ]);
-				
 				
 		// 일정 추가		
 		var userid = { userid : $('#userid').val() };

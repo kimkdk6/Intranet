@@ -222,9 +222,10 @@ public class Attendancecontroller {
               
         String userid = emp.getUserid();
 		String username = emp.getEname();
-		System.out.println(emp.getPoscode());
+		
+		/*System.out.println(emp.getPoscode());
         System.out.println("Commute userid : " + userid );
-		System.out.println("Commute ename : " + username);
+		System.out.println("Commute ename : " + username);*/
 		
 		AttendanceDAO commute = sqlSession.getMapper(AttendanceDAO.class);
 		EmpDAO empdao = sqlSession.getMapper(EmpDAO.class);
@@ -232,22 +233,23 @@ public class Attendancecontroller {
 		Emp getEmp = empdao.getEmp3(userid);
 		
 		String posname = getEmp.getPoscode();
-		System.out.println(posname);
+		//System.out.println(posname);
 		
 		List<Leave> Leave = commute.getLeave(userid);
         List<Absence> Absence = commute.getAbsence(userid);
         List<Lateness> Lateness = commute.getLateness(userid);
         
-        String ename = username + " 사원 : 휴가";
+        String BiztripEname = username + " " + posname + " : " + "출장";
+        String HolidayEname = username + " " + posname + " : " + "휴가";
         
-        List<Biztrip> Biztrip = commute.getBiztrip(userid);
-        List<Holiday> Holiday = commute.getHoliday(userid);
+        List<Biztrip> Biztrip = commute.getBiztrip(userid, BiztripEname);
+        List<Holiday> Holiday = commute.getHoliday(userid, HolidayEname);
+        
+        System.out.println("BBBBBB" + Biztrip.toString());
+        System.out.println("HHHHHH" + Holiday.toString());
         
         System.out.println("getLeave : " + Leave.toString());
         System.out.println("getAbsence : " + Absence.toString());
-        
-        //System.out.println("aaaaaaa " + getAbsence.get(0));
-        
         System.out.println("getLateness : " + Lateness.toString());
         System.out.println("getBiztrip : " + Biztrip.toString());
         System.out.println("getHoliday : " + Holiday.toString());

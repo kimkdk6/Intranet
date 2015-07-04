@@ -71,8 +71,8 @@ public interface AttendanceDAO {
 	
 	
 	// 개인 출장 일정
-	List<Biztrip> getBiztrip( @Param("userid")String userid ) throws ClassNotFoundException, SQLException;
+	List<Biztrip> getBiztrip( @Param("userid")String userid,  @Param("BiztripEname")String BiztripEname ) throws ClassNotFoundException, SQLException;
 	// 개인 휴가 일정
-	List<Holiday> getHoliday( @Param("userid")String userid ) throws ClassNotFoundException, SQLException;
+	List<Holiday> getHoliday( @Param("userid")String userid, @Param("HolidayEname")String HolidayEname ) throws ClassNotFoundException, SQLException;
 	
 }
