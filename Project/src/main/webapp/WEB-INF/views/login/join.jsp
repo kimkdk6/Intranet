@@ -358,9 +358,10 @@
  	                // document.getElementById("sample6_postcode").value = data.postcode; //6자리 우편번호 사용
  	                // document.getElementById("sample6_postcode").value = data.zonecode; //5자리 기초구역번호 사용
  	                document.getElementById("useraddr").value = fullAddr;
+ 	               // sample6_execDaumPostcode.close();
 
  	                // 커서를 상세주소 필드로 이동한다.
- 	                document.getElementById("sample6_address2").focus();
+ 	                document.getElementById("useraddr2").focus();
  	            }
  	        }).open();
  	    }
