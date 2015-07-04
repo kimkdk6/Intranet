@@ -34,7 +34,7 @@
 		where e.userid = #{ userid }	
 	</select>
 	
-	<select id="getEmplist" parameterType="java.lang.String" resultType="dto_vo.Emp.Emp">
+	<!-- <select id="getEmplist" parameterType="java.lang.String" resultType="dto_vo.Emp.Emp">
 		select e.userid, e.empno, e.ename, e.emptel, d.deptname as deptcode, t.teamname as teamcode, p.posname as poscode
 		from emp e
 		join dept d
@@ -45,7 +45,22 @@
 		on e.poscode = p.poscode
 		where e.ename like '%${value}%'
 		order by empno
+	</select> -->
+	
+	<select id="getEmplist" parameterType="java.lang.String" resultType="dto_vo.Emp.Emp">
+		select e.userid, e.empno, e.ename, e.emptel, d.deptname as deptcode, t.teamname as teamcode, p.posname as poscode
+		from emp e
+		join dept d
+		on e.deptcode = d.deptcode
+		join team t
+		on e.teamcode = t.teamcode
+		join position p
+		on e.poscode = p.poscode
+		where e.userid != 'admin' and e.EMPAPPROVE !=0 and e.ename like '%${value}%'
+		order by empno
 	</select>
+	
+	
 	
 	
 	<!-- 
@@ -105,7 +120,7 @@
 		on e.teamcode = t.teamcode
 		join position p
 		on e.poscode = p.poscode
-		where e.deptcode = #{deptcode}
+		where e.userid != 'admin' and e.EMPAPPROVE !=0 and e.deptcode = #{deptcode}
 		order by e.empno
 	</select>
 	
