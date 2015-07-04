@@ -193,8 +193,8 @@
                  } ] );
                });
                
-            },
-            error:function(data){alert("Error 발생");}
+            }
+            //error:function(data){alert("Error 발생");}
          });
         $.ajax({
               Type:"get",
@@ -212,8 +212,8 @@
                    } ] );
                  });
                  
-              },
-              error:function(data){alert("Error 발생");}
+              }
+              //error:function(data){alert("Error 발생");}
            });      
         $.ajax({
             Type:"get",
@@ -231,8 +231,8 @@
                  } ] );
                });
                
-            },
-            error:function(data){alert("Error 발생");}
+            }
+            //error:function(data){alert("Error 발생");}
          });      
         $.ajax({
             Type:"get",
@@ -250,8 +250,8 @@
                  } ] );
                });
                
-            },
-            error:function(data){alert("Error 발생");}
+            }
+            //error:function(data){alert("Error 발생");}
          });
         $.ajax({
             Type:"get",
@@ -268,8 +268,8 @@
                         borderColor : "#dd4b39", 
                  } ] );
                });
-            },
-            error:function(data){alert("Error 발생");}
+            }
+           // error:function(data){alert("Error 발생");}
          });
 
    });
