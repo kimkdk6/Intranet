@@ -36,17 +36,15 @@ $(function(){
 			type:"get",           //전송 타입
 			dataType:"html",
 			success : function(data){
-				if(data != ""){
-					alert("이미 출근처리가 됬습니다.");
-				}else {
+				if(data != null){
 					$.ajax({
-						
 						url:"<%=request.getContextPath()%>/attendance/checkin.htm",  //요청 URL
 						type:"get",           //전송 타입
 						dataType:"html",
 						success : function(data){
 							document.getElementById("checkin").innerHTML = data;
 							alert("출근처리가 정상적으로 처리됬습니다.");
+							alert(data);
 							var time = data.split(':');
 							console.log('${latecheck}');
 							 if(time[0] >= "09"){
@@ -55,6 +53,8 @@ $(function(){
 						},
 						error :function(data){alert("이미 출근처리가 됬습니다.");}
 					});
+				}else {
+					alert("이미 출근처리가 됬습니다.");
 				}
 				
 			},
@@ -71,9 +71,8 @@ $(function(){
 			type:"get",           //전송 타입
 			dataType:"html",
 			success : function(data){
-				if(data != ""){
-					alert("이미 퇴근처리가 됬습니다.");
-				}else {
+				if(data != null){
+					
 					$.ajax({
 						url:"<%=request.getContextPath()%>/attendance/checkout.htm",  //요청 URL
 						type:"get",           //전송 타입
@@ -92,6 +91,8 @@ $(function(){
 						},
 						error :function(data){alert("이미 퇴근처리가 됬습니다.");}
 					});
+				}else {
+					alert("이미 퇴근처리가 됬습니다.");
 				}
 				
 			},
@@ -202,12 +203,6 @@ $(function(){
 														color="#4e5fe8"><b><span>${getUnSigns}</span></b></font>건</a></td>
 
 											</tr>
-
-											<tr>
-												<td><b>&nbsp&nbsp쪽&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp지</b>
-													: <a href=""><font color="#4e5fe8"><b>0</b></font>건</a></td>
-											</tr>
-
 
 										</table>
 										<table>
