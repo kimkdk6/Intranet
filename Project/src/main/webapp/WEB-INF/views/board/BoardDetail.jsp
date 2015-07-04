@@ -193,8 +193,8 @@ p {
 													href="javascript:gotoWrite()"><img
 														src="../resources/img/bt_write2.gif"></a></td>
 												<td width="5"></td>
-												<td><a href="javascript:openMailWriteWindow()"><img
-														src="../resources/img/bt_write_mail.gif"></a></td>
+<!-- 												<td><a href="javascript:openMailWriteWindow()"><img -->
+<!-- 														src="../resources/img/bt_write_mail.gif"></a></td> -->
 											</tr>
 										</tbody>
 									</table>
@@ -531,9 +531,9 @@ p {
 												<td><a
 													href="${pageContext.request.contextPath}/board/BoardWrite.htm?boardcode=${board.boardcode}"><img
 														src="../resources/img/bt_write2.gif"></a></td>
-												<td width="5"></td>
-												<td><a href="javascript:openMailWriteWindow()"><img
-														src="../resources/img/bt_write_mail.gif"></a></td>
+<!-- 												<td width="5"></td> -->
+<!-- 												<td><a href="javascript:openMailWriteWindow()"><img -->
+<!-- 														src="../resources/img/bt_write_mail.gif"></a></td> -->
 											</tr>
 										</tbody>
 									</table>

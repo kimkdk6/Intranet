@@ -288,7 +288,7 @@ public class Boardcontroller {
 		System.out.println("getfilesrc: "+file.getName());
 		
 		
-		if(!filesrc.equals(file.getName())){
+		if( filesrc!=null? !filesrc.equals(file.getName()):true){
 			String fileName = null;
 			if(!file.isEmpty()){
 		

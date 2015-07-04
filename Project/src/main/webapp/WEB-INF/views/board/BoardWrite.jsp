@@ -6,8 +6,25 @@
 
 <script type="text/javascript">
 	function onwrite(){
-		document.writeboard.submit();
-	}	
+		//document.writeboard.submit();
+
+
+		if (!writeboard.boardtitle.value) {
+			alert("제목을 입력하세요.");
+			writeboard.boardtitle.focus();
+			return false;
+		}
+
+		var ckeditor = CKEDITOR.instances['CONTENT']; //객체가져오기
+		if (ckeditor.getData() == "") {//null값은 안옴 = 빈문자열
+			alert("내용을 입력하세요");
+			ckeditor.focus();
+			return false;
+		}
+
+		writeboard.submit();
+		alert("작성이 완료되었습니다.");
+	}
 </script>
 
 <table width="100%" height="100%" border="0" cellspacing="0"
@@ -66,7 +83,7 @@
                   </tr>
                   <tr>
                      <td valign="top">
-                        <form name="writeboard" method="post" action="${pageContext.request.contextPath}/board/BoardWriteOk.htm" enctype="multipart/form-data" >
+                        <form  id="writeboard" name="writeboard" method="post" action="${pageContext.request.contextPath}/board/BoardWriteOk.htm" enctype="multipart/form-data" >
                         <!--  enctype="multipart/form-data" 쓰면 400에러 떨어짐.. -->
                         	<input type="hidden" name="userid" value="${sessionScope.myemp.userid}">
                         	<input type="hidden" name="boardcode" value="${boardlist.boardcode}">
@@ -76,7 +93,7 @@
                               <tr height="30">
                                  <td width="100" height="30" align="left" bgcolor="#f6f6f6" class="m_sp" style="padding: 3px 0px 0px 12px; border-bottom: #eaeaea 1px solid; border-right: #eaeaea 1px solid;"><b>제목</b></td>
                                  <td width=""style="border-bottom: #eaeaea 1px solid; padding: 0px 11px 0px 11px;">
-                                 <input type="text" id="t_subject" name="boardtitle" class="input_type1" style="width: 100%" value=""></td>
+                                 <input type="text" id="boardtitle" name="boardtitle" class="input_type1" style="width: 100%" value=""></td>
                               </tr>
                               <tr height="30">
                                  <td align="left" bgcolor="#f6f6f6" class="m_sp" style="padding: 3px 0px 0px 12px; border-right: #eaeaea 1px solid; border-bottom: #eaeaea 1px solid;"><b>파일첨부</b></td>
