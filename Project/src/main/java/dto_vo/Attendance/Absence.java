@@ -5,12 +5,12 @@ import java.sql.Date;
 public class Absence {
 
 	private String userid;
-	private Date attdate;
+	private String attdate;
 	private String abreason;
 	
 	public Absence() { }
 
-	public Absence(String userid, Date attdate, String abreason) {
+	public Absence(String userid, String attdate, String abreason) {
 		super();
 		this.userid = userid;
 		this.attdate = attdate;
@@ -25,11 +25,11 @@ public class Absence {
 		this.userid = userid;
 	}
 
-	public Date getAttdate() {
+	public String getAttdate() {
 		return attdate;
 	}
 
-	public void setAttdate(Date attdate) {
+	public void setAttdate(String attdate) {
 		this.attdate = attdate;
 	}
 
