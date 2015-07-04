@@ -26,6 +26,14 @@
 		where e.userid = #{userid}
 	</select>
 	
+	<select id="getEmp3" resultType="dto_vo.Emp.Emp">
+		select e.userid, e.ename, p.posname as poscode
+		from emp e
+		join position p
+		on e.poscode = p.poscode
+		where e.userid = #{ userid }	
+	</select>
+	
 	<select id="getEmplist" parameterType="java.lang.String" resultType="dto_vo.Emp.Emp">
 		select e.userid, e.empno, e.ename, e.emptel, d.deptname as deptcode, t.teamname as teamcode, p.posname as poscode
 		from emp e
@@ -38,6 +46,8 @@
 		where e.ename like '%${value}%'
 		order by empno
 	</select>
+	
+	
 	<!-- 
 	<select id="getEmplist2" resultType="dto_vo.Emp.Emp">
 		select e.userid, e.empno, e.ename, e.emptel, d.deptname as deptcode, t.teamname as teamcode, p.posname as poscode

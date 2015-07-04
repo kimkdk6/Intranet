@@ -222,12 +222,6 @@
 		from schedule where userid = #{ userid } and sctitle like '송민경 사원 : 휴가'
 	</select>
 	
-	<select id="getEmp3" resultType="dto_vo.Emp.Emp">
-		select e.userid, e.ename, p.posname as poscode
-		from emp e
-		join position p
-		on e.poscode = p.poscode
-		where e.userid = #{ userid }	
-	</select>
+	
 	
   </mapper>
