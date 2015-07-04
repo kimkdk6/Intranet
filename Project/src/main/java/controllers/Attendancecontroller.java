@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.View;
 
 import dao.AttendanceDAO;
+import dao.EmpDAO;
 import dao.ScheduleDAO;
 import dto_vo.Attendance.Absence;
 import dto_vo.Attendance.Biztrip;
@@ -220,12 +221,19 @@ public class Attendancecontroller {
 //         System.out.println(emp);
               
         String userid = emp.getUserid();
-		System.out.println("Commute userid : " + userid );
+		String username = emp.getEname();
+		
+        System.out.println("Commute userid : " + userid );
+		System.out.println("Commute ename : " + username);
 		
 		AttendanceDAO commute = sqlSession.getMapper(AttendanceDAO.class);
+		
 		List<Leave> Leave = commute.getLeave(userid);
         List<Absence> Absence = commute.getAbsence(userid);
         List<Lateness> Lateness = commute.getLateness(userid);
+        
+        String ename = username + " 사원 : 휴가";
+        
         List<Biztrip> Biztrip = commute.getBiztrip(userid);
         List<Holiday> Holiday = commute.getHoliday(userid);
         

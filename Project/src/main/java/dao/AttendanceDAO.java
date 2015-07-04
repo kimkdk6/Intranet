@@ -12,6 +12,7 @@ import dto_vo.Attendance.Biztrip;
 import dto_vo.Attendance.Holiday;
 import dto_vo.Attendance.Lateness;
 import dto_vo.Attendance.Leave;
+import dto_vo.Emp.Emp;
 import dto_vo.Schedule.Schcategory;
 
 
@@ -74,4 +75,6 @@ public interface AttendanceDAO {
 	// 개인 휴가 일정
 	List<Holiday> getHoliday( @Param("userid")String userid ) throws ClassNotFoundException, SQLException;
 	
+	// 개인 직급 가져오기
+	public Emp getEmp3( String userid ) throws ClassNotFoundException, SQLException;
 }
