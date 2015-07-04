@@ -704,7 +704,7 @@
 															<c:if
 																test="${!useridcheck.equals(checkid) && sign.signstate==0}">
 																<td><a href="javascript:myApp('F')"><span
-																		style="font-size: 20px; margin-left: 850px; margin-top: 50px"
+																		style="font-size: 20px; margin-left: 920px; margin-top: 50px"
 																		class="label pull-right bg-navy"> 결 재</span></a></td>
 																<td width="5"></td>
 																<td><a href="javascript:myApp('R')"><span
