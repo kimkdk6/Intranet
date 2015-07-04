@@ -74,6 +74,6 @@ public interface AttendanceDAO {
 	List<Holiday> getHoliday( @Param("userid")String userid, @Param("HolidayEname")String HolidayEname ) throws ClassNotFoundException, SQLException;
 	
 	// 출퇴근 시간
-	List<Attendance> getAttendance( @Param("userid")String userid ) throws ClassNotFoundException, SQLException;
+	//List<Attendance> getAttendance( @Param("userid")String userid ) throws ClassNotFoundException, SQLException;
 	
 }

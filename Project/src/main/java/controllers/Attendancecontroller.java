@@ -245,8 +245,8 @@ public class Attendancecontroller {
         List<Biztrip> Biztrip = commute.getBiztrip(userid, BiztripEname);
         List<Holiday> Holiday = commute.getHoliday(userid, HolidayEname);
         
-        List<Attendance> Attendance = commute.getAttendance(userid);
-        System.out.println("AAAAAAAAAA" + Attendance);
+       /* List<Attendance> Attendance = commute.getAttendance(userid);
+        System.out.println("AAAAAAAAAA" + Attendance);*/
         
         /*System.out.println("BBBBBB" + Biztrip.toString());
         System.out.println("HHHHHH" + Holiday.toString());

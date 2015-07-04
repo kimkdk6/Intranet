@@ -221,10 +221,10 @@
 		select to_char(scstart, 'YYYY-MM-DD HH24:MI:SS') as scstart, to_char(scend, 'YYYY-MM-DD HH24:MI:SS') as scend, sctitle 
 		from schedule where userid = #{ userid } and sctitle like #{ HolidayEname }
 	</select>
-	<select id="getAttendance" resultType="dto_vo.Attendance.Attendance">
+	<!-- <select id="getAttendance" resultType="String">
 		select to_char(attdate, 'YYYY-MM-DD HH24:MI:SS') as attdate, to_char(attstarttime, 'YYYY-MM-DD HH24:MI:SS') as attstarttime, to_char(attendtime, 'YYYY-MM-DD HH24:MI:SS') as attendtime
 		from attendance where userid = #{ userid }
-	</select>
+	</select> -->
 	
 	
   </mapper>
