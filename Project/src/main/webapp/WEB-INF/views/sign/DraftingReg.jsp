@@ -51,10 +51,9 @@
 			ckeditor.focus();
 			return false;
 		}
-
+	
 		if ($("#signer2").length < 1) {
 			alert("결재자를 선택하세요");
-			signform.users.focus();
 			return false;
 		}
 
@@ -523,12 +522,25 @@
 											$("#dialog").dialog("open");
 										});
 										$("#opener1").click(function() {
+											if ($("#signer2").length < 1) {
+												alert("이전 결재자를 선택하세요");
+												return false;
+											}
 											$("#dialog1").dialog("open");
+											
 										});
 										$("#opener2").click(function() {
+											if ($("#signer2").length < 1 || $("#signer3").length < 1) {
+												alert("이전 결재자를 선택하세요");
+												return false;
+											}
 											$("#dialog2").dialog("open");
 										});
 										$("#opener3").click(function() {
+											if ($("#signer2").length < 1 || $("#signer3").length < 1 || $("#signer4").length < 1) {
+												alert("이전 결재자를 선택하세요");
+												return false;
+											}
 											$("#dialog3").dialog("open");
 										});
 									});
