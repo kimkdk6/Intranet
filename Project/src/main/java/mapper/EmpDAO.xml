@@ -27,7 +27,7 @@
 	</select>
 	
 	<select id="getEmp3" resultType="dto_vo.Emp.Emp">
-		select e.userid, e.ename, p.posname as posname
+		select e.userid, e.ename, p.posname as poscode
 		from emp e
 		join position p
 		on e.poscode = p.poscode

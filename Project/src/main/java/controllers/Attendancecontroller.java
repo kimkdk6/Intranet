@@ -232,6 +232,7 @@ public class Attendancecontroller {
 		Emp getEmp = empdao.getEmp3(userid);
 		
 		String posname = getEmp.getPoscode();
+		System.out.println(posname);
 		
 		List<Leave> Leave = commute.getLeave(userid);
         List<Absence> Absence = commute.getAbsence(userid);
