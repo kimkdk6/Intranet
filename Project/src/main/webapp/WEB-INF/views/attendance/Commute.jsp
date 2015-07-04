@@ -15,20 +15,11 @@
 	<div class="row">
 		<div style="height: 800px">
 			<div class="col-md-3">
-				<!-- <div class="box box-solid">
+				<div class="box box-solid">
 					<div class="box-header with-border" style="background-color: #FFA7A7">
 						<h4 class="box-title">휴가</h4>
 					</div>
-				</div> -->
-				<div class="box box-solid">
-					<div class="box-header with-border" style="background-color: #FFA7A7">
-				        <a href="#" onclick="showID('content');"><h4 class="box-title">휴가</h4></a>
-				    </div>
-			    </div>
-			    <div id="content" style="display:none;">
-			        	내용
-			    </div>
-			    
+				</div>
 				<!-- /. box -->
 				<div class="box box-solid">
 					<div class="box-header with-border" style="background-color: #BDBDBD">
@@ -77,41 +68,6 @@
 <!-- /.content -->
 <script type="text/javascript">
 	
-	function showID(id)
-	{
-		obj=document.getElementById(id);
-		
-		if(obj.style.display == "none") 
-		{	
-			obj.style.display="inline";
-		
-			$.ajax({
-	            Type:"get",
-	            url:"<%= request.getContextPath() %>/attendance/getCommute.htm",
-	            dataType:"json",
-	            //data:userid,
-	            success:function( data ){
-	            	$.each(data.Holiday, function(){
-	              	$("#calendar").fullCalendar( 'addEventSource', [ {
-	                     	title : this.sctitle,
-	                     	start : new Date(this.scstart), //년,월,일,시,분
-	                     	end : new Date(this.scend), //년,월,일,시,분
-	                     	backgroundColor : "#FFA7A7", 
-	                        borderColor : "#FFA7A7", 
-	                 } ] );
-	               });
-	               
-	            },
-	            error:function(data){alert("Error 발생");}
-	         });
-			
-		}
-		else
-		  
-		  obj.style.display="none";
-	}
-
-
 	$(function () {
 	
 		
@@ -203,26 +159,24 @@
 						week : "주별",
 						day : "일별"
 					},
-					timeFormat: 'hh:mm',
+					timeFormat: 'hh:mm:ss',
 
 					editable : false,
 					droppable : false, 
 
 				});//캘린더 끝
 				
-		/* $("#calendar").fullCalendar('addEventSource', [ {
-			title : '이벤트 테스트2',
-			start : new Date(y, m, 3, 12, 30),//년,월,일,시,분
-			end : new Date(y, m, 4, 12, 30),
-			backgroundColor : "#f56954", //red
-			borderColor : "#f56954", //red
-			userid : '김성익',
-			content: '시부랄 탱탱부랄'
-		} ]); */
+			/* 	var aa = "2015-07-04 11:06:54";
+			$("#calendar").fullCalendar('addEventSource', [ {
+		         title : '이벤트 테스트2',
+		         start : new Date(aa),//년,월,일,시,분
+		         end : new Date(aa),
+		         backgroundColor : "#f56954", //red
+		         borderColor : "#f56954", //red
+		         userid : '김성익',
+		         content: '시부랄 탱탱부랄'
+		      } ]); */
 				
-		// 지각		
-		//var userid = $('#userid').val();
-		//console.log('aaaa : ' + userid);
 		$.ajax({
             Type:"get",
             url:"<%= request.getContextPath() %>/attendance/getCommute.htm",
@@ -299,7 +253,7 @@
             },
             error:function(data){alert("Error 발생");}
          });
-        <%-- $.ajax({
+        $.ajax({
             Type:"get",
             url:"<%= request.getContextPath() %>/attendance/getCommute.htm",
             dataType:"json",
@@ -314,10 +268,9 @@
                         borderColor : "#FFA7A7", 
                  } ] );
                });
-               
             },
             error:function(data){alert("Error 발생");}
          });
- --%>
+
 	});
 </script>

@@ -175,9 +175,9 @@ public class Schedulecontroller {
 		
 		String userid = emp.getUserid();
 		String catename = request.getParameter("catename");
-		catename = new String(catename.getBytes("ISO-8859-1"),"UTF-8");
+		//catename = new String(catename.getBytes("ISO-8859-1"),"UTF-8");
 		String catecontent = request.getParameter("catecontent");
-		catecontent = new String(catecontent.getBytes("ISO-8859-1"),"UTF-8");
+		//catecontent = new String(catecontent.getBytes("ISO-8859-1"),"UTF-8");
 		String cateshare = request.getParameter("cateshare");
 
 		String color = request.getParameter("catecode2");

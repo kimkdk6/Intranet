@@ -23,6 +23,7 @@ import dao.AttendanceDAO;
 import dao.EmpDAO;
 import dao.ScheduleDAO;
 import dto_vo.Attendance.Absence;
+import dto_vo.Attendance.Attendance;
 import dto_vo.Attendance.Biztrip;
 import dto_vo.Attendance.Holiday;
 import dto_vo.Attendance.Lateness;
@@ -233,7 +234,6 @@ public class Attendancecontroller {
 		Emp getEmp = empdao.getEmp3(userid);
 		
 		String posname = getEmp.getPoscode();
-		//System.out.println(posname);
 		
 		List<Leave> Leave = commute.getLeave(userid);
         List<Absence> Absence = commute.getAbsence(userid);
@@ -245,14 +245,17 @@ public class Attendancecontroller {
         List<Biztrip> Biztrip = commute.getBiztrip(userid, BiztripEname);
         List<Holiday> Holiday = commute.getHoliday(userid, HolidayEname);
         
-        System.out.println("BBBBBB" + Biztrip.toString());
+        List<Attendance> Attendance = commute.getAttendance(userid);
+        System.out.println("AAAAAAAAAA" + Attendance);
+        
+        /*System.out.println("BBBBBB" + Biztrip.toString());
         System.out.println("HHHHHH" + Holiday.toString());
         
         System.out.println("getLeave : " + Leave.toString());
         System.out.println("getAbsence : " + Absence.toString());
         System.out.println("getLateness : " + Lateness.toString());
         System.out.println("getBiztrip : " + Biztrip.toString());
-        System.out.println("getHoliday : " + Holiday.toString());
+        System.out.println("getHoliday : " + Holiday.toString());*/
         
         
 		//model.addAttribute("schedule", schedule);

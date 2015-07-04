@@ -5,15 +5,15 @@ import java.sql.Date;
 public class Attendance {
 	
 	private String userid;
-	private Date attdate;
-	private Date attstartdate;
-	private Date attenddate;
+	private String attdate;
+	private String attstartdate;
+	private String attenddate;
 	
 	public Attendance() {
 	}
 	
-	public Attendance(String userid, Date attdate, Date attstartdate,
-			Date attenddate) {
+	public Attendance(String userid, String attdate, String attstartdate,
+			String attenddate) {
 		this.userid = userid;
 		this.attdate = attdate;
 		this.attstartdate = attstartdate;
@@ -26,22 +26,22 @@ public class Attendance {
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
-	public Date getAttdate() {
+	public String getAttdate() {
 		return attdate;
 	}
-	public void setAttdate(Date attdate) {
+	public void setAttdate(String attdate) {
 		this.attdate = attdate;
 	}
-	public Date getAttstartdate() {
+	public String getAttstartdate() {
 		return attstartdate;
 	}
-	public void setAttstartdate(Date attstartdate) {
+	public void setAttstartdate(String attstartdate) {
 		this.attstartdate = attstartdate;
 	}
-	public Date getAttenddate() {
+	public String getAttenddate() {
 		return attenddate;
 	}
-	public void setAttenddate(Date attenddate) {
+	public void setAttenddate(String attenddate) {
 		this.attenddate = attenddate;
 	}
 

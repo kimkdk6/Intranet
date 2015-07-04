@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import dto_vo.Attendance.Absence;
+import dto_vo.Attendance.Attendance;
 import dto_vo.Attendance.Biztrip;
 import dto_vo.Attendance.Holiday;
 import dto_vo.Attendance.Lateness;
@@ -62,17 +63,17 @@ public interface AttendanceDAO {
 	// Commute
 	// 개인 조퇴 일정
 	List<Leave> getLeave( @Param("userid")String userid ) throws ClassNotFoundException, SQLException;
-	
 	// 개인 결근 일정
 	List<Absence> getAbsence( @Param("userid")String userid ) throws ClassNotFoundException, SQLException;
-	
 	// 개인 지각 일정
 	List<Lateness> getLateness( @Param("userid")String userid ) throws ClassNotFoundException, SQLException;
-	
 	
 	// 개인 출장 일정
 	List<Biztrip> getBiztrip( @Param("userid")String userid,  @Param("BiztripEname")String BiztripEname ) throws ClassNotFoundException, SQLException;
 	// 개인 휴가 일정
 	List<Holiday> getHoliday( @Param("userid")String userid, @Param("HolidayEname")String HolidayEname ) throws ClassNotFoundException, SQLException;
+	
+	// 출퇴근 시간
+	List<Attendance> getAttendance( @Param("userid")String userid ) throws ClassNotFoundException, SQLException;
 	
 }
