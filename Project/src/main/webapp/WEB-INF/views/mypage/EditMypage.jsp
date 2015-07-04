@@ -21,7 +21,7 @@
 	<div class="box">
 		<div class="box-header with-border">
 			<h3 class="box-title">
-				<a class="title_txt" href="EditMypage.htm">정보수정 페이지</a>
+				<a class="title_txt" href="#">정보수정 페이지</a>
 			</h3>
 		</div>
 		<div class="box-body">

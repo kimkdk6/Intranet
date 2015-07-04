@@ -263,11 +263,14 @@
 	<ol class="breadcrumb">
 		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 		<li class="active">조직도</li>
-	</ol>
+	</ol><hr style=	"border-color: white;" >
 </section>
 
+
 <body>
-	<div id="main" align="center" >
+	<div id="main" align="center" style="
+    margin-top: 50px; 
+" >
 		<div id="wrapper" style="width: 90%;">
 			<!-- <div align="left" style="height: 50px;"><h3>사원검색</h3></div> -->
 			<div align="center" style="margin-bottom: 0px;">
