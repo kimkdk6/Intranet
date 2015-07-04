@@ -272,9 +272,7 @@ public class Admincontroller {
 		schcategoryH.setTeamcode(admindao.getTeamcode(dept.getDeptcode()));
 		schcategoryH.setUserid("admin");
 		schcategoryH.setCatecontent("휴가");
-		int colorH = (int)(Math.random() * 16777215);
-		System.out.println("추가된 팀의 휴가 카테고리 색깔: "+colorH);
-		schcategoryH.setColor(String.valueOf(colorH));
+		schcategoryH.setColor("#dd4b39");
 		schedao.InsertTeamCategory(schcategoryH);
 		// 출장 카테고리
 		Schcategory schcategoryB = new Schcategory();
@@ -282,8 +280,7 @@ public class Admincontroller {
 		schcategoryB.setTeamcode(admindao.getTeamcode(dept.getDeptcode()));
 		schcategoryB.setUserid("admin");
 		schcategoryB.setCatecontent("출장");
-		int colorB = (int)(Math.random() * 16777215);
-		System.out.println("추가된 팀의 출장 카테고리 색깔: "+colorB);
+		schcategoryB.setColor("#3c8dbc");
 		schedao.InsertTeamCategory(schcategoryB);
 		
 		return "redirect:teamAdmin.htm";
