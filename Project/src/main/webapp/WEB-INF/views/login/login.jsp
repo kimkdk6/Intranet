@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:if test="${param.error != null}">
+	<c:set var="errorwin" value="${SPRING_SECURITY_LAST_EXCEPTION}"/>
+</c:if>  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
    <script>
@@ -10,6 +13,7 @@
     </script>
 <script type="text/javascript">
 $(function(){
+	
 	$("#loginbtn").click(function(){
 		if($("#j_username").val() == ""){
 			alert("로그인 아이디를 입력해주세요.");
@@ -23,6 +27,10 @@ $(function(){
 			$("#f").submit();
 		
 	});
+	
+	if('${errorwin}'){
+		alert("로그인 실패");
+	}
 });
 	
 </script>
@@ -30,15 +38,14 @@ $(function(){
 		<div class="login-logo">
 			Se<b>7</b>en International<br/>
 			
-			<c:if test="${param.error != null}">
-			<div style="font-size: 20px; color: red;">
+			<%--  <c:if test="${param.error != null}">
+				<div style="font-size: 20px; color: red;">
 				 로그인실패 
 				 <c:if test="${SPRING_SECURITY_LAST_EXCEPTION != null}">
-				 	이유 : <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}" />
+				 	이유 : <c:out value="${SPRING_SECURITY_LAST_EXCEPTION}" />
 				 </c:if>
-			</div>
-			
-		</c:if>  
+				</div>
+			</c:if>  --%>  
 		</div>
 		<!-- /.login-logo -->
 		<div class="login-box-body">
