@@ -19,9 +19,9 @@
            )
     </select>
     
-    <insert id="checkin"  parameterType="String">
-  	insert into attendance(userid,attdate,attstarttime) values( #{userid}, to_char (sysdate, 'YYYY-MM-DD'), sysdate )
-    </insert>
+    <update id="checkin"  parameterType="String">
+  	update attendance set attstarttime = sysdate where userid = #{userid}
+    </update>
     
     <update id="checkout" parameterType="String">							
 	update attendance set attendtime = sysdate where userid = #{userid} and to_char (attstarttime, 'YYYY-MM-DD') = to_char (sysdate, 'YYYY-MM-DD')
