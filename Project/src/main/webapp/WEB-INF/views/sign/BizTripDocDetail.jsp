@@ -3,6 +3,34 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <c:set var="signer1" value="${sign.signer1}" />
+<c:set var="curruser" value="${sessionScope.myemp.userid}"/>
+<c:set var="signuser" value="${sign.userid}"/>
+<c:set var="signst" value="${sign.signstate}"/>
+<c:choose>
+	<c:when test="${curruser == signuser}">
+		<c:choose>
+			<c:when test="${signst == 1}">
+				<c:set var="returnurl" value="signsList.htm?type=1&cpage=${cpage}"/>
+			</c:when>
+			<c:when test="${signst == 2}">
+				<c:set var="returnurl" value="signsList.htm?type=2&cpage=${cpage}"/>
+			</c:when>
+			<c:otherwise>
+				<c:set var="returnurl" value="SendsignsList.htm?cpage=${cpage}"/>
+			</c:otherwise>
+		</c:choose>
+	</c:when>
+	<c:otherwise>
+			<c:choose>
+				<c:when test="${signst == 1}">
+					<c:set var="returnurl" value="ReceiveSignList.htm?type=1&cpage=${cpage}"/>
+				</c:when>
+				<c:when test="${signst == 0}">
+					<c:set var="returnurl" value="ReceiveSignList.htm?type=2&cpage=${cpage}"/>
+				</c:when>
+			</c:choose>
+	</c:otherwise>
+</c:choose>
 <script language="javascript">
 	function divPrint()
 	{
@@ -72,7 +100,15 @@
 											<table border="0" cellspacing="0" cellpadding="0">
 												<tbody>
 													<tr>
-														
+														<td><a href="${returnurl}">
+																	<button type="button" class="btn bg-maroon" style="
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: 10px
+">목 록</button>
+															</a></td>
 														<td><a href="javascript:divPrint();">
 																	<button type="button" class="btn bg-orange" style="
     padding-top: 5px;

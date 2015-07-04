@@ -14,6 +14,12 @@
            $.backstretch("<%=request.getContextPath()%>/resources/img/bg.jpg", {speed: 500});
             --%>
             
+            $('#checkuserid').click(function(){
+				//사번 중복 확인 버튼을 누르면
+				//'Popup_Empno.jsp' 팝업창 오픈
+				open('Popup_Empno.jsp', 'checkEmpno', 'width=500 height=200');
+			});
+            
             
             
             
@@ -121,6 +127,7 @@
             <div class="form-group has-feedback">
                <input type="text" name="userid" class="form-control" placeholder="Id" id="joinId" />
                <span id="inputId" class="glyphicon glyphicon-user form-control-feedback"></span>
+               <input class="btn btn-lg btn-danger btn-block" type="button" value="중복확인" id="checkuserid">
             </div>
             <div class="form-group has-feedback">
                <input type="password" name="emppwd" class="form-control" placeholder="Password" />

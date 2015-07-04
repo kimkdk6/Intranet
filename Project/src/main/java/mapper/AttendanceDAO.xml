@@ -54,7 +54,7 @@
            join lateness l on e.userid = l.userid
            where to_char (l.attdate, 'YYYY-MM-DD') = '${param1}-${param2}-${param3}' and d.deptcode=100
 	</select>
-	
+	  
 	<select id="devellateness" parameterType="String" resultType="int" >
 			select count(*) from emp e join dept d on e.deptcode = d.deptcode
            join lateness l on e.userid = l.userid

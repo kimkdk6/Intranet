@@ -55,27 +55,27 @@
 									color="#666666"> <c:choose>
 											<c:when test="${signtype == 1}">
 												<a
-													href="${pageContext.request.contextPath}/sign/DraftingDetail.htm?docnum=${n.docnum}">
+													href="${pageContext.request.contextPath}/sign/DraftingDetail.htm?docnum=${n.docnum}&cpage=${paging.currentPage}">
 													${n.docnum} </a>
 											</c:when>
 											<c:when test="${signtype == 2}">
 												<a
-													href="${pageContext.request.contextPath}/sign/HolidayDocDetail.htm?docnum=${n.docnum}">
+													href="${pageContext.request.contextPath}/sign/HolidayDocDetail.htm?docnum=${n.docnum}&cpage=${paging.currentPage}">
 													${n.docnum} </a>
 									</c:when>
 											<c:when test="${signtype == 3}">
 												<a
-													href="${pageContext.request.contextPath}/sign/OrderDocDetail.htm?docnum=${n.docnum}">
+													href="${pageContext.request.contextPath}/sign/OrderDocDetail.htm?docnum=${n.docnum}&cpage=${paging.currentPage}">
 													${n.docnum} </a>
 									</c:when>
 											<c:when test="${signtype == 4}">
 												<a
-													href="${pageContext.request.contextPath}/sign/BizTripDocDetail.htm?docnum=${n.docnum}">
+													href="${pageContext.request.contextPath}/sign/BizTripDocDetail.htm?docnum=${n.docnum}&cpage=${paging.currentPage}">
 													${n.docnum} </a>
 									</c:when>
 											<c:when test="${signtype == 5}">
 												<a
-													href="${pageContext.request.contextPath}/sign/BizTripRepDetail.htm?docnum=${n.docnum}">
+													href="${pageContext.request.contextPath}/sign/BizTripRepDetail.htm?docnum=${n.docnum}&cpage=${paging.currentPage}">
 													${n.docnum} </a>
 											</c:when>
 										</c:choose>
