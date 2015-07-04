@@ -1,8 +1,7 @@
-<%@page import="java.util.ArrayList"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
 
 <script type="text/javascript">
 
@@ -26,15 +25,15 @@
 
 
 function go_pop_message(url){
-	window.open(url,"new","width=550, height=550, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
+	window.open(url,"new","width=500, height=450, resizable=yes, scrollbars=no, status=no, location=no, directories=no;");
 }
 </script>
 
 <table height="400px" width="500px">
 		<tr>
-			<td colspan="2" style="border-bottom: 2px solid #0469AF"><h4>${emp.ename}님의 사원정보</h4></td>
+			<td align="center" colspan="2" style="border-bottom: 2px solid #0469AF"><h4>${emp.ename}님의 사원정보</h4></td>
 		</tr>
-		<tr>
+		<tr style="background-image: url('../resources/img/bg.jpg');">
 			<td>
 				<table height="300px" width="200px">
 					<tr height="220px">
@@ -45,14 +44,17 @@ function go_pop_message(url){
 									<img width="130px" height="146" src="../Upload/ProfilePhoto/${empinfo.userphoto}">
 								</c:when>
 
-								<c:otherwise>
-									<img width="130px" height="146" src="../resources/img/pic_bg.gif" id="imageArea">
-								</c:otherwise>
+								<!-- <c:otherwise>
+									<img width="130px" height="146" src="../resources/img/anony.png" id="imageArea">
+								</c:otherwise> -->
 							</c:choose>
 						</td>
 					</tr>
 					<tr>
-						<td align="center" style="background-image: url('img/배경2.png');">" ${member.p_content} "</td>
+						<!-- <td align="center" style="background-image: url('../resources/img/7inter_logo.PNG');"></td> -->
+						<td align="center">
+							<b>정직원</b>
+						</td>
 					</tr>
 				</table>
 			</td>
