@@ -89,9 +89,18 @@ public class Joincontroller {
 		}
       
       EmpDAO empDAO = sqlSession.getMapper(EmpDAO.class);
+      //System.out.println("aaaaaaaaa" + empinfo.getUseraddr());
  
+      String useraddr = request.getParameter("useraddr");
+      String useraddr2 = request.getParameter("useraddr2");
+      String FinalUseraddr = useraddr + " " + useraddr2;
+      empinfo.setUseraddr(FinalUseraddr);
       
-    
+      
+      //System.out.println(useraddr2);
+      
+      
+      
       empDAO.joinMember(emp);
       empDAO.joinMemberInfo(empinfo);
       
