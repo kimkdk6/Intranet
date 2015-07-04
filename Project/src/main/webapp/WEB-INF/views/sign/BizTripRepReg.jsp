@@ -907,8 +907,8 @@
 																cellpadding="0" class="tbl_appreport">
 																<thead>
 																	<tr>
-																		<td align="center" width="22%" class="title"
-																			bgcolor="F1F7F7" style="border: solid 1px #C0BFC1;">날짜</td>
+																		<!-- <td align="center" width="22%" class="title"
+																			bgcolor="F1F7F7" style="border: solid 1px #C0BFC1;">날짜</td> -->
 																		<td align="center" width="15%" class="title"
 																			bgcolor="F1F7F7" style="border: solid 1px #C0BFC1;">지출내역</td>
 
@@ -1047,7 +1047,7 @@
 		});
 		
 		
-		$( "#bizdate1").datepicker({
+		/* $( "#bizdate1").datepicker({
 	        changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
 	        changeYear: true, // 년을 바꿀 수 있는 셀렉트 박스를 표시한다.
 	        minDate: '-100y', // 현재날짜로부터 100년이전까지 년을 표시한다.
@@ -1113,14 +1113,14 @@
 	        showMonthAfterYear: true , // 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다. 
 	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], // 요일의 한글 형식.
 	        monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] // 월의 한글 형식.
-		});
-	});
+		}); */
+	}); 
 
 	$('#addline').click(function() {
 		var contents ='';
 		var idx = $('#detail_table > tbody > tr').length;
 		contents += '<tr height="27" align="center">';
-		contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" id="bizdate" name="costlist['+idx+'].bizdate" class="bizdate1" style="width: 90%;" value=""></td>';
+		/* contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" id="bizdate" name="costlist['+idx+'].bizdate" class="bizdate1" style="width: 90%;" value=""></td>'; */
 		contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" name="costlist['+idx+'].bizcostdetail" id="bizcostdetail" class="bizcostdetail" style="text-align: right; width: 90%"></td>';
 		contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" id="biznote" name="costlist['+idx+'].biznote" class="biznote" style="text-align: right; width: 90%" ></td>';
 		contents += '<td class="item" style="border: solid 1px #C0BFC1; padding-top: 3px; padding-bottom: 3px;"><input type="text" id="bizcost" name="costlist['+idx+'].bizcost" class="bizcost" value="0" style="width: 90%" ></td>';

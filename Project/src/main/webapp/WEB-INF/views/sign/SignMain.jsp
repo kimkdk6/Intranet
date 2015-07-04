@@ -137,7 +137,7 @@
 					<th style="width: 75px">기안일</th>
 					<th style="width: 75px">결재완료수</th>
 					<th style="width: 75px">상태</th>
-					<th style="width: 75px">현재 결재자</th>
+					<!-- <th style="width: 75px">현재 결재자</th> -->
 					<th style="width: 75px">제목</th>
 				</tr>
 				<c:choose>
@@ -214,8 +214,8 @@
 										</c:when>
 									</c:choose>	
 									</font></td>
-								<td width="70" class="title bb1 br1 p3007"><font
-									color="#666666">${s.signer1}</font></td>
+								<%-- <td width="70" class="title bb1 br1 p3007"><font
+									color="#666666">${s.signer1}</font></td> --%>
 								<td width="200" class="title bb1 p3007"><font
 									color="#666666">${s.signtitle}</font></td>
 							</tr>

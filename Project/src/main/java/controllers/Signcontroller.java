@@ -266,7 +266,7 @@ public class Signcontroller {
 
 	// 기안서 상세 페이지 보기
 	@RequestMapping(value = "DraftingDetail.htm", method = RequestMethod.GET)
-	public String DraftingDetail(String docnum, int cpage, Model model)
+	public String DraftingDetail(String docnum,@RequestParam(value="cpage", defaultValue="1") int cpage, Model model)
 			throws ClassNotFoundException, SQLException {
 		System.out.println("기안서 상세페이지 보기");
 		List<Emp> signerlist = new ArrayList<Emp>();
@@ -555,7 +555,7 @@ public class Signcontroller {
 	
 	// 발주서 상세 페이지 보기
 	@RequestMapping(value = "OrderDocDetail.htm", method = RequestMethod.GET)
-	public String OrderDocDetail(String docnum, int cpage, Model model)
+	public String OrderDocDetail(String docnum,@RequestParam(value="cpage", defaultValue="1") int cpage, Model model)
 			throws ClassNotFoundException, SQLException {
 		System.out.println("발주서 상세페이지 보기");
 		List<Emp> signerlist = new ArrayList<Emp>();
@@ -663,7 +663,7 @@ public class Signcontroller {
 	
 	// 휴가계 상세 페이지 보기
 	@RequestMapping(value = "HolidayDocDetail.htm", method = RequestMethod.GET)
-	public String HolidayDocDetail(String docnum, int cpage, Model model)
+	public String HolidayDocDetail(String docnum,@RequestParam(value="cpage", defaultValue="1") int cpage, Model model)
 			throws ClassNotFoundException, SQLException {
 		System.out.println("휴가계 상세페이지 보기");
 		List<Emp> signerlist = new ArrayList<Emp>();
@@ -773,7 +773,7 @@ public class Signcontroller {
 	
 	// 출장 신청서 상세 페이지 보기
 	@RequestMapping(value = "BizTripDocDetail.htm", method = RequestMethod.GET)
-	public String BizTripDocDetail(String docnum, int cpage, Model model)
+	public String BizTripDocDetail(String docnum,@RequestParam(value="cpage", defaultValue="1") int cpage, Model model)
 			throws ClassNotFoundException, SQLException {
 		System.out.println("출장 신청서 상세페이지 보기");
 		List<Emp> signerlist = new ArrayList<Emp>();
@@ -829,7 +829,7 @@ public class Signcontroller {
 		return "sign.BizTripRepReg";
 	}
 
-	// 출장 신청서 작성
+	// 출장 결과 보고서 작성
 	@Transactional
 	@RequestMapping(value = "BizTripRepReg.htm", method = RequestMethod.POST)
 	public String BizTripRepReg(Sign sign, Biztriprep biztriprep, Biztripcost biztripcost,
@@ -891,7 +891,7 @@ public class Signcontroller {
 	
 	// 출장 결과 보고서 상세 페이지 보기
 	@RequestMapping(value = "BizTripRepDetail.htm", method = RequestMethod.GET)
-	public String BizTripRepDetail(String docnum, int cpage, Model model)
+	public String BizTripRepDetail(String docnum,@RequestParam(value="cpage", defaultValue="1") int cpage, Model model)
 			throws ClassNotFoundException, SQLException {
 		System.out.println("출장 결과 보고서 상세페이지 보기");
 		List<Emp> signerlist = new ArrayList<Emp>();

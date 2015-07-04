@@ -7,8 +7,8 @@ import java.util.List;
 public class Biztripcost {
 	private int docnum; // 문서번호
 	private int bizcostnum; // 경비내역번호
-	private String bizdate; // 출장날짜
-	private String bizcostdetail; // 지출내역
+	/*private String bizdate; // 출장날짜
+*/	private String bizcostdetail; // 지출내역
 	private String biznote; // 비고
 	private int bizcost; // 금액
 	
@@ -16,11 +16,11 @@ public class Biztripcost {
 	
 	public Biztripcost() {}
 
-	public Biztripcost(int docnum, int bizcostnum, String bizdate, String bizcostdetail,
+	public Biztripcost(int docnum, int bizcostnum, String bizcostdetail,
 			String biznote, int bizcost, List<Biztripcost> costlist) {
 		this.docnum = docnum;
 		this.bizcostnum = bizcostnum;
-		this.bizdate = bizdate;
+		/*this.bizdate = bizdate;*/
 		this.bizcostdetail = bizcostdetail;
 		this.biznote = biznote;
 		this.bizcost = bizcost;
@@ -43,13 +43,13 @@ public class Biztripcost {
 		this.bizcostnum = bizcostnum;
 	}
 
-	public String getBizdate() {
+	/*public String getBizdate() {
 		return bizdate;
 	}
 
 	public void setBizdate(String bizdate) {
 		this.bizdate = bizdate;
-	}
+	}*/
 
 	public String getBizcostdetail() {
 		return bizcostdetail;
@@ -87,7 +87,7 @@ public class Biztripcost {
 	@Override
 	public String toString() {
 		return "Biztripcost [docnum=" + docnum + ", bizcostnum=" + bizcostnum
-				+ ", bizdate=" + bizdate + ", bizcostdetail=" + bizcostdetail
+				+ ", bizcostdetail=" + bizcostdetail
 				+ ", biznote=" + biznote + ", bizcost=" + bizcost
 				+ ", costlist=" + costlist + "]";
 	}

@@ -237,8 +237,8 @@
 	
 	<!-- 출장 경비 내역 작성 -->
 	<insert id="insertBizTripCost" parameterType="dto_vo.Sign.Biztripcost">
-		insert into biztripcost
-		values((select NVL(MAX(TO_NUMBER(docnum)), 0) from sign), #{bizdate},(select NVL(MAX(TO_NUMBER(bizcostnum))+1, 0) from biztripcost),
+		insert into biztripcost(DOCNUM, BIZCOSTNUM, BIZCOSTDETAIL, BIZNOTE, BIZCOST)
+		values((select NVL(MAX(TO_NUMBER(docnum)), 0) from sign), (select NVL(MAX(TO_NUMBER(bizcostnum))+1, 0) from biztripcost),
 				#{bizcostdetail}, #{biznote, jdbcType=VARCHAR}, #{bizcost})
 	</insert>
 	

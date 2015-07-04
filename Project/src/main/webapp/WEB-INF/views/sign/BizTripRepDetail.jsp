@@ -614,9 +614,9 @@
 
 
 																					<tr>
-																						<td align="center" width="22%" class="title"
+																						<!-- <td align="center" width="22%" class="title"
 																							bgcolor="F1F7F7"
-																							style="border: solid 1px #C0BFC1;">날짜</td>
+																							style="border: solid 1px #C0BFC1;">날짜</td> -->
 																						<td align="center" width="15%" class="title"
 																							bgcolor="F1F7F7"
 																							style="border: solid 1px #C0BFC1;">지출내역</td>
@@ -630,8 +630,8 @@
 																					</tr>
 																					<c:forEach var="costlist" items="${biztripcost}">
 																						<tr height="27" align="center">
-																							<td class="item" rel="fee"
-																								style="border: solid 1px #C0BFC1;">${costlist.bizdate}</td>
+																							<%-- <td class="item" rel="fee"
+																								style="border: solid 1px #C0BFC1;">${costlist.bizdate}</td> --%>
 																							<td class="item" rel="fee"
 																								style="border: solid 1px #C0BFC1;">${costlist.bizcostdetail}</td>
 																							<td class="item" rel="fee"
