@@ -5,13 +5,13 @@
 
 <%
      String yy = request.getParameter("yy");
-	String mm = request.getParameter("mm");
-	String dd = request.getParameter("dd");
-	GregorianCalendar now = new GregorianCalendar();
-	String date = String.format("%TF", now);
+   String mm = request.getParameter("mm");
+   String dd = request.getParameter("dd");
+   GregorianCalendar now = new GregorianCalendar();
+   String date = String.format("%TF", now);
 %>
 
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugins/jqwidgets/styles/jqx.base.css" type="text/css" />
+   <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/plugins/jqwidgets/styles/jqx.base.css" type="text/css" />
     <script type="text/javascript" src="<%=request.getContextPath()%>/resources/plugins/jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/resources/plugins/jqwidgets/jqxdraw.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/resources/plugins/jqwidgets/jqxchart.core.js"></script>
@@ -60,10 +60,10 @@
   
 
     $(function() {
-    	 var nowday = "";
-    	if(<%=yy%>!=null){
-    		nowday = <%=yy%>+"-"+<%=mm%>+"-"+<%=dd%>;
-    	} 
+        var nowday = "";
+       if(<%=yy%>!=null){
+          nowday = <%=yy%>+"-"+<%=mm%>+"-"+<%=dd%>;
+       } 
     $.datepicker.regional['ko'] = { // Default regional settings
         closeText: '닫기',
         prevText: '이전달',
@@ -84,14 +84,14 @@
 
     $.datepicker.setDefaults($.datepicker.regional['ko']);
     $('#datepicker').datepicker({
-    	changeMonth: true,
+       changeMonth: true,
         changeYear: true,
         onSelect: function(selectedDate) {
-        	var strArr = selectedDate.split('-');
+           var strArr = selectedDate.split('-');
             window.location.href = "<%=request.getContextPath() %>/attendance/AttendanceCheck.htm?yy="+strArr[0]+"&mm="+strArr[1]+"&dd="+strArr[2];
            
         }
-		
+      
     }).datepicker( "setDate", nowday );
   
     $(document).ready(function () {
@@ -185,16 +185,18 @@
 </script>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <section class="content-header">
-	<h1>
-		 근태 관리 <small>Se7en Internatinal</small>
-	</h1>
-	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li class="active">근태 현황</li>
-	</ol><hr style=	"border-color: white;" >
-</section>
-
+  <tr>
+    <td height="40">
+    <!--타이틀TB START-->
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="360" align="left" class="title_txt" style="padding:5px 0 0 14px;">근태현황</td>
+        <td width="" align="right" style="padding:0 12px 0 0;">&nbsp;</td>
+      </tr>
+    </table>
+    <!--타이틀TB END-->
+    </td>
+  </tr>
   <tr>
     <td height="30" bgcolor="#ececec" style="border-bottom:1px #c9c9c9 solid;border-top:1px #c9c9c9 solid;padding:0 0 0 12px;">
       <table style="width=100%">
@@ -211,7 +213,7 @@
     <table style="width: 100%">
       <tr>
         <td  style="padding-right:15px;" valign="top">
-		<div id="datepicker"></div>
+      <div id="datepicker"></div>
         </td>
         <td >
            <div id="jqxGrid"></div>
@@ -264,4 +266,3 @@
     <td height="10"></td>
   </tr>
 </table>
-
