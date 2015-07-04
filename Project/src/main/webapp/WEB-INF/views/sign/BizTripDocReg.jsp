@@ -789,13 +789,16 @@
 																								align="center"
 																								style="border: solid 1px #C0BFC1;">기간</td>
 																							<td width="" class="item" align="left"
-																								style="border: solid 1px #C0BFC1; padding-left: 7px;""><input
+																								style="border: solid 1px #C0BFC1; padding-left: 7px;"">
+																								<input
 																								type="text" name="bizstart" id="bizstart"
 																								readonly="" class="input_approval"
 																								style="width: 200px" maxlength="10">
 																								~ <input type="text" name="bizend" id="bizend"
 																								readonly="" class="input_approval"
-																								style="width: 200px" maxlength="10"></td>
+																								style="width: 200px" maxlength="10">
+																								<span id="vadate"></span>
+																							</td>
 																						</tr>
 																						<td class="title" bgcolor="F1F7F7" align="center"
 																							style="border: solid 1px #C0BFC1;">출장지</td>
@@ -922,5 +925,28 @@
 		        $( "#bizstart" ).datepicker( "option", "maxDate", selectedDate );
 		        }
 		}); 
+		
+		$('#bizend').change(function(){
+			console.log($('#bizstart').val());
+			console.log($(this).val());
+			
+			$.ajax({
+				url : "<%=request.getContextPath() %>/sign/CheckDate.htm",
+				type : "POST",
+				dataType : "json",
+				data : {startdate : $('#bizstart').val(), enddate : $('#bizend').val()},
+				success : function(data) {
+					 console.log("data"+data.result);
+					var msg ="";
+					if(data.result == 1){
+						msg = '출장이나 휴가 일정이 겹칩니다.';
+					}
+				 	$('#vadate').html('<font style="font-weight:bold; color:#FF0000">'+msg+'</font>'); 
+				},
+				error: function (xhr,Options,thrownError) {
+			    },
+				
+			});
+		});
 	});
 </script>

@@ -89,4 +89,9 @@ public interface SignDAO {
 	public int getTeamcode(String userid) throws ClassNotFoundException, SQLException;
 	public int getCateCode(int teamcode, String catecontent) throws ClassNotFoundException, SQLException;
 	public int addbiztrip(String userid, String attdate, String bizpur) throws ClassNotFoundException, SQLException;
+	
+	// 나의 모든 출장 가져오기
+	public List<String> allmyBiz(String userid) throws ClassNotFoundException, SQLException;
+	// 나의 모든 휴가 가져오기
+	public List<String> allmyHol(String userid) throws ClassNotFoundException, SQLException;
 }

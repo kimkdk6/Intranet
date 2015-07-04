@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.security.Principal;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -30,6 +31,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.servlet.View;
 
 import dao.AttendanceDAO;
 import dao.ScheduleDAO;
@@ -57,6 +59,8 @@ public class Signcontroller {
 
 	@Autowired
 	private SqlSession sqlsession;
+	@Autowired
+	private View jsonView;
 	
 	// 전자 결재 메인 페이지 보기
 	@RequestMapping(value = "SignMain.htm")
@@ -621,6 +625,7 @@ public class Signcontroller {
 		int totalsign=0;
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
 		
+				
 		// 결재인 넣기 
 		sign.setSigner1(principal.getName());
 		sign.setUserid(principal.getName());
@@ -925,6 +930,64 @@ public class Signcontroller {
 		return "sign.BizTripRepDetail";
 	}
 
+	// 휴가랑 출장 날짜가 겹치는지 
+	@Transactional
+	@RequestMapping(value = "CheckDate.htm", method = RequestMethod.POST)
+	public View CheckDate(Principal principal, String startdate, String enddate, Model model)
+			throws ClassNotFoundException, SQLException, IOException {
+		System.out.println("날짜 확인");
+		int result = 0; // 날짜가 존재하면 1 , 존재하지 않으면 0
+		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
+		System.out.println("선택된 시작날짜: "+startdate);	
+		System.out.println("선택된 종료날짜: "+enddate);
+		// holdate 목록
+		List<String> holdates = signdao.allmyHol(principal.getName());
+		List<String> bizdates = signdao.allmyBiz(principal.getName());
+		// 날짜마다 계산하기 시발
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+	    try {
+	        Date sd = df.parse(startdate);
+	        Date ed = df.parse(enddate);
+	        
+	        long diff = ed.getTime() - sd.getTime();
+	        long diffDays = diff / (24 * 60 * 60 * 1000)+1;
+	        
+	        Calendar cal = Calendar.getInstance();
+	        cal.setTime(sd);
+	        // 휴가 검사
+	        for(int i=1; i<diffDays; i++){
+	        	 cal.add(Calendar.DATE, 1);
+	        	 String hd = df.format(cal.getTime());
+	        	 for(String d : holdates){
+	      			System.out.println(d);
+	      			if(startdate.equals(d) || hd.equals(d)){
+	      				result = 1;
+	      				break;
+	      			}
+	      		}
+	        }
+	        // 출장 검사
+	        for(int i=1; i<diffDays; i++){
+	        	 cal.add(Calendar.DATE, 1);
+	        	 String hd = df.format(cal.getTime());
+	        	 for(String d : bizdates){
+	      			System.out.println(d);
+	      			if(startdate.equals(d) || hd.equals(d)){
+	      				result = 1;
+	      				break;
+	      			}
+	      		}
+	        }
+	        
+	    } catch (ParseException e) {
+	        e.printStackTrace();
+	    }
+	        
+		System.out.println("result: "+result);
+		model.addAttribute("result", result);
+		return jsonView;
+	}
+	
 	// 프린트 페이지 보기
 	@RequestMapping(value = "PrintPage.htm", method = RequestMethod.GET)
 	public String PrintPage(Model model)

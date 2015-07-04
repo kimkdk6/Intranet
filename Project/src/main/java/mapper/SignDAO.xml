@@ -290,4 +290,16 @@
     	insert into biztrip(userid, attdate, btreason) values( #{param1}, #{param2}, #{param3})
     </insert>
  	
+ 	<!-- 나의 출장 날짜 리스트 -->
+ 	<select id="allmyBiz" resultType="String">
+ 		select to_char(attdate, 'YYYY-MM-DD') 
+		from biztrip 
+		where userid = #{userid} and attdate > sysdate
+ 	</select>
+ 	<!-- 나의 휴가 날짜 리스트 -->
+ 	<select id="allmyHol" resultType="String">
+ 		select to_char(attdate, 'YYYY-MM-DD')
+		from holiday
+		where userid = #{userid} and attdate > sysdate
+ 	</select>
 </mapper>

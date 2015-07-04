@@ -775,17 +775,17 @@
 																						<td width="120" class="title" bgcolor="F1F7F7"
 																							align="center" style="border: solid 1px #C0BFC1;">휴가기간</td>
 																						<td width="" class="item" align="left"
-																							style="border: solid 1px #C0BFC1; padding-left: 7px;"">
+																							style="border: solid 1px #C0BFC1; padding-left: 7px;">
 																					    <input
 																							type="text" name="holstart" id="holstart" 
 																							class="input_approval" style="width: 200px"> ~ 
 																						<input type="text"
 																							name="holend" id="holend" class="input_approval"
 																							style="width: 200px" >
-																							&nbsp; <span id="vadate"
-																							style="font-weight: bold; color: #000"> </span> <span
-																							style="font-weight: bold; color: #000">
-																								</span></td>
+																							&nbsp; 
+																						<span id="vadate"
+																							></span> 
+																						</td>
 																					</tr>
 																					<tr height="35">
 																						<td class="title" bgcolor="F1F7F7" align="center"
@@ -924,5 +924,28 @@
 		        $( "#holstart" ).datepicker( "option", "maxDate", selectedDate );
 		        }
 		}); 
+		
+		$('#holend').change(function(){
+			console.log($('#holstart').val());
+			console.log($(this).val());
+			
+			$.ajax({
+				url : "<%=request.getContextPath() %>/sign/CheckDate.htm",
+				type : "POST",
+				dataType : "json",
+				data : {startdate : $('#holstart').val(), enddate : $('#holend').val()},
+				success : function(data) {
+					 console.log("data"+data.result);
+					var msg ="";
+					if(data.result == 1){
+						msg = '출장이나 휴가 일정이 겹칩니다.';
+					}
+				 	$('#vadate').html('<font style="font-weight:bold; color:#FF0000">'+msg+'</font>'); 
+				},
+				error: function (xhr,Options,thrownError) {
+			    },
+				
+			});
+		});
 	});
 </script>
