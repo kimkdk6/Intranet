@@ -248,14 +248,14 @@ public class Attendancecontroller {
        /* List<Attendance> Attendance = commute.getAttendance(userid);
         System.out.println("AAAAAAAAAA" + Attendance);*/
         
-        /*System.out.println("BBBBBB" + Biztrip.toString());
+        System.out.println("BBBBBB" + Biztrip.toString());
         System.out.println("HHHHHH" + Holiday.toString());
         
         System.out.println("getLeave : " + Leave.toString());
         System.out.println("getAbsence : " + Absence.toString());
         System.out.println("getLateness : " + Lateness.toString());
         System.out.println("getBiztrip : " + Biztrip.toString());
-        System.out.println("getHoliday : " + Holiday.toString());*/
+        System.out.println("getHoliday : " + Holiday.toString());
         
         
 		//model.addAttribute("schedule", schedule);

@@ -193,7 +193,8 @@
                  } ] );
                });
                
-            }
+            },
+            error:function(data){console.log("error발생");}
             //error:function(data){alert("Error 발생");}
          });
         $.ajax({
@@ -204,7 +205,7 @@
               success:function( data ){
                  $.each(data.Absence, function(){
                    $("#calendar").fullCalendar( 'addEventSource', [ {
-                          title : this.abreason,
+                          //title : this.abreason,
                           start : new Date(this.attdate), //년,월,일,시,분
                           end : new Date(this.attdate), //년,월,일,시,분
                           backgroundColor : "#f39c12", 
@@ -212,7 +213,8 @@
                    } ] );
                  });
                  
-              }
+              },
+              error:function(data){console.log("error발생");}
               //error:function(data){alert("Error 발생");}
            });      
         $.ajax({
@@ -231,7 +233,8 @@
                  } ] );
                });
                
-            }
+            },
+            error:function(data){console.log("error발생");}
             //error:function(data){alert("Error 발생");}
          });      
         $.ajax({
@@ -250,7 +253,8 @@
                  } ] );
                });
                
-            }
+            },
+            error:function(data){console.log("error발생");}
             //error:function(data){alert("Error 발생");}
          });
         $.ajax({
@@ -268,8 +272,8 @@
                         borderColor : "#dd4b39", 
                  } ] );
                });
-            }
-           // error:function(data){alert("Error 발생");}
+            },
+           error:function(data){console.log("error발생");}
          });
 
    });
