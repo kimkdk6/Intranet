@@ -101,47 +101,29 @@
 												<tbody>
 													<tr>
 													<td><a href="${returnurl}">
-																	<button type="button" class="btn bg-maroon" style="
+																	<button type="button" class="btn btn-block btn-default btn-flat" style="
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 15px;
     padding-right: 15px;
-    margin-right: 10px
+    	
 ">목 록</button>
 															</a></td>
 														<td><a href="javascript:divPrint();">
-																<button type="button" class="btn bg-orange" style="
+																<button type="button" class="btn btn-block btn-default btn-flat" style="
     padding-top: 5px;
     padding-bottom: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
-">프린트</button>
+  padding-left: 11px;
+    padding-right: 11px;
+    margin-left: 10px
+">인 쇄</button>
 															</a>
 														</td>
 													</tr>
 												</tbody>
 											</table>
 										</td>
-										<td align="right" style="padding: 0 12px 0 0;">
-											<table border="0" cellspacing="0" cellpadding="0">
-												<tbody>
-													<tr>
-															<c:set var="useridcheck" value="${sign.userid}" />
-															<c:set var="checkid" value="${sessionScope.myemp.userid}" />
-															<c:if
-																test="${!useridcheck.equals(checkid) && sign.signstate==0}">
-																<td><a href="javascript:myApp('F')"><span
-																		style="font-size: 20px;"
-																		class="label pull-right bg-green"> 결 재</span></a></td>
-																<td width="5"></td>
-																<td><a href="javascript:myApp('R')"><span
-																		style="font-size: 20px;"
-																		class="label pull-right bg-red"> 반 려</span></a></td>
-															</c:if>
-														</tr>
-												</tbody>
-											</table>
-										</td>
+										
 									</tr>
 								</tbody>
 							</table> <!--기능TB END-->
@@ -163,7 +145,7 @@
 													<tr>
 														<td width="120"></td>
 														<td class="dochead" valign="top"
-															style="font-size: 30px; padding-left: 400px">발주서</td>
+															style="font-size: 30px; padding-left: 330px">발주서</td>
 												</tbody>
 											</table>
 										</td>
@@ -781,6 +763,7 @@
 																					</tr>
 																				</tbody>
 																			</table>
+																			
 																			<table width="100%" class="noborder" cellspacing="0"
 																				cellpadding="0">
 																				<tbody>
@@ -789,6 +772,7 @@
 																					</tr>
 																				</tbody>
 																			</table>
+																			
 																		</td>
 																	</tr>
 																</tbody>
@@ -808,6 +792,26 @@
 								</tbody>
 							</table>
 							</div>
+							<td>
+											<table border="0" cellspacing="0" cellpadding="0" >
+												<tbody>
+													<tr >
+															<c:set var="useridcheck" value="${sign.userid}" />
+															<c:set var="checkid" value="${sessionScope.myemp.userid}" />
+															<c:if
+																test="${!useridcheck.equals(checkid) && sign.signstate==0}">
+																<td><a href="javascript:myApp('F')"><span
+																		style="font-size: 20px; margin-left: 850px; margin-bottom: 50px"
+																		class="label pull-right bg-navy" > 결 재</span></a></td>
+																<td width="5"></td>
+																<td><a href="javascript:myApp('R')"><span
+																		style="font-size: 20px; margin-bottom: 50px;"
+																		class="label pull-right bg-red"> 반 려</span></a></td>
+															</c:if>
+														</tr>
+												</tbody>
+											</table>
+										</td>
 					<tr>
 						<td height="30"></td>
 					</tr>
