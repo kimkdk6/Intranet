@@ -119,4 +119,7 @@ public class Joincontroller {
       return jsonView;
    }
    
+   /*@RequestMapping(value="checkId.htm")
+   public checkId()*/
+   
 }

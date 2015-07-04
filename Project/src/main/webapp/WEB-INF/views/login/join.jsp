@@ -8,6 +8,92 @@
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
 
  <script>
+ 
+ 	   /* function CheckPwd(userid, emppwd, emppwd2) {
+ 		   if(emppwd.value != emppwd2.value) {
+ 			   alert("입력한 비밀번호와 일치하지 않습니다");
+ 			   emppwd.value="";
+ 			   emppwd2.value="";
+ 			   emppwd.focus();
+ 			   return false;
+ 		   }
+ 		   
+ 		   if(emppwd.value.length < 6) {
+ 			   alert("비밀번호는 문자, 숫자, 특수문자의 조합으로 6~16자리로 입력해주세요.");
+ 			   emppwd.value="";
+			   emppwd2.value="";
+			   emppwd.focus();
+			   return false;
+ 		   }
+ 		   
+ 		   if(!emppwd.value.match(/([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])/)) {
+ 			   alert("비밀번호는 문자, 숫자, 특수문자의 조합으로 6~16자리로 입력해주세요.");
+ 			   emppwd.value="";
+			   emppwd2.value="";
+			   emppwd.focus();
+ 		       return false;
+ 		   }
+ 		   
+ 		   if(userid.value.indexOf(emppwd) > -1) {
+ 			   alert("비밀번호에 아이디를 사용할 수 없습니다.");
+ 			   emppwd.value="";
+			   emppwd2.value="";
+			   emppwd.focus();
+ 		       return false;
+ 		   }
+ 		   
+ 		   var SamePass_0 = 0; //동일문자 카운트
+ 		   var SamePass_1 = 0; //연속성(+) 카운드
+ 		   var SamePass_2 = 0; //연속성(-) 카운드
+
+ 		    
+ 		   var chr_pass_0;
+ 		   var chr_pass_1;
+ 		   var chr_pass_2;
+ 		   
+ 		   for(var i=0; i<emppwd.value.length; i++) {
+ 			  chr_pass_0 = emppwd.value.charAt(i);
+ 		      chr_pass_1 = emppwd.value.charAt(i+1);
+ 		      
+ 		      //동일문자 카운트
+ 		      if(chr_pass_0 == chr_pass_1) {
+ 		    	  SamePass_0 = SamePass_0 + 1
+ 		      }
+ 		      
+ 		      chr_pass_2 = emppwd.value.charAt(i+2);
+ 		      
+ 		      // 연속성 카운트 (+)
+ 		      if(chr_pass_0.charCodeAt(0) - chr_pass_1.charCodeAt(0) == 1 && chr_pass_1.charCodeAt(0) - chr_pass_2.charCodeAt(0) == 1) {
+ 	              SamePass_1 = SamePass_1 + 1
+ 	          }
+ 		      
+ 		      // 연속성 카운트(-)
+ 		      if(chr_pass_0.charCodeAt(0) - chr_pass_1.charCodeAt(0) == -1 && chr_pass_1.charCodeAt(0) - chr_pass_2.charCodeAt(0) == -1) {
+ 		    	 SamePass_2 = SamePass_2 + 1
+ 		      }
+ 		   }
+ 		   
+ 		   if(SamePass_0 > 1) {
+ 			   alert("동일문자를 3번 이상 사용할 수 없습니다.");
+ 			   emppwd.value="";
+			   emppwd2.value="";
+			   emppwd.focus();
+ 		       return false;
+ 		   }
+ 		   
+ 		  if(SamePass_1 > 1 || SamePass_2 > 1 ) {
+ 			  alert("연속된 문자열(123 또는 321, abc, cba 등)을\n 3자 이상 사용 할 수 없습니다.");
+ 			  emppwd.value="";
+			  emppwd2.value="";
+			  emppwd.focus();
+ 			  return false;
+ 		  }
+ 		  
+ 		  return true;
+ 	   } */
+ 
+ 
+  	   
        $(function() {
            
            <%-- 해결좀
@@ -15,13 +101,10 @@
             --%>
             
             $('#checkuserid').click(function(){
-				//사번 중복 확인 버튼을 누르면
-				//'Popup_Empno.jsp' 팝업창 오픈
-				open('Popup_Empno.jsp', 'checkEmpno', 'width=500 height=200');
+				// 아이디 중복 확인 버튼을 누르면
+				// open('Popup_Empno.jsp', 'checkEmpno', 'width=500 height=200');
+				alert()
 			});
-            
-            
-            
             
             
            /*  function idCheckAjax(){
@@ -112,6 +195,98 @@
                yearRange: 'c-70:c+0'
            });
       });
+ 	   
+ 	   function memberChk() {
+ 		   var check = document.frm;
+ 		   
+ 		   if(check.userid.value == "") {
+ 			   alert("아이디 입력하세요");
+ 			   check.userid.focus();
+ 			   return false;
+ 		   }
+ 		   
+ 		   if(check.emppwd.value == "") {
+ 			   alert("비밀번호를 입력하세요");
+ 			   check.emppwd.focus();
+ 			   return false;
+ 		   }
+ 		   
+ 		   if(check.emppwd2.value == "") {
+ 			   alert("비밀번호를 다시한번 입력해 주세요");
+ 			   check.emppwd2.focus();
+ 			   return false;
+ 		   }
+ 		   
+ 		   if(check.emppwd.value != check.emppwd2.value) {
+ 			   alert("비밀 번호가 다릅니다");
+ 			   check.emppwd.value == ""
+ 			   check.emppwd2.value == ""
+ 			   check.emppwd2.focus();
+ 			   return false;
+ 		   }
+ 		   
+ 		   if(check.ename.value == "") {
+ 			   alert("이름을 입력해 주세요");
+ 			   check.ename.focus();
+ 			   return false;
+ 		   }
+ 		   
+ 		   if(check.deptcode.value == "Department") {
+ 			   alert("부서를 선택해 주세요");
+ 			   check.deptcode.focus();
+ 			   return false;
+ 		   }
+ 		   
+ 		   if(check.teamcode.value == "Team") {
+ 			   alert("팀을 선택해 주세요");
+ 			   check.teamcode.focus();
+ 			   return false;
+ 		   }
+ 		   
+ 		   if(check.poscode.value == "Position") {
+ 			   alert("직급을 선택해 주세요");
+ 			   check.poscode.focus();
+ 			   return false;
+ 		   }
+ 		   
+ 		   if(check.useremail.value == "") {
+ 			   alert("이메일을 입력해 주세요");
+ 			   check.useremail.focus();
+ 			   return false;
+ 		   }
+ 		   
+ 		   if(check.birth.value == "") {
+ 			   alert("생년월일을 입력해 주세요");
+ 			   check.birth.focus();
+ 			   return false;
+ 		   }
+ 		   
+ 		   if(check.useraddr.value == "") {
+ 			   alert("주소를 입력해 주세요");
+ 			   check.useraddr.focus();
+ 			   return false;
+ 		   }
+ 		   
+ 		   if(check.usertel.value == "") {
+ 			   alert("전화번호를 입력해 주세요");
+ 			   check.usertel.focus();
+ 			   return false;
+ 		   }
+ 		   
+ 		   if(check.usermobile.value == "") {
+ 			   alert("휴대폰 번호를 입력해 주세요");
+ 			   check.usermobile.focus();
+ 			   return false;
+ 		   }
+ 		   
+ 		   if(check.hiredate.value == "") {
+ 			   alert("입사일을 입력해 주세요");
+ 			   check.hiredate.focus();
+ 			   return false;
+ 		   }
+ 		   
+ 		   check.submit();
+ 	   }
        
 </script>
 
@@ -121,16 +296,21 @@
       </div>
       <div class="register-box-body">
          <p class="login-box-msg">Register a new membership</p>
-         <form action="" method="post" enctype="multipart/form-data">
+         <form name="frm" action="" method="post" enctype="multipart/form-data">
             
             <!-- emp -->
             <div class="form-group has-feedback">
-               <input type="text" name="userid" class="form-control" placeholder="Id" id="joinId" />
+               <input type="text" name="userid" class="form-control" placeholder="Id" id="userid" />
                <span id="inputId" class="glyphicon glyphicon-user form-control-feedback"></span>
                <input class="btn btn-lg btn-danger btn-block" type="button" value="중복확인" id="checkuserid">
             </div>
             <div class="form-group has-feedback">
-               <input type="password" name="emppwd" class="form-control" placeholder="Password" />
+               <input type="password" name="emppwd" id="emppwd" class="form-control" placeholder="Password" />
+               <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            
+            <div class="form-group has-feedback">
+               <input type="password" name="emppwd2" id="emppwd2" class="form-control" placeholder="Password check" />
                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             
@@ -144,7 +324,7 @@
             </div>
             <!-- 부서,팀코드,직급코드 -->
             <div class="form-group has-feedback">
-               <select class="form-control" id="Department" name="deptcode">
+               <select class="form-control" id="Department" name="deptcode" onChange="deptselect(this)">
                   <option selected disabled="disabled">Department</option>
                   <c:forEach items="${DeptInfo}" var="d" varStatus="ds">
                      <option value="${d.deptcode}">${d.deptname}</option>   
@@ -192,11 +372,12 @@
                <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
             
-            <input type="file" name=file> 
+            <input type="file" name=file class="btn btn-back btn-xs"> 
             
             <div class="row1">
                <div class="join">
-                  <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+                  <!-- <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button> -->
+                  <input type="button" value="등록" onClick="memberChk()" class="btn btn-primary btn-block btn-flat" />
                </div>
             </div>
          </form>

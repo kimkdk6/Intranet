@@ -19,7 +19,7 @@
    
    
    
-   <select id="getEmp" resultType="dto_vo.Emp.Emp">
+   <!-- <select id="getEmp" resultType="dto_vo.Emp.Emp">
    	  select * from emp
    </select>
    
@@ -27,5 +27,5 @@
    	  select userid
 	  from emp
 	  where userid = =#{userid}
-   </select>
+   </select> -->
 </mapper>

@@ -20,6 +20,6 @@ public interface JoinDAO {
    // 팀 목록 가져오기
    List<Team> getTeamName( int deptcode ) throws ClassNotFoundException, SQLException;
    
-   // 사원 목록 가져와
-   List<Emp> getEmp() throws ClassNotFoundException, SQLException;
+   /*// 사원 목록 가져와
+   List<Emp> getEmp() throws ClassNotFoundException, SQLException;*/
 }
