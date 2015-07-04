@@ -222,11 +222,16 @@ public class Attendancecontroller {
               
         String userid = emp.getUserid();
 		String username = emp.getEname();
-		
+		System.out.println(emp.getPoscode());
         System.out.println("Commute userid : " + userid );
 		System.out.println("Commute ename : " + username);
 		
 		AttendanceDAO commute = sqlSession.getMapper(AttendanceDAO.class);
+		EmpDAO empdao = sqlSession.getMapper(EmpDAO.class);
+		
+		Emp getEmp = empdao.getEmp3(userid);
+		
+		String posname = getEmp.getPoscode();
 		
 		List<Leave> Leave = commute.getLeave(userid);
         List<Absence> Absence = commute.getAbsence(userid);
