@@ -268,7 +268,7 @@ public class Admincontroller {
 		// 팀 휴가 카테고리 추가
 		System.out.println("팀 코드: "+ admindao.getTeamcode(dept.getDeptcode()));
 		Schcategory schcategoryH = new Schcategory();
-		schcategoryH.setCatename(team.getTeamname()+":휴가");
+		schcategoryH.setCatename(team.getTeamname()+" : 휴가");
 		schcategoryH.setTeamcode(admindao.getTeamcode(dept.getDeptcode()));
 		schcategoryH.setUserid("admin");
 		schcategoryH.setCatecontent("휴가");
@@ -276,7 +276,7 @@ public class Admincontroller {
 		schedao.InsertTeamCategory(schcategoryH);
 		// 출장 카테고리
 		Schcategory schcategoryB = new Schcategory();
-		schcategoryB.setCatename(team.getTeamname()+":출장");
+		schcategoryB.setCatename(team.getTeamname()+" : 출장");
 		schcategoryB.setTeamcode(admindao.getTeamcode(dept.getDeptcode()));
 		schcategoryB.setUserid("admin");
 		schcategoryB.setCatecontent("출장");
@@ -318,8 +318,8 @@ public class Admincontroller {
 		int catecodeH = admindao.getTeamHolCate(teamcode);
 		int catecodeB = admindao.getTeamBizCate(teamcode);
 		System.out.println("catecodeH/B : "+catecodeH+"/"+catecodeB);
-		String catenameH = teamname+":휴가";
-		String catenameB = teamname+":출장";
+		String catenameH = teamname+" : 휴가";
+		String catenameB = teamname+" : 출장";
 		admindao.updateTeamCate(catecodeH, catenameH);
 		admindao.updateTeamCate(catecodeB, catenameB);
 		return "redirect:teamAdmin.htm";

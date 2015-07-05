@@ -40,6 +40,13 @@
 		//sign 유효성 검사
 		 function addsign(){
 			
+			 if ($("#vadate").text().length > 5) {
+					alert("휴가 날짜를 다시 선택하세요");
+					signform.bizstart.focus();
+					return false;
+				}
+				
+			
 			if (!signform.signtitle.value) {
 				alert("문서 제목을 입력하세요.");
 				signform.signtitle.focus();
