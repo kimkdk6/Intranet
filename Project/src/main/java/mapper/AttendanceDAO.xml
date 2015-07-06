@@ -40,13 +40,13 @@
     </select>
     
     <insert id="letereason"  parameterType="String">
-		insert into lateness(userid,attdate,ltreason) values (#{param1}, sysdate, #{param2})   
+		insert into lateness(userid,attdate,ltreason) values (#{param1}, to_char (sysdate, 'YYYY-MM-DD'), #{param2})   
 	</insert>
 	<select id="leavecheck" parameterType="String" resultType="String" >
 			select to_char (compend, 'HH24:MI:SS') from company where to_char (compend,'HH24') <![CDATA[ >  ]]> (select to_char (attendtime,'HH24') from attendance where userid = #{userid} and to_char (attdate, 'YYYY-MM-DD') = to_char (sysdate, 'YYYY-MM-DD') )
 	</select>
      <insert id="leavereason"  parameterType="String">
-		insert into leave(userid,attdate,lvreason) values (#{param1}, sysdate , #{param2})   
+		insert into leave(userid,attdate,lvreason) values (#{param1}, to_char (sysdate, 'YYYY-MM-DD'), #{param2})   
 	</insert> 
    
    <select id="offlateness" parameterType="String" resultType="int" >
