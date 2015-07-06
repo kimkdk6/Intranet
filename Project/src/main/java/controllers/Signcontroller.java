@@ -594,11 +594,20 @@ public class Signcontroller {
 
 	// 휴가계 작성 페이지 보기
 	@RequestMapping(value = "HolidayDocReg.htm", method = RequestMethod.GET)
-	public String HolidayDocReg(Model model) throws ClassNotFoundException,
+	public String HolidayDocReg(Model model, Principal principal) throws ClassNotFoundException,
 			SQLException {
 		System.out.println("휴가계 작성 페이지 열람");
-		// 부서
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
+		
+		//List<Sign> usignholbiz = signdao.UnsignedHolBiz(principal.getName());
+		
+	/*	if(usignholbiz.size() > 0){
+			return "  <script> "
+					+ "alert( '승인처리되지 않은 휴가계나 출장 신청서가 있습니다.' );"
+					+ "</script>";
+		}*/
+		
+		// 부서
 		List<Dept> dept = signdao.getDepts();
 		// 팀
 		List<Team> team = signdao.getTeams();
@@ -703,12 +712,21 @@ public class Signcontroller {
 
 	// 출장 신청서 작성 페이지 보기
 	@RequestMapping(value = "BizTripDocReg.htm", method = RequestMethod.GET)
-	public String BizTripDocReg(Model model) throws ClassNotFoundException,
+	@ResponseBody()
+	public String BizTripDocReg(Model model, Principal principal) throws ClassNotFoundException,
 			SQLException {
 		System.out.println("출장 신청서 작성 페이지 열람");
 		
 		// 부서
 		SignDAO signdao = sqlsession.getMapper(SignDAO.class);
+		//List<Sign> usignholbiz = signdao.UnsignedHolBiz(principal.getName());
+		
+		/*if(usignholbiz.size() > 0){
+			return "  <script> "
+					+ "alert( '승인처리되지 않은 휴가계나 출장 신청서가 있습니다.' );"
+					+ "</script>";
+		}*/
+		
 		List<Dept> dept = signdao.getDepts();
 		// 팀
 		List<Team> team = signdao.getTeams();

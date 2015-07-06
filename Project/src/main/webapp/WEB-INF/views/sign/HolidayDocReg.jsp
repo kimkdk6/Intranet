@@ -41,6 +41,12 @@
 <script type="text/javascript">
 		//sign 유효성 검사
 		function addsign(){
+			console.log($("#vadate").text().length);
+			if ($("#vadate").text().length > 5) {
+				alert("휴가 날짜를 다시 선택하세요");
+				signform.holstart.focus();
+				return false;
+			}
 			
 			if (!signform.signtitle.value) {
 				alert("문서 제목을 입력하세요.");
@@ -76,6 +82,8 @@
 				signform.users.focus();
 				return false;
 			}
+		    
+		  
 		    
 		    signform.submit();
 		    alert("전자 결재 문서 작성이 완료되었습니다.");
@@ -925,6 +933,8 @@
 		        }
 		}); 
 		
+		
+		
 		$('#holend').change(function(){
 			console.log($('#holstart').val());
 			console.log($(this).val());
@@ -939,12 +949,13 @@
 					var msg ="";
 					if(data.result == 1){
 						msg = '출장이나 휴가 일정이 겹칩니다.';
-					}
-				 	$('#vadate').html('<font style="font-weight:bold; color:#FF0000">'+msg+'</font>'); 
+					} 
+				 	$('#vadate').html(' <font style="font-weight:bold; color:#FF0000">'
+				 						+msg+'</font> '); 
 				},
 				error: function (xhr,Options,thrownError) {
 			    },
-				
+			
 			});
 		});
 	});

@@ -94,4 +94,6 @@ public interface SignDAO {
 	public List<String> allmyBiz(String userid) throws ClassNotFoundException, SQLException;
 	// 나의 모든 휴가 가져오기
 	public List<String> allmyHol(String userid) throws ClassNotFoundException, SQLException;
+	// 나의 결재 승인되지않은 휴가랑 출장 문서
+	//public List<Sign> UnsignedHolBiz(String userid) throws ClassNotFoundException, SQLException;
 }

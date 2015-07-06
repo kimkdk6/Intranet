@@ -303,4 +303,11 @@
 		from holiday
 		where userid = #{userid} and attdate > sysdate
  	</select>
+ 	
+ 	<!-- 승인처리되지 않은 휴가계, 출장계 -->
+ 	<!-- <select id="UnsignedHolBiz" resultType="dto_vo.Sign.Sign">
+ 		select *  
+ 		from sign 
+ 		where signtype in (2, 4) and signstate=0 and userid=#{userid}
+ 	</select> -->
 </mapper>
