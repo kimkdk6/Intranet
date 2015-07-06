@@ -140,7 +140,7 @@
 		on e.teamcode = t.teamcode
 		join position p
 		on e.poscode = p.poscode
-		where e.deptcode = #{param1} and e.teamcode = #{param2}
+		where e.userid != 'admin' and e.EMPAPPROVE !=0 and e.deptcode = #{param1} and e.teamcode = #{param2}
 		order by e.empno
 	</select>
 	
