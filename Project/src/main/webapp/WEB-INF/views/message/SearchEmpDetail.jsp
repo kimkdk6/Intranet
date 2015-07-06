@@ -2,6 +2,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<style type="text/css">
+	table {
+		background: url(../resources/img/bg.jpg) no-repeat center center fixed; 
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		/* background-color:orange; */
+	}
+
+	html {
+		background: url(../resources/img/bg.jpg) no-repeat center center fixed; 
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		/* background-color:orange; */
+	}
+</style>
+
 
 <script type="text/javascript">
 
@@ -33,7 +53,8 @@ function go_pop_message(url){
 		<tr>
 			<td align="center" colspan="2" style="border-bottom: 2px solid #0469AF"><h4>${emp.ename}님의 사원정보</h4></td>
 		</tr>
-		<tr style="background-image: url('../resources/img/bg.jpg');">
+		<!-- <tr style="background-image: url('../resources/img/bg.jpg');"> -->
+		<tr>
 			<td>
 				<table height="300px" width="200px">
 					<tr height="220px">
