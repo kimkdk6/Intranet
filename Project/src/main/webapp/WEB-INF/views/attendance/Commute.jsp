@@ -159,7 +159,7 @@
                   week : "주별",
                   day : "일별"
                },
-               timeFormat: 'hh:mm:ss',
+               timeFormat: '  ',
 
                editable : false,
                droppable : false, 

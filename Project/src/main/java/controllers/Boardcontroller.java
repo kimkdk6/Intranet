@@ -101,7 +101,7 @@ public class Boardcontroller {
 	@RequestMapping(value = "BoardList.htm")
 	public String BoardList(@RequestParam(value="boardcode") int boardcode,
 			@RequestParam(value="cpage", defaultValue="1") int cpage,
-			@RequestParam(value="pagesize", defaultValue="15")int pagesize,
+			@RequestParam(value="pagesize", defaultValue="10")int pagesize,
 			Model model)throws ClassNotFoundException,SQLException{
 
 		int startboard = cpage * pagesize - (pagesize - 1);

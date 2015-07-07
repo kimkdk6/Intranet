@@ -712,7 +712,6 @@ public class Signcontroller {
 
 	// 출장 신청서 작성 페이지 보기
 	@RequestMapping(value = "BizTripDocReg.htm", method = RequestMethod.GET)
-	@ResponseBody()
 	public String BizTripDocReg(Model model, Principal principal) throws ClassNotFoundException,
 			SQLException {
 		System.out.println("출장 신청서 작성 페이지 열람");

@@ -64,12 +64,12 @@
 			}
 			function gotoWrite() {
 
-				if (userid == boarduserid) {
+			//	if (userid == boarduserid) {
 					window.location.href = "BoardWrite.htm?boardcode="
 							+ boardcode;
-				} else {
-					alert('글 작성자가 아닙니다.');
-				}
+			//	} else {
+			//		alert('글 작성자가 아닙니다.');
+			//	}
 
 			}
 			function deleteReply(fs) {
